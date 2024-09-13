@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { toFile, type ResponseLike } from 'julep/uploads';
-import { File } from 'julep/_shims/index';
+import { toFile, type ResponseLike } from '@julep/sdk/uploads';
+import { File } from '@julep/sdk/_shims/index';
 
 class MyClass {
   name: string = 'foo';

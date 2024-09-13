@@ -6,9 +6,9 @@
     "rootDir": "./deno",
     "lib": ["es2020", "DOM"],
     "paths": {
-      "julep/_shims/auto/*": ["deno/_shims/auto/*-deno"],
-      "julep/*": ["deno/*"],
-      "julep": ["deno/index.ts"],
+      "@julep/sdk/_shims/auto/*": ["deno/_shims/auto/*-deno"],
+      "@julep/sdk/*": ["deno/*"],
+      "@julep/sdk": ["deno/index.ts"],
     },
     "noEmit": true,
     "declaration": true,
