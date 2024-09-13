@@ -74,4 +74,19 @@ describe('resource docs', () => {
       client.agents.docs.delete('agent_id', 'doc_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Julep.NotFoundError);
   });
+
+  test('search: only required params', async () => {
+    const responsePromise = client.agents.docs.search('agent_id', { text: 'text' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('search: required and optional params', async () => {
+    const response = await client.agents.docs.search('agent_id', { text: 'text', lang: 'en-US', limit: 1 });
+  });
 });

@@ -2,7 +2,7 @@
   "name": "julep",
   "version": "0.0.1-alpha.0",
   "description": "The official TypeScript library for the Julep API",
-  "author": "Julep <team@julep.ai>",
+  "author": "Julep <developers@julep.ai>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",

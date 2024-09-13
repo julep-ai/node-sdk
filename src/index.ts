@@ -197,14 +197,12 @@ export namespace Julep {
   export import AgentDeleteResponse = API.AgentDeleteResponse;
   export import AgentCreateOrUpdateResponse = API.AgentCreateOrUpdateResponse;
   export import AgentPatchResponse = API.AgentPatchResponse;
-  export import AgentSearchResponse = API.AgentSearchResponse;
   export import AgentsOffsetPagination = API.AgentsOffsetPagination;
   export import AgentCreateParams = API.AgentCreateParams;
   export import AgentUpdateParams = API.AgentUpdateParams;
   export import AgentListParams = API.AgentListParams;
   export import AgentCreateOrUpdateParams = API.AgentCreateOrUpdateParams;
   export import AgentPatchParams = API.AgentPatchParams;
-  export import AgentSearchParams = API.AgentSearchParams;
 
   export import Sessions = API.Sessions;
   export import History = API.History;
@@ -212,12 +210,14 @@ export namespace Julep {
   export import SessionCreateResponse = API.SessionCreateResponse;
   export import SessionUpdateResponse = API.SessionUpdateResponse;
   export import SessionDeleteResponse = API.SessionDeleteResponse;
+  export import SessionChatResponse = API.SessionChatResponse;
   export import SessionCreateOrUpdateResponse = API.SessionCreateOrUpdateResponse;
   export import SessionPatchResponse = API.SessionPatchResponse;
   export import SessionsOffsetPagination = API.SessionsOffsetPagination;
   export import SessionCreateParams = API.SessionCreateParams;
   export import SessionUpdateParams = API.SessionUpdateParams;
   export import SessionListParams = API.SessionListParams;
+  export import SessionChatParams = API.SessionChatParams;
   export import SessionCreateOrUpdateParams = API.SessionCreateOrUpdateParams;
   export import SessionPatchParams = API.SessionPatchParams;
 
@@ -228,14 +228,12 @@ export namespace Julep {
   export import UserDeleteResponse = API.UserDeleteResponse;
   export import UserCreateOrUpdateResponse = API.UserCreateOrUpdateResponse;
   export import UserPatchResponse = API.UserPatchResponse;
-  export import UserSearchResponse = API.UserSearchResponse;
   export import UsersOffsetPagination = API.UsersOffsetPagination;
   export import UserCreateParams = API.UserCreateParams;
   export import UserUpdateParams = API.UserUpdateParams;
   export import UserListParams = API.UserListParams;
   export import UserCreateOrUpdateParams = API.UserCreateOrUpdateParams;
   export import UserPatchParams = API.UserPatchParams;
-  export import UserSearchParams = API.UserSearchParams;
 
   export import Jobs = API.Jobs;
   export import JobStatus = API.JobStatus;

@@ -38,8 +38,8 @@ describe('resource transitions', () => {
     ).rejects.toThrow(Julep.NotFoundError);
   });
 
-  test('listStream', async () => {
-    const responsePromise = client.executions.transitions.listStream('execution_id');
+  test('stream', async () => {
+    const responsePromise = client.executions.transitions.stream('execution_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -49,17 +49,17 @@ describe('resource transitions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('listStream: request options instead of params are passed correctly', async () => {
+  test('stream: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.executions.transitions.listStream('execution_id', { path: '/_stainless_unknown_path' }),
+      client.executions.transitions.stream('execution_id', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Julep.NotFoundError);
   });
 
-  test('listStream: request options and params are passed correctly', async () => {
+  test('stream: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.executions.transitions.listStream(
+      client.executions.transitions.stream(
         'execution_id',
         { next_page_token: 'next_page_token' },
         { path: '/_stainless_unknown_path' },

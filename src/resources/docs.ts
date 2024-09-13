@@ -16,7 +16,7 @@ export class Docs extends APIResource {
   /**
    * Get Doc
    */
-  retrieve(docId: string, options?: Core.RequestOptions): Core.APIPromise<Doc> {
+  get(docId: string, options?: Core.RequestOptions): Core.APIPromise<Doc> {
     return this._client.get(`/docs/${docId}`, options);
   }
 }

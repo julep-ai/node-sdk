@@ -8,7 +8,7 @@ export class Jobs extends APIResource {
   /**
    * Get Job Status
    */
-  retrieve(jobId: string, options?: Core.RequestOptions): Core.APIPromise<JobStatus> {
+  get(jobId: string, options?: Core.RequestOptions): Core.APIPromise<JobStatus> {
     return this._client.get(`/jobs/${jobId}`, options);
   }
 }

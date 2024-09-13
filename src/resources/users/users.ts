@@ -18,13 +18,6 @@ export class Users extends APIResource {
   }
 
   /**
-   * Get User Details
-   */
-  retrieve(userId: string, options?: Core.RequestOptions): Core.APIPromise<User> {
-    return this._client.get(`/users/${userId}`, options);
-  }
-
-  /**
    * Update User
    */
   update(
@@ -69,6 +62,13 @@ export class Users extends APIResource {
   }
 
   /**
+   * Get User Details
+   */
+  get(userId: string, options?: Core.RequestOptions): Core.APIPromise<User> {
+    return this._client.get(`/users/${userId}`, options);
+  }
+
+  /**
    * Patch User
    */
   patch(
@@ -77,17 +77,6 @@ export class Users extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<UserPatchResponse> {
     return this._client.patch(`/users/${userId}`, { body, ...options });
-  }
-
-  /**
-   * Search User Docs
-   */
-  search(
-    userId: string,
-    body: UserSearchParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<UserSearchResponse> {
-    return this._client.post(`/users/${userId}/search`, { body, ...options });
   }
 }
 
@@ -147,40 +136,6 @@ export interface UserPatchResponse {
   jobs?: Array<string>;
 }
 
-export interface UserSearchResponse {
-  docs: Array<UserSearchResponse.Doc>;
-
-  time: number;
-}
-
-export namespace UserSearchResponse {
-  export interface Doc {
-    id: string;
-
-    owner: Doc.Owner;
-
-    snippets: Array<Doc.Snippet>;
-
-    distance?: number | null;
-
-    title?: string | null;
-  }
-
-  export namespace Doc {
-    export interface Owner {
-      id: string;
-
-      role: 'user' | 'agent';
-    }
-
-    export interface Snippet {
-      content: string;
-
-      index: number;
-    }
-  }
-}
-
 export interface UserCreateParams {
   about?: string;
 
@@ -221,45 +176,6 @@ export interface UserPatchParams {
   name?: string;
 }
 
-export type UserSearchParams =
-  | UserSearchParams.TextOnlyDocSearchRequest
-  | UserSearchParams.VectorDocSearchRequest
-  | UserSearchParams.HybridDocSearchRequest;
-
-export namespace UserSearchParams {
-  export interface TextOnlyDocSearchRequest {
-    text: string;
-
-    lang?: 'en-US';
-
-    limit?: number;
-  }
-
-  export interface VectorDocSearchRequest {
-    vector: Array<number>;
-
-    confidence?: number;
-
-    lang?: 'en-US';
-
-    limit?: number;
-  }
-
-  export interface HybridDocSearchRequest {
-    text: string;
-
-    vector: Array<number>;
-
-    alpha?: number;
-
-    confidence?: number;
-
-    lang?: 'en-US';
-
-    limit?: number;
-  }
-}
-
 export namespace Users {
   export import User = UsersAPI.User;
   export import UserCreateResponse = UsersAPI.UserCreateResponse;
@@ -267,17 +183,17 @@ export namespace Users {
   export import UserDeleteResponse = UsersAPI.UserDeleteResponse;
   export import UserCreateOrUpdateResponse = UsersAPI.UserCreateOrUpdateResponse;
   export import UserPatchResponse = UsersAPI.UserPatchResponse;
-  export import UserSearchResponse = UsersAPI.UserSearchResponse;
   export import UsersOffsetPagination = UsersAPI.UsersOffsetPagination;
   export import UserCreateParams = UsersAPI.UserCreateParams;
   export import UserUpdateParams = UsersAPI.UserUpdateParams;
   export import UserListParams = UsersAPI.UserListParams;
   export import UserCreateOrUpdateParams = UsersAPI.UserCreateOrUpdateParams;
   export import UserPatchParams = UsersAPI.UserPatchParams;
-  export import UserSearchParams = UsersAPI.UserSearchParams;
   export import Docs = DocsAPI.Docs;
   export import DocCreateResponse = DocsAPI.DocCreateResponse;
   export import DocDeleteResponse = DocsAPI.DocDeleteResponse;
+  export import DocSearchResponse = DocsAPI.DocSearchResponse;
   export import DocCreateParams = DocsAPI.DocCreateParams;
   export import DocListParams = DocsAPI.DocListParams;
+  export import DocSearchParams = DocsAPI.DocSearchParams;
 }

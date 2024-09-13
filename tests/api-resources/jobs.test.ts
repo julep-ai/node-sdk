@@ -9,8 +9,8 @@ const client = new Julep({
 });
 
 describe('resource jobs', () => {
-  test('retrieve', async () => {
-    const responsePromise = client.jobs.retrieve('job_id');
+  test('get', async () => {
+    const responsePromise = client.jobs.get('job_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,9 +20,9 @@ describe('resource jobs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
+  test('get: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.jobs.retrieve('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.jobs.get('job_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       Julep.NotFoundError,
     );
   });

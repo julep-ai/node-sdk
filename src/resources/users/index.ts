@@ -1,6 +1,14 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { DocCreateResponse, DocDeleteResponse, DocCreateParams, DocListParams, Docs } from './docs';
+export {
+  DocCreateResponse,
+  DocDeleteResponse,
+  DocSearchResponse,
+  DocCreateParams,
+  DocListParams,
+  DocSearchParams,
+  Docs,
+} from './docs';
 export {
   User,
   UserCreateResponse,
@@ -8,13 +16,11 @@ export {
   UserDeleteResponse,
   UserCreateOrUpdateResponse,
   UserPatchResponse,
-  UserSearchResponse,
   UserCreateParams,
   UserUpdateParams,
   UserListParams,
   UserCreateOrUpdateParams,
   UserPatchParams,
-  UserSearchParams,
   UsersOffsetPagination,
   Users,
 } from './users';

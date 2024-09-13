@@ -37,19 +37,19 @@ export class Transitions extends APIResource {
   /**
    * Stream Transitions Events
    */
-  listStream(
+  stream(
     executionId: string,
-    query?: TransitionListStreamParams,
+    query?: TransitionStreamParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<unknown>;
-  listStream(executionId: string, options?: Core.RequestOptions): Core.APIPromise<unknown>;
-  listStream(
+  stream(executionId: string, options?: Core.RequestOptions): Core.APIPromise<unknown>;
+  stream(
     executionId: string,
-    query: TransitionListStreamParams | Core.RequestOptions = {},
+    query: TransitionStreamParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
   ): Core.APIPromise<unknown> {
     if (isRequestOptions(query)) {
-      return this.listStream(executionId, {}, query);
+      return this.stream(executionId, {}, query);
     }
     return this._client.get(`/executions/${executionId}/transitions.stream`, { query, ...options });
   }
@@ -100,7 +100,7 @@ export namespace TransitionListResponse {
   }
 }
 
-export type TransitionListStreamResponse = unknown;
+export type TransitionStreamResponse = unknown;
 
 export interface TransitionListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
@@ -108,14 +108,14 @@ export interface TransitionListParams extends OffsetPaginationParams {
   sort_by?: 'created_at' | 'updated_at';
 }
 
-export interface TransitionListStreamParams {
+export interface TransitionStreamParams {
   next_page_token?: string | null;
 }
 
 export namespace Transitions {
   export import TransitionListResponse = TransitionsAPI.TransitionListResponse;
-  export import TransitionListStreamResponse = TransitionsAPI.TransitionListStreamResponse;
+  export import TransitionStreamResponse = TransitionsAPI.TransitionStreamResponse;
   export import TransitionListResponsesOffsetPagination = TransitionsAPI.TransitionListResponsesOffsetPagination;
   export import TransitionListParams = TransitionsAPI.TransitionListParams;
-  export import TransitionListStreamParams = TransitionsAPI.TransitionListStreamParams;
+  export import TransitionStreamParams = TransitionsAPI.TransitionStreamParams;
 }
