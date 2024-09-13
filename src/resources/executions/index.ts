@@ -2,16 +2,16 @@
 
 export {
   Execution,
+  Transition,
   ExecutionUpdateResponse,
   ExecutionUpdateParams,
   ExecutionsOffsetPagination,
+  TransitionsOffsetPagination,
   Executions,
 } from './executions';
 export {
-  TransitionListResponse,
   TransitionStreamResponse,
   TransitionListParams,
   TransitionStreamParams,
-  TransitionListResponsesOffsetPagination,
   Transitions,
 } from './transitions';

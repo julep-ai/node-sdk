@@ -100,6 +100,478 @@ export class Sessions extends APIResource {
 
 export class SessionsOffsetPagination extends OffsetPagination<Session> {}
 
+export interface ChatInput {
+  messages: Array<ChatInput.Message>;
+
+  agent?: string | null;
+
+  frequency_penalty?: number | null;
+
+  length_penalty?: number | null;
+
+  logit_bias?: Record<string, number> | null;
+
+  max_tokens?: number | null;
+
+  min_p?: number | null;
+
+  model?: string | null;
+
+  presence_penalty?: number | null;
+
+  recall?: boolean;
+
+  remember?: boolean;
+
+  repetition_penalty?: number | null;
+
+  response_format?:
+    | ChatInput.SimpleCompletionResponseFormat
+    | ChatInput.SchemaCompletionResponseFormat
+    | null;
+
+  save?: boolean;
+
+  seed?: number | null;
+
+  stop?: Array<string>;
+
+  stream?: boolean;
+
+  temperature?: number | null;
+
+  tool_choice?:
+    | 'auto'
+    | 'none'
+    | ChatInput.NamedFunctionChoice
+    | ChatInput.NamedIntegrationChoice
+    | ChatInput.NamedSystemChoice
+    | ChatInput.NamedAPICallChoice
+    | null;
+
+  tools?: Array<ChatInput.Tool>;
+
+  top_p?: number | null;
+}
+
+export namespace ChatInput {
+  export interface Message {
+    content: string | Array<string> | Array<Message.Content | Message.ContentModel>;
+
+    role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+
+    continue?: boolean | null;
+
+    name?: string | null;
+  }
+
+  export namespace Message {
+    export interface Content {
+      text: string;
+
+      type?: 'text';
+    }
+
+    export interface ContentModel {
+      /**
+       * The image URL
+       */
+      image_url: ContentModel.ImageURL;
+
+      type?: 'image_url';
+    }
+
+    export namespace ContentModel {
+      /**
+       * The image URL
+       */
+      export interface ImageURL {
+        url: string;
+
+        detail?: 'low' | 'high' | 'auto';
+      }
+    }
+  }
+
+  export interface SimpleCompletionResponseFormat {
+    type?: 'text' | 'json_object';
+  }
+
+  export interface SchemaCompletionResponseFormat {
+    json_schema: unknown;
+
+    type?: 'json_schema';
+  }
+
+  export interface NamedFunctionChoice {
+    function: NamedFunctionChoice.Function;
+  }
+
+  export namespace NamedFunctionChoice {
+    export interface Function {
+      name: string;
+    }
+  }
+
+  export interface NamedIntegrationChoice {
+    integration?: unknown | null;
+  }
+
+  export interface NamedSystemChoice {
+    system?: unknown | null;
+  }
+
+  export interface NamedAPICallChoice {
+    api_call?: unknown | null;
+  }
+
+  export interface Tool {
+    id: string;
+
+    created_at: string;
+
+    /**
+     * Function definition
+     */
+    function: Tool.Function;
+
+    name: string;
+
+    updated_at: string;
+
+    api_call?: unknown | null;
+
+    integration?: unknown | null;
+
+    system?: unknown | null;
+
+    type?: 'function' | 'integration' | 'system' | 'api_call';
+  }
+
+  export namespace Tool {
+    /**
+     * Function definition
+     */
+    export interface Function {
+      description?: string | null;
+
+      name?: unknown | null;
+
+      parameters?: unknown | null;
+    }
+  }
+}
+
+export interface ChatResponse {
+  id: string;
+
+  choices: Array<ChatResponse.SingleChatOutput | ChatResponse.MultipleChatOutput>;
+
+  created_at: string;
+
+  docs?: Array<ChatResponse.Doc>;
+
+  jobs?: Array<string>;
+
+  /**
+   * Usage statistics for the completion request
+   */
+  usage?: ChatResponse.Usage | null;
+}
+
+export namespace ChatResponse {
+  /**
+   * The output returned by the model. Note that, depending on the model provider,
+   * they might return more than one message.
+   */
+  export interface SingleChatOutput {
+    index: number;
+
+    message: SingleChatOutput.Message;
+
+    finish_reason?: 'stop' | 'length' | 'content_filter' | 'tool_calls';
+
+    logprobs?: SingleChatOutput.Logprobs | null;
+  }
+
+  export namespace SingleChatOutput {
+    export interface Message {
+      content: string | Array<string> | Array<Message.Content | Message.ContentModel>;
+
+      role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+
+      id?: string | null;
+
+      created_at?: string | null;
+
+      name?: string | null;
+
+      tool_calls?: Array<
+        | Message.ChosenFunctionCall
+        | Message.ChosenIntegrationCall
+        | Message.ChosenSystemCall
+        | Message.ChosenAPICall
+      > | null;
+    }
+
+    export namespace Message {
+      export interface Content {
+        text: string;
+
+        type?: 'text';
+      }
+
+      export interface ContentModel {
+        /**
+         * The image URL
+         */
+        image_url: ContentModel.ImageURL;
+
+        type?: 'image_url';
+      }
+
+      export namespace ContentModel {
+        /**
+         * The image URL
+         */
+        export interface ImageURL {
+          url: string;
+
+          detail?: 'low' | 'high' | 'auto';
+        }
+      }
+
+      export interface ChosenFunctionCall {
+        id: string;
+
+        function: ChosenFunctionCall.Function;
+
+        type?: 'function';
+      }
+
+      export namespace ChosenFunctionCall {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      export interface ChosenIntegrationCall {
+        id: string;
+
+        integration: unknown;
+
+        type?: 'integration';
+      }
+
+      export interface ChosenSystemCall {
+        id: string;
+
+        system: unknown;
+
+        type?: 'system';
+      }
+
+      export interface ChosenAPICall {
+        id: string;
+
+        api_call: unknown;
+
+        type?: 'api_call';
+      }
+    }
+
+    export interface Logprobs {
+      content?: Array<Logprobs.Content> | null;
+    }
+
+    export namespace Logprobs {
+      export interface Content {
+        token: string;
+
+        logprob: number;
+
+        top_logprobs: Array<Content.TopLogprob>;
+
+        bytes?: Array<number> | null;
+      }
+
+      export namespace Content {
+        export interface TopLogprob {
+          token: string;
+
+          logprob: number;
+
+          bytes?: Array<number> | null;
+        }
+      }
+    }
+  }
+
+  /**
+   * The output returned by the model. Note that, depending on the model provider,
+   * they might return more than one message.
+   */
+  export interface MultipleChatOutput {
+    index: number;
+
+    messages: Array<MultipleChatOutput.Message>;
+
+    finish_reason?: 'stop' | 'length' | 'content_filter' | 'tool_calls';
+
+    logprobs?: MultipleChatOutput.Logprobs | null;
+  }
+
+  export namespace MultipleChatOutput {
+    export interface Message {
+      content: string | Array<string> | Array<Message.Content | Message.ContentModel>;
+
+      role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+
+      id?: string | null;
+
+      created_at?: string | null;
+
+      name?: string | null;
+
+      tool_calls?: Array<
+        | Message.ChosenFunctionCall
+        | Message.ChosenIntegrationCall
+        | Message.ChosenSystemCall
+        | Message.ChosenAPICall
+      > | null;
+    }
+
+    export namespace Message {
+      export interface Content {
+        text: string;
+
+        type?: 'text';
+      }
+
+      export interface ContentModel {
+        /**
+         * The image URL
+         */
+        image_url: ContentModel.ImageURL;
+
+        type?: 'image_url';
+      }
+
+      export namespace ContentModel {
+        /**
+         * The image URL
+         */
+        export interface ImageURL {
+          url: string;
+
+          detail?: 'low' | 'high' | 'auto';
+        }
+      }
+
+      export interface ChosenFunctionCall {
+        id: string;
+
+        function: ChosenFunctionCall.Function;
+
+        type?: 'function';
+      }
+
+      export namespace ChosenFunctionCall {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      export interface ChosenIntegrationCall {
+        id: string;
+
+        integration: unknown;
+
+        type?: 'integration';
+      }
+
+      export interface ChosenSystemCall {
+        id: string;
+
+        system: unknown;
+
+        type?: 'system';
+      }
+
+      export interface ChosenAPICall {
+        id: string;
+
+        api_call: unknown;
+
+        type?: 'api_call';
+      }
+    }
+
+    export interface Logprobs {
+      content?: Array<Logprobs.Content> | null;
+    }
+
+    export namespace Logprobs {
+      export interface Content {
+        token: string;
+
+        logprob: number;
+
+        top_logprobs: Array<Content.TopLogprob>;
+
+        bytes?: Array<number> | null;
+      }
+
+      export namespace Content {
+        export interface TopLogprob {
+          token: string;
+
+          logprob: number;
+
+          bytes?: Array<number> | null;
+        }
+      }
+    }
+  }
+
+  export interface Doc {
+    id: string;
+
+    owner: Doc.Owner;
+
+    snippets: Array<Doc.Snippet>;
+
+    distance?: number | null;
+
+    title?: string | null;
+  }
+
+  export namespace Doc {
+    export interface Owner {
+      id: string;
+
+      role: 'user' | 'agent';
+    }
+
+    export interface Snippet {
+      content: string;
+
+      index: number;
+    }
+  }
+
+  /**
+   * Usage statistics for the completion request
+   */
+  export interface Usage {
+    completion_tokens?: number | null;
+
+    prompt_tokens?: number | null;
+
+    total_tokens?: number | null;
+  }
+}
+
 export interface History {
   created_at: string;
 
@@ -418,9 +890,7 @@ export interface SessionDeleteResponse {
   jobs?: Array<string>;
 }
 
-export type SessionChatResponse =
-  | SessionChatResponse.ChunkChatResponse
-  | SessionChatResponse.MessageChatResponse;
+export type SessionChatResponse = SessionChatResponse.ChunkChatResponse | ChatResponse;
 
 export namespace SessionChatResponse {
   export interface ChunkChatResponse {
@@ -496,316 +966,6 @@ export namespace SessionChatResponse {
 
             detail?: 'low' | 'high' | 'auto';
           }
-        }
-      }
-
-      export interface Logprobs {
-        content?: Array<Logprobs.Content> | null;
-      }
-
-      export namespace Logprobs {
-        export interface Content {
-          token: string;
-
-          logprob: number;
-
-          top_logprobs: Array<Content.TopLogprob>;
-
-          bytes?: Array<number> | null;
-        }
-
-        export namespace Content {
-          export interface TopLogprob {
-            token: string;
-
-            logprob: number;
-
-            bytes?: Array<number> | null;
-          }
-        }
-      }
-    }
-
-    export interface Doc {
-      id: string;
-
-      owner: Doc.Owner;
-
-      snippets: Array<Doc.Snippet>;
-
-      distance?: number | null;
-
-      title?: string | null;
-    }
-
-    export namespace Doc {
-      export interface Owner {
-        id: string;
-
-        role: 'user' | 'agent';
-      }
-
-      export interface Snippet {
-        content: string;
-
-        index: number;
-      }
-    }
-
-    /**
-     * Usage statistics for the completion request
-     */
-    export interface Usage {
-      completion_tokens?: number | null;
-
-      prompt_tokens?: number | null;
-
-      total_tokens?: number | null;
-    }
-  }
-
-  export interface MessageChatResponse {
-    id: string;
-
-    choices: Array<MessageChatResponse.SingleChatOutput | MessageChatResponse.MultipleChatOutput>;
-
-    created_at: string;
-
-    docs?: Array<MessageChatResponse.Doc>;
-
-    jobs?: Array<string>;
-
-    /**
-     * Usage statistics for the completion request
-     */
-    usage?: MessageChatResponse.Usage | null;
-  }
-
-  export namespace MessageChatResponse {
-    /**
-     * The output returned by the model. Note that, depending on the model provider,
-     * they might return more than one message.
-     */
-    export interface SingleChatOutput {
-      index: number;
-
-      message: SingleChatOutput.Message;
-
-      finish_reason?: 'stop' | 'length' | 'content_filter' | 'tool_calls';
-
-      logprobs?: SingleChatOutput.Logprobs | null;
-    }
-
-    export namespace SingleChatOutput {
-      export interface Message {
-        content: string | Array<string> | Array<Message.Content | Message.ContentModel>;
-
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
-
-        id?: string | null;
-
-        created_at?: string | null;
-
-        name?: string | null;
-
-        tool_calls?: Array<
-          | Message.ChosenFunctionCall
-          | Message.ChosenIntegrationCall
-          | Message.ChosenSystemCall
-          | Message.ChosenAPICall
-        > | null;
-      }
-
-      export namespace Message {
-        export interface Content {
-          text: string;
-
-          type?: 'text';
-        }
-
-        export interface ContentModel {
-          /**
-           * The image URL
-           */
-          image_url: ContentModel.ImageURL;
-
-          type?: 'image_url';
-        }
-
-        export namespace ContentModel {
-          /**
-           * The image URL
-           */
-          export interface ImageURL {
-            url: string;
-
-            detail?: 'low' | 'high' | 'auto';
-          }
-        }
-
-        export interface ChosenFunctionCall {
-          id: string;
-
-          function: ChosenFunctionCall.Function;
-
-          type?: 'function';
-        }
-
-        export namespace ChosenFunctionCall {
-          export interface Function {
-            name: string;
-          }
-        }
-
-        export interface ChosenIntegrationCall {
-          id: string;
-
-          integration: unknown;
-
-          type?: 'integration';
-        }
-
-        export interface ChosenSystemCall {
-          id: string;
-
-          system: unknown;
-
-          type?: 'system';
-        }
-
-        export interface ChosenAPICall {
-          id: string;
-
-          api_call: unknown;
-
-          type?: 'api_call';
-        }
-      }
-
-      export interface Logprobs {
-        content?: Array<Logprobs.Content> | null;
-      }
-
-      export namespace Logprobs {
-        export interface Content {
-          token: string;
-
-          logprob: number;
-
-          top_logprobs: Array<Content.TopLogprob>;
-
-          bytes?: Array<number> | null;
-        }
-
-        export namespace Content {
-          export interface TopLogprob {
-            token: string;
-
-            logprob: number;
-
-            bytes?: Array<number> | null;
-          }
-        }
-      }
-    }
-
-    /**
-     * The output returned by the model. Note that, depending on the model provider,
-     * they might return more than one message.
-     */
-    export interface MultipleChatOutput {
-      index: number;
-
-      messages: Array<MultipleChatOutput.Message>;
-
-      finish_reason?: 'stop' | 'length' | 'content_filter' | 'tool_calls';
-
-      logprobs?: MultipleChatOutput.Logprobs | null;
-    }
-
-    export namespace MultipleChatOutput {
-      export interface Message {
-        content: string | Array<string> | Array<Message.Content | Message.ContentModel>;
-
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
-
-        id?: string | null;
-
-        created_at?: string | null;
-
-        name?: string | null;
-
-        tool_calls?: Array<
-          | Message.ChosenFunctionCall
-          | Message.ChosenIntegrationCall
-          | Message.ChosenSystemCall
-          | Message.ChosenAPICall
-        > | null;
-      }
-
-      export namespace Message {
-        export interface Content {
-          text: string;
-
-          type?: 'text';
-        }
-
-        export interface ContentModel {
-          /**
-           * The image URL
-           */
-          image_url: ContentModel.ImageURL;
-
-          type?: 'image_url';
-        }
-
-        export namespace ContentModel {
-          /**
-           * The image URL
-           */
-          export interface ImageURL {
-            url: string;
-
-            detail?: 'low' | 'high' | 'auto';
-          }
-        }
-
-        export interface ChosenFunctionCall {
-          id: string;
-
-          function: ChosenFunctionCall.Function;
-
-          type?: 'function';
-        }
-
-        export namespace ChosenFunctionCall {
-          export interface Function {
-            name: string;
-          }
-        }
-
-        export interface ChosenIntegrationCall {
-          id: string;
-
-          integration: unknown;
-
-          type?: 'integration';
-        }
-
-        export interface ChosenSystemCall {
-          id: string;
-
-          system: unknown;
-
-          type?: 'system';
-        }
-
-        export interface ChosenAPICall {
-          id: string;
-
-          api_call: unknown;
-
-          type?: 'api_call';
         }
       }
 
@@ -1118,6 +1278,8 @@ export interface SessionPatchParams {
 }
 
 export namespace Sessions {
+  export import ChatInput = SessionsAPI.ChatInput;
+  export import ChatResponse = SessionsAPI.ChatResponse;
   export import History = SessionsAPI.History;
   export import Session = SessionsAPI.Session;
   export import SessionCreateResponse = SessionsAPI.SessionCreateResponse;

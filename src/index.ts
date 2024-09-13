@@ -232,6 +232,8 @@ export namespace Julep {
   export import AgentPatchParams = API.AgentPatchParams;
 
   export import Sessions = API.Sessions;
+  export import ChatInput = API.ChatInput;
+  export import ChatResponse = API.ChatResponse;
   export import History = API.History;
   export import Session = API.Session;
   export import SessionCreateResponse = API.SessionCreateResponse;
@@ -275,6 +277,7 @@ export namespace Julep {
 
   export import Executions = API.Executions;
   export import Execution = API.Execution;
+  export import Transition = API.Transition;
   export import ExecutionUpdateResponse = API.ExecutionUpdateResponse;
   export import ExecutionUpdateParams = API.ExecutionUpdateParams;
 }

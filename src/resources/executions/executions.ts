@@ -30,6 +30,8 @@ export class Executions extends APIResource {
 
 export class ExecutionsOffsetPagination extends OffsetPagination<Execution> {}
 
+export class TransitionsOffsetPagination extends OffsetPagination<Transition> {}
+
 export interface Execution {
   id: string;
 
@@ -48,6 +50,49 @@ export interface Execution {
   metadata?: unknown | null;
 
   output?: unknown | null;
+}
+
+export interface Transition {
+  id: string;
+
+  created_at: string;
+
+  current: Transition.Current;
+
+  execution_id: string;
+
+  next: Transition.Next | null;
+
+  output: unknown;
+
+  type:
+    | 'init'
+    | 'init_branch'
+    | 'finish'
+    | 'finish_branch'
+    | 'wait'
+    | 'resume'
+    | 'error'
+    | 'step'
+    | 'cancelled';
+
+  updated_at: string;
+
+  metadata?: unknown | null;
+}
+
+export namespace Transition {
+  export interface Current {
+    step: number;
+
+    workflow: string;
+  }
+
+  export interface Next {
+    step: number;
+
+    workflow: string;
+  }
 }
 
 export type ExecutionUpdateResponse = unknown;
@@ -72,12 +117,11 @@ export namespace ExecutionUpdateParams {
 
 export namespace Executions {
   export import Execution = ExecutionsAPI.Execution;
+  export import Transition = ExecutionsAPI.Transition;
   export import ExecutionUpdateResponse = ExecutionsAPI.ExecutionUpdateResponse;
   export import ExecutionUpdateParams = ExecutionsAPI.ExecutionUpdateParams;
   export import Transitions = TransitionsAPI.Transitions;
-  export import TransitionListResponse = TransitionsAPI.TransitionListResponse;
   export import TransitionStreamResponse = TransitionsAPI.TransitionStreamResponse;
-  export import TransitionListResponsesOffsetPagination = TransitionsAPI.TransitionListResponsesOffsetPagination;
   export import TransitionListParams = TransitionsAPI.TransitionListParams;
   export import TransitionStreamParams = TransitionsAPI.TransitionStreamParams;
 }
