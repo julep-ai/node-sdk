@@ -42,17 +42,6 @@ export class Docs extends APIResource {
   }
 
   /**
-   * Delete Agent Doc
-   */
-  delete(
-    agentId: string,
-    docId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceDeleted> {
-    return this._client.delete(`/agents/${agentId}/docs/${docId}`, options);
-  }
-
-  /**
    * Search Agent Docs
    */
   search(

@@ -3,8 +3,6 @@
 export {
   Execution,
   Transition,
-  ExecutionUpdateResponse,
-  ExecutionUpdateParams,
   ExecutionsOffsetPagination,
   TransitionsOffsetPagination,
   Executions,

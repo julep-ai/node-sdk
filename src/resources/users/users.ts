@@ -19,17 +19,6 @@ export class Users extends APIResource {
   }
 
   /**
-   * Update User
-   */
-  update(
-    userId: string,
-    body: UserUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceUpdated> {
-    return this._client.put(`/users/${userId}`, { body, ...options });
-  }
-
-  /**
    * List Users
    */
   list(query?: UserListParams, options?: Core.RequestOptions): Core.PagePromise<UsersOffsetPagination, User>;
@@ -42,42 +31,6 @@ export class Users extends APIResource {
       return this.list({}, query);
     }
     return this._client.getAPIList('/users', UsersOffsetPagination, { query, ...options });
-  }
-
-  /**
-   * Delete User
-   */
-  delete(userId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceDeleted> {
-    return this._client.delete(`/users/${userId}`, options);
-  }
-
-  /**
-   * Create Or Update User
-   */
-  createOrUpdate(
-    userId: string,
-    body: UserCreateOrUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceCreated> {
-    return this._client.post(`/users/${userId}`, { body, ...options });
-  }
-
-  /**
-   * Get User Details
-   */
-  get(userId: string, options?: Core.RequestOptions): Core.APIPromise<User> {
-    return this._client.get(`/users/${userId}`, options);
-  }
-
-  /**
-   * Patch User
-   */
-  patch(
-    userId: string,
-    body: UserPatchParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceUpdated> {
-    return this._client.patch(`/users/${userId}`, { body, ...options });
   }
 }
 
@@ -105,14 +58,6 @@ export interface UserCreateParams {
   name?: string;
 }
 
-export interface UserUpdateParams {
-  about?: string;
-
-  metadata?: unknown | null;
-
-  name?: string;
-}
-
 export interface UserListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
 
@@ -121,30 +66,11 @@ export interface UserListParams extends OffsetPaginationParams {
   sort_by?: 'created_at' | 'updated_at';
 }
 
-export interface UserCreateOrUpdateParams {
-  about?: string;
-
-  metadata?: unknown | null;
-
-  name?: string;
-}
-
-export interface UserPatchParams {
-  about?: string;
-
-  metadata?: unknown | null;
-
-  name?: string;
-}
-
 export namespace Users {
   export import User = UsersAPI.User;
   export import UsersOffsetPagination = UsersAPI.UsersOffsetPagination;
   export import UserCreateParams = UsersAPI.UserCreateParams;
-  export import UserUpdateParams = UsersAPI.UserUpdateParams;
   export import UserListParams = UsersAPI.UserListParams;
-  export import UserCreateOrUpdateParams = UsersAPI.UserCreateOrUpdateParams;
-  export import UserPatchParams = UsersAPI.UserPatchParams;
   export import Docs = DocsAPI.Docs;
   export import DocSearchResponse = DocsAPI.DocSearchResponse;
   export import DocCreateParams = DocsAPI.DocCreateParams;

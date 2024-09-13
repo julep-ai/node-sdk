@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
-import * as Core from '../../core';
 import * as TasksAPI from './tasks';
 import * as SessionsAPI from '../sessions';
 import * as ExecutionsAPI from './executions';
@@ -9,13 +8,6 @@ import { OffsetPagination } from '../../pagination';
 
 export class Tasks extends APIResource {
   executions: ExecutionsAPI.Executions = new ExecutionsAPI.Executions(this._client);
-
-  /**
-   * Get Task Details
-   */
-  get(taskId: string, options?: Core.RequestOptions): Core.APIPromise<Task> {
-    return this._client.get(`/tasks/${taskId}`, options);
-  }
 }
 
 export class TasksOffsetPagination extends OffsetPagination<Task> {}
@@ -1379,6 +1371,5 @@ export namespace Tasks {
   export import Tool = TasksAPI.Tool;
   export import Executions = ExecutionsAPI.Executions;
   export import ExecutionCreateParams = ExecutionsAPI.ExecutionCreateParams;
-  export import ExecutionUpdateParams = ExecutionsAPI.ExecutionUpdateParams;
   export import ExecutionListParams = ExecutionsAPI.ExecutionListParams;
 }
