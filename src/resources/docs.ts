@@ -39,6 +39,12 @@ export interface EmbedQueryResponse {
   vectors: Array<Array<number>>;
 }
 
+export interface Snippet {
+  content: string;
+
+  index: number;
+}
+
 export interface DocEmbedParams {
   text: string | Array<string>;
 }
@@ -46,5 +52,6 @@ export interface DocEmbedParams {
 export namespace Docs {
   export import Doc = DocsAPI.Doc;
   export import EmbedQueryResponse = DocsAPI.EmbedQueryResponse;
+  export import Snippet = DocsAPI.Snippet;
   export import DocEmbedParams = DocsAPI.DocEmbedParams;
 }

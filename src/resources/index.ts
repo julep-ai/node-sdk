@@ -14,7 +14,10 @@ export {
 export {
   ChatInput,
   ChatResponse,
+  ChatSettings,
+  Entry,
   History,
+  Message,
   Session,
   SessionChatResponse,
   SessionCreateParams,
@@ -26,7 +29,7 @@ export {
   SessionsOffsetPagination,
   Sessions,
 } from './sessions';
-export { Doc, EmbedQueryResponse, DocEmbedParams, DocsOffsetPagination, Docs } from './docs';
+export { Doc, EmbedQueryResponse, Snippet, DocEmbedParams, DocsOffsetPagination, Docs } from './docs';
 export {
   Execution,
   Transition,
@@ -37,7 +40,7 @@ export {
   Executions,
 } from './executions/executions';
 export { JobStatus, Jobs } from './jobs';
-export { Task, TasksOffsetPagination, Tasks } from './tasks/tasks';
+export { Task, Tool, TasksOffsetPagination, Tasks } from './tasks/tasks';
 export {
   User,
   UserCreateParams,

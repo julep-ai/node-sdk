@@ -229,7 +229,10 @@ export namespace Julep {
   export import Sessions = API.Sessions;
   export import ChatInput = API.ChatInput;
   export import ChatResponse = API.ChatResponse;
+  export import ChatSettings = API.ChatSettings;
+  export import Entry = API.Entry;
   export import History = API.History;
+  export import Message = API.Message;
   export import Session = API.Session;
   export import SessionChatResponse = API.SessionChatResponse;
   export import SessionsOffsetPagination = API.SessionsOffsetPagination;
@@ -255,10 +258,12 @@ export namespace Julep {
   export import Docs = API.Docs;
   export import Doc = API.Doc;
   export import EmbedQueryResponse = API.EmbedQueryResponse;
+  export import Snippet = API.Snippet;
   export import DocEmbedParams = API.DocEmbedParams;
 
   export import Tasks = API.Tasks;
   export import Task = API.Task;
+  export import Tool = API.Tool;
 
   export import Executions = API.Executions;
   export import Execution = API.Execution;

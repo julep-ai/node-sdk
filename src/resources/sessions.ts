@@ -4,6 +4,7 @@ import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
 import * as SessionsAPI from './sessions';
+import * as DocsAPI from './docs';
 import * as Shared from './shared';
 import { OffsetPagination, type OffsetPaginationParams } from '../pagination';
 
@@ -102,7 +103,7 @@ export class Sessions extends APIResource {
 export class SessionsOffsetPagination extends OffsetPagination<Session> {}
 
 export interface ChatInput {
-  messages: Array<ChatInput.Message>;
+  messages: Array<Message>;
 
   agent?: string | null;
 
@@ -156,44 +157,6 @@ export interface ChatInput {
 }
 
 export namespace ChatInput {
-  export interface Message {
-    content: string | Array<string> | Array<Message.Content | Message.ContentModel>;
-
-    role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
-
-    continue?: boolean | null;
-
-    name?: string | null;
-  }
-
-  export namespace Message {
-    export interface Content {
-      text: string;
-
-      type?: 'text';
-    }
-
-    export interface ContentModel {
-      /**
-       * The image URL
-       */
-      image_url: ContentModel.ImageURL;
-
-      type?: 'image_url';
-    }
-
-    export namespace ContentModel {
-      /**
-       * The image URL
-       */
-      export interface ImageURL {
-        url: string;
-
-        detail?: 'low' | 'high' | 'auto';
-      }
-    }
-  }
-
   export interface SimpleCompletionResponseFormat {
     type?: 'text' | 'json_object';
   }
@@ -540,7 +503,7 @@ export namespace ChatResponse {
 
     owner: Doc.Owner;
 
-    snippets: Array<Doc.Snippet>;
+    snippets: Array<DocsAPI.Snippet>;
 
     distance?: number | null;
 
@@ -552,12 +515,6 @@ export namespace ChatResponse {
       id: string;
 
       role: 'user' | 'agent';
-    }
-
-    export interface Snippet {
-      content: string;
-
-      index: number;
     }
   }
 
@@ -573,10 +530,309 @@ export namespace ChatResponse {
   }
 }
 
+export interface ChatSettings {
+  agent?: string | null;
+
+  frequency_penalty?: number | null;
+
+  length_penalty?: number | null;
+
+  logit_bias?: Record<string, number> | null;
+
+  max_tokens?: number | null;
+
+  min_p?: number | null;
+
+  model?: string | null;
+
+  presence_penalty?: number | null;
+
+  repetition_penalty?: number | null;
+
+  response_format?:
+    | ChatSettings.SimpleCompletionResponseFormat
+    | ChatSettings.SchemaCompletionResponseFormat
+    | null;
+
+  seed?: number | null;
+
+  stop?: Array<string>;
+
+  stream?: boolean;
+
+  temperature?: number | null;
+
+  top_p?: number | null;
+}
+
+export namespace ChatSettings {
+  export interface SimpleCompletionResponseFormat {
+    type?: 'text' | 'json_object';
+  }
+
+  export interface SchemaCompletionResponseFormat {
+    json_schema: unknown;
+
+    type?: 'json_schema';
+  }
+}
+
+export interface Entry {
+  id: string;
+
+  content:
+    | Array<Entry.Content | Entry.ContentModel>
+    | Entry.Tool
+    | Entry.ChosenFunctionCall
+    | Entry.ChosenIntegrationCall
+    | Entry.ChosenSystemCall
+    | Entry.ChosenAPICall
+    | string
+    | Entry.ToolResponse
+    | Array<
+        | Array<Entry.Content | Entry.ContentModel>
+        | Entry.Tool
+        | Entry.ChosenFunctionCall
+        | Entry.ChosenIntegrationCall
+        | Entry.ChosenSystemCall
+        | Entry.ChosenAPICall
+        | string
+        | Entry.ToolResponse
+      >;
+
+  created_at: string;
+
+  role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+
+  source: 'api_request' | 'api_response' | 'tool_response' | 'internal' | 'summarizer' | 'meta';
+
+  timestamp: number;
+
+  token_count: number;
+
+  tokenizer: string;
+
+  name?: string | null;
+}
+
+export namespace Entry {
+  export interface Content {
+    text: string;
+
+    type?: 'text';
+  }
+
+  export interface ContentModel {
+    /**
+     * The image URL
+     */
+    image_url: ContentModel.ImageURL;
+
+    type?: 'image_url';
+  }
+
+  export namespace ContentModel {
+    /**
+     * The image URL
+     */
+    export interface ImageURL {
+      url: string;
+
+      detail?: 'low' | 'high' | 'auto';
+    }
+  }
+
+  export interface Tool {
+    id: string;
+
+    created_at: string;
+
+    /**
+     * Function definition
+     */
+    function: Tool.Function;
+
+    name: string;
+
+    updated_at: string;
+
+    api_call?: unknown | null;
+
+    integration?: unknown | null;
+
+    system?: unknown | null;
+
+    type?: 'function' | 'integration' | 'system' | 'api_call';
+  }
+
+  export namespace Tool {
+    /**
+     * Function definition
+     */
+    export interface Function {
+      description?: string | null;
+
+      name?: unknown | null;
+
+      parameters?: unknown | null;
+    }
+  }
+
+  export interface ChosenFunctionCall {
+    id: string;
+
+    function: ChosenFunctionCall.Function;
+
+    type?: 'function';
+  }
+
+  export namespace ChosenFunctionCall {
+    export interface Function {
+      name: string;
+    }
+  }
+
+  export interface ChosenIntegrationCall {
+    id: string;
+
+    integration: unknown;
+
+    type?: 'integration';
+  }
+
+  export interface ChosenSystemCall {
+    id: string;
+
+    system: unknown;
+
+    type?: 'system';
+  }
+
+  export interface ChosenAPICall {
+    id: string;
+
+    api_call: unknown;
+
+    type?: 'api_call';
+  }
+
+  export interface ToolResponse {
+    id: string;
+
+    output: unknown;
+  }
+
+  export interface Content {
+    text: string;
+
+    type?: 'text';
+  }
+
+  export interface ContentModel {
+    /**
+     * The image URL
+     */
+    image_url: ContentModel.ImageURL;
+
+    type?: 'image_url';
+  }
+
+  export namespace ContentModel {
+    /**
+     * The image URL
+     */
+    export interface ImageURL {
+      url: string;
+
+      detail?: 'low' | 'high' | 'auto';
+    }
+  }
+
+  export interface Tool {
+    id: string;
+
+    created_at: string;
+
+    /**
+     * Function definition
+     */
+    function: Tool.Function;
+
+    name: string;
+
+    updated_at: string;
+
+    api_call?: unknown | null;
+
+    integration?: unknown | null;
+
+    system?: unknown | null;
+
+    type?: 'function' | 'integration' | 'system' | 'api_call';
+  }
+
+  export namespace Tool {
+    /**
+     * Function definition
+     */
+    export interface Function {
+      description?: string | null;
+
+      name?: unknown | null;
+
+      parameters?: unknown | null;
+    }
+  }
+
+  export interface ChosenFunctionCall {
+    id: string;
+
+    function: ChosenFunctionCall.Function;
+
+    type?: 'function';
+  }
+
+  export namespace ChosenFunctionCall {
+    export interface Function {
+      name: string;
+    }
+  }
+
+  export interface ChosenIntegrationCall {
+    id: string;
+
+    integration: unknown;
+
+    type?: 'integration';
+  }
+
+  export interface ChosenSystemCall {
+    id: string;
+
+    system: unknown;
+
+    type?: 'system';
+  }
+
+  export interface ChosenAPICall {
+    id: string;
+
+    api_call: unknown;
+
+    type?: 'api_call';
+  }
+
+  export interface ToolResponse {
+    id: string;
+
+    output: unknown;
+  }
+}
+
 export interface History {
   created_at: string;
 
-  entries: Array<History.Entry>;
+  entries: Array<Entry>;
 
   relations: Array<History.Relation>;
 
@@ -584,264 +840,50 @@ export interface History {
 }
 
 export namespace History {
-  export interface Entry {
-    id: string;
-
-    content:
-      | Array<Entry.Content | Entry.ContentModel>
-      | Entry.Tool
-      | Entry.ChosenFunctionCall
-      | Entry.ChosenIntegrationCall
-      | Entry.ChosenSystemCall
-      | Entry.ChosenAPICall
-      | string
-      | Entry.ToolResponse
-      | Array<
-          | Array<Entry.Content | Entry.ContentModel>
-          | Entry.Tool
-          | Entry.ChosenFunctionCall
-          | Entry.ChosenIntegrationCall
-          | Entry.ChosenSystemCall
-          | Entry.ChosenAPICall
-          | string
-          | Entry.ToolResponse
-        >;
-
-    created_at: string;
-
-    role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
-
-    source: 'api_request' | 'api_response' | 'tool_response' | 'internal' | 'summarizer' | 'meta';
-
-    timestamp: number;
-
-    token_count: number;
-
-    tokenizer: string;
-
-    name?: string | null;
-  }
-
-  export namespace Entry {
-    export interface Content {
-      text: string;
-
-      type?: 'text';
-    }
-
-    export interface ContentModel {
-      /**
-       * The image URL
-       */
-      image_url: ContentModel.ImageURL;
-
-      type?: 'image_url';
-    }
-
-    export namespace ContentModel {
-      /**
-       * The image URL
-       */
-      export interface ImageURL {
-        url: string;
-
-        detail?: 'low' | 'high' | 'auto';
-      }
-    }
-
-    export interface Tool {
-      id: string;
-
-      created_at: string;
-
-      /**
-       * Function definition
-       */
-      function: Tool.Function;
-
-      name: string;
-
-      updated_at: string;
-
-      api_call?: unknown | null;
-
-      integration?: unknown | null;
-
-      system?: unknown | null;
-
-      type?: 'function' | 'integration' | 'system' | 'api_call';
-    }
-
-    export namespace Tool {
-      /**
-       * Function definition
-       */
-      export interface Function {
-        description?: string | null;
-
-        name?: unknown | null;
-
-        parameters?: unknown | null;
-      }
-    }
-
-    export interface ChosenFunctionCall {
-      id: string;
-
-      function: ChosenFunctionCall.Function;
-
-      type?: 'function';
-    }
-
-    export namespace ChosenFunctionCall {
-      export interface Function {
-        name: string;
-      }
-    }
-
-    export interface ChosenIntegrationCall {
-      id: string;
-
-      integration: unknown;
-
-      type?: 'integration';
-    }
-
-    export interface ChosenSystemCall {
-      id: string;
-
-      system: unknown;
-
-      type?: 'system';
-    }
-
-    export interface ChosenAPICall {
-      id: string;
-
-      api_call: unknown;
-
-      type?: 'api_call';
-    }
-
-    export interface ToolResponse {
-      id: string;
-
-      output: unknown;
-    }
-
-    export interface Content {
-      text: string;
-
-      type?: 'text';
-    }
-
-    export interface ContentModel {
-      /**
-       * The image URL
-       */
-      image_url: ContentModel.ImageURL;
-
-      type?: 'image_url';
-    }
-
-    export namespace ContentModel {
-      /**
-       * The image URL
-       */
-      export interface ImageURL {
-        url: string;
-
-        detail?: 'low' | 'high' | 'auto';
-      }
-    }
-
-    export interface Tool {
-      id: string;
-
-      created_at: string;
-
-      /**
-       * Function definition
-       */
-      function: Tool.Function;
-
-      name: string;
-
-      updated_at: string;
-
-      api_call?: unknown | null;
-
-      integration?: unknown | null;
-
-      system?: unknown | null;
-
-      type?: 'function' | 'integration' | 'system' | 'api_call';
-    }
-
-    export namespace Tool {
-      /**
-       * Function definition
-       */
-      export interface Function {
-        description?: string | null;
-
-        name?: unknown | null;
-
-        parameters?: unknown | null;
-      }
-    }
-
-    export interface ChosenFunctionCall {
-      id: string;
-
-      function: ChosenFunctionCall.Function;
-
-      type?: 'function';
-    }
-
-    export namespace ChosenFunctionCall {
-      export interface Function {
-        name: string;
-      }
-    }
-
-    export interface ChosenIntegrationCall {
-      id: string;
-
-      integration: unknown;
-
-      type?: 'integration';
-    }
-
-    export interface ChosenSystemCall {
-      id: string;
-
-      system: unknown;
-
-      type?: 'system';
-    }
-
-    export interface ChosenAPICall {
-      id: string;
-
-      api_call: unknown;
-
-      type?: 'api_call';
-    }
-
-    export interface ToolResponse {
-      id: string;
-
-      output: unknown;
-    }
-  }
-
   export interface Relation {
     head: string;
 
     relation: string;
 
     tail: string;
+  }
+}
+
+export interface Message {
+  content: string | Array<string> | Array<Message.Content | Message.ContentModel>;
+
+  role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+
+  continue?: boolean | null;
+
+  name?: string | null;
+}
+
+export namespace Message {
+  export interface Content {
+    text: string;
+
+    type?: 'text';
+  }
+
+  export interface ContentModel {
+    /**
+     * The image URL
+     */
+    image_url: ContentModel.ImageURL;
+
+    type?: 'image_url';
+  }
+
+  export namespace ContentModel {
+    /**
+     * The image URL
+     */
+    export interface ImageURL {
+      url: string;
+
+      detail?: 'low' | 'high' | 'auto';
+    }
   }
 }
 
@@ -978,7 +1020,7 @@ export namespace SessionChatResponse {
 
       owner: Doc.Owner;
 
-      snippets: Array<Doc.Snippet>;
+      snippets: Array<DocsAPI.Snippet>;
 
       distance?: number | null;
 
@@ -990,12 +1032,6 @@ export namespace SessionChatResponse {
         id: string;
 
         role: 'user' | 'agent';
-      }
-
-      export interface Snippet {
-        content: string;
-
-        index: number;
       }
     }
 
@@ -1053,7 +1089,7 @@ export interface SessionListParams extends OffsetPaginationParams {
 }
 
 export interface SessionChatParams {
-  messages: Array<SessionChatParams.Message>;
+  messages: Array<Message>;
 
   agent?: string | null;
 
@@ -1105,44 +1141,6 @@ export interface SessionChatParams {
 }
 
 export namespace SessionChatParams {
-  export interface Message {
-    content: string | Array<string> | Array<Message.Content | Message.ContentModel>;
-
-    role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
-
-    continue?: boolean | null;
-
-    name?: string | null;
-  }
-
-  export namespace Message {
-    export interface Content {
-      text: string;
-
-      type?: 'text';
-    }
-
-    export interface ContentModel {
-      /**
-       * The image URL
-       */
-      image_url: ContentModel.ImageURL;
-
-      type?: 'image_url';
-    }
-
-    export namespace ContentModel {
-      /**
-       * The image URL
-       */
-      export interface ImageURL {
-        url: string;
-
-        detail?: 'low' | 'high' | 'auto';
-      }
-    }
-  }
-
   export interface SimpleCompletionResponseFormat {
     type?: 'text' | 'json_object';
   }
@@ -1241,7 +1239,10 @@ export interface SessionPatchParams {
 export namespace Sessions {
   export import ChatInput = SessionsAPI.ChatInput;
   export import ChatResponse = SessionsAPI.ChatResponse;
+  export import ChatSettings = SessionsAPI.ChatSettings;
+  export import Entry = SessionsAPI.Entry;
   export import History = SessionsAPI.History;
+  export import Message = SessionsAPI.Message;
   export import Session = SessionsAPI.Session;
   export import SessionChatResponse = SessionsAPI.SessionChatResponse;
   export import SessionsOffsetPagination = SessionsAPI.SessionsOffsetPagination;
