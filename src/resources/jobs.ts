@@ -1,17 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
-import * as Core from '../core';
 import * as JobsAPI from './jobs';
 
-export class Jobs extends APIResource {
-  /**
-   * Get Job Status
-   */
-  get(jobId: string, options?: Core.RequestOptions): Core.APIPromise<JobStatus> {
-    return this._client.get(`/jobs/${jobId}`, options);
-  }
-}
+export class Jobs extends APIResource {}
 
 export interface JobStatus {
   id: string;

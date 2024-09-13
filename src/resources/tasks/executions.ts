@@ -22,18 +22,6 @@ export class Executions extends APIResource {
   }
 
   /**
-   * Patch Execution
-   */
-  update(
-    taskId: string,
-    executionId: string,
-    body: ExecutionUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceUpdated> {
-    return this._client.patch(`/tasks/${taskId}/executions/${executionId}`, { body, ...options });
-  }
-
-  /**
    * List Task Executions
    */
   list(
@@ -70,10 +58,6 @@ export interface ExecutionCreateParams {
   output?: unknown | null;
 }
 
-export interface ExecutionUpdateParams {
-  status: 'queued' | 'starting' | 'running' | 'awaiting_input' | 'succeeded' | 'failed' | 'cancelled';
-}
-
 export interface ExecutionListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
 
@@ -82,7 +66,6 @@ export interface ExecutionListParams extends OffsetPaginationParams {
 
 export namespace Executions {
   export import ExecutionCreateParams = TasksExecutionsAPI.ExecutionCreateParams;
-  export import ExecutionUpdateParams = TasksExecutionsAPI.ExecutionUpdateParams;
   export import ExecutionListParams = TasksExecutionsAPI.ExecutionListParams;
 }
 

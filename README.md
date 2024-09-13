@@ -31,7 +31,7 @@ const client = new Julep({
 });
 
 async function main() {
-  const resourceCreated = await client.sessions.create();
+  const resourceCreated = await client.agents.create();
 
   console.log(resourceCreated.id);
 }
@@ -53,7 +53,7 @@ const client = new Julep({
 });
 
 async function main() {
-  const resourceCreated: Julep.ResourceCreated = await client.sessions.create();
+  const resourceCreated: Julep.ResourceCreated = await client.agents.create();
 }
 
 main();
@@ -70,7 +70,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const resourceCreated = await client.sessions.create().catch(async (err) => {
+  const resourceCreated = await client.agents.create().catch(async (err) => {
     if (err instanceof Julep.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -113,7 +113,7 @@ const client = new Julep({
 });
 
 // Or, configure per-request:
-await client.sessions.create({
+await client.agents.create({
   maxRetries: 5,
 });
 ```
@@ -130,7 +130,7 @@ const client = new Julep({
 });
 
 // Override per-request:
-await client.sessions.create({
+await client.agents.create({
   timeout: 5 * 1000,
 });
 ```
@@ -182,11 +182,11 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Julep();
 
-const response = await client.sessions.create().asResponse();
+const response = await client.agents.create().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: resourceCreated, response: raw } = await client.sessions.create().withResponse();
+const { data: resourceCreated, response: raw } = await client.agents.create().withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(resourceCreated.id);
 ```
@@ -292,7 +292,7 @@ const client = new Julep({
 });
 
 // Override per-request:
-await client.sessions.create({
+await client.agents.create({
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```
