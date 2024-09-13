@@ -4,6 +4,7 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import { type Agent } from './_shims/index';
 import * as Core from './core';
+import * as Pagination from './pagination';
 import * as API from './resources/index';
 
 export interface ClientOptions {
@@ -185,16 +186,24 @@ export import fileFromPath = Uploads.fileFromPath;
 export namespace Julep {
   export import RequestOptions = Core.RequestOptions;
 
+  export import OffsetPagination = Pagination.OffsetPagination;
+  export import OffsetPaginationParams = Pagination.OffsetPaginationParams;
+  export import OffsetPaginationResponse = Pagination.OffsetPaginationResponse;
+
   export import Agents = API.Agents;
   export import Agent = API.Agent;
   export import AgentCreateResponse = API.AgentCreateResponse;
   export import AgentUpdateResponse = API.AgentUpdateResponse;
-  export import AgentListResponse = API.AgentListResponse;
   export import AgentDeleteResponse = API.AgentDeleteResponse;
+  export import AgentCreateOrUpdateResponse = API.AgentCreateOrUpdateResponse;
+  export import AgentPatchResponse = API.AgentPatchResponse;
   export import AgentSearchResponse = API.AgentSearchResponse;
+  export import AgentsOffsetPagination = API.AgentsOffsetPagination;
   export import AgentCreateParams = API.AgentCreateParams;
   export import AgentUpdateParams = API.AgentUpdateParams;
   export import AgentListParams = API.AgentListParams;
+  export import AgentCreateOrUpdateParams = API.AgentCreateOrUpdateParams;
+  export import AgentPatchParams = API.AgentPatchParams;
   export import AgentSearchParams = API.AgentSearchParams;
 
   export import Sessions = API.Sessions;
@@ -202,22 +211,30 @@ export namespace Julep {
   export import Session = API.Session;
   export import SessionCreateResponse = API.SessionCreateResponse;
   export import SessionUpdateResponse = API.SessionUpdateResponse;
-  export import SessionListResponse = API.SessionListResponse;
   export import SessionDeleteResponse = API.SessionDeleteResponse;
+  export import SessionCreateOrUpdateResponse = API.SessionCreateOrUpdateResponse;
+  export import SessionPatchResponse = API.SessionPatchResponse;
+  export import SessionsOffsetPagination = API.SessionsOffsetPagination;
   export import SessionCreateParams = API.SessionCreateParams;
   export import SessionUpdateParams = API.SessionUpdateParams;
   export import SessionListParams = API.SessionListParams;
+  export import SessionCreateOrUpdateParams = API.SessionCreateOrUpdateParams;
+  export import SessionPatchParams = API.SessionPatchParams;
 
   export import Users = API.Users;
   export import User = API.User;
   export import UserCreateResponse = API.UserCreateResponse;
   export import UserUpdateResponse = API.UserUpdateResponse;
-  export import UserListResponse = API.UserListResponse;
   export import UserDeleteResponse = API.UserDeleteResponse;
+  export import UserCreateOrUpdateResponse = API.UserCreateOrUpdateResponse;
+  export import UserPatchResponse = API.UserPatchResponse;
   export import UserSearchResponse = API.UserSearchResponse;
+  export import UsersOffsetPagination = API.UsersOffsetPagination;
   export import UserCreateParams = API.UserCreateParams;
   export import UserUpdateParams = API.UserUpdateParams;
   export import UserListParams = API.UserListParams;
+  export import UserCreateOrUpdateParams = API.UserCreateOrUpdateParams;
+  export import UserPatchParams = API.UserPatchParams;
   export import UserSearchParams = API.UserSearchParams;
 
   export import Jobs = API.Jobs;

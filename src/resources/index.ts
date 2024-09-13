@@ -4,20 +4,25 @@ export {
   Agent,
   AgentCreateResponse,
   AgentUpdateResponse,
-  AgentListResponse,
   AgentDeleteResponse,
+  AgentCreateOrUpdateResponse,
+  AgentPatchResponse,
   AgentSearchResponse,
   AgentCreateParams,
   AgentUpdateParams,
   AgentListParams,
+  AgentCreateOrUpdateParams,
+  AgentPatchParams,
   AgentSearchParams,
+  AgentsOffsetPagination,
   Agents,
 } from './agents/agents';
-export { Doc, EmbedQueryResponse, DocCreateParams, Docs } from './docs';
+export { Doc, EmbedQueryResponse, DocCreateParams, DocsOffsetPagination, Docs } from './docs';
 export {
   Execution,
   ExecutionUpdateResponse,
   ExecutionUpdateParams,
+  ExecutionsOffsetPagination,
   Executions,
 } from './executions/executions';
 export {
@@ -25,25 +30,33 @@ export {
   Session,
   SessionCreateResponse,
   SessionUpdateResponse,
-  SessionListResponse,
   SessionDeleteResponse,
+  SessionCreateOrUpdateResponse,
+  SessionPatchResponse,
   SessionCreateParams,
   SessionUpdateParams,
   SessionListParams,
+  SessionCreateOrUpdateParams,
+  SessionPatchParams,
+  SessionsOffsetPagination,
   Sessions,
 } from './sessions/sessions';
 export { JobStatus, Jobs } from './jobs';
-export { Task, Tasks } from './tasks/tasks';
+export { Task, TasksOffsetPagination, Tasks } from './tasks/tasks';
 export {
   User,
   UserCreateResponse,
   UserUpdateResponse,
-  UserListResponse,
   UserDeleteResponse,
+  UserCreateOrUpdateResponse,
+  UserPatchResponse,
   UserSearchResponse,
   UserCreateParams,
   UserUpdateParams,
   UserListParams,
+  UserCreateOrUpdateParams,
+  UserPatchParams,
   UserSearchParams,
+  UsersOffsetPagination,
   Users,
 } from './users/users';

@@ -4,6 +4,7 @@ import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as TasksAPI from './tasks';
 import * as ExecutionsAPI from './executions';
+import { OffsetPagination } from '../../pagination';
 
 export class Tasks extends APIResource {
   executions: ExecutionsAPI.Executions = new ExecutionsAPI.Executions(this._client);
@@ -15,6 +16,8 @@ export class Tasks extends APIResource {
     return this._client.get(`/tasks/${taskId}`, options);
   }
 }
+
+export class TasksOffsetPagination extends OffsetPagination<Task> {}
 
 export interface Task {
   id: string;
@@ -1704,7 +1707,6 @@ export namespace Tasks {
   export import Executions = ExecutionsAPI.Executions;
   export import ExecutionCreateResponse = ExecutionsAPI.ExecutionCreateResponse;
   export import ExecutionUpdateResponse = ExecutionsAPI.ExecutionUpdateResponse;
-  export import ExecutionListResponse = ExecutionsAPI.ExecutionListResponse;
   export import ExecutionCreateParams = ExecutionsAPI.ExecutionCreateParams;
   export import ExecutionUpdateParams = ExecutionsAPI.ExecutionUpdateParams;
   export import ExecutionListParams = ExecutionsAPI.ExecutionListParams;

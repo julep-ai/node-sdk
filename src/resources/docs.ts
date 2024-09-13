@@ -3,6 +3,7 @@
 import { APIResource } from '../resource';
 import * as Core from '../core';
 import * as DocsAPI from './docs';
+import { OffsetPagination } from '../pagination';
 
 export class Docs extends APIResource {
   /**
@@ -19,6 +20,8 @@ export class Docs extends APIResource {
     return this._client.get(`/docs/${docId}`, options);
   }
 }
+
+export class DocsOffsetPagination extends OffsetPagination<Doc> {}
 
 export interface Doc {
   id: string;

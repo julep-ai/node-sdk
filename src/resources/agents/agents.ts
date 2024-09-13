@@ -7,6 +7,7 @@ import * as AgentsAPI from './agents';
 import * as DocsAPI from './docs';
 import * as TasksAPI from './tasks';
 import * as ToolsAPI from './tools';
+import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
 
 export class Agents extends APIResource {
   tools: ToolsAPI.Tools = new ToolsAPI.Tools(this._client);
@@ -14,14 +15,10 @@ export class Agents extends APIResource {
   tasks: TasksAPI.Tasks = new TasksAPI.Tasks(this._client);
 
   /**
-   * Create Or Update Agent
+   * Create Agent
    */
-  create(
-    agentId: string,
-    body: AgentCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<AgentCreateResponse> {
-    return this._client.post(`/agents/${agentId}`, { body, ...options });
+  create(body: AgentCreateParams, options?: Core.RequestOptions): Core.APIPromise<AgentCreateResponse> {
+    return this._client.post('/agents', { body, ...options });
   }
 
   /**
@@ -45,16 +42,19 @@ export class Agents extends APIResource {
   /**
    * List Agents
    */
-  list(query?: AgentListParams, options?: Core.RequestOptions): Core.APIPromise<AgentListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<AgentListResponse>;
+  list(
+    query?: AgentListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<AgentsOffsetPagination, Agent>;
+  list(options?: Core.RequestOptions): Core.PagePromise<AgentsOffsetPagination, Agent>;
   list(
     query: AgentListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<AgentListResponse> {
+  ): Core.PagePromise<AgentsOffsetPagination, Agent> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this._client.get('/agents', { query, ...options });
+    return this._client.getAPIList('/agents', AgentsOffsetPagination, { query, ...options });
   }
 
   /**
@@ -62,6 +62,28 @@ export class Agents extends APIResource {
    */
   delete(agentId: string, options?: Core.RequestOptions): Core.APIPromise<AgentDeleteResponse> {
     return this._client.delete(`/agents/${agentId}`, options);
+  }
+
+  /**
+   * Create Or Update Agent
+   */
+  createOrUpdate(
+    agentId: string,
+    body: AgentCreateOrUpdateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<AgentCreateOrUpdateResponse> {
+    return this._client.post(`/agents/${agentId}`, { body, ...options });
+  }
+
+  /**
+   * Patch Agent
+   */
+  patch(
+    agentId: string,
+    body: AgentPatchParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<AgentPatchResponse> {
+    return this._client.patch(`/agents/${agentId}`, { body, ...options });
   }
 
   /**
@@ -75,6 +97,8 @@ export class Agents extends APIResource {
     return this._client.post(`/agents/${agentId}/search`, { body, ...options });
   }
 }
+
+export class AgentsOffsetPagination extends OffsetPagination<Agent> {}
 
 export interface Agent {
   id: string;
@@ -136,14 +160,26 @@ export interface AgentUpdateResponse {
   jobs?: Array<string>;
 }
 
-export interface AgentListResponse {
-  items: Array<Agent>;
-}
-
 export interface AgentDeleteResponse {
   id: string;
 
   deleted_at: string;
+
+  jobs?: Array<string>;
+}
+
+export interface AgentCreateOrUpdateResponse {
+  id: string;
+
+  created_at: string;
+
+  jobs?: Array<string>;
+}
+
+export interface AgentPatchResponse {
+  id: string;
+
+  updated_at: string;
 
   jobs?: Array<string>;
 }
@@ -258,16 +294,88 @@ export namespace AgentUpdateParams {
   }
 }
 
-export interface AgentListParams {
+export interface AgentListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
-
-  limit?: number;
 
   metadata_filter?: string;
 
-  offset?: number;
-
   sort_by?: 'created_at' | 'updated_at';
+}
+
+export interface AgentCreateOrUpdateParams {
+  about?: string;
+
+  /**
+   * Default settings for the chat session (also used by the agent)
+   */
+  default_settings?: AgentCreateOrUpdateParams.DefaultSettings | null;
+
+  instructions?: string | Array<string>;
+
+  metadata?: unknown | null;
+
+  model?: string;
+
+  name?: string;
+}
+
+export namespace AgentCreateOrUpdateParams {
+  /**
+   * Default settings for the chat session (also used by the agent)
+   */
+  export interface DefaultSettings {
+    frequency_penalty?: number | null;
+
+    length_penalty?: number | null;
+
+    min_p?: number | null;
+
+    presence_penalty?: number | null;
+
+    repetition_penalty?: number | null;
+
+    temperature?: number | null;
+
+    top_p?: number | null;
+  }
+}
+
+export interface AgentPatchParams {
+  about?: string;
+
+  /**
+   * Default settings for the chat session (also used by the agent)
+   */
+  default_settings?: AgentPatchParams.DefaultSettings | null;
+
+  instructions?: string | Array<string>;
+
+  metadata?: unknown | null;
+
+  model?: string;
+
+  name?: string;
+}
+
+export namespace AgentPatchParams {
+  /**
+   * Default settings for the chat session (also used by the agent)
+   */
+  export interface DefaultSettings {
+    frequency_penalty?: number | null;
+
+    length_penalty?: number | null;
+
+    min_p?: number | null;
+
+    presence_penalty?: number | null;
+
+    repetition_penalty?: number | null;
+
+    temperature?: number | null;
+
+    top_p?: number | null;
+  }
 }
 
 export type AgentSearchParams =
@@ -313,30 +421,37 @@ export namespace Agents {
   export import Agent = AgentsAPI.Agent;
   export import AgentCreateResponse = AgentsAPI.AgentCreateResponse;
   export import AgentUpdateResponse = AgentsAPI.AgentUpdateResponse;
-  export import AgentListResponse = AgentsAPI.AgentListResponse;
   export import AgentDeleteResponse = AgentsAPI.AgentDeleteResponse;
+  export import AgentCreateOrUpdateResponse = AgentsAPI.AgentCreateOrUpdateResponse;
+  export import AgentPatchResponse = AgentsAPI.AgentPatchResponse;
   export import AgentSearchResponse = AgentsAPI.AgentSearchResponse;
+  export import AgentsOffsetPagination = AgentsAPI.AgentsOffsetPagination;
   export import AgentCreateParams = AgentsAPI.AgentCreateParams;
   export import AgentUpdateParams = AgentsAPI.AgentUpdateParams;
   export import AgentListParams = AgentsAPI.AgentListParams;
+  export import AgentCreateOrUpdateParams = AgentsAPI.AgentCreateOrUpdateParams;
+  export import AgentPatchParams = AgentsAPI.AgentPatchParams;
   export import AgentSearchParams = AgentsAPI.AgentSearchParams;
   export import Tools = ToolsAPI.Tools;
   export import ToolCreateResponse = ToolsAPI.ToolCreateResponse;
   export import ToolUpdateResponse = ToolsAPI.ToolUpdateResponse;
   export import ToolListResponse = ToolsAPI.ToolListResponse;
   export import ToolDeleteResponse = ToolsAPI.ToolDeleteResponse;
+  export import ToolPatchResponse = ToolsAPI.ToolPatchResponse;
+  export import ToolListResponsesOffsetPagination = ToolsAPI.ToolListResponsesOffsetPagination;
   export import ToolCreateParams = ToolsAPI.ToolCreateParams;
   export import ToolUpdateParams = ToolsAPI.ToolUpdateParams;
   export import ToolListParams = ToolsAPI.ToolListParams;
+  export import ToolPatchParams = ToolsAPI.ToolPatchParams;
   export import Docs = DocsAPI.Docs;
   export import DocCreateResponse = DocsAPI.DocCreateResponse;
-  export import DocListResponse = DocsAPI.DocListResponse;
   export import DocDeleteResponse = DocsAPI.DocDeleteResponse;
   export import DocCreateParams = DocsAPI.DocCreateParams;
   export import DocListParams = DocsAPI.DocListParams;
   export import Tasks = TasksAPI.Tasks;
   export import TaskCreateResponse = TasksAPI.TaskCreateResponse;
-  export import TaskListResponse = TasksAPI.TaskListResponse;
+  export import TaskCreateOrUpdateResponse = TasksAPI.TaskCreateOrUpdateResponse;
   export import TaskCreateParams = TasksAPI.TaskCreateParams;
   export import TaskListParams = TasksAPI.TaskListParams;
+  export import TaskCreateOrUpdateParams = TasksAPI.TaskCreateOrUpdateParams;
 }

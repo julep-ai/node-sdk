@@ -5,6 +5,8 @@ import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as TasksExecutionsAPI from './executions';
 import * as ExecutionsAPI from '../executions/executions';
+import { ExecutionsOffsetPagination } from '../executions/executions';
+import { type OffsetPaginationParams } from '../../pagination';
 
 export class Executions extends APIResource {
   /**
@@ -37,17 +39,23 @@ export class Executions extends APIResource {
     taskId: string,
     query?: ExecutionListParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ExecutionListResponse>;
-  list(taskId: string, options?: Core.RequestOptions): Core.APIPromise<ExecutionListResponse>;
+  ): Core.PagePromise<ExecutionsOffsetPagination, ExecutionsAPI.Execution>;
+  list(
+    taskId: string,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<ExecutionsOffsetPagination, ExecutionsAPI.Execution>;
   list(
     taskId: string,
     query: ExecutionListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ExecutionListResponse> {
+  ): Core.PagePromise<ExecutionsOffsetPagination, ExecutionsAPI.Execution> {
     if (isRequestOptions(query)) {
       return this.list(taskId, {}, query);
     }
-    return this._client.get(`/tasks/${taskId}/executions`, { query, ...options });
+    return this._client.getAPIList(`/tasks/${taskId}/executions`, ExecutionsOffsetPagination, {
+      query,
+      ...options,
+    });
   }
 }
 
@@ -67,10 +75,6 @@ export interface ExecutionUpdateResponse {
   jobs?: Array<string>;
 }
 
-export interface ExecutionListResponse {
-  items: Array<ExecutionsAPI.Execution>;
-}
-
 export interface ExecutionCreateParams {
   input: unknown;
 
@@ -85,12 +89,8 @@ export interface ExecutionUpdateParams {
   status: 'queued' | 'starting' | 'running' | 'awaiting_input' | 'succeeded' | 'failed' | 'cancelled';
 }
 
-export interface ExecutionListParams {
+export interface ExecutionListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
-
-  limit?: number;
-
-  offset?: number;
 
   sort_by?: 'created_at' | 'updated_at';
 }
@@ -98,8 +98,9 @@ export interface ExecutionListParams {
 export namespace Executions {
   export import ExecutionCreateResponse = TasksExecutionsAPI.ExecutionCreateResponse;
   export import ExecutionUpdateResponse = TasksExecutionsAPI.ExecutionUpdateResponse;
-  export import ExecutionListResponse = TasksExecutionsAPI.ExecutionListResponse;
   export import ExecutionCreateParams = TasksExecutionsAPI.ExecutionCreateParams;
   export import ExecutionUpdateParams = TasksExecutionsAPI.ExecutionUpdateParams;
   export import ExecutionListParams = TasksExecutionsAPI.ExecutionListParams;
 }
+
+export { ExecutionsOffsetPagination };

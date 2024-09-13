@@ -4,6 +4,7 @@ import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as ExecutionsAPI from './executions';
 import * as TransitionsAPI from './transitions';
+import { OffsetPagination } from '../../pagination';
 
 export class Executions extends APIResource {
   transitions: TransitionsAPI.Transitions = new TransitionsAPI.Transitions(this._client);
@@ -26,6 +27,8 @@ export class Executions extends APIResource {
     return this._client.put(`/executions/${executionId}`, { body, ...options });
   }
 }
+
+export class ExecutionsOffsetPagination extends OffsetPagination<Execution> {}
 
 export interface Execution {
   id: string;
@@ -74,6 +77,7 @@ export namespace Executions {
   export import Transitions = TransitionsAPI.Transitions;
   export import TransitionListResponse = TransitionsAPI.TransitionListResponse;
   export import TransitionListStreamResponse = TransitionsAPI.TransitionListStreamResponse;
+  export import TransitionListResponsesOffsetPagination = TransitionsAPI.TransitionListResponsesOffsetPagination;
   export import TransitionListParams = TransitionsAPI.TransitionListParams;
   export import TransitionListStreamParams = TransitionsAPI.TransitionListStreamParams;
 }

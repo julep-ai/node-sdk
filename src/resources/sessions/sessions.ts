@@ -5,6 +5,7 @@ import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as SessionsAPI from './sessions';
 import * as ChatsAPI from './chats';
+import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
 
 export class Sessions extends APIResource {
   chats: ChatsAPI.Chats = new ChatsAPI.Chats(this._client);
@@ -37,16 +38,19 @@ export class Sessions extends APIResource {
   /**
    * List Sessions
    */
-  list(query?: SessionListParams, options?: Core.RequestOptions): Core.APIPromise<SessionListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<SessionListResponse>;
+  list(
+    query?: SessionListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<SessionsOffsetPagination, Session>;
+  list(options?: Core.RequestOptions): Core.PagePromise<SessionsOffsetPagination, Session>;
   list(
     query: SessionListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SessionListResponse> {
+  ): Core.PagePromise<SessionsOffsetPagination, Session> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this._client.get('/sessions', { query, ...options });
+    return this._client.getAPIList('/sessions', SessionsOffsetPagination, { query, ...options });
   }
 
   /**
@@ -57,12 +61,36 @@ export class Sessions extends APIResource {
   }
 
   /**
+   * Create Or Update Session
+   */
+  createOrUpdate(
+    sessionId: string,
+    body: SessionCreateOrUpdateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SessionCreateOrUpdateResponse> {
+    return this._client.post(`/sessions/${sessionId}`, { body, ...options });
+  }
+
+  /**
    * Get Session History
    */
   history(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<History> {
     return this._client.get(`/sessions/${sessionId}/history`, options);
   }
+
+  /**
+   * Patch Session
+   */
+  patch(
+    sessionId: string,
+    body: SessionPatchParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<SessionPatchResponse> {
+    return this._client.patch(`/sessions/${sessionId}`, { body, ...options });
+  }
 }
+
+export class SessionsOffsetPagination extends OffsetPagination<Session> {}
 
 export interface History {
   created_at: string;
@@ -374,14 +402,26 @@ export interface SessionUpdateResponse {
   jobs?: Array<string>;
 }
 
-export interface SessionListResponse {
-  items: Array<Session>;
-}
-
 export interface SessionDeleteResponse {
   id: string;
 
   deleted_at: string;
+
+  jobs?: Array<string>;
+}
+
+export interface SessionCreateOrUpdateResponse {
+  id: string;
+
+  created_at: string;
+
+  jobs?: Array<string>;
+}
+
+export interface SessionPatchResponse {
+  id: string;
+
+  updated_at: string;
 
   jobs?: Array<string>;
 }
@@ -418,16 +458,44 @@ export interface SessionUpdateParams {
   token_budget?: number | null;
 }
 
-export interface SessionListParams {
+export interface SessionListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
-
-  limit?: number;
 
   metadata_filter?: string;
 
-  offset?: number;
-
   sort_by?: 'created_at' | 'updated_at';
+}
+
+export interface SessionCreateOrUpdateParams {
+  agent?: string | null;
+
+  agents?: Array<string> | null;
+
+  context_overflow?: 'truncate' | 'adaptive' | null;
+
+  metadata?: unknown | null;
+
+  render_templates?: boolean;
+
+  situation?: string;
+
+  token_budget?: number | null;
+
+  user?: string | null;
+
+  users?: Array<string> | null;
+}
+
+export interface SessionPatchParams {
+  context_overflow?: 'truncate' | 'adaptive' | null;
+
+  metadata?: unknown | null;
+
+  render_templates?: boolean;
+
+  situation?: string;
+
+  token_budget?: number | null;
 }
 
 export namespace Sessions {
@@ -435,11 +503,15 @@ export namespace Sessions {
   export import Session = SessionsAPI.Session;
   export import SessionCreateResponse = SessionsAPI.SessionCreateResponse;
   export import SessionUpdateResponse = SessionsAPI.SessionUpdateResponse;
-  export import SessionListResponse = SessionsAPI.SessionListResponse;
   export import SessionDeleteResponse = SessionsAPI.SessionDeleteResponse;
+  export import SessionCreateOrUpdateResponse = SessionsAPI.SessionCreateOrUpdateResponse;
+  export import SessionPatchResponse = SessionsAPI.SessionPatchResponse;
+  export import SessionsOffsetPagination = SessionsAPI.SessionsOffsetPagination;
   export import SessionCreateParams = SessionsAPI.SessionCreateParams;
   export import SessionUpdateParams = SessionsAPI.SessionUpdateParams;
   export import SessionListParams = SessionsAPI.SessionListParams;
+  export import SessionCreateOrUpdateParams = SessionsAPI.SessionCreateOrUpdateParams;
+  export import SessionPatchParams = SessionsAPI.SessionPatchParams;
   export import Chats = ChatsAPI.Chats;
   export import ChatCreateResponse = ChatsAPI.ChatCreateResponse;
   export import ChatCreateParams = ChatsAPI.ChatCreateParams;

@@ -88,4 +88,55 @@ describe('resource tasks', () => {
       ),
     ).rejects.toThrow(Julep.NotFoundError);
   });
+
+  test('createOrUpdate: only required params', async () => {
+    const responsePromise = client.agents.tasks.createOrUpdate('agent_id', 'task_id', {
+      main: [{ evaluate: { foo: 'string' } }],
+      name: 'name',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('createOrUpdate: required and optional params', async () => {
+    const response = await client.agents.tasks.createOrUpdate('agent_id', 'task_id', {
+      main: [{ evaluate: { foo: 'string' } }],
+      name: 'name',
+      description: 'description',
+      inherit_tools: true,
+      input_schema: {},
+      metadata: {},
+      tools: [
+        {
+          function: { description: 'description', name: {}, parameters: {} },
+          name: 'name',
+          api_call: {},
+          integration: {},
+          system: {},
+          type: 'function',
+        },
+        {
+          function: { description: 'description', name: {}, parameters: {} },
+          name: 'name',
+          api_call: {},
+          integration: {},
+          system: {},
+          type: 'function',
+        },
+        {
+          function: { description: 'description', name: {}, parameters: {} },
+          name: 'name',
+          api_call: {},
+          integration: {},
+          system: {},
+          type: 'function',
+        },
+      ],
+    });
+  });
 });

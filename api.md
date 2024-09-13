@@ -5,17 +5,20 @@ Types:
 - <code><a href="./src/resources/agents/agents.ts">Agent</a></code>
 - <code><a href="./src/resources/agents/agents.ts">AgentCreateResponse</a></code>
 - <code><a href="./src/resources/agents/agents.ts">AgentUpdateResponse</a></code>
-- <code><a href="./src/resources/agents/agents.ts">AgentListResponse</a></code>
 - <code><a href="./src/resources/agents/agents.ts">AgentDeleteResponse</a></code>
+- <code><a href="./src/resources/agents/agents.ts">AgentCreateOrUpdateResponse</a></code>
+- <code><a href="./src/resources/agents/agents.ts">AgentPatchResponse</a></code>
 - <code><a href="./src/resources/agents/agents.ts">AgentSearchResponse</a></code>
 
 Methods:
 
-- <code title="post /agents/{agent_id}">client.agents.<a href="./src/resources/agents/agents.ts">create</a>(agentId, { ...params }) -> AgentCreateResponse</code>
+- <code title="post /agents">client.agents.<a href="./src/resources/agents/agents.ts">create</a>({ ...params }) -> AgentCreateResponse</code>
 - <code title="get /agents/{agent_id}">client.agents.<a href="./src/resources/agents/agents.ts">retrieve</a>(agentId) -> Agent</code>
 - <code title="put /agents/{agent_id}">client.agents.<a href="./src/resources/agents/agents.ts">update</a>(agentId, { ...params }) -> AgentUpdateResponse</code>
-- <code title="get /agents">client.agents.<a href="./src/resources/agents/agents.ts">list</a>({ ...params }) -> AgentListResponse</code>
+- <code title="get /agents">client.agents.<a href="./src/resources/agents/agents.ts">list</a>({ ...params }) -> AgentsOffsetPagination</code>
 - <code title="delete /agents/{agent_id}">client.agents.<a href="./src/resources/agents/agents.ts">delete</a>(agentId) -> AgentDeleteResponse</code>
+- <code title="post /agents/{agent_id}">client.agents.<a href="./src/resources/agents/agents.ts">createOrUpdate</a>(agentId, { ...params }) -> AgentCreateOrUpdateResponse</code>
+- <code title="patch /agents/{agent_id}">client.agents.<a href="./src/resources/agents/agents.ts">patch</a>(agentId, { ...params }) -> AgentPatchResponse</code>
 - <code title="post /agents/{agent_id}/search">client.agents.<a href="./src/resources/agents/agents.ts">search</a>(agentId, { ...params }) -> AgentSearchResponse</code>
 
 ## Tools
@@ -26,26 +29,27 @@ Types:
 - <code><a href="./src/resources/agents/tools.ts">ToolUpdateResponse</a></code>
 - <code><a href="./src/resources/agents/tools.ts">ToolListResponse</a></code>
 - <code><a href="./src/resources/agents/tools.ts">ToolDeleteResponse</a></code>
+- <code><a href="./src/resources/agents/tools.ts">ToolPatchResponse</a></code>
 
 Methods:
 
 - <code title="post /agents/{agent_id}/tools">client.agents.tools.<a href="./src/resources/agents/tools.ts">create</a>(agentId, { ...params }) -> ToolCreateResponse</code>
 - <code title="put /agents/{agent_id}/tools/{tool_id}">client.agents.tools.<a href="./src/resources/agents/tools.ts">update</a>(agentId, toolId, { ...params }) -> ToolUpdateResponse</code>
-- <code title="get /agents/{agent_id}/tools">client.agents.tools.<a href="./src/resources/agents/tools.ts">list</a>(agentId, { ...params }) -> ToolListResponse</code>
+- <code title="get /agents/{agent_id}/tools">client.agents.tools.<a href="./src/resources/agents/tools.ts">list</a>(agentId, { ...params }) -> ToolListResponsesOffsetPagination</code>
 - <code title="delete /agents/{agent_id}/tools/{tool_id}">client.agents.tools.<a href="./src/resources/agents/tools.ts">delete</a>(agentId, toolId) -> ToolDeleteResponse</code>
+- <code title="patch /agents/{agent_id}/tools/{tool_id}">client.agents.tools.<a href="./src/resources/agents/tools.ts">patch</a>(agentId, toolId, { ...params }) -> ToolPatchResponse</code>
 
 ## Docs
 
 Types:
 
 - <code><a href="./src/resources/agents/docs.ts">DocCreateResponse</a></code>
-- <code><a href="./src/resources/agents/docs.ts">DocListResponse</a></code>
 - <code><a href="./src/resources/agents/docs.ts">DocDeleteResponse</a></code>
 
 Methods:
 
 - <code title="post /agents/{agent_id}/docs">client.agents.docs.<a href="./src/resources/agents/docs.ts">create</a>(agentId, { ...params }) -> DocCreateResponse</code>
-- <code title="get /agents/{agent_id}/docs">client.agents.docs.<a href="./src/resources/agents/docs.ts">list</a>(agentId, { ...params }) -> DocListResponse</code>
+- <code title="get /agents/{agent_id}/docs">client.agents.docs.<a href="./src/resources/agents/docs.ts">list</a>(agentId, { ...params }) -> DocsOffsetPagination</code>
 - <code title="delete /agents/{agent_id}/docs/{doc_id}">client.agents.docs.<a href="./src/resources/agents/docs.ts">delete</a>(agentId, docId) -> DocDeleteResponse</code>
 
 ## Tasks
@@ -53,12 +57,13 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/agents/tasks.ts">TaskCreateResponse</a></code>
-- <code><a href="./src/resources/agents/tasks.ts">TaskListResponse</a></code>
+- <code><a href="./src/resources/agents/tasks.ts">TaskCreateOrUpdateResponse</a></code>
 
 Methods:
 
 - <code title="post /agents/{agent_id}/tasks">client.agents.tasks.<a href="./src/resources/agents/tasks.ts">create</a>(agentId, { ...params }) -> TaskCreateResponse</code>
-- <code title="get /agents/{agent_id}/tasks">client.agents.tasks.<a href="./src/resources/agents/tasks.ts">list</a>(agentId, { ...params }) -> TaskListResponse</code>
+- <code title="get /agents/{agent_id}/tasks">client.agents.tasks.<a href="./src/resources/agents/tasks.ts">list</a>(agentId, { ...params }) -> TasksOffsetPagination</code>
+- <code title="post /agents/{agent_id}/tasks/{task_id}">client.agents.tasks.<a href="./src/resources/agents/tasks.ts">createOrUpdate</a>(agentId, taskId, { ...params }) -> TaskCreateOrUpdateResponse</code>
 
 # Sessions
 
@@ -68,17 +73,20 @@ Types:
 - <code><a href="./src/resources/sessions/sessions.ts">Session</a></code>
 - <code><a href="./src/resources/sessions/sessions.ts">SessionCreateResponse</a></code>
 - <code><a href="./src/resources/sessions/sessions.ts">SessionUpdateResponse</a></code>
-- <code><a href="./src/resources/sessions/sessions.ts">SessionListResponse</a></code>
 - <code><a href="./src/resources/sessions/sessions.ts">SessionDeleteResponse</a></code>
+- <code><a href="./src/resources/sessions/sessions.ts">SessionCreateOrUpdateResponse</a></code>
+- <code><a href="./src/resources/sessions/sessions.ts">SessionPatchResponse</a></code>
 
 Methods:
 
 - <code title="post /sessions">client.sessions.<a href="./src/resources/sessions/sessions.ts">create</a>({ ...params }) -> SessionCreateResponse</code>
 - <code title="get /sessions/{session_id}">client.sessions.<a href="./src/resources/sessions/sessions.ts">retrieve</a>(sessionId) -> Session</code>
 - <code title="put /sessions/{session_id}">client.sessions.<a href="./src/resources/sessions/sessions.ts">update</a>(sessionId, { ...params }) -> SessionUpdateResponse</code>
-- <code title="get /sessions">client.sessions.<a href="./src/resources/sessions/sessions.ts">list</a>({ ...params }) -> SessionListResponse</code>
+- <code title="get /sessions">client.sessions.<a href="./src/resources/sessions/sessions.ts">list</a>({ ...params }) -> SessionsOffsetPagination</code>
 - <code title="delete /sessions/{session_id}">client.sessions.<a href="./src/resources/sessions/sessions.ts">delete</a>(sessionId) -> SessionDeleteResponse</code>
+- <code title="post /sessions/{session_id}">client.sessions.<a href="./src/resources/sessions/sessions.ts">createOrUpdate</a>(sessionId, { ...params }) -> SessionCreateOrUpdateResponse</code>
 - <code title="get /sessions/{session_id}/history">client.sessions.<a href="./src/resources/sessions/sessions.ts">history</a>(sessionId) -> History</code>
+- <code title="patch /sessions/{session_id}">client.sessions.<a href="./src/resources/sessions/sessions.ts">patch</a>(sessionId, { ...params }) -> SessionPatchResponse</code>
 
 ## Chats
 
@@ -97,8 +105,9 @@ Types:
 - <code><a href="./src/resources/users/users.ts">User</a></code>
 - <code><a href="./src/resources/users/users.ts">UserCreateResponse</a></code>
 - <code><a href="./src/resources/users/users.ts">UserUpdateResponse</a></code>
-- <code><a href="./src/resources/users/users.ts">UserListResponse</a></code>
 - <code><a href="./src/resources/users/users.ts">UserDeleteResponse</a></code>
+- <code><a href="./src/resources/users/users.ts">UserCreateOrUpdateResponse</a></code>
+- <code><a href="./src/resources/users/users.ts">UserPatchResponse</a></code>
 - <code><a href="./src/resources/users/users.ts">UserSearchResponse</a></code>
 
 Methods:
@@ -106,8 +115,10 @@ Methods:
 - <code title="post /users">client.users.<a href="./src/resources/users/users.ts">create</a>({ ...params }) -> UserCreateResponse</code>
 - <code title="get /users/{user_id}">client.users.<a href="./src/resources/users/users.ts">retrieve</a>(userId) -> User</code>
 - <code title="put /users/{user_id}">client.users.<a href="./src/resources/users/users.ts">update</a>(userId, { ...params }) -> UserUpdateResponse</code>
-- <code title="get /users">client.users.<a href="./src/resources/users/users.ts">list</a>({ ...params }) -> UserListResponse</code>
+- <code title="get /users">client.users.<a href="./src/resources/users/users.ts">list</a>({ ...params }) -> UsersOffsetPagination</code>
 - <code title="delete /users/{user_id}">client.users.<a href="./src/resources/users/users.ts">delete</a>(userId) -> UserDeleteResponse</code>
+- <code title="post /users/{user_id}">client.users.<a href="./src/resources/users/users.ts">createOrUpdate</a>(userId, { ...params }) -> UserCreateOrUpdateResponse</code>
+- <code title="patch /users/{user_id}">client.users.<a href="./src/resources/users/users.ts">patch</a>(userId, { ...params }) -> UserPatchResponse</code>
 - <code title="post /users/{user_id}/search">client.users.<a href="./src/resources/users/users.ts">search</a>(userId, { ...params }) -> UserSearchResponse</code>
 
 ## Docs
@@ -115,13 +126,12 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/users/docs.ts">DocCreateResponse</a></code>
-- <code><a href="./src/resources/users/docs.ts">DocListResponse</a></code>
 - <code><a href="./src/resources/users/docs.ts">DocDeleteResponse</a></code>
 
 Methods:
 
 - <code title="post /users/{user_id}/docs">client.users.docs.<a href="./src/resources/users/docs.ts">create</a>(userId, { ...params }) -> DocCreateResponse</code>
-- <code title="get /users/{user_id}/docs">client.users.docs.<a href="./src/resources/users/docs.ts">list</a>(userId, { ...params }) -> DocListResponse</code>
+- <code title="get /users/{user_id}/docs">client.users.docs.<a href="./src/resources/users/docs.ts">list</a>(userId, { ...params }) -> DocsOffsetPagination</code>
 - <code title="delete /users/{user_id}/docs/{doc_id}">client.users.docs.<a href="./src/resources/users/docs.ts">delete</a>(userId, docId) -> DocDeleteResponse</code>
 
 # Jobs
@@ -162,13 +172,12 @@ Types:
 
 - <code><a href="./src/resources/tasks/executions.ts">ExecutionCreateResponse</a></code>
 - <code><a href="./src/resources/tasks/executions.ts">ExecutionUpdateResponse</a></code>
-- <code><a href="./src/resources/tasks/executions.ts">ExecutionListResponse</a></code>
 
 Methods:
 
 - <code title="post /tasks/{task_id}/executions">client.tasks.executions.<a href="./src/resources/tasks/executions.ts">create</a>(taskId, { ...params }) -> ExecutionCreateResponse</code>
 - <code title="patch /tasks/{task_id}/executions/{execution_id}">client.tasks.executions.<a href="./src/resources/tasks/executions.ts">update</a>(taskId, executionId, { ...params }) -> ExecutionUpdateResponse</code>
-- <code title="get /tasks/{task_id}/executions">client.tasks.executions.<a href="./src/resources/tasks/executions.ts">list</a>(taskId, { ...params }) -> ExecutionListResponse</code>
+- <code title="get /tasks/{task_id}/executions">client.tasks.executions.<a href="./src/resources/tasks/executions.ts">list</a>(taskId, { ...params }) -> ExecutionsOffsetPagination</code>
 
 # Executions
 
@@ -191,5 +200,5 @@ Types:
 
 Methods:
 
-- <code title="get /executions/{execution_id}/transitions">client.executions.transitions.<a href="./src/resources/executions/transitions.ts">list</a>(executionId, { ...params }) -> TransitionListResponse</code>
+- <code title="get /executions/{execution_id}/transitions">client.executions.transitions.<a href="./src/resources/executions/transitions.ts">list</a>(executionId, { ...params }) -> TransitionListResponsesOffsetPagination</code>
 - <code title="get /executions/{execution_id}/transitions.stream">client.executions.transitions.<a href="./src/resources/executions/transitions.ts">listStream</a>(executionId, { ...params }) -> unknown</code>
