@@ -1,24 +1,542 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
-import * as TasksAPI from './tasks';
-import * as Shared from '../shared';
-import * as ExecutionsAPI from './executions';
-import { OffsetPagination } from '../../pagination';
+import * as Shared from './shared';
+import { OffsetPagination } from '../pagination';
 
-export class Tasks extends APIResource {
-  executions: ExecutionsAPI.Executions = new ExecutionsAPI.Executions(this._client);
+export interface Agent {
+  id: string;
+
+  created_at: string;
+
+  updated_at: string;
+
+  about?: string;
 
   /**
-   * Get Task Details
+   * Default settings for the chat session (also used by the agent)
    */
-  get(taskId: string, options?: Core.RequestOptions): Core.APIPromise<Task> {
-    return this._client.get(`/tasks/${taskId}`, options);
+  default_settings?: Agent.DefaultSettings | null;
+
+  instructions?: string | Array<string>;
+
+  metadata?: unknown | null;
+
+  model?: string;
+
+  name?: string;
+}
+
+export namespace Agent {
+  /**
+   * Default settings for the chat session (also used by the agent)
+   */
+  export interface DefaultSettings {
+    frequency_penalty?: number | null;
+
+    length_penalty?: number | null;
+
+    min_p?: number | null;
+
+    presence_penalty?: number | null;
+
+    repetition_penalty?: number | null;
+
+    temperature?: number | null;
+
+    top_p?: number | null;
   }
 }
 
-export class TasksOffsetPagination extends OffsetPagination<Task> {}
+export interface ChatInput {
+  messages: Array<Message>;
+
+  agent?: string | null;
+
+  frequency_penalty?: number | null;
+
+  length_penalty?: number | null;
+
+  logit_bias?: Record<string, number> | null;
+
+  max_tokens?: number | null;
+
+  min_p?: number | null;
+
+  model?: string | null;
+
+  presence_penalty?: number | null;
+
+  recall?: boolean;
+
+  remember?: boolean;
+
+  repetition_penalty?: number | null;
+
+  response_format?:
+    | ChatInput.SimpleCompletionResponseFormat
+    | ChatInput.SchemaCompletionResponseFormat
+    | null;
+
+  save?: boolean;
+
+  seed?: number | null;
+
+  stop?: Array<string>;
+
+  stream?: boolean;
+
+  temperature?: number | null;
+
+  tool_choice?:
+    | 'auto'
+    | 'none'
+    | ChatInput.NamedFunctionChoice
+    | ChatInput.NamedIntegrationChoice
+    | ChatInput.NamedSystemChoice
+    | ChatInput.NamedAPICallChoice
+    | null;
+
+  tools?: Array<Tool>;
+
+  top_p?: number | null;
+}
+
+export namespace ChatInput {
+  export interface SimpleCompletionResponseFormat {
+    type?: 'text' | 'json_object';
+  }
+
+  export interface SchemaCompletionResponseFormat {
+    json_schema: unknown;
+
+    type?: 'json_schema';
+  }
+
+  export interface NamedFunctionChoice {
+    function: NamedFunctionChoice.Function;
+  }
+
+  export namespace NamedFunctionChoice {
+    export interface Function {
+      name: string;
+    }
+  }
+
+  export interface NamedIntegrationChoice {
+    integration?: unknown | null;
+  }
+
+  export interface NamedSystemChoice {
+    system?: unknown | null;
+  }
+
+  export interface NamedAPICallChoice {
+    api_call?: unknown | null;
+  }
+}
+
+export interface ChatSettings {
+  agent?: string | null;
+
+  frequency_penalty?: number | null;
+
+  length_penalty?: number | null;
+
+  logit_bias?: Record<string, number> | null;
+
+  max_tokens?: number | null;
+
+  min_p?: number | null;
+
+  model?: string | null;
+
+  presence_penalty?: number | null;
+
+  repetition_penalty?: number | null;
+
+  response_format?:
+    | ChatSettings.SimpleCompletionResponseFormat
+    | ChatSettings.SchemaCompletionResponseFormat
+    | null;
+
+  seed?: number | null;
+
+  stop?: Array<string>;
+
+  stream?: boolean;
+
+  temperature?: number | null;
+
+  top_p?: number | null;
+}
+
+export namespace ChatSettings {
+  export interface SimpleCompletionResponseFormat {
+    type?: 'text' | 'json_object';
+  }
+
+  export interface SchemaCompletionResponseFormat {
+    json_schema: unknown;
+
+    type?: 'json_schema';
+  }
+}
+
+export interface Doc {
+  id: string;
+
+  content: string | Array<string>;
+
+  created_at: string;
+
+  title: string;
+
+  metadata?: unknown | null;
+}
+
+export interface DocOwner {
+  id: string;
+
+  role: 'user' | 'agent';
+}
+
+export interface DocReference {
+  id: string;
+
+  owner: DocOwner;
+
+  snippets: Array<Snippet>;
+
+  distance?: number | null;
+
+  title?: string | null;
+}
+
+export interface Entry {
+  id: string;
+
+  content:
+    | Array<Entry.Content | Entry.ContentModel>
+    | Tool
+    | Entry.ChosenFunctionCall
+    | Entry.ChosenIntegrationCall
+    | Entry.ChosenSystemCall
+    | Entry.ChosenAPICall
+    | string
+    | Entry.ToolResponse
+    | Array<
+        | Array<Entry.Content | Entry.ContentModel>
+        | Tool
+        | Entry.ChosenFunctionCall
+        | Entry.ChosenIntegrationCall
+        | Entry.ChosenSystemCall
+        | Entry.ChosenAPICall
+        | string
+        | Entry.ToolResponse
+      >;
+
+  created_at: string;
+
+  role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+
+  source: 'api_request' | 'api_response' | 'tool_response' | 'internal' | 'summarizer' | 'meta';
+
+  timestamp: number;
+
+  token_count: number;
+
+  tokenizer: string;
+
+  name?: string | null;
+}
+
+export namespace Entry {
+  export interface Content {
+    text: string;
+
+    type?: 'text';
+  }
+
+  export interface ContentModel {
+    /**
+     * The image URL
+     */
+    image_url: ContentModel.ImageURL;
+
+    type?: 'image_url';
+  }
+
+  export namespace ContentModel {
+    /**
+     * The image URL
+     */
+    export interface ImageURL {
+      url: string;
+
+      detail?: 'low' | 'high' | 'auto';
+    }
+  }
+
+  export interface ChosenFunctionCall {
+    id: string;
+
+    function: ChosenFunctionCall.Function;
+
+    type?: 'function';
+  }
+
+  export namespace ChosenFunctionCall {
+    export interface Function {
+      name: string;
+    }
+  }
+
+  export interface ChosenIntegrationCall {
+    id: string;
+
+    integration: unknown;
+
+    type?: 'integration';
+  }
+
+  export interface ChosenSystemCall {
+    id: string;
+
+    system: unknown;
+
+    type?: 'system';
+  }
+
+  export interface ChosenAPICall {
+    id: string;
+
+    api_call: unknown;
+
+    type?: 'api_call';
+  }
+
+  export interface ToolResponse {
+    id: string;
+
+    output: unknown;
+  }
+
+  export interface Content {
+    text: string;
+
+    type?: 'text';
+  }
+
+  export interface ContentModel {
+    /**
+     * The image URL
+     */
+    image_url: ContentModel.ImageURL;
+
+    type?: 'image_url';
+  }
+
+  export namespace ContentModel {
+    /**
+     * The image URL
+     */
+    export interface ImageURL {
+      url: string;
+
+      detail?: 'low' | 'high' | 'auto';
+    }
+  }
+
+  export interface ChosenFunctionCall {
+    id: string;
+
+    function: ChosenFunctionCall.Function;
+
+    type?: 'function';
+  }
+
+  export namespace ChosenFunctionCall {
+    export interface Function {
+      name: string;
+    }
+  }
+
+  export interface ChosenIntegrationCall {
+    id: string;
+
+    integration: unknown;
+
+    type?: 'integration';
+  }
+
+  export interface ChosenSystemCall {
+    id: string;
+
+    system: unknown;
+
+    type?: 'system';
+  }
+
+  export interface ChosenAPICall {
+    id: string;
+
+    api_call: unknown;
+
+    type?: 'api_call';
+  }
+
+  export interface ToolResponse {
+    id: string;
+
+    output: unknown;
+  }
+}
+
+export interface Execution {
+  id: string;
+
+  created_at: string;
+
+  input: unknown;
+
+  status: 'queued' | 'starting' | 'running' | 'awaiting_input' | 'succeeded' | 'failed' | 'cancelled';
+
+  task_id: string;
+
+  updated_at: string;
+
+  error?: string | null;
+
+  metadata?: unknown | null;
+
+  output?: unknown | null;
+}
+
+export interface History {
+  created_at: string;
+
+  entries: Array<Entry>;
+
+  relations: Array<Relation>;
+
+  session_id: string;
+}
+
+export interface JobStatus {
+  id: string;
+
+  created_at: string;
+
+  updated_at: string;
+
+  has_progress?: boolean;
+
+  name?: string;
+
+  progress?: number;
+
+  reason?: string;
+
+  state?: 'pending' | 'in_progress' | 'retrying' | 'succeeded' | 'aborted' | 'failed' | 'unknown';
+}
+
+export interface Message {
+  content: string | Array<string> | Array<Message.Content | Message.ContentModel>;
+
+  role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+
+  continue?: boolean | null;
+
+  name?: string | null;
+}
+
+export namespace Message {
+  export interface Content {
+    text: string;
+
+    type?: 'text';
+  }
+
+  export interface ContentModel {
+    /**
+     * The image URL
+     */
+    image_url: ContentModel.ImageURL;
+
+    type?: 'image_url';
+  }
+
+  export namespace ContentModel {
+    /**
+     * The image URL
+     */
+    export interface ImageURL {
+      url: string;
+
+      detail?: 'low' | 'high' | 'auto';
+    }
+  }
+}
+
+export interface Relation {
+  head: string;
+
+  relation: string;
+
+  tail: string;
+}
+
+export interface ResourceCreated {
+  id: string;
+
+  created_at: string;
+
+  jobs?: Array<string>;
+}
+
+export interface ResourceDeleted {
+  id: string;
+
+  deleted_at: string;
+
+  jobs?: Array<string>;
+}
+
+export interface ResourceUpdated {
+  id: string;
+
+  updated_at: string;
+
+  jobs?: Array<string>;
+}
+
+export interface Session {
+  id: string;
+
+  created_at: string;
+
+  updated_at: string;
+
+  context_overflow?: 'truncate' | 'adaptive' | null;
+
+  kind?: string | null;
+
+  metadata?: unknown | null;
+
+  render_templates?: boolean;
+
+  situation?: string;
+
+  summary?: string | null;
+
+  token_budget?: number | null;
+}
+
+export interface Snippet {
+  content: string;
+
+  index: number;
+}
 
 export interface Task {
   id: string;
@@ -1374,10 +1892,97 @@ export namespace Task {
   }
 }
 
-export namespace Tasks {
-  export import Task = TasksAPI.Task;
-  export import Executions = ExecutionsAPI.Executions;
-  export import ExecutionCreateParams = ExecutionsAPI.ExecutionCreateParams;
-  export import ExecutionUpdateParams = ExecutionsAPI.ExecutionUpdateParams;
-  export import ExecutionListParams = ExecutionsAPI.ExecutionListParams;
+export interface Tool {
+  id: string;
+
+  created_at: string;
+
+  /**
+   * Function definition
+   */
+  function: Tool.Function;
+
+  name: string;
+
+  updated_at: string;
+
+  api_call?: unknown | null;
+
+  integration?: unknown | null;
+
+  system?: unknown | null;
+
+  type?: 'function' | 'integration' | 'system' | 'api_call';
 }
+
+export namespace Tool {
+  /**
+   * Function definition
+   */
+  export interface Function {
+    description?: string | null;
+
+    name?: unknown | null;
+
+    parameters?: unknown | null;
+  }
+}
+
+export interface Transition {
+  id: string;
+
+  created_at: string;
+
+  current: Transition.Current;
+
+  execution_id: string;
+
+  next: Transition.Next | null;
+
+  output: unknown;
+
+  type:
+    | 'init'
+    | 'init_branch'
+    | 'finish'
+    | 'finish_branch'
+    | 'wait'
+    | 'resume'
+    | 'error'
+    | 'step'
+    | 'cancelled';
+
+  updated_at: string;
+
+  metadata?: unknown | null;
+}
+
+export namespace Transition {
+  export interface Current {
+    step: number;
+
+    workflow: string;
+  }
+
+  export interface Next {
+    step: number;
+
+    workflow: string;
+  }
+}
+
+export interface User {
+  id: string;
+
+  created_at: string;
+
+  updated_at: string;
+
+  about?: string;
+
+  metadata?: unknown | null;
+
+  name?: string;
+}
+
+export class ToolsOffsetPagination extends OffsetPagination<Tool> {}

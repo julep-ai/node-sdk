@@ -4,13 +4,14 @@ import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
 import * as SessionsAPI from './sessions';
+import * as Shared from './shared';
 import { OffsetPagination, type OffsetPaginationParams } from '../pagination';
 
 export class Sessions extends APIResource {
   /**
    * Create Session
    */
-  create(body: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse> {
+  create(body: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceCreated> {
     return this._client.post('/sessions', { body, ...options });
   }
 
@@ -21,7 +22,7 @@ export class Sessions extends APIResource {
     sessionId: string,
     body: SessionUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SessionUpdateResponse> {
+  ): Core.APIPromise<Shared.ResourceUpdated> {
     return this._client.put(`/sessions/${sessionId}`, { body, ...options });
   }
 
@@ -46,7 +47,7 @@ export class Sessions extends APIResource {
   /**
    * Delete Session
    */
-  delete(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<SessionDeleteResponse> {
+  delete(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceDeleted> {
     return this._client.delete(`/sessions/${sessionId}`, options);
   }
 
@@ -68,7 +69,7 @@ export class Sessions extends APIResource {
     sessionId: string,
     body: SessionCreateOrUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SessionCreateOrUpdateResponse> {
+  ): Core.APIPromise<Shared.ResourceCreated> {
     return this._client.post(`/sessions/${sessionId}`, { body, ...options });
   }
 
@@ -93,7 +94,7 @@ export class Sessions extends APIResource {
     sessionId: string,
     body: SessionPatchParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SessionPatchResponse> {
+  ): Core.APIPromise<Shared.ResourceUpdated> {
     return this._client.patch(`/sessions/${sessionId}`, { body, ...options });
   }
 }
@@ -101,7 +102,7 @@ export class Sessions extends APIResource {
 export class SessionsOffsetPagination extends OffsetPagination<Session> {}
 
 export interface ChatInput {
-  messages: Array<ChatInput.Message>;
+  messages: Array<Shared.Message>;
 
   agent?: string | null;
 
@@ -149,50 +150,12 @@ export interface ChatInput {
     | ChatInput.NamedAPICallChoice
     | null;
 
-  tools?: Array<ChatInput.Tool>;
+  tools?: Array<Shared.Tool>;
 
   top_p?: number | null;
 }
 
 export namespace ChatInput {
-  export interface Message {
-    content: string | Array<string> | Array<Message.Content | Message.ContentModel>;
-
-    role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
-
-    continue?: boolean | null;
-
-    name?: string | null;
-  }
-
-  export namespace Message {
-    export interface Content {
-      text: string;
-
-      type?: 'text';
-    }
-
-    export interface ContentModel {
-      /**
-       * The image URL
-       */
-      image_url: ContentModel.ImageURL;
-
-      type?: 'image_url';
-    }
-
-    export namespace ContentModel {
-      /**
-       * The image URL
-       */
-      export interface ImageURL {
-        url: string;
-
-        detail?: 'low' | 'high' | 'auto';
-      }
-    }
-  }
-
   export interface SimpleCompletionResponseFormat {
     type?: 'text' | 'json_object';
   }
@@ -224,42 +187,6 @@ export namespace ChatInput {
   export interface NamedAPICallChoice {
     api_call?: unknown | null;
   }
-
-  export interface Tool {
-    id: string;
-
-    created_at: string;
-
-    /**
-     * Function definition
-     */
-    function: Tool.Function;
-
-    name: string;
-
-    updated_at: string;
-
-    api_call?: unknown | null;
-
-    integration?: unknown | null;
-
-    system?: unknown | null;
-
-    type?: 'function' | 'integration' | 'system' | 'api_call';
-  }
-
-  export namespace Tool {
-    /**
-     * Function definition
-     */
-    export interface Function {
-      description?: string | null;
-
-      name?: unknown | null;
-
-      parameters?: unknown | null;
-    }
-  }
 }
 
 export interface ChatResponse {
@@ -269,7 +196,7 @@ export interface ChatResponse {
 
   created_at: string;
 
-  docs?: Array<ChatResponse.Doc>;
+  docs?: Array<Shared.DocReference>;
 
   jobs?: Array<string>;
 
@@ -534,32 +461,6 @@ export namespace ChatResponse {
     }
   }
 
-  export interface Doc {
-    id: string;
-
-    owner: Doc.Owner;
-
-    snippets: Array<Doc.Snippet>;
-
-    distance?: number | null;
-
-    title?: string | null;
-  }
-
-  export namespace Doc {
-    export interface Owner {
-      id: string;
-
-      role: 'user' | 'agent';
-    }
-
-    export interface Snippet {
-      content: string;
-
-      index: number;
-    }
-  }
-
   /**
    * Usage statistics for the completion request
    */
@@ -575,273 +476,11 @@ export namespace ChatResponse {
 export interface History {
   created_at: string;
 
-  entries: Array<History.Entry>;
+  entries: Array<Shared.Entry>;
 
-  relations: Array<History.Relation>;
+  relations: Array<Shared.Relation>;
 
   session_id: string;
-}
-
-export namespace History {
-  export interface Entry {
-    id: string;
-
-    content:
-      | Array<Entry.Content | Entry.ContentModel>
-      | Entry.Tool
-      | Entry.ChosenFunctionCall
-      | Entry.ChosenIntegrationCall
-      | Entry.ChosenSystemCall
-      | Entry.ChosenAPICall
-      | string
-      | Entry.ToolResponse
-      | Array<
-          | Array<Entry.Content | Entry.ContentModel>
-          | Entry.Tool
-          | Entry.ChosenFunctionCall
-          | Entry.ChosenIntegrationCall
-          | Entry.ChosenSystemCall
-          | Entry.ChosenAPICall
-          | string
-          | Entry.ToolResponse
-        >;
-
-    created_at: string;
-
-    role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
-
-    source: 'api_request' | 'api_response' | 'tool_response' | 'internal' | 'summarizer' | 'meta';
-
-    timestamp: number;
-
-    token_count: number;
-
-    tokenizer: string;
-
-    name?: string | null;
-  }
-
-  export namespace Entry {
-    export interface Content {
-      text: string;
-
-      type?: 'text';
-    }
-
-    export interface ContentModel {
-      /**
-       * The image URL
-       */
-      image_url: ContentModel.ImageURL;
-
-      type?: 'image_url';
-    }
-
-    export namespace ContentModel {
-      /**
-       * The image URL
-       */
-      export interface ImageURL {
-        url: string;
-
-        detail?: 'low' | 'high' | 'auto';
-      }
-    }
-
-    export interface Tool {
-      id: string;
-
-      created_at: string;
-
-      /**
-       * Function definition
-       */
-      function: Tool.Function;
-
-      name: string;
-
-      updated_at: string;
-
-      api_call?: unknown | null;
-
-      integration?: unknown | null;
-
-      system?: unknown | null;
-
-      type?: 'function' | 'integration' | 'system' | 'api_call';
-    }
-
-    export namespace Tool {
-      /**
-       * Function definition
-       */
-      export interface Function {
-        description?: string | null;
-
-        name?: unknown | null;
-
-        parameters?: unknown | null;
-      }
-    }
-
-    export interface ChosenFunctionCall {
-      id: string;
-
-      function: ChosenFunctionCall.Function;
-
-      type?: 'function';
-    }
-
-    export namespace ChosenFunctionCall {
-      export interface Function {
-        name: string;
-      }
-    }
-
-    export interface ChosenIntegrationCall {
-      id: string;
-
-      integration: unknown;
-
-      type?: 'integration';
-    }
-
-    export interface ChosenSystemCall {
-      id: string;
-
-      system: unknown;
-
-      type?: 'system';
-    }
-
-    export interface ChosenAPICall {
-      id: string;
-
-      api_call: unknown;
-
-      type?: 'api_call';
-    }
-
-    export interface ToolResponse {
-      id: string;
-
-      output: unknown;
-    }
-
-    export interface Content {
-      text: string;
-
-      type?: 'text';
-    }
-
-    export interface ContentModel {
-      /**
-       * The image URL
-       */
-      image_url: ContentModel.ImageURL;
-
-      type?: 'image_url';
-    }
-
-    export namespace ContentModel {
-      /**
-       * The image URL
-       */
-      export interface ImageURL {
-        url: string;
-
-        detail?: 'low' | 'high' | 'auto';
-      }
-    }
-
-    export interface Tool {
-      id: string;
-
-      created_at: string;
-
-      /**
-       * Function definition
-       */
-      function: Tool.Function;
-
-      name: string;
-
-      updated_at: string;
-
-      api_call?: unknown | null;
-
-      integration?: unknown | null;
-
-      system?: unknown | null;
-
-      type?: 'function' | 'integration' | 'system' | 'api_call';
-    }
-
-    export namespace Tool {
-      /**
-       * Function definition
-       */
-      export interface Function {
-        description?: string | null;
-
-        name?: unknown | null;
-
-        parameters?: unknown | null;
-      }
-    }
-
-    export interface ChosenFunctionCall {
-      id: string;
-
-      function: ChosenFunctionCall.Function;
-
-      type?: 'function';
-    }
-
-    export namespace ChosenFunctionCall {
-      export interface Function {
-        name: string;
-      }
-    }
-
-    export interface ChosenIntegrationCall {
-      id: string;
-
-      integration: unknown;
-
-      type?: 'integration';
-    }
-
-    export interface ChosenSystemCall {
-      id: string;
-
-      system: unknown;
-
-      type?: 'system';
-    }
-
-    export interface ChosenAPICall {
-      id: string;
-
-      api_call: unknown;
-
-      type?: 'api_call';
-    }
-
-    export interface ToolResponse {
-      id: string;
-
-      output: unknown;
-    }
-  }
-
-  export interface Relation {
-    head: string;
-
-    relation: string;
-
-    tail: string;
-  }
 }
 
 export interface Session {
@@ -866,30 +505,6 @@ export interface Session {
   token_budget?: number | null;
 }
 
-export interface SessionCreateResponse {
-  id: string;
-
-  created_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface SessionUpdateResponse {
-  id: string;
-
-  updated_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface SessionDeleteResponse {
-  id: string;
-
-  deleted_at: string;
-
-  jobs?: Array<string>;
-}
-
 export type SessionChatResponse = SessionChatResponse.ChunkChatResponse | ChatResponse;
 
 export namespace SessionChatResponse {
@@ -900,7 +515,7 @@ export namespace SessionChatResponse {
 
     created_at: string;
 
-    docs?: Array<ChunkChatResponse.Doc>;
+    docs?: Array<Shared.DocReference>;
 
     jobs?: Array<string>;
 
@@ -996,32 +611,6 @@ export namespace SessionChatResponse {
       }
     }
 
-    export interface Doc {
-      id: string;
-
-      owner: Doc.Owner;
-
-      snippets: Array<Doc.Snippet>;
-
-      distance?: number | null;
-
-      title?: string | null;
-    }
-
-    export namespace Doc {
-      export interface Owner {
-        id: string;
-
-        role: 'user' | 'agent';
-      }
-
-      export interface Snippet {
-        content: string;
-
-        index: number;
-      }
-    }
-
     /**
      * Usage statistics for the completion request
      */
@@ -1033,22 +622,6 @@ export namespace SessionChatResponse {
       total_tokens?: number | null;
     }
   }
-}
-
-export interface SessionCreateOrUpdateResponse {
-  id: string;
-
-  created_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface SessionPatchResponse {
-  id: string;
-
-  updated_at: string;
-
-  jobs?: Array<string>;
 }
 
 export interface SessionCreateParams {
@@ -1092,7 +665,7 @@ export interface SessionListParams extends OffsetPaginationParams {
 }
 
 export interface SessionChatParams {
-  messages: Array<SessionChatParams.Message>;
+  messages: Array<Shared.Message>;
 
   agent?: string | null;
 
@@ -1138,50 +711,12 @@ export interface SessionChatParams {
     | SessionChatParams.NamedAPICallChoice
     | null;
 
-  tools?: Array<SessionChatParams.Tool>;
+  tools?: Array<Shared.Tool>;
 
   top_p?: number | null;
 }
 
 export namespace SessionChatParams {
-  export interface Message {
-    content: string | Array<string> | Array<Message.Content | Message.ContentModel>;
-
-    role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
-
-    continue?: boolean | null;
-
-    name?: string | null;
-  }
-
-  export namespace Message {
-    export interface Content {
-      text: string;
-
-      type?: 'text';
-    }
-
-    export interface ContentModel {
-      /**
-       * The image URL
-       */
-      image_url: ContentModel.ImageURL;
-
-      type?: 'image_url';
-    }
-
-    export namespace ContentModel {
-      /**
-       * The image URL
-       */
-      export interface ImageURL {
-        url: string;
-
-        detail?: 'low' | 'high' | 'auto';
-      }
-    }
-  }
-
   export interface SimpleCompletionResponseFormat {
     type?: 'text' | 'json_object';
   }
@@ -1212,36 +747,6 @@ export namespace SessionChatParams {
 
   export interface NamedAPICallChoice {
     api_call?: unknown | null;
-  }
-
-  export interface Tool {
-    /**
-     * Function definition
-     */
-    function: Tool.Function;
-
-    name: string;
-
-    api_call?: unknown | null;
-
-    integration?: unknown | null;
-
-    system?: unknown | null;
-
-    type?: 'function' | 'integration' | 'system' | 'api_call';
-  }
-
-  export namespace Tool {
-    /**
-     * Function definition
-     */
-    export interface Function {
-      description?: string | null;
-
-      name?: unknown | null;
-
-      parameters?: unknown | null;
-    }
   }
 }
 
@@ -1282,12 +787,7 @@ export namespace Sessions {
   export import ChatResponse = SessionsAPI.ChatResponse;
   export import History = SessionsAPI.History;
   export import Session = SessionsAPI.Session;
-  export import SessionCreateResponse = SessionsAPI.SessionCreateResponse;
-  export import SessionUpdateResponse = SessionsAPI.SessionUpdateResponse;
-  export import SessionDeleteResponse = SessionsAPI.SessionDeleteResponse;
   export import SessionChatResponse = SessionsAPI.SessionChatResponse;
-  export import SessionCreateOrUpdateResponse = SessionsAPI.SessionCreateOrUpdateResponse;
-  export import SessionPatchResponse = SessionsAPI.SessionPatchResponse;
   export import SessionsOffsetPagination = SessionsAPI.SessionsOffsetPagination;
   export import SessionCreateParams = SessionsAPI.SessionCreateParams;
   export import SessionUpdateParams = SessionsAPI.SessionUpdateParams;
