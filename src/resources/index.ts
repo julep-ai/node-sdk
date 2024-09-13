@@ -1,8 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export * from './shared';
 export {
   Agent,
+  AgentCreateResponse,
+  AgentUpdateResponse,
+  AgentDeleteResponse,
+  AgentCreateOrUpdateResponse,
+  AgentPatchResponse,
   AgentCreateParams,
   AgentUpdateParams,
   AgentListParams,
@@ -16,7 +20,12 @@ export {
   ChatResponse,
   History,
   Session,
+  SessionCreateResponse,
+  SessionUpdateResponse,
+  SessionDeleteResponse,
   SessionChatResponse,
+  SessionCreateOrUpdateResponse,
+  SessionPatchResponse,
   SessionCreateParams,
   SessionUpdateParams,
   SessionListParams,
@@ -40,6 +49,11 @@ export { JobStatus, Jobs } from './jobs';
 export { Task, TasksOffsetPagination, Tasks } from './tasks/tasks';
 export {
   User,
+  UserCreateResponse,
+  UserUpdateResponse,
+  UserDeleteResponse,
+  UserCreateOrUpdateResponse,
+  UserPatchResponse,
   UserCreateParams,
   UserUpdateParams,
   UserListParams,

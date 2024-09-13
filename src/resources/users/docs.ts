@@ -6,7 +6,6 @@ import * as Core from '../../core';
 import * as UsersDocsAPI from './docs';
 import * as DocsAPI from '../docs';
 import { DocsOffsetPagination } from '../docs';
-import * as Shared from '../shared';
 import { type OffsetPaginationParams } from '../../pagination';
 
 export class Docs extends APIResource {
@@ -17,7 +16,7 @@ export class Docs extends APIResource {
     userId: string,
     body: DocCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceCreated> {
+  ): Core.APIPromise<DocCreateResponse> {
     return this._client.post(`/users/${userId}/docs`, { body, ...options });
   }
 
@@ -44,11 +43,7 @@ export class Docs extends APIResource {
   /**
    * Delete User Doc
    */
-  delete(
-    userId: string,
-    docId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceDeleted> {
+  delete(userId: string, docId: string, options?: Core.RequestOptions): Core.APIPromise<DocDeleteResponse> {
     return this._client.delete(`/users/${userId}/docs/${docId}`, options);
   }
 
@@ -64,10 +59,54 @@ export class Docs extends APIResource {
   }
 }
 
+export interface DocCreateResponse {
+  id: string;
+
+  created_at: string;
+
+  jobs?: Array<string>;
+}
+
+export interface DocDeleteResponse {
+  id: string;
+
+  deleted_at: string;
+
+  jobs?: Array<string>;
+}
+
 export interface DocSearchResponse {
-  docs: Array<Shared.DocReference>;
+  docs: Array<DocSearchResponse.Doc>;
 
   time: number;
+}
+
+export namespace DocSearchResponse {
+  export interface Doc {
+    id: string;
+
+    owner: Doc.Owner;
+
+    snippets: Array<Doc.Snippet>;
+
+    distance?: number | null;
+
+    title?: string | null;
+  }
+
+  export namespace Doc {
+    export interface Owner {
+      id: string;
+
+      role: 'user' | 'agent';
+    }
+
+    export interface Snippet {
+      content: string;
+
+      index: number;
+    }
+  }
 }
 
 export interface DocCreateParams {
@@ -126,6 +165,8 @@ export namespace DocSearchParams {
 }
 
 export namespace Docs {
+  export import DocCreateResponse = UsersDocsAPI.DocCreateResponse;
+  export import DocDeleteResponse = UsersDocsAPI.DocDeleteResponse;
   export import DocSearchResponse = UsersDocsAPI.DocSearchResponse;
   export import DocCreateParams = UsersDocsAPI.DocCreateParams;
   export import DocListParams = UsersDocsAPI.DocListParams;
