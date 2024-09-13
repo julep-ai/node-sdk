@@ -8,9 +8,9 @@ const client = new Julep({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource users', () => {
-  test('create', async () => {
-    const responsePromise = client.users.create({});
+describe('resource executions', () => {
+  test('create: only required params', async () => {
+    const responsePromise = client.executions.create('task_id', { input: {} });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,19 +20,17 @@ describe('resource users', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('update', async () => {
-    const responsePromise = client.users.update('user_id', {});
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
+  test('create: required and optional params', async () => {
+    const response = await client.executions.create('task_id', {
+      input: {},
+      error: 'error',
+      metadata: {},
+      output: {},
+    });
   });
 
   test('list', async () => {
-    const responsePromise = client.users.list();
+    const responsePromise = client.executions.list('task_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -44,7 +42,7 @@ describe('resource users', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.users.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.executions.list('task_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       Julep.NotFoundError,
     );
   });
@@ -52,33 +50,16 @@ describe('resource users', () => {
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.users.list(
-        { direction: 'asc', limit: 0, metadata_filter: 'metadata_filter', offset: 0, sort_by: 'created_at' },
+      client.executions.list(
+        'task_id',
+        { direction: 'asc', limit: 0, offset: 0, sort_by: 'created_at' },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Julep.NotFoundError);
   });
 
-  test('delete', async () => {
-    const responsePromise = client.users.delete('user_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('delete: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.users.delete('user_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Julep.NotFoundError,
-    );
-  });
-
-  test('createOrUpdate', async () => {
-    const responsePromise = client.users.createOrUpdate('user_id', {});
+  test('changeStatus', async () => {
+    const responsePromise = client.executions.changeStatus('execution_id', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -89,7 +70,7 @@ describe('resource users', () => {
   });
 
   test('get', async () => {
-    const responsePromise = client.users.get('user_id');
+    const responsePromise = client.executions.get('execution_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -101,13 +82,13 @@ describe('resource users', () => {
 
   test('get: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.users.get('user_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.executions.get('execution_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       Julep.NotFoundError,
     );
   });
 
-  test('patch', async () => {
-    const responsePromise = client.users.patch('user_id', {});
+  test('patch: only required params', async () => {
+    const responsePromise = client.executions.patch('task_id', 'execution_id', { status: 'queued' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -115,5 +96,9 @@ describe('resource users', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('patch: required and optional params', async () => {
+    const response = await client.executions.patch('task_id', 'execution_id', { status: 'queued' });
   });
 });

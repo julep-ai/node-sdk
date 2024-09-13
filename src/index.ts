@@ -221,7 +221,10 @@ export namespace Julep {
   export import Agent = API.Agent;
   export import AgentsOffsetPagination = API.AgentsOffsetPagination;
   export import AgentCreateParams = API.AgentCreateParams;
+  export import AgentUpdateParams = API.AgentUpdateParams;
   export import AgentListParams = API.AgentListParams;
+  export import AgentCreateOrUpdateParams = API.AgentCreateOrUpdateParams;
+  export import AgentPatchParams = API.AgentPatchParams;
 
   export import Sessions = API.Sessions;
   export import ChatInput = API.ChatInput;
@@ -231,15 +234,23 @@ export namespace Julep {
   export import History = API.History;
   export import Message = API.Message;
   export import Session = API.Session;
+  export import SessionChatResponse = API.SessionChatResponse;
   export import SessionsOffsetPagination = API.SessionsOffsetPagination;
   export import SessionCreateParams = API.SessionCreateParams;
+  export import SessionUpdateParams = API.SessionUpdateParams;
   export import SessionListParams = API.SessionListParams;
+  export import SessionChatParams = API.SessionChatParams;
+  export import SessionCreateOrUpdateParams = API.SessionCreateOrUpdateParams;
+  export import SessionPatchParams = API.SessionPatchParams;
 
   export import Users = API.Users;
   export import User = API.User;
   export import UsersOffsetPagination = API.UsersOffsetPagination;
   export import UserCreateParams = API.UserCreateParams;
+  export import UserUpdateParams = API.UserUpdateParams;
   export import UserListParams = API.UserListParams;
+  export import UserCreateOrUpdateParams = API.UserCreateOrUpdateParams;
+  export import UserPatchParams = API.UserPatchParams;
 
   export import Jobs = API.Jobs;
   export import JobStatus = API.JobStatus;
@@ -253,10 +264,20 @@ export namespace Julep {
   export import Tasks = API.Tasks;
   export import Task = API.Task;
   export import Tool = API.Tool;
+  export import TasksOffsetPagination = API.TasksOffsetPagination;
+  export import TaskCreateParams = API.TaskCreateParams;
+  export import TaskListParams = API.TaskListParams;
+  export import TaskCreateOrUpdateParams = API.TaskCreateOrUpdateParams;
 
   export import Executions = API.Executions;
   export import Execution = API.Execution;
   export import Transition = API.Transition;
+  export import ExecutionChangeStatusResponse = API.ExecutionChangeStatusResponse;
+  export import ExecutionsOffsetPagination = API.ExecutionsOffsetPagination;
+  export import ExecutionCreateParams = API.ExecutionCreateParams;
+  export import ExecutionListParams = API.ExecutionListParams;
+  export import ExecutionChangeStatusParams = API.ExecutionChangeStatusParams;
+  export import ExecutionPatchParams = API.ExecutionPatchParams;
 
   export import ResourceCreated = API.ResourceCreated;
   export import ResourceDeleted = API.ResourceDeleted;

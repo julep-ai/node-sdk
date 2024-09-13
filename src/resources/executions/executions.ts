@@ -1,12 +1,82 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
+import * as Core from '../../core';
 import * as ExecutionsAPI from './executions';
+import * as Shared from '../shared';
 import * as TransitionsAPI from './transitions';
-import { OffsetPagination } from '../../pagination';
+import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
 
 export class Executions extends APIResource {
   transitions: TransitionsAPI.Transitions = new TransitionsAPI.Transitions(this._client);
+
+  /**
+   * Create Task Execution
+   */
+  create(
+    taskId: string,
+    body: ExecutionCreateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.ResourceCreated> {
+    return this._client.post(`/tasks/${taskId}/executions`, { body, ...options });
+  }
+
+  /**
+   * List Task Executions
+   */
+  list(
+    taskId: string,
+    query?: ExecutionListParams,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<ExecutionsOffsetPagination, Execution>;
+  list(
+    taskId: string,
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<ExecutionsOffsetPagination, Execution>;
+  list(
+    taskId: string,
+    query: ExecutionListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.PagePromise<ExecutionsOffsetPagination, Execution> {
+    if (isRequestOptions(query)) {
+      return this.list(taskId, {}, query);
+    }
+    return this._client.getAPIList(`/tasks/${taskId}/executions`, ExecutionsOffsetPagination, {
+      query,
+      ...options,
+    });
+  }
+
+  /**
+   * Update Execution
+   */
+  changeStatus(
+    executionId: string,
+    body: ExecutionChangeStatusParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<unknown> {
+    return this._client.put(`/executions/${executionId}`, { body, ...options });
+  }
+
+  /**
+   * Get Execution Details
+   */
+  get(executionId: string, options?: Core.RequestOptions): Core.APIPromise<Execution> {
+    return this._client.get(`/executions/${executionId}`, options);
+  }
+
+  /**
+   * Patch Execution
+   */
+  patch(
+    taskId: string,
+    executionId: string,
+    body: ExecutionPatchParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.ResourceUpdated> {
+    return this._client.patch(`/tasks/${taskId}/executions/${executionId}`, { body, ...options });
+  }
 }
 
 export class ExecutionsOffsetPagination extends OffsetPagination<Execution> {}
@@ -76,9 +146,55 @@ export namespace Transition {
   }
 }
 
+export type ExecutionChangeStatusResponse = unknown;
+
+export interface ExecutionCreateParams {
+  input: unknown;
+
+  error?: string | null;
+
+  metadata?: unknown | null;
+
+  output?: unknown | null;
+}
+
+export interface ExecutionListParams extends OffsetPaginationParams {
+  direction?: 'asc' | 'desc';
+
+  sort_by?: 'created_at' | 'updated_at';
+}
+
+export type ExecutionChangeStatusParams =
+  | ExecutionChangeStatusParams.ResumeExecutionRequest
+  | ExecutionChangeStatusParams.StopExecutionRequest;
+
+export namespace ExecutionChangeStatusParams {
+  export interface ResumeExecutionRequest {
+    input?: unknown | null;
+
+    status?: 'running';
+  }
+
+  export interface StopExecutionRequest {
+    reason?: string | null;
+
+    status?: 'cancelled';
+  }
+}
+
+export interface ExecutionPatchParams {
+  status: 'queued' | 'starting' | 'running' | 'awaiting_input' | 'succeeded' | 'failed' | 'cancelled';
+}
+
 export namespace Executions {
   export import Execution = ExecutionsAPI.Execution;
   export import Transition = ExecutionsAPI.Transition;
+  export import ExecutionChangeStatusResponse = ExecutionsAPI.ExecutionChangeStatusResponse;
+  export import ExecutionsOffsetPagination = ExecutionsAPI.ExecutionsOffsetPagination;
+  export import ExecutionCreateParams = ExecutionsAPI.ExecutionCreateParams;
+  export import ExecutionListParams = ExecutionsAPI.ExecutionListParams;
+  export import ExecutionChangeStatusParams = ExecutionsAPI.ExecutionChangeStatusParams;
+  export import ExecutionPatchParams = ExecutionsAPI.ExecutionPatchParams;
   export import Transitions = TransitionsAPI.Transitions;
   export import TransitionStreamResponse = TransitionsAPI.TransitionStreamResponse;
   export import TransitionListParams = TransitionsAPI.TransitionListParams;
