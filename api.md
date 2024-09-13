@@ -69,6 +69,8 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/sessions.ts">ChatInput</a></code>
+- <code><a href="./src/resources/sessions.ts">ChatResponse</a></code>
 - <code><a href="./src/resources/sessions.ts">History</a></code>
 - <code><a href="./src/resources/sessions.ts">Session</a></code>
 - <code><a href="./src/resources/sessions.ts">SessionCreateResponse</a></code>
@@ -176,6 +178,7 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/executions/executions.ts">Execution</a></code>
+- <code><a href="./src/resources/executions/executions.ts">Transition</a></code>
 - <code><a href="./src/resources/executions/executions.ts">ExecutionUpdateResponse</a></code>
 
 Methods:
@@ -187,10 +190,9 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/executions/transitions.ts">TransitionListResponse</a></code>
 - <code><a href="./src/resources/executions/transitions.ts">TransitionStreamResponse</a></code>
 
 Methods:
 
-- <code title="get /executions/{execution_id}/transitions">client.executions.transitions.<a href="./src/resources/executions/transitions.ts">list</a>(executionId, { ...params }) -> TransitionListResponsesOffsetPagination</code>
+- <code title="get /executions/{execution_id}/transitions">client.executions.transitions.<a href="./src/resources/executions/transitions.ts">list</a>(executionId, { ...params }) -> TransitionsOffsetPagination</code>
 - <code title="get /executions/{execution_id}/transitions.stream">client.executions.transitions.<a href="./src/resources/executions/transitions.ts">stream</a>(executionId, { ...params }) -> unknown</code>

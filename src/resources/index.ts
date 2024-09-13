@@ -15,15 +15,9 @@ export {
   AgentsOffsetPagination,
   Agents,
 } from './agents/agents';
-export { Doc, EmbedQueryResponse, DocCreateParams, DocsOffsetPagination, Docs } from './docs';
 export {
-  Execution,
-  ExecutionUpdateResponse,
-  ExecutionUpdateParams,
-  ExecutionsOffsetPagination,
-  Executions,
-} from './executions/executions';
-export {
+  ChatInput,
+  ChatResponse,
   History,
   Session,
   SessionCreateResponse,
@@ -41,6 +35,16 @@ export {
   SessionsOffsetPagination,
   Sessions,
 } from './sessions';
+export { Doc, EmbedQueryResponse, DocCreateParams, DocsOffsetPagination, Docs } from './docs';
+export {
+  Execution,
+  Transition,
+  ExecutionUpdateResponse,
+  ExecutionUpdateParams,
+  ExecutionsOffsetPagination,
+  TransitionsOffsetPagination,
+  Executions,
+} from './executions/executions';
 export { JobStatus, Jobs } from './jobs';
 export { Task, TasksOffsetPagination, Tasks } from './tasks/tasks';
 export {

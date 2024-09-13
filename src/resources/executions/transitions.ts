@@ -4,7 +4,9 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as TransitionsAPI from './transitions';
-import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
+import * as ExecutionsAPI from './executions';
+import { TransitionsOffsetPagination } from './executions';
+import { type OffsetPaginationParams } from '../../pagination';
 
 export class Transitions extends APIResource {
   /**
@@ -14,24 +16,23 @@ export class Transitions extends APIResource {
     executionId: string,
     query?: TransitionListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<TransitionListResponsesOffsetPagination, TransitionListResponse>;
+  ): Core.PagePromise<TransitionsOffsetPagination, ExecutionsAPI.Transition>;
   list(
     executionId: string,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<TransitionListResponsesOffsetPagination, TransitionListResponse>;
+  ): Core.PagePromise<TransitionsOffsetPagination, ExecutionsAPI.Transition>;
   list(
     executionId: string,
     query: TransitionListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.PagePromise<TransitionListResponsesOffsetPagination, TransitionListResponse> {
+  ): Core.PagePromise<TransitionsOffsetPagination, ExecutionsAPI.Transition> {
     if (isRequestOptions(query)) {
       return this.list(executionId, {}, query);
     }
-    return this._client.getAPIList(
-      `/executions/${executionId}/transitions`,
-      TransitionListResponsesOffsetPagination,
-      { query, ...options },
-    );
+    return this._client.getAPIList(`/executions/${executionId}/transitions`, TransitionsOffsetPagination, {
+      query,
+      ...options,
+    });
   }
 
   /**
@@ -55,51 +56,6 @@ export class Transitions extends APIResource {
   }
 }
 
-export class TransitionListResponsesOffsetPagination extends OffsetPagination<TransitionListResponse> {}
-
-export interface TransitionListResponse {
-  id: string;
-
-  created_at: string;
-
-  current: TransitionListResponse.Current;
-
-  execution_id: string;
-
-  next: TransitionListResponse.Next | null;
-
-  output: unknown;
-
-  type:
-    | 'init'
-    | 'init_branch'
-    | 'finish'
-    | 'finish_branch'
-    | 'wait'
-    | 'resume'
-    | 'error'
-    | 'step'
-    | 'cancelled';
-
-  updated_at: string;
-
-  metadata?: unknown | null;
-}
-
-export namespace TransitionListResponse {
-  export interface Current {
-    step: number;
-
-    workflow: string;
-  }
-
-  export interface Next {
-    step: number;
-
-    workflow: string;
-  }
-}
-
 export type TransitionStreamResponse = unknown;
 
 export interface TransitionListParams extends OffsetPaginationParams {
@@ -113,9 +69,9 @@ export interface TransitionStreamParams {
 }
 
 export namespace Transitions {
-  export import TransitionListResponse = TransitionsAPI.TransitionListResponse;
   export import TransitionStreamResponse = TransitionsAPI.TransitionStreamResponse;
-  export import TransitionListResponsesOffsetPagination = TransitionsAPI.TransitionListResponsesOffsetPagination;
   export import TransitionListParams = TransitionsAPI.TransitionListParams;
   export import TransitionStreamParams = TransitionsAPI.TransitionStreamParams;
 }
+
+export { TransitionsOffsetPagination };
