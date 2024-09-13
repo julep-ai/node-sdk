@@ -31,9 +31,9 @@ const client = new Julep({
 });
 
 async function main() {
-  const resourceCreated = await client.sessions.create();
+  const session = await client.sessions.create();
 
-  console.log(resourceCreated.id);
+  console.log(session.id);
 }
 
 main();
@@ -53,7 +53,7 @@ const client = new Julep({
 });
 
 async function main() {
-  const resourceCreated: Julep.ResourceCreated = await client.sessions.create();
+  const session: Julep.SessionCreateResponse = await client.sessions.create();
 }
 
 main();
@@ -70,7 +70,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const resourceCreated = await client.sessions.create().catch(async (err) => {
+  const session = await client.sessions.create().catch(async (err) => {
     if (err instanceof Julep.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -186,9 +186,9 @@ const response = await client.sessions.create().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: resourceCreated, response: raw } = await client.sessions.create().withResponse();
+const { data: session, response: raw } = await client.sessions.create().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(resourceCreated.id);
+console.log(session.id);
 ```
 
 ### Making custom/undocumented requests
