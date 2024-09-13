@@ -9,7 +9,7 @@ export class Docs extends APIResource {
   /**
    * Embed
    */
-  create(body: DocCreateParams, options?: Core.RequestOptions): Core.APIPromise<EmbedQueryResponse> {
+  embed(body: DocEmbedParams, options?: Core.RequestOptions): Core.APIPromise<EmbedQueryResponse> {
     return this._client.post('/embed', { body, ...options });
   }
 
@@ -39,12 +39,12 @@ export interface EmbedQueryResponse {
   vectors: Array<Array<number>>;
 }
 
-export interface DocCreateParams {
+export interface DocEmbedParams {
   text: string | Array<string>;
 }
 
 export namespace Docs {
   export import Doc = DocsAPI.Doc;
   export import EmbedQueryResponse = DocsAPI.EmbedQueryResponse;
-  export import DocCreateParams = DocsAPI.DocCreateParams;
+  export import DocEmbedParams = DocsAPI.DocEmbedParams;
 }

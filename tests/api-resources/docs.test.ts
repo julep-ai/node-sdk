@@ -9,8 +9,8 @@ const client = new Julep({
 });
 
 describe('resource docs', () => {
-  test('create: only required params', async () => {
-    const responsePromise = client.docs.create({ text: 'string' });
+  test('embed: only required params', async () => {
+    const responsePromise = client.docs.embed({ text: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,8 +20,8 @@ describe('resource docs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('create: required and optional params', async () => {
-    const response = await client.docs.create({ text: 'string' });
+  test('embed: required and optional params', async () => {
+    const response = await client.docs.embed({ text: 'string' });
   });
 
   test('get', async () => {
