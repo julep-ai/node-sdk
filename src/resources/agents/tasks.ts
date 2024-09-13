@@ -4,6 +4,7 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as TasksAPI from './tasks';
+import * as SessionsAPI from '../sessions';
 import * as Shared from '../shared';
 import * as TasksTasksAPI from '../tasks/tasks';
 import { TasksOffsetPagination } from '../tasks/tasks';
@@ -89,7 +90,7 @@ export interface TaskCreateParams {
 
   metadata?: unknown | null;
 
-  tools?: Array<TaskCreateParams.Tool>;
+  tools?: Array<TasksTasksAPI.Tool>;
 }
 
 export namespace TaskCreateParams {
@@ -106,7 +107,7 @@ export namespace TaskCreateParams {
   export interface PromptStepInput {
     prompt: Array<PromptStepInput.UnionMember0> | string;
 
-    settings?: PromptStepInput.Settings | null;
+    settings?: SessionsAPI.ChatSettings | null;
   }
 
   export namespace PromptStepInput {
@@ -145,53 +146,6 @@ export namespace TaskCreateParams {
 
           detail?: 'low' | 'high' | 'auto';
         }
-      }
-    }
-
-    export interface Settings {
-      agent?: string | null;
-
-      frequency_penalty?: number | null;
-
-      length_penalty?: number | null;
-
-      logit_bias?: Record<string, number> | null;
-
-      max_tokens?: number | null;
-
-      min_p?: number | null;
-
-      model?: string | null;
-
-      presence_penalty?: number | null;
-
-      repetition_penalty?: number | null;
-
-      response_format?:
-        | Settings.SimpleCompletionResponseFormat
-        | Settings.SchemaCompletionResponseFormat
-        | null;
-
-      seed?: number | null;
-
-      stop?: Array<string>;
-
-      stream?: boolean;
-
-      temperature?: number | null;
-
-      top_p?: number | null;
-    }
-
-    export namespace Settings {
-      export interface SimpleCompletionResponseFormat {
-        type?: 'text' | 'json_object';
-      }
-
-      export interface SchemaCompletionResponseFormat {
-        json_schema: unknown;
-
-        type?: 'json_schema';
       }
     }
   }
@@ -348,7 +302,7 @@ export namespace TaskCreateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      settings?: PromptStepInput.Settings | null;
+      settings?: SessionsAPI.ChatSettings | null;
     }
 
     export namespace PromptStepInput {
@@ -387,53 +341,6 @@ export namespace TaskCreateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
-        }
-      }
-
-      export interface Settings {
-        agent?: string | null;
-
-        frequency_penalty?: number | null;
-
-        length_penalty?: number | null;
-
-        logit_bias?: Record<string, number> | null;
-
-        max_tokens?: number | null;
-
-        min_p?: number | null;
-
-        model?: string | null;
-
-        presence_penalty?: number | null;
-
-        repetition_penalty?: number | null;
-
-        response_format?:
-          | Settings.SimpleCompletionResponseFormat
-          | Settings.SchemaCompletionResponseFormat
-          | null;
-
-        seed?: number | null;
-
-        stop?: Array<string>;
-
-        stream?: boolean;
-
-        temperature?: number | null;
-
-        top_p?: number | null;
-      }
-
-      export namespace Settings {
-        export interface SimpleCompletionResponseFormat {
-          type?: 'text' | 'json_object';
-        }
-
-        export interface SchemaCompletionResponseFormat {
-          json_schema: unknown;
-
-          type?: 'json_schema';
         }
       }
     }
@@ -554,7 +461,7 @@ export namespace TaskCreateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      settings?: PromptStepInput.Settings | null;
+      settings?: SessionsAPI.ChatSettings | null;
     }
 
     export namespace PromptStepInput {
@@ -593,53 +500,6 @@ export namespace TaskCreateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
-        }
-      }
-
-      export interface Settings {
-        agent?: string | null;
-
-        frequency_penalty?: number | null;
-
-        length_penalty?: number | null;
-
-        logit_bias?: Record<string, number> | null;
-
-        max_tokens?: number | null;
-
-        min_p?: number | null;
-
-        model?: string | null;
-
-        presence_penalty?: number | null;
-
-        repetition_penalty?: number | null;
-
-        response_format?:
-          | Settings.SimpleCompletionResponseFormat
-          | Settings.SchemaCompletionResponseFormat
-          | null;
-
-        seed?: number | null;
-
-        stop?: Array<string>;
-
-        stream?: boolean;
-
-        temperature?: number | null;
-
-        top_p?: number | null;
-      }
-
-      export namespace Settings {
-        export interface SimpleCompletionResponseFormat {
-          type?: 'text' | 'json_object';
-        }
-
-        export interface SchemaCompletionResponseFormat {
-          json_schema: unknown;
-
-          type?: 'json_schema';
         }
       }
     }
@@ -786,7 +646,7 @@ export namespace TaskCreateParams {
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
-        settings?: PromptStepInput.Settings | null;
+        settings?: SessionsAPI.ChatSettings | null;
       }
 
       export namespace PromptStepInput {
@@ -825,53 +685,6 @@ export namespace TaskCreateParams {
 
               detail?: 'low' | 'high' | 'auto';
             }
-          }
-        }
-
-        export interface Settings {
-          agent?: string | null;
-
-          frequency_penalty?: number | null;
-
-          length_penalty?: number | null;
-
-          logit_bias?: Record<string, number> | null;
-
-          max_tokens?: number | null;
-
-          min_p?: number | null;
-
-          model?: string | null;
-
-          presence_penalty?: number | null;
-
-          repetition_penalty?: number | null;
-
-          response_format?:
-            | Settings.SimpleCompletionResponseFormat
-            | Settings.SchemaCompletionResponseFormat
-            | null;
-
-          seed?: number | null;
-
-          stop?: Array<string>;
-
-          stream?: boolean;
-
-          temperature?: number | null;
-
-          top_p?: number | null;
-        }
-
-        export namespace Settings {
-          export interface SimpleCompletionResponseFormat {
-            type?: 'text' | 'json_object';
-          }
-
-          export interface SchemaCompletionResponseFormat {
-            json_schema: unknown;
-
-            type?: 'json_schema';
           }
         }
       }
@@ -1014,7 +827,7 @@ export namespace TaskCreateParams {
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
-        settings?: PromptStepInput.Settings | null;
+        settings?: SessionsAPI.ChatSettings | null;
       }
 
       export namespace PromptStepInput {
@@ -1053,53 +866,6 @@ export namespace TaskCreateParams {
 
               detail?: 'low' | 'high' | 'auto';
             }
-          }
-        }
-
-        export interface Settings {
-          agent?: string | null;
-
-          frequency_penalty?: number | null;
-
-          length_penalty?: number | null;
-
-          logit_bias?: Record<string, number> | null;
-
-          max_tokens?: number | null;
-
-          min_p?: number | null;
-
-          model?: string | null;
-
-          presence_penalty?: number | null;
-
-          repetition_penalty?: number | null;
-
-          response_format?:
-            | Settings.SimpleCompletionResponseFormat
-            | Settings.SchemaCompletionResponseFormat
-            | null;
-
-          seed?: number | null;
-
-          stop?: Array<string>;
-
-          stream?: boolean;
-
-          temperature?: number | null;
-
-          top_p?: number | null;
-        }
-
-        export namespace Settings {
-          export interface SimpleCompletionResponseFormat {
-            type?: 'text' | 'json_object';
-          }
-
-          export interface SchemaCompletionResponseFormat {
-            json_schema: unknown;
-
-            type?: 'json_schema';
           }
         }
       }
@@ -1196,7 +962,7 @@ export namespace TaskCreateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      settings?: PromptStepInput.Settings | null;
+      settings?: SessionsAPI.ChatSettings | null;
     }
 
     export namespace PromptStepInput {
@@ -1235,53 +1001,6 @@ export namespace TaskCreateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
-        }
-      }
-
-      export interface Settings {
-        agent?: string | null;
-
-        frequency_penalty?: number | null;
-
-        length_penalty?: number | null;
-
-        logit_bias?: Record<string, number> | null;
-
-        max_tokens?: number | null;
-
-        min_p?: number | null;
-
-        model?: string | null;
-
-        presence_penalty?: number | null;
-
-        repetition_penalty?: number | null;
-
-        response_format?:
-          | Settings.SimpleCompletionResponseFormat
-          | Settings.SchemaCompletionResponseFormat
-          | null;
-
-        seed?: number | null;
-
-        stop?: Array<string>;
-
-        stream?: boolean;
-
-        temperature?: number | null;
-
-        top_p?: number | null;
-      }
-
-      export namespace Settings {
-        export interface SimpleCompletionResponseFormat {
-          type?: 'text' | 'json_object';
-        }
-
-        export interface SchemaCompletionResponseFormat {
-          json_schema: unknown;
-
-          type?: 'json_schema';
         }
       }
     }
@@ -1384,7 +1103,7 @@ export namespace TaskCreateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      settings?: PromptStepInput.Settings | null;
+      settings?: SessionsAPI.ChatSettings | null;
     }
 
     export namespace PromptStepInput {
@@ -1423,53 +1142,6 @@ export namespace TaskCreateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
-        }
-      }
-
-      export interface Settings {
-        agent?: string | null;
-
-        frequency_penalty?: number | null;
-
-        length_penalty?: number | null;
-
-        logit_bias?: Record<string, number> | null;
-
-        max_tokens?: number | null;
-
-        min_p?: number | null;
-
-        model?: string | null;
-
-        presence_penalty?: number | null;
-
-        repetition_penalty?: number | null;
-
-        response_format?:
-          | Settings.SimpleCompletionResponseFormat
-          | Settings.SchemaCompletionResponseFormat
-          | null;
-
-        seed?: number | null;
-
-        stop?: Array<string>;
-
-        stream?: boolean;
-
-        temperature?: number | null;
-
-        top_p?: number | null;
-      }
-
-      export namespace Settings {
-        export interface SimpleCompletionResponseFormat {
-          type?: 'text' | 'json_object';
-        }
-
-        export interface SchemaCompletionResponseFormat {
-          json_schema: unknown;
-
-          type?: 'json_schema';
         }
       }
     }
@@ -1535,36 +1207,6 @@ export namespace TaskCreateParams {
 
         limit?: number;
       }
-    }
-  }
-
-  export interface Tool {
-    /**
-     * Function definition
-     */
-    function: Tool.Function;
-
-    name: string;
-
-    api_call?: unknown | null;
-
-    integration?: unknown | null;
-
-    system?: unknown | null;
-
-    type?: 'function' | 'integration' | 'system' | 'api_call';
-  }
-
-  export namespace Tool {
-    /**
-     * Function definition
-     */
-    export interface Function {
-      description?: string | null;
-
-      name?: unknown | null;
-
-      parameters?: unknown | null;
     }
   }
 }
@@ -1607,7 +1249,7 @@ export interface TaskCreateOrUpdateParams {
 
   metadata?: unknown | null;
 
-  tools?: Array<TaskCreateOrUpdateParams.Tool>;
+  tools?: Array<TasksTasksAPI.Tool>;
 }
 
 export namespace TaskCreateOrUpdateParams {
@@ -1624,7 +1266,7 @@ export namespace TaskCreateOrUpdateParams {
   export interface PromptStepInput {
     prompt: Array<PromptStepInput.UnionMember0> | string;
 
-    settings?: PromptStepInput.Settings | null;
+    settings?: SessionsAPI.ChatSettings | null;
   }
 
   export namespace PromptStepInput {
@@ -1663,53 +1305,6 @@ export namespace TaskCreateOrUpdateParams {
 
           detail?: 'low' | 'high' | 'auto';
         }
-      }
-    }
-
-    export interface Settings {
-      agent?: string | null;
-
-      frequency_penalty?: number | null;
-
-      length_penalty?: number | null;
-
-      logit_bias?: Record<string, number> | null;
-
-      max_tokens?: number | null;
-
-      min_p?: number | null;
-
-      model?: string | null;
-
-      presence_penalty?: number | null;
-
-      repetition_penalty?: number | null;
-
-      response_format?:
-        | Settings.SimpleCompletionResponseFormat
-        | Settings.SchemaCompletionResponseFormat
-        | null;
-
-      seed?: number | null;
-
-      stop?: Array<string>;
-
-      stream?: boolean;
-
-      temperature?: number | null;
-
-      top_p?: number | null;
-    }
-
-    export namespace Settings {
-      export interface SimpleCompletionResponseFormat {
-        type?: 'text' | 'json_object';
-      }
-
-      export interface SchemaCompletionResponseFormat {
-        json_schema: unknown;
-
-        type?: 'json_schema';
       }
     }
   }
@@ -1866,7 +1461,7 @@ export namespace TaskCreateOrUpdateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      settings?: PromptStepInput.Settings | null;
+      settings?: SessionsAPI.ChatSettings | null;
     }
 
     export namespace PromptStepInput {
@@ -1905,53 +1500,6 @@ export namespace TaskCreateOrUpdateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
-        }
-      }
-
-      export interface Settings {
-        agent?: string | null;
-
-        frequency_penalty?: number | null;
-
-        length_penalty?: number | null;
-
-        logit_bias?: Record<string, number> | null;
-
-        max_tokens?: number | null;
-
-        min_p?: number | null;
-
-        model?: string | null;
-
-        presence_penalty?: number | null;
-
-        repetition_penalty?: number | null;
-
-        response_format?:
-          | Settings.SimpleCompletionResponseFormat
-          | Settings.SchemaCompletionResponseFormat
-          | null;
-
-        seed?: number | null;
-
-        stop?: Array<string>;
-
-        stream?: boolean;
-
-        temperature?: number | null;
-
-        top_p?: number | null;
-      }
-
-      export namespace Settings {
-        export interface SimpleCompletionResponseFormat {
-          type?: 'text' | 'json_object';
-        }
-
-        export interface SchemaCompletionResponseFormat {
-          json_schema: unknown;
-
-          type?: 'json_schema';
         }
       }
     }
@@ -2072,7 +1620,7 @@ export namespace TaskCreateOrUpdateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      settings?: PromptStepInput.Settings | null;
+      settings?: SessionsAPI.ChatSettings | null;
     }
 
     export namespace PromptStepInput {
@@ -2111,53 +1659,6 @@ export namespace TaskCreateOrUpdateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
-        }
-      }
-
-      export interface Settings {
-        agent?: string | null;
-
-        frequency_penalty?: number | null;
-
-        length_penalty?: number | null;
-
-        logit_bias?: Record<string, number> | null;
-
-        max_tokens?: number | null;
-
-        min_p?: number | null;
-
-        model?: string | null;
-
-        presence_penalty?: number | null;
-
-        repetition_penalty?: number | null;
-
-        response_format?:
-          | Settings.SimpleCompletionResponseFormat
-          | Settings.SchemaCompletionResponseFormat
-          | null;
-
-        seed?: number | null;
-
-        stop?: Array<string>;
-
-        stream?: boolean;
-
-        temperature?: number | null;
-
-        top_p?: number | null;
-      }
-
-      export namespace Settings {
-        export interface SimpleCompletionResponseFormat {
-          type?: 'text' | 'json_object';
-        }
-
-        export interface SchemaCompletionResponseFormat {
-          json_schema: unknown;
-
-          type?: 'json_schema';
         }
       }
     }
@@ -2304,7 +1805,7 @@ export namespace TaskCreateOrUpdateParams {
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
-        settings?: PromptStepInput.Settings | null;
+        settings?: SessionsAPI.ChatSettings | null;
       }
 
       export namespace PromptStepInput {
@@ -2343,53 +1844,6 @@ export namespace TaskCreateOrUpdateParams {
 
               detail?: 'low' | 'high' | 'auto';
             }
-          }
-        }
-
-        export interface Settings {
-          agent?: string | null;
-
-          frequency_penalty?: number | null;
-
-          length_penalty?: number | null;
-
-          logit_bias?: Record<string, number> | null;
-
-          max_tokens?: number | null;
-
-          min_p?: number | null;
-
-          model?: string | null;
-
-          presence_penalty?: number | null;
-
-          repetition_penalty?: number | null;
-
-          response_format?:
-            | Settings.SimpleCompletionResponseFormat
-            | Settings.SchemaCompletionResponseFormat
-            | null;
-
-          seed?: number | null;
-
-          stop?: Array<string>;
-
-          stream?: boolean;
-
-          temperature?: number | null;
-
-          top_p?: number | null;
-        }
-
-        export namespace Settings {
-          export interface SimpleCompletionResponseFormat {
-            type?: 'text' | 'json_object';
-          }
-
-          export interface SchemaCompletionResponseFormat {
-            json_schema: unknown;
-
-            type?: 'json_schema';
           }
         }
       }
@@ -2532,7 +1986,7 @@ export namespace TaskCreateOrUpdateParams {
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
-        settings?: PromptStepInput.Settings | null;
+        settings?: SessionsAPI.ChatSettings | null;
       }
 
       export namespace PromptStepInput {
@@ -2571,53 +2025,6 @@ export namespace TaskCreateOrUpdateParams {
 
               detail?: 'low' | 'high' | 'auto';
             }
-          }
-        }
-
-        export interface Settings {
-          agent?: string | null;
-
-          frequency_penalty?: number | null;
-
-          length_penalty?: number | null;
-
-          logit_bias?: Record<string, number> | null;
-
-          max_tokens?: number | null;
-
-          min_p?: number | null;
-
-          model?: string | null;
-
-          presence_penalty?: number | null;
-
-          repetition_penalty?: number | null;
-
-          response_format?:
-            | Settings.SimpleCompletionResponseFormat
-            | Settings.SchemaCompletionResponseFormat
-            | null;
-
-          seed?: number | null;
-
-          stop?: Array<string>;
-
-          stream?: boolean;
-
-          temperature?: number | null;
-
-          top_p?: number | null;
-        }
-
-        export namespace Settings {
-          export interface SimpleCompletionResponseFormat {
-            type?: 'text' | 'json_object';
-          }
-
-          export interface SchemaCompletionResponseFormat {
-            json_schema: unknown;
-
-            type?: 'json_schema';
           }
         }
       }
@@ -2714,7 +2121,7 @@ export namespace TaskCreateOrUpdateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      settings?: PromptStepInput.Settings | null;
+      settings?: SessionsAPI.ChatSettings | null;
     }
 
     export namespace PromptStepInput {
@@ -2753,53 +2160,6 @@ export namespace TaskCreateOrUpdateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
-        }
-      }
-
-      export interface Settings {
-        agent?: string | null;
-
-        frequency_penalty?: number | null;
-
-        length_penalty?: number | null;
-
-        logit_bias?: Record<string, number> | null;
-
-        max_tokens?: number | null;
-
-        min_p?: number | null;
-
-        model?: string | null;
-
-        presence_penalty?: number | null;
-
-        repetition_penalty?: number | null;
-
-        response_format?:
-          | Settings.SimpleCompletionResponseFormat
-          | Settings.SchemaCompletionResponseFormat
-          | null;
-
-        seed?: number | null;
-
-        stop?: Array<string>;
-
-        stream?: boolean;
-
-        temperature?: number | null;
-
-        top_p?: number | null;
-      }
-
-      export namespace Settings {
-        export interface SimpleCompletionResponseFormat {
-          type?: 'text' | 'json_object';
-        }
-
-        export interface SchemaCompletionResponseFormat {
-          json_schema: unknown;
-
-          type?: 'json_schema';
         }
       }
     }
@@ -2902,7 +2262,7 @@ export namespace TaskCreateOrUpdateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      settings?: PromptStepInput.Settings | null;
+      settings?: SessionsAPI.ChatSettings | null;
     }
 
     export namespace PromptStepInput {
@@ -2941,53 +2301,6 @@ export namespace TaskCreateOrUpdateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
-        }
-      }
-
-      export interface Settings {
-        agent?: string | null;
-
-        frequency_penalty?: number | null;
-
-        length_penalty?: number | null;
-
-        logit_bias?: Record<string, number> | null;
-
-        max_tokens?: number | null;
-
-        min_p?: number | null;
-
-        model?: string | null;
-
-        presence_penalty?: number | null;
-
-        repetition_penalty?: number | null;
-
-        response_format?:
-          | Settings.SimpleCompletionResponseFormat
-          | Settings.SchemaCompletionResponseFormat
-          | null;
-
-        seed?: number | null;
-
-        stop?: Array<string>;
-
-        stream?: boolean;
-
-        temperature?: number | null;
-
-        top_p?: number | null;
-      }
-
-      export namespace Settings {
-        export interface SimpleCompletionResponseFormat {
-          type?: 'text' | 'json_object';
-        }
-
-        export interface SchemaCompletionResponseFormat {
-          json_schema: unknown;
-
-          type?: 'json_schema';
         }
       }
     }
@@ -3053,36 +2366,6 @@ export namespace TaskCreateOrUpdateParams {
 
         limit?: number;
       }
-    }
-  }
-
-  export interface Tool {
-    /**
-     * Function definition
-     */
-    function: Tool.Function;
-
-    name: string;
-
-    api_call?: unknown | null;
-
-    integration?: unknown | null;
-
-    system?: unknown | null;
-
-    type?: 'function' | 'integration' | 'system' | 'api_call';
-  }
-
-  export namespace Tool {
-    /**
-     * Function definition
-     */
-    export interface Function {
-      description?: string | null;
-
-      name?: unknown | null;
-
-      parameters?: unknown | null;
     }
   }
 }

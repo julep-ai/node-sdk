@@ -76,7 +76,7 @@ export namespace DocSearchResponse {
 
     owner: Doc.Owner;
 
-    snippets: Array<Doc.Snippet>;
+    snippets: Array<DocsAPI.Snippet>;
 
     distance?: number | null;
 
@@ -88,12 +88,6 @@ export namespace DocSearchResponse {
       id: string;
 
       role: 'user' | 'agent';
-    }
-
-    export interface Snippet {
-      content: string;
-
-      index: number;
     }
   }
 }
