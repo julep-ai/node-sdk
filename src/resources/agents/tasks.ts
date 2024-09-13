@@ -4,6 +4,7 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as TasksAPI from './tasks';
+import * as Shared from '../shared';
 import * as TasksTasksAPI from '../tasks/tasks';
 import { TasksOffsetPagination } from '../tasks/tasks';
 import { type OffsetPaginationParams } from '../../pagination';
@@ -16,7 +17,7 @@ export class Tasks extends APIResource {
     agentId: string,
     body: TaskCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<TaskCreateResponse> {
+  ): Core.APIPromise<Shared.ResourceCreated> {
     return this._client.post(`/agents/${agentId}/tasks`, { body, ...options });
   }
 
@@ -51,25 +52,9 @@ export class Tasks extends APIResource {
     taskId: string,
     body: TaskCreateOrUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<TaskCreateOrUpdateResponse> {
+  ): Core.APIPromise<Shared.ResourceUpdated> {
     return this._client.post(`/agents/${agentId}/tasks/${taskId}`, { body, ...options });
   }
-}
-
-export interface TaskCreateResponse {
-  id: string;
-
-  created_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface TaskCreateOrUpdateResponse {
-  id: string;
-
-  updated_at: string;
-
-  jobs?: Array<string>;
 }
 
 export interface TaskCreateParams {
@@ -3103,8 +3088,6 @@ export namespace TaskCreateOrUpdateParams {
 }
 
 export namespace Tasks {
-  export import TaskCreateResponse = TasksAPI.TaskCreateResponse;
-  export import TaskCreateOrUpdateResponse = TasksAPI.TaskCreateOrUpdateResponse;
   export import TaskCreateParams = TasksAPI.TaskCreateParams;
   export import TaskListParams = TasksAPI.TaskListParams;
   export import TaskCreateOrUpdateParams = TasksAPI.TaskCreateOrUpdateParams;

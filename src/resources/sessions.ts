@@ -4,13 +4,14 @@ import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
 import * as SessionsAPI from './sessions';
+import * as Shared from './shared';
 import { OffsetPagination, type OffsetPaginationParams } from '../pagination';
 
 export class Sessions extends APIResource {
   /**
    * Create Session
    */
-  create(body: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse> {
+  create(body: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceCreated> {
     return this._client.post('/sessions', { body, ...options });
   }
 
@@ -21,7 +22,7 @@ export class Sessions extends APIResource {
     sessionId: string,
     body: SessionUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SessionUpdateResponse> {
+  ): Core.APIPromise<Shared.ResourceUpdated> {
     return this._client.put(`/sessions/${sessionId}`, { body, ...options });
   }
 
@@ -46,7 +47,7 @@ export class Sessions extends APIResource {
   /**
    * Delete Session
    */
-  delete(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<SessionDeleteResponse> {
+  delete(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceDeleted> {
     return this._client.delete(`/sessions/${sessionId}`, options);
   }
 
@@ -68,7 +69,7 @@ export class Sessions extends APIResource {
     sessionId: string,
     body: SessionCreateOrUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SessionCreateOrUpdateResponse> {
+  ): Core.APIPromise<Shared.ResourceCreated> {
     return this._client.post(`/sessions/${sessionId}`, { body, ...options });
   }
 
@@ -93,7 +94,7 @@ export class Sessions extends APIResource {
     sessionId: string,
     body: SessionPatchParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<SessionPatchResponse> {
+  ): Core.APIPromise<Shared.ResourceUpdated> {
     return this._client.patch(`/sessions/${sessionId}`, { body, ...options });
   }
 }
@@ -866,30 +867,6 @@ export interface Session {
   token_budget?: number | null;
 }
 
-export interface SessionCreateResponse {
-  id: string;
-
-  created_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface SessionUpdateResponse {
-  id: string;
-
-  updated_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface SessionDeleteResponse {
-  id: string;
-
-  deleted_at: string;
-
-  jobs?: Array<string>;
-}
-
 export type SessionChatResponse = SessionChatResponse.ChunkChatResponse | ChatResponse;
 
 export namespace SessionChatResponse {
@@ -1033,22 +1010,6 @@ export namespace SessionChatResponse {
       total_tokens?: number | null;
     }
   }
-}
-
-export interface SessionCreateOrUpdateResponse {
-  id: string;
-
-  created_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface SessionPatchResponse {
-  id: string;
-
-  updated_at: string;
-
-  jobs?: Array<string>;
 }
 
 export interface SessionCreateParams {
@@ -1282,12 +1243,7 @@ export namespace Sessions {
   export import ChatResponse = SessionsAPI.ChatResponse;
   export import History = SessionsAPI.History;
   export import Session = SessionsAPI.Session;
-  export import SessionCreateResponse = SessionsAPI.SessionCreateResponse;
-  export import SessionUpdateResponse = SessionsAPI.SessionUpdateResponse;
-  export import SessionDeleteResponse = SessionsAPI.SessionDeleteResponse;
   export import SessionChatResponse = SessionsAPI.SessionChatResponse;
-  export import SessionCreateOrUpdateResponse = SessionsAPI.SessionCreateOrUpdateResponse;
-  export import SessionPatchResponse = SessionsAPI.SessionPatchResponse;
   export import SessionsOffsetPagination = SessionsAPI.SessionsOffsetPagination;
   export import SessionCreateParams = SessionsAPI.SessionCreateParams;
   export import SessionUpdateParams = SessionsAPI.SessionUpdateParams;
