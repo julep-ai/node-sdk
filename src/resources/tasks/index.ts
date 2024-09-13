@@ -3,10 +3,9 @@
 export {
   ExecutionCreateResponse,
   ExecutionUpdateResponse,
-  ExecutionListResponse,
   ExecutionCreateParams,
   ExecutionUpdateParams,
   ExecutionListParams,
   Executions,
 } from './executions';
-export { Task, Tasks } from './tasks';
+export { Task, TasksOffsetPagination, Tasks } from './tasks';

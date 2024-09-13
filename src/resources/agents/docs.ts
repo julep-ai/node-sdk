@@ -5,6 +5,8 @@ import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as AgentsDocsAPI from './docs';
 import * as DocsAPI from '../docs';
+import { DocsOffsetPagination } from '../docs';
+import { type OffsetPaginationParams } from '../../pagination';
 
 export class Docs extends APIResource {
   /**
@@ -25,17 +27,17 @@ export class Docs extends APIResource {
     agentId: string,
     query?: DocListParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<DocListResponse>;
-  list(agentId: string, options?: Core.RequestOptions): Core.APIPromise<DocListResponse>;
+  ): Core.PagePromise<DocsOffsetPagination, DocsAPI.Doc>;
+  list(agentId: string, options?: Core.RequestOptions): Core.PagePromise<DocsOffsetPagination, DocsAPI.Doc>;
   list(
     agentId: string,
     query: DocListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<DocListResponse> {
+  ): Core.PagePromise<DocsOffsetPagination, DocsAPI.Doc> {
     if (isRequestOptions(query)) {
       return this.list(agentId, {}, query);
     }
-    return this._client.get(`/agents/${agentId}/docs`, { query, ...options });
+    return this._client.getAPIList(`/agents/${agentId}/docs`, DocsOffsetPagination, { query, ...options });
   }
 
   /**
@@ -54,10 +56,6 @@ export interface DocCreateResponse {
   jobs?: Array<string>;
 }
 
-export interface DocListResponse {
-  items: Array<DocsAPI.Doc>;
-}
-
 export interface DocDeleteResponse {
   id: string;
 
@@ -74,22 +72,19 @@ export interface DocCreateParams {
   metadata?: unknown | null;
 }
 
-export interface DocListParams {
+export interface DocListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
 
-  limit?: number;
-
   metadata_filter?: string;
-
-  offset?: number;
 
   sort_by?: 'created_at' | 'updated_at';
 }
 
 export namespace Docs {
   export import DocCreateResponse = AgentsDocsAPI.DocCreateResponse;
-  export import DocListResponse = AgentsDocsAPI.DocListResponse;
   export import DocDeleteResponse = AgentsDocsAPI.DocDeleteResponse;
   export import DocCreateParams = AgentsDocsAPI.DocCreateParams;
   export import DocListParams = AgentsDocsAPI.DocListParams;
 }
+
+export { DocsOffsetPagination };

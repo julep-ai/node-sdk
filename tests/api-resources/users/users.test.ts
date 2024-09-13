@@ -95,6 +95,28 @@ describe('resource users', () => {
     );
   });
 
+  test('createOrUpdate', async () => {
+    const responsePromise = client.users.createOrUpdate('user_id', {});
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('patch', async () => {
+    const responsePromise = client.users.patch('user_id', {});
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
   test('search: only required params', async () => {
     const responsePromise = client.users.search('user_id', { text: 'text' });
     const rawResponse = await responsePromise.asResponse();

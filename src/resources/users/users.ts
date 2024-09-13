@@ -5,6 +5,7 @@ import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as UsersAPI from './users';
 import * as DocsAPI from './docs';
+import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
 
 export class Users extends APIResource {
   docs: DocsAPI.Docs = new DocsAPI.Docs(this._client);
@@ -37,16 +38,16 @@ export class Users extends APIResource {
   /**
    * List Users
    */
-  list(query?: UserListParams, options?: Core.RequestOptions): Core.APIPromise<UserListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<UserListResponse>;
+  list(query?: UserListParams, options?: Core.RequestOptions): Core.PagePromise<UsersOffsetPagination, User>;
+  list(options?: Core.RequestOptions): Core.PagePromise<UsersOffsetPagination, User>;
   list(
     query: UserListParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<UserListResponse> {
+  ): Core.PagePromise<UsersOffsetPagination, User> {
     if (isRequestOptions(query)) {
       return this.list({}, query);
     }
-    return this._client.get('/users', { query, ...options });
+    return this._client.getAPIList('/users', UsersOffsetPagination, { query, ...options });
   }
 
   /**
@@ -54,6 +55,28 @@ export class Users extends APIResource {
    */
   delete(userId: string, options?: Core.RequestOptions): Core.APIPromise<UserDeleteResponse> {
     return this._client.delete(`/users/${userId}`, options);
+  }
+
+  /**
+   * Create Or Update User
+   */
+  createOrUpdate(
+    userId: string,
+    body: UserCreateOrUpdateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<UserCreateOrUpdateResponse> {
+    return this._client.post(`/users/${userId}`, { body, ...options });
+  }
+
+  /**
+   * Patch User
+   */
+  patch(
+    userId: string,
+    body: UserPatchParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<UserPatchResponse> {
+    return this._client.patch(`/users/${userId}`, { body, ...options });
   }
 
   /**
@@ -67,6 +90,8 @@ export class Users extends APIResource {
     return this._client.post(`/users/${userId}/search`, { body, ...options });
   }
 }
+
+export class UsersOffsetPagination extends OffsetPagination<User> {}
 
 export interface User {
   id: string;
@@ -98,14 +123,26 @@ export interface UserUpdateResponse {
   jobs?: Array<string>;
 }
 
-export interface UserListResponse {
-  items: Array<User>;
-}
-
 export interface UserDeleteResponse {
   id: string;
 
   deleted_at: string;
+
+  jobs?: Array<string>;
+}
+
+export interface UserCreateOrUpdateResponse {
+  id: string;
+
+  created_at: string;
+
+  jobs?: Array<string>;
+}
+
+export interface UserPatchResponse {
+  id: string;
+
+  updated_at: string;
 
   jobs?: Array<string>;
 }
@@ -160,16 +197,28 @@ export interface UserUpdateParams {
   name?: string;
 }
 
-export interface UserListParams {
+export interface UserListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
-
-  limit?: number;
 
   metadata_filter?: string;
 
-  offset?: number;
-
   sort_by?: 'created_at' | 'updated_at';
+}
+
+export interface UserCreateOrUpdateParams {
+  about?: string;
+
+  metadata?: unknown | null;
+
+  name?: string;
+}
+
+export interface UserPatchParams {
+  about?: string;
+
+  metadata?: unknown | null;
+
+  name?: string;
 }
 
 export type UserSearchParams =
@@ -215,16 +264,19 @@ export namespace Users {
   export import User = UsersAPI.User;
   export import UserCreateResponse = UsersAPI.UserCreateResponse;
   export import UserUpdateResponse = UsersAPI.UserUpdateResponse;
-  export import UserListResponse = UsersAPI.UserListResponse;
   export import UserDeleteResponse = UsersAPI.UserDeleteResponse;
+  export import UserCreateOrUpdateResponse = UsersAPI.UserCreateOrUpdateResponse;
+  export import UserPatchResponse = UsersAPI.UserPatchResponse;
   export import UserSearchResponse = UsersAPI.UserSearchResponse;
+  export import UsersOffsetPagination = UsersAPI.UsersOffsetPagination;
   export import UserCreateParams = UsersAPI.UserCreateParams;
   export import UserUpdateParams = UsersAPI.UserUpdateParams;
   export import UserListParams = UsersAPI.UserListParams;
+  export import UserCreateOrUpdateParams = UsersAPI.UserCreateOrUpdateParams;
+  export import UserPatchParams = UsersAPI.UserPatchParams;
   export import UserSearchParams = UsersAPI.UserSearchParams;
   export import Docs = DocsAPI.Docs;
   export import DocCreateResponse = DocsAPI.DocCreateResponse;
-  export import DocListResponse = DocsAPI.DocListResponse;
   export import DocDeleteResponse = DocsAPI.DocDeleteResponse;
   export import DocCreateParams = DocsAPI.DocCreateParams;
   export import DocListParams = DocsAPI.DocListParams;

@@ -4,31 +4,38 @@ export {
   Agent,
   AgentCreateResponse,
   AgentUpdateResponse,
-  AgentListResponse,
   AgentDeleteResponse,
+  AgentCreateOrUpdateResponse,
+  AgentPatchResponse,
   AgentSearchResponse,
   AgentCreateParams,
   AgentUpdateParams,
   AgentListParams,
+  AgentCreateOrUpdateParams,
+  AgentPatchParams,
   AgentSearchParams,
+  AgentsOffsetPagination,
   Agents,
 } from './agents';
+export { DocCreateResponse, DocDeleteResponse, DocCreateParams, DocListParams, Docs } from './docs';
 export {
-  DocCreateResponse,
-  DocListResponse,
-  DocDeleteResponse,
-  DocCreateParams,
-  DocListParams,
-  Docs,
-} from './docs';
-export { TaskCreateResponse, TaskListResponse, TaskCreateParams, TaskListParams, Tasks } from './tasks';
+  TaskCreateResponse,
+  TaskCreateOrUpdateResponse,
+  TaskCreateParams,
+  TaskListParams,
+  TaskCreateOrUpdateParams,
+  Tasks,
+} from './tasks';
 export {
   ToolCreateResponse,
   ToolUpdateResponse,
   ToolListResponse,
   ToolDeleteResponse,
+  ToolPatchResponse,
   ToolCreateParams,
   ToolUpdateParams,
   ToolListParams,
+  ToolPatchParams,
+  ToolListResponsesOffsetPagination,
   Tools,
 } from './tools';

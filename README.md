@@ -137,6 +137,37 @@ On timeout, an `APIConnectionTimeoutError` is thrown.
 
 Note that requests which time out will be [retried twice by default](#retries).
 
+## Auto-pagination
+
+List methods in the Julep API are paginated.
+You can use `for await … of` syntax to iterate through items across all pages:
+
+```ts
+async function fetchAllAgents(params) {
+  const allAgents = [];
+  // Automatically fetches more pages as needed.
+  for await (const agent of client.agents.list()) {
+    allAgents.push(agent);
+  }
+  return allAgents;
+}
+```
+
+Alternatively, you can make request a single page at a time:
+
+```ts
+let page = await client.agents.list();
+for (const agent of page.items) {
+  console.log(agent);
+}
+
+// Convenience methods are provided for manually paginating:
+while (page.hasNextPage()) {
+  page = page.getNextPage();
+  // ...
+}
+```
+
 ## Advanced Usage
 
 ### Accessing raw Response data (e.g., headers)
