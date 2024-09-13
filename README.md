@@ -25,7 +25,9 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Julep from 'julep';
 
-const client = new Julep();
+const client = new Julep({
+  apiKey: process.env['JULEP_API_KEY'], // This is the default and can be omitted
+});
 
 async function main() {
   const session = await client.sessions.create();
@@ -44,7 +46,9 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Julep from 'julep';
 
-const client = new Julep();
+const client = new Julep({
+  apiKey: process.env['JULEP_API_KEY'], // This is the default and can be omitted
+});
 
 async function main() {
   const session: Julep.SessionCreateResponse = await client.sessions.create();
