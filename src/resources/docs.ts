@@ -12,6 +12,13 @@ export class Docs extends APIResource {
   embed(body: DocEmbedParams, options?: Core.RequestOptions): Core.APIPromise<EmbedQueryResponse> {
     return this._client.post('/embed', { body, ...options });
   }
+
+  /**
+   * Get Doc
+   */
+  get(docId: string, options?: Core.RequestOptions): Core.APIPromise<Doc> {
+    return this._client.get(`/docs/${docId}`, options);
+  }
 }
 
 export class DocsOffsetPagination extends OffsetPagination<Doc> {}

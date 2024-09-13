@@ -20,6 +20,18 @@ export class Tools extends APIResource {
   }
 
   /**
+   * Update Agent Tool
+   */
+  update(
+    agentId: string,
+    toolId: string,
+    body: ToolUpdateParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.ResourceUpdated> {
+    return this._client.put(`/agents/${agentId}/tools/${toolId}`, { body, ...options });
+  }
+
+  /**
    * List Agent Tools
    */
   list(
@@ -43,6 +55,29 @@ export class Tools extends APIResource {
       query,
       ...options,
     });
+  }
+
+  /**
+   * Delete Agent Tool
+   */
+  delete(
+    agentId: string,
+    toolId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.ResourceDeleted> {
+    return this._client.delete(`/agents/${agentId}/tools/${toolId}`, options);
+  }
+
+  /**
+   * Patch Agent Tool
+   */
+  patch(
+    agentId: string,
+    toolId: string,
+    body: ToolPatchParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.ResourceUpdated> {
+    return this._client.patch(`/agents/${agentId}/tools/${toolId}`, { body, ...options });
   }
 }
 
@@ -114,15 +149,77 @@ export namespace ToolCreateParams {
   }
 }
 
+export interface ToolUpdateParams {
+  /**
+   * Function definition
+   */
+  function: ToolUpdateParams.Function;
+
+  name: string;
+
+  api_call?: unknown | null;
+
+  integration?: unknown | null;
+
+  system?: unknown | null;
+
+  type?: 'function' | 'integration' | 'system' | 'api_call';
+}
+
+export namespace ToolUpdateParams {
+  /**
+   * Function definition
+   */
+  export interface Function {
+    description?: string | null;
+
+    name?: unknown | null;
+
+    parameters?: unknown | null;
+  }
+}
+
 export interface ToolListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
 
   sort_by?: 'created_at' | 'updated_at';
 }
 
+export interface ToolPatchParams {
+  api_call?: unknown | null;
+
+  /**
+   * Function definition
+   */
+  function?: ToolPatchParams.Function | null;
+
+  integration?: unknown | null;
+
+  name?: string | null;
+
+  system?: unknown | null;
+
+  type?: 'function' | 'integration' | 'system' | 'api_call';
+}
+
+export namespace ToolPatchParams {
+  /**
+   * Function definition
+   */
+  export interface Function {
+    description?: string | null;
+
+    name?: unknown | null;
+
+    parameters?: unknown | null;
+  }
+}
+
 export namespace Tools {
   export import ToolListResponse = ToolsAPI.ToolListResponse;
   export import ToolListResponsesOffsetPagination = ToolsAPI.ToolListResponsesOffsetPagination;
   export import ToolCreateParams = ToolsAPI.ToolCreateParams;
+  export import ToolUpdateParams = ToolsAPI.ToolUpdateParams;
   export import ToolListParams = ToolsAPI.ToolListParams;
+  export import ToolPatchParams = ToolsAPI.ToolPatchParams;
 }

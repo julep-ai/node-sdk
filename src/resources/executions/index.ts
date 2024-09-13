@@ -3,8 +3,13 @@
 export {
   Execution,
   Transition,
-  ExecutionsOffsetPagination,
+  ExecutionChangeStatusResponse,
+  ExecutionCreateParams,
+  ExecutionListParams,
+  ExecutionChangeStatusParams,
+  ExecutionPatchParams,
   TransitionsOffsetPagination,
+  ExecutionsOffsetPagination,
   Executions,
 } from './executions';
 export {

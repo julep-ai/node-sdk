@@ -42,6 +42,17 @@ export class Docs extends APIResource {
   }
 
   /**
+   * Delete User Doc
+   */
+  delete(
+    userId: string,
+    docId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.ResourceDeleted> {
+    return this._client.delete(`/users/${userId}/docs/${docId}`, options);
+  }
+
+  /**
    * Search User Docs
    */
   search(

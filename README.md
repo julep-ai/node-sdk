@@ -31,7 +31,10 @@ const client = new Julep({
 });
 
 async function main() {
-  const resourceCreated = await client.agents.create();
+  const resourceCreated = await client.tasks.create('dad00000-0000-4000-a000-000000000000', {
+    main: [{ evaluate: { foo: 'string' } }],
+    name: 'name',
+  });
 
   console.log(resourceCreated.id);
 }
@@ -53,7 +56,15 @@ const client = new Julep({
 });
 
 async function main() {
-  const resourceCreated: Julep.ResourceCreated = await client.agents.create();
+  const params: Julep.AgentCreateOrUpdateParams = {
+    instructions: ['Protect Leia', 'Kick butt'],
+    model: 'o1-preview',
+    name: 'R2D2',
+  };
+  const agent: Julep.ResourceCreated = await client.agents.createOrUpdate(
+    'dad00000-0000-4000-a000-000000000000',
+    params,
+  );
 }
 
 main();
@@ -70,15 +81,21 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const resourceCreated = await client.agents.create().catch(async (err) => {
-    if (err instanceof Julep.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
+  const agent = await client.agents
+    .createOrUpdate('dad00000-0000-4000-a000-000000000000', {
+      instructions: ['Protect Leia', 'Kick butt'],
+      model: 'o1-preview',
+      name: 'R2D2',
+    })
+    .catch(async (err) => {
+      if (err instanceof Julep.APIError) {
+        console.log(err.status); // 400
+        console.log(err.name); // BadRequestError
+        console.log(err.headers); // {server: 'nginx', ...}
+      } else {
+        throw err;
+      }
+    });
 }
 
 main();
@@ -113,7 +130,7 @@ const client = new Julep({
 });
 
 // Or, configure per-request:
-await client.agents.create({
+await client.agents.createOrUpdate('dad00000-0000-4000-a000-000000000000', { instructions: ['Protect Leia', 'Kick butt'], model: 'o1-preview', name: 'R2D2' }, {
   maxRetries: 5,
 });
 ```
@@ -130,7 +147,7 @@ const client = new Julep({
 });
 
 // Override per-request:
-await client.agents.create({
+await client.agents.createOrUpdate('dad00000-0000-4000-a000-000000000000', { instructions: ['Protect Leia', 'Kick butt'], model: 'o1-preview', name: 'R2D2' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -148,7 +165,7 @@ You can use `for await … of` syntax to iterate through items across all pages:
 async function fetchAllAgents(params) {
   const allAgents = [];
   // Automatically fetches more pages as needed.
-  for await (const agent of client.agents.list()) {
+  for await (const agent of client.agents.list({ limit: 100 })) {
     allAgents.push(agent);
   }
   return allAgents;
@@ -158,7 +175,7 @@ async function fetchAllAgents(params) {
 Alternatively, you can make request a single page at a time:
 
 ```ts
-let page = await client.agents.list();
+let page = await client.agents.list({ limit: 100 });
 for (const agent of page.items) {
   console.log(agent);
 }
@@ -182,13 +199,25 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Julep();
 
-const response = await client.agents.create().asResponse();
+const response = await client.agents
+  .createOrUpdate('dad00000-0000-4000-a000-000000000000', {
+    instructions: ['Protect Leia', 'Kick butt'],
+    model: 'o1-preview',
+    name: 'R2D2',
+  })
+  .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: resourceCreated, response: raw } = await client.agents.create().withResponse();
+const { data: agent, response: raw } = await client.agents
+  .createOrUpdate('dad00000-0000-4000-a000-000000000000', {
+    instructions: ['Protect Leia', 'Kick butt'],
+    model: 'o1-preview',
+    name: 'R2D2',
+  })
+  .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(resourceCreated.id);
+console.log(agent.id);
 ```
 
 ### Making custom/undocumented requests
@@ -292,9 +321,13 @@ const client = new Julep({
 });
 
 // Override per-request:
-await client.agents.create({
-  httpAgent: new http.Agent({ keepAlive: false }),
-});
+await client.agents.createOrUpdate(
+  'dad00000-0000-4000-a000-000000000000',
+  { instructions: ['Protect Leia', 'Kick butt'], model: 'o1-preview', name: 'R2D2' },
+  {
+    httpAgent: new http.Agent({ keepAlive: false }),
+  },
+);
 ```
 
 ## Semantic versioning
