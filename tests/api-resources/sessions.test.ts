@@ -20,24 +20,6 @@ describe('resource sessions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve', async () => {
-    const responsePromise = client.sessions.retrieve('session_id');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.sessions.retrieve('session_id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Julep.NotFoundError);
-  });
-
   test('update', async () => {
     const responsePromise = client.sessions.update('session_id', {});
     const rawResponse = await responsePromise.asResponse();
@@ -95,6 +77,69 @@ describe('resource sessions', () => {
     );
   });
 
+  test('chat: only required params', async () => {
+    const responsePromise = client.sessions.chat('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      messages: [{ content: 'string', role: 'user' }],
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('chat: required and optional params', async () => {
+    const response = await client.sessions.chat('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      messages: [{ content: 'string', role: 'user', continue: true, name: 'name' }],
+      agent: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+      frequency_penalty: -2,
+      length_penalty: 0,
+      logit_bias: { foo: -100 },
+      max_tokens: 1,
+      min_p: 0,
+      model: 'model',
+      presence_penalty: -2,
+      recall: true,
+      repetition_penalty: 0,
+      response_format: { type: 'text' },
+      save: true,
+      seed: -1,
+      stop: ['string', 'string', 'string'],
+      stream: true,
+      temperature: 0,
+      tool_choice: 'auto',
+      tools: [
+        {
+          function: { description: 'description', name: {}, parameters: {} },
+          name: 'name',
+          api_call: {},
+          integration: {},
+          system: {},
+          type: 'function',
+        },
+        {
+          function: { description: 'description', name: {}, parameters: {} },
+          name: 'name',
+          api_call: {},
+          integration: {},
+          system: {},
+          type: 'function',
+        },
+        {
+          function: { description: 'description', name: {}, parameters: {} },
+          name: 'name',
+          api_call: {},
+          integration: {},
+          system: {},
+          type: 'function',
+        },
+      ],
+      top_p: 0,
+    });
+  });
+
   test('createOrUpdate', async () => {
     const responsePromise = client.sessions.createOrUpdate('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {});
     const rawResponse = await responsePromise.asResponse();
@@ -104,6 +149,24 @@ describe('resource sessions', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('get', async () => {
+    const responsePromise = client.sessions.get('session_id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('get: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.sessions.get('session_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Julep.NotFoundError,
+    );
   });
 
   test('history', async () => {

@@ -7,17 +7,23 @@ export {
   AgentDeleteResponse,
   AgentCreateOrUpdateResponse,
   AgentPatchResponse,
-  AgentSearchResponse,
   AgentCreateParams,
   AgentUpdateParams,
   AgentListParams,
   AgentCreateOrUpdateParams,
   AgentPatchParams,
-  AgentSearchParams,
   AgentsOffsetPagination,
   Agents,
 } from './agents';
-export { DocCreateResponse, DocDeleteResponse, DocCreateParams, DocListParams, Docs } from './docs';
+export {
+  DocCreateResponse,
+  DocDeleteResponse,
+  DocSearchResponse,
+  DocCreateParams,
+  DocListParams,
+  DocSearchParams,
+  Docs,
+} from './docs';
 export {
   TaskCreateResponse,
   TaskCreateOrUpdateResponse,

@@ -9,9 +9,9 @@ export {
 } from './executions';
 export {
   TransitionListResponse,
-  TransitionListStreamResponse,
+  TransitionStreamResponse,
   TransitionListParams,
-  TransitionListStreamParams,
+  TransitionStreamParams,
   TransitionListResponsesOffsetPagination,
   Transitions,
 } from './transitions';

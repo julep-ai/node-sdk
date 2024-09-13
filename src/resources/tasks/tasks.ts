@@ -12,7 +12,7 @@ export class Tasks extends APIResource {
   /**
    * Get Task Details
    */
-  retrieve(taskId: string, options?: Core.RequestOptions): Core.APIPromise<Task> {
+  get(taskId: string, options?: Core.RequestOptions): Core.APIPromise<Task> {
     return this._client.get(`/tasks/${taskId}`, options);
   }
 }

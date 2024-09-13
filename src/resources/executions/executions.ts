@@ -10,13 +10,6 @@ export class Executions extends APIResource {
   transitions: TransitionsAPI.Transitions = new TransitionsAPI.Transitions(this._client);
 
   /**
-   * Get Execution Details
-   */
-  retrieve(executionId: string, options?: Core.RequestOptions): Core.APIPromise<Execution> {
-    return this._client.get(`/executions/${executionId}`, options);
-  }
-
-  /**
    * Update Execution
    */
   update(
@@ -25,6 +18,13 @@ export class Executions extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<unknown> {
     return this._client.put(`/executions/${executionId}`, { body, ...options });
+  }
+
+  /**
+   * Get Execution Details
+   */
+  get(executionId: string, options?: Core.RequestOptions): Core.APIPromise<Execution> {
+    return this._client.get(`/executions/${executionId}`, options);
   }
 }
 
@@ -76,8 +76,8 @@ export namespace Executions {
   export import ExecutionUpdateParams = ExecutionsAPI.ExecutionUpdateParams;
   export import Transitions = TransitionsAPI.Transitions;
   export import TransitionListResponse = TransitionsAPI.TransitionListResponse;
-  export import TransitionListStreamResponse = TransitionsAPI.TransitionListStreamResponse;
+  export import TransitionStreamResponse = TransitionsAPI.TransitionStreamResponse;
   export import TransitionListResponsesOffsetPagination = TransitionsAPI.TransitionListResponsesOffsetPagination;
   export import TransitionListParams = TransitionsAPI.TransitionListParams;
-  export import TransitionListStreamParams = TransitionsAPI.TransitionListStreamParams;
+  export import TransitionStreamParams = TransitionsAPI.TransitionStreamParams;
 }

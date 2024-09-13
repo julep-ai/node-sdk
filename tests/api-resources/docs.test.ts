@@ -24,8 +24,8 @@ describe('resource docs', () => {
     const response = await client.docs.create({ text: 'string' });
   });
 
-  test('retrieve', async () => {
-    const responsePromise = client.docs.retrieve('doc_id');
+  test('get', async () => {
+    const responsePromise = client.docs.get('doc_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -35,9 +35,9 @@ describe('resource docs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('retrieve: request options instead of params are passed correctly', async () => {
+  test('get: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.docs.retrieve('doc_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.docs.get('doc_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       Julep.NotFoundError,
     );
   });

@@ -22,13 +22,6 @@ export class Agents extends APIResource {
   }
 
   /**
-   * Get Agent Details
-   */
-  retrieve(agentId: string, options?: Core.RequestOptions): Core.APIPromise<Agent> {
-    return this._client.get(`/agents/${agentId}`, options);
-  }
-
-  /**
    * Update Agent
    */
   update(
@@ -76,6 +69,13 @@ export class Agents extends APIResource {
   }
 
   /**
+   * Get Agent Details
+   */
+  get(agentId: string, options?: Core.RequestOptions): Core.APIPromise<Agent> {
+    return this._client.get(`/agents/${agentId}`, options);
+  }
+
+  /**
    * Patch Agent
    */
   patch(
@@ -84,17 +84,6 @@ export class Agents extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<AgentPatchResponse> {
     return this._client.patch(`/agents/${agentId}`, { body, ...options });
-  }
-
-  /**
-   * Search Agent Docs
-   */
-  search(
-    agentId: string,
-    body: AgentSearchParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<AgentSearchResponse> {
-    return this._client.post(`/agents/${agentId}/search`, { body, ...options });
   }
 }
 
@@ -182,40 +171,6 @@ export interface AgentPatchResponse {
   updated_at: string;
 
   jobs?: Array<string>;
-}
-
-export interface AgentSearchResponse {
-  docs: Array<AgentSearchResponse.Doc>;
-
-  time: number;
-}
-
-export namespace AgentSearchResponse {
-  export interface Doc {
-    id: string;
-
-    owner: Doc.Owner;
-
-    snippets: Array<Doc.Snippet>;
-
-    distance?: number | null;
-
-    title?: string | null;
-  }
-
-  export namespace Doc {
-    export interface Owner {
-      id: string;
-
-      role: 'user' | 'agent';
-    }
-
-    export interface Snippet {
-      content: string;
-
-      index: number;
-    }
-  }
 }
 
 export interface AgentCreateParams {
@@ -378,45 +333,6 @@ export namespace AgentPatchParams {
   }
 }
 
-export type AgentSearchParams =
-  | AgentSearchParams.TextOnlyDocSearchRequest
-  | AgentSearchParams.VectorDocSearchRequest
-  | AgentSearchParams.HybridDocSearchRequest;
-
-export namespace AgentSearchParams {
-  export interface TextOnlyDocSearchRequest {
-    text: string;
-
-    lang?: 'en-US';
-
-    limit?: number;
-  }
-
-  export interface VectorDocSearchRequest {
-    vector: Array<number>;
-
-    confidence?: number;
-
-    lang?: 'en-US';
-
-    limit?: number;
-  }
-
-  export interface HybridDocSearchRequest {
-    text: string;
-
-    vector: Array<number>;
-
-    alpha?: number;
-
-    confidence?: number;
-
-    lang?: 'en-US';
-
-    limit?: number;
-  }
-}
-
 export namespace Agents {
   export import Agent = AgentsAPI.Agent;
   export import AgentCreateResponse = AgentsAPI.AgentCreateResponse;
@@ -424,14 +340,12 @@ export namespace Agents {
   export import AgentDeleteResponse = AgentsAPI.AgentDeleteResponse;
   export import AgentCreateOrUpdateResponse = AgentsAPI.AgentCreateOrUpdateResponse;
   export import AgentPatchResponse = AgentsAPI.AgentPatchResponse;
-  export import AgentSearchResponse = AgentsAPI.AgentSearchResponse;
   export import AgentsOffsetPagination = AgentsAPI.AgentsOffsetPagination;
   export import AgentCreateParams = AgentsAPI.AgentCreateParams;
   export import AgentUpdateParams = AgentsAPI.AgentUpdateParams;
   export import AgentListParams = AgentsAPI.AgentListParams;
   export import AgentCreateOrUpdateParams = AgentsAPI.AgentCreateOrUpdateParams;
   export import AgentPatchParams = AgentsAPI.AgentPatchParams;
-  export import AgentSearchParams = AgentsAPI.AgentSearchParams;
   export import Tools = ToolsAPI.Tools;
   export import ToolCreateResponse = ToolsAPI.ToolCreateResponse;
   export import ToolUpdateResponse = ToolsAPI.ToolUpdateResponse;
@@ -446,8 +360,10 @@ export namespace Agents {
   export import Docs = DocsAPI.Docs;
   export import DocCreateResponse = DocsAPI.DocCreateResponse;
   export import DocDeleteResponse = DocsAPI.DocDeleteResponse;
+  export import DocSearchResponse = DocsAPI.DocSearchResponse;
   export import DocCreateParams = DocsAPI.DocCreateParams;
   export import DocListParams = DocsAPI.DocListParams;
+  export import DocSearchParams = DocsAPI.DocSearchParams;
   export import Tasks = TasksAPI.Tasks;
   export import TaskCreateResponse = TasksAPI.TaskCreateResponse;
   export import TaskCreateOrUpdateResponse = TasksAPI.TaskCreateOrUpdateResponse;

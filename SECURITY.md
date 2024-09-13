@@ -20,7 +20,7 @@ or products provided by Julep please follow the respective company's security re
 
 ### Julep Terms and Policies
 
-Please contact team@julep.ai for any questions or concerns regarding security of our services.
+Please contact developers@julep.ai for any questions or concerns regarding security of our services.
 
 ---
 

@@ -7,13 +7,11 @@ export {
   AgentDeleteResponse,
   AgentCreateOrUpdateResponse,
   AgentPatchResponse,
-  AgentSearchResponse,
   AgentCreateParams,
   AgentUpdateParams,
   AgentListParams,
   AgentCreateOrUpdateParams,
   AgentPatchParams,
-  AgentSearchParams,
   AgentsOffsetPagination,
   Agents,
 } from './agents/agents';
@@ -31,16 +29,18 @@ export {
   SessionCreateResponse,
   SessionUpdateResponse,
   SessionDeleteResponse,
+  SessionChatResponse,
   SessionCreateOrUpdateResponse,
   SessionPatchResponse,
   SessionCreateParams,
   SessionUpdateParams,
   SessionListParams,
+  SessionChatParams,
   SessionCreateOrUpdateParams,
   SessionPatchParams,
   SessionsOffsetPagination,
   Sessions,
-} from './sessions/sessions';
+} from './sessions';
 export { JobStatus, Jobs } from './jobs';
 export { Task, TasksOffsetPagination, Tasks } from './tasks/tasks';
 export {
@@ -50,13 +50,11 @@ export {
   UserDeleteResponse,
   UserCreateOrUpdateResponse,
   UserPatchResponse,
-  UserSearchResponse,
   UserCreateParams,
   UserUpdateParams,
   UserListParams,
   UserCreateOrUpdateParams,
   UserPatchParams,
-  UserSearchParams,
   UsersOffsetPagination,
   Users,
 } from './users/users';
