@@ -219,11 +219,6 @@ export namespace Julep {
 
   export import Agents = API.Agents;
   export import Agent = API.Agent;
-  export import AgentCreateResponse = API.AgentCreateResponse;
-  export import AgentUpdateResponse = API.AgentUpdateResponse;
-  export import AgentDeleteResponse = API.AgentDeleteResponse;
-  export import AgentCreateOrUpdateResponse = API.AgentCreateOrUpdateResponse;
-  export import AgentPatchResponse = API.AgentPatchResponse;
   export import AgentsOffsetPagination = API.AgentsOffsetPagination;
   export import AgentCreateParams = API.AgentCreateParams;
   export import AgentUpdateParams = API.AgentUpdateParams;
@@ -236,12 +231,7 @@ export namespace Julep {
   export import ChatResponse = API.ChatResponse;
   export import History = API.History;
   export import Session = API.Session;
-  export import SessionCreateResponse = API.SessionCreateResponse;
-  export import SessionUpdateResponse = API.SessionUpdateResponse;
-  export import SessionDeleteResponse = API.SessionDeleteResponse;
   export import SessionChatResponse = API.SessionChatResponse;
-  export import SessionCreateOrUpdateResponse = API.SessionCreateOrUpdateResponse;
-  export import SessionPatchResponse = API.SessionPatchResponse;
   export import SessionsOffsetPagination = API.SessionsOffsetPagination;
   export import SessionCreateParams = API.SessionCreateParams;
   export import SessionUpdateParams = API.SessionUpdateParams;
@@ -252,11 +242,6 @@ export namespace Julep {
 
   export import Users = API.Users;
   export import User = API.User;
-  export import UserCreateResponse = API.UserCreateResponse;
-  export import UserUpdateResponse = API.UserUpdateResponse;
-  export import UserDeleteResponse = API.UserDeleteResponse;
-  export import UserCreateOrUpdateResponse = API.UserCreateOrUpdateResponse;
-  export import UserPatchResponse = API.UserPatchResponse;
   export import UsersOffsetPagination = API.UsersOffsetPagination;
   export import UserCreateParams = API.UserCreateParams;
   export import UserUpdateParams = API.UserUpdateParams;
@@ -280,6 +265,10 @@ export namespace Julep {
   export import Transition = API.Transition;
   export import ExecutionUpdateResponse = API.ExecutionUpdateResponse;
   export import ExecutionUpdateParams = API.ExecutionUpdateParams;
+
+  export import ResourceCreated = API.ResourceCreated;
+  export import ResourceDeleted = API.ResourceDeleted;
+  export import ResourceUpdated = API.ResourceUpdated;
 }
 
 export default Julep;

@@ -1705,8 +1705,6 @@ export namespace Task {
 export namespace Tasks {
   export import Task = TasksAPI.Task;
   export import Executions = ExecutionsAPI.Executions;
-  export import ExecutionCreateResponse = ExecutionsAPI.ExecutionCreateResponse;
-  export import ExecutionUpdateResponse = ExecutionsAPI.ExecutionUpdateResponse;
   export import ExecutionCreateParams = ExecutionsAPI.ExecutionCreateParams;
   export import ExecutionUpdateParams = ExecutionsAPI.ExecutionUpdateParams;
   export import ExecutionListParams = ExecutionsAPI.ExecutionListParams;

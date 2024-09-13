@@ -4,6 +4,7 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as AgentsAPI from './agents';
+import * as Shared from '../shared';
 import * as DocsAPI from './docs';
 import * as TasksAPI from './tasks';
 import * as ToolsAPI from './tools';
@@ -17,7 +18,7 @@ export class Agents extends APIResource {
   /**
    * Create Agent
    */
-  create(body: AgentCreateParams, options?: Core.RequestOptions): Core.APIPromise<AgentCreateResponse> {
+  create(body: AgentCreateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceCreated> {
     return this._client.post('/agents', { body, ...options });
   }
 
@@ -28,7 +29,7 @@ export class Agents extends APIResource {
     agentId: string,
     body: AgentUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<AgentUpdateResponse> {
+  ): Core.APIPromise<Shared.ResourceUpdated> {
     return this._client.put(`/agents/${agentId}`, { body, ...options });
   }
 
@@ -53,7 +54,7 @@ export class Agents extends APIResource {
   /**
    * Delete Agent
    */
-  delete(agentId: string, options?: Core.RequestOptions): Core.APIPromise<AgentDeleteResponse> {
+  delete(agentId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceDeleted> {
     return this._client.delete(`/agents/${agentId}`, options);
   }
 
@@ -64,7 +65,7 @@ export class Agents extends APIResource {
     agentId: string,
     body: AgentCreateOrUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<AgentCreateOrUpdateResponse> {
+  ): Core.APIPromise<Shared.ResourceCreated> {
     return this._client.post(`/agents/${agentId}`, { body, ...options });
   }
 
@@ -82,7 +83,7 @@ export class Agents extends APIResource {
     agentId: string,
     body: AgentPatchParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<AgentPatchResponse> {
+  ): Core.APIPromise<Shared.ResourceUpdated> {
     return this._client.patch(`/agents/${agentId}`, { body, ...options });
   }
 }
@@ -131,46 +132,6 @@ export namespace Agent {
 
     top_p?: number | null;
   }
-}
-
-export interface AgentCreateResponse {
-  id: string;
-
-  created_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface AgentUpdateResponse {
-  id: string;
-
-  updated_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface AgentDeleteResponse {
-  id: string;
-
-  deleted_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface AgentCreateOrUpdateResponse {
-  id: string;
-
-  created_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface AgentPatchResponse {
-  id: string;
-
-  updated_at: string;
-
-  jobs?: Array<string>;
 }
 
 export interface AgentCreateParams {
@@ -335,11 +296,6 @@ export namespace AgentPatchParams {
 
 export namespace Agents {
   export import Agent = AgentsAPI.Agent;
-  export import AgentCreateResponse = AgentsAPI.AgentCreateResponse;
-  export import AgentUpdateResponse = AgentsAPI.AgentUpdateResponse;
-  export import AgentDeleteResponse = AgentsAPI.AgentDeleteResponse;
-  export import AgentCreateOrUpdateResponse = AgentsAPI.AgentCreateOrUpdateResponse;
-  export import AgentPatchResponse = AgentsAPI.AgentPatchResponse;
   export import AgentsOffsetPagination = AgentsAPI.AgentsOffsetPagination;
   export import AgentCreateParams = AgentsAPI.AgentCreateParams;
   export import AgentUpdateParams = AgentsAPI.AgentUpdateParams;
@@ -347,26 +303,18 @@ export namespace Agents {
   export import AgentCreateOrUpdateParams = AgentsAPI.AgentCreateOrUpdateParams;
   export import AgentPatchParams = AgentsAPI.AgentPatchParams;
   export import Tools = ToolsAPI.Tools;
-  export import ToolCreateResponse = ToolsAPI.ToolCreateResponse;
-  export import ToolUpdateResponse = ToolsAPI.ToolUpdateResponse;
   export import ToolListResponse = ToolsAPI.ToolListResponse;
-  export import ToolDeleteResponse = ToolsAPI.ToolDeleteResponse;
-  export import ToolPatchResponse = ToolsAPI.ToolPatchResponse;
   export import ToolListResponsesOffsetPagination = ToolsAPI.ToolListResponsesOffsetPagination;
   export import ToolCreateParams = ToolsAPI.ToolCreateParams;
   export import ToolUpdateParams = ToolsAPI.ToolUpdateParams;
   export import ToolListParams = ToolsAPI.ToolListParams;
   export import ToolPatchParams = ToolsAPI.ToolPatchParams;
   export import Docs = DocsAPI.Docs;
-  export import DocCreateResponse = DocsAPI.DocCreateResponse;
-  export import DocDeleteResponse = DocsAPI.DocDeleteResponse;
   export import DocSearchResponse = DocsAPI.DocSearchResponse;
   export import DocCreateParams = DocsAPI.DocCreateParams;
   export import DocListParams = DocsAPI.DocListParams;
   export import DocSearchParams = DocsAPI.DocSearchParams;
   export import Tasks = TasksAPI.Tasks;
-  export import TaskCreateResponse = TasksAPI.TaskCreateResponse;
-  export import TaskCreateOrUpdateResponse = TasksAPI.TaskCreateOrUpdateResponse;
   export import TaskCreateParams = TasksAPI.TaskCreateParams;
   export import TaskListParams = TasksAPI.TaskListParams;
   export import TaskCreateOrUpdateParams = TasksAPI.TaskCreateOrUpdateParams;

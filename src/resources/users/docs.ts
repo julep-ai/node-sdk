@@ -6,6 +6,7 @@ import * as Core from '../../core';
 import * as UsersDocsAPI from './docs';
 import * as DocsAPI from '../docs';
 import { DocsOffsetPagination } from '../docs';
+import * as Shared from '../shared';
 import { type OffsetPaginationParams } from '../../pagination';
 
 export class Docs extends APIResource {
@@ -16,7 +17,7 @@ export class Docs extends APIResource {
     userId: string,
     body: DocCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<DocCreateResponse> {
+  ): Core.APIPromise<Shared.ResourceCreated> {
     return this._client.post(`/users/${userId}/docs`, { body, ...options });
   }
 
@@ -43,7 +44,11 @@ export class Docs extends APIResource {
   /**
    * Delete User Doc
    */
-  delete(userId: string, docId: string, options?: Core.RequestOptions): Core.APIPromise<DocDeleteResponse> {
+  delete(
+    userId: string,
+    docId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Shared.ResourceDeleted> {
     return this._client.delete(`/users/${userId}/docs/${docId}`, options);
   }
 
@@ -57,22 +62,6 @@ export class Docs extends APIResource {
   ): Core.APIPromise<DocSearchResponse> {
     return this._client.post(`/users/${userId}/search`, { body, ...options });
   }
-}
-
-export interface DocCreateResponse {
-  id: string;
-
-  created_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface DocDeleteResponse {
-  id: string;
-
-  deleted_at: string;
-
-  jobs?: Array<string>;
 }
 
 export interface DocSearchResponse {
@@ -165,8 +154,6 @@ export namespace DocSearchParams {
 }
 
 export namespace Docs {
-  export import DocCreateResponse = UsersDocsAPI.DocCreateResponse;
-  export import DocDeleteResponse = UsersDocsAPI.DocDeleteResponse;
   export import DocSearchResponse = UsersDocsAPI.DocSearchResponse;
   export import DocCreateParams = UsersDocsAPI.DocCreateParams;
   export import DocListParams = UsersDocsAPI.DocListParams;

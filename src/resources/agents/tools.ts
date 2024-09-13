@@ -4,6 +4,7 @@ import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as ToolsAPI from './tools';
+import * as Shared from '../shared';
 import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
 
 export class Tools extends APIResource {
@@ -14,7 +15,7 @@ export class Tools extends APIResource {
     agentId: string,
     body: ToolCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ToolCreateResponse> {
+  ): Core.APIPromise<Shared.ResourceCreated> {
     return this._client.post(`/agents/${agentId}/tools`, { body, ...options });
   }
 
@@ -26,7 +27,7 @@ export class Tools extends APIResource {
     toolId: string,
     body: ToolUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ToolUpdateResponse> {
+  ): Core.APIPromise<Shared.ResourceUpdated> {
     return this._client.put(`/agents/${agentId}/tools/${toolId}`, { body, ...options });
   }
 
@@ -63,7 +64,7 @@ export class Tools extends APIResource {
     agentId: string,
     toolId: string,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ToolDeleteResponse> {
+  ): Core.APIPromise<Shared.ResourceDeleted> {
     return this._client.delete(`/agents/${agentId}/tools/${toolId}`, options);
   }
 
@@ -75,28 +76,12 @@ export class Tools extends APIResource {
     toolId: string,
     body: ToolPatchParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ToolPatchResponse> {
+  ): Core.APIPromise<Shared.ResourceUpdated> {
     return this._client.patch(`/agents/${agentId}/tools/${toolId}`, { body, ...options });
   }
 }
 
 export class ToolListResponsesOffsetPagination extends OffsetPagination<ToolListResponse> {}
-
-export interface ToolCreateResponse {
-  id: string;
-
-  created_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface ToolUpdateResponse {
-  id: string;
-
-  updated_at: string;
-
-  jobs?: Array<string>;
-}
 
 export interface ToolListResponse {
   id: string;
@@ -132,22 +117,6 @@ export namespace ToolListResponse {
 
     parameters?: unknown | null;
   }
-}
-
-export interface ToolDeleteResponse {
-  id: string;
-
-  deleted_at: string;
-
-  jobs?: Array<string>;
-}
-
-export interface ToolPatchResponse {
-  id: string;
-
-  updated_at: string;
-
-  jobs?: Array<string>;
 }
 
 export interface ToolCreateParams {
@@ -247,11 +216,7 @@ export namespace ToolPatchParams {
 }
 
 export namespace Tools {
-  export import ToolCreateResponse = ToolsAPI.ToolCreateResponse;
-  export import ToolUpdateResponse = ToolsAPI.ToolUpdateResponse;
   export import ToolListResponse = ToolsAPI.ToolListResponse;
-  export import ToolDeleteResponse = ToolsAPI.ToolDeleteResponse;
-  export import ToolPatchResponse = ToolsAPI.ToolPatchResponse;
   export import ToolListResponsesOffsetPagination = ToolsAPI.ToolListResponsesOffsetPagination;
   export import ToolCreateParams = ToolsAPI.ToolCreateParams;
   export import ToolUpdateParams = ToolsAPI.ToolUpdateParams;
