@@ -1,6 +1,6 @@
-import { multipartFormRequestOptions, createForm } from 'julep/core';
-import { Blob } from 'julep/_shims/index';
-import { toFile } from 'julep';
+import { multipartFormRequestOptions, createForm } from '@julep/sdk/core';
+import { Blob } from '@julep/sdk/_shims/index';
+import { toFile } from '@julep/sdk';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

@@ -1,5 +1,5 @@
-import { createResponseHeaders } from 'julep/core';
-import { Headers } from 'julep/_shims/index';
+import { createResponseHeaders } from '@julep/sdk/core';
+import { Headers } from '@julep/sdk/_shims/index';
 
 describe('response parsing', () => {
   // TODO: test unicode characters

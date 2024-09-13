@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Julep from 'julep';
-import { APIUserAbortError } from 'julep';
-import { Headers } from 'julep/core';
+import Julep from '@julep/sdk';
+import { APIUserAbortError } from '@julep/sdk';
+import { Headers } from '@julep/sdk/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 
 describe('instantiate client', () => {

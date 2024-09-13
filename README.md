@@ -1,10 +1,10 @@
 # Julep Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/julep.svg)](https://npmjs.org/package/julep) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/julep)
+[![NPM version](https://img.shields.io/npm/v/@julep/sdk.svg)](https://npmjs.org/package/@julep/sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@julep/sdk)
 
 This library provides convenient access to the Julep REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [www.julep.ai](https://www.julep.ai/). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.julep.ai](https://docs.julep.ai/). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
@@ -15,7 +15,7 @@ npm install git+ssh://git@github.com:stainless-sdks/julep-node.git
 ```
 
 > [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install julep`
+> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install @julep/sdk`
 
 ## Usage
 
@@ -23,7 +23,7 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import Julep from 'julep';
+import Julep from '@julep/sdk';
 
 const client = new Julep({
   apiKey: process.env['JULEP_API_KEY'], // This is the default and can be omitted
@@ -44,7 +44,7 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import Julep from 'julep';
+import Julep from '@julep/sdk';
 
 const client = new Julep({
   apiKey: process.env['JULEP_API_KEY'], // This is the default and can be omitted
@@ -244,11 +244,11 @@ add the following import before your first import `from "Julep"`:
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import 'julep/shims/web';
-import Julep from 'julep';
+import '@julep/sdk/shims/web';
+import Julep from '@julep/sdk';
 ```
 
-To do the inverse, add `import "julep/shims/node"` (which does import polyfills).
+To do the inverse, add `import "@julep/sdk/shims/node"` (which does import polyfills).
 This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/julep-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
@@ -258,7 +258,7 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Julep from 'julep';
+import Julep from '@julep/sdk';
 
 const client = new Julep({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {

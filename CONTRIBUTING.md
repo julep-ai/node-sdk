@@ -55,12 +55,12 @@ cd julep-node
 # With yarn
 yarn link
 cd ../my-package
-yarn link julep
+yarn link @julep/sdk
 
 # With pnpm
 pnpm link --global
 cd ../my-package
-pnpm link -—global julep
+pnpm link -—global @julep/sdk
 ```
 
 ## Running tests

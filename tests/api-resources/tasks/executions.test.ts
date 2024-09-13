@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Julep from 'julep';
+import Julep from '@julep/sdk';
 import { Response } from 'node-fetch';
 
 const client = new Julep({

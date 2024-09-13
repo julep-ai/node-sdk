@@ -42,11 +42,13 @@ export let isFsReadStream: Shims['isFsReadStream'] | undefined = undefined;
 export function setShims(shims: Shims, options: { auto: boolean } = { auto: false }) {
   if (auto) {
     throw new Error(
-      `you must \`import 'julep/shims/${shims.kind}'\` before importing anything else from julep`,
+      `you must \`import '@julep/sdk/shims/${shims.kind}'\` before importing anything else from @julep/sdk`,
     );
   }
   if (kind) {
-    throw new Error(`can't \`import 'julep/shims/${shims.kind}'\` after \`import 'julep/shims/${kind}'\``);
+    throw new Error(
+      `can't \`import '@julep/sdk/shims/${shims.kind}'\` after \`import '@julep/sdk/shims/${kind}'\``,
+    );
   }
   auto = options.auto;
   kind = shims.kind;
