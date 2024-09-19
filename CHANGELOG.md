@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.2.1 (2024-09-19)
+
+Full Changelog: [v1.2.0...v1.2.1](https://github.com/julep-ai/node-sdk/compare/v1.2.0...v1.2.1)
+
+### Bug Fixes
+
+* **types:** remove leftover polyfill usage ([#13](https://github.com/julep-ai/node-sdk/issues/13)) ([cdc0c13](https://github.com/julep-ai/node-sdk/commit/cdc0c1382ecdf9efa8e2f993a815fbf74ece6f65))
+
+
+### Chores
+
+* **internal:** add dev dependency ([#11](https://github.com/julep-ai/node-sdk/issues/11)) ([79b7b2e](https://github.com/julep-ai/node-sdk/commit/79b7b2e8b623d6676a04dfa69543c3480c5adb96))
+
 ## 1.2.0 (2024-09-19)
 
 Full Changelog: [v1.1.0...v1.2.0](https://github.com/julep-ai/node-sdk/compare/v1.1.0...v1.2.0)
