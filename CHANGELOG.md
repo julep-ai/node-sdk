@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0 (2024-09-19)
+
+Full Changelog: [v1.1.0...v1.2.0](https://github.com/julep-ai/node-sdk/compare/v1.1.0...v1.2.0)
+
+### Features
+
+* **api:** add custom api key; change uuid4 to uuid ([#8](https://github.com/julep-ai/node-sdk/issues/8)) ([34d3e62](https://github.com/julep-ai/node-sdk/commit/34d3e621902caade8233ba7d409c2d658d17795e))
+
 ## 1.1.0 (2024-09-13)
 
 Full Changelog: [v1.0.1...v1.1.0](https://github.com/julep-ai/node-sdk/compare/v1.0.1...v1.1.0)
