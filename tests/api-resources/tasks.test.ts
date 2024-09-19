@@ -10,7 +10,7 @@ const client = new Julep({
 
 describe('resource tasks', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.tasks.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+    const responsePromise = client.tasks.create('agent_id', {
       main: [{ evaluate: { foo: 'string' } }],
       name: 'name',
     });
@@ -24,7 +24,7 @@ describe('resource tasks', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.tasks.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+    const response = await client.tasks.create('agent_id', {
       main: [{ evaluate: { foo: 'string' } }],
       name: 'name',
       description: 'description',
@@ -61,7 +61,7 @@ describe('resource tasks', () => {
   });
 
   test('list', async () => {
-    const responsePromise = client.tasks.list('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
+    const responsePromise = client.tasks.list('agent_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -73,16 +73,16 @@ describe('resource tasks', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.tasks.list('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Julep.NotFoundError);
+    await expect(client.tasks.list('agent_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Julep.NotFoundError,
+    );
   });
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.tasks.list(
-        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        'agent_id',
         { direction: 'asc', limit: 0, offset: 0, sort_by: 'created_at' },
         { path: '/_stainless_unknown_path' },
       ),
@@ -90,11 +90,10 @@ describe('resource tasks', () => {
   });
 
   test('createOrUpdate: only required params', async () => {
-    const responsePromise = client.tasks.createOrUpdate(
-      '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-      '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-      { main: [{ evaluate: { foo: 'string' } }], name: 'name' },
-    );
+    const responsePromise = client.tasks.createOrUpdate('agent_id', 'task_id', {
+      main: [{ evaluate: { foo: 'string' } }],
+      name: 'name',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -105,48 +104,44 @@ describe('resource tasks', () => {
   });
 
   test('createOrUpdate: required and optional params', async () => {
-    const response = await client.tasks.createOrUpdate(
-      '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-      '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-      {
-        main: [{ evaluate: { foo: 'string' } }],
-        name: 'name',
-        description: 'description',
-        inherit_tools: true,
-        input_schema: {},
-        metadata: {},
-        tools: [
-          {
-            function: { description: 'description', name: {}, parameters: {} },
-            name: 'name',
-            api_call: {},
-            integration: {},
-            system: {},
-            type: 'function',
-          },
-          {
-            function: { description: 'description', name: {}, parameters: {} },
-            name: 'name',
-            api_call: {},
-            integration: {},
-            system: {},
-            type: 'function',
-          },
-          {
-            function: { description: 'description', name: {}, parameters: {} },
-            name: 'name',
-            api_call: {},
-            integration: {},
-            system: {},
-            type: 'function',
-          },
-        ],
-      },
-    );
+    const response = await client.tasks.createOrUpdate('agent_id', 'task_id', {
+      main: [{ evaluate: { foo: 'string' } }],
+      name: 'name',
+      description: 'description',
+      inherit_tools: true,
+      input_schema: {},
+      metadata: {},
+      tools: [
+        {
+          function: { description: 'description', name: {}, parameters: {} },
+          name: 'name',
+          api_call: {},
+          integration: {},
+          system: {},
+          type: 'function',
+        },
+        {
+          function: { description: 'description', name: {}, parameters: {} },
+          name: 'name',
+          api_call: {},
+          integration: {},
+          system: {},
+          type: 'function',
+        },
+        {
+          function: { description: 'description', name: {}, parameters: {} },
+          name: 'name',
+          api_call: {},
+          integration: {},
+          system: {},
+          type: 'function',
+        },
+      ],
+    });
   });
 
   test('get', async () => {
-    const responsePromise = client.tasks.get('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
+    const responsePromise = client.tasks.get('task_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -158,8 +153,8 @@ describe('resource tasks', () => {
 
   test('get: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.tasks.get('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Julep.NotFoundError);
+    await expect(client.tasks.get('task_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Julep.NotFoundError,
+    );
   });
 });

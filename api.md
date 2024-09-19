@@ -69,7 +69,7 @@ Methods:
 - <code title="get /sessions">client.sessions.<a href="./src/resources/sessions.ts">list</a>({ ...params }) -> SessionsOffsetPagination</code>
 - <code title="delete /sessions/{session_id}">client.sessions.<a href="./src/resources/sessions.ts">delete</a>(sessionId) -> ResourceDeleted</code>
 - <code title="post /sessions/{session_id}/chat">client.sessions.<a href="./src/resources/sessions.ts">chat</a>(sessionId, { ...params }) -> SessionChatResponse</code>
-- <code title="post /sessions/{session_id}">client.sessions.<a href="./src/resources/sessions.ts">createOrUpdate</a>(sessionId, { ...params }) -> ResourceUpdated</code>
+- <code title="post /sessions/{session_id}">client.sessions.<a href="./src/resources/sessions.ts">createOrUpdate</a>(sessionId, { ...params }) -> ResourceCreated</code>
 - <code title="get /sessions/{session_id}">client.sessions.<a href="./src/resources/sessions.ts">get</a>(sessionId) -> Session</code>
 - <code title="get /sessions/{session_id}/history">client.sessions.<a href="./src/resources/sessions.ts">history</a>(sessionId) -> History</code>
 - <code title="patch /sessions/{session_id}">client.sessions.<a href="./src/resources/sessions.ts">patch</a>(sessionId, { ...params }) -> ResourceUpdated</code>

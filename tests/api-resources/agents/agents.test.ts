@@ -21,7 +21,7 @@ describe('resource agents', () => {
   });
 
   test('update', async () => {
-    const responsePromise = client.agents.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {});
+    const responsePromise = client.agents.update('agent_id', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -60,7 +60,7 @@ describe('resource agents', () => {
   });
 
   test('delete', async () => {
-    const responsePromise = client.agents.delete('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
+    const responsePromise = client.agents.delete('agent_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -72,9 +72,9 @@ describe('resource agents', () => {
 
   test('delete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.agents.delete('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Julep.NotFoundError);
+    await expect(client.agents.delete('agent_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Julep.NotFoundError,
+    );
   });
 
   test('createOrUpdate', async () => {
@@ -89,7 +89,7 @@ describe('resource agents', () => {
   });
 
   test('get', async () => {
-    const responsePromise = client.agents.get('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
+    const responsePromise = client.agents.get('agent_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -101,13 +101,13 @@ describe('resource agents', () => {
 
   test('get: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.agents.get('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Julep.NotFoundError);
+    await expect(client.agents.get('agent_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Julep.NotFoundError,
+    );
   });
 
   test('patch', async () => {
-    const responsePromise = client.agents.patch('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {});
+    const responsePromise = client.agents.patch('agent_id', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
