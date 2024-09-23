@@ -57,10 +57,18 @@ export class Sessions extends APIResource {
    */
   chat(
     sessionId: string,
-    body: SessionChatParams,
+    params: SessionChatParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<SessionChatResponse> {
-    return this._client.post(`/sessions/${sessionId}/chat`, { body, ...options });
+    const { 'X-Custom-Api-Key': xCustomAPIKey, ...body } = params;
+    return this._client.post(`/sessions/${sessionId}/chat`, {
+      body,
+      ...options,
+      headers: {
+        ...(xCustomAPIKey != null ? { 'X-Custom-Api-Key': xCustomAPIKey } : undefined),
+        ...options?.headers,
+      },
+    });
   }
 
   /**
@@ -70,7 +78,7 @@ export class Sessions extends APIResource {
     sessionId: string,
     body: SessionCreateOrUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceCreated> {
+  ): Core.APIPromise<Shared.ResourceUpdated> {
     return this._client.post(`/sessions/${sessionId}`, { body, ...options });
   }
 
@@ -1005,48 +1013,113 @@ export interface SessionListParams extends OffsetPaginationParams {
 }
 
 export interface SessionChatParams {
+  /**
+   * Body param:
+   */
   messages: Array<Message>;
 
+  /**
+   * Body param:
+   */
   agent?: string | null;
 
+  /**
+   * Body param:
+   */
   frequency_penalty?: number | null;
 
+  /**
+   * Body param:
+   */
   length_penalty?: number | null;
 
+  /**
+   * Body param:
+   */
   logit_bias?: Record<string, number> | null;
 
+  /**
+   * Body param:
+   */
   max_tokens?: number | null;
 
+  /**
+   * Body param:
+   */
   min_p?: number | null;
 
+  /**
+   * Body param:
+   */
   model?: string | null;
 
+  /**
+   * Body param:
+   */
   presence_penalty?: number | null;
 
+  /**
+   * Body param:
+   */
   recall?: boolean;
 
+  /**
+   * Body param:
+   */
   repetition_penalty?: number | null;
 
+  /**
+   * Body param:
+   */
   response_format?:
     | SessionChatParams.SimpleCompletionResponseFormat
     | SessionChatParams.SchemaCompletionResponseFormat
     | null;
 
+  /**
+   * Body param:
+   */
   save?: boolean;
 
+  /**
+   * Body param:
+   */
   seed?: number | null;
 
+  /**
+   * Body param:
+   */
   stop?: Array<string>;
 
+  /**
+   * Body param:
+   */
   stream?: boolean;
 
+  /**
+   * Body param:
+   */
   temperature?: number | null;
 
+  /**
+   * Body param:
+   */
   tool_choice?: 'auto' | 'none' | SessionChatParams.NamedToolChoice | null;
 
+  /**
+   * Body param:
+   */
   tools?: Array<SessionChatParams.Tool>;
 
+  /**
+   * Body param:
+   */
   top_p?: number | null;
+
+  /**
+   * Header param:
+   */
+  'X-Custom-Api-Key'?: string;
 }
 
 export namespace SessionChatParams {
