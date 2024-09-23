@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.3.0 (2024-09-23)
+
+Full Changelog: [v1.2.1...v1.3.0](https://github.com/julep-ai/node-sdk/compare/v1.2.1...v1.3.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#18](https://github.com/julep-ai/node-sdk/issues/18)) ([cd15af0](https://github.com/julep-ai/node-sdk/commit/cd15af02f95bd82f296b2f050d9fc4659aaa0940))
+* **client:** send retry count header ([#17](https://github.com/julep-ai/node-sdk/issues/17)) ([f908edb](https://github.com/julep-ai/node-sdk/commit/f908edb94c57723e77497aa7a6381f26e5b785c5))
+
+
+### Chores
+
+* **internal:** codegen related update ([#15](https://github.com/julep-ai/node-sdk/issues/15)) ([5c5e049](https://github.com/julep-ai/node-sdk/commit/5c5e04930da23a0ff4f66fab395c6c1e3e42832c))
+
 ## 1.2.1 (2024-09-19)
 
 Full Changelog: [v1.2.0...v1.2.1](https://github.com/julep-ai/node-sdk/compare/v1.2.0...v1.2.1)
