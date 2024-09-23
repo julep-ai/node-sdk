@@ -21,7 +21,7 @@ describe('resource sessions', () => {
   });
 
   test('update', async () => {
-    const responsePromise = client.sessions.update('session_id', {});
+    const responsePromise = client.sessions.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -60,7 +60,7 @@ describe('resource sessions', () => {
   });
 
   test('delete', async () => {
-    const responsePromise = client.sessions.delete('session_id');
+    const responsePromise = client.sessions.delete('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -72,9 +72,9 @@ describe('resource sessions', () => {
 
   test('delete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.sessions.delete('session_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Julep.NotFoundError,
-    );
+    await expect(
+      client.sessions.delete('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Julep.NotFoundError);
   });
 
   test('chat: only required params', async () => {
@@ -137,6 +137,7 @@ describe('resource sessions', () => {
         },
       ],
       top_p: 0,
+      'X-Custom-Api-Key': 'X-Custom-Api-Key',
     });
   });
 
@@ -152,7 +153,7 @@ describe('resource sessions', () => {
   });
 
   test('get', async () => {
-    const responsePromise = client.sessions.get('session_id');
+    const responsePromise = client.sessions.get('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -164,13 +165,13 @@ describe('resource sessions', () => {
 
   test('get: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.sessions.get('session_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Julep.NotFoundError,
-    );
+    await expect(
+      client.sessions.get('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Julep.NotFoundError);
   });
 
   test('history', async () => {
-    const responsePromise = client.sessions.history('session_id');
+    const responsePromise = client.sessions.history('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -182,13 +183,13 @@ describe('resource sessions', () => {
 
   test('history: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.sessions.history('session_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Julep.NotFoundError,
-    );
+    await expect(
+      client.sessions.history('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Julep.NotFoundError);
   });
 
   test('patch', async () => {
-    const responsePromise = client.sessions.patch('session_id', {});
+    const responsePromise = client.sessions.patch('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
