@@ -10,7 +10,10 @@ const client = new Julep({
 
 describe('resource docs', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.agents.docs.create('agent_id', { content: 'string', title: 'title' });
+    const responsePromise = client.agents.docs.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      content: 'string',
+      title: 'title',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -21,7 +24,7 @@ describe('resource docs', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.agents.docs.create('agent_id', {
+    const response = await client.agents.docs.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       content: 'string',
       title: 'title',
       metadata: {},
@@ -29,7 +32,7 @@ describe('resource docs', () => {
   });
 
   test('list', async () => {
-    const responsePromise = client.agents.docs.list('agent_id');
+    const responsePromise = client.agents.docs.list('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -41,16 +44,16 @@ describe('resource docs', () => {
 
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.agents.docs.list('agent_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Julep.NotFoundError,
-    );
+    await expect(
+      client.agents.docs.list('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Julep.NotFoundError);
   });
 
   test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.agents.docs.list(
-        'agent_id',
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         { direction: 'asc', limit: 0, metadata_filter: 'metadata_filter', offset: 0, sort_by: 'created_at' },
         { path: '/_stainless_unknown_path' },
       ),
@@ -58,7 +61,10 @@ describe('resource docs', () => {
   });
 
   test('delete', async () => {
-    const responsePromise = client.agents.docs.delete('agent_id', 'doc_id');
+    const responsePromise = client.agents.docs.delete(
+      '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+      '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+    );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -71,12 +77,18 @@ describe('resource docs', () => {
   test('delete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.agents.docs.delete('agent_id', 'doc_id', { path: '/_stainless_unknown_path' }),
+      client.agents.docs.delete(
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+        { path: '/_stainless_unknown_path' },
+      ),
     ).rejects.toThrow(Julep.NotFoundError);
   });
 
   test('search: only required params', async () => {
-    const responsePromise = client.agents.docs.search('agent_id', { text: 'text' });
+    const responsePromise = client.agents.docs.search('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      text: 'text',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -87,6 +99,10 @@ describe('resource docs', () => {
   });
 
   test('search: required and optional params', async () => {
-    const response = await client.agents.docs.search('agent_id', { text: 'text', lang: 'en-US', limit: 1 });
+    const response = await client.agents.docs.search('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      text: 'text',
+      lang: 'en-US',
+      limit: 1,
+    });
   });
 });

@@ -10,7 +10,7 @@ const client = new Julep({
 
 describe('resource transitions', () => {
   test('list', async () => {
-    const responsePromise = client.executions.transitions.list('execution_id');
+    const responsePromise = client.executions.transitions.list('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,7 +23,9 @@ describe('resource transitions', () => {
   test('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.executions.transitions.list('execution_id', { path: '/_stainless_unknown_path' }),
+      client.executions.transitions.list('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Julep.NotFoundError);
   });
 
@@ -31,7 +33,7 @@ describe('resource transitions', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.executions.transitions.list(
-        'execution_id',
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         { direction: 'asc', limit: 0, offset: 0, sort_by: 'created_at' },
         { path: '/_stainless_unknown_path' },
       ),
@@ -39,7 +41,7 @@ describe('resource transitions', () => {
   });
 
   test('stream', async () => {
-    const responsePromise = client.executions.transitions.stream('execution_id');
+    const responsePromise = client.executions.transitions.stream('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -52,7 +54,9 @@ describe('resource transitions', () => {
   test('stream: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.executions.transitions.stream('execution_id', { path: '/_stainless_unknown_path' }),
+      client.executions.transitions.stream('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+        path: '/_stainless_unknown_path',
+      }),
     ).rejects.toThrow(Julep.NotFoundError);
   });
 
@@ -60,7 +64,7 @@ describe('resource transitions', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.executions.transitions.stream(
-        'execution_id',
+        '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
         { next_page_token: 'next_page_token' },
         { path: '/_stainless_unknown_path' },
       ),
