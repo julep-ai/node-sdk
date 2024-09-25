@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.1 (2024-09-25)
+
+Full Changelog: [v1.3.0...v1.3.1](https://github.com/julep-ai/node-sdk/compare/v1.3.0...v1.3.1)
+
+### Chores
+
+* **internal:** codegen related update ([#20](https://github.com/julep-ai/node-sdk/issues/20)) ([28ffe4f](https://github.com/julep-ai/node-sdk/commit/28ffe4f56c47e3489fbb394a153084cc69bc0c6c))
+
 ## 1.3.0 (2024-09-23)
 
 Full Changelog: [v1.2.1...v1.3.0](https://github.com/julep-ai/node-sdk/compare/v1.2.1...v1.3.0)
