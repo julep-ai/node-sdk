@@ -225,14 +225,11 @@ export namespace ChatInput {
     export interface Integration {
       provider:
         | 'dummy'
-        | 'dall-e'
-        | 'duckduckgo'
-        | 'hackernews'
+        | 'dalle_image_generator'
+        | 'duckduckgo_search'
+        | 'hacker_news'
         | 'weather'
-        | 'wikipedia'
-        | 'twitter'
-        | 'webpage'
-        | 'requests';
+        | 'wikipedia';
 
       arguments?: unknown | null;
 
@@ -662,14 +659,11 @@ export namespace Entry {
     export interface Integration {
       provider:
         | 'dummy'
-        | 'dall-e'
-        | 'duckduckgo'
-        | 'hackernews'
+        | 'dalle_image_generator'
+        | 'duckduckgo_search'
+        | 'hacker_news'
         | 'weather'
-        | 'wikipedia'
-        | 'twitter'
-        | 'webpage'
-        | 'requests';
+        | 'wikipedia';
 
       arguments?: unknown | null;
 
@@ -786,14 +780,11 @@ export namespace Entry {
     export interface Integration {
       provider:
         | 'dummy'
-        | 'dall-e'
-        | 'duckduckgo'
-        | 'hackernews'
+        | 'dalle_image_generator'
+        | 'duckduckgo_search'
+        | 'hacker_news'
         | 'weather'
-        | 'wikipedia'
-        | 'twitter'
-        | 'webpage'
-        | 'requests';
+        | 'wikipedia';
 
       arguments?: unknown | null;
 
@@ -1277,14 +1268,11 @@ export namespace SessionChatParams {
     export interface Integration {
       provider:
         | 'dummy'
-        | 'dall-e'
-        | 'duckduckgo'
-        | 'hackernews'
+        | 'dalle_image_generator'
+        | 'duckduckgo_search'
+        | 'hacker_news'
         | 'weather'
-        | 'wikipedia'
-        | 'twitter'
-        | 'webpage'
-        | 'requests';
+        | 'wikipedia';
 
       arguments?: unknown | null;
 
