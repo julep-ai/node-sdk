@@ -128,14 +128,11 @@ export namespace ToolListResponse {
   export interface Integration {
     provider:
       | 'dummy'
-      | 'dall-e'
-      | 'duckduckgo'
-      | 'hackernews'
+      | 'dalle_image_generator'
+      | 'duckduckgo_search'
+      | 'hacker_news'
       | 'weather'
-      | 'wikipedia'
-      | 'twitter'
-      | 'webpage'
-      | 'requests';
+      | 'wikipedia';
 
     arguments?: unknown | null;
 
@@ -197,14 +194,11 @@ export namespace ToolCreateParams {
   export interface Integration {
     provider:
       | 'dummy'
-      | 'dall-e'
-      | 'duckduckgo'
-      | 'hackernews'
+      | 'dalle_image_generator'
+      | 'duckduckgo_search'
+      | 'hacker_news'
       | 'weather'
-      | 'wikipedia'
-      | 'twitter'
-      | 'webpage'
-      | 'requests';
+      | 'wikipedia';
 
     arguments?: unknown | null;
 
@@ -266,14 +260,11 @@ export namespace ToolUpdateParams {
   export interface Integration {
     provider:
       | 'dummy'
-      | 'dall-e'
-      | 'duckduckgo'
-      | 'hackernews'
+      | 'dalle_image_generator'
+      | 'duckduckgo_search'
+      | 'hacker_news'
       | 'weather'
-      | 'wikipedia'
-      | 'twitter'
-      | 'webpage'
-      | 'requests';
+      | 'wikipedia';
 
     arguments?: unknown | null;
 
@@ -347,14 +338,11 @@ export namespace ToolPatchParams {
 
     provider?:
       | 'dummy'
-      | 'dall-e'
-      | 'duckduckgo'
-      | 'hackernews'
+      | 'dalle_image_generator'
+      | 'duckduckgo_search'
+      | 'hacker_news'
       | 'weather'
       | 'wikipedia'
-      | 'twitter'
-      | 'webpage'
-      | 'requests'
       | null;
 
     setup?: unknown | null;
