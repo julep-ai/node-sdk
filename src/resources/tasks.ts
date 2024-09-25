@@ -122,9 +122,17 @@ export namespace Task {
   export interface PromptStepOutput {
     prompt: Array<PromptStepOutput.UnionMember0> | string;
 
+    forward_tool_results?: boolean | null;
+
     kind_?: 'prompt';
 
     settings?: SessionsAPI.ChatSettings | null;
+
+    tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
+
+    tools?: 'all' | Array<PromptStepOutput.ToolRef | PromptStepOutput.CreateToolRequest>;
+
+    unwrap?: boolean;
   }
 
   export namespace PromptStepOutput {
@@ -163,6 +171,113 @@ export namespace Task {
 
           detail?: 'low' | 'high' | 'auto';
         }
+      }
+    }
+
+    export interface NamedToolChoice {
+      type: 'function' | 'integration' | 'system' | 'api_call';
+
+      function?: NamedToolChoice.Function | null;
+    }
+
+    export namespace NamedToolChoice {
+      export interface Function {
+        name: string;
+      }
+    }
+
+    /**
+     * Reference to a tool
+     */
+    export interface ToolRef {
+      /**
+       * Reference to a tool by id
+       */
+      ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+    }
+
+    export namespace ToolRef {
+      /**
+       * Reference to a tool by id
+       */
+      export interface ToolRefByID {
+        id?: string | null;
+      }
+
+      /**
+       * Reference to a tool by name
+       */
+      export interface ToolRefByName {
+        name?: string | null;
+      }
+    }
+
+    export interface CreateToolRequest {
+      name: string;
+
+      /**
+       * Function definition
+       */
+      function?: CreateToolRequest.Function | null;
+
+      /**
+       * Integration definition
+       */
+      integration?: CreateToolRequest.Integration | null;
+
+      /**
+       * System definition
+       */
+      system?: CreateToolRequest.System | null;
+
+      type?: 'function' | 'integration' | 'system' | 'api_call';
+    }
+
+    export namespace CreateToolRequest {
+      /**
+       * Function definition
+       */
+      export interface Function {
+        description?: string | null;
+
+        name?: unknown | null;
+
+        parameters?: unknown | null;
+      }
+
+      /**
+       * Integration definition
+       */
+      export interface Integration {
+        provider:
+          | 'dummy'
+          | 'dall-e'
+          | 'duckduckgo'
+          | 'hackernews'
+          | 'weather'
+          | 'wikipedia'
+          | 'twitter'
+          | 'webpage'
+          | 'requests';
+
+        arguments?: unknown | null;
+
+        description?: string | null;
+
+        method?: string | null;
+
+        setup?: unknown | null;
+      }
+
+      /**
+       * System definition
+       */
+      export interface System {
+        call: string;
+
+        arguments?: unknown | null;
+
+        description?: string | null;
       }
     }
   }
@@ -345,9 +460,17 @@ export namespace Task {
     export interface PromptStepOutput {
       prompt: Array<PromptStepOutput.UnionMember0> | string;
 
+      forward_tool_results?: boolean | null;
+
       kind_?: 'prompt';
 
       settings?: SessionsAPI.ChatSettings | null;
+
+      tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
+
+      tools?: 'all' | Array<PromptStepOutput.ToolRef | PromptStepOutput.CreateToolRequest>;
+
+      unwrap?: boolean;
     }
 
     export namespace PromptStepOutput {
@@ -386,6 +509,113 @@ export namespace Task {
 
             detail?: 'low' | 'high' | 'auto';
           }
+        }
+      }
+
+      export interface NamedToolChoice {
+        type: 'function' | 'integration' | 'system' | 'api_call';
+
+        function?: NamedToolChoice.Function | null;
+      }
+
+      export namespace NamedToolChoice {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      /**
+       * Reference to a tool
+       */
+      export interface ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+      }
+
+      export namespace ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        export interface ToolRefByID {
+          id?: string | null;
+        }
+
+        /**
+         * Reference to a tool by name
+         */
+        export interface ToolRefByName {
+          name?: string | null;
+        }
+      }
+
+      export interface CreateToolRequest {
+        name: string;
+
+        /**
+         * Function definition
+         */
+        function?: CreateToolRequest.Function | null;
+
+        /**
+         * Integration definition
+         */
+        integration?: CreateToolRequest.Integration | null;
+
+        /**
+         * System definition
+         */
+        system?: CreateToolRequest.System | null;
+
+        type?: 'function' | 'integration' | 'system' | 'api_call';
+      }
+
+      export namespace CreateToolRequest {
+        /**
+         * Function definition
+         */
+        export interface Function {
+          description?: string | null;
+
+          name?: unknown | null;
+
+          parameters?: unknown | null;
+        }
+
+        /**
+         * Integration definition
+         */
+        export interface Integration {
+          provider:
+            | 'dummy'
+            | 'dall-e'
+            | 'duckduckgo'
+            | 'hackernews'
+            | 'weather'
+            | 'wikipedia'
+            | 'twitter'
+            | 'webpage'
+            | 'requests';
+
+          arguments?: unknown | null;
+
+          description?: string | null;
+
+          method?: string | null;
+
+          setup?: unknown | null;
+        }
+
+        /**
+         * System definition
+         */
+        export interface System {
+          call: string;
+
+          arguments?: unknown | null;
+
+          description?: string | null;
         }
       }
     }
@@ -530,9 +760,17 @@ export namespace Task {
     export interface PromptStepOutput {
       prompt: Array<PromptStepOutput.UnionMember0> | string;
 
+      forward_tool_results?: boolean | null;
+
       kind_?: 'prompt';
 
       settings?: SessionsAPI.ChatSettings | null;
+
+      tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
+
+      tools?: 'all' | Array<PromptStepOutput.ToolRef | PromptStepOutput.CreateToolRequest>;
+
+      unwrap?: boolean;
     }
 
     export namespace PromptStepOutput {
@@ -571,6 +809,113 @@ export namespace Task {
 
             detail?: 'low' | 'high' | 'auto';
           }
+        }
+      }
+
+      export interface NamedToolChoice {
+        type: 'function' | 'integration' | 'system' | 'api_call';
+
+        function?: NamedToolChoice.Function | null;
+      }
+
+      export namespace NamedToolChoice {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      /**
+       * Reference to a tool
+       */
+      export interface ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+      }
+
+      export namespace ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        export interface ToolRefByID {
+          id?: string | null;
+        }
+
+        /**
+         * Reference to a tool by name
+         */
+        export interface ToolRefByName {
+          name?: string | null;
+        }
+      }
+
+      export interface CreateToolRequest {
+        name: string;
+
+        /**
+         * Function definition
+         */
+        function?: CreateToolRequest.Function | null;
+
+        /**
+         * Integration definition
+         */
+        integration?: CreateToolRequest.Integration | null;
+
+        /**
+         * System definition
+         */
+        system?: CreateToolRequest.System | null;
+
+        type?: 'function' | 'integration' | 'system' | 'api_call';
+      }
+
+      export namespace CreateToolRequest {
+        /**
+         * Function definition
+         */
+        export interface Function {
+          description?: string | null;
+
+          name?: unknown | null;
+
+          parameters?: unknown | null;
+        }
+
+        /**
+         * Integration definition
+         */
+        export interface Integration {
+          provider:
+            | 'dummy'
+            | 'dall-e'
+            | 'duckduckgo'
+            | 'hackernews'
+            | 'weather'
+            | 'wikipedia'
+            | 'twitter'
+            | 'webpage'
+            | 'requests';
+
+          arguments?: unknown | null;
+
+          description?: string | null;
+
+          method?: string | null;
+
+          setup?: unknown | null;
+        }
+
+        /**
+         * System definition
+         */
+        export interface System {
+          call: string;
+
+          arguments?: unknown | null;
+
+          description?: string | null;
         }
       }
     }
@@ -743,9 +1088,17 @@ export namespace Task {
       export interface PromptStepOutput {
         prompt: Array<PromptStepOutput.UnionMember0> | string;
 
+        forward_tool_results?: boolean | null;
+
         kind_?: 'prompt';
 
         settings?: SessionsAPI.ChatSettings | null;
+
+        tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
+
+        tools?: 'all' | Array<PromptStepOutput.ToolRef | PromptStepOutput.CreateToolRequest>;
+
+        unwrap?: boolean;
       }
 
       export namespace PromptStepOutput {
@@ -784,6 +1137,113 @@ export namespace Task {
 
               detail?: 'low' | 'high' | 'auto';
             }
+          }
+        }
+
+        export interface NamedToolChoice {
+          type: 'function' | 'integration' | 'system' | 'api_call';
+
+          function?: NamedToolChoice.Function | null;
+        }
+
+        export namespace NamedToolChoice {
+          export interface Function {
+            name: string;
+          }
+        }
+
+        /**
+         * Reference to a tool
+         */
+        export interface ToolRef {
+          /**
+           * Reference to a tool by id
+           */
+          ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+        }
+
+        export namespace ToolRef {
+          /**
+           * Reference to a tool by id
+           */
+          export interface ToolRefByID {
+            id?: string | null;
+          }
+
+          /**
+           * Reference to a tool by name
+           */
+          export interface ToolRefByName {
+            name?: string | null;
+          }
+        }
+
+        export interface CreateToolRequest {
+          name: string;
+
+          /**
+           * Function definition
+           */
+          function?: CreateToolRequest.Function | null;
+
+          /**
+           * Integration definition
+           */
+          integration?: CreateToolRequest.Integration | null;
+
+          /**
+           * System definition
+           */
+          system?: CreateToolRequest.System | null;
+
+          type?: 'function' | 'integration' | 'system' | 'api_call';
+        }
+
+        export namespace CreateToolRequest {
+          /**
+           * Function definition
+           */
+          export interface Function {
+            description?: string | null;
+
+            name?: unknown | null;
+
+            parameters?: unknown | null;
+          }
+
+          /**
+           * Integration definition
+           */
+          export interface Integration {
+            provider:
+              | 'dummy'
+              | 'dall-e'
+              | 'duckduckgo'
+              | 'hackernews'
+              | 'weather'
+              | 'wikipedia'
+              | 'twitter'
+              | 'webpage'
+              | 'requests';
+
+            arguments?: unknown | null;
+
+            description?: string | null;
+
+            method?: string | null;
+
+            setup?: unknown | null;
+          }
+
+          /**
+           * System definition
+           */
+          export interface System {
+            call: string;
+
+            arguments?: unknown | null;
+
+            description?: string | null;
           }
         }
       }
@@ -952,9 +1412,17 @@ export namespace Task {
       export interface PromptStepOutput {
         prompt: Array<PromptStepOutput.UnionMember0> | string;
 
+        forward_tool_results?: boolean | null;
+
         kind_?: 'prompt';
 
         settings?: SessionsAPI.ChatSettings | null;
+
+        tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
+
+        tools?: 'all' | Array<PromptStepOutput.ToolRef | PromptStepOutput.CreateToolRequest>;
+
+        unwrap?: boolean;
       }
 
       export namespace PromptStepOutput {
@@ -993,6 +1461,113 @@ export namespace Task {
 
               detail?: 'low' | 'high' | 'auto';
             }
+          }
+        }
+
+        export interface NamedToolChoice {
+          type: 'function' | 'integration' | 'system' | 'api_call';
+
+          function?: NamedToolChoice.Function | null;
+        }
+
+        export namespace NamedToolChoice {
+          export interface Function {
+            name: string;
+          }
+        }
+
+        /**
+         * Reference to a tool
+         */
+        export interface ToolRef {
+          /**
+           * Reference to a tool by id
+           */
+          ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+        }
+
+        export namespace ToolRef {
+          /**
+           * Reference to a tool by id
+           */
+          export interface ToolRefByID {
+            id?: string | null;
+          }
+
+          /**
+           * Reference to a tool by name
+           */
+          export interface ToolRefByName {
+            name?: string | null;
+          }
+        }
+
+        export interface CreateToolRequest {
+          name: string;
+
+          /**
+           * Function definition
+           */
+          function?: CreateToolRequest.Function | null;
+
+          /**
+           * Integration definition
+           */
+          integration?: CreateToolRequest.Integration | null;
+
+          /**
+           * System definition
+           */
+          system?: CreateToolRequest.System | null;
+
+          type?: 'function' | 'integration' | 'system' | 'api_call';
+        }
+
+        export namespace CreateToolRequest {
+          /**
+           * Function definition
+           */
+          export interface Function {
+            description?: string | null;
+
+            name?: unknown | null;
+
+            parameters?: unknown | null;
+          }
+
+          /**
+           * Integration definition
+           */
+          export interface Integration {
+            provider:
+              | 'dummy'
+              | 'dall-e'
+              | 'duckduckgo'
+              | 'hackernews'
+              | 'weather'
+              | 'wikipedia'
+              | 'twitter'
+              | 'webpage'
+              | 'requests';
+
+            arguments?: unknown | null;
+
+            description?: string | null;
+
+            method?: string | null;
+
+            setup?: unknown | null;
+          }
+
+          /**
+           * System definition
+           */
+          export interface System {
+            call: string;
+
+            arguments?: unknown | null;
+
+            description?: string | null;
           }
         }
       }
@@ -1105,9 +1680,17 @@ export namespace Task {
     export interface PromptStepOutput {
       prompt: Array<PromptStepOutput.UnionMember0> | string;
 
+      forward_tool_results?: boolean | null;
+
       kind_?: 'prompt';
 
       settings?: SessionsAPI.ChatSettings | null;
+
+      tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
+
+      tools?: 'all' | Array<PromptStepOutput.ToolRef | PromptStepOutput.CreateToolRequest>;
+
+      unwrap?: boolean;
     }
 
     export namespace PromptStepOutput {
@@ -1146,6 +1729,113 @@ export namespace Task {
 
             detail?: 'low' | 'high' | 'auto';
           }
+        }
+      }
+
+      export interface NamedToolChoice {
+        type: 'function' | 'integration' | 'system' | 'api_call';
+
+        function?: NamedToolChoice.Function | null;
+      }
+
+      export namespace NamedToolChoice {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      /**
+       * Reference to a tool
+       */
+      export interface ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+      }
+
+      export namespace ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        export interface ToolRefByID {
+          id?: string | null;
+        }
+
+        /**
+         * Reference to a tool by name
+         */
+        export interface ToolRefByName {
+          name?: string | null;
+        }
+      }
+
+      export interface CreateToolRequest {
+        name: string;
+
+        /**
+         * Function definition
+         */
+        function?: CreateToolRequest.Function | null;
+
+        /**
+         * Integration definition
+         */
+        integration?: CreateToolRequest.Integration | null;
+
+        /**
+         * System definition
+         */
+        system?: CreateToolRequest.System | null;
+
+        type?: 'function' | 'integration' | 'system' | 'api_call';
+      }
+
+      export namespace CreateToolRequest {
+        /**
+         * Function definition
+         */
+        export interface Function {
+          description?: string | null;
+
+          name?: unknown | null;
+
+          parameters?: unknown | null;
+        }
+
+        /**
+         * Integration definition
+         */
+        export interface Integration {
+          provider:
+            | 'dummy'
+            | 'dall-e'
+            | 'duckduckgo'
+            | 'hackernews'
+            | 'weather'
+            | 'wikipedia'
+            | 'twitter'
+            | 'webpage'
+            | 'requests';
+
+          arguments?: unknown | null;
+
+          description?: string | null;
+
+          method?: string | null;
+
+          setup?: unknown | null;
+        }
+
+        /**
+         * System definition
+         */
+        export interface System {
+          call: string;
+
+          arguments?: unknown | null;
+
+          description?: string | null;
         }
       }
     }
@@ -1264,9 +1954,17 @@ export namespace Task {
     export interface PromptStepOutput {
       prompt: Array<PromptStepOutput.UnionMember0> | string;
 
+      forward_tool_results?: boolean | null;
+
       kind_?: 'prompt';
 
       settings?: SessionsAPI.ChatSettings | null;
+
+      tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
+
+      tools?: 'all' | Array<PromptStepOutput.ToolRef | PromptStepOutput.CreateToolRequest>;
+
+      unwrap?: boolean;
     }
 
     export namespace PromptStepOutput {
@@ -1305,6 +2003,113 @@ export namespace Task {
 
             detail?: 'low' | 'high' | 'auto';
           }
+        }
+      }
+
+      export interface NamedToolChoice {
+        type: 'function' | 'integration' | 'system' | 'api_call';
+
+        function?: NamedToolChoice.Function | null;
+      }
+
+      export namespace NamedToolChoice {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      /**
+       * Reference to a tool
+       */
+      export interface ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+      }
+
+      export namespace ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        export interface ToolRefByID {
+          id?: string | null;
+        }
+
+        /**
+         * Reference to a tool by name
+         */
+        export interface ToolRefByName {
+          name?: string | null;
+        }
+      }
+
+      export interface CreateToolRequest {
+        name: string;
+
+        /**
+         * Function definition
+         */
+        function?: CreateToolRequest.Function | null;
+
+        /**
+         * Integration definition
+         */
+        integration?: CreateToolRequest.Integration | null;
+
+        /**
+         * System definition
+         */
+        system?: CreateToolRequest.System | null;
+
+        type?: 'function' | 'integration' | 'system' | 'api_call';
+      }
+
+      export namespace CreateToolRequest {
+        /**
+         * Function definition
+         */
+        export interface Function {
+          description?: string | null;
+
+          name?: unknown | null;
+
+          parameters?: unknown | null;
+        }
+
+        /**
+         * Integration definition
+         */
+        export interface Integration {
+          provider:
+            | 'dummy'
+            | 'dall-e'
+            | 'duckduckgo'
+            | 'hackernews'
+            | 'weather'
+            | 'wikipedia'
+            | 'twitter'
+            | 'webpage'
+            | 'requests';
+
+          arguments?: unknown | null;
+
+          description?: string | null;
+
+          method?: string | null;
+
+          setup?: unknown | null;
+        }
+
+        /**
+         * System definition
+         */
+        export interface System {
+          call: string;
+
+          arguments?: unknown | null;
+
+          description?: string | null;
         }
       }
     }
@@ -1385,20 +2190,24 @@ export namespace Task {
 }
 
 export interface Tool {
+  name: string;
+
   /**
    * Function definition
    */
-  function: Tool.Function;
-
-  name: string;
-
-  api_call?: unknown | null;
+  function?: Tool.Function | null;
 
   inherited?: boolean;
 
-  integration?: unknown | null;
+  /**
+   * Integration definition
+   */
+  integration?: Tool.Integration | null;
 
-  system?: unknown | null;
+  /**
+   * System definition
+   */
+  system?: Tool.System | null;
 
   type?: 'function' | 'integration' | 'system' | 'api_call';
 }
@@ -1413,6 +2222,41 @@ export namespace Tool {
     name?: unknown | null;
 
     parameters?: unknown | null;
+  }
+
+  /**
+   * Integration definition
+   */
+  export interface Integration {
+    provider:
+      | 'dummy'
+      | 'dall-e'
+      | 'duckduckgo'
+      | 'hackernews'
+      | 'weather'
+      | 'wikipedia'
+      | 'twitter'
+      | 'webpage'
+      | 'requests';
+
+    arguments?: unknown | null;
+
+    description?: string | null;
+
+    method?: string | null;
+
+    setup?: unknown | null;
+  }
+
+  /**
+   * System definition
+   */
+  export interface System {
+    call: string;
+
+    arguments?: unknown | null;
+
+    description?: string | null;
   }
 }
 
@@ -1465,7 +2309,15 @@ export namespace TaskCreateParams {
   export interface PromptStepInput {
     prompt: Array<PromptStepInput.UnionMember0> | string;
 
+    forward_tool_results?: boolean | null;
+
     settings?: SessionsAPI.ChatSettings | null;
+
+    tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+    tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+    unwrap?: boolean;
   }
 
   export namespace PromptStepInput {
@@ -1504,6 +2356,113 @@ export namespace TaskCreateParams {
 
           detail?: 'low' | 'high' | 'auto';
         }
+      }
+    }
+
+    export interface NamedToolChoice {
+      type: 'function' | 'integration' | 'system' | 'api_call';
+
+      function?: NamedToolChoice.Function | null;
+    }
+
+    export namespace NamedToolChoice {
+      export interface Function {
+        name: string;
+      }
+    }
+
+    /**
+     * Reference to a tool
+     */
+    export interface ToolRef {
+      /**
+       * Reference to a tool by id
+       */
+      ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+    }
+
+    export namespace ToolRef {
+      /**
+       * Reference to a tool by id
+       */
+      export interface ToolRefByID {
+        id?: string | null;
+      }
+
+      /**
+       * Reference to a tool by name
+       */
+      export interface ToolRefByName {
+        name?: string | null;
+      }
+    }
+
+    export interface CreateToolRequest {
+      name: string;
+
+      /**
+       * Function definition
+       */
+      function?: CreateToolRequest.Function | null;
+
+      /**
+       * Integration definition
+       */
+      integration?: CreateToolRequest.Integration | null;
+
+      /**
+       * System definition
+       */
+      system?: CreateToolRequest.System | null;
+
+      type?: 'function' | 'integration' | 'system' | 'api_call';
+    }
+
+    export namespace CreateToolRequest {
+      /**
+       * Function definition
+       */
+      export interface Function {
+        description?: string | null;
+
+        name?: unknown | null;
+
+        parameters?: unknown | null;
+      }
+
+      /**
+       * Integration definition
+       */
+      export interface Integration {
+        provider:
+          | 'dummy'
+          | 'dall-e'
+          | 'duckduckgo'
+          | 'hackernews'
+          | 'weather'
+          | 'wikipedia'
+          | 'twitter'
+          | 'webpage'
+          | 'requests';
+
+        arguments?: unknown | null;
+
+        description?: string | null;
+
+        method?: string | null;
+
+        setup?: unknown | null;
+      }
+
+      /**
+       * System definition
+       */
+      export interface System {
+        call: string;
+
+        arguments?: unknown | null;
+
+        description?: string | null;
       }
     }
   }
@@ -1660,7 +2619,15 @@ export namespace TaskCreateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
+      forward_tool_results?: boolean | null;
+
       settings?: SessionsAPI.ChatSettings | null;
+
+      tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+      unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
@@ -1699,6 +2666,113 @@ export namespace TaskCreateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
+        }
+      }
+
+      export interface NamedToolChoice {
+        type: 'function' | 'integration' | 'system' | 'api_call';
+
+        function?: NamedToolChoice.Function | null;
+      }
+
+      export namespace NamedToolChoice {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      /**
+       * Reference to a tool
+       */
+      export interface ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+      }
+
+      export namespace ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        export interface ToolRefByID {
+          id?: string | null;
+        }
+
+        /**
+         * Reference to a tool by name
+         */
+        export interface ToolRefByName {
+          name?: string | null;
+        }
+      }
+
+      export interface CreateToolRequest {
+        name: string;
+
+        /**
+         * Function definition
+         */
+        function?: CreateToolRequest.Function | null;
+
+        /**
+         * Integration definition
+         */
+        integration?: CreateToolRequest.Integration | null;
+
+        /**
+         * System definition
+         */
+        system?: CreateToolRequest.System | null;
+
+        type?: 'function' | 'integration' | 'system' | 'api_call';
+      }
+
+      export namespace CreateToolRequest {
+        /**
+         * Function definition
+         */
+        export interface Function {
+          description?: string | null;
+
+          name?: unknown | null;
+
+          parameters?: unknown | null;
+        }
+
+        /**
+         * Integration definition
+         */
+        export interface Integration {
+          provider:
+            | 'dummy'
+            | 'dall-e'
+            | 'duckduckgo'
+            | 'hackernews'
+            | 'weather'
+            | 'wikipedia'
+            | 'twitter'
+            | 'webpage'
+            | 'requests';
+
+          arguments?: unknown | null;
+
+          description?: string | null;
+
+          method?: string | null;
+
+          setup?: unknown | null;
+        }
+
+        /**
+         * System definition
+         */
+        export interface System {
+          call: string;
+
+          arguments?: unknown | null;
+
+          description?: string | null;
         }
       }
     }
@@ -1819,7 +2893,15 @@ export namespace TaskCreateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
+      forward_tool_results?: boolean | null;
+
       settings?: SessionsAPI.ChatSettings | null;
+
+      tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+      unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
@@ -1858,6 +2940,113 @@ export namespace TaskCreateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
+        }
+      }
+
+      export interface NamedToolChoice {
+        type: 'function' | 'integration' | 'system' | 'api_call';
+
+        function?: NamedToolChoice.Function | null;
+      }
+
+      export namespace NamedToolChoice {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      /**
+       * Reference to a tool
+       */
+      export interface ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+      }
+
+      export namespace ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        export interface ToolRefByID {
+          id?: string | null;
+        }
+
+        /**
+         * Reference to a tool by name
+         */
+        export interface ToolRefByName {
+          name?: string | null;
+        }
+      }
+
+      export interface CreateToolRequest {
+        name: string;
+
+        /**
+         * Function definition
+         */
+        function?: CreateToolRequest.Function | null;
+
+        /**
+         * Integration definition
+         */
+        integration?: CreateToolRequest.Integration | null;
+
+        /**
+         * System definition
+         */
+        system?: CreateToolRequest.System | null;
+
+        type?: 'function' | 'integration' | 'system' | 'api_call';
+      }
+
+      export namespace CreateToolRequest {
+        /**
+         * Function definition
+         */
+        export interface Function {
+          description?: string | null;
+
+          name?: unknown | null;
+
+          parameters?: unknown | null;
+        }
+
+        /**
+         * Integration definition
+         */
+        export interface Integration {
+          provider:
+            | 'dummy'
+            | 'dall-e'
+            | 'duckduckgo'
+            | 'hackernews'
+            | 'weather'
+            | 'wikipedia'
+            | 'twitter'
+            | 'webpage'
+            | 'requests';
+
+          arguments?: unknown | null;
+
+          description?: string | null;
+
+          method?: string | null;
+
+          setup?: unknown | null;
+        }
+
+        /**
+         * System definition
+         */
+        export interface System {
+          call: string;
+
+          arguments?: unknown | null;
+
+          description?: string | null;
         }
       }
     }
@@ -2004,7 +3193,15 @@ export namespace TaskCreateParams {
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
+        forward_tool_results?: boolean | null;
+
         settings?: SessionsAPI.ChatSettings | null;
+
+        tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+        tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+        unwrap?: boolean;
       }
 
       export namespace PromptStepInput {
@@ -2043,6 +3240,113 @@ export namespace TaskCreateParams {
 
               detail?: 'low' | 'high' | 'auto';
             }
+          }
+        }
+
+        export interface NamedToolChoice {
+          type: 'function' | 'integration' | 'system' | 'api_call';
+
+          function?: NamedToolChoice.Function | null;
+        }
+
+        export namespace NamedToolChoice {
+          export interface Function {
+            name: string;
+          }
+        }
+
+        /**
+         * Reference to a tool
+         */
+        export interface ToolRef {
+          /**
+           * Reference to a tool by id
+           */
+          ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+        }
+
+        export namespace ToolRef {
+          /**
+           * Reference to a tool by id
+           */
+          export interface ToolRefByID {
+            id?: string | null;
+          }
+
+          /**
+           * Reference to a tool by name
+           */
+          export interface ToolRefByName {
+            name?: string | null;
+          }
+        }
+
+        export interface CreateToolRequest {
+          name: string;
+
+          /**
+           * Function definition
+           */
+          function?: CreateToolRequest.Function | null;
+
+          /**
+           * Integration definition
+           */
+          integration?: CreateToolRequest.Integration | null;
+
+          /**
+           * System definition
+           */
+          system?: CreateToolRequest.System | null;
+
+          type?: 'function' | 'integration' | 'system' | 'api_call';
+        }
+
+        export namespace CreateToolRequest {
+          /**
+           * Function definition
+           */
+          export interface Function {
+            description?: string | null;
+
+            name?: unknown | null;
+
+            parameters?: unknown | null;
+          }
+
+          /**
+           * Integration definition
+           */
+          export interface Integration {
+            provider:
+              | 'dummy'
+              | 'dall-e'
+              | 'duckduckgo'
+              | 'hackernews'
+              | 'weather'
+              | 'wikipedia'
+              | 'twitter'
+              | 'webpage'
+              | 'requests';
+
+            arguments?: unknown | null;
+
+            description?: string | null;
+
+            method?: string | null;
+
+            setup?: unknown | null;
+          }
+
+          /**
+           * System definition
+           */
+          export interface System {
+            call: string;
+
+            arguments?: unknown | null;
+
+            description?: string | null;
           }
         }
       }
@@ -2185,7 +3489,15 @@ export namespace TaskCreateParams {
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
+        forward_tool_results?: boolean | null;
+
         settings?: SessionsAPI.ChatSettings | null;
+
+        tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+        tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+        unwrap?: boolean;
       }
 
       export namespace PromptStepInput {
@@ -2224,6 +3536,113 @@ export namespace TaskCreateParams {
 
               detail?: 'low' | 'high' | 'auto';
             }
+          }
+        }
+
+        export interface NamedToolChoice {
+          type: 'function' | 'integration' | 'system' | 'api_call';
+
+          function?: NamedToolChoice.Function | null;
+        }
+
+        export namespace NamedToolChoice {
+          export interface Function {
+            name: string;
+          }
+        }
+
+        /**
+         * Reference to a tool
+         */
+        export interface ToolRef {
+          /**
+           * Reference to a tool by id
+           */
+          ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+        }
+
+        export namespace ToolRef {
+          /**
+           * Reference to a tool by id
+           */
+          export interface ToolRefByID {
+            id?: string | null;
+          }
+
+          /**
+           * Reference to a tool by name
+           */
+          export interface ToolRefByName {
+            name?: string | null;
+          }
+        }
+
+        export interface CreateToolRequest {
+          name: string;
+
+          /**
+           * Function definition
+           */
+          function?: CreateToolRequest.Function | null;
+
+          /**
+           * Integration definition
+           */
+          integration?: CreateToolRequest.Integration | null;
+
+          /**
+           * System definition
+           */
+          system?: CreateToolRequest.System | null;
+
+          type?: 'function' | 'integration' | 'system' | 'api_call';
+        }
+
+        export namespace CreateToolRequest {
+          /**
+           * Function definition
+           */
+          export interface Function {
+            description?: string | null;
+
+            name?: unknown | null;
+
+            parameters?: unknown | null;
+          }
+
+          /**
+           * Integration definition
+           */
+          export interface Integration {
+            provider:
+              | 'dummy'
+              | 'dall-e'
+              | 'duckduckgo'
+              | 'hackernews'
+              | 'weather'
+              | 'wikipedia'
+              | 'twitter'
+              | 'webpage'
+              | 'requests';
+
+            arguments?: unknown | null;
+
+            description?: string | null;
+
+            method?: string | null;
+
+            setup?: unknown | null;
+          }
+
+          /**
+           * System definition
+           */
+          export interface System {
+            call: string;
+
+            arguments?: unknown | null;
+
+            description?: string | null;
           }
         }
       }
@@ -2320,7 +3739,15 @@ export namespace TaskCreateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
+      forward_tool_results?: boolean | null;
+
       settings?: SessionsAPI.ChatSettings | null;
+
+      tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+      unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
@@ -2359,6 +3786,113 @@ export namespace TaskCreateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
+        }
+      }
+
+      export interface NamedToolChoice {
+        type: 'function' | 'integration' | 'system' | 'api_call';
+
+        function?: NamedToolChoice.Function | null;
+      }
+
+      export namespace NamedToolChoice {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      /**
+       * Reference to a tool
+       */
+      export interface ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+      }
+
+      export namespace ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        export interface ToolRefByID {
+          id?: string | null;
+        }
+
+        /**
+         * Reference to a tool by name
+         */
+        export interface ToolRefByName {
+          name?: string | null;
+        }
+      }
+
+      export interface CreateToolRequest {
+        name: string;
+
+        /**
+         * Function definition
+         */
+        function?: CreateToolRequest.Function | null;
+
+        /**
+         * Integration definition
+         */
+        integration?: CreateToolRequest.Integration | null;
+
+        /**
+         * System definition
+         */
+        system?: CreateToolRequest.System | null;
+
+        type?: 'function' | 'integration' | 'system' | 'api_call';
+      }
+
+      export namespace CreateToolRequest {
+        /**
+         * Function definition
+         */
+        export interface Function {
+          description?: string | null;
+
+          name?: unknown | null;
+
+          parameters?: unknown | null;
+        }
+
+        /**
+         * Integration definition
+         */
+        export interface Integration {
+          provider:
+            | 'dummy'
+            | 'dall-e'
+            | 'duckduckgo'
+            | 'hackernews'
+            | 'weather'
+            | 'wikipedia'
+            | 'twitter'
+            | 'webpage'
+            | 'requests';
+
+          arguments?: unknown | null;
+
+          description?: string | null;
+
+          method?: string | null;
+
+          setup?: unknown | null;
+        }
+
+        /**
+         * System definition
+         */
+        export interface System {
+          call: string;
+
+          arguments?: unknown | null;
+
+          description?: string | null;
         }
       }
     }
@@ -2461,7 +3995,15 @@ export namespace TaskCreateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
+      forward_tool_results?: boolean | null;
+
       settings?: SessionsAPI.ChatSettings | null;
+
+      tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+      unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
@@ -2500,6 +4042,113 @@ export namespace TaskCreateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
+        }
+      }
+
+      export interface NamedToolChoice {
+        type: 'function' | 'integration' | 'system' | 'api_call';
+
+        function?: NamedToolChoice.Function | null;
+      }
+
+      export namespace NamedToolChoice {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      /**
+       * Reference to a tool
+       */
+      export interface ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+      }
+
+      export namespace ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        export interface ToolRefByID {
+          id?: string | null;
+        }
+
+        /**
+         * Reference to a tool by name
+         */
+        export interface ToolRefByName {
+          name?: string | null;
+        }
+      }
+
+      export interface CreateToolRequest {
+        name: string;
+
+        /**
+         * Function definition
+         */
+        function?: CreateToolRequest.Function | null;
+
+        /**
+         * Integration definition
+         */
+        integration?: CreateToolRequest.Integration | null;
+
+        /**
+         * System definition
+         */
+        system?: CreateToolRequest.System | null;
+
+        type?: 'function' | 'integration' | 'system' | 'api_call';
+      }
+
+      export namespace CreateToolRequest {
+        /**
+         * Function definition
+         */
+        export interface Function {
+          description?: string | null;
+
+          name?: unknown | null;
+
+          parameters?: unknown | null;
+        }
+
+        /**
+         * Integration definition
+         */
+        export interface Integration {
+          provider:
+            | 'dummy'
+            | 'dall-e'
+            | 'duckduckgo'
+            | 'hackernews'
+            | 'weather'
+            | 'wikipedia'
+            | 'twitter'
+            | 'webpage'
+            | 'requests';
+
+          arguments?: unknown | null;
+
+          description?: string | null;
+
+          method?: string | null;
+
+          setup?: unknown | null;
+        }
+
+        /**
+         * System definition
+         */
+        export interface System {
+          call: string;
+
+          arguments?: unknown | null;
+
+          description?: string | null;
         }
       }
     }
@@ -2624,7 +4273,15 @@ export namespace TaskCreateOrUpdateParams {
   export interface PromptStepInput {
     prompt: Array<PromptStepInput.UnionMember0> | string;
 
+    forward_tool_results?: boolean | null;
+
     settings?: SessionsAPI.ChatSettings | null;
+
+    tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+    tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+    unwrap?: boolean;
   }
 
   export namespace PromptStepInput {
@@ -2663,6 +4320,113 @@ export namespace TaskCreateOrUpdateParams {
 
           detail?: 'low' | 'high' | 'auto';
         }
+      }
+    }
+
+    export interface NamedToolChoice {
+      type: 'function' | 'integration' | 'system' | 'api_call';
+
+      function?: NamedToolChoice.Function | null;
+    }
+
+    export namespace NamedToolChoice {
+      export interface Function {
+        name: string;
+      }
+    }
+
+    /**
+     * Reference to a tool
+     */
+    export interface ToolRef {
+      /**
+       * Reference to a tool by id
+       */
+      ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+    }
+
+    export namespace ToolRef {
+      /**
+       * Reference to a tool by id
+       */
+      export interface ToolRefByID {
+        id?: string | null;
+      }
+
+      /**
+       * Reference to a tool by name
+       */
+      export interface ToolRefByName {
+        name?: string | null;
+      }
+    }
+
+    export interface CreateToolRequest {
+      name: string;
+
+      /**
+       * Function definition
+       */
+      function?: CreateToolRequest.Function | null;
+
+      /**
+       * Integration definition
+       */
+      integration?: CreateToolRequest.Integration | null;
+
+      /**
+       * System definition
+       */
+      system?: CreateToolRequest.System | null;
+
+      type?: 'function' | 'integration' | 'system' | 'api_call';
+    }
+
+    export namespace CreateToolRequest {
+      /**
+       * Function definition
+       */
+      export interface Function {
+        description?: string | null;
+
+        name?: unknown | null;
+
+        parameters?: unknown | null;
+      }
+
+      /**
+       * Integration definition
+       */
+      export interface Integration {
+        provider:
+          | 'dummy'
+          | 'dall-e'
+          | 'duckduckgo'
+          | 'hackernews'
+          | 'weather'
+          | 'wikipedia'
+          | 'twitter'
+          | 'webpage'
+          | 'requests';
+
+        arguments?: unknown | null;
+
+        description?: string | null;
+
+        method?: string | null;
+
+        setup?: unknown | null;
+      }
+
+      /**
+       * System definition
+       */
+      export interface System {
+        call: string;
+
+        arguments?: unknown | null;
+
+        description?: string | null;
       }
     }
   }
@@ -2819,7 +4583,15 @@ export namespace TaskCreateOrUpdateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
+      forward_tool_results?: boolean | null;
+
       settings?: SessionsAPI.ChatSettings | null;
+
+      tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+      unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
@@ -2858,6 +4630,113 @@ export namespace TaskCreateOrUpdateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
+        }
+      }
+
+      export interface NamedToolChoice {
+        type: 'function' | 'integration' | 'system' | 'api_call';
+
+        function?: NamedToolChoice.Function | null;
+      }
+
+      export namespace NamedToolChoice {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      /**
+       * Reference to a tool
+       */
+      export interface ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+      }
+
+      export namespace ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        export interface ToolRefByID {
+          id?: string | null;
+        }
+
+        /**
+         * Reference to a tool by name
+         */
+        export interface ToolRefByName {
+          name?: string | null;
+        }
+      }
+
+      export interface CreateToolRequest {
+        name: string;
+
+        /**
+         * Function definition
+         */
+        function?: CreateToolRequest.Function | null;
+
+        /**
+         * Integration definition
+         */
+        integration?: CreateToolRequest.Integration | null;
+
+        /**
+         * System definition
+         */
+        system?: CreateToolRequest.System | null;
+
+        type?: 'function' | 'integration' | 'system' | 'api_call';
+      }
+
+      export namespace CreateToolRequest {
+        /**
+         * Function definition
+         */
+        export interface Function {
+          description?: string | null;
+
+          name?: unknown | null;
+
+          parameters?: unknown | null;
+        }
+
+        /**
+         * Integration definition
+         */
+        export interface Integration {
+          provider:
+            | 'dummy'
+            | 'dall-e'
+            | 'duckduckgo'
+            | 'hackernews'
+            | 'weather'
+            | 'wikipedia'
+            | 'twitter'
+            | 'webpage'
+            | 'requests';
+
+          arguments?: unknown | null;
+
+          description?: string | null;
+
+          method?: string | null;
+
+          setup?: unknown | null;
+        }
+
+        /**
+         * System definition
+         */
+        export interface System {
+          call: string;
+
+          arguments?: unknown | null;
+
+          description?: string | null;
         }
       }
     }
@@ -2978,7 +4857,15 @@ export namespace TaskCreateOrUpdateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
+      forward_tool_results?: boolean | null;
+
       settings?: SessionsAPI.ChatSettings | null;
+
+      tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+      unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
@@ -3017,6 +4904,113 @@ export namespace TaskCreateOrUpdateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
+        }
+      }
+
+      export interface NamedToolChoice {
+        type: 'function' | 'integration' | 'system' | 'api_call';
+
+        function?: NamedToolChoice.Function | null;
+      }
+
+      export namespace NamedToolChoice {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      /**
+       * Reference to a tool
+       */
+      export interface ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+      }
+
+      export namespace ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        export interface ToolRefByID {
+          id?: string | null;
+        }
+
+        /**
+         * Reference to a tool by name
+         */
+        export interface ToolRefByName {
+          name?: string | null;
+        }
+      }
+
+      export interface CreateToolRequest {
+        name: string;
+
+        /**
+         * Function definition
+         */
+        function?: CreateToolRequest.Function | null;
+
+        /**
+         * Integration definition
+         */
+        integration?: CreateToolRequest.Integration | null;
+
+        /**
+         * System definition
+         */
+        system?: CreateToolRequest.System | null;
+
+        type?: 'function' | 'integration' | 'system' | 'api_call';
+      }
+
+      export namespace CreateToolRequest {
+        /**
+         * Function definition
+         */
+        export interface Function {
+          description?: string | null;
+
+          name?: unknown | null;
+
+          parameters?: unknown | null;
+        }
+
+        /**
+         * Integration definition
+         */
+        export interface Integration {
+          provider:
+            | 'dummy'
+            | 'dall-e'
+            | 'duckduckgo'
+            | 'hackernews'
+            | 'weather'
+            | 'wikipedia'
+            | 'twitter'
+            | 'webpage'
+            | 'requests';
+
+          arguments?: unknown | null;
+
+          description?: string | null;
+
+          method?: string | null;
+
+          setup?: unknown | null;
+        }
+
+        /**
+         * System definition
+         */
+        export interface System {
+          call: string;
+
+          arguments?: unknown | null;
+
+          description?: string | null;
         }
       }
     }
@@ -3163,7 +5157,15 @@ export namespace TaskCreateOrUpdateParams {
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
+        forward_tool_results?: boolean | null;
+
         settings?: SessionsAPI.ChatSettings | null;
+
+        tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+        tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+        unwrap?: boolean;
       }
 
       export namespace PromptStepInput {
@@ -3202,6 +5204,113 @@ export namespace TaskCreateOrUpdateParams {
 
               detail?: 'low' | 'high' | 'auto';
             }
+          }
+        }
+
+        export interface NamedToolChoice {
+          type: 'function' | 'integration' | 'system' | 'api_call';
+
+          function?: NamedToolChoice.Function | null;
+        }
+
+        export namespace NamedToolChoice {
+          export interface Function {
+            name: string;
+          }
+        }
+
+        /**
+         * Reference to a tool
+         */
+        export interface ToolRef {
+          /**
+           * Reference to a tool by id
+           */
+          ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+        }
+
+        export namespace ToolRef {
+          /**
+           * Reference to a tool by id
+           */
+          export interface ToolRefByID {
+            id?: string | null;
+          }
+
+          /**
+           * Reference to a tool by name
+           */
+          export interface ToolRefByName {
+            name?: string | null;
+          }
+        }
+
+        export interface CreateToolRequest {
+          name: string;
+
+          /**
+           * Function definition
+           */
+          function?: CreateToolRequest.Function | null;
+
+          /**
+           * Integration definition
+           */
+          integration?: CreateToolRequest.Integration | null;
+
+          /**
+           * System definition
+           */
+          system?: CreateToolRequest.System | null;
+
+          type?: 'function' | 'integration' | 'system' | 'api_call';
+        }
+
+        export namespace CreateToolRequest {
+          /**
+           * Function definition
+           */
+          export interface Function {
+            description?: string | null;
+
+            name?: unknown | null;
+
+            parameters?: unknown | null;
+          }
+
+          /**
+           * Integration definition
+           */
+          export interface Integration {
+            provider:
+              | 'dummy'
+              | 'dall-e'
+              | 'duckduckgo'
+              | 'hackernews'
+              | 'weather'
+              | 'wikipedia'
+              | 'twitter'
+              | 'webpage'
+              | 'requests';
+
+            arguments?: unknown | null;
+
+            description?: string | null;
+
+            method?: string | null;
+
+            setup?: unknown | null;
+          }
+
+          /**
+           * System definition
+           */
+          export interface System {
+            call: string;
+
+            arguments?: unknown | null;
+
+            description?: string | null;
           }
         }
       }
@@ -3344,7 +5453,15 @@ export namespace TaskCreateOrUpdateParams {
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
+        forward_tool_results?: boolean | null;
+
         settings?: SessionsAPI.ChatSettings | null;
+
+        tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+        tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+        unwrap?: boolean;
       }
 
       export namespace PromptStepInput {
@@ -3383,6 +5500,113 @@ export namespace TaskCreateOrUpdateParams {
 
               detail?: 'low' | 'high' | 'auto';
             }
+          }
+        }
+
+        export interface NamedToolChoice {
+          type: 'function' | 'integration' | 'system' | 'api_call';
+
+          function?: NamedToolChoice.Function | null;
+        }
+
+        export namespace NamedToolChoice {
+          export interface Function {
+            name: string;
+          }
+        }
+
+        /**
+         * Reference to a tool
+         */
+        export interface ToolRef {
+          /**
+           * Reference to a tool by id
+           */
+          ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+        }
+
+        export namespace ToolRef {
+          /**
+           * Reference to a tool by id
+           */
+          export interface ToolRefByID {
+            id?: string | null;
+          }
+
+          /**
+           * Reference to a tool by name
+           */
+          export interface ToolRefByName {
+            name?: string | null;
+          }
+        }
+
+        export interface CreateToolRequest {
+          name: string;
+
+          /**
+           * Function definition
+           */
+          function?: CreateToolRequest.Function | null;
+
+          /**
+           * Integration definition
+           */
+          integration?: CreateToolRequest.Integration | null;
+
+          /**
+           * System definition
+           */
+          system?: CreateToolRequest.System | null;
+
+          type?: 'function' | 'integration' | 'system' | 'api_call';
+        }
+
+        export namespace CreateToolRequest {
+          /**
+           * Function definition
+           */
+          export interface Function {
+            description?: string | null;
+
+            name?: unknown | null;
+
+            parameters?: unknown | null;
+          }
+
+          /**
+           * Integration definition
+           */
+          export interface Integration {
+            provider:
+              | 'dummy'
+              | 'dall-e'
+              | 'duckduckgo'
+              | 'hackernews'
+              | 'weather'
+              | 'wikipedia'
+              | 'twitter'
+              | 'webpage'
+              | 'requests';
+
+            arguments?: unknown | null;
+
+            description?: string | null;
+
+            method?: string | null;
+
+            setup?: unknown | null;
+          }
+
+          /**
+           * System definition
+           */
+          export interface System {
+            call: string;
+
+            arguments?: unknown | null;
+
+            description?: string | null;
           }
         }
       }
@@ -3479,7 +5703,15 @@ export namespace TaskCreateOrUpdateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
+      forward_tool_results?: boolean | null;
+
       settings?: SessionsAPI.ChatSettings | null;
+
+      tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+      unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
@@ -3518,6 +5750,113 @@ export namespace TaskCreateOrUpdateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
+        }
+      }
+
+      export interface NamedToolChoice {
+        type: 'function' | 'integration' | 'system' | 'api_call';
+
+        function?: NamedToolChoice.Function | null;
+      }
+
+      export namespace NamedToolChoice {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      /**
+       * Reference to a tool
+       */
+      export interface ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+      }
+
+      export namespace ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        export interface ToolRefByID {
+          id?: string | null;
+        }
+
+        /**
+         * Reference to a tool by name
+         */
+        export interface ToolRefByName {
+          name?: string | null;
+        }
+      }
+
+      export interface CreateToolRequest {
+        name: string;
+
+        /**
+         * Function definition
+         */
+        function?: CreateToolRequest.Function | null;
+
+        /**
+         * Integration definition
+         */
+        integration?: CreateToolRequest.Integration | null;
+
+        /**
+         * System definition
+         */
+        system?: CreateToolRequest.System | null;
+
+        type?: 'function' | 'integration' | 'system' | 'api_call';
+      }
+
+      export namespace CreateToolRequest {
+        /**
+         * Function definition
+         */
+        export interface Function {
+          description?: string | null;
+
+          name?: unknown | null;
+
+          parameters?: unknown | null;
+        }
+
+        /**
+         * Integration definition
+         */
+        export interface Integration {
+          provider:
+            | 'dummy'
+            | 'dall-e'
+            | 'duckduckgo'
+            | 'hackernews'
+            | 'weather'
+            | 'wikipedia'
+            | 'twitter'
+            | 'webpage'
+            | 'requests';
+
+          arguments?: unknown | null;
+
+          description?: string | null;
+
+          method?: string | null;
+
+          setup?: unknown | null;
+        }
+
+        /**
+         * System definition
+         */
+        export interface System {
+          call: string;
+
+          arguments?: unknown | null;
+
+          description?: string | null;
         }
       }
     }
@@ -3620,7 +5959,15 @@ export namespace TaskCreateOrUpdateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
+      forward_tool_results?: boolean | null;
+
       settings?: SessionsAPI.ChatSettings | null;
+
+      tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
+
+      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequest>;
+
+      unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
@@ -3659,6 +6006,113 @@ export namespace TaskCreateOrUpdateParams {
 
             detail?: 'low' | 'high' | 'auto';
           }
+        }
+      }
+
+      export interface NamedToolChoice {
+        type: 'function' | 'integration' | 'system' | 'api_call';
+
+        function?: NamedToolChoice.Function | null;
+      }
+
+      export namespace NamedToolChoice {
+        export interface Function {
+          name: string;
+        }
+      }
+
+      /**
+       * Reference to a tool
+       */
+      export interface ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+      }
+
+      export namespace ToolRef {
+        /**
+         * Reference to a tool by id
+         */
+        export interface ToolRefByID {
+          id?: string | null;
+        }
+
+        /**
+         * Reference to a tool by name
+         */
+        export interface ToolRefByName {
+          name?: string | null;
+        }
+      }
+
+      export interface CreateToolRequest {
+        name: string;
+
+        /**
+         * Function definition
+         */
+        function?: CreateToolRequest.Function | null;
+
+        /**
+         * Integration definition
+         */
+        integration?: CreateToolRequest.Integration | null;
+
+        /**
+         * System definition
+         */
+        system?: CreateToolRequest.System | null;
+
+        type?: 'function' | 'integration' | 'system' | 'api_call';
+      }
+
+      export namespace CreateToolRequest {
+        /**
+         * Function definition
+         */
+        export interface Function {
+          description?: string | null;
+
+          name?: unknown | null;
+
+          parameters?: unknown | null;
+        }
+
+        /**
+         * Integration definition
+         */
+        export interface Integration {
+          provider:
+            | 'dummy'
+            | 'dall-e'
+            | 'duckduckgo'
+            | 'hackernews'
+            | 'weather'
+            | 'wikipedia'
+            | 'twitter'
+            | 'webpage'
+            | 'requests';
+
+          arguments?: unknown | null;
+
+          description?: string | null;
+
+          method?: string | null;
+
+          setup?: unknown | null;
+        }
+
+        /**
+         * System definition
+         */
+        export interface System {
+          call: string;
+
+          arguments?: unknown | null;
+
+          description?: string | null;
         }
       }
     }

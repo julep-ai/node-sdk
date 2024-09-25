@@ -171,13 +171,7 @@ export namespace ChatInput {
   export interface NamedToolChoice {
     type: 'function' | 'integration' | 'system' | 'api_call';
 
-    api_call?: unknown | null;
-
     function?: NamedToolChoice.Function | null;
-
-    integration?: unknown | null;
-
-    system?: unknown | null;
   }
 
   export namespace NamedToolChoice {
@@ -191,20 +185,24 @@ export namespace ChatInput {
 
     created_at: string;
 
-    /**
-     * Function definition
-     */
-    function: Tool.Function;
-
     name: string;
 
     updated_at: string;
 
-    api_call?: unknown | null;
+    /**
+     * Function definition
+     */
+    function?: Tool.Function | null;
 
-    integration?: unknown | null;
+    /**
+     * Integration definition
+     */
+    integration?: Tool.Integration | null;
 
-    system?: unknown | null;
+    /**
+     * System definition
+     */
+    system?: Tool.System | null;
 
     type?: 'function' | 'integration' | 'system' | 'api_call';
   }
@@ -219,6 +217,41 @@ export namespace ChatInput {
       name?: unknown | null;
 
       parameters?: unknown | null;
+    }
+
+    /**
+     * Integration definition
+     */
+    export interface Integration {
+      provider:
+        | 'dummy'
+        | 'dall-e'
+        | 'duckduckgo'
+        | 'hackernews'
+        | 'weather'
+        | 'wikipedia'
+        | 'twitter'
+        | 'webpage'
+        | 'requests';
+
+      arguments?: unknown | null;
+
+      description?: string | null;
+
+      method?: string | null;
+
+      setup?: unknown | null;
+    }
+
+    /**
+     * System definition
+     */
+    export interface System {
+      call: string;
+
+      arguments?: unknown | null;
+
+      description?: string | null;
     }
   }
 }
@@ -305,13 +338,7 @@ export namespace ChatResponse {
 
         type: 'function' | 'integration' | 'system' | 'api_call';
 
-        api_call?: unknown | null;
-
         function?: ToolCall.Function | null;
-
-        integration?: unknown | null;
-
-        system?: unknown | null;
       }
 
       export namespace ToolCall {
@@ -412,13 +439,7 @@ export namespace ChatResponse {
 
         type: 'function' | 'integration' | 'system' | 'api_call';
 
-        api_call?: unknown | null;
-
         function?: ToolCall.Function | null;
-
-        integration?: unknown | null;
-
-        system?: unknown | null;
       }
 
       export namespace ToolCall {
@@ -601,20 +622,24 @@ export namespace Entry {
 
     created_at: string;
 
-    /**
-     * Function definition
-     */
-    function: Tool.Function;
-
     name: string;
 
     updated_at: string;
 
-    api_call?: unknown | null;
+    /**
+     * Function definition
+     */
+    function?: Tool.Function | null;
 
-    integration?: unknown | null;
+    /**
+     * Integration definition
+     */
+    integration?: Tool.Integration | null;
 
-    system?: unknown | null;
+    /**
+     * System definition
+     */
+    system?: Tool.System | null;
 
     type?: 'function' | 'integration' | 'system' | 'api_call';
   }
@@ -630,6 +655,41 @@ export namespace Entry {
 
       parameters?: unknown | null;
     }
+
+    /**
+     * Integration definition
+     */
+    export interface Integration {
+      provider:
+        | 'dummy'
+        | 'dall-e'
+        | 'duckduckgo'
+        | 'hackernews'
+        | 'weather'
+        | 'wikipedia'
+        | 'twitter'
+        | 'webpage'
+        | 'requests';
+
+      arguments?: unknown | null;
+
+      description?: string | null;
+
+      method?: string | null;
+
+      setup?: unknown | null;
+    }
+
+    /**
+     * System definition
+     */
+    export interface System {
+      call: string;
+
+      arguments?: unknown | null;
+
+      description?: string | null;
+    }
   }
 
   /**
@@ -640,13 +700,7 @@ export namespace Entry {
 
     type: 'function' | 'integration' | 'system' | 'api_call';
 
-    api_call?: unknown | null;
-
     function?: ChosenToolCall.Function | null;
-
-    integration?: unknown | null;
-
-    system?: unknown | null;
   }
 
   export namespace ChosenToolCall {
@@ -692,20 +746,24 @@ export namespace Entry {
 
     created_at: string;
 
-    /**
-     * Function definition
-     */
-    function: Tool.Function;
-
     name: string;
 
     updated_at: string;
 
-    api_call?: unknown | null;
+    /**
+     * Function definition
+     */
+    function?: Tool.Function | null;
 
-    integration?: unknown | null;
+    /**
+     * Integration definition
+     */
+    integration?: Tool.Integration | null;
 
-    system?: unknown | null;
+    /**
+     * System definition
+     */
+    system?: Tool.System | null;
 
     type?: 'function' | 'integration' | 'system' | 'api_call';
   }
@@ -721,6 +779,41 @@ export namespace Entry {
 
       parameters?: unknown | null;
     }
+
+    /**
+     * Integration definition
+     */
+    export interface Integration {
+      provider:
+        | 'dummy'
+        | 'dall-e'
+        | 'duckduckgo'
+        | 'hackernews'
+        | 'weather'
+        | 'wikipedia'
+        | 'twitter'
+        | 'webpage'
+        | 'requests';
+
+      arguments?: unknown | null;
+
+      description?: string | null;
+
+      method?: string | null;
+
+      setup?: unknown | null;
+    }
+
+    /**
+     * System definition
+     */
+    export interface System {
+      call: string;
+
+      arguments?: unknown | null;
+
+      description?: string | null;
+    }
   }
 
   /**
@@ -731,13 +824,7 @@ export namespace Entry {
 
     type: 'function' | 'integration' | 'system' | 'api_call';
 
-    api_call?: unknown | null;
-
     function?: ChosenToolCall.Function | null;
-
-    integration?: unknown | null;
-
-    system?: unknown | null;
   }
 
   export namespace ChosenToolCall {
@@ -819,6 +906,8 @@ export interface Session {
   updated_at: string;
 
   context_overflow?: 'truncate' | 'adaptive' | null;
+
+  forward_tool_results?: boolean | null;
 
   kind?: string | null;
 
@@ -979,6 +1068,8 @@ export interface SessionCreateParams {
 
   context_overflow?: 'truncate' | 'adaptive' | null;
 
+  forward_tool_results?: boolean | null;
+
   metadata?: unknown | null;
 
   render_templates?: boolean;
@@ -994,6 +1085,8 @@ export interface SessionCreateParams {
 
 export interface SessionUpdateParams {
   context_overflow?: 'truncate' | 'adaptive' | null;
+
+  forward_tool_results?: boolean | null;
 
   metadata?: unknown | null;
 
@@ -1136,13 +1229,7 @@ export namespace SessionChatParams {
   export interface NamedToolChoice {
     type: 'function' | 'integration' | 'system' | 'api_call';
 
-    api_call?: unknown | null;
-
     function?: NamedToolChoice.Function | null;
-
-    integration?: unknown | null;
-
-    system?: unknown | null;
   }
 
   export namespace NamedToolChoice {
@@ -1152,18 +1239,22 @@ export namespace SessionChatParams {
   }
 
   export interface Tool {
+    name: string;
+
     /**
      * Function definition
      */
-    function: Tool.Function;
+    function?: Tool.Function | null;
 
-    name: string;
+    /**
+     * Integration definition
+     */
+    integration?: Tool.Integration | null;
 
-    api_call?: unknown | null;
-
-    integration?: unknown | null;
-
-    system?: unknown | null;
+    /**
+     * System definition
+     */
+    system?: Tool.System | null;
 
     type?: 'function' | 'integration' | 'system' | 'api_call';
   }
@@ -1179,6 +1270,41 @@ export namespace SessionChatParams {
 
       parameters?: unknown | null;
     }
+
+    /**
+     * Integration definition
+     */
+    export interface Integration {
+      provider:
+        | 'dummy'
+        | 'dall-e'
+        | 'duckduckgo'
+        | 'hackernews'
+        | 'weather'
+        | 'wikipedia'
+        | 'twitter'
+        | 'webpage'
+        | 'requests';
+
+      arguments?: unknown | null;
+
+      description?: string | null;
+
+      method?: string | null;
+
+      setup?: unknown | null;
+    }
+
+    /**
+     * System definition
+     */
+    export interface System {
+      call: string;
+
+      arguments?: unknown | null;
+
+      description?: string | null;
+    }
   }
 }
 
@@ -1188,6 +1314,8 @@ export interface SessionCreateOrUpdateParams {
   agents?: Array<string> | null;
 
   context_overflow?: 'truncate' | 'adaptive' | null;
+
+  forward_tool_results?: boolean | null;
 
   metadata?: unknown | null;
 
@@ -1204,6 +1332,8 @@ export interface SessionCreateOrUpdateParams {
 
 export interface SessionPatchParams {
   context_overflow?: 'truncate' | 'adaptive' | null;
+
+  forward_tool_results?: boolean | null;
 
   metadata?: unknown | null;
 
