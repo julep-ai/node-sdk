@@ -251,14 +251,11 @@ export namespace Task {
       export interface Integration {
         provider:
           | 'dummy'
-          | 'dall-e'
-          | 'duckduckgo'
-          | 'hackernews'
+          | 'dalle_image_generator'
+          | 'duckduckgo_search'
+          | 'hacker_news'
           | 'weather'
-          | 'wikipedia'
-          | 'twitter'
-          | 'webpage'
-          | 'requests';
+          | 'wikipedia';
 
         arguments?: unknown | null;
 
@@ -589,14 +586,11 @@ export namespace Task {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dall-e'
-            | 'duckduckgo'
-            | 'hackernews'
+            | 'dalle_image_generator'
+            | 'duckduckgo_search'
+            | 'hacker_news'
             | 'weather'
-            | 'wikipedia'
-            | 'twitter'
-            | 'webpage'
-            | 'requests';
+            | 'wikipedia';
 
           arguments?: unknown | null;
 
@@ -889,14 +883,11 @@ export namespace Task {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dall-e'
-            | 'duckduckgo'
-            | 'hackernews'
+            | 'dalle_image_generator'
+            | 'duckduckgo_search'
+            | 'hacker_news'
             | 'weather'
-            | 'wikipedia'
-            | 'twitter'
-            | 'webpage'
-            | 'requests';
+            | 'wikipedia';
 
           arguments?: unknown | null;
 
@@ -1217,14 +1208,11 @@ export namespace Task {
           export interface Integration {
             provider:
               | 'dummy'
-              | 'dall-e'
-              | 'duckduckgo'
-              | 'hackernews'
+              | 'dalle_image_generator'
+              | 'duckduckgo_search'
+              | 'hacker_news'
               | 'weather'
-              | 'wikipedia'
-              | 'twitter'
-              | 'webpage'
-              | 'requests';
+              | 'wikipedia';
 
             arguments?: unknown | null;
 
@@ -1541,14 +1529,11 @@ export namespace Task {
           export interface Integration {
             provider:
               | 'dummy'
-              | 'dall-e'
-              | 'duckduckgo'
-              | 'hackernews'
+              | 'dalle_image_generator'
+              | 'duckduckgo_search'
+              | 'hacker_news'
               | 'weather'
-              | 'wikipedia'
-              | 'twitter'
-              | 'webpage'
-              | 'requests';
+              | 'wikipedia';
 
             arguments?: unknown | null;
 
@@ -1809,14 +1794,11 @@ export namespace Task {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dall-e'
-            | 'duckduckgo'
-            | 'hackernews'
+            | 'dalle_image_generator'
+            | 'duckduckgo_search'
+            | 'hacker_news'
             | 'weather'
-            | 'wikipedia'
-            | 'twitter'
-            | 'webpage'
-            | 'requests';
+            | 'wikipedia';
 
           arguments?: unknown | null;
 
@@ -2083,14 +2065,11 @@ export namespace Task {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dall-e'
-            | 'duckduckgo'
-            | 'hackernews'
+            | 'dalle_image_generator'
+            | 'duckduckgo_search'
+            | 'hacker_news'
             | 'weather'
-            | 'wikipedia'
-            | 'twitter'
-            | 'webpage'
-            | 'requests';
+            | 'wikipedia';
 
           arguments?: unknown | null;
 
@@ -2230,14 +2209,11 @@ export namespace Tool {
   export interface Integration {
     provider:
       | 'dummy'
-      | 'dall-e'
-      | 'duckduckgo'
-      | 'hackernews'
+      | 'dalle_image_generator'
+      | 'duckduckgo_search'
+      | 'hacker_news'
       | 'weather'
-      | 'wikipedia'
-      | 'twitter'
-      | 'webpage'
-      | 'requests';
+      | 'wikipedia';
 
     arguments?: unknown | null;
 
@@ -2436,14 +2412,11 @@ export namespace TaskCreateParams {
       export interface Integration {
         provider:
           | 'dummy'
-          | 'dall-e'
-          | 'duckduckgo'
-          | 'hackernews'
+          | 'dalle_image_generator'
+          | 'duckduckgo_search'
+          | 'hacker_news'
           | 'weather'
-          | 'wikipedia'
-          | 'twitter'
-          | 'webpage'
-          | 'requests';
+          | 'wikipedia';
 
         arguments?: unknown | null;
 
@@ -2746,14 +2719,11 @@ export namespace TaskCreateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dall-e'
-            | 'duckduckgo'
-            | 'hackernews'
+            | 'dalle_image_generator'
+            | 'duckduckgo_search'
+            | 'hacker_news'
             | 'weather'
-            | 'wikipedia'
-            | 'twitter'
-            | 'webpage'
-            | 'requests';
+            | 'wikipedia';
 
           arguments?: unknown | null;
 
@@ -3020,14 +2990,11 @@ export namespace TaskCreateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dall-e'
-            | 'duckduckgo'
-            | 'hackernews'
+            | 'dalle_image_generator'
+            | 'duckduckgo_search'
+            | 'hacker_news'
             | 'weather'
-            | 'wikipedia'
-            | 'twitter'
-            | 'webpage'
-            | 'requests';
+            | 'wikipedia';
 
           arguments?: unknown | null;
 
@@ -3320,14 +3287,11 @@ export namespace TaskCreateParams {
           export interface Integration {
             provider:
               | 'dummy'
-              | 'dall-e'
-              | 'duckduckgo'
-              | 'hackernews'
+              | 'dalle_image_generator'
+              | 'duckduckgo_search'
+              | 'hacker_news'
               | 'weather'
-              | 'wikipedia'
-              | 'twitter'
-              | 'webpage'
-              | 'requests';
+              | 'wikipedia';
 
             arguments?: unknown | null;
 
@@ -3616,14 +3580,11 @@ export namespace TaskCreateParams {
           export interface Integration {
             provider:
               | 'dummy'
-              | 'dall-e'
-              | 'duckduckgo'
-              | 'hackernews'
+              | 'dalle_image_generator'
+              | 'duckduckgo_search'
+              | 'hacker_news'
               | 'weather'
-              | 'wikipedia'
-              | 'twitter'
-              | 'webpage'
-              | 'requests';
+              | 'wikipedia';
 
             arguments?: unknown | null;
 
@@ -3866,14 +3827,11 @@ export namespace TaskCreateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dall-e'
-            | 'duckduckgo'
-            | 'hackernews'
+            | 'dalle_image_generator'
+            | 'duckduckgo_search'
+            | 'hacker_news'
             | 'weather'
-            | 'wikipedia'
-            | 'twitter'
-            | 'webpage'
-            | 'requests';
+            | 'wikipedia';
 
           arguments?: unknown | null;
 
@@ -4122,14 +4080,11 @@ export namespace TaskCreateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dall-e'
-            | 'duckduckgo'
-            | 'hackernews'
+            | 'dalle_image_generator'
+            | 'duckduckgo_search'
+            | 'hacker_news'
             | 'weather'
-            | 'wikipedia'
-            | 'twitter'
-            | 'webpage'
-            | 'requests';
+            | 'wikipedia';
 
           arguments?: unknown | null;
 
@@ -4400,14 +4355,11 @@ export namespace TaskCreateOrUpdateParams {
       export interface Integration {
         provider:
           | 'dummy'
-          | 'dall-e'
-          | 'duckduckgo'
-          | 'hackernews'
+          | 'dalle_image_generator'
+          | 'duckduckgo_search'
+          | 'hacker_news'
           | 'weather'
-          | 'wikipedia'
-          | 'twitter'
-          | 'webpage'
-          | 'requests';
+          | 'wikipedia';
 
         arguments?: unknown | null;
 
@@ -4710,14 +4662,11 @@ export namespace TaskCreateOrUpdateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dall-e'
-            | 'duckduckgo'
-            | 'hackernews'
+            | 'dalle_image_generator'
+            | 'duckduckgo_search'
+            | 'hacker_news'
             | 'weather'
-            | 'wikipedia'
-            | 'twitter'
-            | 'webpage'
-            | 'requests';
+            | 'wikipedia';
 
           arguments?: unknown | null;
 
@@ -4984,14 +4933,11 @@ export namespace TaskCreateOrUpdateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dall-e'
-            | 'duckduckgo'
-            | 'hackernews'
+            | 'dalle_image_generator'
+            | 'duckduckgo_search'
+            | 'hacker_news'
             | 'weather'
-            | 'wikipedia'
-            | 'twitter'
-            | 'webpage'
-            | 'requests';
+            | 'wikipedia';
 
           arguments?: unknown | null;
 
@@ -5284,14 +5230,11 @@ export namespace TaskCreateOrUpdateParams {
           export interface Integration {
             provider:
               | 'dummy'
-              | 'dall-e'
-              | 'duckduckgo'
-              | 'hackernews'
+              | 'dalle_image_generator'
+              | 'duckduckgo_search'
+              | 'hacker_news'
               | 'weather'
-              | 'wikipedia'
-              | 'twitter'
-              | 'webpage'
-              | 'requests';
+              | 'wikipedia';
 
             arguments?: unknown | null;
 
@@ -5580,14 +5523,11 @@ export namespace TaskCreateOrUpdateParams {
           export interface Integration {
             provider:
               | 'dummy'
-              | 'dall-e'
-              | 'duckduckgo'
-              | 'hackernews'
+              | 'dalle_image_generator'
+              | 'duckduckgo_search'
+              | 'hacker_news'
               | 'weather'
-              | 'wikipedia'
-              | 'twitter'
-              | 'webpage'
-              | 'requests';
+              | 'wikipedia';
 
             arguments?: unknown | null;
 
@@ -5830,14 +5770,11 @@ export namespace TaskCreateOrUpdateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dall-e'
-            | 'duckduckgo'
-            | 'hackernews'
+            | 'dalle_image_generator'
+            | 'duckduckgo_search'
+            | 'hacker_news'
             | 'weather'
-            | 'wikipedia'
-            | 'twitter'
-            | 'webpage'
-            | 'requests';
+            | 'wikipedia';
 
           arguments?: unknown | null;
 
@@ -6086,14 +6023,11 @@ export namespace TaskCreateOrUpdateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dall-e'
-            | 'duckduckgo'
-            | 'hackernews'
+            | 'dalle_image_generator'
+            | 'duckduckgo_search'
+            | 'hacker_news'
             | 'weather'
-            | 'wikipedia'
-            | 'twitter'
-            | 'webpage'
-            | 'requests';
+            | 'wikipedia';
 
           arguments?: unknown | null;
 
