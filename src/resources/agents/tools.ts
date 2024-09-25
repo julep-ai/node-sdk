@@ -88,20 +88,24 @@ export interface ToolListResponse {
 
   created_at: string;
 
-  /**
-   * Function definition
-   */
-  function: ToolListResponse.Function;
-
   name: string;
 
   updated_at: string;
 
-  api_call?: unknown | null;
+  /**
+   * Function definition
+   */
+  function?: ToolListResponse.Function | null;
 
-  integration?: unknown | null;
+  /**
+   * Integration definition
+   */
+  integration?: ToolListResponse.Integration | null;
 
-  system?: unknown | null;
+  /**
+   * System definition
+   */
+  system?: ToolListResponse.System | null;
 
   type?: 'function' | 'integration' | 'system' | 'api_call';
 }
@@ -117,21 +121,60 @@ export namespace ToolListResponse {
 
     parameters?: unknown | null;
   }
+
+  /**
+   * Integration definition
+   */
+  export interface Integration {
+    provider:
+      | 'dummy'
+      | 'dall-e'
+      | 'duckduckgo'
+      | 'hackernews'
+      | 'weather'
+      | 'wikipedia'
+      | 'twitter'
+      | 'webpage'
+      | 'requests';
+
+    arguments?: unknown | null;
+
+    description?: string | null;
+
+    method?: string | null;
+
+    setup?: unknown | null;
+  }
+
+  /**
+   * System definition
+   */
+  export interface System {
+    call: string;
+
+    arguments?: unknown | null;
+
+    description?: string | null;
+  }
 }
 
 export interface ToolCreateParams {
+  name: string;
+
   /**
    * Function definition
    */
-  function: ToolCreateParams.Function;
+  function?: ToolCreateParams.Function | null;
 
-  name: string;
+  /**
+   * Integration definition
+   */
+  integration?: ToolCreateParams.Integration | null;
 
-  api_call?: unknown | null;
-
-  integration?: unknown | null;
-
-  system?: unknown | null;
+  /**
+   * System definition
+   */
+  system?: ToolCreateParams.System | null;
 
   type?: 'function' | 'integration' | 'system' | 'api_call';
 }
@@ -147,21 +190,60 @@ export namespace ToolCreateParams {
 
     parameters?: unknown | null;
   }
+
+  /**
+   * Integration definition
+   */
+  export interface Integration {
+    provider:
+      | 'dummy'
+      | 'dall-e'
+      | 'duckduckgo'
+      | 'hackernews'
+      | 'weather'
+      | 'wikipedia'
+      | 'twitter'
+      | 'webpage'
+      | 'requests';
+
+    arguments?: unknown | null;
+
+    description?: string | null;
+
+    method?: string | null;
+
+    setup?: unknown | null;
+  }
+
+  /**
+   * System definition
+   */
+  export interface System {
+    call: string;
+
+    arguments?: unknown | null;
+
+    description?: string | null;
+  }
 }
 
 export interface ToolUpdateParams {
+  name: string;
+
   /**
    * Function definition
    */
-  function: ToolUpdateParams.Function;
+  function?: ToolUpdateParams.Function | null;
 
-  name: string;
+  /**
+   * Integration definition
+   */
+  integration?: ToolUpdateParams.Integration | null;
 
-  api_call?: unknown | null;
-
-  integration?: unknown | null;
-
-  system?: unknown | null;
+  /**
+   * System definition
+   */
+  system?: ToolUpdateParams.System | null;
 
   type?: 'function' | 'integration' | 'system' | 'api_call';
 }
@@ -177,6 +259,41 @@ export namespace ToolUpdateParams {
 
     parameters?: unknown | null;
   }
+
+  /**
+   * Integration definition
+   */
+  export interface Integration {
+    provider:
+      | 'dummy'
+      | 'dall-e'
+      | 'duckduckgo'
+      | 'hackernews'
+      | 'weather'
+      | 'wikipedia'
+      | 'twitter'
+      | 'webpage'
+      | 'requests';
+
+    arguments?: unknown | null;
+
+    description?: string | null;
+
+    method?: string | null;
+
+    setup?: unknown | null;
+  }
+
+  /**
+   * System definition
+   */
+  export interface System {
+    call: string;
+
+    arguments?: unknown | null;
+
+    description?: string | null;
+  }
 }
 
 export interface ToolListParams extends OffsetPaginationParams {
@@ -186,18 +303,22 @@ export interface ToolListParams extends OffsetPaginationParams {
 }
 
 export interface ToolPatchParams {
-  api_call?: unknown | null;
-
   /**
    * Function definition
    */
   function?: ToolPatchParams.Function | null;
 
-  integration?: unknown | null;
+  /**
+   * Integration definition
+   */
+  integration?: ToolPatchParams.Integration | null;
 
   name?: string | null;
 
-  system?: unknown | null;
+  /**
+   * System definition
+   */
+  system?: ToolPatchParams.System | null;
 
   type?: 'function' | 'integration' | 'system' | 'api_call';
 }
@@ -212,6 +333,42 @@ export namespace ToolPatchParams {
     name?: unknown | null;
 
     parameters?: unknown | null;
+  }
+
+  /**
+   * Integration definition
+   */
+  export interface Integration {
+    arguments?: unknown | null;
+
+    description?: string | null;
+
+    method?: string | null;
+
+    provider?:
+      | 'dummy'
+      | 'dall-e'
+      | 'duckduckgo'
+      | 'hackernews'
+      | 'weather'
+      | 'wikipedia'
+      | 'twitter'
+      | 'webpage'
+      | 'requests'
+      | null;
+
+    setup?: unknown | null;
+  }
+
+  /**
+   * System definition
+   */
+  export interface System {
+    arguments?: unknown | null;
+
+    call?: string | null;
+
+    description?: string | null;
   }
 }
 

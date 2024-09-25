@@ -11,7 +11,6 @@ const client = new Julep({
 describe('resource tools', () => {
   test('create: only required params', async () => {
     const responsePromise = client.agents.tools.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-      function: {},
       name: 'name',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -25,11 +24,16 @@ describe('resource tools', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.agents.tools.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-      function: { description: 'description', name: {}, parameters: {} },
       name: 'name',
-      api_call: {},
-      integration: {},
-      system: {},
+      function: { description: 'description', name: {}, parameters: {} },
+      integration: {
+        provider: 'dummy',
+        arguments: {},
+        description: 'description',
+        method: 'method',
+        setup: {},
+      },
+      system: { call: 'call', arguments: {}, description: 'description' },
       type: 'function',
     });
   });
@@ -38,7 +42,7 @@ describe('resource tools', () => {
     const responsePromise = client.agents.tools.update(
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-      { function: {}, name: 'name' },
+      { name: 'name' },
     );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -54,11 +58,16 @@ describe('resource tools', () => {
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       {
-        function: { description: 'description', name: {}, parameters: {} },
         name: 'name',
-        api_call: {},
-        integration: {},
-        system: {},
+        function: { description: 'description', name: {}, parameters: {} },
+        integration: {
+          provider: 'dummy',
+          arguments: {},
+          description: 'description',
+          method: 'method',
+          setup: {},
+        },
+        system: { call: 'call', arguments: {}, description: 'description' },
         type: 'function',
       },
     );
