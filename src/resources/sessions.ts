@@ -225,11 +225,13 @@ export namespace ChatInput {
     export interface Integration {
       provider:
         | 'dummy'
-        | 'dalle_image_generator'
-        | 'duckduckgo_search'
         | 'hacker_news'
         | 'weather'
-        | 'wikipedia';
+        | 'wikipedia'
+        | 'spider'
+        | 'brave'
+        | 'browserbase'
+        | (string & {});
 
       arguments?: unknown | null;
 
@@ -659,11 +661,13 @@ export namespace Entry {
     export interface Integration {
       provider:
         | 'dummy'
-        | 'dalle_image_generator'
-        | 'duckduckgo_search'
         | 'hacker_news'
         | 'weather'
-        | 'wikipedia';
+        | 'wikipedia'
+        | 'spider'
+        | 'brave'
+        | 'browserbase'
+        | (string & {});
 
       arguments?: unknown | null;
 
@@ -780,11 +784,13 @@ export namespace Entry {
     export interface Integration {
       provider:
         | 'dummy'
-        | 'dalle_image_generator'
-        | 'duckduckgo_search'
         | 'hacker_news'
         | 'weather'
-        | 'wikipedia';
+        | 'wikipedia'
+        | 'spider'
+        | 'brave'
+        | 'browserbase'
+        | (string & {});
 
       arguments?: unknown | null;
 
@@ -1268,11 +1274,13 @@ export namespace SessionChatParams {
     export interface Integration {
       provider:
         | 'dummy'
-        | 'dalle_image_generator'
-        | 'duckduckgo_search'
         | 'hacker_news'
         | 'weather'
-        | 'wikipedia';
+        | 'wikipedia'
+        | 'spider'
+        | 'brave'
+        | 'browserbase'
+        | (string & {});
 
       arguments?: unknown | null;
 
