@@ -251,11 +251,13 @@ export namespace Task {
       export interface Integration {
         provider:
           | 'dummy'
-          | 'dalle_image_generator'
-          | 'duckduckgo_search'
           | 'hacker_news'
           | 'weather'
-          | 'wikipedia';
+          | 'wikipedia'
+          | 'spider'
+          | 'brave'
+          | 'browserbase'
+          | (string & {});
 
         arguments?: unknown | null;
 
@@ -586,11 +588,13 @@ export namespace Task {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dalle_image_generator'
-            | 'duckduckgo_search'
             | 'hacker_news'
             | 'weather'
-            | 'wikipedia';
+            | 'wikipedia'
+            | 'spider'
+            | 'brave'
+            | 'browserbase'
+            | (string & {});
 
           arguments?: unknown | null;
 
@@ -883,11 +887,13 @@ export namespace Task {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dalle_image_generator'
-            | 'duckduckgo_search'
             | 'hacker_news'
             | 'weather'
-            | 'wikipedia';
+            | 'wikipedia'
+            | 'spider'
+            | 'brave'
+            | 'browserbase'
+            | (string & {});
 
           arguments?: unknown | null;
 
@@ -1208,11 +1214,13 @@ export namespace Task {
           export interface Integration {
             provider:
               | 'dummy'
-              | 'dalle_image_generator'
-              | 'duckduckgo_search'
               | 'hacker_news'
               | 'weather'
-              | 'wikipedia';
+              | 'wikipedia'
+              | 'spider'
+              | 'brave'
+              | 'browserbase'
+              | (string & {});
 
             arguments?: unknown | null;
 
@@ -1529,11 +1537,13 @@ export namespace Task {
           export interface Integration {
             provider:
               | 'dummy'
-              | 'dalle_image_generator'
-              | 'duckduckgo_search'
               | 'hacker_news'
               | 'weather'
-              | 'wikipedia';
+              | 'wikipedia'
+              | 'spider'
+              | 'brave'
+              | 'browserbase'
+              | (string & {});
 
             arguments?: unknown | null;
 
@@ -1794,11 +1804,13 @@ export namespace Task {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dalle_image_generator'
-            | 'duckduckgo_search'
             | 'hacker_news'
             | 'weather'
-            | 'wikipedia';
+            | 'wikipedia'
+            | 'spider'
+            | 'brave'
+            | 'browserbase'
+            | (string & {});
 
           arguments?: unknown | null;
 
@@ -2065,11 +2077,13 @@ export namespace Task {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dalle_image_generator'
-            | 'duckduckgo_search'
             | 'hacker_news'
             | 'weather'
-            | 'wikipedia';
+            | 'wikipedia'
+            | 'spider'
+            | 'brave'
+            | 'browserbase'
+            | (string & {});
 
           arguments?: unknown | null;
 
@@ -2209,11 +2223,13 @@ export namespace Tool {
   export interface Integration {
     provider:
       | 'dummy'
-      | 'dalle_image_generator'
-      | 'duckduckgo_search'
       | 'hacker_news'
       | 'weather'
-      | 'wikipedia';
+      | 'wikipedia'
+      | 'spider'
+      | 'brave'
+      | 'browserbase'
+      | (string & {});
 
     arguments?: unknown | null;
 
@@ -2412,11 +2428,13 @@ export namespace TaskCreateParams {
       export interface Integration {
         provider:
           | 'dummy'
-          | 'dalle_image_generator'
-          | 'duckduckgo_search'
           | 'hacker_news'
           | 'weather'
-          | 'wikipedia';
+          | 'wikipedia'
+          | 'spider'
+          | 'brave'
+          | 'browserbase'
+          | (string & {});
 
         arguments?: unknown | null;
 
@@ -2719,11 +2737,13 @@ export namespace TaskCreateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dalle_image_generator'
-            | 'duckduckgo_search'
             | 'hacker_news'
             | 'weather'
-            | 'wikipedia';
+            | 'wikipedia'
+            | 'spider'
+            | 'brave'
+            | 'browserbase'
+            | (string & {});
 
           arguments?: unknown | null;
 
@@ -2990,11 +3010,13 @@ export namespace TaskCreateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dalle_image_generator'
-            | 'duckduckgo_search'
             | 'hacker_news'
             | 'weather'
-            | 'wikipedia';
+            | 'wikipedia'
+            | 'spider'
+            | 'brave'
+            | 'browserbase'
+            | (string & {});
 
           arguments?: unknown | null;
 
@@ -3287,11 +3309,13 @@ export namespace TaskCreateParams {
           export interface Integration {
             provider:
               | 'dummy'
-              | 'dalle_image_generator'
-              | 'duckduckgo_search'
               | 'hacker_news'
               | 'weather'
-              | 'wikipedia';
+              | 'wikipedia'
+              | 'spider'
+              | 'brave'
+              | 'browserbase'
+              | (string & {});
 
             arguments?: unknown | null;
 
@@ -3580,11 +3604,13 @@ export namespace TaskCreateParams {
           export interface Integration {
             provider:
               | 'dummy'
-              | 'dalle_image_generator'
-              | 'duckduckgo_search'
               | 'hacker_news'
               | 'weather'
-              | 'wikipedia';
+              | 'wikipedia'
+              | 'spider'
+              | 'brave'
+              | 'browserbase'
+              | (string & {});
 
             arguments?: unknown | null;
 
@@ -3827,11 +3853,13 @@ export namespace TaskCreateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dalle_image_generator'
-            | 'duckduckgo_search'
             | 'hacker_news'
             | 'weather'
-            | 'wikipedia';
+            | 'wikipedia'
+            | 'spider'
+            | 'brave'
+            | 'browserbase'
+            | (string & {});
 
           arguments?: unknown | null;
 
@@ -4080,11 +4108,13 @@ export namespace TaskCreateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dalle_image_generator'
-            | 'duckduckgo_search'
             | 'hacker_news'
             | 'weather'
-            | 'wikipedia';
+            | 'wikipedia'
+            | 'spider'
+            | 'brave'
+            | 'browserbase'
+            | (string & {});
 
           arguments?: unknown | null;
 
@@ -4355,11 +4385,13 @@ export namespace TaskCreateOrUpdateParams {
       export interface Integration {
         provider:
           | 'dummy'
-          | 'dalle_image_generator'
-          | 'duckduckgo_search'
           | 'hacker_news'
           | 'weather'
-          | 'wikipedia';
+          | 'wikipedia'
+          | 'spider'
+          | 'brave'
+          | 'browserbase'
+          | (string & {});
 
         arguments?: unknown | null;
 
@@ -4662,11 +4694,13 @@ export namespace TaskCreateOrUpdateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dalle_image_generator'
-            | 'duckduckgo_search'
             | 'hacker_news'
             | 'weather'
-            | 'wikipedia';
+            | 'wikipedia'
+            | 'spider'
+            | 'brave'
+            | 'browserbase'
+            | (string & {});
 
           arguments?: unknown | null;
 
@@ -4933,11 +4967,13 @@ export namespace TaskCreateOrUpdateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dalle_image_generator'
-            | 'duckduckgo_search'
             | 'hacker_news'
             | 'weather'
-            | 'wikipedia';
+            | 'wikipedia'
+            | 'spider'
+            | 'brave'
+            | 'browserbase'
+            | (string & {});
 
           arguments?: unknown | null;
 
@@ -5230,11 +5266,13 @@ export namespace TaskCreateOrUpdateParams {
           export interface Integration {
             provider:
               | 'dummy'
-              | 'dalle_image_generator'
-              | 'duckduckgo_search'
               | 'hacker_news'
               | 'weather'
-              | 'wikipedia';
+              | 'wikipedia'
+              | 'spider'
+              | 'brave'
+              | 'browserbase'
+              | (string & {});
 
             arguments?: unknown | null;
 
@@ -5523,11 +5561,13 @@ export namespace TaskCreateOrUpdateParams {
           export interface Integration {
             provider:
               | 'dummy'
-              | 'dalle_image_generator'
-              | 'duckduckgo_search'
               | 'hacker_news'
               | 'weather'
-              | 'wikipedia';
+              | 'wikipedia'
+              | 'spider'
+              | 'brave'
+              | 'browserbase'
+              | (string & {});
 
             arguments?: unknown | null;
 
@@ -5770,11 +5810,13 @@ export namespace TaskCreateOrUpdateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dalle_image_generator'
-            | 'duckduckgo_search'
             | 'hacker_news'
             | 'weather'
-            | 'wikipedia';
+            | 'wikipedia'
+            | 'spider'
+            | 'brave'
+            | 'browserbase'
+            | (string & {});
 
           arguments?: unknown | null;
 
@@ -6023,11 +6065,13 @@ export namespace TaskCreateOrUpdateParams {
         export interface Integration {
           provider:
             | 'dummy'
-            | 'dalle_image_generator'
-            | 'duckduckgo_search'
             | 'hacker_news'
             | 'weather'
-            | 'wikipedia';
+            | 'wikipedia'
+            | 'spider'
+            | 'brave'
+            | 'browserbase'
+            | (string & {});
 
           arguments?: unknown | null;
 

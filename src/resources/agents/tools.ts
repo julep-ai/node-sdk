@@ -128,11 +128,13 @@ export namespace ToolListResponse {
   export interface Integration {
     provider:
       | 'dummy'
-      | 'dalle_image_generator'
-      | 'duckduckgo_search'
       | 'hacker_news'
       | 'weather'
-      | 'wikipedia';
+      | 'wikipedia'
+      | 'spider'
+      | 'brave'
+      | 'browserbase'
+      | (string & {});
 
     arguments?: unknown | null;
 
@@ -194,11 +196,13 @@ export namespace ToolCreateParams {
   export interface Integration {
     provider:
       | 'dummy'
-      | 'dalle_image_generator'
-      | 'duckduckgo_search'
       | 'hacker_news'
       | 'weather'
-      | 'wikipedia';
+      | 'wikipedia'
+      | 'spider'
+      | 'brave'
+      | 'browserbase'
+      | (string & {});
 
     arguments?: unknown | null;
 
@@ -260,11 +264,13 @@ export namespace ToolUpdateParams {
   export interface Integration {
     provider:
       | 'dummy'
-      | 'dalle_image_generator'
-      | 'duckduckgo_search'
       | 'hacker_news'
       | 'weather'
-      | 'wikipedia';
+      | 'wikipedia'
+      | 'spider'
+      | 'brave'
+      | 'browserbase'
+      | (string & {});
 
     arguments?: unknown | null;
 
@@ -338,11 +344,13 @@ export namespace ToolPatchParams {
 
     provider?:
       | 'dummy'
-      | 'dalle_image_generator'
-      | 'duckduckgo_search'
       | 'hacker_news'
       | 'weather'
       | 'wikipedia'
+      | 'spider'
+      | 'brave'
+      | 'browserbase'
+      | (string & {})
       | null;
 
     setup?: unknown | null;
