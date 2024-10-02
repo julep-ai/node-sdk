@@ -76,10 +76,10 @@ export interface Task {
     | Task.LogStep
     | Task.EmbedStep
     | Task.SearchStep
+    | Task.YieldStep
     | Task.ReturnStep
     | Task.SleepStep
     | Task.ErrorWorkflowStep
-    | Task.YieldStep
     | Task.WaitForInputStep
     | Task.IfElseWorkflowStepOutput
     | Task.SwitchStepOutput
@@ -354,6 +354,14 @@ export namespace Task {
     }
   }
 
+  export interface YieldStep {
+    workflow: string;
+
+    arguments?: Record<string, string> | '_';
+
+    kind_?: 'yield';
+  }
+
   export interface ReturnStep {
     return: Record<string, string>;
 
@@ -384,14 +392,6 @@ export namespace Task {
     kind_?: 'error';
   }
 
-  export interface YieldStep {
-    workflow: string;
-
-    arguments?: Record<string, string> | '_';
-
-    kind_?: 'yield';
-  }
-
   export interface WaitForInputStep {
     wait_for_input: WaitForInputStep.WaitForInput;
 
@@ -416,10 +416,10 @@ export namespace Task {
       | IfElseWorkflowStepOutput.LogStep
       | IfElseWorkflowStepOutput.EmbedStep
       | IfElseWorkflowStepOutput.SearchStep
+      | IfElseWorkflowStepOutput.YieldStep
       | IfElseWorkflowStepOutput.ReturnStep
       | IfElseWorkflowStepOutput.SleepStep
       | IfElseWorkflowStepOutput.ErrorWorkflowStep
-      | IfElseWorkflowStepOutput.YieldStep
       | IfElseWorkflowStepOutput.WaitForInputStep;
 
     else?:
@@ -431,10 +431,10 @@ export namespace Task {
       | IfElseWorkflowStepOutput.LogStep
       | IfElseWorkflowStepOutput.EmbedStep
       | IfElseWorkflowStepOutput.SearchStep
+      | IfElseWorkflowStepOutput.YieldStep
       | IfElseWorkflowStepOutput.ReturnStep
       | IfElseWorkflowStepOutput.SleepStep
       | IfElseWorkflowStepOutput.ErrorWorkflowStep
-      | IfElseWorkflowStepOutput.YieldStep
       | IfElseWorkflowStepOutput.WaitForInputStep
       | null;
 
@@ -691,6 +691,14 @@ export namespace Task {
       }
     }
 
+    export interface YieldStep {
+      workflow: string;
+
+      arguments?: Record<string, string> | '_';
+
+      kind_?: 'yield';
+    }
+
     export interface ReturnStep {
       return: Record<string, string>;
 
@@ -719,14 +727,6 @@ export namespace Task {
       error: string;
 
       kind_?: 'error';
-    }
-
-    export interface YieldStep {
-      workflow: string;
-
-      arguments?: Record<string, string> | '_';
-
-      kind_?: 'yield';
     }
 
     export interface WaitForInputStep {
@@ -990,6 +990,14 @@ export namespace Task {
       }
     }
 
+    export interface YieldStep {
+      workflow: string;
+
+      arguments?: Record<string, string> | '_';
+
+      kind_?: 'yield';
+    }
+
     export interface ReturnStep {
       return: Record<string, string>;
 
@@ -1018,14 +1026,6 @@ export namespace Task {
       error: string;
 
       kind_?: 'error';
-    }
-
-    export interface YieldStep {
-      workflow: string;
-
-      arguments?: Record<string, string> | '_';
-
-      kind_?: 'yield';
     }
 
     export interface WaitForInputStep {
@@ -1060,10 +1060,10 @@ export namespace Task {
         | Switch.LogStep
         | Switch.EmbedStep
         | Switch.SearchStep
+        | Switch.YieldStep
         | Switch.ReturnStep
         | Switch.SleepStep
         | Switch.ErrorWorkflowStep
-        | Switch.YieldStep
         | Switch.WaitForInputStep;
     }
 
@@ -1317,6 +1317,14 @@ export namespace Task {
         }
       }
 
+      export interface YieldStep {
+        workflow: string;
+
+        arguments?: Record<string, string> | '_';
+
+        kind_?: 'yield';
+      }
+
       export interface ReturnStep {
         return: Record<string, string>;
 
@@ -1345,14 +1353,6 @@ export namespace Task {
         error: string;
 
         kind_?: 'error';
-      }
-
-      export interface YieldStep {
-        workflow: string;
-
-        arguments?: Record<string, string> | '_';
-
-        kind_?: 'yield';
       }
 
       export interface WaitForInputStep {
@@ -1385,7 +1385,8 @@ export namespace Task {
         | Foreach.SetStep
         | Foreach.LogStep
         | Foreach.EmbedStep
-        | Foreach.SearchStep;
+        | Foreach.SearchStep
+        | Foreach.YieldStep;
 
       in: string;
     }
@@ -1639,6 +1640,14 @@ export namespace Task {
           limit?: number;
         }
       }
+
+      export interface YieldStep {
+        workflow: string;
+
+        arguments?: Record<string, string> | '_';
+
+        kind_?: 'yield';
+      }
     }
   }
 
@@ -1652,6 +1661,7 @@ export namespace Task {
       | ParallelStepOutput.LogStep
       | ParallelStepOutput.EmbedStep
       | ParallelStepOutput.SearchStep
+      | ParallelStepOutput.YieldStep
     >;
 
     kind_?: 'parallel';
@@ -1906,6 +1916,14 @@ export namespace Task {
         limit?: number;
       }
     }
+
+    export interface YieldStep {
+      workflow: string;
+
+      arguments?: Record<string, string> | '_';
+
+      kind_?: 'yield';
+    }
   }
 
   export interface MainOutput {
@@ -1917,7 +1935,8 @@ export namespace Task {
       | MainOutput.SetStep
       | MainOutput.LogStep
       | MainOutput.EmbedStep
-      | MainOutput.SearchStep;
+      | MainOutput.SearchStep
+      | MainOutput.YieldStep;
 
     over: string;
 
@@ -2179,6 +2198,14 @@ export namespace Task {
         limit?: number;
       }
     }
+
+    export interface YieldStep {
+      workflow: string;
+
+      arguments?: Record<string, string> | '_';
+
+      kind_?: 'yield';
+    }
   }
 }
 
@@ -2262,10 +2289,10 @@ export interface TaskCreateParams {
     | TaskCreateParams.LogStep
     | TaskCreateParams.EmbedStep
     | TaskCreateParams.SearchStep
+    | TaskCreateParams.YieldStep
     | TaskCreateParams.ReturnStep
     | TaskCreateParams.SleepStep
     | TaskCreateParams.ErrorWorkflowStep
-    | TaskCreateParams.YieldStep
     | TaskCreateParams.WaitForInputStep
     | TaskCreateParams.IfElseWorkflowStepInput
     | TaskCreateParams.SwitchStepInput
@@ -2521,6 +2548,12 @@ export namespace TaskCreateParams {
     }
   }
 
+  export interface YieldStep {
+    workflow: string;
+
+    arguments?: Record<string, string> | '_';
+  }
+
   export interface ReturnStep {
     return: Record<string, string>;
   }
@@ -2545,12 +2578,6 @@ export namespace TaskCreateParams {
     error: string;
   }
 
-  export interface YieldStep {
-    workflow: string;
-
-    arguments?: Record<string, string> | '_';
-  }
-
   export interface WaitForInputStep {
     wait_for_input: WaitForInputStep.WaitForInput;
   }
@@ -2573,10 +2600,10 @@ export namespace TaskCreateParams {
       | IfElseWorkflowStepInput.LogStep
       | IfElseWorkflowStepInput.EmbedStep
       | IfElseWorkflowStepInput.SearchStep
+      | IfElseWorkflowStepInput.YieldStep
       | IfElseWorkflowStepInput.ReturnStep
       | IfElseWorkflowStepInput.SleepStep
       | IfElseWorkflowStepInput.ErrorWorkflowStep
-      | IfElseWorkflowStepInput.YieldStep
       | IfElseWorkflowStepInput.WaitForInputStep;
 
     else?:
@@ -2588,10 +2615,10 @@ export namespace TaskCreateParams {
       | IfElseWorkflowStepInput.LogStep
       | IfElseWorkflowStepInput.EmbedStep
       | IfElseWorkflowStepInput.SearchStep
+      | IfElseWorkflowStepInput.YieldStep
       | IfElseWorkflowStepInput.ReturnStep
       | IfElseWorkflowStepInput.SleepStep
       | IfElseWorkflowStepInput.ErrorWorkflowStep
-      | IfElseWorkflowStepInput.YieldStep
       | IfElseWorkflowStepInput.WaitForInputStep
       | null;
   }
@@ -2830,6 +2857,12 @@ export namespace TaskCreateParams {
       }
     }
 
+    export interface YieldStep {
+      workflow: string;
+
+      arguments?: Record<string, string> | '_';
+    }
+
     export interface ReturnStep {
       return: Record<string, string>;
     }
@@ -2852,12 +2885,6 @@ export namespace TaskCreateParams {
 
     export interface ErrorWorkflowStep {
       error: string;
-    }
-
-    export interface YieldStep {
-      workflow: string;
-
-      arguments?: Record<string, string> | '_';
     }
 
     export interface WaitForInputStep {
@@ -3103,6 +3130,12 @@ export namespace TaskCreateParams {
       }
     }
 
+    export interface YieldStep {
+      workflow: string;
+
+      arguments?: Record<string, string> | '_';
+    }
+
     export interface ReturnStep {
       return: Record<string, string>;
     }
@@ -3125,12 +3158,6 @@ export namespace TaskCreateParams {
 
     export interface ErrorWorkflowStep {
       error: string;
-    }
-
-    export interface YieldStep {
-      workflow: string;
-
-      arguments?: Record<string, string> | '_';
     }
 
     export interface WaitForInputStep {
@@ -3161,10 +3188,10 @@ export namespace TaskCreateParams {
         | Switch.LogStep
         | Switch.EmbedStep
         | Switch.SearchStep
+        | Switch.YieldStep
         | Switch.ReturnStep
         | Switch.SleepStep
         | Switch.ErrorWorkflowStep
-        | Switch.YieldStep
         | Switch.WaitForInputStep;
     }
 
@@ -3402,6 +3429,12 @@ export namespace TaskCreateParams {
         }
       }
 
+      export interface YieldStep {
+        workflow: string;
+
+        arguments?: Record<string, string> | '_';
+      }
+
       export interface ReturnStep {
         return: Record<string, string>;
       }
@@ -3424,12 +3457,6 @@ export namespace TaskCreateParams {
 
       export interface ErrorWorkflowStep {
         error: string;
-      }
-
-      export interface YieldStep {
-        workflow: string;
-
-        arguments?: Record<string, string> | '_';
       }
 
       export interface WaitForInputStep {
@@ -3458,7 +3485,8 @@ export namespace TaskCreateParams {
         | Foreach.SetStep
         | Foreach.LogStep
         | Foreach.EmbedStep
-        | Foreach.SearchStep;
+        | Foreach.SearchStep
+        | Foreach.YieldStep;
 
       in: string;
     }
@@ -3696,6 +3724,12 @@ export namespace TaskCreateParams {
           limit?: number;
         }
       }
+
+      export interface YieldStep {
+        workflow: string;
+
+        arguments?: Record<string, string> | '_';
+      }
     }
   }
 
@@ -3709,6 +3743,7 @@ export namespace TaskCreateParams {
       | ParallelStepInput.LogStep
       | ParallelStepInput.EmbedStep
       | ParallelStepInput.SearchStep
+      | ParallelStepInput.YieldStep
     >;
   }
 
@@ -3945,6 +3980,12 @@ export namespace TaskCreateParams {
         limit?: number;
       }
     }
+
+    export interface YieldStep {
+      workflow: string;
+
+      arguments?: Record<string, string> | '_';
+    }
   }
 
   export interface MainInput {
@@ -3956,7 +3997,8 @@ export namespace TaskCreateParams {
       | MainInput.SetStep
       | MainInput.LogStep
       | MainInput.EmbedStep
-      | MainInput.SearchStep;
+      | MainInput.SearchStep
+      | MainInput.YieldStep;
 
     over: string;
 
@@ -4200,6 +4242,12 @@ export namespace TaskCreateParams {
         limit?: number;
       }
     }
+
+    export interface YieldStep {
+      workflow: string;
+
+      arguments?: Record<string, string> | '_';
+    }
   }
 }
 
@@ -4219,10 +4267,10 @@ export interface TaskCreateOrUpdateParams {
     | TaskCreateOrUpdateParams.LogStep
     | TaskCreateOrUpdateParams.EmbedStep
     | TaskCreateOrUpdateParams.SearchStep
+    | TaskCreateOrUpdateParams.YieldStep
     | TaskCreateOrUpdateParams.ReturnStep
     | TaskCreateOrUpdateParams.SleepStep
     | TaskCreateOrUpdateParams.ErrorWorkflowStep
-    | TaskCreateOrUpdateParams.YieldStep
     | TaskCreateOrUpdateParams.WaitForInputStep
     | TaskCreateOrUpdateParams.IfElseWorkflowStepInput
     | TaskCreateOrUpdateParams.SwitchStepInput
@@ -4478,6 +4526,12 @@ export namespace TaskCreateOrUpdateParams {
     }
   }
 
+  export interface YieldStep {
+    workflow: string;
+
+    arguments?: Record<string, string> | '_';
+  }
+
   export interface ReturnStep {
     return: Record<string, string>;
   }
@@ -4502,12 +4556,6 @@ export namespace TaskCreateOrUpdateParams {
     error: string;
   }
 
-  export interface YieldStep {
-    workflow: string;
-
-    arguments?: Record<string, string> | '_';
-  }
-
   export interface WaitForInputStep {
     wait_for_input: WaitForInputStep.WaitForInput;
   }
@@ -4530,10 +4578,10 @@ export namespace TaskCreateOrUpdateParams {
       | IfElseWorkflowStepInput.LogStep
       | IfElseWorkflowStepInput.EmbedStep
       | IfElseWorkflowStepInput.SearchStep
+      | IfElseWorkflowStepInput.YieldStep
       | IfElseWorkflowStepInput.ReturnStep
       | IfElseWorkflowStepInput.SleepStep
       | IfElseWorkflowStepInput.ErrorWorkflowStep
-      | IfElseWorkflowStepInput.YieldStep
       | IfElseWorkflowStepInput.WaitForInputStep;
 
     else?:
@@ -4545,10 +4593,10 @@ export namespace TaskCreateOrUpdateParams {
       | IfElseWorkflowStepInput.LogStep
       | IfElseWorkflowStepInput.EmbedStep
       | IfElseWorkflowStepInput.SearchStep
+      | IfElseWorkflowStepInput.YieldStep
       | IfElseWorkflowStepInput.ReturnStep
       | IfElseWorkflowStepInput.SleepStep
       | IfElseWorkflowStepInput.ErrorWorkflowStep
-      | IfElseWorkflowStepInput.YieldStep
       | IfElseWorkflowStepInput.WaitForInputStep
       | null;
   }
@@ -4787,6 +4835,12 @@ export namespace TaskCreateOrUpdateParams {
       }
     }
 
+    export interface YieldStep {
+      workflow: string;
+
+      arguments?: Record<string, string> | '_';
+    }
+
     export interface ReturnStep {
       return: Record<string, string>;
     }
@@ -4809,12 +4863,6 @@ export namespace TaskCreateOrUpdateParams {
 
     export interface ErrorWorkflowStep {
       error: string;
-    }
-
-    export interface YieldStep {
-      workflow: string;
-
-      arguments?: Record<string, string> | '_';
     }
 
     export interface WaitForInputStep {
@@ -5060,6 +5108,12 @@ export namespace TaskCreateOrUpdateParams {
       }
     }
 
+    export interface YieldStep {
+      workflow: string;
+
+      arguments?: Record<string, string> | '_';
+    }
+
     export interface ReturnStep {
       return: Record<string, string>;
     }
@@ -5082,12 +5136,6 @@ export namespace TaskCreateOrUpdateParams {
 
     export interface ErrorWorkflowStep {
       error: string;
-    }
-
-    export interface YieldStep {
-      workflow: string;
-
-      arguments?: Record<string, string> | '_';
     }
 
     export interface WaitForInputStep {
@@ -5118,10 +5166,10 @@ export namespace TaskCreateOrUpdateParams {
         | Switch.LogStep
         | Switch.EmbedStep
         | Switch.SearchStep
+        | Switch.YieldStep
         | Switch.ReturnStep
         | Switch.SleepStep
         | Switch.ErrorWorkflowStep
-        | Switch.YieldStep
         | Switch.WaitForInputStep;
     }
 
@@ -5359,6 +5407,12 @@ export namespace TaskCreateOrUpdateParams {
         }
       }
 
+      export interface YieldStep {
+        workflow: string;
+
+        arguments?: Record<string, string> | '_';
+      }
+
       export interface ReturnStep {
         return: Record<string, string>;
       }
@@ -5381,12 +5435,6 @@ export namespace TaskCreateOrUpdateParams {
 
       export interface ErrorWorkflowStep {
         error: string;
-      }
-
-      export interface YieldStep {
-        workflow: string;
-
-        arguments?: Record<string, string> | '_';
       }
 
       export interface WaitForInputStep {
@@ -5415,7 +5463,8 @@ export namespace TaskCreateOrUpdateParams {
         | Foreach.SetStep
         | Foreach.LogStep
         | Foreach.EmbedStep
-        | Foreach.SearchStep;
+        | Foreach.SearchStep
+        | Foreach.YieldStep;
 
       in: string;
     }
@@ -5653,6 +5702,12 @@ export namespace TaskCreateOrUpdateParams {
           limit?: number;
         }
       }
+
+      export interface YieldStep {
+        workflow: string;
+
+        arguments?: Record<string, string> | '_';
+      }
     }
   }
 
@@ -5666,6 +5721,7 @@ export namespace TaskCreateOrUpdateParams {
       | ParallelStepInput.LogStep
       | ParallelStepInput.EmbedStep
       | ParallelStepInput.SearchStep
+      | ParallelStepInput.YieldStep
     >;
   }
 
@@ -5902,6 +5958,12 @@ export namespace TaskCreateOrUpdateParams {
         limit?: number;
       }
     }
+
+    export interface YieldStep {
+      workflow: string;
+
+      arguments?: Record<string, string> | '_';
+    }
   }
 
   export interface MainInput {
@@ -5913,7 +5975,8 @@ export namespace TaskCreateOrUpdateParams {
       | MainInput.SetStep
       | MainInput.LogStep
       | MainInput.EmbedStep
-      | MainInput.SearchStep;
+      | MainInput.SearchStep
+      | MainInput.YieldStep;
 
     over: string;
 
@@ -6156,6 +6219,12 @@ export namespace TaskCreateOrUpdateParams {
 
         limit?: number;
       }
+    }
+
+    export interface YieldStep {
+      workflow: string;
+
+      arguments?: Record<string, string> | '_';
     }
   }
 }
