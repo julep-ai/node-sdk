@@ -32,6 +32,8 @@ export interface Doc {
 
   title: string;
 
+  embeddings?: Array<number> | Array<Array<number>> | null;
+
   metadata?: unknown | null;
 }
 
