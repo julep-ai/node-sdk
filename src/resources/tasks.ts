@@ -175,8 +175,6 @@ export namespace Task {
     }
 
     export interface NamedToolChoice {
-      type: 'function' | 'integration' | 'system' | 'api_call';
-
       function?: NamedToolChoice.Function | null;
     }
 
@@ -229,8 +227,6 @@ export namespace Task {
        * System definition
        */
       system?: CreateToolRequest.System | null;
-
-      type?: 'function' | 'integration' | 'system' | 'api_call';
     }
 
     export namespace CreateToolRequest {
@@ -512,8 +508,6 @@ export namespace Task {
       }
 
       export interface NamedToolChoice {
-        type: 'function' | 'integration' | 'system' | 'api_call';
-
         function?: NamedToolChoice.Function | null;
       }
 
@@ -566,8 +560,6 @@ export namespace Task {
          * System definition
          */
         system?: CreateToolRequest.System | null;
-
-        type?: 'function' | 'integration' | 'system' | 'api_call';
       }
 
       export namespace CreateToolRequest {
@@ -811,8 +803,6 @@ export namespace Task {
       }
 
       export interface NamedToolChoice {
-        type: 'function' | 'integration' | 'system' | 'api_call';
-
         function?: NamedToolChoice.Function | null;
       }
 
@@ -865,8 +855,6 @@ export namespace Task {
          * System definition
          */
         system?: CreateToolRequest.System | null;
-
-        type?: 'function' | 'integration' | 'system' | 'api_call';
       }
 
       export namespace CreateToolRequest {
@@ -1138,8 +1126,6 @@ export namespace Task {
         }
 
         export interface NamedToolChoice {
-          type: 'function' | 'integration' | 'system' | 'api_call';
-
           function?: NamedToolChoice.Function | null;
         }
 
@@ -1192,8 +1178,6 @@ export namespace Task {
            * System definition
            */
           system?: CreateToolRequest.System | null;
-
-          type?: 'function' | 'integration' | 'system' | 'api_call';
         }
 
         export namespace CreateToolRequest {
@@ -1462,8 +1446,6 @@ export namespace Task {
         }
 
         export interface NamedToolChoice {
-          type: 'function' | 'integration' | 'system' | 'api_call';
-
           function?: NamedToolChoice.Function | null;
         }
 
@@ -1516,8 +1498,6 @@ export namespace Task {
            * System definition
            */
           system?: CreateToolRequest.System | null;
-
-          type?: 'function' | 'integration' | 'system' | 'api_call';
         }
 
         export namespace CreateToolRequest {
@@ -1738,8 +1718,6 @@ export namespace Task {
       }
 
       export interface NamedToolChoice {
-        type: 'function' | 'integration' | 'system' | 'api_call';
-
         function?: NamedToolChoice.Function | null;
       }
 
@@ -1792,8 +1770,6 @@ export namespace Task {
          * System definition
          */
         system?: CreateToolRequest.System | null;
-
-        type?: 'function' | 'integration' | 'system' | 'api_call';
       }
 
       export namespace CreateToolRequest {
@@ -2020,8 +1996,6 @@ export namespace Task {
       }
 
       export interface NamedToolChoice {
-        type: 'function' | 'integration' | 'system' | 'api_call';
-
         function?: NamedToolChoice.Function | null;
       }
 
@@ -2074,8 +2048,6 @@ export namespace Task {
          * System definition
          */
         system?: CreateToolRequest.System | null;
-
-        type?: 'function' | 'integration' | 'system' | 'api_call';
       }
 
       export namespace CreateToolRequest {
@@ -2228,8 +2200,6 @@ export interface Tool {
    * System definition
    */
   system?: Tool.System | null;
-
-  type?: 'function' | 'integration' | 'system' | 'api_call';
 }
 
 export namespace Tool {
@@ -2379,8 +2349,6 @@ export namespace TaskCreateParams {
     }
 
     export interface NamedToolChoice {
-      type: 'function' | 'integration' | 'system' | 'api_call';
-
       function?: NamedToolChoice.Function | null;
     }
 
@@ -2433,8 +2401,6 @@ export namespace TaskCreateParams {
        * System definition
        */
       system?: CreateToolRequest.System | null;
-
-      type?: 'function' | 'integration' | 'system' | 'api_call';
     }
 
     export namespace CreateToolRequest {
@@ -2688,8 +2654,6 @@ export namespace TaskCreateParams {
       }
 
       export interface NamedToolChoice {
-        type: 'function' | 'integration' | 'system' | 'api_call';
-
         function?: NamedToolChoice.Function | null;
       }
 
@@ -2742,8 +2706,6 @@ export namespace TaskCreateParams {
          * System definition
          */
         system?: CreateToolRequest.System | null;
-
-        type?: 'function' | 'integration' | 'system' | 'api_call';
       }
 
       export namespace CreateToolRequest {
@@ -2961,8 +2923,6 @@ export namespace TaskCreateParams {
       }
 
       export interface NamedToolChoice {
-        type: 'function' | 'integration' | 'system' | 'api_call';
-
         function?: NamedToolChoice.Function | null;
       }
 
@@ -3015,8 +2975,6 @@ export namespace TaskCreateParams {
          * System definition
          */
         system?: CreateToolRequest.System | null;
-
-        type?: 'function' | 'integration' | 'system' | 'api_call';
       }
 
       export namespace CreateToolRequest {
@@ -3260,8 +3218,6 @@ export namespace TaskCreateParams {
         }
 
         export interface NamedToolChoice {
-          type: 'function' | 'integration' | 'system' | 'api_call';
-
           function?: NamedToolChoice.Function | null;
         }
 
@@ -3314,8 +3270,6 @@ export namespace TaskCreateParams {
            * System definition
            */
           system?: CreateToolRequest.System | null;
-
-          type?: 'function' | 'integration' | 'system' | 'api_call';
         }
 
         export namespace CreateToolRequest {
@@ -3556,8 +3510,6 @@ export namespace TaskCreateParams {
         }
 
         export interface NamedToolChoice {
-          type: 'function' | 'integration' | 'system' | 'api_call';
-
           function?: NamedToolChoice.Function | null;
         }
 
@@ -3610,8 +3562,6 @@ export namespace TaskCreateParams {
            * System definition
            */
           system?: CreateToolRequest.System | null;
-
-          type?: 'function' | 'integration' | 'system' | 'api_call';
         }
 
         export namespace CreateToolRequest {
@@ -3812,8 +3762,6 @@ export namespace TaskCreateParams {
       }
 
       export interface NamedToolChoice {
-        type: 'function' | 'integration' | 'system' | 'api_call';
-
         function?: NamedToolChoice.Function | null;
       }
 
@@ -3866,8 +3814,6 @@ export namespace TaskCreateParams {
          * System definition
          */
         system?: CreateToolRequest.System | null;
-
-        type?: 'function' | 'integration' | 'system' | 'api_call';
       }
 
       export namespace CreateToolRequest {
@@ -4074,8 +4020,6 @@ export namespace TaskCreateParams {
       }
 
       export interface NamedToolChoice {
-        type: 'function' | 'integration' | 'system' | 'api_call';
-
         function?: NamedToolChoice.Function | null;
       }
 
@@ -4128,8 +4072,6 @@ export namespace TaskCreateParams {
          * System definition
          */
         system?: CreateToolRequest.System | null;
-
-        type?: 'function' | 'integration' | 'system' | 'api_call';
       }
 
       export namespace CreateToolRequest {
@@ -4357,8 +4299,6 @@ export namespace TaskCreateOrUpdateParams {
     }
 
     export interface NamedToolChoice {
-      type: 'function' | 'integration' | 'system' | 'api_call';
-
       function?: NamedToolChoice.Function | null;
     }
 
@@ -4411,8 +4351,6 @@ export namespace TaskCreateOrUpdateParams {
        * System definition
        */
       system?: CreateToolRequest.System | null;
-
-      type?: 'function' | 'integration' | 'system' | 'api_call';
     }
 
     export namespace CreateToolRequest {
@@ -4666,8 +4604,6 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       export interface NamedToolChoice {
-        type: 'function' | 'integration' | 'system' | 'api_call';
-
         function?: NamedToolChoice.Function | null;
       }
 
@@ -4720,8 +4656,6 @@ export namespace TaskCreateOrUpdateParams {
          * System definition
          */
         system?: CreateToolRequest.System | null;
-
-        type?: 'function' | 'integration' | 'system' | 'api_call';
       }
 
       export namespace CreateToolRequest {
@@ -4939,8 +4873,6 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       export interface NamedToolChoice {
-        type: 'function' | 'integration' | 'system' | 'api_call';
-
         function?: NamedToolChoice.Function | null;
       }
 
@@ -4993,8 +4925,6 @@ export namespace TaskCreateOrUpdateParams {
          * System definition
          */
         system?: CreateToolRequest.System | null;
-
-        type?: 'function' | 'integration' | 'system' | 'api_call';
       }
 
       export namespace CreateToolRequest {
@@ -5238,8 +5168,6 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         export interface NamedToolChoice {
-          type: 'function' | 'integration' | 'system' | 'api_call';
-
           function?: NamedToolChoice.Function | null;
         }
 
@@ -5292,8 +5220,6 @@ export namespace TaskCreateOrUpdateParams {
            * System definition
            */
           system?: CreateToolRequest.System | null;
-
-          type?: 'function' | 'integration' | 'system' | 'api_call';
         }
 
         export namespace CreateToolRequest {
@@ -5534,8 +5460,6 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         export interface NamedToolChoice {
-          type: 'function' | 'integration' | 'system' | 'api_call';
-
           function?: NamedToolChoice.Function | null;
         }
 
@@ -5588,8 +5512,6 @@ export namespace TaskCreateOrUpdateParams {
            * System definition
            */
           system?: CreateToolRequest.System | null;
-
-          type?: 'function' | 'integration' | 'system' | 'api_call';
         }
 
         export namespace CreateToolRequest {
@@ -5790,8 +5712,6 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       export interface NamedToolChoice {
-        type: 'function' | 'integration' | 'system' | 'api_call';
-
         function?: NamedToolChoice.Function | null;
       }
 
@@ -5844,8 +5764,6 @@ export namespace TaskCreateOrUpdateParams {
          * System definition
          */
         system?: CreateToolRequest.System | null;
-
-        type?: 'function' | 'integration' | 'system' | 'api_call';
       }
 
       export namespace CreateToolRequest {
@@ -6052,8 +5970,6 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       export interface NamedToolChoice {
-        type: 'function' | 'integration' | 'system' | 'api_call';
-
         function?: NamedToolChoice.Function | null;
       }
 
@@ -6106,8 +6022,6 @@ export namespace TaskCreateOrUpdateParams {
          * System definition
          */
         system?: CreateToolRequest.System | null;
-
-        type?: 'function' | 'integration' | 'system' | 'api_call';
       }
 
       export namespace CreateToolRequest {

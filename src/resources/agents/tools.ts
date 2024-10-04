@@ -106,8 +106,6 @@ export interface ToolListResponse {
    * System definition
    */
   system?: ToolListResponse.System | null;
-
-  type?: 'function' | 'integration' | 'system' | 'api_call';
 }
 
 export namespace ToolListResponse {
@@ -174,8 +172,6 @@ export interface ToolCreateParams {
    * System definition
    */
   system?: ToolCreateParams.System | null;
-
-  type?: 'function' | 'integration' | 'system' | 'api_call';
 }
 
 export namespace ToolCreateParams {
@@ -242,8 +238,6 @@ export interface ToolUpdateParams {
    * System definition
    */
   system?: ToolUpdateParams.System | null;
-
-  type?: 'function' | 'integration' | 'system' | 'api_call';
 }
 
 export namespace ToolUpdateParams {
@@ -316,8 +310,6 @@ export interface ToolPatchParams {
    * System definition
    */
   system?: ToolPatchParams.System | null;
-
-  type?: 'function' | 'integration' | 'system' | 'api_call';
 }
 
 export namespace ToolPatchParams {
