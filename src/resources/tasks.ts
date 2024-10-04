@@ -114,7 +114,7 @@ export namespace Task {
   export interface ToolCallStep {
     tool: string;
 
-    arguments?: Record<string, string> | '_';
+    arguments?: Record<string, Record<string, string> | string> | '_';
 
     kind_?: 'tool_call';
   }
@@ -214,6 +214,13 @@ export namespace Task {
       name: string;
 
       /**
+       * API call definition
+       */
+      api_call?: CreateToolRequest.APICall | null;
+
+      description?: string | null;
+
+      /**
        * Function definition
        */
       function?: CreateToolRequest.Function | null;
@@ -230,6 +237,29 @@ export namespace Task {
     }
 
     export namespace CreateToolRequest {
+      /**
+       * API call definition
+       */
+      export interface APICall {
+        method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+        url: string;
+
+        content?: string | null;
+
+        cookies?: Record<string, string> | null;
+
+        data?: Record<string, string> | null;
+
+        follow_redirects?: boolean | null;
+
+        headers?: Record<string, string> | null;
+
+        json?: unknown | null;
+
+        params?: string | unknown | null;
+      }
+
       /**
        * Function definition
        */
@@ -257,8 +287,6 @@ export namespace Task {
 
         arguments?: unknown | null;
 
-        description?: string | null;
-
         method?: string | null;
 
         setup?: unknown | null;
@@ -271,8 +299,6 @@ export namespace Task {
         call: string;
 
         arguments?: unknown | null;
-
-        description?: string | null;
       }
     }
   }
@@ -447,7 +473,7 @@ export namespace Task {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?: Record<string, Record<string, string> | string> | '_';
 
       kind_?: 'tool_call';
     }
@@ -547,6 +573,13 @@ export namespace Task {
         name: string;
 
         /**
+         * API call definition
+         */
+        api_call?: CreateToolRequest.APICall | null;
+
+        description?: string | null;
+
+        /**
          * Function definition
          */
         function?: CreateToolRequest.Function | null;
@@ -563,6 +596,29 @@ export namespace Task {
       }
 
       export namespace CreateToolRequest {
+        /**
+         * API call definition
+         */
+        export interface APICall {
+          method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+          url: string;
+
+          content?: string | null;
+
+          cookies?: Record<string, string> | null;
+
+          data?: Record<string, string> | null;
+
+          follow_redirects?: boolean | null;
+
+          headers?: Record<string, string> | null;
+
+          json?: unknown | null;
+
+          params?: string | unknown | null;
+        }
+
         /**
          * Function definition
          */
@@ -590,8 +646,6 @@ export namespace Task {
 
           arguments?: unknown | null;
 
-          description?: string | null;
-
           method?: string | null;
 
           setup?: unknown | null;
@@ -604,8 +658,6 @@ export namespace Task {
           call: string;
 
           arguments?: unknown | null;
-
-          description?: string | null;
         }
       }
     }
@@ -742,7 +794,7 @@ export namespace Task {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?: Record<string, Record<string, string> | string> | '_';
 
       kind_?: 'tool_call';
     }
@@ -842,6 +894,13 @@ export namespace Task {
         name: string;
 
         /**
+         * API call definition
+         */
+        api_call?: CreateToolRequest.APICall | null;
+
+        description?: string | null;
+
+        /**
          * Function definition
          */
         function?: CreateToolRequest.Function | null;
@@ -858,6 +917,29 @@ export namespace Task {
       }
 
       export namespace CreateToolRequest {
+        /**
+         * API call definition
+         */
+        export interface APICall {
+          method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+          url: string;
+
+          content?: string | null;
+
+          cookies?: Record<string, string> | null;
+
+          data?: Record<string, string> | null;
+
+          follow_redirects?: boolean | null;
+
+          headers?: Record<string, string> | null;
+
+          json?: unknown | null;
+
+          params?: string | unknown | null;
+        }
+
         /**
          * Function definition
          */
@@ -885,8 +967,6 @@ export namespace Task {
 
           arguments?: unknown | null;
 
-          description?: string | null;
-
           method?: string | null;
 
           setup?: unknown | null;
@@ -899,8 +979,6 @@ export namespace Task {
           call: string;
 
           arguments?: unknown | null;
-
-          description?: string | null;
         }
       }
     }
@@ -1065,7 +1143,7 @@ export namespace Task {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?: Record<string, string> | '_';
+        arguments?: Record<string, Record<string, string> | string> | '_';
 
         kind_?: 'tool_call';
       }
@@ -1165,6 +1243,13 @@ export namespace Task {
           name: string;
 
           /**
+           * API call definition
+           */
+          api_call?: CreateToolRequest.APICall | null;
+
+          description?: string | null;
+
+          /**
            * Function definition
            */
           function?: CreateToolRequest.Function | null;
@@ -1181,6 +1266,29 @@ export namespace Task {
         }
 
         export namespace CreateToolRequest {
+          /**
+           * API call definition
+           */
+          export interface APICall {
+            method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+            url: string;
+
+            content?: string | null;
+
+            cookies?: Record<string, string> | null;
+
+            data?: Record<string, string> | null;
+
+            follow_redirects?: boolean | null;
+
+            headers?: Record<string, string> | null;
+
+            json?: unknown | null;
+
+            params?: string | unknown | null;
+          }
+
           /**
            * Function definition
            */
@@ -1208,8 +1316,6 @@ export namespace Task {
 
             arguments?: unknown | null;
 
-            description?: string | null;
-
             method?: string | null;
 
             setup?: unknown | null;
@@ -1222,8 +1328,6 @@ export namespace Task {
             call: string;
 
             arguments?: unknown | null;
-
-            description?: string | null;
           }
         }
       }
@@ -1385,7 +1489,7 @@ export namespace Task {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?: Record<string, string> | '_';
+        arguments?: Record<string, Record<string, string> | string> | '_';
 
         kind_?: 'tool_call';
       }
@@ -1485,6 +1589,13 @@ export namespace Task {
           name: string;
 
           /**
+           * API call definition
+           */
+          api_call?: CreateToolRequest.APICall | null;
+
+          description?: string | null;
+
+          /**
            * Function definition
            */
           function?: CreateToolRequest.Function | null;
@@ -1501,6 +1612,29 @@ export namespace Task {
         }
 
         export namespace CreateToolRequest {
+          /**
+           * API call definition
+           */
+          export interface APICall {
+            method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+            url: string;
+
+            content?: string | null;
+
+            cookies?: Record<string, string> | null;
+
+            data?: Record<string, string> | null;
+
+            follow_redirects?: boolean | null;
+
+            headers?: Record<string, string> | null;
+
+            json?: unknown | null;
+
+            params?: string | unknown | null;
+          }
+
           /**
            * Function definition
            */
@@ -1528,8 +1662,6 @@ export namespace Task {
 
             arguments?: unknown | null;
 
-            description?: string | null;
-
             method?: string | null;
 
             setup?: unknown | null;
@@ -1542,8 +1674,6 @@ export namespace Task {
             call: string;
 
             arguments?: unknown | null;
-
-            description?: string | null;
           }
         }
       }
@@ -1657,7 +1787,7 @@ export namespace Task {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?: Record<string, Record<string, string> | string> | '_';
 
       kind_?: 'tool_call';
     }
@@ -1757,6 +1887,13 @@ export namespace Task {
         name: string;
 
         /**
+         * API call definition
+         */
+        api_call?: CreateToolRequest.APICall | null;
+
+        description?: string | null;
+
+        /**
          * Function definition
          */
         function?: CreateToolRequest.Function | null;
@@ -1773,6 +1910,29 @@ export namespace Task {
       }
 
       export namespace CreateToolRequest {
+        /**
+         * API call definition
+         */
+        export interface APICall {
+          method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+          url: string;
+
+          content?: string | null;
+
+          cookies?: Record<string, string> | null;
+
+          data?: Record<string, string> | null;
+
+          follow_redirects?: boolean | null;
+
+          headers?: Record<string, string> | null;
+
+          json?: unknown | null;
+
+          params?: string | unknown | null;
+        }
+
         /**
          * Function definition
          */
@@ -1800,8 +1960,6 @@ export namespace Task {
 
           arguments?: unknown | null;
 
-          description?: string | null;
-
           method?: string | null;
 
           setup?: unknown | null;
@@ -1814,8 +1972,6 @@ export namespace Task {
           call: string;
 
           arguments?: unknown | null;
-
-          description?: string | null;
         }
       }
     }
@@ -1935,7 +2091,7 @@ export namespace Task {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?: Record<string, Record<string, string> | string> | '_';
 
       kind_?: 'tool_call';
     }
@@ -2035,6 +2191,13 @@ export namespace Task {
         name: string;
 
         /**
+         * API call definition
+         */
+        api_call?: CreateToolRequest.APICall | null;
+
+        description?: string | null;
+
+        /**
          * Function definition
          */
         function?: CreateToolRequest.Function | null;
@@ -2051,6 +2214,29 @@ export namespace Task {
       }
 
       export namespace CreateToolRequest {
+        /**
+         * API call definition
+         */
+        export interface APICall {
+          method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+          url: string;
+
+          content?: string | null;
+
+          cookies?: Record<string, string> | null;
+
+          data?: Record<string, string> | null;
+
+          follow_redirects?: boolean | null;
+
+          headers?: Record<string, string> | null;
+
+          json?: unknown | null;
+
+          params?: string | unknown | null;
+        }
+
         /**
          * Function definition
          */
@@ -2078,8 +2264,6 @@ export namespace Task {
 
           arguments?: unknown | null;
 
-          description?: string | null;
-
           method?: string | null;
 
           setup?: unknown | null;
@@ -2092,8 +2276,6 @@ export namespace Task {
           call: string;
 
           arguments?: unknown | null;
-
-          description?: string | null;
         }
       }
     }
@@ -2185,6 +2367,13 @@ export interface Tool {
   name: string;
 
   /**
+   * API call definition
+   */
+  api_call?: Tool.APICall | null;
+
+  description?: string | null;
+
+  /**
    * Function definition
    */
   function?: Tool.Function | null;
@@ -2203,6 +2392,29 @@ export interface Tool {
 }
 
 export namespace Tool {
+  /**
+   * API call definition
+   */
+  export interface APICall {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+    url: string;
+
+    content?: string | null;
+
+    cookies?: Record<string, string> | null;
+
+    data?: Record<string, string> | null;
+
+    follow_redirects?: boolean | null;
+
+    headers?: Record<string, string> | null;
+
+    json?: unknown | null;
+
+    params?: string | unknown | null;
+  }
+
   /**
    * Function definition
    */
@@ -2230,8 +2442,6 @@ export namespace Tool {
 
     arguments?: unknown | null;
 
-    description?: string | null;
-
     method?: string | null;
 
     setup?: unknown | null;
@@ -2244,8 +2454,6 @@ export namespace Tool {
     call: string;
 
     arguments?: unknown | null;
-
-    description?: string | null;
   }
 }
 
@@ -2292,7 +2500,7 @@ export namespace TaskCreateParams {
   export interface ToolCallStep {
     tool: string;
 
-    arguments?: Record<string, string> | '_';
+    arguments?: Record<string, Record<string, string> | string> | '_';
   }
 
   export interface PromptStepInput {
@@ -2388,6 +2596,13 @@ export namespace TaskCreateParams {
       name: string;
 
       /**
+       * API call definition
+       */
+      api_call?: CreateToolRequest.APICall | null;
+
+      description?: string | null;
+
+      /**
        * Function definition
        */
       function?: CreateToolRequest.Function | null;
@@ -2404,6 +2619,29 @@ export namespace TaskCreateParams {
     }
 
     export namespace CreateToolRequest {
+      /**
+       * API call definition
+       */
+      export interface APICall {
+        method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+        url: string;
+
+        content?: string | null;
+
+        cookies?: Record<string, string> | null;
+
+        data?: Record<string, string> | null;
+
+        follow_redirects?: boolean | null;
+
+        headers?: Record<string, string> | null;
+
+        json?: unknown | null;
+
+        params?: string | unknown | null;
+      }
+
       /**
        * Function definition
        */
@@ -2431,8 +2669,6 @@ export namespace TaskCreateParams {
 
         arguments?: unknown | null;
 
-        description?: string | null;
-
         method?: string | null;
 
         setup?: unknown | null;
@@ -2445,8 +2681,6 @@ export namespace TaskCreateParams {
         call: string;
 
         arguments?: unknown | null;
-
-        description?: string | null;
       }
     }
   }
@@ -2597,7 +2831,7 @@ export namespace TaskCreateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?: Record<string, Record<string, string> | string> | '_';
     }
 
     export interface PromptStepInput {
@@ -2693,6 +2927,13 @@ export namespace TaskCreateParams {
         name: string;
 
         /**
+         * API call definition
+         */
+        api_call?: CreateToolRequest.APICall | null;
+
+        description?: string | null;
+
+        /**
          * Function definition
          */
         function?: CreateToolRequest.Function | null;
@@ -2709,6 +2950,29 @@ export namespace TaskCreateParams {
       }
 
       export namespace CreateToolRequest {
+        /**
+         * API call definition
+         */
+        export interface APICall {
+          method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+          url: string;
+
+          content?: string | null;
+
+          cookies?: Record<string, string> | null;
+
+          data?: Record<string, string> | null;
+
+          follow_redirects?: boolean | null;
+
+          headers?: Record<string, string> | null;
+
+          json?: unknown | null;
+
+          params?: string | unknown | null;
+        }
+
         /**
          * Function definition
          */
@@ -2736,8 +3000,6 @@ export namespace TaskCreateParams {
 
           arguments?: unknown | null;
 
-          description?: string | null;
-
           method?: string | null;
 
           setup?: unknown | null;
@@ -2750,8 +3012,6 @@ export namespace TaskCreateParams {
           call: string;
 
           arguments?: unknown | null;
-
-          description?: string | null;
         }
       }
     }
@@ -2866,7 +3126,7 @@ export namespace TaskCreateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?: Record<string, Record<string, string> | string> | '_';
     }
 
     export interface PromptStepInput {
@@ -2962,6 +3222,13 @@ export namespace TaskCreateParams {
         name: string;
 
         /**
+         * API call definition
+         */
+        api_call?: CreateToolRequest.APICall | null;
+
+        description?: string | null;
+
+        /**
          * Function definition
          */
         function?: CreateToolRequest.Function | null;
@@ -2978,6 +3245,29 @@ export namespace TaskCreateParams {
       }
 
       export namespace CreateToolRequest {
+        /**
+         * API call definition
+         */
+        export interface APICall {
+          method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+          url: string;
+
+          content?: string | null;
+
+          cookies?: Record<string, string> | null;
+
+          data?: Record<string, string> | null;
+
+          follow_redirects?: boolean | null;
+
+          headers?: Record<string, string> | null;
+
+          json?: unknown | null;
+
+          params?: string | unknown | null;
+        }
+
         /**
          * Function definition
          */
@@ -3005,8 +3295,6 @@ export namespace TaskCreateParams {
 
           arguments?: unknown | null;
 
-          description?: string | null;
-
           method?: string | null;
 
           setup?: unknown | null;
@@ -3019,8 +3307,6 @@ export namespace TaskCreateParams {
           call: string;
 
           arguments?: unknown | null;
-
-          description?: string | null;
         }
       }
     }
@@ -3161,7 +3447,7 @@ export namespace TaskCreateParams {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?: Record<string, string> | '_';
+        arguments?: Record<string, Record<string, string> | string> | '_';
       }
 
       export interface PromptStepInput {
@@ -3257,6 +3543,13 @@ export namespace TaskCreateParams {
           name: string;
 
           /**
+           * API call definition
+           */
+          api_call?: CreateToolRequest.APICall | null;
+
+          description?: string | null;
+
+          /**
            * Function definition
            */
           function?: CreateToolRequest.Function | null;
@@ -3273,6 +3566,29 @@ export namespace TaskCreateParams {
         }
 
         export namespace CreateToolRequest {
+          /**
+           * API call definition
+           */
+          export interface APICall {
+            method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+            url: string;
+
+            content?: string | null;
+
+            cookies?: Record<string, string> | null;
+
+            data?: Record<string, string> | null;
+
+            follow_redirects?: boolean | null;
+
+            headers?: Record<string, string> | null;
+
+            json?: unknown | null;
+
+            params?: string | unknown | null;
+          }
+
           /**
            * Function definition
            */
@@ -3300,8 +3616,6 @@ export namespace TaskCreateParams {
 
             arguments?: unknown | null;
 
-            description?: string | null;
-
             method?: string | null;
 
             setup?: unknown | null;
@@ -3314,8 +3628,6 @@ export namespace TaskCreateParams {
             call: string;
 
             arguments?: unknown | null;
-
-            description?: string | null;
           }
         }
       }
@@ -3453,7 +3765,7 @@ export namespace TaskCreateParams {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?: Record<string, string> | '_';
+        arguments?: Record<string, Record<string, string> | string> | '_';
       }
 
       export interface PromptStepInput {
@@ -3549,6 +3861,13 @@ export namespace TaskCreateParams {
           name: string;
 
           /**
+           * API call definition
+           */
+          api_call?: CreateToolRequest.APICall | null;
+
+          description?: string | null;
+
+          /**
            * Function definition
            */
           function?: CreateToolRequest.Function | null;
@@ -3565,6 +3884,29 @@ export namespace TaskCreateParams {
         }
 
         export namespace CreateToolRequest {
+          /**
+           * API call definition
+           */
+          export interface APICall {
+            method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+            url: string;
+
+            content?: string | null;
+
+            cookies?: Record<string, string> | null;
+
+            data?: Record<string, string> | null;
+
+            follow_redirects?: boolean | null;
+
+            headers?: Record<string, string> | null;
+
+            json?: unknown | null;
+
+            params?: string | unknown | null;
+          }
+
           /**
            * Function definition
            */
@@ -3592,8 +3934,6 @@ export namespace TaskCreateParams {
 
             arguments?: unknown | null;
 
-            description?: string | null;
-
             method?: string | null;
 
             setup?: unknown | null;
@@ -3606,8 +3946,6 @@ export namespace TaskCreateParams {
             call: string;
 
             arguments?: unknown | null;
-
-            description?: string | null;
           }
         }
       }
@@ -3705,7 +4043,7 @@ export namespace TaskCreateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?: Record<string, Record<string, string> | string> | '_';
     }
 
     export interface PromptStepInput {
@@ -3801,6 +4139,13 @@ export namespace TaskCreateParams {
         name: string;
 
         /**
+         * API call definition
+         */
+        api_call?: CreateToolRequest.APICall | null;
+
+        description?: string | null;
+
+        /**
          * Function definition
          */
         function?: CreateToolRequest.Function | null;
@@ -3817,6 +4162,29 @@ export namespace TaskCreateParams {
       }
 
       export namespace CreateToolRequest {
+        /**
+         * API call definition
+         */
+        export interface APICall {
+          method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+          url: string;
+
+          content?: string | null;
+
+          cookies?: Record<string, string> | null;
+
+          data?: Record<string, string> | null;
+
+          follow_redirects?: boolean | null;
+
+          headers?: Record<string, string> | null;
+
+          json?: unknown | null;
+
+          params?: string | unknown | null;
+        }
+
         /**
          * Function definition
          */
@@ -3844,8 +4212,6 @@ export namespace TaskCreateParams {
 
           arguments?: unknown | null;
 
-          description?: string | null;
-
           method?: string | null;
 
           setup?: unknown | null;
@@ -3858,8 +4224,6 @@ export namespace TaskCreateParams {
           call: string;
 
           arguments?: unknown | null;
-
-          description?: string | null;
         }
       }
     }
@@ -3963,7 +4327,7 @@ export namespace TaskCreateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?: Record<string, Record<string, string> | string> | '_';
     }
 
     export interface PromptStepInput {
@@ -4059,6 +4423,13 @@ export namespace TaskCreateParams {
         name: string;
 
         /**
+         * API call definition
+         */
+        api_call?: CreateToolRequest.APICall | null;
+
+        description?: string | null;
+
+        /**
          * Function definition
          */
         function?: CreateToolRequest.Function | null;
@@ -4075,6 +4446,29 @@ export namespace TaskCreateParams {
       }
 
       export namespace CreateToolRequest {
+        /**
+         * API call definition
+         */
+        export interface APICall {
+          method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+          url: string;
+
+          content?: string | null;
+
+          cookies?: Record<string, string> | null;
+
+          data?: Record<string, string> | null;
+
+          follow_redirects?: boolean | null;
+
+          headers?: Record<string, string> | null;
+
+          json?: unknown | null;
+
+          params?: string | unknown | null;
+        }
+
         /**
          * Function definition
          */
@@ -4102,8 +4496,6 @@ export namespace TaskCreateParams {
 
           arguments?: unknown | null;
 
-          description?: string | null;
-
           method?: string | null;
 
           setup?: unknown | null;
@@ -4116,8 +4508,6 @@ export namespace TaskCreateParams {
           call: string;
 
           arguments?: unknown | null;
-
-          description?: string | null;
         }
       }
     }
@@ -4242,7 +4632,7 @@ export namespace TaskCreateOrUpdateParams {
   export interface ToolCallStep {
     tool: string;
 
-    arguments?: Record<string, string> | '_';
+    arguments?: Record<string, Record<string, string> | string> | '_';
   }
 
   export interface PromptStepInput {
@@ -4338,6 +4728,13 @@ export namespace TaskCreateOrUpdateParams {
       name: string;
 
       /**
+       * API call definition
+       */
+      api_call?: CreateToolRequest.APICall | null;
+
+      description?: string | null;
+
+      /**
        * Function definition
        */
       function?: CreateToolRequest.Function | null;
@@ -4354,6 +4751,29 @@ export namespace TaskCreateOrUpdateParams {
     }
 
     export namespace CreateToolRequest {
+      /**
+       * API call definition
+       */
+      export interface APICall {
+        method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+        url: string;
+
+        content?: string | null;
+
+        cookies?: Record<string, string> | null;
+
+        data?: Record<string, string> | null;
+
+        follow_redirects?: boolean | null;
+
+        headers?: Record<string, string> | null;
+
+        json?: unknown | null;
+
+        params?: string | unknown | null;
+      }
+
       /**
        * Function definition
        */
@@ -4381,8 +4801,6 @@ export namespace TaskCreateOrUpdateParams {
 
         arguments?: unknown | null;
 
-        description?: string | null;
-
         method?: string | null;
 
         setup?: unknown | null;
@@ -4395,8 +4813,6 @@ export namespace TaskCreateOrUpdateParams {
         call: string;
 
         arguments?: unknown | null;
-
-        description?: string | null;
       }
     }
   }
@@ -4547,7 +4963,7 @@ export namespace TaskCreateOrUpdateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?: Record<string, Record<string, string> | string> | '_';
     }
 
     export interface PromptStepInput {
@@ -4643,6 +5059,13 @@ export namespace TaskCreateOrUpdateParams {
         name: string;
 
         /**
+         * API call definition
+         */
+        api_call?: CreateToolRequest.APICall | null;
+
+        description?: string | null;
+
+        /**
          * Function definition
          */
         function?: CreateToolRequest.Function | null;
@@ -4659,6 +5082,29 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       export namespace CreateToolRequest {
+        /**
+         * API call definition
+         */
+        export interface APICall {
+          method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+          url: string;
+
+          content?: string | null;
+
+          cookies?: Record<string, string> | null;
+
+          data?: Record<string, string> | null;
+
+          follow_redirects?: boolean | null;
+
+          headers?: Record<string, string> | null;
+
+          json?: unknown | null;
+
+          params?: string | unknown | null;
+        }
+
         /**
          * Function definition
          */
@@ -4686,8 +5132,6 @@ export namespace TaskCreateOrUpdateParams {
 
           arguments?: unknown | null;
 
-          description?: string | null;
-
           method?: string | null;
 
           setup?: unknown | null;
@@ -4700,8 +5144,6 @@ export namespace TaskCreateOrUpdateParams {
           call: string;
 
           arguments?: unknown | null;
-
-          description?: string | null;
         }
       }
     }
@@ -4816,7 +5258,7 @@ export namespace TaskCreateOrUpdateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?: Record<string, Record<string, string> | string> | '_';
     }
 
     export interface PromptStepInput {
@@ -4912,6 +5354,13 @@ export namespace TaskCreateOrUpdateParams {
         name: string;
 
         /**
+         * API call definition
+         */
+        api_call?: CreateToolRequest.APICall | null;
+
+        description?: string | null;
+
+        /**
          * Function definition
          */
         function?: CreateToolRequest.Function | null;
@@ -4928,6 +5377,29 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       export namespace CreateToolRequest {
+        /**
+         * API call definition
+         */
+        export interface APICall {
+          method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+          url: string;
+
+          content?: string | null;
+
+          cookies?: Record<string, string> | null;
+
+          data?: Record<string, string> | null;
+
+          follow_redirects?: boolean | null;
+
+          headers?: Record<string, string> | null;
+
+          json?: unknown | null;
+
+          params?: string | unknown | null;
+        }
+
         /**
          * Function definition
          */
@@ -4955,8 +5427,6 @@ export namespace TaskCreateOrUpdateParams {
 
           arguments?: unknown | null;
 
-          description?: string | null;
-
           method?: string | null;
 
           setup?: unknown | null;
@@ -4969,8 +5439,6 @@ export namespace TaskCreateOrUpdateParams {
           call: string;
 
           arguments?: unknown | null;
-
-          description?: string | null;
         }
       }
     }
@@ -5111,7 +5579,7 @@ export namespace TaskCreateOrUpdateParams {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?: Record<string, string> | '_';
+        arguments?: Record<string, Record<string, string> | string> | '_';
       }
 
       export interface PromptStepInput {
@@ -5207,6 +5675,13 @@ export namespace TaskCreateOrUpdateParams {
           name: string;
 
           /**
+           * API call definition
+           */
+          api_call?: CreateToolRequest.APICall | null;
+
+          description?: string | null;
+
+          /**
            * Function definition
            */
           function?: CreateToolRequest.Function | null;
@@ -5223,6 +5698,29 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         export namespace CreateToolRequest {
+          /**
+           * API call definition
+           */
+          export interface APICall {
+            method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+            url: string;
+
+            content?: string | null;
+
+            cookies?: Record<string, string> | null;
+
+            data?: Record<string, string> | null;
+
+            follow_redirects?: boolean | null;
+
+            headers?: Record<string, string> | null;
+
+            json?: unknown | null;
+
+            params?: string | unknown | null;
+          }
+
           /**
            * Function definition
            */
@@ -5250,8 +5748,6 @@ export namespace TaskCreateOrUpdateParams {
 
             arguments?: unknown | null;
 
-            description?: string | null;
-
             method?: string | null;
 
             setup?: unknown | null;
@@ -5264,8 +5760,6 @@ export namespace TaskCreateOrUpdateParams {
             call: string;
 
             arguments?: unknown | null;
-
-            description?: string | null;
           }
         }
       }
@@ -5403,7 +5897,7 @@ export namespace TaskCreateOrUpdateParams {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?: Record<string, string> | '_';
+        arguments?: Record<string, Record<string, string> | string> | '_';
       }
 
       export interface PromptStepInput {
@@ -5499,6 +5993,13 @@ export namespace TaskCreateOrUpdateParams {
           name: string;
 
           /**
+           * API call definition
+           */
+          api_call?: CreateToolRequest.APICall | null;
+
+          description?: string | null;
+
+          /**
            * Function definition
            */
           function?: CreateToolRequest.Function | null;
@@ -5515,6 +6016,29 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         export namespace CreateToolRequest {
+          /**
+           * API call definition
+           */
+          export interface APICall {
+            method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+            url: string;
+
+            content?: string | null;
+
+            cookies?: Record<string, string> | null;
+
+            data?: Record<string, string> | null;
+
+            follow_redirects?: boolean | null;
+
+            headers?: Record<string, string> | null;
+
+            json?: unknown | null;
+
+            params?: string | unknown | null;
+          }
+
           /**
            * Function definition
            */
@@ -5542,8 +6066,6 @@ export namespace TaskCreateOrUpdateParams {
 
             arguments?: unknown | null;
 
-            description?: string | null;
-
             method?: string | null;
 
             setup?: unknown | null;
@@ -5556,8 +6078,6 @@ export namespace TaskCreateOrUpdateParams {
             call: string;
 
             arguments?: unknown | null;
-
-            description?: string | null;
           }
         }
       }
@@ -5655,7 +6175,7 @@ export namespace TaskCreateOrUpdateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?: Record<string, Record<string, string> | string> | '_';
     }
 
     export interface PromptStepInput {
@@ -5751,6 +6271,13 @@ export namespace TaskCreateOrUpdateParams {
         name: string;
 
         /**
+         * API call definition
+         */
+        api_call?: CreateToolRequest.APICall | null;
+
+        description?: string | null;
+
+        /**
          * Function definition
          */
         function?: CreateToolRequest.Function | null;
@@ -5767,6 +6294,29 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       export namespace CreateToolRequest {
+        /**
+         * API call definition
+         */
+        export interface APICall {
+          method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+          url: string;
+
+          content?: string | null;
+
+          cookies?: Record<string, string> | null;
+
+          data?: Record<string, string> | null;
+
+          follow_redirects?: boolean | null;
+
+          headers?: Record<string, string> | null;
+
+          json?: unknown | null;
+
+          params?: string | unknown | null;
+        }
+
         /**
          * Function definition
          */
@@ -5794,8 +6344,6 @@ export namespace TaskCreateOrUpdateParams {
 
           arguments?: unknown | null;
 
-          description?: string | null;
-
           method?: string | null;
 
           setup?: unknown | null;
@@ -5808,8 +6356,6 @@ export namespace TaskCreateOrUpdateParams {
           call: string;
 
           arguments?: unknown | null;
-
-          description?: string | null;
         }
       }
     }
@@ -5913,7 +6459,7 @@ export namespace TaskCreateOrUpdateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?: Record<string, Record<string, string> | string> | '_';
     }
 
     export interface PromptStepInput {
@@ -6009,6 +6555,13 @@ export namespace TaskCreateOrUpdateParams {
         name: string;
 
         /**
+         * API call definition
+         */
+        api_call?: CreateToolRequest.APICall | null;
+
+        description?: string | null;
+
+        /**
          * Function definition
          */
         function?: CreateToolRequest.Function | null;
@@ -6025,6 +6578,29 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       export namespace CreateToolRequest {
+        /**
+         * API call definition
+         */
+        export interface APICall {
+          method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+          url: string;
+
+          content?: string | null;
+
+          cookies?: Record<string, string> | null;
+
+          data?: Record<string, string> | null;
+
+          follow_redirects?: boolean | null;
+
+          headers?: Record<string, string> | null;
+
+          json?: unknown | null;
+
+          params?: string | unknown | null;
+        }
+
         /**
          * Function definition
          */
@@ -6052,8 +6628,6 @@ export namespace TaskCreateOrUpdateParams {
 
           arguments?: unknown | null;
 
-          description?: string | null;
-
           method?: string | null;
 
           setup?: unknown | null;
@@ -6066,8 +6640,6 @@ export namespace TaskCreateOrUpdateParams {
           call: string;
 
           arguments?: unknown | null;
-
-          description?: string | null;
         }
       }
     }
