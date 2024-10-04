@@ -122,7 +122,6 @@ describe('resource sessions', () => {
             setup: {},
           },
           system: { call: 'call', arguments: {}, description: 'description' },
-          type: 'function',
         },
         {
           name: 'name',
@@ -135,7 +134,6 @@ describe('resource sessions', () => {
             setup: {},
           },
           system: { call: 'call', arguments: {}, description: 'description' },
-          type: 'function',
         },
         {
           name: 'name',
@@ -148,7 +146,6 @@ describe('resource sessions', () => {
             setup: {},
           },
           system: { call: 'call', arguments: {}, description: 'description' },
-          type: 'function',
         },
       ],
       top_p: 0,
