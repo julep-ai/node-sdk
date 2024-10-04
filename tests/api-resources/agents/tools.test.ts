@@ -34,7 +34,6 @@ describe('resource tools', () => {
         setup: {},
       },
       system: { call: 'call', arguments: {}, description: 'description' },
-      type: 'function',
     });
   });
 
@@ -68,7 +67,6 @@ describe('resource tools', () => {
           setup: {},
         },
         system: { call: 'call', arguments: {}, description: 'description' },
-        type: 'function',
       },
     );
   });

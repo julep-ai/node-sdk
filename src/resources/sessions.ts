@@ -169,8 +169,6 @@ export namespace ChatInput {
   }
 
   export interface NamedToolChoice {
-    type: 'function' | 'integration' | 'system' | 'api_call';
-
     function?: NamedToolChoice.Function | null;
   }
 
@@ -203,8 +201,6 @@ export namespace ChatInput {
      * System definition
      */
     system?: Tool.System | null;
-
-    type?: 'function' | 'integration' | 'system' | 'api_call';
   }
 
   export namespace Tool {
@@ -639,8 +635,6 @@ export namespace Entry {
      * System definition
      */
     system?: Tool.System | null;
-
-    type?: 'function' | 'integration' | 'system' | 'api_call';
   }
 
   export namespace Tool {
@@ -762,8 +756,6 @@ export namespace Entry {
      * System definition
      */
     system?: Tool.System | null;
-
-    type?: 'function' | 'integration' | 'system' | 'api_call';
   }
 
   export namespace Tool {
@@ -1224,8 +1216,6 @@ export namespace SessionChatParams {
   }
 
   export interface NamedToolChoice {
-    type: 'function' | 'integration' | 'system' | 'api_call';
-
     function?: NamedToolChoice.Function | null;
   }
 
@@ -1252,8 +1242,6 @@ export namespace SessionChatParams {
      * System definition
      */
     system?: Tool.System | null;
-
-    type?: 'function' | 'integration' | 'system' | 'api_call';
   }
 
   export namespace Tool {

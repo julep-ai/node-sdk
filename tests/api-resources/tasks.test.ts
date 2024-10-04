@@ -43,7 +43,6 @@ describe('resource tasks', () => {
             setup: {},
           },
           system: { call: 'call', arguments: {}, description: 'description' },
-          type: 'function',
         },
         {
           name: 'name',
@@ -56,7 +55,6 @@ describe('resource tasks', () => {
             setup: {},
           },
           system: { call: 'call', arguments: {}, description: 'description' },
-          type: 'function',
         },
         {
           name: 'name',
@@ -69,7 +67,6 @@ describe('resource tasks', () => {
             setup: {},
           },
           system: { call: 'call', arguments: {}, description: 'description' },
-          type: 'function',
         },
       ],
     });
@@ -142,7 +139,6 @@ describe('resource tasks', () => {
               setup: {},
             },
             system: { call: 'call', arguments: {}, description: 'description' },
-            type: 'function',
           },
           {
             name: 'name',
@@ -155,7 +151,6 @@ describe('resource tasks', () => {
               setup: {},
             },
             system: { call: 'call', arguments: {}, description: 'description' },
-            type: 'function',
           },
           {
             name: 'name',
@@ -168,7 +163,6 @@ describe('resource tasks', () => {
               setup: {},
             },
             system: { call: 'call', arguments: {}, description: 'description' },
-            type: 'function',
           },
         ],
       },
