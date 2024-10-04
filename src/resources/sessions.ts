@@ -188,6 +188,13 @@ export namespace ChatInput {
     updated_at: string;
 
     /**
+     * API call definition
+     */
+    api_call?: Tool.APICall | null;
+
+    description?: string | null;
+
+    /**
      * Function definition
      */
     function?: Tool.Function | null;
@@ -204,6 +211,29 @@ export namespace ChatInput {
   }
 
   export namespace Tool {
+    /**
+     * API call definition
+     */
+    export interface APICall {
+      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+      url: string;
+
+      content?: string | null;
+
+      cookies?: Record<string, string> | null;
+
+      data?: Record<string, string> | null;
+
+      follow_redirects?: boolean | null;
+
+      headers?: Record<string, string> | null;
+
+      json?: unknown | null;
+
+      params?: string | unknown | null;
+    }
+
     /**
      * Function definition
      */
@@ -231,8 +261,6 @@ export namespace ChatInput {
 
       arguments?: unknown | null;
 
-      description?: string | null;
-
       method?: string | null;
 
       setup?: unknown | null;
@@ -245,8 +273,6 @@ export namespace ChatInput {
       call: string;
 
       arguments?: unknown | null;
-
-      description?: string | null;
     }
   }
 }
@@ -622,6 +648,13 @@ export namespace Entry {
     updated_at: string;
 
     /**
+     * API call definition
+     */
+    api_call?: Tool.APICall | null;
+
+    description?: string | null;
+
+    /**
      * Function definition
      */
     function?: Tool.Function | null;
@@ -638,6 +671,29 @@ export namespace Entry {
   }
 
   export namespace Tool {
+    /**
+     * API call definition
+     */
+    export interface APICall {
+      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+      url: string;
+
+      content?: string | null;
+
+      cookies?: Record<string, string> | null;
+
+      data?: Record<string, string> | null;
+
+      follow_redirects?: boolean | null;
+
+      headers?: Record<string, string> | null;
+
+      json?: unknown | null;
+
+      params?: string | unknown | null;
+    }
+
     /**
      * Function definition
      */
@@ -665,8 +721,6 @@ export namespace Entry {
 
       arguments?: unknown | null;
 
-      description?: string | null;
-
       method?: string | null;
 
       setup?: unknown | null;
@@ -679,8 +733,6 @@ export namespace Entry {
       call: string;
 
       arguments?: unknown | null;
-
-      description?: string | null;
     }
   }
 
@@ -743,6 +795,13 @@ export namespace Entry {
     updated_at: string;
 
     /**
+     * API call definition
+     */
+    api_call?: Tool.APICall | null;
+
+    description?: string | null;
+
+    /**
      * Function definition
      */
     function?: Tool.Function | null;
@@ -759,6 +818,29 @@ export namespace Entry {
   }
 
   export namespace Tool {
+    /**
+     * API call definition
+     */
+    export interface APICall {
+      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+      url: string;
+
+      content?: string | null;
+
+      cookies?: Record<string, string> | null;
+
+      data?: Record<string, string> | null;
+
+      follow_redirects?: boolean | null;
+
+      headers?: Record<string, string> | null;
+
+      json?: unknown | null;
+
+      params?: string | unknown | null;
+    }
+
     /**
      * Function definition
      */
@@ -786,8 +868,6 @@ export namespace Entry {
 
       arguments?: unknown | null;
 
-      description?: string | null;
-
       method?: string | null;
 
       setup?: unknown | null;
@@ -800,8 +880,6 @@ export namespace Entry {
       call: string;
 
       arguments?: unknown | null;
-
-      description?: string | null;
     }
   }
 
@@ -1229,6 +1307,13 @@ export namespace SessionChatParams {
     name: string;
 
     /**
+     * API call definition
+     */
+    api_call?: Tool.APICall | null;
+
+    description?: string | null;
+
+    /**
      * Function definition
      */
     function?: Tool.Function | null;
@@ -1245,6 +1330,29 @@ export namespace SessionChatParams {
   }
 
   export namespace Tool {
+    /**
+     * API call definition
+     */
+    export interface APICall {
+      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+      url: string;
+
+      content?: string | null;
+
+      cookies?: Record<string, string> | null;
+
+      data?: Record<string, string> | null;
+
+      follow_redirects?: boolean | null;
+
+      headers?: Record<string, string> | null;
+
+      json?: unknown | null;
+
+      params?: string | unknown | null;
+    }
+
     /**
      * Function definition
      */
@@ -1272,8 +1380,6 @@ export namespace SessionChatParams {
 
       arguments?: unknown | null;
 
-      description?: string | null;
-
       method?: string | null;
 
       setup?: unknown | null;
@@ -1286,8 +1392,6 @@ export namespace SessionChatParams {
       call: string;
 
       arguments?: unknown | null;
-
-      description?: string | null;
     }
   }
 }
