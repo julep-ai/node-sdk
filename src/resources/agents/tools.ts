@@ -93,6 +93,13 @@ export interface ToolListResponse {
   updated_at: string;
 
   /**
+   * API call definition
+   */
+  api_call?: ToolListResponse.APICall | null;
+
+  description?: string | null;
+
+  /**
    * Function definition
    */
   function?: ToolListResponse.Function | null;
@@ -109,6 +116,29 @@ export interface ToolListResponse {
 }
 
 export namespace ToolListResponse {
+  /**
+   * API call definition
+   */
+  export interface APICall {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+    url: string;
+
+    content?: string | null;
+
+    cookies?: Record<string, string> | null;
+
+    data?: Record<string, string> | null;
+
+    follow_redirects?: boolean | null;
+
+    headers?: Record<string, string> | null;
+
+    json?: unknown | null;
+
+    params?: string | unknown | null;
+  }
+
   /**
    * Function definition
    */
@@ -136,8 +166,6 @@ export namespace ToolListResponse {
 
     arguments?: unknown | null;
 
-    description?: string | null;
-
     method?: string | null;
 
     setup?: unknown | null;
@@ -150,13 +178,18 @@ export namespace ToolListResponse {
     call: string;
 
     arguments?: unknown | null;
-
-    description?: string | null;
   }
 }
 
 export interface ToolCreateParams {
   name: string;
+
+  /**
+   * API call definition
+   */
+  api_call?: ToolCreateParams.APICall | null;
+
+  description?: string | null;
 
   /**
    * Function definition
@@ -176,6 +209,29 @@ export interface ToolCreateParams {
 
 export namespace ToolCreateParams {
   /**
+   * API call definition
+   */
+  export interface APICall {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+    url: string;
+
+    content?: string | null;
+
+    cookies?: Record<string, string> | null;
+
+    data?: Record<string, string> | null;
+
+    follow_redirects?: boolean | null;
+
+    headers?: Record<string, string> | null;
+
+    json?: unknown | null;
+
+    params?: string | unknown | null;
+  }
+
+  /**
    * Function definition
    */
   export interface Function {
@@ -202,8 +258,6 @@ export namespace ToolCreateParams {
 
     arguments?: unknown | null;
 
-    description?: string | null;
-
     method?: string | null;
 
     setup?: unknown | null;
@@ -216,13 +270,18 @@ export namespace ToolCreateParams {
     call: string;
 
     arguments?: unknown | null;
-
-    description?: string | null;
   }
 }
 
 export interface ToolUpdateParams {
   name: string;
+
+  /**
+   * API call definition
+   */
+  api_call?: ToolUpdateParams.APICall | null;
+
+  description?: string | null;
 
   /**
    * Function definition
@@ -242,6 +301,29 @@ export interface ToolUpdateParams {
 
 export namespace ToolUpdateParams {
   /**
+   * API call definition
+   */
+  export interface APICall {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+    url: string;
+
+    content?: string | null;
+
+    cookies?: Record<string, string> | null;
+
+    data?: Record<string, string> | null;
+
+    follow_redirects?: boolean | null;
+
+    headers?: Record<string, string> | null;
+
+    json?: unknown | null;
+
+    params?: string | unknown | null;
+  }
+
+  /**
    * Function definition
    */
   export interface Function {
@@ -268,8 +350,6 @@ export namespace ToolUpdateParams {
 
     arguments?: unknown | null;
 
-    description?: string | null;
-
     method?: string | null;
 
     setup?: unknown | null;
@@ -282,8 +362,6 @@ export namespace ToolUpdateParams {
     call: string;
 
     arguments?: unknown | null;
-
-    description?: string | null;
   }
 }
 
@@ -294,6 +372,13 @@ export interface ToolListParams extends OffsetPaginationParams {
 }
 
 export interface ToolPatchParams {
+  /**
+   * API call definition
+   */
+  api_call?: ToolPatchParams.APICall | null;
+
+  description?: string | null;
+
   /**
    * Function definition
    */
@@ -314,6 +399,29 @@ export interface ToolPatchParams {
 
 export namespace ToolPatchParams {
   /**
+   * API call definition
+   */
+  export interface APICall {
+    content?: string | null;
+
+    cookies?: Record<string, string> | null;
+
+    data?: Record<string, string> | null;
+
+    follow_redirects?: boolean | null;
+
+    headers?: Record<string, string> | null;
+
+    json?: unknown | null;
+
+    method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE' | null;
+
+    params?: string | unknown | null;
+
+    url?: string | null;
+  }
+
+  /**
    * Function definition
    */
   export interface Function {
@@ -329,8 +437,6 @@ export namespace ToolPatchParams {
    */
   export interface Integration {
     arguments?: unknown | null;
-
-    description?: string | null;
 
     method?: string | null;
 
@@ -355,8 +461,6 @@ export namespace ToolPatchParams {
     arguments?: unknown | null;
 
     call?: string | null;
-
-    description?: string | null;
   }
 }
 

@@ -25,15 +25,21 @@ describe('resource tools', () => {
   test('create: required and optional params', async () => {
     const response = await client.agents.tools.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       name: 'name',
-      function: { description: 'description', name: {}, parameters: {} },
-      integration: {
-        provider: 'dummy',
-        arguments: {},
-        description: 'description',
-        method: 'method',
-        setup: {},
+      api_call: {
+        method: 'GET',
+        url: 'https://example.com',
+        content: 'content',
+        cookies: { foo: 'string' },
+        data: { foo: 'string' },
+        follow_redirects: true,
+        headers: { foo: 'string' },
+        json: {},
+        params: 'string',
       },
-      system: { call: 'call', arguments: {}, description: 'description' },
+      description: 'description',
+      function: { description: 'description', name: {}, parameters: {} },
+      integration: { provider: 'dummy', arguments: {}, method: 'method', setup: {} },
+      system: { call: 'call', arguments: {} },
     });
   });
 
@@ -58,15 +64,21 @@ describe('resource tools', () => {
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       {
         name: 'name',
-        function: { description: 'description', name: {}, parameters: {} },
-        integration: {
-          provider: 'dummy',
-          arguments: {},
-          description: 'description',
-          method: 'method',
-          setup: {},
+        api_call: {
+          method: 'GET',
+          url: 'https://example.com',
+          content: 'content',
+          cookies: { foo: 'string' },
+          data: { foo: 'string' },
+          follow_redirects: true,
+          headers: { foo: 'string' },
+          json: {},
+          params: 'string',
         },
-        system: { call: 'call', arguments: {}, description: 'description' },
+        description: 'description',
+        function: { description: 'description', name: {}, parameters: {} },
+        integration: { provider: 'dummy', arguments: {}, method: 'method', setup: {} },
+        system: { call: 'call', arguments: {} },
       },
     );
   });
