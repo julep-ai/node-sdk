@@ -128,7 +128,7 @@ export namespace ToolListResponse {
 
     cookies?: Record<string, string> | null;
 
-    data?: Record<string, string> | null;
+    data?: unknown | null;
 
     follow_redirects?: boolean | null;
 
@@ -137,13 +137,15 @@ export namespace ToolListResponse {
     json?: unknown | null;
 
     params?: string | unknown | null;
+
+    timeout?: number | null;
   }
 
   /**
    * Function definition
    */
   export interface Function {
-    description?: string | null;
+    description?: unknown | null;
 
     name?: unknown | null;
 
@@ -175,9 +177,27 @@ export namespace ToolListResponse {
    * System definition
    */
   export interface System {
-    call: string;
+    operation:
+      | 'create'
+      | 'update'
+      | 'patch'
+      | 'create_or_update'
+      | 'embed'
+      | 'change_status'
+      | 'search'
+      | 'chat'
+      | 'history'
+      | 'delete'
+      | 'get'
+      | 'list';
+
+    resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
     arguments?: unknown | null;
+
+    resource_id?: string | null;
+
+    subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
   }
 }
 
@@ -220,7 +240,7 @@ export namespace ToolCreateParams {
 
     cookies?: Record<string, string> | null;
 
-    data?: Record<string, string> | null;
+    data?: unknown | null;
 
     follow_redirects?: boolean | null;
 
@@ -229,13 +249,15 @@ export namespace ToolCreateParams {
     json?: unknown | null;
 
     params?: string | unknown | null;
+
+    timeout?: number | null;
   }
 
   /**
    * Function definition
    */
   export interface Function {
-    description?: string | null;
+    description?: unknown | null;
 
     name?: unknown | null;
 
@@ -267,9 +289,27 @@ export namespace ToolCreateParams {
    * System definition
    */
   export interface System {
-    call: string;
+    operation:
+      | 'create'
+      | 'update'
+      | 'patch'
+      | 'create_or_update'
+      | 'embed'
+      | 'change_status'
+      | 'search'
+      | 'chat'
+      | 'history'
+      | 'delete'
+      | 'get'
+      | 'list';
+
+    resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
     arguments?: unknown | null;
+
+    resource_id?: string | null;
+
+    subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
   }
 }
 
@@ -312,7 +352,7 @@ export namespace ToolUpdateParams {
 
     cookies?: Record<string, string> | null;
 
-    data?: Record<string, string> | null;
+    data?: unknown | null;
 
     follow_redirects?: boolean | null;
 
@@ -321,13 +361,15 @@ export namespace ToolUpdateParams {
     json?: unknown | null;
 
     params?: string | unknown | null;
+
+    timeout?: number | null;
   }
 
   /**
    * Function definition
    */
   export interface Function {
-    description?: string | null;
+    description?: unknown | null;
 
     name?: unknown | null;
 
@@ -359,9 +401,27 @@ export namespace ToolUpdateParams {
    * System definition
    */
   export interface System {
-    call: string;
+    operation:
+      | 'create'
+      | 'update'
+      | 'patch'
+      | 'create_or_update'
+      | 'embed'
+      | 'change_status'
+      | 'search'
+      | 'chat'
+      | 'history'
+      | 'delete'
+      | 'get'
+      | 'list';
+
+    resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
     arguments?: unknown | null;
+
+    resource_id?: string | null;
+
+    subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
   }
 }
 
@@ -406,7 +466,7 @@ export namespace ToolPatchParams {
 
     cookies?: Record<string, string> | null;
 
-    data?: Record<string, string> | null;
+    data?: unknown | null;
 
     follow_redirects?: boolean | null;
 
@@ -418,6 +478,8 @@ export namespace ToolPatchParams {
 
     params?: string | unknown | null;
 
+    timeout?: number | null;
+
     url?: string | null;
   }
 
@@ -425,7 +487,7 @@ export namespace ToolPatchParams {
    * Function definition
    */
   export interface Function {
-    description?: string | null;
+    description?: unknown | null;
 
     name?: unknown | null;
 
@@ -460,7 +522,26 @@ export namespace ToolPatchParams {
   export interface System {
     arguments?: unknown | null;
 
-    call?: string | null;
+    operation?:
+      | 'create'
+      | 'update'
+      | 'patch'
+      | 'create_or_update'
+      | 'embed'
+      | 'change_status'
+      | 'search'
+      | 'chat'
+      | 'history'
+      | 'delete'
+      | 'get'
+      | 'list'
+      | null;
+
+    resource?: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job' | null;
+
+    resource_id?: string | null;
+
+    subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
   }
 }
 

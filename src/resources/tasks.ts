@@ -249,7 +249,7 @@ export namespace Task {
 
         cookies?: Record<string, string> | null;
 
-        data?: Record<string, string> | null;
+        data?: unknown | null;
 
         follow_redirects?: boolean | null;
 
@@ -258,13 +258,15 @@ export namespace Task {
         json?: unknown | null;
 
         params?: string | unknown | null;
+
+        timeout?: number | null;
       }
 
       /**
        * Function definition
        */
       export interface Function {
-        description?: string | null;
+        description?: unknown | null;
 
         name?: unknown | null;
 
@@ -296,9 +298,27 @@ export namespace Task {
        * System definition
        */
       export interface System {
-        call: string;
+        operation:
+          | 'create'
+          | 'update'
+          | 'patch'
+          | 'create_or_update'
+          | 'embed'
+          | 'change_status'
+          | 'search'
+          | 'chat'
+          | 'history'
+          | 'delete'
+          | 'get'
+          | 'list';
+
+        resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
         arguments?: unknown | null;
+
+        resource_id?: string | null;
+
+        subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
       }
     }
   }
@@ -608,7 +628,7 @@ export namespace Task {
 
           cookies?: Record<string, string> | null;
 
-          data?: Record<string, string> | null;
+          data?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -617,13 +637,15 @@ export namespace Task {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          timeout?: number | null;
         }
 
         /**
          * Function definition
          */
         export interface Function {
-          description?: string | null;
+          description?: unknown | null;
 
           name?: unknown | null;
 
@@ -655,9 +677,27 @@ export namespace Task {
          * System definition
          */
         export interface System {
-          call: string;
+          operation:
+            | 'create'
+            | 'update'
+            | 'patch'
+            | 'create_or_update'
+            | 'embed'
+            | 'change_status'
+            | 'search'
+            | 'chat'
+            | 'history'
+            | 'delete'
+            | 'get'
+            | 'list';
+
+          resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
           arguments?: unknown | null;
+
+          resource_id?: string | null;
+
+          subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
       }
     }
@@ -929,7 +969,7 @@ export namespace Task {
 
           cookies?: Record<string, string> | null;
 
-          data?: Record<string, string> | null;
+          data?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -938,13 +978,15 @@ export namespace Task {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          timeout?: number | null;
         }
 
         /**
          * Function definition
          */
         export interface Function {
-          description?: string | null;
+          description?: unknown | null;
 
           name?: unknown | null;
 
@@ -976,9 +1018,27 @@ export namespace Task {
          * System definition
          */
         export interface System {
-          call: string;
+          operation:
+            | 'create'
+            | 'update'
+            | 'patch'
+            | 'create_or_update'
+            | 'embed'
+            | 'change_status'
+            | 'search'
+            | 'chat'
+            | 'history'
+            | 'delete'
+            | 'get'
+            | 'list';
+
+          resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
           arguments?: unknown | null;
+
+          resource_id?: string | null;
+
+          subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
       }
     }
@@ -1278,7 +1338,7 @@ export namespace Task {
 
             cookies?: Record<string, string> | null;
 
-            data?: Record<string, string> | null;
+            data?: unknown | null;
 
             follow_redirects?: boolean | null;
 
@@ -1287,13 +1347,15 @@ export namespace Task {
             json?: unknown | null;
 
             params?: string | unknown | null;
+
+            timeout?: number | null;
           }
 
           /**
            * Function definition
            */
           export interface Function {
-            description?: string | null;
+            description?: unknown | null;
 
             name?: unknown | null;
 
@@ -1325,9 +1387,27 @@ export namespace Task {
            * System definition
            */
           export interface System {
-            call: string;
+            operation:
+              | 'create'
+              | 'update'
+              | 'patch'
+              | 'create_or_update'
+              | 'embed'
+              | 'change_status'
+              | 'search'
+              | 'chat'
+              | 'history'
+              | 'delete'
+              | 'get'
+              | 'list';
+
+            resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
             arguments?: unknown | null;
+
+            resource_id?: string | null;
+
+            subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
           }
         }
       }
@@ -1624,7 +1704,7 @@ export namespace Task {
 
             cookies?: Record<string, string> | null;
 
-            data?: Record<string, string> | null;
+            data?: unknown | null;
 
             follow_redirects?: boolean | null;
 
@@ -1633,13 +1713,15 @@ export namespace Task {
             json?: unknown | null;
 
             params?: string | unknown | null;
+
+            timeout?: number | null;
           }
 
           /**
            * Function definition
            */
           export interface Function {
-            description?: string | null;
+            description?: unknown | null;
 
             name?: unknown | null;
 
@@ -1671,9 +1753,27 @@ export namespace Task {
            * System definition
            */
           export interface System {
-            call: string;
+            operation:
+              | 'create'
+              | 'update'
+              | 'patch'
+              | 'create_or_update'
+              | 'embed'
+              | 'change_status'
+              | 'search'
+              | 'chat'
+              | 'history'
+              | 'delete'
+              | 'get'
+              | 'list';
+
+            resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
             arguments?: unknown | null;
+
+            resource_id?: string | null;
+
+            subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
           }
         }
       }
@@ -1922,7 +2022,7 @@ export namespace Task {
 
           cookies?: Record<string, string> | null;
 
-          data?: Record<string, string> | null;
+          data?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -1931,13 +2031,15 @@ export namespace Task {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          timeout?: number | null;
         }
 
         /**
          * Function definition
          */
         export interface Function {
-          description?: string | null;
+          description?: unknown | null;
 
           name?: unknown | null;
 
@@ -1969,9 +2071,27 @@ export namespace Task {
          * System definition
          */
         export interface System {
-          call: string;
+          operation:
+            | 'create'
+            | 'update'
+            | 'patch'
+            | 'create_or_update'
+            | 'embed'
+            | 'change_status'
+            | 'search'
+            | 'chat'
+            | 'history'
+            | 'delete'
+            | 'get'
+            | 'list';
+
+          resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
           arguments?: unknown | null;
+
+          resource_id?: string | null;
+
+          subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
       }
     }
@@ -2226,7 +2346,7 @@ export namespace Task {
 
           cookies?: Record<string, string> | null;
 
-          data?: Record<string, string> | null;
+          data?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -2235,13 +2355,15 @@ export namespace Task {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          timeout?: number | null;
         }
 
         /**
          * Function definition
          */
         export interface Function {
-          description?: string | null;
+          description?: unknown | null;
 
           name?: unknown | null;
 
@@ -2273,9 +2395,27 @@ export namespace Task {
          * System definition
          */
         export interface System {
-          call: string;
+          operation:
+            | 'create'
+            | 'update'
+            | 'patch'
+            | 'create_or_update'
+            | 'embed'
+            | 'change_status'
+            | 'search'
+            | 'chat'
+            | 'history'
+            | 'delete'
+            | 'get'
+            | 'list';
+
+          resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
           arguments?: unknown | null;
+
+          resource_id?: string | null;
+
+          subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
       }
     }
@@ -2404,7 +2544,7 @@ export namespace Tool {
 
     cookies?: Record<string, string> | null;
 
-    data?: Record<string, string> | null;
+    data?: unknown | null;
 
     follow_redirects?: boolean | null;
 
@@ -2413,13 +2553,15 @@ export namespace Tool {
     json?: unknown | null;
 
     params?: string | unknown | null;
+
+    timeout?: number | null;
   }
 
   /**
    * Function definition
    */
   export interface Function {
-    description?: string | null;
+    description?: unknown | null;
 
     name?: unknown | null;
 
@@ -2451,9 +2593,27 @@ export namespace Tool {
    * System definition
    */
   export interface System {
-    call: string;
+    operation:
+      | 'create'
+      | 'update'
+      | 'patch'
+      | 'create_or_update'
+      | 'embed'
+      | 'change_status'
+      | 'search'
+      | 'chat'
+      | 'history'
+      | 'delete'
+      | 'get'
+      | 'list';
+
+    resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
     arguments?: unknown | null;
+
+    resource_id?: string | null;
+
+    subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
   }
 }
 
@@ -2631,7 +2791,7 @@ export namespace TaskCreateParams {
 
         cookies?: Record<string, string> | null;
 
-        data?: Record<string, string> | null;
+        data?: unknown | null;
 
         follow_redirects?: boolean | null;
 
@@ -2640,13 +2800,15 @@ export namespace TaskCreateParams {
         json?: unknown | null;
 
         params?: string | unknown | null;
+
+        timeout?: number | null;
       }
 
       /**
        * Function definition
        */
       export interface Function {
-        description?: string | null;
+        description?: unknown | null;
 
         name?: unknown | null;
 
@@ -2678,9 +2840,27 @@ export namespace TaskCreateParams {
        * System definition
        */
       export interface System {
-        call: string;
+        operation:
+          | 'create'
+          | 'update'
+          | 'patch'
+          | 'create_or_update'
+          | 'embed'
+          | 'change_status'
+          | 'search'
+          | 'chat'
+          | 'history'
+          | 'delete'
+          | 'get'
+          | 'list';
+
+        resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
         arguments?: unknown | null;
+
+        resource_id?: string | null;
+
+        subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
       }
     }
   }
@@ -2962,7 +3142,7 @@ export namespace TaskCreateParams {
 
           cookies?: Record<string, string> | null;
 
-          data?: Record<string, string> | null;
+          data?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -2971,13 +3151,15 @@ export namespace TaskCreateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          timeout?: number | null;
         }
 
         /**
          * Function definition
          */
         export interface Function {
-          description?: string | null;
+          description?: unknown | null;
 
           name?: unknown | null;
 
@@ -3009,9 +3191,27 @@ export namespace TaskCreateParams {
          * System definition
          */
         export interface System {
-          call: string;
+          operation:
+            | 'create'
+            | 'update'
+            | 'patch'
+            | 'create_or_update'
+            | 'embed'
+            | 'change_status'
+            | 'search'
+            | 'chat'
+            | 'history'
+            | 'delete'
+            | 'get'
+            | 'list';
+
+          resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
           arguments?: unknown | null;
+
+          resource_id?: string | null;
+
+          subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
       }
     }
@@ -3257,7 +3457,7 @@ export namespace TaskCreateParams {
 
           cookies?: Record<string, string> | null;
 
-          data?: Record<string, string> | null;
+          data?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -3266,13 +3466,15 @@ export namespace TaskCreateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          timeout?: number | null;
         }
 
         /**
          * Function definition
          */
         export interface Function {
-          description?: string | null;
+          description?: unknown | null;
 
           name?: unknown | null;
 
@@ -3304,9 +3506,27 @@ export namespace TaskCreateParams {
          * System definition
          */
         export interface System {
-          call: string;
+          operation:
+            | 'create'
+            | 'update'
+            | 'patch'
+            | 'create_or_update'
+            | 'embed'
+            | 'change_status'
+            | 'search'
+            | 'chat'
+            | 'history'
+            | 'delete'
+            | 'get'
+            | 'list';
+
+          resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
           arguments?: unknown | null;
+
+          resource_id?: string | null;
+
+          subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
       }
     }
@@ -3578,7 +3798,7 @@ export namespace TaskCreateParams {
 
             cookies?: Record<string, string> | null;
 
-            data?: Record<string, string> | null;
+            data?: unknown | null;
 
             follow_redirects?: boolean | null;
 
@@ -3587,13 +3807,15 @@ export namespace TaskCreateParams {
             json?: unknown | null;
 
             params?: string | unknown | null;
+
+            timeout?: number | null;
           }
 
           /**
            * Function definition
            */
           export interface Function {
-            description?: string | null;
+            description?: unknown | null;
 
             name?: unknown | null;
 
@@ -3625,9 +3847,27 @@ export namespace TaskCreateParams {
            * System definition
            */
           export interface System {
-            call: string;
+            operation:
+              | 'create'
+              | 'update'
+              | 'patch'
+              | 'create_or_update'
+              | 'embed'
+              | 'change_status'
+              | 'search'
+              | 'chat'
+              | 'history'
+              | 'delete'
+              | 'get'
+              | 'list';
+
+            resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
             arguments?: unknown | null;
+
+            resource_id?: string | null;
+
+            subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
           }
         }
       }
@@ -3896,7 +4136,7 @@ export namespace TaskCreateParams {
 
             cookies?: Record<string, string> | null;
 
-            data?: Record<string, string> | null;
+            data?: unknown | null;
 
             follow_redirects?: boolean | null;
 
@@ -3905,13 +4145,15 @@ export namespace TaskCreateParams {
             json?: unknown | null;
 
             params?: string | unknown | null;
+
+            timeout?: number | null;
           }
 
           /**
            * Function definition
            */
           export interface Function {
-            description?: string | null;
+            description?: unknown | null;
 
             name?: unknown | null;
 
@@ -3943,9 +4185,27 @@ export namespace TaskCreateParams {
            * System definition
            */
           export interface System {
-            call: string;
+            operation:
+              | 'create'
+              | 'update'
+              | 'patch'
+              | 'create_or_update'
+              | 'embed'
+              | 'change_status'
+              | 'search'
+              | 'chat'
+              | 'history'
+              | 'delete'
+              | 'get'
+              | 'list';
+
+            resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
             arguments?: unknown | null;
+
+            resource_id?: string | null;
+
+            subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
           }
         }
       }
@@ -4174,7 +4434,7 @@ export namespace TaskCreateParams {
 
           cookies?: Record<string, string> | null;
 
-          data?: Record<string, string> | null;
+          data?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -4183,13 +4443,15 @@ export namespace TaskCreateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          timeout?: number | null;
         }
 
         /**
          * Function definition
          */
         export interface Function {
-          description?: string | null;
+          description?: unknown | null;
 
           name?: unknown | null;
 
@@ -4221,9 +4483,27 @@ export namespace TaskCreateParams {
          * System definition
          */
         export interface System {
-          call: string;
+          operation:
+            | 'create'
+            | 'update'
+            | 'patch'
+            | 'create_or_update'
+            | 'embed'
+            | 'change_status'
+            | 'search'
+            | 'chat'
+            | 'history'
+            | 'delete'
+            | 'get'
+            | 'list';
+
+          resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
           arguments?: unknown | null;
+
+          resource_id?: string | null;
+
+          subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
       }
     }
@@ -4458,7 +4738,7 @@ export namespace TaskCreateParams {
 
           cookies?: Record<string, string> | null;
 
-          data?: Record<string, string> | null;
+          data?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -4467,13 +4747,15 @@ export namespace TaskCreateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          timeout?: number | null;
         }
 
         /**
          * Function definition
          */
         export interface Function {
-          description?: string | null;
+          description?: unknown | null;
 
           name?: unknown | null;
 
@@ -4505,9 +4787,27 @@ export namespace TaskCreateParams {
          * System definition
          */
         export interface System {
-          call: string;
+          operation:
+            | 'create'
+            | 'update'
+            | 'patch'
+            | 'create_or_update'
+            | 'embed'
+            | 'change_status'
+            | 'search'
+            | 'chat'
+            | 'history'
+            | 'delete'
+            | 'get'
+            | 'list';
+
+          resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
           arguments?: unknown | null;
+
+          resource_id?: string | null;
+
+          subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
       }
     }
@@ -4763,7 +5063,7 @@ export namespace TaskCreateOrUpdateParams {
 
         cookies?: Record<string, string> | null;
 
-        data?: Record<string, string> | null;
+        data?: unknown | null;
 
         follow_redirects?: boolean | null;
 
@@ -4772,13 +5072,15 @@ export namespace TaskCreateOrUpdateParams {
         json?: unknown | null;
 
         params?: string | unknown | null;
+
+        timeout?: number | null;
       }
 
       /**
        * Function definition
        */
       export interface Function {
-        description?: string | null;
+        description?: unknown | null;
 
         name?: unknown | null;
 
@@ -4810,9 +5112,27 @@ export namespace TaskCreateOrUpdateParams {
        * System definition
        */
       export interface System {
-        call: string;
+        operation:
+          | 'create'
+          | 'update'
+          | 'patch'
+          | 'create_or_update'
+          | 'embed'
+          | 'change_status'
+          | 'search'
+          | 'chat'
+          | 'history'
+          | 'delete'
+          | 'get'
+          | 'list';
+
+        resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
         arguments?: unknown | null;
+
+        resource_id?: string | null;
+
+        subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
       }
     }
   }
@@ -5094,7 +5414,7 @@ export namespace TaskCreateOrUpdateParams {
 
           cookies?: Record<string, string> | null;
 
-          data?: Record<string, string> | null;
+          data?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -5103,13 +5423,15 @@ export namespace TaskCreateOrUpdateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          timeout?: number | null;
         }
 
         /**
          * Function definition
          */
         export interface Function {
-          description?: string | null;
+          description?: unknown | null;
 
           name?: unknown | null;
 
@@ -5141,9 +5463,27 @@ export namespace TaskCreateOrUpdateParams {
          * System definition
          */
         export interface System {
-          call: string;
+          operation:
+            | 'create'
+            | 'update'
+            | 'patch'
+            | 'create_or_update'
+            | 'embed'
+            | 'change_status'
+            | 'search'
+            | 'chat'
+            | 'history'
+            | 'delete'
+            | 'get'
+            | 'list';
+
+          resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
           arguments?: unknown | null;
+
+          resource_id?: string | null;
+
+          subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
       }
     }
@@ -5389,7 +5729,7 @@ export namespace TaskCreateOrUpdateParams {
 
           cookies?: Record<string, string> | null;
 
-          data?: Record<string, string> | null;
+          data?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -5398,13 +5738,15 @@ export namespace TaskCreateOrUpdateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          timeout?: number | null;
         }
 
         /**
          * Function definition
          */
         export interface Function {
-          description?: string | null;
+          description?: unknown | null;
 
           name?: unknown | null;
 
@@ -5436,9 +5778,27 @@ export namespace TaskCreateOrUpdateParams {
          * System definition
          */
         export interface System {
-          call: string;
+          operation:
+            | 'create'
+            | 'update'
+            | 'patch'
+            | 'create_or_update'
+            | 'embed'
+            | 'change_status'
+            | 'search'
+            | 'chat'
+            | 'history'
+            | 'delete'
+            | 'get'
+            | 'list';
+
+          resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
           arguments?: unknown | null;
+
+          resource_id?: string | null;
+
+          subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
       }
     }
@@ -5710,7 +6070,7 @@ export namespace TaskCreateOrUpdateParams {
 
             cookies?: Record<string, string> | null;
 
-            data?: Record<string, string> | null;
+            data?: unknown | null;
 
             follow_redirects?: boolean | null;
 
@@ -5719,13 +6079,15 @@ export namespace TaskCreateOrUpdateParams {
             json?: unknown | null;
 
             params?: string | unknown | null;
+
+            timeout?: number | null;
           }
 
           /**
            * Function definition
            */
           export interface Function {
-            description?: string | null;
+            description?: unknown | null;
 
             name?: unknown | null;
 
@@ -5757,9 +6119,27 @@ export namespace TaskCreateOrUpdateParams {
            * System definition
            */
           export interface System {
-            call: string;
+            operation:
+              | 'create'
+              | 'update'
+              | 'patch'
+              | 'create_or_update'
+              | 'embed'
+              | 'change_status'
+              | 'search'
+              | 'chat'
+              | 'history'
+              | 'delete'
+              | 'get'
+              | 'list';
+
+            resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
             arguments?: unknown | null;
+
+            resource_id?: string | null;
+
+            subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
           }
         }
       }
@@ -6028,7 +6408,7 @@ export namespace TaskCreateOrUpdateParams {
 
             cookies?: Record<string, string> | null;
 
-            data?: Record<string, string> | null;
+            data?: unknown | null;
 
             follow_redirects?: boolean | null;
 
@@ -6037,13 +6417,15 @@ export namespace TaskCreateOrUpdateParams {
             json?: unknown | null;
 
             params?: string | unknown | null;
+
+            timeout?: number | null;
           }
 
           /**
            * Function definition
            */
           export interface Function {
-            description?: string | null;
+            description?: unknown | null;
 
             name?: unknown | null;
 
@@ -6075,9 +6457,27 @@ export namespace TaskCreateOrUpdateParams {
            * System definition
            */
           export interface System {
-            call: string;
+            operation:
+              | 'create'
+              | 'update'
+              | 'patch'
+              | 'create_or_update'
+              | 'embed'
+              | 'change_status'
+              | 'search'
+              | 'chat'
+              | 'history'
+              | 'delete'
+              | 'get'
+              | 'list';
+
+            resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
             arguments?: unknown | null;
+
+            resource_id?: string | null;
+
+            subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
           }
         }
       }
@@ -6306,7 +6706,7 @@ export namespace TaskCreateOrUpdateParams {
 
           cookies?: Record<string, string> | null;
 
-          data?: Record<string, string> | null;
+          data?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -6315,13 +6715,15 @@ export namespace TaskCreateOrUpdateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          timeout?: number | null;
         }
 
         /**
          * Function definition
          */
         export interface Function {
-          description?: string | null;
+          description?: unknown | null;
 
           name?: unknown | null;
 
@@ -6353,9 +6755,27 @@ export namespace TaskCreateOrUpdateParams {
          * System definition
          */
         export interface System {
-          call: string;
+          operation:
+            | 'create'
+            | 'update'
+            | 'patch'
+            | 'create_or_update'
+            | 'embed'
+            | 'change_status'
+            | 'search'
+            | 'chat'
+            | 'history'
+            | 'delete'
+            | 'get'
+            | 'list';
+
+          resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
           arguments?: unknown | null;
+
+          resource_id?: string | null;
+
+          subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
       }
     }
@@ -6590,7 +7010,7 @@ export namespace TaskCreateOrUpdateParams {
 
           cookies?: Record<string, string> | null;
 
-          data?: Record<string, string> | null;
+          data?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -6599,13 +7019,15 @@ export namespace TaskCreateOrUpdateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          timeout?: number | null;
         }
 
         /**
          * Function definition
          */
         export interface Function {
-          description?: string | null;
+          description?: unknown | null;
 
           name?: unknown | null;
 
@@ -6637,9 +7059,27 @@ export namespace TaskCreateOrUpdateParams {
          * System definition
          */
         export interface System {
-          call: string;
+          operation:
+            | 'create'
+            | 'update'
+            | 'patch'
+            | 'create_or_update'
+            | 'embed'
+            | 'change_status'
+            | 'search'
+            | 'chat'
+            | 'history'
+            | 'delete'
+            | 'get'
+            | 'list';
+
+          resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
           arguments?: unknown | null;
+
+          resource_id?: string | null;
+
+          subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
       }
     }
