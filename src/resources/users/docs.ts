@@ -103,8 +103,6 @@ export interface DocCreateParams {
 export interface DocListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
 
-  metadata_filter?: string;
-
   sort_by?: 'created_at' | 'updated_at';
 }
 
