@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.12.0 (2024-10-05)
+
+Full Changelog: [v1.11.0...v1.12.0](https://github.com/julep-ai/node-sdk/compare/v1.11.0...v1.12.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#48](https://github.com/julep-ai/node-sdk/issues/48)) ([a9c6f48](https://github.com/julep-ai/node-sdk/commit/a9c6f486bb9de768f109f6f35f86325127224206))
+
 ## 1.11.0 (2024-10-05)
 
 Full Changelog: [v1.10.0...v1.11.0](https://github.com/julep-ai/node-sdk/compare/v1.10.0...v1.11.0)
