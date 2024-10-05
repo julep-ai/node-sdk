@@ -116,8 +116,6 @@ export interface UserUpdateParams {
 export interface UserListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
 
-  metadata_filter?: string;
-
   sort_by?: 'created_at' | 'updated_at';
 }
 
