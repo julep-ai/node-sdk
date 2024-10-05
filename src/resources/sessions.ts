@@ -223,7 +223,7 @@ export namespace ChatInput {
 
       cookies?: Record<string, string> | null;
 
-      data?: Record<string, string> | null;
+      data?: unknown | null;
 
       follow_redirects?: boolean | null;
 
@@ -232,13 +232,15 @@ export namespace ChatInput {
       json?: unknown | null;
 
       params?: string | unknown | null;
+
+      timeout?: number | null;
     }
 
     /**
      * Function definition
      */
     export interface Function {
-      description?: string | null;
+      description?: unknown | null;
 
       name?: unknown | null;
 
@@ -270,9 +272,27 @@ export namespace ChatInput {
      * System definition
      */
     export interface System {
-      call: string;
+      operation:
+        | 'create'
+        | 'update'
+        | 'patch'
+        | 'create_or_update'
+        | 'embed'
+        | 'change_status'
+        | 'search'
+        | 'chat'
+        | 'history'
+        | 'delete'
+        | 'get'
+        | 'list';
+
+      resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
       arguments?: unknown | null;
+
+      resource_id?: string | null;
+
+      subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
     }
   }
 }
@@ -683,7 +703,7 @@ export namespace Entry {
 
       cookies?: Record<string, string> | null;
 
-      data?: Record<string, string> | null;
+      data?: unknown | null;
 
       follow_redirects?: boolean | null;
 
@@ -692,13 +712,15 @@ export namespace Entry {
       json?: unknown | null;
 
       params?: string | unknown | null;
+
+      timeout?: number | null;
     }
 
     /**
      * Function definition
      */
     export interface Function {
-      description?: string | null;
+      description?: unknown | null;
 
       name?: unknown | null;
 
@@ -730,9 +752,27 @@ export namespace Entry {
      * System definition
      */
     export interface System {
-      call: string;
+      operation:
+        | 'create'
+        | 'update'
+        | 'patch'
+        | 'create_or_update'
+        | 'embed'
+        | 'change_status'
+        | 'search'
+        | 'chat'
+        | 'history'
+        | 'delete'
+        | 'get'
+        | 'list';
+
+      resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
       arguments?: unknown | null;
+
+      resource_id?: string | null;
+
+      subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
     }
   }
 
@@ -830,7 +870,7 @@ export namespace Entry {
 
       cookies?: Record<string, string> | null;
 
-      data?: Record<string, string> | null;
+      data?: unknown | null;
 
       follow_redirects?: boolean | null;
 
@@ -839,13 +879,15 @@ export namespace Entry {
       json?: unknown | null;
 
       params?: string | unknown | null;
+
+      timeout?: number | null;
     }
 
     /**
      * Function definition
      */
     export interface Function {
-      description?: string | null;
+      description?: unknown | null;
 
       name?: unknown | null;
 
@@ -877,9 +919,27 @@ export namespace Entry {
      * System definition
      */
     export interface System {
-      call: string;
+      operation:
+        | 'create'
+        | 'update'
+        | 'patch'
+        | 'create_or_update'
+        | 'embed'
+        | 'change_status'
+        | 'search'
+        | 'chat'
+        | 'history'
+        | 'delete'
+        | 'get'
+        | 'list';
+
+      resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
       arguments?: unknown | null;
+
+      resource_id?: string | null;
+
+      subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
     }
   }
 
@@ -1342,7 +1402,7 @@ export namespace SessionChatParams {
 
       cookies?: Record<string, string> | null;
 
-      data?: Record<string, string> | null;
+      data?: unknown | null;
 
       follow_redirects?: boolean | null;
 
@@ -1351,13 +1411,15 @@ export namespace SessionChatParams {
       json?: unknown | null;
 
       params?: string | unknown | null;
+
+      timeout?: number | null;
     }
 
     /**
      * Function definition
      */
     export interface Function {
-      description?: string | null;
+      description?: unknown | null;
 
       name?: unknown | null;
 
@@ -1389,9 +1451,27 @@ export namespace SessionChatParams {
      * System definition
      */
     export interface System {
-      call: string;
+      operation:
+        | 'create'
+        | 'update'
+        | 'patch'
+        | 'create_or_update'
+        | 'embed'
+        | 'change_status'
+        | 'search'
+        | 'chat'
+        | 'history'
+        | 'delete'
+        | 'get'
+        | 'list';
+
+      resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
 
       arguments?: unknown | null;
+
+      resource_id?: string | null;
+
+      subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
     }
   }
 }
