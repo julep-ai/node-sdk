@@ -211,8 +211,6 @@ export namespace AgentUpdateParams {
 export interface AgentListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
 
-  metadata_filter?: string;
-
   sort_by?: 'created_at' | 'updated_at';
 }
 
