@@ -164,6 +164,7 @@ export namespace ToolListResponse {
       | 'spider'
       | 'brave'
       | 'browserbase'
+      | 'email'
       | (string & {});
 
     arguments?: unknown | null;
@@ -276,6 +277,7 @@ export namespace ToolCreateParams {
       | 'spider'
       | 'brave'
       | 'browserbase'
+      | 'email'
       | (string & {});
 
     arguments?: unknown | null;
@@ -388,6 +390,7 @@ export namespace ToolUpdateParams {
       | 'spider'
       | 'brave'
       | 'browserbase'
+      | 'email'
       | (string & {});
 
     arguments?: unknown | null;
@@ -510,6 +513,7 @@ export namespace ToolPatchParams {
       | 'spider'
       | 'brave'
       | 'browserbase'
+      | 'email'
       | (string & {})
       | null;
 
