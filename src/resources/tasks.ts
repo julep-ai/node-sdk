@@ -74,8 +74,6 @@ export interface Task {
     | Task.GetStep
     | Task.SetStep
     | Task.LogStep
-    | Task.EmbedStep
-    | Task.SearchStep
     | Task.YieldStep
     | Task.ReturnStep
     | Task.SleepStep
@@ -285,6 +283,7 @@ export namespace Task {
           | 'spider'
           | 'brave'
           | 'browserbase'
+          | 'email'
           | (string & {});
 
         arguments?: unknown | null;
@@ -339,61 +338,6 @@ export namespace Task {
     log: string;
 
     kind_?: 'log';
-  }
-
-  export interface EmbedStep {
-    embed: EmbedStep.Embed;
-
-    kind_?: 'embed';
-  }
-
-  export namespace EmbedStep {
-    export interface Embed {
-      text: string | Array<string>;
-    }
-  }
-
-  export interface SearchStep {
-    search:
-      | SearchStep.VectorDocSearchRequest
-      | SearchStep.TextOnlyDocSearchRequest
-      | SearchStep.HybridDocSearchRequest;
-
-    kind_?: 'search';
-  }
-
-  export namespace SearchStep {
-    export interface VectorDocSearchRequest {
-      vector: Array<number>;
-
-      confidence?: number;
-
-      lang?: 'en-US';
-
-      limit?: number;
-    }
-
-    export interface TextOnlyDocSearchRequest {
-      text: string;
-
-      lang?: 'en-US';
-
-      limit?: number;
-    }
-
-    export interface HybridDocSearchRequest {
-      text: string;
-
-      vector: Array<number>;
-
-      alpha?: number;
-
-      confidence?: number;
-
-      lang?: 'en-US';
-
-      limit?: number;
-    }
   }
 
   export interface YieldStep {
@@ -456,8 +400,6 @@ export namespace Task {
       | IfElseWorkflowStepOutput.GetStep
       | IfElseWorkflowStepOutput.SetStep
       | IfElseWorkflowStepOutput.LogStep
-      | IfElseWorkflowStepOutput.EmbedStep
-      | IfElseWorkflowStepOutput.SearchStep
       | IfElseWorkflowStepOutput.YieldStep
       | IfElseWorkflowStepOutput.ReturnStep
       | IfElseWorkflowStepOutput.SleepStep
@@ -471,8 +413,6 @@ export namespace Task {
       | IfElseWorkflowStepOutput.GetStep
       | IfElseWorkflowStepOutput.SetStep
       | IfElseWorkflowStepOutput.LogStep
-      | IfElseWorkflowStepOutput.EmbedStep
-      | IfElseWorkflowStepOutput.SearchStep
       | IfElseWorkflowStepOutput.YieldStep
       | IfElseWorkflowStepOutput.ReturnStep
       | IfElseWorkflowStepOutput.SleepStep
@@ -664,6 +604,7 @@ export namespace Task {
             | 'spider'
             | 'brave'
             | 'browserbase'
+            | 'email'
             | (string & {});
 
           arguments?: unknown | null;
@@ -718,61 +659,6 @@ export namespace Task {
       log: string;
 
       kind_?: 'log';
-    }
-
-    export interface EmbedStep {
-      embed: EmbedStep.Embed;
-
-      kind_?: 'embed';
-    }
-
-    export namespace EmbedStep {
-      export interface Embed {
-        text: string | Array<string>;
-      }
-    }
-
-    export interface SearchStep {
-      search:
-        | SearchStep.VectorDocSearchRequest
-        | SearchStep.TextOnlyDocSearchRequest
-        | SearchStep.HybridDocSearchRequest;
-
-      kind_?: 'search';
-    }
-
-    export namespace SearchStep {
-      export interface VectorDocSearchRequest {
-        vector: Array<number>;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface TextOnlyDocSearchRequest {
-        text: string;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface HybridDocSearchRequest {
-        text: string;
-
-        vector: Array<number>;
-
-        alpha?: number;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
     }
 
     export interface YieldStep {
@@ -1005,6 +891,7 @@ export namespace Task {
             | 'spider'
             | 'brave'
             | 'browserbase'
+            | 'email'
             | (string & {});
 
           arguments?: unknown | null;
@@ -1059,61 +946,6 @@ export namespace Task {
       log: string;
 
       kind_?: 'log';
-    }
-
-    export interface EmbedStep {
-      embed: EmbedStep.Embed;
-
-      kind_?: 'embed';
-    }
-
-    export namespace EmbedStep {
-      export interface Embed {
-        text: string | Array<string>;
-      }
-    }
-
-    export interface SearchStep {
-      search:
-        | SearchStep.VectorDocSearchRequest
-        | SearchStep.TextOnlyDocSearchRequest
-        | SearchStep.HybridDocSearchRequest;
-
-      kind_?: 'search';
-    }
-
-    export namespace SearchStep {
-      export interface VectorDocSearchRequest {
-        vector: Array<number>;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface TextOnlyDocSearchRequest {
-        text: string;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface HybridDocSearchRequest {
-        text: string;
-
-        vector: Array<number>;
-
-        alpha?: number;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
     }
 
     export interface YieldStep {
@@ -1184,8 +1016,6 @@ export namespace Task {
         | Switch.GetStep
         | Switch.SetStep
         | Switch.LogStep
-        | Switch.EmbedStep
-        | Switch.SearchStep
         | Switch.YieldStep
         | Switch.ReturnStep
         | Switch.SleepStep
@@ -1374,6 +1204,7 @@ export namespace Task {
               | 'spider'
               | 'brave'
               | 'browserbase'
+              | 'email'
               | (string & {});
 
             arguments?: unknown | null;
@@ -1428,61 +1259,6 @@ export namespace Task {
         log: string;
 
         kind_?: 'log';
-      }
-
-      export interface EmbedStep {
-        embed: EmbedStep.Embed;
-
-        kind_?: 'embed';
-      }
-
-      export namespace EmbedStep {
-        export interface Embed {
-          text: string | Array<string>;
-        }
-      }
-
-      export interface SearchStep {
-        search:
-          | SearchStep.VectorDocSearchRequest
-          | SearchStep.TextOnlyDocSearchRequest
-          | SearchStep.HybridDocSearchRequest;
-
-        kind_?: 'search';
-      }
-
-      export namespace SearchStep {
-        export interface VectorDocSearchRequest {
-          vector: Array<number>;
-
-          confidence?: number;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-
-        export interface TextOnlyDocSearchRequest {
-          text: string;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-
-        export interface HybridDocSearchRequest {
-          text: string;
-
-          vector: Array<number>;
-
-          alpha?: number;
-
-          confidence?: number;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
       }
 
       export interface YieldStep {
@@ -1552,8 +1328,6 @@ export namespace Task {
         | Foreach.GetStep
         | Foreach.SetStep
         | Foreach.LogStep
-        | Foreach.EmbedStep
-        | Foreach.SearchStep
         | Foreach.YieldStep;
 
       in: string;
@@ -1740,6 +1514,7 @@ export namespace Task {
               | 'spider'
               | 'brave'
               | 'browserbase'
+              | 'email'
               | (string & {});
 
             arguments?: unknown | null;
@@ -1796,61 +1571,6 @@ export namespace Task {
         kind_?: 'log';
       }
 
-      export interface EmbedStep {
-        embed: EmbedStep.Embed;
-
-        kind_?: 'embed';
-      }
-
-      export namespace EmbedStep {
-        export interface Embed {
-          text: string | Array<string>;
-        }
-      }
-
-      export interface SearchStep {
-        search:
-          | SearchStep.VectorDocSearchRequest
-          | SearchStep.TextOnlyDocSearchRequest
-          | SearchStep.HybridDocSearchRequest;
-
-        kind_?: 'search';
-      }
-
-      export namespace SearchStep {
-        export interface VectorDocSearchRequest {
-          vector: Array<number>;
-
-          confidence?: number;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-
-        export interface TextOnlyDocSearchRequest {
-          text: string;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-
-        export interface HybridDocSearchRequest {
-          text: string;
-
-          vector: Array<number>;
-
-          alpha?: number;
-
-          confidence?: number;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-      }
-
       export interface YieldStep {
         workflow: string;
 
@@ -1869,8 +1589,6 @@ export namespace Task {
       | ParallelStepOutput.GetStep
       | ParallelStepOutput.SetStep
       | ParallelStepOutput.LogStep
-      | ParallelStepOutput.EmbedStep
-      | ParallelStepOutput.SearchStep
       | ParallelStepOutput.YieldStep
     >;
 
@@ -2058,6 +1776,7 @@ export namespace Task {
             | 'spider'
             | 'brave'
             | 'browserbase'
+            | 'email'
             | (string & {});
 
           arguments?: unknown | null;
@@ -2114,61 +1833,6 @@ export namespace Task {
       kind_?: 'log';
     }
 
-    export interface EmbedStep {
-      embed: EmbedStep.Embed;
-
-      kind_?: 'embed';
-    }
-
-    export namespace EmbedStep {
-      export interface Embed {
-        text: string | Array<string>;
-      }
-    }
-
-    export interface SearchStep {
-      search:
-        | SearchStep.VectorDocSearchRequest
-        | SearchStep.TextOnlyDocSearchRequest
-        | SearchStep.HybridDocSearchRequest;
-
-      kind_?: 'search';
-    }
-
-    export namespace SearchStep {
-      export interface VectorDocSearchRequest {
-        vector: Array<number>;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface TextOnlyDocSearchRequest {
-        text: string;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface HybridDocSearchRequest {
-        text: string;
-
-        vector: Array<number>;
-
-        alpha?: number;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-    }
-
     export interface YieldStep {
       workflow: string;
 
@@ -2186,8 +1850,6 @@ export namespace Task {
       | MainOutput.GetStep
       | MainOutput.SetStep
       | MainOutput.LogStep
-      | MainOutput.EmbedStep
-      | MainOutput.SearchStep
       | MainOutput.YieldStep;
 
     over: string;
@@ -2382,6 +2044,7 @@ export namespace Task {
             | 'spider'
             | 'brave'
             | 'browserbase'
+            | 'email'
             | (string & {});
 
           arguments?: unknown | null;
@@ -2436,61 +2099,6 @@ export namespace Task {
       log: string;
 
       kind_?: 'log';
-    }
-
-    export interface EmbedStep {
-      embed: EmbedStep.Embed;
-
-      kind_?: 'embed';
-    }
-
-    export namespace EmbedStep {
-      export interface Embed {
-        text: string | Array<string>;
-      }
-    }
-
-    export interface SearchStep {
-      search:
-        | SearchStep.VectorDocSearchRequest
-        | SearchStep.TextOnlyDocSearchRequest
-        | SearchStep.HybridDocSearchRequest;
-
-      kind_?: 'search';
-    }
-
-    export namespace SearchStep {
-      export interface VectorDocSearchRequest {
-        vector: Array<number>;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface TextOnlyDocSearchRequest {
-        text: string;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface HybridDocSearchRequest {
-        text: string;
-
-        vector: Array<number>;
-
-        alpha?: number;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
     }
 
     export interface YieldStep {
@@ -2580,6 +2188,7 @@ export namespace Tool {
       | 'spider'
       | 'brave'
       | 'browserbase'
+      | 'email'
       | (string & {});
 
     arguments?: unknown | null;
@@ -2625,8 +2234,6 @@ export interface TaskCreateParams {
     | TaskCreateParams.GetStep
     | TaskCreateParams.SetStep
     | TaskCreateParams.LogStep
-    | TaskCreateParams.EmbedStep
-    | TaskCreateParams.SearchStep
     | TaskCreateParams.YieldStep
     | TaskCreateParams.ReturnStep
     | TaskCreateParams.SleepStep
@@ -2827,6 +2434,7 @@ export namespace TaskCreateParams {
           | 'spider'
           | 'brave'
           | 'browserbase'
+          | 'email'
           | (string & {});
 
         arguments?: unknown | null;
@@ -2875,57 +2483,6 @@ export namespace TaskCreateParams {
 
   export interface LogStep {
     log: string;
-  }
-
-  export interface EmbedStep {
-    embed: EmbedStep.Embed;
-  }
-
-  export namespace EmbedStep {
-    export interface Embed {
-      text: string | Array<string>;
-    }
-  }
-
-  export interface SearchStep {
-    search:
-      | SearchStep.VectorDocSearchRequest
-      | SearchStep.TextOnlyDocSearchRequest
-      | SearchStep.HybridDocSearchRequest;
-  }
-
-  export namespace SearchStep {
-    export interface VectorDocSearchRequest {
-      vector: Array<number>;
-
-      confidence?: number;
-
-      lang?: 'en-US';
-
-      limit?: number;
-    }
-
-    export interface TextOnlyDocSearchRequest {
-      text: string;
-
-      lang?: 'en-US';
-
-      limit?: number;
-    }
-
-    export interface HybridDocSearchRequest {
-      text: string;
-
-      vector: Array<number>;
-
-      alpha?: number;
-
-      confidence?: number;
-
-      lang?: 'en-US';
-
-      limit?: number;
-    }
   }
 
   export interface YieldStep {
@@ -2978,8 +2535,6 @@ export namespace TaskCreateParams {
       | IfElseWorkflowStepInput.GetStep
       | IfElseWorkflowStepInput.SetStep
       | IfElseWorkflowStepInput.LogStep
-      | IfElseWorkflowStepInput.EmbedStep
-      | IfElseWorkflowStepInput.SearchStep
       | IfElseWorkflowStepInput.YieldStep
       | IfElseWorkflowStepInput.ReturnStep
       | IfElseWorkflowStepInput.SleepStep
@@ -2993,8 +2548,6 @@ export namespace TaskCreateParams {
       | IfElseWorkflowStepInput.GetStep
       | IfElseWorkflowStepInput.SetStep
       | IfElseWorkflowStepInput.LogStep
-      | IfElseWorkflowStepInput.EmbedStep
-      | IfElseWorkflowStepInput.SearchStep
       | IfElseWorkflowStepInput.YieldStep
       | IfElseWorkflowStepInput.ReturnStep
       | IfElseWorkflowStepInput.SleepStep
@@ -3178,6 +2731,7 @@ export namespace TaskCreateParams {
             | 'spider'
             | 'brave'
             | 'browserbase'
+            | 'email'
             | (string & {});
 
           arguments?: unknown | null;
@@ -3226,57 +2780,6 @@ export namespace TaskCreateParams {
 
     export interface LogStep {
       log: string;
-    }
-
-    export interface EmbedStep {
-      embed: EmbedStep.Embed;
-    }
-
-    export namespace EmbedStep {
-      export interface Embed {
-        text: string | Array<string>;
-      }
-    }
-
-    export interface SearchStep {
-      search:
-        | SearchStep.VectorDocSearchRequest
-        | SearchStep.TextOnlyDocSearchRequest
-        | SearchStep.HybridDocSearchRequest;
-    }
-
-    export namespace SearchStep {
-      export interface VectorDocSearchRequest {
-        vector: Array<number>;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface TextOnlyDocSearchRequest {
-        text: string;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface HybridDocSearchRequest {
-        text: string;
-
-        vector: Array<number>;
-
-        alpha?: number;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
     }
 
     export interface YieldStep {
@@ -3493,6 +2996,7 @@ export namespace TaskCreateParams {
             | 'spider'
             | 'brave'
             | 'browserbase'
+            | 'email'
             | (string & {});
 
           arguments?: unknown | null;
@@ -3541,57 +3045,6 @@ export namespace TaskCreateParams {
 
     export interface LogStep {
       log: string;
-    }
-
-    export interface EmbedStep {
-      embed: EmbedStep.Embed;
-    }
-
-    export namespace EmbedStep {
-      export interface Embed {
-        text: string | Array<string>;
-      }
-    }
-
-    export interface SearchStep {
-      search:
-        | SearchStep.VectorDocSearchRequest
-        | SearchStep.TextOnlyDocSearchRequest
-        | SearchStep.HybridDocSearchRequest;
-    }
-
-    export namespace SearchStep {
-      export interface VectorDocSearchRequest {
-        vector: Array<number>;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface TextOnlyDocSearchRequest {
-        text: string;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface HybridDocSearchRequest {
-        text: string;
-
-        vector: Array<number>;
-
-        alpha?: number;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
     }
 
     export interface YieldStep {
@@ -3650,8 +3103,6 @@ export namespace TaskCreateParams {
         | Switch.GetStep
         | Switch.SetStep
         | Switch.LogStep
-        | Switch.EmbedStep
-        | Switch.SearchStep
         | Switch.YieldStep
         | Switch.ReturnStep
         | Switch.SleepStep
@@ -3834,6 +3285,7 @@ export namespace TaskCreateParams {
               | 'spider'
               | 'brave'
               | 'browserbase'
+              | 'email'
               | (string & {});
 
             arguments?: unknown | null;
@@ -3882,57 +3334,6 @@ export namespace TaskCreateParams {
 
       export interface LogStep {
         log: string;
-      }
-
-      export interface EmbedStep {
-        embed: EmbedStep.Embed;
-      }
-
-      export namespace EmbedStep {
-        export interface Embed {
-          text: string | Array<string>;
-        }
-      }
-
-      export interface SearchStep {
-        search:
-          | SearchStep.VectorDocSearchRequest
-          | SearchStep.TextOnlyDocSearchRequest
-          | SearchStep.HybridDocSearchRequest;
-      }
-
-      export namespace SearchStep {
-        export interface VectorDocSearchRequest {
-          vector: Array<number>;
-
-          confidence?: number;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-
-        export interface TextOnlyDocSearchRequest {
-          text: string;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-
-        export interface HybridDocSearchRequest {
-          text: string;
-
-          vector: Array<number>;
-
-          alpha?: number;
-
-          confidence?: number;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
       }
 
       export interface YieldStep {
@@ -3990,8 +3391,6 @@ export namespace TaskCreateParams {
         | Foreach.GetStep
         | Foreach.SetStep
         | Foreach.LogStep
-        | Foreach.EmbedStep
-        | Foreach.SearchStep
         | Foreach.YieldStep;
 
       in: string;
@@ -4172,6 +3571,7 @@ export namespace TaskCreateParams {
               | 'spider'
               | 'brave'
               | 'browserbase'
+              | 'email'
               | (string & {});
 
             arguments?: unknown | null;
@@ -4222,57 +3622,6 @@ export namespace TaskCreateParams {
         log: string;
       }
 
-      export interface EmbedStep {
-        embed: EmbedStep.Embed;
-      }
-
-      export namespace EmbedStep {
-        export interface Embed {
-          text: string | Array<string>;
-        }
-      }
-
-      export interface SearchStep {
-        search:
-          | SearchStep.VectorDocSearchRequest
-          | SearchStep.TextOnlyDocSearchRequest
-          | SearchStep.HybridDocSearchRequest;
-      }
-
-      export namespace SearchStep {
-        export interface VectorDocSearchRequest {
-          vector: Array<number>;
-
-          confidence?: number;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-
-        export interface TextOnlyDocSearchRequest {
-          text: string;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-
-        export interface HybridDocSearchRequest {
-          text: string;
-
-          vector: Array<number>;
-
-          alpha?: number;
-
-          confidence?: number;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-      }
-
       export interface YieldStep {
         workflow: string;
 
@@ -4289,8 +3638,6 @@ export namespace TaskCreateParams {
       | ParallelStepInput.GetStep
       | ParallelStepInput.SetStep
       | ParallelStepInput.LogStep
-      | ParallelStepInput.EmbedStep
-      | ParallelStepInput.SearchStep
       | ParallelStepInput.YieldStep
     >;
   }
@@ -4470,6 +3817,7 @@ export namespace TaskCreateParams {
             | 'spider'
             | 'brave'
             | 'browserbase'
+            | 'email'
             | (string & {});
 
           arguments?: unknown | null;
@@ -4520,57 +3868,6 @@ export namespace TaskCreateParams {
       log: string;
     }
 
-    export interface EmbedStep {
-      embed: EmbedStep.Embed;
-    }
-
-    export namespace EmbedStep {
-      export interface Embed {
-        text: string | Array<string>;
-      }
-    }
-
-    export interface SearchStep {
-      search:
-        | SearchStep.VectorDocSearchRequest
-        | SearchStep.TextOnlyDocSearchRequest
-        | SearchStep.HybridDocSearchRequest;
-    }
-
-    export namespace SearchStep {
-      export interface VectorDocSearchRequest {
-        vector: Array<number>;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface TextOnlyDocSearchRequest {
-        text: string;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface HybridDocSearchRequest {
-        text: string;
-
-        vector: Array<number>;
-
-        alpha?: number;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-    }
-
     export interface YieldStep {
       workflow: string;
 
@@ -4586,8 +3883,6 @@ export namespace TaskCreateParams {
       | MainInput.GetStep
       | MainInput.SetStep
       | MainInput.LogStep
-      | MainInput.EmbedStep
-      | MainInput.SearchStep
       | MainInput.YieldStep;
 
     over: string;
@@ -4774,6 +4069,7 @@ export namespace TaskCreateParams {
             | 'spider'
             | 'brave'
             | 'browserbase'
+            | 'email'
             | (string & {});
 
           arguments?: unknown | null;
@@ -4824,57 +4120,6 @@ export namespace TaskCreateParams {
       log: string;
     }
 
-    export interface EmbedStep {
-      embed: EmbedStep.Embed;
-    }
-
-    export namespace EmbedStep {
-      export interface Embed {
-        text: string | Array<string>;
-      }
-    }
-
-    export interface SearchStep {
-      search:
-        | SearchStep.VectorDocSearchRequest
-        | SearchStep.TextOnlyDocSearchRequest
-        | SearchStep.HybridDocSearchRequest;
-    }
-
-    export namespace SearchStep {
-      export interface VectorDocSearchRequest {
-        vector: Array<number>;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface TextOnlyDocSearchRequest {
-        text: string;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface HybridDocSearchRequest {
-        text: string;
-
-        vector: Array<number>;
-
-        alpha?: number;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-    }
-
     export interface YieldStep {
       workflow: string;
 
@@ -4897,8 +4142,6 @@ export interface TaskCreateOrUpdateParams {
     | TaskCreateOrUpdateParams.GetStep
     | TaskCreateOrUpdateParams.SetStep
     | TaskCreateOrUpdateParams.LogStep
-    | TaskCreateOrUpdateParams.EmbedStep
-    | TaskCreateOrUpdateParams.SearchStep
     | TaskCreateOrUpdateParams.YieldStep
     | TaskCreateOrUpdateParams.ReturnStep
     | TaskCreateOrUpdateParams.SleepStep
@@ -5099,6 +4342,7 @@ export namespace TaskCreateOrUpdateParams {
           | 'spider'
           | 'brave'
           | 'browserbase'
+          | 'email'
           | (string & {});
 
         arguments?: unknown | null;
@@ -5147,57 +4391,6 @@ export namespace TaskCreateOrUpdateParams {
 
   export interface LogStep {
     log: string;
-  }
-
-  export interface EmbedStep {
-    embed: EmbedStep.Embed;
-  }
-
-  export namespace EmbedStep {
-    export interface Embed {
-      text: string | Array<string>;
-    }
-  }
-
-  export interface SearchStep {
-    search:
-      | SearchStep.VectorDocSearchRequest
-      | SearchStep.TextOnlyDocSearchRequest
-      | SearchStep.HybridDocSearchRequest;
-  }
-
-  export namespace SearchStep {
-    export interface VectorDocSearchRequest {
-      vector: Array<number>;
-
-      confidence?: number;
-
-      lang?: 'en-US';
-
-      limit?: number;
-    }
-
-    export interface TextOnlyDocSearchRequest {
-      text: string;
-
-      lang?: 'en-US';
-
-      limit?: number;
-    }
-
-    export interface HybridDocSearchRequest {
-      text: string;
-
-      vector: Array<number>;
-
-      alpha?: number;
-
-      confidence?: number;
-
-      lang?: 'en-US';
-
-      limit?: number;
-    }
   }
 
   export interface YieldStep {
@@ -5250,8 +4443,6 @@ export namespace TaskCreateOrUpdateParams {
       | IfElseWorkflowStepInput.GetStep
       | IfElseWorkflowStepInput.SetStep
       | IfElseWorkflowStepInput.LogStep
-      | IfElseWorkflowStepInput.EmbedStep
-      | IfElseWorkflowStepInput.SearchStep
       | IfElseWorkflowStepInput.YieldStep
       | IfElseWorkflowStepInput.ReturnStep
       | IfElseWorkflowStepInput.SleepStep
@@ -5265,8 +4456,6 @@ export namespace TaskCreateOrUpdateParams {
       | IfElseWorkflowStepInput.GetStep
       | IfElseWorkflowStepInput.SetStep
       | IfElseWorkflowStepInput.LogStep
-      | IfElseWorkflowStepInput.EmbedStep
-      | IfElseWorkflowStepInput.SearchStep
       | IfElseWorkflowStepInput.YieldStep
       | IfElseWorkflowStepInput.ReturnStep
       | IfElseWorkflowStepInput.SleepStep
@@ -5450,6 +4639,7 @@ export namespace TaskCreateOrUpdateParams {
             | 'spider'
             | 'brave'
             | 'browserbase'
+            | 'email'
             | (string & {});
 
           arguments?: unknown | null;
@@ -5498,57 +4688,6 @@ export namespace TaskCreateOrUpdateParams {
 
     export interface LogStep {
       log: string;
-    }
-
-    export interface EmbedStep {
-      embed: EmbedStep.Embed;
-    }
-
-    export namespace EmbedStep {
-      export interface Embed {
-        text: string | Array<string>;
-      }
-    }
-
-    export interface SearchStep {
-      search:
-        | SearchStep.VectorDocSearchRequest
-        | SearchStep.TextOnlyDocSearchRequest
-        | SearchStep.HybridDocSearchRequest;
-    }
-
-    export namespace SearchStep {
-      export interface VectorDocSearchRequest {
-        vector: Array<number>;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface TextOnlyDocSearchRequest {
-        text: string;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface HybridDocSearchRequest {
-        text: string;
-
-        vector: Array<number>;
-
-        alpha?: number;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
     }
 
     export interface YieldStep {
@@ -5765,6 +4904,7 @@ export namespace TaskCreateOrUpdateParams {
             | 'spider'
             | 'brave'
             | 'browserbase'
+            | 'email'
             | (string & {});
 
           arguments?: unknown | null;
@@ -5813,57 +4953,6 @@ export namespace TaskCreateOrUpdateParams {
 
     export interface LogStep {
       log: string;
-    }
-
-    export interface EmbedStep {
-      embed: EmbedStep.Embed;
-    }
-
-    export namespace EmbedStep {
-      export interface Embed {
-        text: string | Array<string>;
-      }
-    }
-
-    export interface SearchStep {
-      search:
-        | SearchStep.VectorDocSearchRequest
-        | SearchStep.TextOnlyDocSearchRequest
-        | SearchStep.HybridDocSearchRequest;
-    }
-
-    export namespace SearchStep {
-      export interface VectorDocSearchRequest {
-        vector: Array<number>;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface TextOnlyDocSearchRequest {
-        text: string;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface HybridDocSearchRequest {
-        text: string;
-
-        vector: Array<number>;
-
-        alpha?: number;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
     }
 
     export interface YieldStep {
@@ -5922,8 +5011,6 @@ export namespace TaskCreateOrUpdateParams {
         | Switch.GetStep
         | Switch.SetStep
         | Switch.LogStep
-        | Switch.EmbedStep
-        | Switch.SearchStep
         | Switch.YieldStep
         | Switch.ReturnStep
         | Switch.SleepStep
@@ -6106,6 +5193,7 @@ export namespace TaskCreateOrUpdateParams {
               | 'spider'
               | 'brave'
               | 'browserbase'
+              | 'email'
               | (string & {});
 
             arguments?: unknown | null;
@@ -6154,57 +5242,6 @@ export namespace TaskCreateOrUpdateParams {
 
       export interface LogStep {
         log: string;
-      }
-
-      export interface EmbedStep {
-        embed: EmbedStep.Embed;
-      }
-
-      export namespace EmbedStep {
-        export interface Embed {
-          text: string | Array<string>;
-        }
-      }
-
-      export interface SearchStep {
-        search:
-          | SearchStep.VectorDocSearchRequest
-          | SearchStep.TextOnlyDocSearchRequest
-          | SearchStep.HybridDocSearchRequest;
-      }
-
-      export namespace SearchStep {
-        export interface VectorDocSearchRequest {
-          vector: Array<number>;
-
-          confidence?: number;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-
-        export interface TextOnlyDocSearchRequest {
-          text: string;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-
-        export interface HybridDocSearchRequest {
-          text: string;
-
-          vector: Array<number>;
-
-          alpha?: number;
-
-          confidence?: number;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
       }
 
       export interface YieldStep {
@@ -6262,8 +5299,6 @@ export namespace TaskCreateOrUpdateParams {
         | Foreach.GetStep
         | Foreach.SetStep
         | Foreach.LogStep
-        | Foreach.EmbedStep
-        | Foreach.SearchStep
         | Foreach.YieldStep;
 
       in: string;
@@ -6444,6 +5479,7 @@ export namespace TaskCreateOrUpdateParams {
               | 'spider'
               | 'brave'
               | 'browserbase'
+              | 'email'
               | (string & {});
 
             arguments?: unknown | null;
@@ -6494,57 +5530,6 @@ export namespace TaskCreateOrUpdateParams {
         log: string;
       }
 
-      export interface EmbedStep {
-        embed: EmbedStep.Embed;
-      }
-
-      export namespace EmbedStep {
-        export interface Embed {
-          text: string | Array<string>;
-        }
-      }
-
-      export interface SearchStep {
-        search:
-          | SearchStep.VectorDocSearchRequest
-          | SearchStep.TextOnlyDocSearchRequest
-          | SearchStep.HybridDocSearchRequest;
-      }
-
-      export namespace SearchStep {
-        export interface VectorDocSearchRequest {
-          vector: Array<number>;
-
-          confidence?: number;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-
-        export interface TextOnlyDocSearchRequest {
-          text: string;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-
-        export interface HybridDocSearchRequest {
-          text: string;
-
-          vector: Array<number>;
-
-          alpha?: number;
-
-          confidence?: number;
-
-          lang?: 'en-US';
-
-          limit?: number;
-        }
-      }
-
       export interface YieldStep {
         workflow: string;
 
@@ -6561,8 +5546,6 @@ export namespace TaskCreateOrUpdateParams {
       | ParallelStepInput.GetStep
       | ParallelStepInput.SetStep
       | ParallelStepInput.LogStep
-      | ParallelStepInput.EmbedStep
-      | ParallelStepInput.SearchStep
       | ParallelStepInput.YieldStep
     >;
   }
@@ -6742,6 +5725,7 @@ export namespace TaskCreateOrUpdateParams {
             | 'spider'
             | 'brave'
             | 'browserbase'
+            | 'email'
             | (string & {});
 
           arguments?: unknown | null;
@@ -6792,57 +5776,6 @@ export namespace TaskCreateOrUpdateParams {
       log: string;
     }
 
-    export interface EmbedStep {
-      embed: EmbedStep.Embed;
-    }
-
-    export namespace EmbedStep {
-      export interface Embed {
-        text: string | Array<string>;
-      }
-    }
-
-    export interface SearchStep {
-      search:
-        | SearchStep.VectorDocSearchRequest
-        | SearchStep.TextOnlyDocSearchRequest
-        | SearchStep.HybridDocSearchRequest;
-    }
-
-    export namespace SearchStep {
-      export interface VectorDocSearchRequest {
-        vector: Array<number>;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface TextOnlyDocSearchRequest {
-        text: string;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface HybridDocSearchRequest {
-        text: string;
-
-        vector: Array<number>;
-
-        alpha?: number;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-    }
-
     export interface YieldStep {
       workflow: string;
 
@@ -6858,8 +5791,6 @@ export namespace TaskCreateOrUpdateParams {
       | MainInput.GetStep
       | MainInput.SetStep
       | MainInput.LogStep
-      | MainInput.EmbedStep
-      | MainInput.SearchStep
       | MainInput.YieldStep;
 
     over: string;
@@ -7046,6 +5977,7 @@ export namespace TaskCreateOrUpdateParams {
             | 'spider'
             | 'brave'
             | 'browserbase'
+            | 'email'
             | (string & {});
 
           arguments?: unknown | null;
@@ -7094,57 +6026,6 @@ export namespace TaskCreateOrUpdateParams {
 
     export interface LogStep {
       log: string;
-    }
-
-    export interface EmbedStep {
-      embed: EmbedStep.Embed;
-    }
-
-    export namespace EmbedStep {
-      export interface Embed {
-        text: string | Array<string>;
-      }
-    }
-
-    export interface SearchStep {
-      search:
-        | SearchStep.VectorDocSearchRequest
-        | SearchStep.TextOnlyDocSearchRequest
-        | SearchStep.HybridDocSearchRequest;
-    }
-
-    export namespace SearchStep {
-      export interface VectorDocSearchRequest {
-        vector: Array<number>;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface TextOnlyDocSearchRequest {
-        text: string;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
-
-      export interface HybridDocSearchRequest {
-        text: string;
-
-        vector: Array<number>;
-
-        alpha?: number;
-
-        confidence?: number;
-
-        lang?: 'en-US';
-
-        limit?: number;
-      }
     }
 
     export interface YieldStep {
