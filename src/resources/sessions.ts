@@ -259,6 +259,7 @@ export namespace ChatInput {
         | 'spider'
         | 'brave'
         | 'browserbase'
+        | 'email'
         | (string & {});
 
       arguments?: unknown | null;
@@ -739,6 +740,7 @@ export namespace Entry {
         | 'spider'
         | 'brave'
         | 'browserbase'
+        | 'email'
         | (string & {});
 
       arguments?: unknown | null;
@@ -906,6 +908,7 @@ export namespace Entry {
         | 'spider'
         | 'brave'
         | 'browserbase'
+        | 'email'
         | (string & {});
 
       arguments?: unknown | null;
@@ -1436,6 +1439,7 @@ export namespace SessionChatParams {
         | 'spider'
         | 'brave'
         | 'browserbase'
+        | 'email'
         | (string & {});
 
       arguments?: unknown | null;
