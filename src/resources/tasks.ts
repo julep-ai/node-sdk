@@ -1322,6 +1322,7 @@ export namespace Task {
   export namespace ForeachStepOutput {
     export interface Foreach {
       do:
+        | Foreach.WaitForInputStep
         | Foreach.EvaluateStep
         | Foreach.ToolCallStep
         | Foreach.PromptStepOutput
@@ -1334,6 +1335,18 @@ export namespace Task {
     }
 
     export namespace Foreach {
+      export interface WaitForInputStep {
+        wait_for_input: WaitForInputStep.WaitForInput;
+
+        kind_?: 'wait_for_input';
+      }
+
+      export namespace WaitForInputStep {
+        export interface WaitForInput {
+          info: Record<string, string>;
+        }
+      }
+
       export interface EvaluateStep {
         evaluate: Record<string, string>;
 
@@ -3385,6 +3398,7 @@ export namespace TaskCreateParams {
   export namespace ForeachStepInput {
     export interface Foreach {
       do:
+        | Foreach.WaitForInputStep
         | Foreach.EvaluateStep
         | Foreach.ToolCallStep
         | Foreach.PromptStepInput
@@ -3397,6 +3411,16 @@ export namespace TaskCreateParams {
     }
 
     export namespace Foreach {
+      export interface WaitForInputStep {
+        wait_for_input: WaitForInputStep.WaitForInput;
+      }
+
+      export namespace WaitForInputStep {
+        export interface WaitForInput {
+          info: Record<string, string>;
+        }
+      }
+
       export interface EvaluateStep {
         evaluate: Record<string, string>;
       }
@@ -5293,6 +5317,7 @@ export namespace TaskCreateOrUpdateParams {
   export namespace ForeachStepInput {
     export interface Foreach {
       do:
+        | Foreach.WaitForInputStep
         | Foreach.EvaluateStep
         | Foreach.ToolCallStep
         | Foreach.PromptStepInput
@@ -5305,6 +5330,16 @@ export namespace TaskCreateOrUpdateParams {
     }
 
     export namespace Foreach {
+      export interface WaitForInputStep {
+        wait_for_input: WaitForInputStep.WaitForInput;
+      }
+
+      export namespace WaitForInputStep {
+        export interface WaitForInput {
+          info: Record<string, string>;
+        }
+      }
+
       export interface EvaluateStep {
         evaluate: Record<string, string>;
       }
