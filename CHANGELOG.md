@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.15.0 (2024-10-10)
+
+Full Changelog: [v1.14.0...v1.15.0](https://github.com/julep-ai/node-sdk/compare/v1.14.0...v1.15.0)
+
+### Features
+
+* **api:** api update ([#57](https://github.com/julep-ai/node-sdk/issues/57)) ([6bfba3c](https://github.com/julep-ai/node-sdk/commit/6bfba3c9e763777b7491a0d8cfe3c2950dc64e11))
+
 ## 1.14.0 (2024-10-07)
 
 Full Changelog: [v1.13.0...v1.14.0](https://github.com/julep-ai/node-sdk/compare/v1.13.0...v1.14.0)
