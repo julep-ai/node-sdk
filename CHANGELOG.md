@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.17.0 (2024-10-18)
+
+Full Changelog: [v1.16.0...v1.17.0](https://github.com/julep-ai/node-sdk/compare/v1.16.0...v1.17.0)
+
+### Features
+
+* deps: Add dotenv as a bundled dep ([0b37732](https://github.com/julep-ai/node-sdk/commit/0b37732d71a54b8d52cddeb7750e9a0fb91a672b))
+
 ## 1.16.0 (2024-10-18)
 
 Full Changelog: [v1.15.0...v1.16.0](https://github.com/julep-ai/node-sdk/compare/v1.15.0...v1.16.0)
