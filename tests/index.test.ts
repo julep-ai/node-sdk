@@ -151,26 +151,26 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['JULEP_BASE_URL'] = ''; // empty
       const client = new Julep({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.julep.ai/api');
+      expect(client.baseURL).toEqual('https://dev.julep.ai/api');
     });
 
     test('blank env variable', () => {
       process.env['JULEP_BASE_URL'] = '  '; // blank
       const client = new Julep({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.julep.ai/api');
+      expect(client.baseURL).toEqual('https://dev.julep.ai/api');
     });
 
     test('env variable with environment', () => {
       process.env['JULEP_BASE_URL'] = 'https://example.com/from_env';
 
       expect(
-        () => new Julep({ apiKey: 'My API Key', environment: 'production' }),
+        () => new Julep({ apiKey: 'My API Key', environment: 'dev' }),
       ).toThrowErrorMatchingInlineSnapshot(
         `"Ambiguous URL; The \`baseURL\` option (or JULEP_BASE_URL env var) and the \`environment\` option are given. If you want to use the environment you must pass baseURL: null"`,
       );
 
-      const client = new Julep({ apiKey: 'My API Key', baseURL: null, environment: 'production' });
-      expect(client.baseURL).toEqual('https://api.julep.ai/api');
+      const client = new Julep({ apiKey: 'My API Key', baseURL: null, environment: 'dev' });
+      expect(client.baseURL).toEqual('https://dev.julep.ai/api');
     });
   });
 
