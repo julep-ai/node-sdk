@@ -8,8 +8,8 @@ import * as Pagination from './pagination';
 import * as API from './resources/index';
 
 const environments = {
-  production: 'https://api.julep.ai/api',
   dev: 'https://dev.julep.ai/api',
+  production: 'https://api.julep.ai/api',
   local_multi_tenant: 'http://localhost/api',
   local: 'http://localhost:8080',
 };
@@ -25,8 +25,8 @@ export interface ClientOptions {
    * Specifies the environment to use for the API.
    *
    * Each environment maps to a different base URL:
-   * - `production` corresponds to `https://api.julep.ai/api`
    * - `dev` corresponds to `https://dev.julep.ai/api`
+   * - `production` corresponds to `https://api.julep.ai/api`
    * - `local_multi_tenant` corresponds to `http://localhost/api`
    * - `local` corresponds to `http://localhost:8080`
    */
@@ -101,8 +101,8 @@ export class Julep extends Core.APIClient {
    * API Client for interfacing with the Julep API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['JULEP_API_KEY'] ?? undefined]
-   * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
-   * @param {string} [opts.baseURL=process.env['JULEP_BASE_URL'] ?? https://api.julep.ai/api] - Override the default base URL for the API.
+   * @param {Environment} [opts.environment=dev] - Specifies the environment URL to use for the API.
+   * @param {string} [opts.baseURL=process.env['JULEP_BASE_URL'] ?? https://dev.julep.ai/api] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -125,7 +125,7 @@ export class Julep extends Core.APIClient {
       apiKey,
       ...opts,
       baseURL,
-      environment: opts.environment ?? 'production',
+      environment: opts.environment ?? 'dev',
     };
 
     if (baseURL && opts.environment) {
@@ -135,7 +135,7 @@ export class Julep extends Core.APIClient {
     }
 
     super({
-      baseURL: options.baseURL || environments[options.environment || 'production'],
+      baseURL: options.baseURL || environments[options.environment || 'dev'],
       timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
