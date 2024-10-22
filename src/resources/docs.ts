@@ -49,6 +49,8 @@ export interface Snippet {
 
 export interface DocEmbedParams {
   text: string | Array<string>;
+
+  embed_instruction?: string;
 }
 
 export namespace Docs {
