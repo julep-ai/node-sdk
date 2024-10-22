@@ -21,7 +21,7 @@ describe('resource docs', () => {
   });
 
   test('embed: required and optional params', async () => {
-    const response = await client.docs.embed({ text: 'string' });
+    const response = await client.docs.embed({ text: 'string', embed_instruction: 'embed_instruction' });
   });
 
   test('get', async () => {
