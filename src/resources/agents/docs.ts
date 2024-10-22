@@ -97,6 +97,8 @@ export interface DocCreateParams {
 
   title: string;
 
+  embed_instruction?: string | null;
+
   metadata?: unknown | null;
 }
 
