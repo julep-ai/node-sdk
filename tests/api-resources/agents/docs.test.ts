@@ -104,6 +104,7 @@ describe('resource docs', () => {
       text: 'text',
       lang: 'en-US',
       limit: 1,
+      metadata_filter: { foo: 0 },
     });
   });
 });

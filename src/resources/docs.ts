@@ -47,10 +47,22 @@ export interface Snippet {
   index: number;
 }
 
-export interface DocEmbedParams {
-  text: string | Array<string>;
+export type DocEmbedParams =
+  | DocEmbedParams.SingleEmbedQueryRequest
+  | DocEmbedParams.MultipleEmbedQueryRequest;
 
-  embed_instruction?: string;
+export namespace DocEmbedParams {
+  export interface SingleEmbedQueryRequest {
+    text: string;
+
+    embed_instruction?: string;
+  }
+
+  export interface MultipleEmbedQueryRequest {
+    text: Array<string>;
+
+    embed_instruction?: string;
+  }
 }
 
 export namespace Docs {
