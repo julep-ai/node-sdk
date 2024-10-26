@@ -120,6 +120,8 @@ export namespace DocSearchParams {
     lang?: 'en-US';
 
     limit?: number;
+
+    metadata_filter?: Record<string, number | string | boolean | null>;
   }
 
   export interface VectorDocSearchRequest {
@@ -130,6 +132,8 @@ export namespace DocSearchParams {
     lang?: 'en-US';
 
     limit?: number;
+
+    metadata_filter?: Record<string, number | string | boolean | null>;
   }
 
   export interface HybridDocSearchRequest {
@@ -144,6 +148,8 @@ export namespace DocSearchParams {
     lang?: 'en-US';
 
     limit?: number;
+
+    metadata_filter?: Record<string, number | string | boolean | null>;
   }
 }
 
