@@ -97,6 +97,13 @@ export interface ToolListResponse {
    */
   api_call?: ToolListResponse.APICall | null;
 
+  bash_20241022?: ToolListResponse.Bash20241022 | null;
+
+  /**
+   * Anthropic new tools
+   */
+  computer_20241022?: ToolListResponse.Computer20241022 | null;
+
   description?: string | null;
 
   /**
@@ -120,6 +127,8 @@ export interface ToolListResponse {
    * System definition
    */
   system?: ToolListResponse.System | null;
+
+  text_editor_20241022?: ToolListResponse.TextEditor20241022 | null;
 }
 
 export namespace ToolListResponse {
@@ -148,6 +157,27 @@ export namespace ToolListResponse {
     timeout?: number | null;
   }
 
+  export interface Bash20241022 {
+    name?: string;
+
+    type?: 'bash_20241022';
+  }
+
+  /**
+   * Anthropic new tools
+   */
+  export interface Computer20241022 {
+    display_height_px?: number;
+
+    display_number?: number;
+
+    display_width_px?: number;
+
+    name?: string;
+
+    type?: 'computer_20241022';
+  }
+
   /**
    * Function definition
    */
@@ -378,6 +408,12 @@ export namespace ToolListResponse {
 
     subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
   }
+
+  export interface TextEditor20241022 {
+    name?: string;
+
+    type?: 'text_editor_20241022';
+  }
 }
 
 export interface ToolCreateParams {
@@ -387,6 +423,13 @@ export interface ToolCreateParams {
    * API call definition
    */
   api_call?: ToolCreateParams.APICall | null;
+
+  bash_20241022?: ToolCreateParams.Bash20241022 | null;
+
+  /**
+   * Anthropic new tools
+   */
+  computer_20241022?: ToolCreateParams.Computer20241022 | null;
 
   description?: string | null;
 
@@ -411,6 +454,8 @@ export interface ToolCreateParams {
    * System definition
    */
   system?: ToolCreateParams.System | null;
+
+  text_editor_20241022?: ToolCreateParams.TextEditor20241022 | null;
 }
 
 export namespace ToolCreateParams {
@@ -439,6 +484,27 @@ export namespace ToolCreateParams {
     timeout?: number | null;
   }
 
+  export interface Bash20241022 {
+    name?: string;
+
+    type?: 'bash_20241022';
+  }
+
+  /**
+   * Anthropic new tools
+   */
+  export interface Computer20241022 {
+    display_height_px?: number;
+
+    display_number?: number;
+
+    display_width_px?: number;
+
+    name?: string;
+
+    type?: 'computer_20241022';
+  }
+
   /**
    * Function definition
    */
@@ -669,6 +735,12 @@ export namespace ToolCreateParams {
 
     subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
   }
+
+  export interface TextEditor20241022 {
+    name?: string;
+
+    type?: 'text_editor_20241022';
+  }
 }
 
 export interface ToolUpdateParams {
@@ -678,6 +750,13 @@ export interface ToolUpdateParams {
    * API call definition
    */
   api_call?: ToolUpdateParams.APICall | null;
+
+  bash_20241022?: ToolUpdateParams.Bash20241022 | null;
+
+  /**
+   * Anthropic new tools
+   */
+  computer_20241022?: ToolUpdateParams.Computer20241022 | null;
 
   description?: string | null;
 
@@ -702,6 +781,8 @@ export interface ToolUpdateParams {
    * System definition
    */
   system?: ToolUpdateParams.System | null;
+
+  text_editor_20241022?: ToolUpdateParams.TextEditor20241022 | null;
 }
 
 export namespace ToolUpdateParams {
@@ -730,6 +811,27 @@ export namespace ToolUpdateParams {
     timeout?: number | null;
   }
 
+  export interface Bash20241022 {
+    name?: string;
+
+    type?: 'bash_20241022';
+  }
+
+  /**
+   * Anthropic new tools
+   */
+  export interface Computer20241022 {
+    display_height_px?: number;
+
+    display_number?: number;
+
+    display_width_px?: number;
+
+    name?: string;
+
+    type?: 'computer_20241022';
+  }
+
   /**
    * Function definition
    */
@@ -960,6 +1062,12 @@ export namespace ToolUpdateParams {
 
     subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
   }
+
+  export interface TextEditor20241022 {
+    name?: string;
+
+    type?: 'text_editor_20241022';
+  }
 }
 
 export interface ToolListParams extends OffsetPaginationParams {
@@ -973,6 +1081,13 @@ export interface ToolPatchParams {
    * API call definition
    */
   api_call?: ToolPatchParams.APICall | null;
+
+  bash_20241022?: ToolPatchParams.Bash20241022 | null;
+
+  /**
+   * Anthropic new tools
+   */
+  computer_20241022?: ToolPatchParams.Computer20241022 | null;
 
   description?: string | null;
 
@@ -999,6 +1114,8 @@ export interface ToolPatchParams {
    * System definition
    */
   system?: ToolPatchParams.System | null;
+
+  text_editor_20241022?: ToolPatchParams.TextEditor20241022 | null;
 }
 
 export namespace ToolPatchParams {
@@ -1025,6 +1142,27 @@ export namespace ToolPatchParams {
     timeout?: number | null;
 
     url?: string | null;
+  }
+
+  export interface Bash20241022 {
+    name?: string;
+
+    type?: 'bash_20241022';
+  }
+
+  /**
+   * Anthropic new tools
+   */
+  export interface Computer20241022 {
+    display_height_px?: number;
+
+    display_number?: number;
+
+    display_width_px?: number;
+
+    name?: string;
+
+    type?: 'computer_20241022';
   }
 
   /**
@@ -1257,6 +1395,12 @@ export namespace ToolPatchParams {
     resource_id?: string | null;
 
     subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+  }
+
+  export interface TextEditor20241022 {
+    name?: string;
+
+    type?: 'text_editor_20241022';
   }
 }
 
