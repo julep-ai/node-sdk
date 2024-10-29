@@ -121,6 +121,12 @@ export interface ToolListResponse {
     | ToolListResponse.SpiderIntegrationDef
     | ToolListResponse.WikipediaIntegrationDef
     | ToolListResponse.WeatherIntegrationDef
+    | ToolListResponse.BrowserbaseContextIntegrationDef
+    | ToolListResponse.BrowserbaseListSessionsIntegrationDef
+    | ToolListResponse.BrowserbaseCreateSessionIntegrationDef
+    | ToolListResponse.BrowserbaseGetSessionIntegrationDef
+    | ToolListResponse.BrowserbaseUpdateSessionIntegrationDef
+    | ToolListResponse.BrowserbaseGetSessionLiveURLsIntegrationDef
     | null;
 
   /**
@@ -383,6 +389,188 @@ export namespace ToolListResponse {
   }
 
   /**
+   * browserbase context provider
+   */
+  export interface BrowserbaseContextIntegrationDef {
+    arguments?: unknown | null;
+
+    method?: 'create_context';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseContextIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseContextIntegrationDef {
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase list sessions integration definition
+   */
+  export interface BrowserbaseListSessionsIntegrationDef {
+    arguments?: BrowserbaseListSessionsIntegrationDef.Arguments | null;
+
+    method?: 'list_sessions';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseListSessionsIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseListSessionsIntegrationDef {
+    export interface Arguments {
+      status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED' | null;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase create session integration definition
+   */
+  export interface BrowserbaseCreateSessionIntegrationDef {
+    arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+
+    method?: 'create_session';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseCreateSessionIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseCreateSessionIntegrationDef {
+    export interface Arguments {
+      projectId: string;
+
+      browserSettings?: unknown | null;
+
+      extensionId?: string | null;
+
+      keepAlive?: boolean | null;
+
+      proxies?: boolean | Array<unknown> | null;
+
+      timeout?: number | null;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase get session integration definition
+   */
+  export interface BrowserbaseGetSessionIntegrationDef {
+    arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+
+    method?: 'get_session';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseGetSessionIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseGetSessionIntegrationDef {
+    export interface Arguments {
+      id: string;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase update session integration definition
+   */
+  export interface BrowserbaseUpdateSessionIntegrationDef {
+    arguments: BrowserbaseUpdateSessionIntegrationDef.Arguments;
+
+    method?: 'update_session';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseUpdateSessionIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseUpdateSessionIntegrationDef {
+    export interface Arguments {
+      id: string;
+
+      status?: 'REQUEST_RELEASE';
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase get session live urls integration definition
+   */
+  export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
+    arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+
+    method?: 'get_live_urls';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseGetSessionLiveURLsIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseGetSessionLiveURLsIntegrationDef {
+    export interface Arguments {
+      id: string;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
    * System definition
    */
   export interface System {
@@ -448,6 +636,12 @@ export interface ToolCreateParams {
     | ToolCreateParams.SpiderIntegrationDef
     | ToolCreateParams.WikipediaIntegrationDef
     | ToolCreateParams.WeatherIntegrationDef
+    | ToolCreateParams.BrowserbaseContextIntegrationDef
+    | ToolCreateParams.BrowserbaseListSessionsIntegrationDef
+    | ToolCreateParams.BrowserbaseCreateSessionIntegrationDef
+    | ToolCreateParams.BrowserbaseGetSessionIntegrationDef
+    | ToolCreateParams.BrowserbaseUpdateSessionIntegrationDef
+    | ToolCreateParams.BrowserbaseGetSessionLiveURLsIntegrationDef
     | null;
 
   /**
@@ -710,6 +904,188 @@ export namespace ToolCreateParams {
   }
 
   /**
+   * browserbase context provider
+   */
+  export interface BrowserbaseContextIntegrationDef {
+    arguments?: unknown | null;
+
+    method?: 'create_context';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseContextIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseContextIntegrationDef {
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase list sessions integration definition
+   */
+  export interface BrowserbaseListSessionsIntegrationDef {
+    arguments?: BrowserbaseListSessionsIntegrationDef.Arguments | null;
+
+    method?: 'list_sessions';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseListSessionsIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseListSessionsIntegrationDef {
+    export interface Arguments {
+      status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED' | null;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase create session integration definition
+   */
+  export interface BrowserbaseCreateSessionIntegrationDef {
+    arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+
+    method?: 'create_session';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseCreateSessionIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseCreateSessionIntegrationDef {
+    export interface Arguments {
+      projectId: string;
+
+      browserSettings?: unknown | null;
+
+      extensionId?: string | null;
+
+      keepAlive?: boolean | null;
+
+      proxies?: boolean | Array<unknown> | null;
+
+      timeout?: number | null;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase get session integration definition
+   */
+  export interface BrowserbaseGetSessionIntegrationDef {
+    arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+
+    method?: 'get_session';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseGetSessionIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseGetSessionIntegrationDef {
+    export interface Arguments {
+      id: string;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase update session integration definition
+   */
+  export interface BrowserbaseUpdateSessionIntegrationDef {
+    arguments: BrowserbaseUpdateSessionIntegrationDef.Arguments;
+
+    method?: 'update_session';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseUpdateSessionIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseUpdateSessionIntegrationDef {
+    export interface Arguments {
+      id: string;
+
+      status?: 'REQUEST_RELEASE';
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase get session live urls integration definition
+   */
+  export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
+    arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+
+    method?: 'get_live_urls';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseGetSessionLiveURLsIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseGetSessionLiveURLsIntegrationDef {
+    export interface Arguments {
+      id: string;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
    * System definition
    */
   export interface System {
@@ -775,6 +1151,12 @@ export interface ToolUpdateParams {
     | ToolUpdateParams.SpiderIntegrationDef
     | ToolUpdateParams.WikipediaIntegrationDef
     | ToolUpdateParams.WeatherIntegrationDef
+    | ToolUpdateParams.BrowserbaseContextIntegrationDef
+    | ToolUpdateParams.BrowserbaseListSessionsIntegrationDef
+    | ToolUpdateParams.BrowserbaseCreateSessionIntegrationDef
+    | ToolUpdateParams.BrowserbaseGetSessionIntegrationDef
+    | ToolUpdateParams.BrowserbaseUpdateSessionIntegrationDef
+    | ToolUpdateParams.BrowserbaseGetSessionLiveURLsIntegrationDef
     | null;
 
   /**
@@ -1037,6 +1419,188 @@ export namespace ToolUpdateParams {
   }
 
   /**
+   * browserbase context provider
+   */
+  export interface BrowserbaseContextIntegrationDef {
+    arguments?: unknown | null;
+
+    method?: 'create_context';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseContextIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseContextIntegrationDef {
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase list sessions integration definition
+   */
+  export interface BrowserbaseListSessionsIntegrationDef {
+    arguments?: BrowserbaseListSessionsIntegrationDef.Arguments | null;
+
+    method?: 'list_sessions';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseListSessionsIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseListSessionsIntegrationDef {
+    export interface Arguments {
+      status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED' | null;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase create session integration definition
+   */
+  export interface BrowserbaseCreateSessionIntegrationDef {
+    arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+
+    method?: 'create_session';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseCreateSessionIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseCreateSessionIntegrationDef {
+    export interface Arguments {
+      projectId: string;
+
+      browserSettings?: unknown | null;
+
+      extensionId?: string | null;
+
+      keepAlive?: boolean | null;
+
+      proxies?: boolean | Array<unknown> | null;
+
+      timeout?: number | null;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase get session integration definition
+   */
+  export interface BrowserbaseGetSessionIntegrationDef {
+    arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+
+    method?: 'get_session';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseGetSessionIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseGetSessionIntegrationDef {
+    export interface Arguments {
+      id: string;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase update session integration definition
+   */
+  export interface BrowserbaseUpdateSessionIntegrationDef {
+    arguments: BrowserbaseUpdateSessionIntegrationDef.Arguments;
+
+    method?: 'update_session';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseUpdateSessionIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseUpdateSessionIntegrationDef {
+    export interface Arguments {
+      id: string;
+
+      status?: 'REQUEST_RELEASE';
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase get session live urls integration definition
+   */
+  export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
+    arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+
+    method?: 'get_live_urls';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseGetSessionLiveURLsIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseGetSessionLiveURLsIntegrationDef {
+    export interface Arguments {
+      id: string;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
    * System definition
    */
   export interface System {
@@ -1106,6 +1670,12 @@ export interface ToolPatchParams {
     | ToolPatchParams.SpiderIntegrationDefUpdate
     | ToolPatchParams.WikipediaIntegrationDefUpdate
     | ToolPatchParams.WeatherIntegrationDefUpdate
+    | ToolPatchParams.BrowserbaseContextIntegrationDefUpdate
+    | ToolPatchParams.BrowserbaseListSessionsIntegrationDefUpdate
+    | ToolPatchParams.BrowserbaseCreateSessionIntegrationDefUpdate
+    | ToolPatchParams.BrowserbaseGetSessionIntegrationDefUpdate
+    | ToolPatchParams.BrowserbaseUpdateSessionIntegrationDefUpdate
+    | ToolPatchParams.BrowserbaseGetSessionLiveURLsIntegrationDefUpdate
     | null;
 
   name?: string | null;
@@ -1366,6 +1936,188 @@ export namespace ToolPatchParams {
      */
     export interface Setup {
       openweathermap_api_key?: string | null;
+    }
+  }
+
+  /**
+   * browserbase context provider
+   */
+  export interface BrowserbaseContextIntegrationDefUpdate {
+    arguments?: unknown | null;
+
+    method?: 'create_context';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseContextIntegrationDefUpdate.Setup | null;
+  }
+
+  export namespace BrowserbaseContextIntegrationDefUpdate {
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key?: string | null;
+    }
+  }
+
+  /**
+   * browserbase list sessions integration definition
+   */
+  export interface BrowserbaseListSessionsIntegrationDefUpdate {
+    arguments?: BrowserbaseListSessionsIntegrationDefUpdate.Arguments | null;
+
+    method?: 'list_sessions';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseListSessionsIntegrationDefUpdate.Setup | null;
+  }
+
+  export namespace BrowserbaseListSessionsIntegrationDefUpdate {
+    export interface Arguments {
+      status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED' | null;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key?: string | null;
+    }
+  }
+
+  /**
+   * browserbase create session integration definition
+   */
+  export interface BrowserbaseCreateSessionIntegrationDefUpdate {
+    arguments?: BrowserbaseCreateSessionIntegrationDefUpdate.Arguments | null;
+
+    method?: 'create_session';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseCreateSessionIntegrationDefUpdate.Setup | null;
+  }
+
+  export namespace BrowserbaseCreateSessionIntegrationDefUpdate {
+    export interface Arguments {
+      browserSettings?: unknown | null;
+
+      extensionId?: string | null;
+
+      keepAlive?: boolean | null;
+
+      projectId?: string | null;
+
+      proxies?: boolean | Array<unknown> | null;
+
+      timeout?: number | null;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key?: string | null;
+    }
+  }
+
+  /**
+   * browserbase get session integration definition
+   */
+  export interface BrowserbaseGetSessionIntegrationDefUpdate {
+    arguments?: BrowserbaseGetSessionIntegrationDefUpdate.Arguments | null;
+
+    method?: 'get_session';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseGetSessionIntegrationDefUpdate.Setup | null;
+  }
+
+  export namespace BrowserbaseGetSessionIntegrationDefUpdate {
+    export interface Arguments {
+      id?: string | null;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key?: string | null;
+    }
+  }
+
+  /**
+   * browserbase update session integration definition
+   */
+  export interface BrowserbaseUpdateSessionIntegrationDefUpdate {
+    arguments?: BrowserbaseUpdateSessionIntegrationDefUpdate.Arguments | null;
+
+    method?: 'update_session';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseUpdateSessionIntegrationDefUpdate.Setup | null;
+  }
+
+  export namespace BrowserbaseUpdateSessionIntegrationDefUpdate {
+    export interface Arguments {
+      id?: string | null;
+
+      status?: 'REQUEST_RELEASE' | null;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key?: string | null;
+    }
+  }
+
+  /**
+   * browserbase get session live urls integration definition
+   */
+  export interface BrowserbaseGetSessionLiveURLsIntegrationDefUpdate {
+    arguments?: BrowserbaseGetSessionLiveURLsIntegrationDefUpdate.Arguments | null;
+
+    method?: 'get_live_urls';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseGetSessionLiveURLsIntegrationDefUpdate.Setup | null;
+  }
+
+  export namespace BrowserbaseGetSessionLiveURLsIntegrationDefUpdate {
+    export interface Arguments {
+      id?: string | null;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key?: string | null;
     }
   }
 
