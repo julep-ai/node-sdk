@@ -200,9 +200,16 @@ export namespace ChatInput {
     function?: Tool.Function | null;
 
     /**
-     * Integration definition
+     * Brave integration definition
      */
-    integration?: Tool.Integration | null;
+    integration?:
+      | Tool.DummyIntegrationDef
+      | Tool.BraveIntegrationDef
+      | Tool.EmailIntegrationDef
+      | Tool.SpiderIntegrationDef
+      | Tool.WikipediaIntegrationDef
+      | Tool.WeatherIntegrationDef
+      | null;
 
     /**
      * System definition
@@ -247,26 +254,197 @@ export namespace ChatInput {
       parameters?: unknown | null;
     }
 
-    /**
-     * Integration definition
-     */
-    export interface Integration {
-      provider:
-        | 'dummy'
-        | 'hacker_news'
-        | 'weather'
-        | 'wikipedia'
-        | 'spider'
-        | 'brave'
-        | 'browserbase'
-        | 'email'
-        | (string & {});
-
+    export interface DummyIntegrationDef {
       arguments?: unknown | null;
 
       method?: string | null;
 
+      provider?: 'dummy';
+
       setup?: unknown | null;
+    }
+
+    /**
+     * Brave integration definition
+     */
+    export interface BraveIntegrationDef {
+      /**
+       * Arguments for Brave Search
+       */
+      arguments?: BraveIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'brave';
+
+      /**
+       * Integration definition for Brave Search
+       */
+      setup?: BraveIntegrationDef.Setup | null;
+    }
+
+    export namespace BraveIntegrationDef {
+      /**
+       * Arguments for Brave Search
+       */
+      export interface Arguments {
+        query: string;
+      }
+
+      /**
+       * Integration definition for Brave Search
+       */
+      export interface Setup {
+        api_key: string;
+      }
+    }
+
+    /**
+     * Email integration definition
+     */
+    export interface EmailIntegrationDef {
+      /**
+       * Arguments for Email sending
+       */
+      arguments?: EmailIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'email';
+
+      /**
+       * Setup parameters for Email integration
+       */
+      setup?: EmailIntegrationDef.Setup | null;
+    }
+
+    export namespace EmailIntegrationDef {
+      /**
+       * Arguments for Email sending
+       */
+      export interface Arguments {
+        body: string;
+
+        from: string;
+
+        subject: string;
+
+        to: string;
+      }
+
+      /**
+       * Setup parameters for Email integration
+       */
+      export interface Setup {
+        host: string;
+
+        password: string;
+
+        port: number;
+
+        user: string;
+      }
+    }
+
+    /**
+     * Spider integration definition
+     */
+    export interface SpiderIntegrationDef {
+      /**
+       * Arguments for Spider integration
+       */
+      arguments?: SpiderIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'spider';
+
+      /**
+       * Setup parameters for Spider integration
+       */
+      setup?: SpiderIntegrationDef.Setup | null;
+    }
+
+    export namespace SpiderIntegrationDef {
+      /**
+       * Arguments for Spider integration
+       */
+      export interface Arguments {
+        url: string;
+
+        mode?: 'scrape';
+
+        params?: unknown | null;
+      }
+
+      /**
+       * Setup parameters for Spider integration
+       */
+      export interface Setup {
+        spider_api_key: string;
+      }
+    }
+
+    /**
+     * Wikipedia integration definition
+     */
+    export interface WikipediaIntegrationDef {
+      /**
+       * Arguments for Wikipedia Search
+       */
+      arguments?: WikipediaIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'wikipedia';
+
+      setup?: unknown | null;
+    }
+
+    export namespace WikipediaIntegrationDef {
+      /**
+       * Arguments for Wikipedia Search
+       */
+      export interface Arguments {
+        query: string;
+
+        load_max_docs?: number;
+      }
+    }
+
+    /**
+     * Weather integration definition
+     */
+    export interface WeatherIntegrationDef {
+      /**
+       * Arguments for Weather
+       */
+      arguments?: WeatherIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'weather';
+
+      /**
+       * Integration definition for Weather
+       */
+      setup?: WeatherIntegrationDef.Setup | null;
+    }
+
+    export namespace WeatherIntegrationDef {
+      /**
+       * Arguments for Weather
+       */
+      export interface Arguments {
+        location: string;
+      }
+
+      /**
+       * Integration definition for Weather
+       */
+      export interface Setup {
+        openweathermap_api_key: string;
+      }
     }
 
     /**
@@ -605,13 +783,13 @@ export interface Entry {
    */
   content:
     | Array<Entry.Content | Entry.ContentModel>
-    | Entry.Tool
+    | Entry.ToolOutput
     | Entry.ChosenToolCall
     | string
     | Entry.ToolResponse
     | Array<
         | Array<Entry.Content | Entry.ContentModel>
-        | Entry.Tool
+        | Entry.ToolOutput
         | Entry.ChosenToolCall
         | string
         | Entry.ToolResponse
@@ -659,7 +837,7 @@ export namespace Entry {
     }
   }
 
-  export interface Tool {
+  export interface ToolOutput {
     id: string;
 
     created_at: string;
@@ -671,27 +849,34 @@ export namespace Entry {
     /**
      * API call definition
      */
-    api_call?: Tool.APICall | null;
+    api_call?: ToolOutput.APICall | null;
 
     description?: string | null;
 
     /**
      * Function definition
      */
-    function?: Tool.Function | null;
+    function?: ToolOutput.Function | null;
 
     /**
-     * Integration definition
+     * Brave integration definition
      */
-    integration?: Tool.Integration | null;
+    integration?:
+      | ToolOutput.DummyIntegrationDef
+      | ToolOutput.BraveIntegrationDef
+      | ToolOutput.EmailIntegrationDef
+      | ToolOutput.SpiderIntegrationDef
+      | ToolOutput.WikipediaIntegrationDef
+      | ToolOutput.WeatherIntegrationDef
+      | null;
 
     /**
      * System definition
      */
-    system?: Tool.System | null;
+    system?: ToolOutput.System | null;
   }
 
-  export namespace Tool {
+  export namespace ToolOutput {
     /**
      * API call definition
      */
@@ -728,26 +913,197 @@ export namespace Entry {
       parameters?: unknown | null;
     }
 
-    /**
-     * Integration definition
-     */
-    export interface Integration {
-      provider:
-        | 'dummy'
-        | 'hacker_news'
-        | 'weather'
-        | 'wikipedia'
-        | 'spider'
-        | 'brave'
-        | 'browserbase'
-        | 'email'
-        | (string & {});
-
+    export interface DummyIntegrationDef {
       arguments?: unknown | null;
 
       method?: string | null;
 
+      provider?: 'dummy';
+
       setup?: unknown | null;
+    }
+
+    /**
+     * Brave integration definition
+     */
+    export interface BraveIntegrationDef {
+      /**
+       * Arguments for Brave Search
+       */
+      arguments?: BraveIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'brave';
+
+      /**
+       * Integration definition for Brave Search
+       */
+      setup?: BraveIntegrationDef.Setup | null;
+    }
+
+    export namespace BraveIntegrationDef {
+      /**
+       * Arguments for Brave Search
+       */
+      export interface Arguments {
+        query: string;
+      }
+
+      /**
+       * Integration definition for Brave Search
+       */
+      export interface Setup {
+        api_key: string;
+      }
+    }
+
+    /**
+     * Email integration definition
+     */
+    export interface EmailIntegrationDef {
+      /**
+       * Arguments for Email sending
+       */
+      arguments?: EmailIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'email';
+
+      /**
+       * Setup parameters for Email integration
+       */
+      setup?: EmailIntegrationDef.Setup | null;
+    }
+
+    export namespace EmailIntegrationDef {
+      /**
+       * Arguments for Email sending
+       */
+      export interface Arguments {
+        body: string;
+
+        from: string;
+
+        subject: string;
+
+        to: string;
+      }
+
+      /**
+       * Setup parameters for Email integration
+       */
+      export interface Setup {
+        host: string;
+
+        password: string;
+
+        port: number;
+
+        user: string;
+      }
+    }
+
+    /**
+     * Spider integration definition
+     */
+    export interface SpiderIntegrationDef {
+      /**
+       * Arguments for Spider integration
+       */
+      arguments?: SpiderIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'spider';
+
+      /**
+       * Setup parameters for Spider integration
+       */
+      setup?: SpiderIntegrationDef.Setup | null;
+    }
+
+    export namespace SpiderIntegrationDef {
+      /**
+       * Arguments for Spider integration
+       */
+      export interface Arguments {
+        url: string;
+
+        mode?: 'scrape';
+
+        params?: unknown | null;
+      }
+
+      /**
+       * Setup parameters for Spider integration
+       */
+      export interface Setup {
+        spider_api_key: string;
+      }
+    }
+
+    /**
+     * Wikipedia integration definition
+     */
+    export interface WikipediaIntegrationDef {
+      /**
+       * Arguments for Wikipedia Search
+       */
+      arguments?: WikipediaIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'wikipedia';
+
+      setup?: unknown | null;
+    }
+
+    export namespace WikipediaIntegrationDef {
+      /**
+       * Arguments for Wikipedia Search
+       */
+      export interface Arguments {
+        query: string;
+
+        load_max_docs?: number;
+      }
+    }
+
+    /**
+     * Weather integration definition
+     */
+    export interface WeatherIntegrationDef {
+      /**
+       * Arguments for Weather
+       */
+      arguments?: WeatherIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'weather';
+
+      /**
+       * Integration definition for Weather
+       */
+      setup?: WeatherIntegrationDef.Setup | null;
+    }
+
+    export namespace WeatherIntegrationDef {
+      /**
+       * Arguments for Weather
+       */
+      export interface Arguments {
+        location: string;
+      }
+
+      /**
+       * Integration definition for Weather
+       */
+      export interface Setup {
+        openweathermap_api_key: string;
+      }
     }
 
     /**
@@ -827,7 +1183,7 @@ export namespace Entry {
     }
   }
 
-  export interface Tool {
+  export interface ToolOutput {
     id: string;
 
     created_at: string;
@@ -839,27 +1195,34 @@ export namespace Entry {
     /**
      * API call definition
      */
-    api_call?: Tool.APICall | null;
+    api_call?: ToolOutput.APICall | null;
 
     description?: string | null;
 
     /**
      * Function definition
      */
-    function?: Tool.Function | null;
+    function?: ToolOutput.Function | null;
 
     /**
-     * Integration definition
+     * Brave integration definition
      */
-    integration?: Tool.Integration | null;
+    integration?:
+      | ToolOutput.DummyIntegrationDef
+      | ToolOutput.BraveIntegrationDef
+      | ToolOutput.EmailIntegrationDef
+      | ToolOutput.SpiderIntegrationDef
+      | ToolOutput.WikipediaIntegrationDef
+      | ToolOutput.WeatherIntegrationDef
+      | null;
 
     /**
      * System definition
      */
-    system?: Tool.System | null;
+    system?: ToolOutput.System | null;
   }
 
-  export namespace Tool {
+  export namespace ToolOutput {
     /**
      * API call definition
      */
@@ -896,26 +1259,197 @@ export namespace Entry {
       parameters?: unknown | null;
     }
 
-    /**
-     * Integration definition
-     */
-    export interface Integration {
-      provider:
-        | 'dummy'
-        | 'hacker_news'
-        | 'weather'
-        | 'wikipedia'
-        | 'spider'
-        | 'brave'
-        | 'browserbase'
-        | 'email'
-        | (string & {});
-
+    export interface DummyIntegrationDef {
       arguments?: unknown | null;
 
       method?: string | null;
 
+      provider?: 'dummy';
+
       setup?: unknown | null;
+    }
+
+    /**
+     * Brave integration definition
+     */
+    export interface BraveIntegrationDef {
+      /**
+       * Arguments for Brave Search
+       */
+      arguments?: BraveIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'brave';
+
+      /**
+       * Integration definition for Brave Search
+       */
+      setup?: BraveIntegrationDef.Setup | null;
+    }
+
+    export namespace BraveIntegrationDef {
+      /**
+       * Arguments for Brave Search
+       */
+      export interface Arguments {
+        query: string;
+      }
+
+      /**
+       * Integration definition for Brave Search
+       */
+      export interface Setup {
+        api_key: string;
+      }
+    }
+
+    /**
+     * Email integration definition
+     */
+    export interface EmailIntegrationDef {
+      /**
+       * Arguments for Email sending
+       */
+      arguments?: EmailIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'email';
+
+      /**
+       * Setup parameters for Email integration
+       */
+      setup?: EmailIntegrationDef.Setup | null;
+    }
+
+    export namespace EmailIntegrationDef {
+      /**
+       * Arguments for Email sending
+       */
+      export interface Arguments {
+        body: string;
+
+        from: string;
+
+        subject: string;
+
+        to: string;
+      }
+
+      /**
+       * Setup parameters for Email integration
+       */
+      export interface Setup {
+        host: string;
+
+        password: string;
+
+        port: number;
+
+        user: string;
+      }
+    }
+
+    /**
+     * Spider integration definition
+     */
+    export interface SpiderIntegrationDef {
+      /**
+       * Arguments for Spider integration
+       */
+      arguments?: SpiderIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'spider';
+
+      /**
+       * Setup parameters for Spider integration
+       */
+      setup?: SpiderIntegrationDef.Setup | null;
+    }
+
+    export namespace SpiderIntegrationDef {
+      /**
+       * Arguments for Spider integration
+       */
+      export interface Arguments {
+        url: string;
+
+        mode?: 'scrape';
+
+        params?: unknown | null;
+      }
+
+      /**
+       * Setup parameters for Spider integration
+       */
+      export interface Setup {
+        spider_api_key: string;
+      }
+    }
+
+    /**
+     * Wikipedia integration definition
+     */
+    export interface WikipediaIntegrationDef {
+      /**
+       * Arguments for Wikipedia Search
+       */
+      arguments?: WikipediaIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'wikipedia';
+
+      setup?: unknown | null;
+    }
+
+    export namespace WikipediaIntegrationDef {
+      /**
+       * Arguments for Wikipedia Search
+       */
+      export interface Arguments {
+        query: string;
+
+        load_max_docs?: number;
+      }
+    }
+
+    /**
+     * Weather integration definition
+     */
+    export interface WeatherIntegrationDef {
+      /**
+       * Arguments for Weather
+       */
+      arguments?: WeatherIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'weather';
+
+      /**
+       * Integration definition for Weather
+       */
+      setup?: WeatherIntegrationDef.Setup | null;
+    }
+
+    export namespace WeatherIntegrationDef {
+      /**
+       * Arguments for Weather
+       */
+      export interface Arguments {
+        location: string;
+      }
+
+      /**
+       * Integration definition for Weather
+       */
+      export interface Setup {
+        openweathermap_api_key: string;
+      }
     }
 
     /**
@@ -1380,9 +1914,16 @@ export namespace SessionChatParams {
     function?: Tool.Function | null;
 
     /**
-     * Integration definition
+     * Brave integration definition
      */
-    integration?: Tool.Integration | null;
+    integration?:
+      | Tool.DummyIntegrationDef
+      | Tool.BraveIntegrationDef
+      | Tool.EmailIntegrationDef
+      | Tool.SpiderIntegrationDef
+      | Tool.WikipediaIntegrationDef
+      | Tool.WeatherIntegrationDef
+      | null;
 
     /**
      * System definition
@@ -1427,26 +1968,197 @@ export namespace SessionChatParams {
       parameters?: unknown | null;
     }
 
-    /**
-     * Integration definition
-     */
-    export interface Integration {
-      provider:
-        | 'dummy'
-        | 'hacker_news'
-        | 'weather'
-        | 'wikipedia'
-        | 'spider'
-        | 'brave'
-        | 'browserbase'
-        | 'email'
-        | (string & {});
-
+    export interface DummyIntegrationDef {
       arguments?: unknown | null;
 
       method?: string | null;
 
+      provider?: 'dummy';
+
       setup?: unknown | null;
+    }
+
+    /**
+     * Brave integration definition
+     */
+    export interface BraveIntegrationDef {
+      /**
+       * Arguments for Brave Search
+       */
+      arguments?: BraveIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'brave';
+
+      /**
+       * Integration definition for Brave Search
+       */
+      setup?: BraveIntegrationDef.Setup | null;
+    }
+
+    export namespace BraveIntegrationDef {
+      /**
+       * Arguments for Brave Search
+       */
+      export interface Arguments {
+        query: string;
+      }
+
+      /**
+       * Integration definition for Brave Search
+       */
+      export interface Setup {
+        api_key: string;
+      }
+    }
+
+    /**
+     * Email integration definition
+     */
+    export interface EmailIntegrationDef {
+      /**
+       * Arguments for Email sending
+       */
+      arguments?: EmailIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'email';
+
+      /**
+       * Setup parameters for Email integration
+       */
+      setup?: EmailIntegrationDef.Setup | null;
+    }
+
+    export namespace EmailIntegrationDef {
+      /**
+       * Arguments for Email sending
+       */
+      export interface Arguments {
+        body: string;
+
+        from: string;
+
+        subject: string;
+
+        to: string;
+      }
+
+      /**
+       * Setup parameters for Email integration
+       */
+      export interface Setup {
+        host: string;
+
+        password: string;
+
+        port: number;
+
+        user: string;
+      }
+    }
+
+    /**
+     * Spider integration definition
+     */
+    export interface SpiderIntegrationDef {
+      /**
+       * Arguments for Spider integration
+       */
+      arguments?: SpiderIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'spider';
+
+      /**
+       * Setup parameters for Spider integration
+       */
+      setup?: SpiderIntegrationDef.Setup | null;
+    }
+
+    export namespace SpiderIntegrationDef {
+      /**
+       * Arguments for Spider integration
+       */
+      export interface Arguments {
+        url: string;
+
+        mode?: 'scrape';
+
+        params?: unknown | null;
+      }
+
+      /**
+       * Setup parameters for Spider integration
+       */
+      export interface Setup {
+        spider_api_key: string;
+      }
+    }
+
+    /**
+     * Wikipedia integration definition
+     */
+    export interface WikipediaIntegrationDef {
+      /**
+       * Arguments for Wikipedia Search
+       */
+      arguments?: WikipediaIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'wikipedia';
+
+      setup?: unknown | null;
+    }
+
+    export namespace WikipediaIntegrationDef {
+      /**
+       * Arguments for Wikipedia Search
+       */
+      export interface Arguments {
+        query: string;
+
+        load_max_docs?: number;
+      }
+    }
+
+    /**
+     * Weather integration definition
+     */
+    export interface WeatherIntegrationDef {
+      /**
+       * Arguments for Weather
+       */
+      arguments?: WeatherIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'weather';
+
+      /**
+       * Integration definition for Weather
+       */
+      setup?: WeatherIntegrationDef.Setup | null;
+    }
+
+    export namespace WeatherIntegrationDef {
+      /**
+       * Arguments for Weather
+       */
+      export interface Arguments {
+        location: string;
+      }
+
+      /**
+       * Integration definition for Weather
+       */
+      export interface Setup {
+        openweathermap_api_key: string;
+      }
     }
 
     /**
