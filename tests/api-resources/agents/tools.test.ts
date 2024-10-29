@@ -39,7 +39,7 @@ describe('resource tools', () => {
       },
       description: 'description',
       function: { description: {}, name: {}, parameters: {} },
-      integration: { provider: 'dummy', arguments: {}, method: 'method', setup: {} },
+      integration: { arguments: {}, method: 'method', provider: 'dummy', setup: {} },
       system: {
         operation: 'create',
         resource: 'agent',
@@ -85,7 +85,7 @@ describe('resource tools', () => {
         },
         description: 'description',
         function: { description: {}, name: {}, parameters: {} },
-        integration: { provider: 'dummy', arguments: {}, method: 'method', setup: {} },
+        integration: { arguments: {}, method: 'method', provider: 'dummy', setup: {} },
         system: {
           operation: 'create',
           resource: 'agent',

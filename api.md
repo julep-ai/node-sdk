@@ -131,7 +131,6 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/tasks.ts">Task</a></code>
-- <code><a href="./src/resources/tasks.ts">Tool</a></code>
 
 Methods:
 
