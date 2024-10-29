@@ -263,7 +263,6 @@ export namespace Julep {
 
   export import Tasks = API.Tasks;
   export import Task = API.Task;
-  export import Tool = API.Tool;
   export import TasksOffsetPagination = API.TasksOffsetPagination;
   export import TaskCreateParams = API.TaskCreateParams;
   export import TaskListParams = API.TaskListParams;
