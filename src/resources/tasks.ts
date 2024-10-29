@@ -216,6 +216,13 @@ export namespace Task {
        */
       api_call?: CreateToolRequestOutput.APICall | null;
 
+      bash_20241022?: CreateToolRequestOutput.Bash20241022 | null;
+
+      /**
+       * Anthropic new tools
+       */
+      computer_20241022?: CreateToolRequestOutput.Computer20241022 | null;
+
       description?: string | null;
 
       /**
@@ -239,6 +246,8 @@ export namespace Task {
        * System definition
        */
       system?: CreateToolRequestOutput.System | null;
+
+      text_editor_20241022?: CreateToolRequestOutput.TextEditor20241022 | null;
     }
 
     export namespace CreateToolRequestOutput {
@@ -265,6 +274,27 @@ export namespace Task {
         params?: string | unknown | null;
 
         timeout?: number | null;
+      }
+
+      export interface Bash20241022 {
+        name?: string;
+
+        type?: 'bash_20241022';
+      }
+
+      /**
+       * Anthropic new tools
+       */
+      export interface Computer20241022 {
+        display_height_px?: number;
+
+        display_number?: number;
+
+        display_width_px?: number;
+
+        name?: string;
+
+        type?: 'computer_20241022';
       }
 
       /**
@@ -497,6 +527,12 @@ export namespace Task {
 
         subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
       }
+
+      export interface TextEditor20241022 {
+        name?: string;
+
+        type?: 'text_editor_20241022';
+      }
     }
   }
 
@@ -715,6 +751,13 @@ export namespace Task {
          */
         api_call?: CreateToolRequestOutput.APICall | null;
 
+        bash_20241022?: CreateToolRequestOutput.Bash20241022 | null;
+
+        /**
+         * Anthropic new tools
+         */
+        computer_20241022?: CreateToolRequestOutput.Computer20241022 | null;
+
         description?: string | null;
 
         /**
@@ -738,6 +781,8 @@ export namespace Task {
          * System definition
          */
         system?: CreateToolRequestOutput.System | null;
+
+        text_editor_20241022?: CreateToolRequestOutput.TextEditor20241022 | null;
       }
 
       export namespace CreateToolRequestOutput {
@@ -764,6 +809,27 @@ export namespace Task {
           params?: string | unknown | null;
 
           timeout?: number | null;
+        }
+
+        export interface Bash20241022 {
+          name?: string;
+
+          type?: 'bash_20241022';
+        }
+
+        /**
+         * Anthropic new tools
+         */
+        export interface Computer20241022 {
+          display_height_px?: number;
+
+          display_number?: number;
+
+          display_width_px?: number;
+
+          name?: string;
+
+          type?: 'computer_20241022';
         }
 
         /**
@@ -995,6 +1061,12 @@ export namespace Task {
           resource_id?: string | null;
 
           subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+        }
+
+        export interface TextEditor20241022 {
+          name?: string;
+
+          type?: 'text_editor_20241022';
         }
       }
     }
@@ -1180,6 +1252,13 @@ export namespace Task {
          */
         api_call?: CreateToolRequestOutput.APICall | null;
 
+        bash_20241022?: CreateToolRequestOutput.Bash20241022 | null;
+
+        /**
+         * Anthropic new tools
+         */
+        computer_20241022?: CreateToolRequestOutput.Computer20241022 | null;
+
         description?: string | null;
 
         /**
@@ -1203,6 +1282,8 @@ export namespace Task {
          * System definition
          */
         system?: CreateToolRequestOutput.System | null;
+
+        text_editor_20241022?: CreateToolRequestOutput.TextEditor20241022 | null;
       }
 
       export namespace CreateToolRequestOutput {
@@ -1229,6 +1310,27 @@ export namespace Task {
           params?: string | unknown | null;
 
           timeout?: number | null;
+        }
+
+        export interface Bash20241022 {
+          name?: string;
+
+          type?: 'bash_20241022';
+        }
+
+        /**
+         * Anthropic new tools
+         */
+        export interface Computer20241022 {
+          display_height_px?: number;
+
+          display_number?: number;
+
+          display_width_px?: number;
+
+          name?: string;
+
+          type?: 'computer_20241022';
         }
 
         /**
@@ -1460,6 +1562,12 @@ export namespace Task {
           resource_id?: string | null;
 
           subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+        }
+
+        export interface TextEditor20241022 {
+          name?: string;
+
+          type?: 'text_editor_20241022';
         }
       }
     }
@@ -1671,6 +1779,13 @@ export namespace Task {
            */
           api_call?: CreateToolRequestOutput.APICall | null;
 
+          bash_20241022?: CreateToolRequestOutput.Bash20241022 | null;
+
+          /**
+           * Anthropic new tools
+           */
+          computer_20241022?: CreateToolRequestOutput.Computer20241022 | null;
+
           description?: string | null;
 
           /**
@@ -1694,6 +1809,8 @@ export namespace Task {
            * System definition
            */
           system?: CreateToolRequestOutput.System | null;
+
+          text_editor_20241022?: CreateToolRequestOutput.TextEditor20241022 | null;
         }
 
         export namespace CreateToolRequestOutput {
@@ -1720,6 +1837,27 @@ export namespace Task {
             params?: string | unknown | null;
 
             timeout?: number | null;
+          }
+
+          export interface Bash20241022 {
+            name?: string;
+
+            type?: 'bash_20241022';
+          }
+
+          /**
+           * Anthropic new tools
+           */
+          export interface Computer20241022 {
+            display_height_px?: number;
+
+            display_number?: number;
+
+            display_width_px?: number;
+
+            name?: string;
+
+            type?: 'computer_20241022';
           }
 
           /**
@@ -1951,6 +2089,12 @@ export namespace Task {
             resource_id?: string | null;
 
             subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+          }
+
+          export interface TextEditor20241022 {
+            name?: string;
+
+            type?: 'text_editor_20241022';
           }
         }
       }
@@ -2172,6 +2316,13 @@ export namespace Task {
            */
           api_call?: CreateToolRequestOutput.APICall | null;
 
+          bash_20241022?: CreateToolRequestOutput.Bash20241022 | null;
+
+          /**
+           * Anthropic new tools
+           */
+          computer_20241022?: CreateToolRequestOutput.Computer20241022 | null;
+
           description?: string | null;
 
           /**
@@ -2195,6 +2346,8 @@ export namespace Task {
            * System definition
            */
           system?: CreateToolRequestOutput.System | null;
+
+          text_editor_20241022?: CreateToolRequestOutput.TextEditor20241022 | null;
         }
 
         export namespace CreateToolRequestOutput {
@@ -2221,6 +2374,27 @@ export namespace Task {
             params?: string | unknown | null;
 
             timeout?: number | null;
+          }
+
+          export interface Bash20241022 {
+            name?: string;
+
+            type?: 'bash_20241022';
+          }
+
+          /**
+           * Anthropic new tools
+           */
+          export interface Computer20241022 {
+            display_height_px?: number;
+
+            display_number?: number;
+
+            display_width_px?: number;
+
+            name?: string;
+
+            type?: 'computer_20241022';
           }
 
           /**
@@ -2453,6 +2627,12 @@ export namespace Task {
 
             subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
           }
+
+          export interface TextEditor20241022 {
+            name?: string;
+
+            type?: 'text_editor_20241022';
+          }
         }
       }
 
@@ -2612,6 +2792,13 @@ export namespace Task {
          */
         api_call?: CreateToolRequestOutput.APICall | null;
 
+        bash_20241022?: CreateToolRequestOutput.Bash20241022 | null;
+
+        /**
+         * Anthropic new tools
+         */
+        computer_20241022?: CreateToolRequestOutput.Computer20241022 | null;
+
         description?: string | null;
 
         /**
@@ -2635,6 +2822,8 @@ export namespace Task {
          * System definition
          */
         system?: CreateToolRequestOutput.System | null;
+
+        text_editor_20241022?: CreateToolRequestOutput.TextEditor20241022 | null;
       }
 
       export namespace CreateToolRequestOutput {
@@ -2661,6 +2850,27 @@ export namespace Task {
           params?: string | unknown | null;
 
           timeout?: number | null;
+        }
+
+        export interface Bash20241022 {
+          name?: string;
+
+          type?: 'bash_20241022';
+        }
+
+        /**
+         * Anthropic new tools
+         */
+        export interface Computer20241022 {
+          display_height_px?: number;
+
+          display_number?: number;
+
+          display_width_px?: number;
+
+          name?: string;
+
+          type?: 'computer_20241022';
         }
 
         /**
@@ -2892,6 +3102,12 @@ export namespace Task {
           resource_id?: string | null;
 
           subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+        }
+
+        export interface TextEditor20241022 {
+          name?: string;
+
+          type?: 'text_editor_20241022';
         }
       }
     }
@@ -3058,6 +3274,13 @@ export namespace Task {
          */
         api_call?: CreateToolRequestOutput.APICall | null;
 
+        bash_20241022?: CreateToolRequestOutput.Bash20241022 | null;
+
+        /**
+         * Anthropic new tools
+         */
+        computer_20241022?: CreateToolRequestOutput.Computer20241022 | null;
+
         description?: string | null;
 
         /**
@@ -3081,6 +3304,8 @@ export namespace Task {
          * System definition
          */
         system?: CreateToolRequestOutput.System | null;
+
+        text_editor_20241022?: CreateToolRequestOutput.TextEditor20241022 | null;
       }
 
       export namespace CreateToolRequestOutput {
@@ -3107,6 +3332,27 @@ export namespace Task {
           params?: string | unknown | null;
 
           timeout?: number | null;
+        }
+
+        export interface Bash20241022 {
+          name?: string;
+
+          type?: 'bash_20241022';
+        }
+
+        /**
+         * Anthropic new tools
+         */
+        export interface Computer20241022 {
+          display_height_px?: number;
+
+          display_number?: number;
+
+          display_width_px?: number;
+
+          name?: string;
+
+          type?: 'computer_20241022';
         }
 
         /**
@@ -3339,6 +3585,12 @@ export namespace Task {
 
           subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
+
+        export interface TextEditor20241022 {
+          name?: string;
+
+          type?: 'text_editor_20241022';
+        }
       }
     }
 
@@ -3377,6 +3629,13 @@ export namespace Task {
      */
     api_call?: Tool.APICall | null;
 
+    bash_20241022?: Tool.Bash20241022 | null;
+
+    /**
+     * Anthropic new tools
+     */
+    computer_20241022?: Tool.Computer20241022 | null;
+
     description?: string | null;
 
     /**
@@ -3402,6 +3661,8 @@ export namespace Task {
      * System definition
      */
     system?: Tool.System | null;
+
+    text_editor_20241022?: Tool.TextEditor20241022 | null;
   }
 
   export namespace Tool {
@@ -3428,6 +3689,27 @@ export namespace Task {
       params?: string | unknown | null;
 
       timeout?: number | null;
+    }
+
+    export interface Bash20241022 {
+      name?: string;
+
+      type?: 'bash_20241022';
+    }
+
+    /**
+     * Anthropic new tools
+     */
+    export interface Computer20241022 {
+      display_height_px?: number;
+
+      display_number?: number;
+
+      display_width_px?: number;
+
+      name?: string;
+
+      type?: 'computer_20241022';
     }
 
     /**
@@ -3660,6 +3942,12 @@ export namespace Task {
 
       subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
     }
+
+    export interface TextEditor20241022 {
+      name?: string;
+
+      type?: 'text_editor_20241022';
+    }
   }
 }
 
@@ -3804,6 +4092,13 @@ export namespace TaskCreateParams {
        */
       api_call?: CreateToolRequestInput.APICall | null;
 
+      bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+      /**
+       * Anthropic new tools
+       */
+      computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
       description?: string | null;
 
       /**
@@ -3827,6 +4122,8 @@ export namespace TaskCreateParams {
        * System definition
        */
       system?: CreateToolRequestInput.System | null;
+
+      text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
     }
 
     export namespace CreateToolRequestInput {
@@ -3853,6 +4150,27 @@ export namespace TaskCreateParams {
         params?: string | unknown | null;
 
         timeout?: number | null;
+      }
+
+      export interface Bash20241022 {
+        name?: string;
+
+        type?: 'bash_20241022';
+      }
+
+      /**
+       * Anthropic new tools
+       */
+      export interface Computer20241022 {
+        display_height_px?: number;
+
+        display_number?: number;
+
+        display_width_px?: number;
+
+        name?: string;
+
+        type?: 'computer_20241022';
       }
 
       /**
@@ -4085,6 +4403,12 @@ export namespace TaskCreateParams {
 
         subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
       }
+
+      export interface TextEditor20241022 {
+        name?: string;
+
+        type?: 'text_editor_20241022';
+      }
     }
   }
 
@@ -4279,6 +4603,13 @@ export namespace TaskCreateParams {
          */
         api_call?: CreateToolRequestInput.APICall | null;
 
+        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+        /**
+         * Anthropic new tools
+         */
+        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
         description?: string | null;
 
         /**
@@ -4302,6 +4633,8 @@ export namespace TaskCreateParams {
          * System definition
          */
         system?: CreateToolRequestInput.System | null;
+
+        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
       }
 
       export namespace CreateToolRequestInput {
@@ -4328,6 +4661,27 @@ export namespace TaskCreateParams {
           params?: string | unknown | null;
 
           timeout?: number | null;
+        }
+
+        export interface Bash20241022 {
+          name?: string;
+
+          type?: 'bash_20241022';
+        }
+
+        /**
+         * Anthropic new tools
+         */
+        export interface Computer20241022 {
+          display_height_px?: number;
+
+          display_number?: number;
+
+          display_width_px?: number;
+
+          name?: string;
+
+          type?: 'computer_20241022';
         }
 
         /**
@@ -4559,6 +4913,12 @@ export namespace TaskCreateParams {
           resource_id?: string | null;
 
           subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+        }
+
+        export interface TextEditor20241022 {
+          name?: string;
+
+          type?: 'text_editor_20241022';
         }
       }
     }
@@ -4722,6 +5082,13 @@ export namespace TaskCreateParams {
          */
         api_call?: CreateToolRequestInput.APICall | null;
 
+        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+        /**
+         * Anthropic new tools
+         */
+        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
         description?: string | null;
 
         /**
@@ -4745,6 +5112,8 @@ export namespace TaskCreateParams {
          * System definition
          */
         system?: CreateToolRequestInput.System | null;
+
+        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
       }
 
       export namespace CreateToolRequestInput {
@@ -4771,6 +5140,27 @@ export namespace TaskCreateParams {
           params?: string | unknown | null;
 
           timeout?: number | null;
+        }
+
+        export interface Bash20241022 {
+          name?: string;
+
+          type?: 'bash_20241022';
+        }
+
+        /**
+         * Anthropic new tools
+         */
+        export interface Computer20241022 {
+          display_height_px?: number;
+
+          display_number?: number;
+
+          display_width_px?: number;
+
+          name?: string;
+
+          type?: 'computer_20241022';
         }
 
         /**
@@ -5002,6 +5392,12 @@ export namespace TaskCreateParams {
           resource_id?: string | null;
 
           subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+        }
+
+        export interface TextEditor20241022 {
+          name?: string;
+
+          type?: 'text_editor_20241022';
         }
       }
     }
@@ -5189,6 +5585,13 @@ export namespace TaskCreateParams {
            */
           api_call?: CreateToolRequestInput.APICall | null;
 
+          bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+          /**
+           * Anthropic new tools
+           */
+          computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
           description?: string | null;
 
           /**
@@ -5212,6 +5615,8 @@ export namespace TaskCreateParams {
            * System definition
            */
           system?: CreateToolRequestInput.System | null;
+
+          text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
         }
 
         export namespace CreateToolRequestInput {
@@ -5238,6 +5643,27 @@ export namespace TaskCreateParams {
             params?: string | unknown | null;
 
             timeout?: number | null;
+          }
+
+          export interface Bash20241022 {
+            name?: string;
+
+            type?: 'bash_20241022';
+          }
+
+          /**
+           * Anthropic new tools
+           */
+          export interface Computer20241022 {
+            display_height_px?: number;
+
+            display_number?: number;
+
+            display_width_px?: number;
+
+            name?: string;
+
+            type?: 'computer_20241022';
           }
 
           /**
@@ -5469,6 +5895,12 @@ export namespace TaskCreateParams {
             resource_id?: string | null;
 
             subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+          }
+
+          export interface TextEditor20241022 {
+            name?: string;
+
+            type?: 'text_editor_20241022';
           }
         }
       }
@@ -5664,6 +6096,13 @@ export namespace TaskCreateParams {
            */
           api_call?: CreateToolRequestInput.APICall | null;
 
+          bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+          /**
+           * Anthropic new tools
+           */
+          computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
           description?: string | null;
 
           /**
@@ -5687,6 +6126,8 @@ export namespace TaskCreateParams {
            * System definition
            */
           system?: CreateToolRequestInput.System | null;
+
+          text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
         }
 
         export namespace CreateToolRequestInput {
@@ -5713,6 +6154,27 @@ export namespace TaskCreateParams {
             params?: string | unknown | null;
 
             timeout?: number | null;
+          }
+
+          export interface Bash20241022 {
+            name?: string;
+
+            type?: 'bash_20241022';
+          }
+
+          /**
+           * Anthropic new tools
+           */
+          export interface Computer20241022 {
+            display_height_px?: number;
+
+            display_number?: number;
+
+            display_width_px?: number;
+
+            name?: string;
+
+            type?: 'computer_20241022';
           }
 
           /**
@@ -5945,6 +6407,12 @@ export namespace TaskCreateParams {
 
             subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
           }
+
+          export interface TextEditor20241022 {
+            name?: string;
+
+            type?: 'text_editor_20241022';
+          }
         }
       }
 
@@ -6088,6 +6556,13 @@ export namespace TaskCreateParams {
          */
         api_call?: CreateToolRequestInput.APICall | null;
 
+        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+        /**
+         * Anthropic new tools
+         */
+        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
         description?: string | null;
 
         /**
@@ -6111,6 +6586,8 @@ export namespace TaskCreateParams {
          * System definition
          */
         system?: CreateToolRequestInput.System | null;
+
+        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
       }
 
       export namespace CreateToolRequestInput {
@@ -6137,6 +6614,27 @@ export namespace TaskCreateParams {
           params?: string | unknown | null;
 
           timeout?: number | null;
+        }
+
+        export interface Bash20241022 {
+          name?: string;
+
+          type?: 'bash_20241022';
+        }
+
+        /**
+         * Anthropic new tools
+         */
+        export interface Computer20241022 {
+          display_height_px?: number;
+
+          display_number?: number;
+
+          display_width_px?: number;
+
+          name?: string;
+
+          type?: 'computer_20241022';
         }
 
         /**
@@ -6368,6 +6866,12 @@ export namespace TaskCreateParams {
           resource_id?: string | null;
 
           subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+        }
+
+        export interface TextEditor20241022 {
+          name?: string;
+
+          type?: 'text_editor_20241022';
         }
       }
     }
@@ -6518,6 +7022,13 @@ export namespace TaskCreateParams {
          */
         api_call?: CreateToolRequestInput.APICall | null;
 
+        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+        /**
+         * Anthropic new tools
+         */
+        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
         description?: string | null;
 
         /**
@@ -6541,6 +7052,8 @@ export namespace TaskCreateParams {
          * System definition
          */
         system?: CreateToolRequestInput.System | null;
+
+        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
       }
 
       export namespace CreateToolRequestInput {
@@ -6567,6 +7080,27 @@ export namespace TaskCreateParams {
           params?: string | unknown | null;
 
           timeout?: number | null;
+        }
+
+        export interface Bash20241022 {
+          name?: string;
+
+          type?: 'bash_20241022';
+        }
+
+        /**
+         * Anthropic new tools
+         */
+        export interface Computer20241022 {
+          display_height_px?: number;
+
+          display_number?: number;
+
+          display_width_px?: number;
+
+          name?: string;
+
+          type?: 'computer_20241022';
         }
 
         /**
@@ -6799,6 +7333,12 @@ export namespace TaskCreateParams {
 
           subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
+
+        export interface TextEditor20241022 {
+          name?: string;
+
+          type?: 'text_editor_20241022';
+        }
       }
     }
 
@@ -6829,6 +7369,13 @@ export namespace TaskCreateParams {
      */
     api_call?: Tool.APICall | null;
 
+    bash_20241022?: Tool.Bash20241022 | null;
+
+    /**
+     * Anthropic new tools
+     */
+    computer_20241022?: Tool.Computer20241022 | null;
+
     description?: string | null;
 
     /**
@@ -6852,6 +7399,8 @@ export namespace TaskCreateParams {
      * System definition
      */
     system?: Tool.System | null;
+
+    text_editor_20241022?: Tool.TextEditor20241022 | null;
   }
 
   export namespace Tool {
@@ -6878,6 +7427,27 @@ export namespace TaskCreateParams {
       params?: string | unknown | null;
 
       timeout?: number | null;
+    }
+
+    export interface Bash20241022 {
+      name?: string;
+
+      type?: 'bash_20241022';
+    }
+
+    /**
+     * Anthropic new tools
+     */
+    export interface Computer20241022 {
+      display_height_px?: number;
+
+      display_number?: number;
+
+      display_width_px?: number;
+
+      name?: string;
+
+      type?: 'computer_20241022';
     }
 
     /**
@@ -7109,6 +7679,12 @@ export namespace TaskCreateParams {
       resource_id?: string | null;
 
       subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+    }
+
+    export interface TextEditor20241022 {
+      name?: string;
+
+      type?: 'text_editor_20241022';
     }
   }
 }
@@ -7260,6 +7836,13 @@ export namespace TaskCreateOrUpdateParams {
        */
       api_call?: CreateToolRequestInput.APICall | null;
 
+      bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+      /**
+       * Anthropic new tools
+       */
+      computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
       description?: string | null;
 
       /**
@@ -7283,6 +7866,8 @@ export namespace TaskCreateOrUpdateParams {
        * System definition
        */
       system?: CreateToolRequestInput.System | null;
+
+      text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
     }
 
     export namespace CreateToolRequestInput {
@@ -7309,6 +7894,27 @@ export namespace TaskCreateOrUpdateParams {
         params?: string | unknown | null;
 
         timeout?: number | null;
+      }
+
+      export interface Bash20241022 {
+        name?: string;
+
+        type?: 'bash_20241022';
+      }
+
+      /**
+       * Anthropic new tools
+       */
+      export interface Computer20241022 {
+        display_height_px?: number;
+
+        display_number?: number;
+
+        display_width_px?: number;
+
+        name?: string;
+
+        type?: 'computer_20241022';
       }
 
       /**
@@ -7541,6 +8147,12 @@ export namespace TaskCreateOrUpdateParams {
 
         subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
       }
+
+      export interface TextEditor20241022 {
+        name?: string;
+
+        type?: 'text_editor_20241022';
+      }
     }
   }
 
@@ -7735,6 +8347,13 @@ export namespace TaskCreateOrUpdateParams {
          */
         api_call?: CreateToolRequestInput.APICall | null;
 
+        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+        /**
+         * Anthropic new tools
+         */
+        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
         description?: string | null;
 
         /**
@@ -7758,6 +8377,8 @@ export namespace TaskCreateOrUpdateParams {
          * System definition
          */
         system?: CreateToolRequestInput.System | null;
+
+        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
       }
 
       export namespace CreateToolRequestInput {
@@ -7784,6 +8405,27 @@ export namespace TaskCreateOrUpdateParams {
           params?: string | unknown | null;
 
           timeout?: number | null;
+        }
+
+        export interface Bash20241022 {
+          name?: string;
+
+          type?: 'bash_20241022';
+        }
+
+        /**
+         * Anthropic new tools
+         */
+        export interface Computer20241022 {
+          display_height_px?: number;
+
+          display_number?: number;
+
+          display_width_px?: number;
+
+          name?: string;
+
+          type?: 'computer_20241022';
         }
 
         /**
@@ -8015,6 +8657,12 @@ export namespace TaskCreateOrUpdateParams {
           resource_id?: string | null;
 
           subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+        }
+
+        export interface TextEditor20241022 {
+          name?: string;
+
+          type?: 'text_editor_20241022';
         }
       }
     }
@@ -8178,6 +8826,13 @@ export namespace TaskCreateOrUpdateParams {
          */
         api_call?: CreateToolRequestInput.APICall | null;
 
+        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+        /**
+         * Anthropic new tools
+         */
+        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
         description?: string | null;
 
         /**
@@ -8201,6 +8856,8 @@ export namespace TaskCreateOrUpdateParams {
          * System definition
          */
         system?: CreateToolRequestInput.System | null;
+
+        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
       }
 
       export namespace CreateToolRequestInput {
@@ -8227,6 +8884,27 @@ export namespace TaskCreateOrUpdateParams {
           params?: string | unknown | null;
 
           timeout?: number | null;
+        }
+
+        export interface Bash20241022 {
+          name?: string;
+
+          type?: 'bash_20241022';
+        }
+
+        /**
+         * Anthropic new tools
+         */
+        export interface Computer20241022 {
+          display_height_px?: number;
+
+          display_number?: number;
+
+          display_width_px?: number;
+
+          name?: string;
+
+          type?: 'computer_20241022';
         }
 
         /**
@@ -8458,6 +9136,12 @@ export namespace TaskCreateOrUpdateParams {
           resource_id?: string | null;
 
           subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+        }
+
+        export interface TextEditor20241022 {
+          name?: string;
+
+          type?: 'text_editor_20241022';
         }
       }
     }
@@ -8645,6 +9329,13 @@ export namespace TaskCreateOrUpdateParams {
            */
           api_call?: CreateToolRequestInput.APICall | null;
 
+          bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+          /**
+           * Anthropic new tools
+           */
+          computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
           description?: string | null;
 
           /**
@@ -8668,6 +9359,8 @@ export namespace TaskCreateOrUpdateParams {
            * System definition
            */
           system?: CreateToolRequestInput.System | null;
+
+          text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
         }
 
         export namespace CreateToolRequestInput {
@@ -8694,6 +9387,27 @@ export namespace TaskCreateOrUpdateParams {
             params?: string | unknown | null;
 
             timeout?: number | null;
+          }
+
+          export interface Bash20241022 {
+            name?: string;
+
+            type?: 'bash_20241022';
+          }
+
+          /**
+           * Anthropic new tools
+           */
+          export interface Computer20241022 {
+            display_height_px?: number;
+
+            display_number?: number;
+
+            display_width_px?: number;
+
+            name?: string;
+
+            type?: 'computer_20241022';
           }
 
           /**
@@ -8925,6 +9639,12 @@ export namespace TaskCreateOrUpdateParams {
             resource_id?: string | null;
 
             subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+          }
+
+          export interface TextEditor20241022 {
+            name?: string;
+
+            type?: 'text_editor_20241022';
           }
         }
       }
@@ -9120,6 +9840,13 @@ export namespace TaskCreateOrUpdateParams {
            */
           api_call?: CreateToolRequestInput.APICall | null;
 
+          bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+          /**
+           * Anthropic new tools
+           */
+          computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
           description?: string | null;
 
           /**
@@ -9143,6 +9870,8 @@ export namespace TaskCreateOrUpdateParams {
            * System definition
            */
           system?: CreateToolRequestInput.System | null;
+
+          text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
         }
 
         export namespace CreateToolRequestInput {
@@ -9169,6 +9898,27 @@ export namespace TaskCreateOrUpdateParams {
             params?: string | unknown | null;
 
             timeout?: number | null;
+          }
+
+          export interface Bash20241022 {
+            name?: string;
+
+            type?: 'bash_20241022';
+          }
+
+          /**
+           * Anthropic new tools
+           */
+          export interface Computer20241022 {
+            display_height_px?: number;
+
+            display_number?: number;
+
+            display_width_px?: number;
+
+            name?: string;
+
+            type?: 'computer_20241022';
           }
 
           /**
@@ -9401,6 +10151,12 @@ export namespace TaskCreateOrUpdateParams {
 
             subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
           }
+
+          export interface TextEditor20241022 {
+            name?: string;
+
+            type?: 'text_editor_20241022';
+          }
         }
       }
 
@@ -9544,6 +10300,13 @@ export namespace TaskCreateOrUpdateParams {
          */
         api_call?: CreateToolRequestInput.APICall | null;
 
+        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+        /**
+         * Anthropic new tools
+         */
+        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
         description?: string | null;
 
         /**
@@ -9567,6 +10330,8 @@ export namespace TaskCreateOrUpdateParams {
          * System definition
          */
         system?: CreateToolRequestInput.System | null;
+
+        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
       }
 
       export namespace CreateToolRequestInput {
@@ -9593,6 +10358,27 @@ export namespace TaskCreateOrUpdateParams {
           params?: string | unknown | null;
 
           timeout?: number | null;
+        }
+
+        export interface Bash20241022 {
+          name?: string;
+
+          type?: 'bash_20241022';
+        }
+
+        /**
+         * Anthropic new tools
+         */
+        export interface Computer20241022 {
+          display_height_px?: number;
+
+          display_number?: number;
+
+          display_width_px?: number;
+
+          name?: string;
+
+          type?: 'computer_20241022';
         }
 
         /**
@@ -9824,6 +10610,12 @@ export namespace TaskCreateOrUpdateParams {
           resource_id?: string | null;
 
           subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+        }
+
+        export interface TextEditor20241022 {
+          name?: string;
+
+          type?: 'text_editor_20241022';
         }
       }
     }
@@ -9974,6 +10766,13 @@ export namespace TaskCreateOrUpdateParams {
          */
         api_call?: CreateToolRequestInput.APICall | null;
 
+        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+
+        /**
+         * Anthropic new tools
+         */
+        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+
         description?: string | null;
 
         /**
@@ -9997,6 +10796,8 @@ export namespace TaskCreateOrUpdateParams {
          * System definition
          */
         system?: CreateToolRequestInput.System | null;
+
+        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
       }
 
       export namespace CreateToolRequestInput {
@@ -10023,6 +10824,27 @@ export namespace TaskCreateOrUpdateParams {
           params?: string | unknown | null;
 
           timeout?: number | null;
+        }
+
+        export interface Bash20241022 {
+          name?: string;
+
+          type?: 'bash_20241022';
+        }
+
+        /**
+         * Anthropic new tools
+         */
+        export interface Computer20241022 {
+          display_height_px?: number;
+
+          display_number?: number;
+
+          display_width_px?: number;
+
+          name?: string;
+
+          type?: 'computer_20241022';
         }
 
         /**
@@ -10255,6 +11077,12 @@ export namespace TaskCreateOrUpdateParams {
 
           subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
         }
+
+        export interface TextEditor20241022 {
+          name?: string;
+
+          type?: 'text_editor_20241022';
+        }
       }
     }
 
@@ -10285,6 +11113,13 @@ export namespace TaskCreateOrUpdateParams {
      */
     api_call?: Tool.APICall | null;
 
+    bash_20241022?: Tool.Bash20241022 | null;
+
+    /**
+     * Anthropic new tools
+     */
+    computer_20241022?: Tool.Computer20241022 | null;
+
     description?: string | null;
 
     /**
@@ -10308,6 +11143,8 @@ export namespace TaskCreateOrUpdateParams {
      * System definition
      */
     system?: Tool.System | null;
+
+    text_editor_20241022?: Tool.TextEditor20241022 | null;
   }
 
   export namespace Tool {
@@ -10334,6 +11171,27 @@ export namespace TaskCreateOrUpdateParams {
       params?: string | unknown | null;
 
       timeout?: number | null;
+    }
+
+    export interface Bash20241022 {
+      name?: string;
+
+      type?: 'bash_20241022';
+    }
+
+    /**
+     * Anthropic new tools
+     */
+    export interface Computer20241022 {
+      display_height_px?: number;
+
+      display_number?: number;
+
+      display_width_px?: number;
+
+      name?: string;
+
+      type?: 'computer_20241022';
     }
 
     /**
@@ -10565,6 +11423,12 @@ export namespace TaskCreateOrUpdateParams {
       resource_id?: string | null;
 
       subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
+    }
+
+    export interface TextEditor20241022 {
+      name?: string;
+
+      type?: 'text_editor_20241022';
     }
   }
 }
