@@ -45,7 +45,6 @@ export {
 export { JobStatus, Jobs } from './jobs';
 export {
   Task,
-  Tool,
   TaskCreateParams,
   TaskListParams,
   TaskCreateOrUpdateParams,
