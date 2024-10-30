@@ -122,6 +122,8 @@ export namespace DocSearchParams {
     limit?: number;
 
     metadata_filter?: Record<string, number | string | boolean | null>;
+
+    mmr_strength?: number;
   }
 
   export interface VectorDocSearchRequest {
@@ -134,6 +136,8 @@ export namespace DocSearchParams {
     limit?: number;
 
     metadata_filter?: Record<string, number | string | boolean | null>;
+
+    mmr_strength?: number;
   }
 
   export interface HybridDocSearchRequest {
@@ -150,6 +154,8 @@ export namespace DocSearchParams {
     limit?: number;
 
     metadata_filter?: Record<string, number | string | boolean | null>;
+
+    mmr_strength?: number;
   }
 }
 
