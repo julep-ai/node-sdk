@@ -122,11 +122,14 @@ export interface ToolListResponse {
     | ToolListResponse.WikipediaIntegrationDef
     | ToolListResponse.WeatherIntegrationDef
     | ToolListResponse.BrowserbaseContextIntegrationDef
+    | ToolListResponse.BrowserbaseExtensionIntegrationDef
     | ToolListResponse.BrowserbaseListSessionsIntegrationDef
     | ToolListResponse.BrowserbaseCreateSessionIntegrationDef
     | ToolListResponse.BrowserbaseGetSessionIntegrationDef
-    | ToolListResponse.BrowserbaseUpdateSessionIntegrationDef
+    | ToolListResponse.BrowserbaseCompleteSessionIntegrationDef
     | ToolListResponse.BrowserbaseGetSessionLiveURLsIntegrationDef
+    | ToolListResponse.BrowserbaseGetSessionConnectURLIntegrationDef
+    | ToolListResponse.RemoteBrowserIntegrationDef
     | null;
 
   /**
@@ -392,7 +395,7 @@ export namespace ToolListResponse {
    * browserbase context provider
    */
   export interface BrowserbaseContextIntegrationDef {
-    arguments?: unknown | null;
+    arguments?: BrowserbaseContextIntegrationDef.Arguments | null;
 
     method?: 'create_context';
 
@@ -405,6 +408,41 @@ export namespace ToolListResponse {
   }
 
   export namespace BrowserbaseContextIntegrationDef {
+    export interface Arguments {
+      projectId: string;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase extension provider
+   */
+  export interface BrowserbaseExtensionIntegrationDef {
+    arguments?: BrowserbaseExtensionIntegrationDef.Arguments | null;
+
+    method?: 'install_extension_from_github' | null;
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseExtensionIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseExtensionIntegrationDef {
+    export interface Arguments {
+      repositoryName: string;
+
+      ref?: string | null;
+    }
+
     /**
      * The setup parameters for the browserbase integration
      */
@@ -511,22 +549,22 @@ export namespace ToolListResponse {
   }
 
   /**
-   * browserbase update session integration definition
+   * browserbase complete session integration definition
    */
-  export interface BrowserbaseUpdateSessionIntegrationDef {
-    arguments: BrowserbaseUpdateSessionIntegrationDef.Arguments;
+  export interface BrowserbaseCompleteSessionIntegrationDef {
+    arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
 
-    method?: 'update_session';
+    method?: 'complete_session';
 
     provider?: 'browserbase';
 
     /**
      * The setup parameters for the browserbase integration
      */
-    setup?: BrowserbaseUpdateSessionIntegrationDef.Setup | null;
+    setup?: BrowserbaseCompleteSessionIntegrationDef.Setup | null;
   }
 
-  export namespace BrowserbaseUpdateSessionIntegrationDef {
+  export namespace BrowserbaseCompleteSessionIntegrationDef {
     export interface Arguments {
       id: string;
 
@@ -567,6 +605,91 @@ export namespace ToolListResponse {
      */
     export interface Setup {
       api_key: string;
+    }
+  }
+
+  /**
+   * browserbase get session connect url integration definition
+   */
+  export interface BrowserbaseGetSessionConnectURLIntegrationDef {
+    arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+
+    method?: 'get_connect_url';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseGetSessionConnectURLIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseGetSessionConnectURLIntegrationDef {
+    export interface Arguments {
+      id: string;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * The integration definition for the remote browser
+   */
+  export interface RemoteBrowserIntegrationDef {
+    /**
+     * The arguments for the remote browser
+     */
+    arguments: RemoteBrowserIntegrationDef.Arguments;
+
+    /**
+     * The setup parameters for the remote browser
+     */
+    setup: RemoteBrowserIntegrationDef.Setup;
+
+    method?: 'perform_action';
+
+    provider?: 'remote_browser';
+  }
+
+  export namespace RemoteBrowserIntegrationDef {
+    /**
+     * The arguments for the remote browser
+     */
+    export interface Arguments {
+      action:
+        | 'key'
+        | 'type'
+        | 'mouse_move'
+        | 'left_click'
+        | 'left_click_drag'
+        | 'right_click'
+        | 'middle_click'
+        | 'double_click'
+        | 'screenshot'
+        | 'cursor_position'
+        | 'navigate'
+        | 'refresh'
+        | 'wait_for_load';
+
+      coordinate?: Array<unknown> | null;
+
+      text?: string | null;
+    }
+
+    /**
+     * The setup parameters for the remote browser
+     */
+    export interface Setup {
+      connect_url: string;
+
+      height?: number | null;
+
+      width?: number | null;
     }
   }
 
@@ -637,11 +760,14 @@ export interface ToolCreateParams {
     | ToolCreateParams.WikipediaIntegrationDef
     | ToolCreateParams.WeatherIntegrationDef
     | ToolCreateParams.BrowserbaseContextIntegrationDef
+    | ToolCreateParams.BrowserbaseExtensionIntegrationDef
     | ToolCreateParams.BrowserbaseListSessionsIntegrationDef
     | ToolCreateParams.BrowserbaseCreateSessionIntegrationDef
     | ToolCreateParams.BrowserbaseGetSessionIntegrationDef
-    | ToolCreateParams.BrowserbaseUpdateSessionIntegrationDef
+    | ToolCreateParams.BrowserbaseCompleteSessionIntegrationDef
     | ToolCreateParams.BrowserbaseGetSessionLiveURLsIntegrationDef
+    | ToolCreateParams.BrowserbaseGetSessionConnectURLIntegrationDef
+    | ToolCreateParams.RemoteBrowserIntegrationDef
     | null;
 
   /**
@@ -907,7 +1033,7 @@ export namespace ToolCreateParams {
    * browserbase context provider
    */
   export interface BrowserbaseContextIntegrationDef {
-    arguments?: unknown | null;
+    arguments?: BrowserbaseContextIntegrationDef.Arguments | null;
 
     method?: 'create_context';
 
@@ -920,6 +1046,41 @@ export namespace ToolCreateParams {
   }
 
   export namespace BrowserbaseContextIntegrationDef {
+    export interface Arguments {
+      projectId: string;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase extension provider
+   */
+  export interface BrowserbaseExtensionIntegrationDef {
+    arguments?: BrowserbaseExtensionIntegrationDef.Arguments | null;
+
+    method?: 'install_extension_from_github' | null;
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseExtensionIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseExtensionIntegrationDef {
+    export interface Arguments {
+      repositoryName: string;
+
+      ref?: string | null;
+    }
+
     /**
      * The setup parameters for the browserbase integration
      */
@@ -1026,22 +1187,22 @@ export namespace ToolCreateParams {
   }
 
   /**
-   * browserbase update session integration definition
+   * browserbase complete session integration definition
    */
-  export interface BrowserbaseUpdateSessionIntegrationDef {
-    arguments: BrowserbaseUpdateSessionIntegrationDef.Arguments;
+  export interface BrowserbaseCompleteSessionIntegrationDef {
+    arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
 
-    method?: 'update_session';
+    method?: 'complete_session';
 
     provider?: 'browserbase';
 
     /**
      * The setup parameters for the browserbase integration
      */
-    setup?: BrowserbaseUpdateSessionIntegrationDef.Setup | null;
+    setup?: BrowserbaseCompleteSessionIntegrationDef.Setup | null;
   }
 
-  export namespace BrowserbaseUpdateSessionIntegrationDef {
+  export namespace BrowserbaseCompleteSessionIntegrationDef {
     export interface Arguments {
       id: string;
 
@@ -1082,6 +1243,91 @@ export namespace ToolCreateParams {
      */
     export interface Setup {
       api_key: string;
+    }
+  }
+
+  /**
+   * browserbase get session connect url integration definition
+   */
+  export interface BrowserbaseGetSessionConnectURLIntegrationDef {
+    arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+
+    method?: 'get_connect_url';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseGetSessionConnectURLIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseGetSessionConnectURLIntegrationDef {
+    export interface Arguments {
+      id: string;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * The integration definition for the remote browser
+   */
+  export interface RemoteBrowserIntegrationDef {
+    /**
+     * The arguments for the remote browser
+     */
+    arguments: RemoteBrowserIntegrationDef.Arguments;
+
+    /**
+     * The setup parameters for the remote browser
+     */
+    setup: RemoteBrowserIntegrationDef.Setup;
+
+    method?: 'perform_action';
+
+    provider?: 'remote_browser';
+  }
+
+  export namespace RemoteBrowserIntegrationDef {
+    /**
+     * The arguments for the remote browser
+     */
+    export interface Arguments {
+      action:
+        | 'key'
+        | 'type'
+        | 'mouse_move'
+        | 'left_click'
+        | 'left_click_drag'
+        | 'right_click'
+        | 'middle_click'
+        | 'double_click'
+        | 'screenshot'
+        | 'cursor_position'
+        | 'navigate'
+        | 'refresh'
+        | 'wait_for_load';
+
+      coordinate?: Array<unknown> | null;
+
+      text?: string | null;
+    }
+
+    /**
+     * The setup parameters for the remote browser
+     */
+    export interface Setup {
+      connect_url: string;
+
+      height?: number | null;
+
+      width?: number | null;
     }
   }
 
@@ -1152,11 +1398,14 @@ export interface ToolUpdateParams {
     | ToolUpdateParams.WikipediaIntegrationDef
     | ToolUpdateParams.WeatherIntegrationDef
     | ToolUpdateParams.BrowserbaseContextIntegrationDef
+    | ToolUpdateParams.BrowserbaseExtensionIntegrationDef
     | ToolUpdateParams.BrowserbaseListSessionsIntegrationDef
     | ToolUpdateParams.BrowserbaseCreateSessionIntegrationDef
     | ToolUpdateParams.BrowserbaseGetSessionIntegrationDef
-    | ToolUpdateParams.BrowserbaseUpdateSessionIntegrationDef
+    | ToolUpdateParams.BrowserbaseCompleteSessionIntegrationDef
     | ToolUpdateParams.BrowserbaseGetSessionLiveURLsIntegrationDef
+    | ToolUpdateParams.BrowserbaseGetSessionConnectURLIntegrationDef
+    | ToolUpdateParams.RemoteBrowserIntegrationDef
     | null;
 
   /**
@@ -1422,7 +1671,7 @@ export namespace ToolUpdateParams {
    * browserbase context provider
    */
   export interface BrowserbaseContextIntegrationDef {
-    arguments?: unknown | null;
+    arguments?: BrowserbaseContextIntegrationDef.Arguments | null;
 
     method?: 'create_context';
 
@@ -1435,6 +1684,41 @@ export namespace ToolUpdateParams {
   }
 
   export namespace BrowserbaseContextIntegrationDef {
+    export interface Arguments {
+      projectId: string;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * browserbase extension provider
+   */
+  export interface BrowserbaseExtensionIntegrationDef {
+    arguments?: BrowserbaseExtensionIntegrationDef.Arguments | null;
+
+    method?: 'install_extension_from_github' | null;
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseExtensionIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseExtensionIntegrationDef {
+    export interface Arguments {
+      repositoryName: string;
+
+      ref?: string | null;
+    }
+
     /**
      * The setup parameters for the browserbase integration
      */
@@ -1541,22 +1825,22 @@ export namespace ToolUpdateParams {
   }
 
   /**
-   * browserbase update session integration definition
+   * browserbase complete session integration definition
    */
-  export interface BrowserbaseUpdateSessionIntegrationDef {
-    arguments: BrowserbaseUpdateSessionIntegrationDef.Arguments;
+  export interface BrowserbaseCompleteSessionIntegrationDef {
+    arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
 
-    method?: 'update_session';
+    method?: 'complete_session';
 
     provider?: 'browserbase';
 
     /**
      * The setup parameters for the browserbase integration
      */
-    setup?: BrowserbaseUpdateSessionIntegrationDef.Setup | null;
+    setup?: BrowserbaseCompleteSessionIntegrationDef.Setup | null;
   }
 
-  export namespace BrowserbaseUpdateSessionIntegrationDef {
+  export namespace BrowserbaseCompleteSessionIntegrationDef {
     export interface Arguments {
       id: string;
 
@@ -1597,6 +1881,91 @@ export namespace ToolUpdateParams {
      */
     export interface Setup {
       api_key: string;
+    }
+  }
+
+  /**
+   * browserbase get session connect url integration definition
+   */
+  export interface BrowserbaseGetSessionConnectURLIntegrationDef {
+    arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+
+    method?: 'get_connect_url';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseGetSessionConnectURLIntegrationDef.Setup | null;
+  }
+
+  export namespace BrowserbaseGetSessionConnectURLIntegrationDef {
+    export interface Arguments {
+      id: string;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key: string;
+    }
+  }
+
+  /**
+   * The integration definition for the remote browser
+   */
+  export interface RemoteBrowserIntegrationDef {
+    /**
+     * The arguments for the remote browser
+     */
+    arguments: RemoteBrowserIntegrationDef.Arguments;
+
+    /**
+     * The setup parameters for the remote browser
+     */
+    setup: RemoteBrowserIntegrationDef.Setup;
+
+    method?: 'perform_action';
+
+    provider?: 'remote_browser';
+  }
+
+  export namespace RemoteBrowserIntegrationDef {
+    /**
+     * The arguments for the remote browser
+     */
+    export interface Arguments {
+      action:
+        | 'key'
+        | 'type'
+        | 'mouse_move'
+        | 'left_click'
+        | 'left_click_drag'
+        | 'right_click'
+        | 'middle_click'
+        | 'double_click'
+        | 'screenshot'
+        | 'cursor_position'
+        | 'navigate'
+        | 'refresh'
+        | 'wait_for_load';
+
+      coordinate?: Array<unknown> | null;
+
+      text?: string | null;
+    }
+
+    /**
+     * The setup parameters for the remote browser
+     */
+    export interface Setup {
+      connect_url: string;
+
+      height?: number | null;
+
+      width?: number | null;
     }
   }
 
@@ -1671,11 +2040,14 @@ export interface ToolPatchParams {
     | ToolPatchParams.WikipediaIntegrationDefUpdate
     | ToolPatchParams.WeatherIntegrationDefUpdate
     | ToolPatchParams.BrowserbaseContextIntegrationDefUpdate
+    | ToolPatchParams.BrowserbaseExtensionIntegrationDefUpdate
     | ToolPatchParams.BrowserbaseListSessionsIntegrationDefUpdate
     | ToolPatchParams.BrowserbaseCreateSessionIntegrationDefUpdate
     | ToolPatchParams.BrowserbaseGetSessionIntegrationDefUpdate
-    | ToolPatchParams.BrowserbaseUpdateSessionIntegrationDefUpdate
+    | ToolPatchParams.BrowserbaseCompleteSessionIntegrationDefUpdate
     | ToolPatchParams.BrowserbaseGetSessionLiveURLsIntegrationDefUpdate
+    | ToolPatchParams.BrowserbaseGetSessionConnectURLIntegrationDefUpdate
+    | ToolPatchParams.RemoteBrowserIntegrationDefUpdate
     | null;
 
   name?: string | null;
@@ -1943,7 +2315,7 @@ export namespace ToolPatchParams {
    * browserbase context provider
    */
   export interface BrowserbaseContextIntegrationDefUpdate {
-    arguments?: unknown | null;
+    arguments?: BrowserbaseContextIntegrationDefUpdate.Arguments | null;
 
     method?: 'create_context';
 
@@ -1956,6 +2328,41 @@ export namespace ToolPatchParams {
   }
 
   export namespace BrowserbaseContextIntegrationDefUpdate {
+    export interface Arguments {
+      projectId?: string | null;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key?: string | null;
+    }
+  }
+
+  /**
+   * browserbase extension provider
+   */
+  export interface BrowserbaseExtensionIntegrationDefUpdate {
+    arguments?: BrowserbaseExtensionIntegrationDefUpdate.Arguments | null;
+
+    method?: 'install_extension_from_github' | null;
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseExtensionIntegrationDefUpdate.Setup | null;
+  }
+
+  export namespace BrowserbaseExtensionIntegrationDefUpdate {
+    export interface Arguments {
+      ref?: string | null;
+
+      repositoryName?: string | null;
+    }
+
     /**
      * The setup parameters for the browserbase integration
      */
@@ -2062,26 +2469,26 @@ export namespace ToolPatchParams {
   }
 
   /**
-   * browserbase update session integration definition
+   * browserbase complete session integration definition
    */
-  export interface BrowserbaseUpdateSessionIntegrationDefUpdate {
-    arguments?: BrowserbaseUpdateSessionIntegrationDefUpdate.Arguments | null;
+  export interface BrowserbaseCompleteSessionIntegrationDefUpdate {
+    arguments?: BrowserbaseCompleteSessionIntegrationDefUpdate.Arguments | null;
 
-    method?: 'update_session';
+    method?: 'complete_session';
 
     provider?: 'browserbase';
 
     /**
      * The setup parameters for the browserbase integration
      */
-    setup?: BrowserbaseUpdateSessionIntegrationDefUpdate.Setup | null;
+    setup?: BrowserbaseCompleteSessionIntegrationDefUpdate.Setup | null;
   }
 
-  export namespace BrowserbaseUpdateSessionIntegrationDefUpdate {
+  export namespace BrowserbaseCompleteSessionIntegrationDefUpdate {
     export interface Arguments {
       id?: string | null;
 
-      status?: 'REQUEST_RELEASE' | null;
+      status?: 'REQUEST_RELEASE';
     }
 
     /**
@@ -2118,6 +2525,92 @@ export namespace ToolPatchParams {
      */
     export interface Setup {
       api_key?: string | null;
+    }
+  }
+
+  /**
+   * browserbase get session connect url integration definition
+   */
+  export interface BrowserbaseGetSessionConnectURLIntegrationDefUpdate {
+    arguments?: BrowserbaseGetSessionConnectURLIntegrationDefUpdate.Arguments | null;
+
+    method?: 'get_connect_url';
+
+    provider?: 'browserbase';
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    setup?: BrowserbaseGetSessionConnectURLIntegrationDefUpdate.Setup | null;
+  }
+
+  export namespace BrowserbaseGetSessionConnectURLIntegrationDefUpdate {
+    export interface Arguments {
+      id?: string | null;
+    }
+
+    /**
+     * The setup parameters for the browserbase integration
+     */
+    export interface Setup {
+      api_key?: string | null;
+    }
+  }
+
+  /**
+   * The integration definition for the remote browser
+   */
+  export interface RemoteBrowserIntegrationDefUpdate {
+    /**
+     * The arguments for the remote browser
+     */
+    arguments?: RemoteBrowserIntegrationDefUpdate.Arguments | null;
+
+    method?: 'perform_action';
+
+    provider?: 'remote_browser';
+
+    /**
+     * The setup parameters for the remote browser
+     */
+    setup?: RemoteBrowserIntegrationDefUpdate.Setup | null;
+  }
+
+  export namespace RemoteBrowserIntegrationDefUpdate {
+    /**
+     * The arguments for the remote browser
+     */
+    export interface Arguments {
+      action?:
+        | 'key'
+        | 'type'
+        | 'mouse_move'
+        | 'left_click'
+        | 'left_click_drag'
+        | 'right_click'
+        | 'middle_click'
+        | 'double_click'
+        | 'screenshot'
+        | 'cursor_position'
+        | 'navigate'
+        | 'refresh'
+        | 'wait_for_load'
+        | null;
+
+      coordinate?: Array<unknown> | null;
+
+      text?: string | null;
+    }
+
+    /**
+     * The setup parameters for the remote browser
+     */
+    export interface Setup {
+      connect_url?: string | null;
+
+      height?: number | null;
+
+      width?: number | null;
     }
   }
 
