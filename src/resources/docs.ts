@@ -45,6 +45,8 @@ export interface Snippet {
   content: string;
 
   index: number;
+
+  embedding?: Array<number> | null;
 }
 
 export type DocEmbedParams =
