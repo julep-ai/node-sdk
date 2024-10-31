@@ -113,6 +113,7 @@ describe('resource sessions', () => {
       tools: [
         {
           name: 'name',
+          type: 'function',
           api_call: {
             method: 'GET',
             url: 'https://example.com',
@@ -123,6 +124,7 @@ describe('resource sessions', () => {
             headers: { foo: 'string' },
             json: {},
             params: 'string',
+            schema: {},
             timeout: 0,
           },
           bash_20241022: { name: 'name', type: 'bash_20241022' },
@@ -147,6 +149,7 @@ describe('resource sessions', () => {
         },
         {
           name: 'name',
+          type: 'function',
           api_call: {
             method: 'GET',
             url: 'https://example.com',
@@ -157,6 +160,7 @@ describe('resource sessions', () => {
             headers: { foo: 'string' },
             json: {},
             params: 'string',
+            schema: {},
             timeout: 0,
           },
           bash_20241022: { name: 'name', type: 'bash_20241022' },
@@ -181,6 +185,7 @@ describe('resource sessions', () => {
         },
         {
           name: 'name',
+          type: 'function',
           api_call: {
             method: 'GET',
             url: 'https://example.com',
@@ -191,6 +196,7 @@ describe('resource sessions', () => {
             headers: { foo: 'string' },
             json: {},
             params: 'string',
+            schema: {},
             timeout: 0,
           },
           bash_20241022: { name: 'name', type: 'bash_20241022' },

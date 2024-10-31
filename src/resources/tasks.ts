@@ -107,6 +107,8 @@ export namespace Task {
     evaluate: Record<string, string>;
 
     kind_?: 'evaluate';
+
+    label?: string | null;
   }
 
   export interface ToolCallStep {
@@ -115,6 +117,8 @@ export namespace Task {
     arguments?: Record<string, Record<string, string> | string> | '_';
 
     kind_?: 'tool_call';
+
+    label?: string | null;
   }
 
   export interface PromptStepOutput {
@@ -123,6 +127,8 @@ export namespace Task {
     forward_tool_results?: boolean | null;
 
     kind_?: 'prompt';
+
+    label?: string | null;
 
     settings?: SessionsAPI.ChatSettings | null;
 
@@ -211,6 +217,15 @@ export namespace Task {
     export interface CreateToolRequestOutput {
       name: string;
 
+      type:
+        | 'function'
+        | 'integration'
+        | 'system'
+        | 'api_call'
+        | 'computer_20241022'
+        | 'text_editor_20241022'
+        | 'bash_20241022';
+
       /**
        * API call definition
        */
@@ -281,6 +296,8 @@ export namespace Task {
         json?: unknown | null;
 
         params?: string | unknown | null;
+
+        schema?: unknown | null;
 
         timeout?: number | null;
       }
@@ -851,18 +868,24 @@ export namespace Task {
     get: string;
 
     kind_?: 'get';
+
+    label?: string | null;
   }
 
   export interface SetStep {
     set: Record<string, string>;
 
     kind_?: 'set';
+
+    label?: string | null;
   }
 
   export interface LogStep {
     log: string;
 
     kind_?: 'log';
+
+    label?: string | null;
   }
 
   export interface YieldStep {
@@ -871,18 +894,24 @@ export namespace Task {
     arguments?: Record<string, string> | '_';
 
     kind_?: 'yield';
+
+    label?: string | null;
   }
 
   export interface ReturnStep {
     return: Record<string, string>;
 
     kind_?: 'return';
+
+    label?: string | null;
   }
 
   export interface SleepStep {
     sleep: SleepStep.Sleep;
 
     kind_?: 'sleep';
+
+    label?: string | null;
   }
 
   export namespace SleepStep {
@@ -901,12 +930,16 @@ export namespace Task {
     error: string;
 
     kind_?: 'error';
+
+    label?: string | null;
   }
 
   export interface WaitForInputStep {
     wait_for_input: WaitForInputStep.WaitForInput;
 
     kind_?: 'wait_for_input';
+
+    label?: string | null;
   }
 
   export namespace WaitForInputStep {
@@ -946,6 +979,8 @@ export namespace Task {
       | null;
 
     kind_?: 'if_else';
+
+    label?: string | null;
   }
 
   export namespace IfElseWorkflowStepOutput {
@@ -953,6 +988,8 @@ export namespace Task {
       evaluate: Record<string, string>;
 
       kind_?: 'evaluate';
+
+      label?: string | null;
     }
 
     export interface ToolCallStep {
@@ -961,6 +998,8 @@ export namespace Task {
       arguments?: Record<string, Record<string, string> | string> | '_';
 
       kind_?: 'tool_call';
+
+      label?: string | null;
     }
 
     export interface PromptStepOutput {
@@ -969,6 +1008,8 @@ export namespace Task {
       forward_tool_results?: boolean | null;
 
       kind_?: 'prompt';
+
+      label?: string | null;
 
       settings?: SessionsAPI.ChatSettings | null;
 
@@ -1057,6 +1098,15 @@ export namespace Task {
       export interface CreateToolRequestOutput {
         name: string;
 
+        type:
+          | 'function'
+          | 'integration'
+          | 'system'
+          | 'api_call'
+          | 'computer_20241022'
+          | 'text_editor_20241022'
+          | 'bash_20241022';
+
         /**
          * API call definition
          */
@@ -1127,6 +1177,8 @@ export namespace Task {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          schema?: unknown | null;
 
           timeout?: number | null;
         }
@@ -1697,18 +1749,24 @@ export namespace Task {
       get: string;
 
       kind_?: 'get';
+
+      label?: string | null;
     }
 
     export interface SetStep {
       set: Record<string, string>;
 
       kind_?: 'set';
+
+      label?: string | null;
     }
 
     export interface LogStep {
       log: string;
 
       kind_?: 'log';
+
+      label?: string | null;
     }
 
     export interface YieldStep {
@@ -1717,18 +1775,24 @@ export namespace Task {
       arguments?: Record<string, string> | '_';
 
       kind_?: 'yield';
+
+      label?: string | null;
     }
 
     export interface ReturnStep {
       return: Record<string, string>;
 
       kind_?: 'return';
+
+      label?: string | null;
     }
 
     export interface SleepStep {
       sleep: SleepStep.Sleep;
 
       kind_?: 'sleep';
+
+      label?: string | null;
     }
 
     export namespace SleepStep {
@@ -1747,12 +1811,16 @@ export namespace Task {
       error: string;
 
       kind_?: 'error';
+
+      label?: string | null;
     }
 
     export interface WaitForInputStep {
       wait_for_input: WaitForInputStep.WaitForInput;
 
       kind_?: 'wait_for_input';
+
+      label?: string | null;
     }
 
     export namespace WaitForInputStep {
@@ -1765,6 +1833,8 @@ export namespace Task {
       evaluate: Record<string, string>;
 
       kind_?: 'evaluate';
+
+      label?: string | null;
     }
 
     export interface ToolCallStep {
@@ -1773,6 +1843,8 @@ export namespace Task {
       arguments?: Record<string, Record<string, string> | string> | '_';
 
       kind_?: 'tool_call';
+
+      label?: string | null;
     }
 
     export interface PromptStepOutput {
@@ -1781,6 +1853,8 @@ export namespace Task {
       forward_tool_results?: boolean | null;
 
       kind_?: 'prompt';
+
+      label?: string | null;
 
       settings?: SessionsAPI.ChatSettings | null;
 
@@ -1869,6 +1943,15 @@ export namespace Task {
       export interface CreateToolRequestOutput {
         name: string;
 
+        type:
+          | 'function'
+          | 'integration'
+          | 'system'
+          | 'api_call'
+          | 'computer_20241022'
+          | 'text_editor_20241022'
+          | 'bash_20241022';
+
         /**
          * API call definition
          */
@@ -1939,6 +2022,8 @@ export namespace Task {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          schema?: unknown | null;
 
           timeout?: number | null;
         }
@@ -2509,18 +2594,24 @@ export namespace Task {
       get: string;
 
       kind_?: 'get';
+
+      label?: string | null;
     }
 
     export interface SetStep {
       set: Record<string, string>;
 
       kind_?: 'set';
+
+      label?: string | null;
     }
 
     export interface LogStep {
       log: string;
 
       kind_?: 'log';
+
+      label?: string | null;
     }
 
     export interface YieldStep {
@@ -2529,18 +2620,24 @@ export namespace Task {
       arguments?: Record<string, string> | '_';
 
       kind_?: 'yield';
+
+      label?: string | null;
     }
 
     export interface ReturnStep {
       return: Record<string, string>;
 
       kind_?: 'return';
+
+      label?: string | null;
     }
 
     export interface SleepStep {
       sleep: SleepStep.Sleep;
 
       kind_?: 'sleep';
+
+      label?: string | null;
     }
 
     export namespace SleepStep {
@@ -2559,12 +2656,16 @@ export namespace Task {
       error: string;
 
       kind_?: 'error';
+
+      label?: string | null;
     }
 
     export interface WaitForInputStep {
       wait_for_input: WaitForInputStep.WaitForInput;
 
       kind_?: 'wait_for_input';
+
+      label?: string | null;
     }
 
     export namespace WaitForInputStep {
@@ -2578,6 +2679,8 @@ export namespace Task {
     switch: Array<SwitchStepOutput.Switch>;
 
     kind_?: 'switch';
+
+    label?: string | null;
   }
 
   export namespace SwitchStepOutput {
@@ -2603,6 +2706,8 @@ export namespace Task {
         evaluate: Record<string, string>;
 
         kind_?: 'evaluate';
+
+        label?: string | null;
       }
 
       export interface ToolCallStep {
@@ -2611,6 +2716,8 @@ export namespace Task {
         arguments?: Record<string, Record<string, string> | string> | '_';
 
         kind_?: 'tool_call';
+
+        label?: string | null;
       }
 
       export interface PromptStepOutput {
@@ -2619,6 +2726,8 @@ export namespace Task {
         forward_tool_results?: boolean | null;
 
         kind_?: 'prompt';
+
+        label?: string | null;
 
         settings?: SessionsAPI.ChatSettings | null;
 
@@ -2707,6 +2816,15 @@ export namespace Task {
         export interface CreateToolRequestOutput {
           name: string;
 
+          type:
+            | 'function'
+            | 'integration'
+            | 'system'
+            | 'api_call'
+            | 'computer_20241022'
+            | 'text_editor_20241022'
+            | 'bash_20241022';
+
           /**
            * API call definition
            */
@@ -2777,6 +2895,8 @@ export namespace Task {
             json?: unknown | null;
 
             params?: string | unknown | null;
+
+            schema?: unknown | null;
 
             timeout?: number | null;
           }
@@ -3347,18 +3467,24 @@ export namespace Task {
         get: string;
 
         kind_?: 'get';
+
+        label?: string | null;
       }
 
       export interface SetStep {
         set: Record<string, string>;
 
         kind_?: 'set';
+
+        label?: string | null;
       }
 
       export interface LogStep {
         log: string;
 
         kind_?: 'log';
+
+        label?: string | null;
       }
 
       export interface YieldStep {
@@ -3367,18 +3493,24 @@ export namespace Task {
         arguments?: Record<string, string> | '_';
 
         kind_?: 'yield';
+
+        label?: string | null;
       }
 
       export interface ReturnStep {
         return: Record<string, string>;
 
         kind_?: 'return';
+
+        label?: string | null;
       }
 
       export interface SleepStep {
         sleep: SleepStep.Sleep;
 
         kind_?: 'sleep';
+
+        label?: string | null;
       }
 
       export namespace SleepStep {
@@ -3397,12 +3529,16 @@ export namespace Task {
         error: string;
 
         kind_?: 'error';
+
+        label?: string | null;
       }
 
       export interface WaitForInputStep {
         wait_for_input: WaitForInputStep.WaitForInput;
 
         kind_?: 'wait_for_input';
+
+        label?: string | null;
       }
 
       export namespace WaitForInputStep {
@@ -3417,6 +3553,8 @@ export namespace Task {
     foreach: ForeachStepOutput.Foreach;
 
     kind_?: 'foreach';
+
+    label?: string | null;
   }
 
   export namespace ForeachStepOutput {
@@ -3439,6 +3577,8 @@ export namespace Task {
         wait_for_input: WaitForInputStep.WaitForInput;
 
         kind_?: 'wait_for_input';
+
+        label?: string | null;
       }
 
       export namespace WaitForInputStep {
@@ -3451,6 +3591,8 @@ export namespace Task {
         evaluate: Record<string, string>;
 
         kind_?: 'evaluate';
+
+        label?: string | null;
       }
 
       export interface ToolCallStep {
@@ -3459,6 +3601,8 @@ export namespace Task {
         arguments?: Record<string, Record<string, string> | string> | '_';
 
         kind_?: 'tool_call';
+
+        label?: string | null;
       }
 
       export interface PromptStepOutput {
@@ -3467,6 +3611,8 @@ export namespace Task {
         forward_tool_results?: boolean | null;
 
         kind_?: 'prompt';
+
+        label?: string | null;
 
         settings?: SessionsAPI.ChatSettings | null;
 
@@ -3555,6 +3701,15 @@ export namespace Task {
         export interface CreateToolRequestOutput {
           name: string;
 
+          type:
+            | 'function'
+            | 'integration'
+            | 'system'
+            | 'api_call'
+            | 'computer_20241022'
+            | 'text_editor_20241022'
+            | 'bash_20241022';
+
           /**
            * API call definition
            */
@@ -3625,6 +3780,8 @@ export namespace Task {
             json?: unknown | null;
 
             params?: string | unknown | null;
+
+            schema?: unknown | null;
 
             timeout?: number | null;
           }
@@ -4195,18 +4352,24 @@ export namespace Task {
         get: string;
 
         kind_?: 'get';
+
+        label?: string | null;
       }
 
       export interface SetStep {
         set: Record<string, string>;
 
         kind_?: 'set';
+
+        label?: string | null;
       }
 
       export interface LogStep {
         log: string;
 
         kind_?: 'log';
+
+        label?: string | null;
       }
 
       export interface YieldStep {
@@ -4215,6 +4378,8 @@ export namespace Task {
         arguments?: Record<string, string> | '_';
 
         kind_?: 'yield';
+
+        label?: string | null;
       }
     }
   }
@@ -4231,6 +4396,8 @@ export namespace Task {
     >;
 
     kind_?: 'parallel';
+
+    label?: string | null;
   }
 
   export namespace ParallelStepOutput {
@@ -4238,6 +4405,8 @@ export namespace Task {
       evaluate: Record<string, string>;
 
       kind_?: 'evaluate';
+
+      label?: string | null;
     }
 
     export interface ToolCallStep {
@@ -4246,6 +4415,8 @@ export namespace Task {
       arguments?: Record<string, Record<string, string> | string> | '_';
 
       kind_?: 'tool_call';
+
+      label?: string | null;
     }
 
     export interface PromptStepOutput {
@@ -4254,6 +4425,8 @@ export namespace Task {
       forward_tool_results?: boolean | null;
 
       kind_?: 'prompt';
+
+      label?: string | null;
 
       settings?: SessionsAPI.ChatSettings | null;
 
@@ -4342,6 +4515,15 @@ export namespace Task {
       export interface CreateToolRequestOutput {
         name: string;
 
+        type:
+          | 'function'
+          | 'integration'
+          | 'system'
+          | 'api_call'
+          | 'computer_20241022'
+          | 'text_editor_20241022'
+          | 'bash_20241022';
+
         /**
          * API call definition
          */
@@ -4412,6 +4594,8 @@ export namespace Task {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          schema?: unknown | null;
 
           timeout?: number | null;
         }
@@ -4982,18 +5166,24 @@ export namespace Task {
       get: string;
 
       kind_?: 'get';
+
+      label?: string | null;
     }
 
     export interface SetStep {
       set: Record<string, string>;
 
       kind_?: 'set';
+
+      label?: string | null;
     }
 
     export interface LogStep {
       log: string;
 
       kind_?: 'log';
+
+      label?: string | null;
     }
 
     export interface YieldStep {
@@ -5002,6 +5192,8 @@ export namespace Task {
       arguments?: Record<string, string> | '_';
 
       kind_?: 'yield';
+
+      label?: string | null;
     }
   }
 
@@ -5021,6 +5213,8 @@ export namespace Task {
 
     kind_?: 'map_reduce';
 
+    label?: string | null;
+
     parallelism?: number | null;
 
     reduce?: string | null;
@@ -5031,6 +5225,8 @@ export namespace Task {
       evaluate: Record<string, string>;
 
       kind_?: 'evaluate';
+
+      label?: string | null;
     }
 
     export interface ToolCallStep {
@@ -5039,6 +5235,8 @@ export namespace Task {
       arguments?: Record<string, Record<string, string> | string> | '_';
 
       kind_?: 'tool_call';
+
+      label?: string | null;
     }
 
     export interface PromptStepOutput {
@@ -5047,6 +5245,8 @@ export namespace Task {
       forward_tool_results?: boolean | null;
 
       kind_?: 'prompt';
+
+      label?: string | null;
 
       settings?: SessionsAPI.ChatSettings | null;
 
@@ -5135,6 +5335,15 @@ export namespace Task {
       export interface CreateToolRequestOutput {
         name: string;
 
+        type:
+          | 'function'
+          | 'integration'
+          | 'system'
+          | 'api_call'
+          | 'computer_20241022'
+          | 'text_editor_20241022'
+          | 'bash_20241022';
+
         /**
          * API call definition
          */
@@ -5205,6 +5414,8 @@ export namespace Task {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          schema?: unknown | null;
 
           timeout?: number | null;
         }
@@ -5775,18 +5986,24 @@ export namespace Task {
       get: string;
 
       kind_?: 'get';
+
+      label?: string | null;
     }
 
     export interface SetStep {
       set: Record<string, string>;
 
       kind_?: 'set';
+
+      label?: string | null;
     }
 
     export interface LogStep {
       log: string;
 
       kind_?: 'log';
+
+      label?: string | null;
     }
 
     export interface YieldStep {
@@ -5795,11 +6012,22 @@ export namespace Task {
       arguments?: Record<string, string> | '_';
 
       kind_?: 'yield';
+
+      label?: string | null;
     }
   }
 
   export interface Tool {
     name: string;
+
+    type:
+      | 'function'
+      | 'integration'
+      | 'system'
+      | 'api_call'
+      | 'computer_20241022'
+      | 'text_editor_20241022'
+      | 'bash_20241022';
 
     /**
      * API call definition
@@ -5873,6 +6101,8 @@ export namespace Task {
       json?: unknown | null;
 
       params?: string | unknown | null;
+
+      schema?: unknown | null;
 
       timeout?: number | null;
     }
@@ -6475,18 +6705,24 @@ export interface TaskCreateParams {
 export namespace TaskCreateParams {
   export interface EvaluateStep {
     evaluate: Record<string, string>;
+
+    label?: string | null;
   }
 
   export interface ToolCallStep {
     tool: string;
 
     arguments?: Record<string, Record<string, string> | string> | '_';
+
+    label?: string | null;
   }
 
   export interface PromptStepInput {
     prompt: Array<PromptStepInput.UnionMember0> | string;
 
     forward_tool_results?: boolean | null;
+
+    label?: string | null;
 
     settings?: SessionsAPI.ChatSettings | null;
 
@@ -6575,6 +6811,15 @@ export namespace TaskCreateParams {
     export interface CreateToolRequestInput {
       name: string;
 
+      type:
+        | 'function'
+        | 'integration'
+        | 'system'
+        | 'api_call'
+        | 'computer_20241022'
+        | 'text_editor_20241022'
+        | 'bash_20241022';
+
       /**
        * API call definition
        */
@@ -6645,6 +6890,8 @@ export namespace TaskCreateParams {
         json?: unknown | null;
 
         params?: string | unknown | null;
+
+        schema?: unknown | null;
 
         timeout?: number | null;
       }
@@ -7213,28 +7460,40 @@ export namespace TaskCreateParams {
 
   export interface GetStep {
     get: string;
+
+    label?: string | null;
   }
 
   export interface SetStep {
     set: Record<string, string>;
+
+    label?: string | null;
   }
 
   export interface LogStep {
     log: string;
+
+    label?: string | null;
   }
 
   export interface YieldStep {
     workflow: string;
 
     arguments?: Record<string, string> | '_';
+
+    label?: string | null;
   }
 
   export interface ReturnStep {
     return: Record<string, string>;
+
+    label?: string | null;
   }
 
   export interface SleepStep {
     sleep: SleepStep.Sleep;
+
+    label?: string | null;
   }
 
   export namespace SleepStep {
@@ -7251,10 +7510,14 @@ export namespace TaskCreateParams {
 
   export interface ErrorWorkflowStep {
     error: string;
+
+    label?: string | null;
   }
 
   export interface WaitForInputStep {
     wait_for_input: WaitForInputStep.WaitForInput;
+
+    label?: string | null;
   }
 
   export namespace WaitForInputStep {
@@ -7292,23 +7555,31 @@ export namespace TaskCreateParams {
       | IfElseWorkflowStepInput.ErrorWorkflowStep
       | IfElseWorkflowStepInput.WaitForInputStep
       | null;
+
+    label?: string | null;
   }
 
   export namespace IfElseWorkflowStepInput {
     export interface EvaluateStep {
       evaluate: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface ToolCallStep {
       tool: string;
 
       arguments?: Record<string, Record<string, string> | string> | '_';
+
+      label?: string | null;
     }
 
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
       forward_tool_results?: boolean | null;
+
+      label?: string | null;
 
       settings?: SessionsAPI.ChatSettings | null;
 
@@ -7397,6 +7668,15 @@ export namespace TaskCreateParams {
       export interface CreateToolRequestInput {
         name: string;
 
+        type:
+          | 'function'
+          | 'integration'
+          | 'system'
+          | 'api_call'
+          | 'computer_20241022'
+          | 'text_editor_20241022'
+          | 'bash_20241022';
+
         /**
          * API call definition
          */
@@ -7467,6 +7747,8 @@ export namespace TaskCreateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          schema?: unknown | null;
 
           timeout?: number | null;
         }
@@ -8035,28 +8317,40 @@ export namespace TaskCreateParams {
 
     export interface GetStep {
       get: string;
+
+      label?: string | null;
     }
 
     export interface SetStep {
       set: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface LogStep {
       log: string;
+
+      label?: string | null;
     }
 
     export interface YieldStep {
       workflow: string;
 
       arguments?: Record<string, string> | '_';
+
+      label?: string | null;
     }
 
     export interface ReturnStep {
       return: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface SleepStep {
       sleep: SleepStep.Sleep;
+
+      label?: string | null;
     }
 
     export namespace SleepStep {
@@ -8073,10 +8367,14 @@ export namespace TaskCreateParams {
 
     export interface ErrorWorkflowStep {
       error: string;
+
+      label?: string | null;
     }
 
     export interface WaitForInputStep {
       wait_for_input: WaitForInputStep.WaitForInput;
+
+      label?: string | null;
     }
 
     export namespace WaitForInputStep {
@@ -8087,18 +8385,24 @@ export namespace TaskCreateParams {
 
     export interface EvaluateStep {
       evaluate: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface ToolCallStep {
       tool: string;
 
       arguments?: Record<string, Record<string, string> | string> | '_';
+
+      label?: string | null;
     }
 
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
       forward_tool_results?: boolean | null;
+
+      label?: string | null;
 
       settings?: SessionsAPI.ChatSettings | null;
 
@@ -8187,6 +8491,15 @@ export namespace TaskCreateParams {
       export interface CreateToolRequestInput {
         name: string;
 
+        type:
+          | 'function'
+          | 'integration'
+          | 'system'
+          | 'api_call'
+          | 'computer_20241022'
+          | 'text_editor_20241022'
+          | 'bash_20241022';
+
         /**
          * API call definition
          */
@@ -8257,6 +8570,8 @@ export namespace TaskCreateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          schema?: unknown | null;
 
           timeout?: number | null;
         }
@@ -8825,28 +9140,40 @@ export namespace TaskCreateParams {
 
     export interface GetStep {
       get: string;
+
+      label?: string | null;
     }
 
     export interface SetStep {
       set: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface LogStep {
       log: string;
+
+      label?: string | null;
     }
 
     export interface YieldStep {
       workflow: string;
 
       arguments?: Record<string, string> | '_';
+
+      label?: string | null;
     }
 
     export interface ReturnStep {
       return: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface SleepStep {
       sleep: SleepStep.Sleep;
+
+      label?: string | null;
     }
 
     export namespace SleepStep {
@@ -8863,10 +9190,14 @@ export namespace TaskCreateParams {
 
     export interface ErrorWorkflowStep {
       error: string;
+
+      label?: string | null;
     }
 
     export interface WaitForInputStep {
       wait_for_input: WaitForInputStep.WaitForInput;
+
+      label?: string | null;
     }
 
     export namespace WaitForInputStep {
@@ -8878,6 +9209,8 @@ export namespace TaskCreateParams {
 
   export interface SwitchStepInput {
     switch: Array<SwitchStepInput.Switch>;
+
+    label?: string | null;
   }
 
   export namespace SwitchStepInput {
@@ -8901,18 +9234,24 @@ export namespace TaskCreateParams {
     export namespace Switch {
       export interface EvaluateStep {
         evaluate: Record<string, string>;
+
+        label?: string | null;
       }
 
       export interface ToolCallStep {
         tool: string;
 
         arguments?: Record<string, Record<string, string> | string> | '_';
+
+        label?: string | null;
       }
 
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
         forward_tool_results?: boolean | null;
+
+        label?: string | null;
 
         settings?: SessionsAPI.ChatSettings | null;
 
@@ -9001,6 +9340,15 @@ export namespace TaskCreateParams {
         export interface CreateToolRequestInput {
           name: string;
 
+          type:
+            | 'function'
+            | 'integration'
+            | 'system'
+            | 'api_call'
+            | 'computer_20241022'
+            | 'text_editor_20241022'
+            | 'bash_20241022';
+
           /**
            * API call definition
            */
@@ -9071,6 +9419,8 @@ export namespace TaskCreateParams {
             json?: unknown | null;
 
             params?: string | unknown | null;
+
+            schema?: unknown | null;
 
             timeout?: number | null;
           }
@@ -9639,28 +9989,40 @@ export namespace TaskCreateParams {
 
       export interface GetStep {
         get: string;
+
+        label?: string | null;
       }
 
       export interface SetStep {
         set: Record<string, string>;
+
+        label?: string | null;
       }
 
       export interface LogStep {
         log: string;
+
+        label?: string | null;
       }
 
       export interface YieldStep {
         workflow: string;
 
         arguments?: Record<string, string> | '_';
+
+        label?: string | null;
       }
 
       export interface ReturnStep {
         return: Record<string, string>;
+
+        label?: string | null;
       }
 
       export interface SleepStep {
         sleep: SleepStep.Sleep;
+
+        label?: string | null;
       }
 
       export namespace SleepStep {
@@ -9677,10 +10039,14 @@ export namespace TaskCreateParams {
 
       export interface ErrorWorkflowStep {
         error: string;
+
+        label?: string | null;
       }
 
       export interface WaitForInputStep {
         wait_for_input: WaitForInputStep.WaitForInput;
+
+        label?: string | null;
       }
 
       export namespace WaitForInputStep {
@@ -9693,6 +10059,8 @@ export namespace TaskCreateParams {
 
   export interface ForeachStepInput {
     foreach: ForeachStepInput.Foreach;
+
+    label?: string | null;
   }
 
   export namespace ForeachStepInput {
@@ -9713,6 +10081,8 @@ export namespace TaskCreateParams {
     export namespace Foreach {
       export interface WaitForInputStep {
         wait_for_input: WaitForInputStep.WaitForInput;
+
+        label?: string | null;
       }
 
       export namespace WaitForInputStep {
@@ -9723,18 +10093,24 @@ export namespace TaskCreateParams {
 
       export interface EvaluateStep {
         evaluate: Record<string, string>;
+
+        label?: string | null;
       }
 
       export interface ToolCallStep {
         tool: string;
 
         arguments?: Record<string, Record<string, string> | string> | '_';
+
+        label?: string | null;
       }
 
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
         forward_tool_results?: boolean | null;
+
+        label?: string | null;
 
         settings?: SessionsAPI.ChatSettings | null;
 
@@ -9823,6 +10199,15 @@ export namespace TaskCreateParams {
         export interface CreateToolRequestInput {
           name: string;
 
+          type:
+            | 'function'
+            | 'integration'
+            | 'system'
+            | 'api_call'
+            | 'computer_20241022'
+            | 'text_editor_20241022'
+            | 'bash_20241022';
+
           /**
            * API call definition
            */
@@ -9893,6 +10278,8 @@ export namespace TaskCreateParams {
             json?: unknown | null;
 
             params?: string | unknown | null;
+
+            schema?: unknown | null;
 
             timeout?: number | null;
           }
@@ -10461,20 +10848,28 @@ export namespace TaskCreateParams {
 
       export interface GetStep {
         get: string;
+
+        label?: string | null;
       }
 
       export interface SetStep {
         set: Record<string, string>;
+
+        label?: string | null;
       }
 
       export interface LogStep {
         log: string;
+
+        label?: string | null;
       }
 
       export interface YieldStep {
         workflow: string;
 
         arguments?: Record<string, string> | '_';
+
+        label?: string | null;
       }
     }
   }
@@ -10489,23 +10884,31 @@ export namespace TaskCreateParams {
       | ParallelStepInput.LogStep
       | ParallelStepInput.YieldStep
     >;
+
+    label?: string | null;
   }
 
   export namespace ParallelStepInput {
     export interface EvaluateStep {
       evaluate: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface ToolCallStep {
       tool: string;
 
       arguments?: Record<string, Record<string, string> | string> | '_';
+
+      label?: string | null;
     }
 
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
       forward_tool_results?: boolean | null;
+
+      label?: string | null;
 
       settings?: SessionsAPI.ChatSettings | null;
 
@@ -10594,6 +10997,15 @@ export namespace TaskCreateParams {
       export interface CreateToolRequestInput {
         name: string;
 
+        type:
+          | 'function'
+          | 'integration'
+          | 'system'
+          | 'api_call'
+          | 'computer_20241022'
+          | 'text_editor_20241022'
+          | 'bash_20241022';
+
         /**
          * API call definition
          */
@@ -10664,6 +11076,8 @@ export namespace TaskCreateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          schema?: unknown | null;
 
           timeout?: number | null;
         }
@@ -11232,20 +11646,28 @@ export namespace TaskCreateParams {
 
     export interface GetStep {
       get: string;
+
+      label?: string | null;
     }
 
     export interface SetStep {
       set: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface LogStep {
       log: string;
+
+      label?: string | null;
     }
 
     export interface YieldStep {
       workflow: string;
 
       arguments?: Record<string, string> | '_';
+
+      label?: string | null;
     }
   }
 
@@ -11263,6 +11685,8 @@ export namespace TaskCreateParams {
 
     initial?: unknown;
 
+    label?: string | null;
+
     parallelism?: number | null;
 
     reduce?: string | null;
@@ -11271,18 +11695,24 @@ export namespace TaskCreateParams {
   export namespace MainInput {
     export interface EvaluateStep {
       evaluate: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface ToolCallStep {
       tool: string;
 
       arguments?: Record<string, Record<string, string> | string> | '_';
+
+      label?: string | null;
     }
 
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
       forward_tool_results?: boolean | null;
+
+      label?: string | null;
 
       settings?: SessionsAPI.ChatSettings | null;
 
@@ -11371,6 +11801,15 @@ export namespace TaskCreateParams {
       export interface CreateToolRequestInput {
         name: string;
 
+        type:
+          | 'function'
+          | 'integration'
+          | 'system'
+          | 'api_call'
+          | 'computer_20241022'
+          | 'text_editor_20241022'
+          | 'bash_20241022';
+
         /**
          * API call definition
          */
@@ -11441,6 +11880,8 @@ export namespace TaskCreateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          schema?: unknown | null;
 
           timeout?: number | null;
         }
@@ -12009,25 +12450,42 @@ export namespace TaskCreateParams {
 
     export interface GetStep {
       get: string;
+
+      label?: string | null;
     }
 
     export interface SetStep {
       set: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface LogStep {
       log: string;
+
+      label?: string | null;
     }
 
     export interface YieldStep {
       workflow: string;
 
       arguments?: Record<string, string> | '_';
+
+      label?: string | null;
     }
   }
 
   export interface Tool {
     name: string;
+
+    type:
+      | 'function'
+      | 'integration'
+      | 'system'
+      | 'api_call'
+      | 'computer_20241022'
+      | 'text_editor_20241022'
+      | 'bash_20241022';
 
     /**
      * API call definition
@@ -12099,6 +12557,8 @@ export namespace TaskCreateParams {
       json?: unknown | null;
 
       params?: string | unknown | null;
+
+      schema?: unknown | null;
 
       timeout?: number | null;
     }
@@ -12707,18 +13167,24 @@ export interface TaskCreateOrUpdateParams {
 export namespace TaskCreateOrUpdateParams {
   export interface EvaluateStep {
     evaluate: Record<string, string>;
+
+    label?: string | null;
   }
 
   export interface ToolCallStep {
     tool: string;
 
     arguments?: Record<string, Record<string, string> | string> | '_';
+
+    label?: string | null;
   }
 
   export interface PromptStepInput {
     prompt: Array<PromptStepInput.UnionMember0> | string;
 
     forward_tool_results?: boolean | null;
+
+    label?: string | null;
 
     settings?: SessionsAPI.ChatSettings | null;
 
@@ -12807,6 +13273,15 @@ export namespace TaskCreateOrUpdateParams {
     export interface CreateToolRequestInput {
       name: string;
 
+      type:
+        | 'function'
+        | 'integration'
+        | 'system'
+        | 'api_call'
+        | 'computer_20241022'
+        | 'text_editor_20241022'
+        | 'bash_20241022';
+
       /**
        * API call definition
        */
@@ -12877,6 +13352,8 @@ export namespace TaskCreateOrUpdateParams {
         json?: unknown | null;
 
         params?: string | unknown | null;
+
+        schema?: unknown | null;
 
         timeout?: number | null;
       }
@@ -13445,28 +13922,40 @@ export namespace TaskCreateOrUpdateParams {
 
   export interface GetStep {
     get: string;
+
+    label?: string | null;
   }
 
   export interface SetStep {
     set: Record<string, string>;
+
+    label?: string | null;
   }
 
   export interface LogStep {
     log: string;
+
+    label?: string | null;
   }
 
   export interface YieldStep {
     workflow: string;
 
     arguments?: Record<string, string> | '_';
+
+    label?: string | null;
   }
 
   export interface ReturnStep {
     return: Record<string, string>;
+
+    label?: string | null;
   }
 
   export interface SleepStep {
     sleep: SleepStep.Sleep;
+
+    label?: string | null;
   }
 
   export namespace SleepStep {
@@ -13483,10 +13972,14 @@ export namespace TaskCreateOrUpdateParams {
 
   export interface ErrorWorkflowStep {
     error: string;
+
+    label?: string | null;
   }
 
   export interface WaitForInputStep {
     wait_for_input: WaitForInputStep.WaitForInput;
+
+    label?: string | null;
   }
 
   export namespace WaitForInputStep {
@@ -13524,23 +14017,31 @@ export namespace TaskCreateOrUpdateParams {
       | IfElseWorkflowStepInput.ErrorWorkflowStep
       | IfElseWorkflowStepInput.WaitForInputStep
       | null;
+
+    label?: string | null;
   }
 
   export namespace IfElseWorkflowStepInput {
     export interface EvaluateStep {
       evaluate: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface ToolCallStep {
       tool: string;
 
       arguments?: Record<string, Record<string, string> | string> | '_';
+
+      label?: string | null;
     }
 
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
       forward_tool_results?: boolean | null;
+
+      label?: string | null;
 
       settings?: SessionsAPI.ChatSettings | null;
 
@@ -13629,6 +14130,15 @@ export namespace TaskCreateOrUpdateParams {
       export interface CreateToolRequestInput {
         name: string;
 
+        type:
+          | 'function'
+          | 'integration'
+          | 'system'
+          | 'api_call'
+          | 'computer_20241022'
+          | 'text_editor_20241022'
+          | 'bash_20241022';
+
         /**
          * API call definition
          */
@@ -13699,6 +14209,8 @@ export namespace TaskCreateOrUpdateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          schema?: unknown | null;
 
           timeout?: number | null;
         }
@@ -14267,28 +14779,40 @@ export namespace TaskCreateOrUpdateParams {
 
     export interface GetStep {
       get: string;
+
+      label?: string | null;
     }
 
     export interface SetStep {
       set: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface LogStep {
       log: string;
+
+      label?: string | null;
     }
 
     export interface YieldStep {
       workflow: string;
 
       arguments?: Record<string, string> | '_';
+
+      label?: string | null;
     }
 
     export interface ReturnStep {
       return: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface SleepStep {
       sleep: SleepStep.Sleep;
+
+      label?: string | null;
     }
 
     export namespace SleepStep {
@@ -14305,10 +14829,14 @@ export namespace TaskCreateOrUpdateParams {
 
     export interface ErrorWorkflowStep {
       error: string;
+
+      label?: string | null;
     }
 
     export interface WaitForInputStep {
       wait_for_input: WaitForInputStep.WaitForInput;
+
+      label?: string | null;
     }
 
     export namespace WaitForInputStep {
@@ -14319,18 +14847,24 @@ export namespace TaskCreateOrUpdateParams {
 
     export interface EvaluateStep {
       evaluate: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface ToolCallStep {
       tool: string;
 
       arguments?: Record<string, Record<string, string> | string> | '_';
+
+      label?: string | null;
     }
 
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
       forward_tool_results?: boolean | null;
+
+      label?: string | null;
 
       settings?: SessionsAPI.ChatSettings | null;
 
@@ -14419,6 +14953,15 @@ export namespace TaskCreateOrUpdateParams {
       export interface CreateToolRequestInput {
         name: string;
 
+        type:
+          | 'function'
+          | 'integration'
+          | 'system'
+          | 'api_call'
+          | 'computer_20241022'
+          | 'text_editor_20241022'
+          | 'bash_20241022';
+
         /**
          * API call definition
          */
@@ -14489,6 +15032,8 @@ export namespace TaskCreateOrUpdateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          schema?: unknown | null;
 
           timeout?: number | null;
         }
@@ -15057,28 +15602,40 @@ export namespace TaskCreateOrUpdateParams {
 
     export interface GetStep {
       get: string;
+
+      label?: string | null;
     }
 
     export interface SetStep {
       set: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface LogStep {
       log: string;
+
+      label?: string | null;
     }
 
     export interface YieldStep {
       workflow: string;
 
       arguments?: Record<string, string> | '_';
+
+      label?: string | null;
     }
 
     export interface ReturnStep {
       return: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface SleepStep {
       sleep: SleepStep.Sleep;
+
+      label?: string | null;
     }
 
     export namespace SleepStep {
@@ -15095,10 +15652,14 @@ export namespace TaskCreateOrUpdateParams {
 
     export interface ErrorWorkflowStep {
       error: string;
+
+      label?: string | null;
     }
 
     export interface WaitForInputStep {
       wait_for_input: WaitForInputStep.WaitForInput;
+
+      label?: string | null;
     }
 
     export namespace WaitForInputStep {
@@ -15110,6 +15671,8 @@ export namespace TaskCreateOrUpdateParams {
 
   export interface SwitchStepInput {
     switch: Array<SwitchStepInput.Switch>;
+
+    label?: string | null;
   }
 
   export namespace SwitchStepInput {
@@ -15133,18 +15696,24 @@ export namespace TaskCreateOrUpdateParams {
     export namespace Switch {
       export interface EvaluateStep {
         evaluate: Record<string, string>;
+
+        label?: string | null;
       }
 
       export interface ToolCallStep {
         tool: string;
 
         arguments?: Record<string, Record<string, string> | string> | '_';
+
+        label?: string | null;
       }
 
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
         forward_tool_results?: boolean | null;
+
+        label?: string | null;
 
         settings?: SessionsAPI.ChatSettings | null;
 
@@ -15233,6 +15802,15 @@ export namespace TaskCreateOrUpdateParams {
         export interface CreateToolRequestInput {
           name: string;
 
+          type:
+            | 'function'
+            | 'integration'
+            | 'system'
+            | 'api_call'
+            | 'computer_20241022'
+            | 'text_editor_20241022'
+            | 'bash_20241022';
+
           /**
            * API call definition
            */
@@ -15303,6 +15881,8 @@ export namespace TaskCreateOrUpdateParams {
             json?: unknown | null;
 
             params?: string | unknown | null;
+
+            schema?: unknown | null;
 
             timeout?: number | null;
           }
@@ -15871,28 +16451,40 @@ export namespace TaskCreateOrUpdateParams {
 
       export interface GetStep {
         get: string;
+
+        label?: string | null;
       }
 
       export interface SetStep {
         set: Record<string, string>;
+
+        label?: string | null;
       }
 
       export interface LogStep {
         log: string;
+
+        label?: string | null;
       }
 
       export interface YieldStep {
         workflow: string;
 
         arguments?: Record<string, string> | '_';
+
+        label?: string | null;
       }
 
       export interface ReturnStep {
         return: Record<string, string>;
+
+        label?: string | null;
       }
 
       export interface SleepStep {
         sleep: SleepStep.Sleep;
+
+        label?: string | null;
       }
 
       export namespace SleepStep {
@@ -15909,10 +16501,14 @@ export namespace TaskCreateOrUpdateParams {
 
       export interface ErrorWorkflowStep {
         error: string;
+
+        label?: string | null;
       }
 
       export interface WaitForInputStep {
         wait_for_input: WaitForInputStep.WaitForInput;
+
+        label?: string | null;
       }
 
       export namespace WaitForInputStep {
@@ -15925,6 +16521,8 @@ export namespace TaskCreateOrUpdateParams {
 
   export interface ForeachStepInput {
     foreach: ForeachStepInput.Foreach;
+
+    label?: string | null;
   }
 
   export namespace ForeachStepInput {
@@ -15945,6 +16543,8 @@ export namespace TaskCreateOrUpdateParams {
     export namespace Foreach {
       export interface WaitForInputStep {
         wait_for_input: WaitForInputStep.WaitForInput;
+
+        label?: string | null;
       }
 
       export namespace WaitForInputStep {
@@ -15955,18 +16555,24 @@ export namespace TaskCreateOrUpdateParams {
 
       export interface EvaluateStep {
         evaluate: Record<string, string>;
+
+        label?: string | null;
       }
 
       export interface ToolCallStep {
         tool: string;
 
         arguments?: Record<string, Record<string, string> | string> | '_';
+
+        label?: string | null;
       }
 
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
         forward_tool_results?: boolean | null;
+
+        label?: string | null;
 
         settings?: SessionsAPI.ChatSettings | null;
 
@@ -16055,6 +16661,15 @@ export namespace TaskCreateOrUpdateParams {
         export interface CreateToolRequestInput {
           name: string;
 
+          type:
+            | 'function'
+            | 'integration'
+            | 'system'
+            | 'api_call'
+            | 'computer_20241022'
+            | 'text_editor_20241022'
+            | 'bash_20241022';
+
           /**
            * API call definition
            */
@@ -16125,6 +16740,8 @@ export namespace TaskCreateOrUpdateParams {
             json?: unknown | null;
 
             params?: string | unknown | null;
+
+            schema?: unknown | null;
 
             timeout?: number | null;
           }
@@ -16693,20 +17310,28 @@ export namespace TaskCreateOrUpdateParams {
 
       export interface GetStep {
         get: string;
+
+        label?: string | null;
       }
 
       export interface SetStep {
         set: Record<string, string>;
+
+        label?: string | null;
       }
 
       export interface LogStep {
         log: string;
+
+        label?: string | null;
       }
 
       export interface YieldStep {
         workflow: string;
 
         arguments?: Record<string, string> | '_';
+
+        label?: string | null;
       }
     }
   }
@@ -16721,23 +17346,31 @@ export namespace TaskCreateOrUpdateParams {
       | ParallelStepInput.LogStep
       | ParallelStepInput.YieldStep
     >;
+
+    label?: string | null;
   }
 
   export namespace ParallelStepInput {
     export interface EvaluateStep {
       evaluate: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface ToolCallStep {
       tool: string;
 
       arguments?: Record<string, Record<string, string> | string> | '_';
+
+      label?: string | null;
     }
 
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
       forward_tool_results?: boolean | null;
+
+      label?: string | null;
 
       settings?: SessionsAPI.ChatSettings | null;
 
@@ -16826,6 +17459,15 @@ export namespace TaskCreateOrUpdateParams {
       export interface CreateToolRequestInput {
         name: string;
 
+        type:
+          | 'function'
+          | 'integration'
+          | 'system'
+          | 'api_call'
+          | 'computer_20241022'
+          | 'text_editor_20241022'
+          | 'bash_20241022';
+
         /**
          * API call definition
          */
@@ -16896,6 +17538,8 @@ export namespace TaskCreateOrUpdateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          schema?: unknown | null;
 
           timeout?: number | null;
         }
@@ -17464,20 +18108,28 @@ export namespace TaskCreateOrUpdateParams {
 
     export interface GetStep {
       get: string;
+
+      label?: string | null;
     }
 
     export interface SetStep {
       set: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface LogStep {
       log: string;
+
+      label?: string | null;
     }
 
     export interface YieldStep {
       workflow: string;
 
       arguments?: Record<string, string> | '_';
+
+      label?: string | null;
     }
   }
 
@@ -17495,6 +18147,8 @@ export namespace TaskCreateOrUpdateParams {
 
     initial?: unknown;
 
+    label?: string | null;
+
     parallelism?: number | null;
 
     reduce?: string | null;
@@ -17503,18 +18157,24 @@ export namespace TaskCreateOrUpdateParams {
   export namespace MainInput {
     export interface EvaluateStep {
       evaluate: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface ToolCallStep {
       tool: string;
 
       arguments?: Record<string, Record<string, string> | string> | '_';
+
+      label?: string | null;
     }
 
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
       forward_tool_results?: boolean | null;
+
+      label?: string | null;
 
       settings?: SessionsAPI.ChatSettings | null;
 
@@ -17603,6 +18263,15 @@ export namespace TaskCreateOrUpdateParams {
       export interface CreateToolRequestInput {
         name: string;
 
+        type:
+          | 'function'
+          | 'integration'
+          | 'system'
+          | 'api_call'
+          | 'computer_20241022'
+          | 'text_editor_20241022'
+          | 'bash_20241022';
+
         /**
          * API call definition
          */
@@ -17673,6 +18342,8 @@ export namespace TaskCreateOrUpdateParams {
           json?: unknown | null;
 
           params?: string | unknown | null;
+
+          schema?: unknown | null;
 
           timeout?: number | null;
         }
@@ -18241,25 +18912,42 @@ export namespace TaskCreateOrUpdateParams {
 
     export interface GetStep {
       get: string;
+
+      label?: string | null;
     }
 
     export interface SetStep {
       set: Record<string, string>;
+
+      label?: string | null;
     }
 
     export interface LogStep {
       log: string;
+
+      label?: string | null;
     }
 
     export interface YieldStep {
       workflow: string;
 
       arguments?: Record<string, string> | '_';
+
+      label?: string | null;
     }
   }
 
   export interface Tool {
     name: string;
+
+    type:
+      | 'function'
+      | 'integration'
+      | 'system'
+      | 'api_call'
+      | 'computer_20241022'
+      | 'text_editor_20241022'
+      | 'bash_20241022';
 
     /**
      * API call definition
@@ -18331,6 +19019,8 @@ export namespace TaskCreateOrUpdateParams {
       json?: unknown | null;
 
       params?: string | unknown | null;
+
+      schema?: unknown | null;
 
       timeout?: number | null;
     }
