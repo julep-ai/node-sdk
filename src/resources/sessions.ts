@@ -185,6 +185,15 @@ export namespace ChatInput {
 
     name: string;
 
+    type:
+      | 'function'
+      | 'integration'
+      | 'system'
+      | 'api_call'
+      | 'computer_20241022'
+      | 'text_editor_20241022'
+      | 'bash_20241022';
+
     updated_at: string;
 
     /**
@@ -257,6 +266,8 @@ export namespace ChatInput {
       json?: unknown | null;
 
       params?: string | unknown | null;
+
+      schema?: unknown | null;
 
       timeout?: number | null;
     }
@@ -1378,6 +1389,15 @@ export namespace Entry {
 
     name: string;
 
+    type:
+      | 'function'
+      | 'integration'
+      | 'system'
+      | 'api_call'
+      | 'computer_20241022'
+      | 'text_editor_20241022'
+      | 'bash_20241022';
+
     updated_at: string;
 
     /**
@@ -1450,6 +1470,8 @@ export namespace Entry {
       json?: unknown | null;
 
       params?: string | unknown | null;
+
+      schema?: unknown | null;
 
       timeout?: number | null;
     }
@@ -2158,6 +2180,15 @@ export namespace Entry {
 
     name: string;
 
+    type:
+      | 'function'
+      | 'integration'
+      | 'system'
+      | 'api_call'
+      | 'computer_20241022'
+      | 'text_editor_20241022'
+      | 'bash_20241022';
+
     updated_at: string;
 
     /**
@@ -2230,6 +2261,8 @@ export namespace Entry {
       json?: unknown | null;
 
       params?: string | unknown | null;
+
+      schema?: unknown | null;
 
       timeout?: number | null;
     }
@@ -3303,6 +3336,15 @@ export namespace SessionChatParams {
   export interface Tool {
     name: string;
 
+    type:
+      | 'function'
+      | 'integration'
+      | 'system'
+      | 'api_call'
+      | 'computer_20241022'
+      | 'text_editor_20241022'
+      | 'bash_20241022';
+
     /**
      * API call definition
      */
@@ -3373,6 +3415,8 @@ export namespace SessionChatParams {
       json?: unknown | null;
 
       params?: string | unknown | null;
+
+      schema?: unknown | null;
 
       timeout?: number | null;
     }
