@@ -90,6 +90,15 @@ export interface ToolListResponse {
 
   name: string;
 
+  type:
+    | 'function'
+    | 'integration'
+    | 'system'
+    | 'api_call'
+    | 'computer_20241022'
+    | 'text_editor_20241022'
+    | 'bash_20241022';
+
   updated_at: string;
 
   /**
@@ -162,6 +171,8 @@ export namespace ToolListResponse {
     json?: unknown | null;
 
     params?: string | unknown | null;
+
+    schema?: unknown | null;
 
     timeout?: number | null;
   }
@@ -730,6 +741,15 @@ export namespace ToolListResponse {
 export interface ToolCreateParams {
   name: string;
 
+  type:
+    | 'function'
+    | 'integration'
+    | 'system'
+    | 'api_call'
+    | 'computer_20241022'
+    | 'text_editor_20241022'
+    | 'bash_20241022';
+
   /**
    * API call definition
    */
@@ -800,6 +820,8 @@ export namespace ToolCreateParams {
     json?: unknown | null;
 
     params?: string | unknown | null;
+
+    schema?: unknown | null;
 
     timeout?: number | null;
   }
@@ -1368,6 +1390,15 @@ export namespace ToolCreateParams {
 export interface ToolUpdateParams {
   name: string;
 
+  type:
+    | 'function'
+    | 'integration'
+    | 'system'
+    | 'api_call'
+    | 'computer_20241022'
+    | 'text_editor_20241022'
+    | 'bash_20241022';
+
   /**
    * API call definition
    */
@@ -1438,6 +1469,8 @@ export namespace ToolUpdateParams {
     json?: unknown | null;
 
     params?: string | unknown | null;
+
+    schema?: unknown | null;
 
     timeout?: number | null;
   }
@@ -2058,6 +2091,16 @@ export interface ToolPatchParams {
   system?: ToolPatchParams.System | null;
 
   text_editor_20241022?: ToolPatchParams.TextEditor20241022 | null;
+
+  type?:
+    | 'function'
+    | 'integration'
+    | 'system'
+    | 'api_call'
+    | 'computer_20241022'
+    | 'text_editor_20241022'
+    | 'bash_20241022'
+    | null;
 }
 
 export namespace ToolPatchParams {
@@ -2080,6 +2123,8 @@ export namespace ToolPatchParams {
     method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE' | null;
 
     params?: string | unknown | null;
+
+    schema?: unknown | null;
 
     timeout?: number | null;
 
