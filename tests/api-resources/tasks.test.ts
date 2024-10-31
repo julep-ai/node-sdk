@@ -25,7 +25,7 @@ describe('resource tasks', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.tasks.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-      main: [{ evaluate: { foo: 'string' } }],
+      main: [{ evaluate: { foo: 'string' }, label: 'label' }],
       name: 'name',
       description: 'description',
       inherit_tools: true,
@@ -34,6 +34,7 @@ describe('resource tasks', () => {
       tools: [
         {
           name: 'name',
+          type: 'function',
           api_call: {
             method: 'GET',
             url: 'https://example.com',
@@ -44,6 +45,7 @@ describe('resource tasks', () => {
             headers: { foo: 'string' },
             json: {},
             params: 'string',
+            schema: {},
             timeout: 0,
           },
           bash_20241022: { name: 'name', type: 'bash_20241022' },
@@ -68,6 +70,7 @@ describe('resource tasks', () => {
         },
         {
           name: 'name',
+          type: 'function',
           api_call: {
             method: 'GET',
             url: 'https://example.com',
@@ -78,6 +81,7 @@ describe('resource tasks', () => {
             headers: { foo: 'string' },
             json: {},
             params: 'string',
+            schema: {},
             timeout: 0,
           },
           bash_20241022: { name: 'name', type: 'bash_20241022' },
@@ -102,6 +106,7 @@ describe('resource tasks', () => {
         },
         {
           name: 'name',
+          type: 'function',
           api_call: {
             method: 'GET',
             url: 'https://example.com',
@@ -112,6 +117,7 @@ describe('resource tasks', () => {
             headers: { foo: 'string' },
             json: {},
             params: 'string',
+            schema: {},
             timeout: 0,
           },
           bash_20241022: { name: 'name', type: 'bash_20241022' },
@@ -187,7 +193,7 @@ describe('resource tasks', () => {
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       {
-        main: [{ evaluate: { foo: 'string' } }],
+        main: [{ evaluate: { foo: 'string' }, label: 'label' }],
         name: 'name',
         description: 'description',
         inherit_tools: true,
@@ -196,6 +202,7 @@ describe('resource tasks', () => {
         tools: [
           {
             name: 'name',
+            type: 'function',
             api_call: {
               method: 'GET',
               url: 'https://example.com',
@@ -206,6 +213,7 @@ describe('resource tasks', () => {
               headers: { foo: 'string' },
               json: {},
               params: 'string',
+              schema: {},
               timeout: 0,
             },
             bash_20241022: { name: 'name', type: 'bash_20241022' },
@@ -230,6 +238,7 @@ describe('resource tasks', () => {
           },
           {
             name: 'name',
+            type: 'function',
             api_call: {
               method: 'GET',
               url: 'https://example.com',
@@ -240,6 +249,7 @@ describe('resource tasks', () => {
               headers: { foo: 'string' },
               json: {},
               params: 'string',
+              schema: {},
               timeout: 0,
             },
             bash_20241022: { name: 'name', type: 'bash_20241022' },
@@ -264,6 +274,7 @@ describe('resource tasks', () => {
           },
           {
             name: 'name',
+            type: 'function',
             api_call: {
               method: 'GET',
               url: 'https://example.com',
@@ -274,6 +285,7 @@ describe('resource tasks', () => {
               headers: { foo: 'string' },
               json: {},
               params: 'string',
+              schema: {},
               timeout: 0,
             },
             bash_20241022: { name: 'name', type: 'bash_20241022' },

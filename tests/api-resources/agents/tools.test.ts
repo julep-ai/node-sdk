@@ -12,6 +12,7 @@ describe('resource tools', () => {
   test('create: only required params', async () => {
     const responsePromise = client.agents.tools.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       name: 'name',
+      type: 'function',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,6 +26,7 @@ describe('resource tools', () => {
   test('create: required and optional params', async () => {
     const response = await client.agents.tools.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       name: 'name',
+      type: 'function',
       api_call: {
         method: 'GET',
         url: 'https://example.com',
@@ -35,6 +37,7 @@ describe('resource tools', () => {
         headers: { foo: 'string' },
         json: {},
         params: 'string',
+        schema: {},
         timeout: 0,
       },
       bash_20241022: { name: 'name', type: 'bash_20241022' },
@@ -63,7 +66,7 @@ describe('resource tools', () => {
     const responsePromise = client.agents.tools.update(
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-      { name: 'name' },
+      { name: 'name', type: 'function' },
     );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -80,6 +83,7 @@ describe('resource tools', () => {
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       {
         name: 'name',
+        type: 'function',
         api_call: {
           method: 'GET',
           url: 'https://example.com',
@@ -90,6 +94,7 @@ describe('resource tools', () => {
           headers: { foo: 'string' },
           json: {},
           params: 'string',
+          schema: {},
           timeout: 0,
         },
         bash_20241022: { name: 'name', type: 'bash_20241022' },
