@@ -104,7 +104,7 @@ export interface Task {
 
 export namespace Task {
   export interface EvaluateStep {
-    evaluate: Record<string, string>;
+    evaluate: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
 
     kind_?: 'evaluate';
 
@@ -114,7 +114,29 @@ export namespace Task {
   export interface ToolCallStep {
     tool: string;
 
-    arguments?: Record<string, Record<string, string> | string> | '_';
+    arguments?:
+      | Record<
+          string,
+          | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+          | Array<
+              Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            >
+          | string
+        >
+      | Array<
+          Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        >
+      | '_';
 
     kind_?: 'tool_call';
 
@@ -812,6 +834,8 @@ export namespace Task {
             | 'refresh'
             | 'wait_for_load';
 
+          connect_url?: string | null;
+
           coordinate?: Array<unknown> | null;
 
           text?: string | null;
@@ -821,7 +845,7 @@ export namespace Task {
          * The setup parameters for the remote browser
          */
         export interface Setup {
-          connect_url: string;
+          connect_url?: string | null;
 
           height?: number | null;
 
@@ -891,7 +915,9 @@ export namespace Task {
   export interface YieldStep {
     workflow: string;
 
-    arguments?: Record<string, string> | '_';
+    arguments?:
+      | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+      | '_';
 
     kind_?: 'yield';
 
@@ -899,7 +925,7 @@ export namespace Task {
   }
 
   export interface ReturnStep {
-    return: Record<string, string>;
+    return: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
 
     kind_?: 'return';
 
@@ -944,7 +970,7 @@ export namespace Task {
 
   export namespace WaitForInputStep {
     export interface WaitForInput {
-      info: Record<string, string>;
+      info: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
     }
   }
 
@@ -985,7 +1011,10 @@ export namespace Task {
 
   export namespace IfElseWorkflowStepOutput {
     export interface EvaluateStep {
-      evaluate: Record<string, string>;
+      evaluate: Record<
+        string,
+        Array<string> | Record<string, string> | Array<Record<string, string>> | string
+      >;
 
       kind_?: 'evaluate';
 
@@ -995,7 +1024,35 @@ export namespace Task {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, Record<string, string> | string> | '_';
+      arguments?:
+        | Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        | Array<
+            Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          >
+        | '_';
 
       kind_?: 'tool_call';
 
@@ -1693,6 +1750,8 @@ export namespace Task {
               | 'refresh'
               | 'wait_for_load';
 
+            connect_url?: string | null;
+
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
@@ -1702,7 +1761,7 @@ export namespace Task {
            * The setup parameters for the remote browser
            */
           export interface Setup {
-            connect_url: string;
+            connect_url?: string | null;
 
             height?: number | null;
 
@@ -1772,7 +1831,9 @@ export namespace Task {
     export interface YieldStep {
       workflow: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?:
+        | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+        | '_';
 
       kind_?: 'yield';
 
@@ -1780,7 +1841,7 @@ export namespace Task {
     }
 
     export interface ReturnStep {
-      return: Record<string, string>;
+      return: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
 
       kind_?: 'return';
 
@@ -1825,12 +1886,15 @@ export namespace Task {
 
     export namespace WaitForInputStep {
       export interface WaitForInput {
-        info: Record<string, string>;
+        info: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
       }
     }
 
     export interface EvaluateStep {
-      evaluate: Record<string, string>;
+      evaluate: Record<
+        string,
+        Array<string> | Record<string, string> | Array<Record<string, string>> | string
+      >;
 
       kind_?: 'evaluate';
 
@@ -1840,7 +1904,35 @@ export namespace Task {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, Record<string, string> | string> | '_';
+      arguments?:
+        | Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        | Array<
+            Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          >
+        | '_';
 
       kind_?: 'tool_call';
 
@@ -2538,6 +2630,8 @@ export namespace Task {
               | 'refresh'
               | 'wait_for_load';
 
+            connect_url?: string | null;
+
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
@@ -2547,7 +2641,7 @@ export namespace Task {
            * The setup parameters for the remote browser
            */
           export interface Setup {
-            connect_url: string;
+            connect_url?: string | null;
 
             height?: number | null;
 
@@ -2617,7 +2711,9 @@ export namespace Task {
     export interface YieldStep {
       workflow: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?:
+        | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+        | '_';
 
       kind_?: 'yield';
 
@@ -2625,7 +2721,7 @@ export namespace Task {
     }
 
     export interface ReturnStep {
-      return: Record<string, string>;
+      return: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
 
       kind_?: 'return';
 
@@ -2670,7 +2766,7 @@ export namespace Task {
 
     export namespace WaitForInputStep {
       export interface WaitForInput {
-        info: Record<string, string>;
+        info: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
       }
     }
   }
@@ -2703,7 +2799,10 @@ export namespace Task {
 
     export namespace Switch {
       export interface EvaluateStep {
-        evaluate: Record<string, string>;
+        evaluate: Record<
+          string,
+          Array<string> | Record<string, string> | Array<Record<string, string>> | string
+        >;
 
         kind_?: 'evaluate';
 
@@ -2713,7 +2812,38 @@ export namespace Task {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?: Record<string, Record<string, string> | string> | '_';
+        arguments?:
+          | Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          | Array<
+              Record<
+                string,
+                | Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                | Array<
+                    Record<
+                      string,
+                      Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                    >
+                  >
+                | string
+              >
+            >
+          | '_';
 
         kind_?: 'tool_call';
 
@@ -3411,6 +3541,8 @@ export namespace Task {
                 | 'refresh'
                 | 'wait_for_load';
 
+              connect_url?: string | null;
+
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
@@ -3420,7 +3552,7 @@ export namespace Task {
              * The setup parameters for the remote browser
              */
             export interface Setup {
-              connect_url: string;
+              connect_url?: string | null;
 
               height?: number | null;
 
@@ -3490,7 +3622,9 @@ export namespace Task {
       export interface YieldStep {
         workflow: string;
 
-        arguments?: Record<string, string> | '_';
+        arguments?:
+          | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+          | '_';
 
         kind_?: 'yield';
 
@@ -3498,7 +3632,10 @@ export namespace Task {
       }
 
       export interface ReturnStep {
-        return: Record<string, string>;
+        return: Record<
+          string,
+          Array<string> | Record<string, string> | Array<Record<string, string>> | string
+        >;
 
         kind_?: 'return';
 
@@ -3543,7 +3680,10 @@ export namespace Task {
 
       export namespace WaitForInputStep {
         export interface WaitForInput {
-          info: Record<string, string>;
+          info: Record<
+            string,
+            Array<string> | Record<string, string> | Array<Record<string, string>> | string
+          >;
         }
       }
     }
@@ -3583,12 +3723,18 @@ export namespace Task {
 
       export namespace WaitForInputStep {
         export interface WaitForInput {
-          info: Record<string, string>;
+          info: Record<
+            string,
+            Array<string> | Record<string, string> | Array<Record<string, string>> | string
+          >;
         }
       }
 
       export interface EvaluateStep {
-        evaluate: Record<string, string>;
+        evaluate: Record<
+          string,
+          Array<string> | Record<string, string> | Array<Record<string, string>> | string
+        >;
 
         kind_?: 'evaluate';
 
@@ -3598,7 +3744,38 @@ export namespace Task {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?: Record<string, Record<string, string> | string> | '_';
+        arguments?:
+          | Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          | Array<
+              Record<
+                string,
+                | Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                | Array<
+                    Record<
+                      string,
+                      Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                    >
+                  >
+                | string
+              >
+            >
+          | '_';
 
         kind_?: 'tool_call';
 
@@ -4296,6 +4473,8 @@ export namespace Task {
                 | 'refresh'
                 | 'wait_for_load';
 
+              connect_url?: string | null;
+
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
@@ -4305,7 +4484,7 @@ export namespace Task {
              * The setup parameters for the remote browser
              */
             export interface Setup {
-              connect_url: string;
+              connect_url?: string | null;
 
               height?: number | null;
 
@@ -4375,7 +4554,9 @@ export namespace Task {
       export interface YieldStep {
         workflow: string;
 
-        arguments?: Record<string, string> | '_';
+        arguments?:
+          | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+          | '_';
 
         kind_?: 'yield';
 
@@ -4402,7 +4583,10 @@ export namespace Task {
 
   export namespace ParallelStepOutput {
     export interface EvaluateStep {
-      evaluate: Record<string, string>;
+      evaluate: Record<
+        string,
+        Array<string> | Record<string, string> | Array<Record<string, string>> | string
+      >;
 
       kind_?: 'evaluate';
 
@@ -4412,7 +4596,35 @@ export namespace Task {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, Record<string, string> | string> | '_';
+      arguments?:
+        | Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        | Array<
+            Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          >
+        | '_';
 
       kind_?: 'tool_call';
 
@@ -5110,6 +5322,8 @@ export namespace Task {
               | 'refresh'
               | 'wait_for_load';
 
+            connect_url?: string | null;
+
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
@@ -5119,7 +5333,7 @@ export namespace Task {
            * The setup parameters for the remote browser
            */
           export interface Setup {
-            connect_url: string;
+            connect_url?: string | null;
 
             height?: number | null;
 
@@ -5189,7 +5403,9 @@ export namespace Task {
     export interface YieldStep {
       workflow: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?:
+        | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+        | '_';
 
       kind_?: 'yield';
 
@@ -5222,7 +5438,10 @@ export namespace Task {
 
   export namespace MainOutput {
     export interface EvaluateStep {
-      evaluate: Record<string, string>;
+      evaluate: Record<
+        string,
+        Array<string> | Record<string, string> | Array<Record<string, string>> | string
+      >;
 
       kind_?: 'evaluate';
 
@@ -5232,7 +5451,35 @@ export namespace Task {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, Record<string, string> | string> | '_';
+      arguments?:
+        | Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        | Array<
+            Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          >
+        | '_';
 
       kind_?: 'tool_call';
 
@@ -5930,6 +6177,8 @@ export namespace Task {
               | 'refresh'
               | 'wait_for_load';
 
+            connect_url?: string | null;
+
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
@@ -5939,7 +6188,7 @@ export namespace Task {
            * The setup parameters for the remote browser
            */
           export interface Setup {
-            connect_url: string;
+            connect_url?: string | null;
 
             height?: number | null;
 
@@ -6009,7 +6258,9 @@ export namespace Task {
     export interface YieldStep {
       workflow: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?:
+        | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+        | '_';
 
       kind_?: 'yield';
 
@@ -6617,6 +6868,8 @@ export namespace Task {
           | 'refresh'
           | 'wait_for_load';
 
+        connect_url?: string | null;
+
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
@@ -6626,7 +6879,7 @@ export namespace Task {
        * The setup parameters for the remote browser
        */
       export interface Setup {
-        connect_url: string;
+        connect_url?: string | null;
 
         height?: number | null;
 
@@ -6704,7 +6957,7 @@ export interface TaskCreateParams {
 
 export namespace TaskCreateParams {
   export interface EvaluateStep {
-    evaluate: Record<string, string>;
+    evaluate: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
 
     label?: string | null;
   }
@@ -6712,7 +6965,29 @@ export namespace TaskCreateParams {
   export interface ToolCallStep {
     tool: string;
 
-    arguments?: Record<string, Record<string, string> | string> | '_';
+    arguments?:
+      | Record<
+          string,
+          | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+          | Array<
+              Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            >
+          | string
+        >
+      | Array<
+          Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        >
+      | '_';
 
     label?: string | null;
   }
@@ -7406,6 +7681,8 @@ export namespace TaskCreateParams {
             | 'refresh'
             | 'wait_for_load';
 
+          connect_url?: string | null;
+
           coordinate?: Array<unknown> | null;
 
           text?: string | null;
@@ -7415,7 +7692,7 @@ export namespace TaskCreateParams {
          * The setup parameters for the remote browser
          */
         export interface Setup {
-          connect_url: string;
+          connect_url?: string | null;
 
           height?: number | null;
 
@@ -7479,13 +7756,15 @@ export namespace TaskCreateParams {
   export interface YieldStep {
     workflow: string;
 
-    arguments?: Record<string, string> | '_';
+    arguments?:
+      | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+      | '_';
 
     label?: string | null;
   }
 
   export interface ReturnStep {
-    return: Record<string, string>;
+    return: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
 
     label?: string | null;
   }
@@ -7522,7 +7801,7 @@ export namespace TaskCreateParams {
 
   export namespace WaitForInputStep {
     export interface WaitForInput {
-      info: Record<string, string>;
+      info: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
     }
   }
 
@@ -7561,7 +7840,10 @@ export namespace TaskCreateParams {
 
   export namespace IfElseWorkflowStepInput {
     export interface EvaluateStep {
-      evaluate: Record<string, string>;
+      evaluate: Record<
+        string,
+        Array<string> | Record<string, string> | Array<Record<string, string>> | string
+      >;
 
       label?: string | null;
     }
@@ -7569,7 +7851,35 @@ export namespace TaskCreateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, Record<string, string> | string> | '_';
+      arguments?:
+        | Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        | Array<
+            Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          >
+        | '_';
 
       label?: string | null;
     }
@@ -8263,6 +8573,8 @@ export namespace TaskCreateParams {
               | 'refresh'
               | 'wait_for_load';
 
+            connect_url?: string | null;
+
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
@@ -8272,7 +8584,7 @@ export namespace TaskCreateParams {
            * The setup parameters for the remote browser
            */
           export interface Setup {
-            connect_url: string;
+            connect_url?: string | null;
 
             height?: number | null;
 
@@ -8336,13 +8648,15 @@ export namespace TaskCreateParams {
     export interface YieldStep {
       workflow: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?:
+        | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+        | '_';
 
       label?: string | null;
     }
 
     export interface ReturnStep {
-      return: Record<string, string>;
+      return: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
 
       label?: string | null;
     }
@@ -8379,12 +8693,15 @@ export namespace TaskCreateParams {
 
     export namespace WaitForInputStep {
       export interface WaitForInput {
-        info: Record<string, string>;
+        info: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
       }
     }
 
     export interface EvaluateStep {
-      evaluate: Record<string, string>;
+      evaluate: Record<
+        string,
+        Array<string> | Record<string, string> | Array<Record<string, string>> | string
+      >;
 
       label?: string | null;
     }
@@ -8392,7 +8709,35 @@ export namespace TaskCreateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, Record<string, string> | string> | '_';
+      arguments?:
+        | Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        | Array<
+            Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          >
+        | '_';
 
       label?: string | null;
     }
@@ -9086,6 +9431,8 @@ export namespace TaskCreateParams {
               | 'refresh'
               | 'wait_for_load';
 
+            connect_url?: string | null;
+
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
@@ -9095,7 +9442,7 @@ export namespace TaskCreateParams {
            * The setup parameters for the remote browser
            */
           export interface Setup {
-            connect_url: string;
+            connect_url?: string | null;
 
             height?: number | null;
 
@@ -9159,13 +9506,15 @@ export namespace TaskCreateParams {
     export interface YieldStep {
       workflow: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?:
+        | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+        | '_';
 
       label?: string | null;
     }
 
     export interface ReturnStep {
-      return: Record<string, string>;
+      return: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
 
       label?: string | null;
     }
@@ -9202,7 +9551,7 @@ export namespace TaskCreateParams {
 
     export namespace WaitForInputStep {
       export interface WaitForInput {
-        info: Record<string, string>;
+        info: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
       }
     }
   }
@@ -9233,7 +9582,10 @@ export namespace TaskCreateParams {
 
     export namespace Switch {
       export interface EvaluateStep {
-        evaluate: Record<string, string>;
+        evaluate: Record<
+          string,
+          Array<string> | Record<string, string> | Array<Record<string, string>> | string
+        >;
 
         label?: string | null;
       }
@@ -9241,7 +9593,38 @@ export namespace TaskCreateParams {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?: Record<string, Record<string, string> | string> | '_';
+        arguments?:
+          | Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          | Array<
+              Record<
+                string,
+                | Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                | Array<
+                    Record<
+                      string,
+                      Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                    >
+                  >
+                | string
+              >
+            >
+          | '_';
 
         label?: string | null;
       }
@@ -9935,6 +10318,8 @@ export namespace TaskCreateParams {
                 | 'refresh'
                 | 'wait_for_load';
 
+              connect_url?: string | null;
+
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
@@ -9944,7 +10329,7 @@ export namespace TaskCreateParams {
              * The setup parameters for the remote browser
              */
             export interface Setup {
-              connect_url: string;
+              connect_url?: string | null;
 
               height?: number | null;
 
@@ -10008,13 +10393,18 @@ export namespace TaskCreateParams {
       export interface YieldStep {
         workflow: string;
 
-        arguments?: Record<string, string> | '_';
+        arguments?:
+          | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+          | '_';
 
         label?: string | null;
       }
 
       export interface ReturnStep {
-        return: Record<string, string>;
+        return: Record<
+          string,
+          Array<string> | Record<string, string> | Array<Record<string, string>> | string
+        >;
 
         label?: string | null;
       }
@@ -10051,7 +10441,10 @@ export namespace TaskCreateParams {
 
       export namespace WaitForInputStep {
         export interface WaitForInput {
-          info: Record<string, string>;
+          info: Record<
+            string,
+            Array<string> | Record<string, string> | Array<Record<string, string>> | string
+          >;
         }
       }
     }
@@ -10087,12 +10480,18 @@ export namespace TaskCreateParams {
 
       export namespace WaitForInputStep {
         export interface WaitForInput {
-          info: Record<string, string>;
+          info: Record<
+            string,
+            Array<string> | Record<string, string> | Array<Record<string, string>> | string
+          >;
         }
       }
 
       export interface EvaluateStep {
-        evaluate: Record<string, string>;
+        evaluate: Record<
+          string,
+          Array<string> | Record<string, string> | Array<Record<string, string>> | string
+        >;
 
         label?: string | null;
       }
@@ -10100,7 +10499,38 @@ export namespace TaskCreateParams {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?: Record<string, Record<string, string> | string> | '_';
+        arguments?:
+          | Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          | Array<
+              Record<
+                string,
+                | Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                | Array<
+                    Record<
+                      string,
+                      Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                    >
+                  >
+                | string
+              >
+            >
+          | '_';
 
         label?: string | null;
       }
@@ -10794,6 +11224,8 @@ export namespace TaskCreateParams {
                 | 'refresh'
                 | 'wait_for_load';
 
+              connect_url?: string | null;
+
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
@@ -10803,7 +11235,7 @@ export namespace TaskCreateParams {
              * The setup parameters for the remote browser
              */
             export interface Setup {
-              connect_url: string;
+              connect_url?: string | null;
 
               height?: number | null;
 
@@ -10867,7 +11299,9 @@ export namespace TaskCreateParams {
       export interface YieldStep {
         workflow: string;
 
-        arguments?: Record<string, string> | '_';
+        arguments?:
+          | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+          | '_';
 
         label?: string | null;
       }
@@ -10890,7 +11324,10 @@ export namespace TaskCreateParams {
 
   export namespace ParallelStepInput {
     export interface EvaluateStep {
-      evaluate: Record<string, string>;
+      evaluate: Record<
+        string,
+        Array<string> | Record<string, string> | Array<Record<string, string>> | string
+      >;
 
       label?: string | null;
     }
@@ -10898,7 +11335,35 @@ export namespace TaskCreateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, Record<string, string> | string> | '_';
+      arguments?:
+        | Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        | Array<
+            Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          >
+        | '_';
 
       label?: string | null;
     }
@@ -11592,6 +12057,8 @@ export namespace TaskCreateParams {
               | 'refresh'
               | 'wait_for_load';
 
+            connect_url?: string | null;
+
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
@@ -11601,7 +12068,7 @@ export namespace TaskCreateParams {
            * The setup parameters for the remote browser
            */
           export interface Setup {
-            connect_url: string;
+            connect_url?: string | null;
 
             height?: number | null;
 
@@ -11665,7 +12132,9 @@ export namespace TaskCreateParams {
     export interface YieldStep {
       workflow: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?:
+        | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+        | '_';
 
       label?: string | null;
     }
@@ -11694,7 +12163,10 @@ export namespace TaskCreateParams {
 
   export namespace MainInput {
     export interface EvaluateStep {
-      evaluate: Record<string, string>;
+      evaluate: Record<
+        string,
+        Array<string> | Record<string, string> | Array<Record<string, string>> | string
+      >;
 
       label?: string | null;
     }
@@ -11702,7 +12174,35 @@ export namespace TaskCreateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, Record<string, string> | string> | '_';
+      arguments?:
+        | Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        | Array<
+            Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          >
+        | '_';
 
       label?: string | null;
     }
@@ -12396,6 +12896,8 @@ export namespace TaskCreateParams {
               | 'refresh'
               | 'wait_for_load';
 
+            connect_url?: string | null;
+
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
@@ -12405,7 +12907,7 @@ export namespace TaskCreateParams {
            * The setup parameters for the remote browser
            */
           export interface Setup {
-            connect_url: string;
+            connect_url?: string | null;
 
             height?: number | null;
 
@@ -12469,7 +12971,9 @@ export namespace TaskCreateParams {
     export interface YieldStep {
       workflow: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?:
+        | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+        | '_';
 
       label?: string | null;
     }
@@ -13073,6 +13577,8 @@ export namespace TaskCreateParams {
           | 'refresh'
           | 'wait_for_load';
 
+        connect_url?: string | null;
+
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
@@ -13082,7 +13588,7 @@ export namespace TaskCreateParams {
        * The setup parameters for the remote browser
        */
       export interface Setup {
-        connect_url: string;
+        connect_url?: string | null;
 
         height?: number | null;
 
@@ -13166,7 +13672,7 @@ export interface TaskCreateOrUpdateParams {
 
 export namespace TaskCreateOrUpdateParams {
   export interface EvaluateStep {
-    evaluate: Record<string, string>;
+    evaluate: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
 
     label?: string | null;
   }
@@ -13174,7 +13680,29 @@ export namespace TaskCreateOrUpdateParams {
   export interface ToolCallStep {
     tool: string;
 
-    arguments?: Record<string, Record<string, string> | string> | '_';
+    arguments?:
+      | Record<
+          string,
+          | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+          | Array<
+              Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            >
+          | string
+        >
+      | Array<
+          Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        >
+      | '_';
 
     label?: string | null;
   }
@@ -13868,6 +14396,8 @@ export namespace TaskCreateOrUpdateParams {
             | 'refresh'
             | 'wait_for_load';
 
+          connect_url?: string | null;
+
           coordinate?: Array<unknown> | null;
 
           text?: string | null;
@@ -13877,7 +14407,7 @@ export namespace TaskCreateOrUpdateParams {
          * The setup parameters for the remote browser
          */
         export interface Setup {
-          connect_url: string;
+          connect_url?: string | null;
 
           height?: number | null;
 
@@ -13941,13 +14471,15 @@ export namespace TaskCreateOrUpdateParams {
   export interface YieldStep {
     workflow: string;
 
-    arguments?: Record<string, string> | '_';
+    arguments?:
+      | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+      | '_';
 
     label?: string | null;
   }
 
   export interface ReturnStep {
-    return: Record<string, string>;
+    return: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
 
     label?: string | null;
   }
@@ -13984,7 +14516,7 @@ export namespace TaskCreateOrUpdateParams {
 
   export namespace WaitForInputStep {
     export interface WaitForInput {
-      info: Record<string, string>;
+      info: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
     }
   }
 
@@ -14023,7 +14555,10 @@ export namespace TaskCreateOrUpdateParams {
 
   export namespace IfElseWorkflowStepInput {
     export interface EvaluateStep {
-      evaluate: Record<string, string>;
+      evaluate: Record<
+        string,
+        Array<string> | Record<string, string> | Array<Record<string, string>> | string
+      >;
 
       label?: string | null;
     }
@@ -14031,7 +14566,35 @@ export namespace TaskCreateOrUpdateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, Record<string, string> | string> | '_';
+      arguments?:
+        | Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        | Array<
+            Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          >
+        | '_';
 
       label?: string | null;
     }
@@ -14725,6 +15288,8 @@ export namespace TaskCreateOrUpdateParams {
               | 'refresh'
               | 'wait_for_load';
 
+            connect_url?: string | null;
+
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
@@ -14734,7 +15299,7 @@ export namespace TaskCreateOrUpdateParams {
            * The setup parameters for the remote browser
            */
           export interface Setup {
-            connect_url: string;
+            connect_url?: string | null;
 
             height?: number | null;
 
@@ -14798,13 +15363,15 @@ export namespace TaskCreateOrUpdateParams {
     export interface YieldStep {
       workflow: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?:
+        | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+        | '_';
 
       label?: string | null;
     }
 
     export interface ReturnStep {
-      return: Record<string, string>;
+      return: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
 
       label?: string | null;
     }
@@ -14841,12 +15408,15 @@ export namespace TaskCreateOrUpdateParams {
 
     export namespace WaitForInputStep {
       export interface WaitForInput {
-        info: Record<string, string>;
+        info: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
       }
     }
 
     export interface EvaluateStep {
-      evaluate: Record<string, string>;
+      evaluate: Record<
+        string,
+        Array<string> | Record<string, string> | Array<Record<string, string>> | string
+      >;
 
       label?: string | null;
     }
@@ -14854,7 +15424,35 @@ export namespace TaskCreateOrUpdateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, Record<string, string> | string> | '_';
+      arguments?:
+        | Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        | Array<
+            Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          >
+        | '_';
 
       label?: string | null;
     }
@@ -15548,6 +16146,8 @@ export namespace TaskCreateOrUpdateParams {
               | 'refresh'
               | 'wait_for_load';
 
+            connect_url?: string | null;
+
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
@@ -15557,7 +16157,7 @@ export namespace TaskCreateOrUpdateParams {
            * The setup parameters for the remote browser
            */
           export interface Setup {
-            connect_url: string;
+            connect_url?: string | null;
 
             height?: number | null;
 
@@ -15621,13 +16221,15 @@ export namespace TaskCreateOrUpdateParams {
     export interface YieldStep {
       workflow: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?:
+        | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+        | '_';
 
       label?: string | null;
     }
 
     export interface ReturnStep {
-      return: Record<string, string>;
+      return: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
 
       label?: string | null;
     }
@@ -15664,7 +16266,7 @@ export namespace TaskCreateOrUpdateParams {
 
     export namespace WaitForInputStep {
       export interface WaitForInput {
-        info: Record<string, string>;
+        info: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
       }
     }
   }
@@ -15695,7 +16297,10 @@ export namespace TaskCreateOrUpdateParams {
 
     export namespace Switch {
       export interface EvaluateStep {
-        evaluate: Record<string, string>;
+        evaluate: Record<
+          string,
+          Array<string> | Record<string, string> | Array<Record<string, string>> | string
+        >;
 
         label?: string | null;
       }
@@ -15703,7 +16308,38 @@ export namespace TaskCreateOrUpdateParams {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?: Record<string, Record<string, string> | string> | '_';
+        arguments?:
+          | Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          | Array<
+              Record<
+                string,
+                | Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                | Array<
+                    Record<
+                      string,
+                      Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                    >
+                  >
+                | string
+              >
+            >
+          | '_';
 
         label?: string | null;
       }
@@ -16397,6 +17033,8 @@ export namespace TaskCreateOrUpdateParams {
                 | 'refresh'
                 | 'wait_for_load';
 
+              connect_url?: string | null;
+
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
@@ -16406,7 +17044,7 @@ export namespace TaskCreateOrUpdateParams {
              * The setup parameters for the remote browser
              */
             export interface Setup {
-              connect_url: string;
+              connect_url?: string | null;
 
               height?: number | null;
 
@@ -16470,13 +17108,18 @@ export namespace TaskCreateOrUpdateParams {
       export interface YieldStep {
         workflow: string;
 
-        arguments?: Record<string, string> | '_';
+        arguments?:
+          | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+          | '_';
 
         label?: string | null;
       }
 
       export interface ReturnStep {
-        return: Record<string, string>;
+        return: Record<
+          string,
+          Array<string> | Record<string, string> | Array<Record<string, string>> | string
+        >;
 
         label?: string | null;
       }
@@ -16513,7 +17156,10 @@ export namespace TaskCreateOrUpdateParams {
 
       export namespace WaitForInputStep {
         export interface WaitForInput {
-          info: Record<string, string>;
+          info: Record<
+            string,
+            Array<string> | Record<string, string> | Array<Record<string, string>> | string
+          >;
         }
       }
     }
@@ -16549,12 +17195,18 @@ export namespace TaskCreateOrUpdateParams {
 
       export namespace WaitForInputStep {
         export interface WaitForInput {
-          info: Record<string, string>;
+          info: Record<
+            string,
+            Array<string> | Record<string, string> | Array<Record<string, string>> | string
+          >;
         }
       }
 
       export interface EvaluateStep {
-        evaluate: Record<string, string>;
+        evaluate: Record<
+          string,
+          Array<string> | Record<string, string> | Array<Record<string, string>> | string
+        >;
 
         label?: string | null;
       }
@@ -16562,7 +17214,38 @@ export namespace TaskCreateOrUpdateParams {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?: Record<string, Record<string, string> | string> | '_';
+        arguments?:
+          | Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          | Array<
+              Record<
+                string,
+                | Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                | Array<
+                    Record<
+                      string,
+                      Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                    >
+                  >
+                | string
+              >
+            >
+          | '_';
 
         label?: string | null;
       }
@@ -17256,6 +17939,8 @@ export namespace TaskCreateOrUpdateParams {
                 | 'refresh'
                 | 'wait_for_load';
 
+              connect_url?: string | null;
+
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
@@ -17265,7 +17950,7 @@ export namespace TaskCreateOrUpdateParams {
              * The setup parameters for the remote browser
              */
             export interface Setup {
-              connect_url: string;
+              connect_url?: string | null;
 
               height?: number | null;
 
@@ -17329,7 +18014,9 @@ export namespace TaskCreateOrUpdateParams {
       export interface YieldStep {
         workflow: string;
 
-        arguments?: Record<string, string> | '_';
+        arguments?:
+          | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+          | '_';
 
         label?: string | null;
       }
@@ -17352,7 +18039,10 @@ export namespace TaskCreateOrUpdateParams {
 
   export namespace ParallelStepInput {
     export interface EvaluateStep {
-      evaluate: Record<string, string>;
+      evaluate: Record<
+        string,
+        Array<string> | Record<string, string> | Array<Record<string, string>> | string
+      >;
 
       label?: string | null;
     }
@@ -17360,7 +18050,35 @@ export namespace TaskCreateOrUpdateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, Record<string, string> | string> | '_';
+      arguments?:
+        | Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        | Array<
+            Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          >
+        | '_';
 
       label?: string | null;
     }
@@ -18054,6 +18772,8 @@ export namespace TaskCreateOrUpdateParams {
               | 'refresh'
               | 'wait_for_load';
 
+            connect_url?: string | null;
+
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
@@ -18063,7 +18783,7 @@ export namespace TaskCreateOrUpdateParams {
            * The setup parameters for the remote browser
            */
           export interface Setup {
-            connect_url: string;
+            connect_url?: string | null;
 
             height?: number | null;
 
@@ -18127,7 +18847,9 @@ export namespace TaskCreateOrUpdateParams {
     export interface YieldStep {
       workflow: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?:
+        | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+        | '_';
 
       label?: string | null;
     }
@@ -18156,7 +18878,10 @@ export namespace TaskCreateOrUpdateParams {
 
   export namespace MainInput {
     export interface EvaluateStep {
-      evaluate: Record<string, string>;
+      evaluate: Record<
+        string,
+        Array<string> | Record<string, string> | Array<Record<string, string>> | string
+      >;
 
       label?: string | null;
     }
@@ -18164,7 +18889,35 @@ export namespace TaskCreateOrUpdateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?: Record<string, Record<string, string> | string> | '_';
+      arguments?:
+        | Record<
+            string,
+            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+            | Array<
+                Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              >
+            | string
+          >
+        | Array<
+            Record<
+              string,
+              | Record<
+                  string,
+                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                >
+              | Array<
+                  Record<
+                    string,
+                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
+                  >
+                >
+              | string
+            >
+          >
+        | '_';
 
       label?: string | null;
     }
@@ -18858,6 +19611,8 @@ export namespace TaskCreateOrUpdateParams {
               | 'refresh'
               | 'wait_for_load';
 
+            connect_url?: string | null;
+
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
@@ -18867,7 +19622,7 @@ export namespace TaskCreateOrUpdateParams {
            * The setup parameters for the remote browser
            */
           export interface Setup {
-            connect_url: string;
+            connect_url?: string | null;
 
             height?: number | null;
 
@@ -18931,7 +19686,9 @@ export namespace TaskCreateOrUpdateParams {
     export interface YieldStep {
       workflow: string;
 
-      arguments?: Record<string, string> | '_';
+      arguments?:
+        | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+        | '_';
 
       label?: string | null;
     }
@@ -19535,6 +20292,8 @@ export namespace TaskCreateOrUpdateParams {
           | 'refresh'
           | 'wait_for_load';
 
+        connect_url?: string | null;
+
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
@@ -19544,7 +20303,7 @@ export namespace TaskCreateOrUpdateParams {
        * The setup parameters for the remote browser
        */
       export interface Setup {
-        connect_url: string;
+        connect_url?: string | null;
 
         height?: number | null;
 

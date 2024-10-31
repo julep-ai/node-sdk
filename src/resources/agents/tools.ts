@@ -687,6 +687,8 @@ export namespace ToolListResponse {
         | 'refresh'
         | 'wait_for_load';
 
+      connect_url?: string | null;
+
       coordinate?: Array<unknown> | null;
 
       text?: string | null;
@@ -696,7 +698,7 @@ export namespace ToolListResponse {
      * The setup parameters for the remote browser
      */
     export interface Setup {
-      connect_url: string;
+      connect_url?: string | null;
 
       height?: number | null;
 
@@ -1336,6 +1338,8 @@ export namespace ToolCreateParams {
         | 'refresh'
         | 'wait_for_load';
 
+      connect_url?: string | null;
+
       coordinate?: Array<unknown> | null;
 
       text?: string | null;
@@ -1345,7 +1349,7 @@ export namespace ToolCreateParams {
      * The setup parameters for the remote browser
      */
     export interface Setup {
-      connect_url: string;
+      connect_url?: string | null;
 
       height?: number | null;
 
@@ -1985,6 +1989,8 @@ export namespace ToolUpdateParams {
         | 'refresh'
         | 'wait_for_load';
 
+      connect_url?: string | null;
+
       coordinate?: Array<unknown> | null;
 
       text?: string | null;
@@ -1994,7 +2000,7 @@ export namespace ToolUpdateParams {
      * The setup parameters for the remote browser
      */
     export interface Setup {
-      connect_url: string;
+      connect_url?: string | null;
 
       height?: number | null;
 
@@ -2641,6 +2647,8 @@ export namespace ToolPatchParams {
         | 'refresh'
         | 'wait_for_load'
         | null;
+
+      connect_url?: string | null;
 
       coordinate?: Array<unknown> | null;
 
