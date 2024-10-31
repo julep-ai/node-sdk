@@ -782,6 +782,8 @@ export namespace ChatInput {
           | 'refresh'
           | 'wait_for_load';
 
+        connect_url?: string | null;
+
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
@@ -791,7 +793,7 @@ export namespace ChatInput {
        * The setup parameters for the remote browser
        */
       export interface Setup {
-        connect_url: string;
+        connect_url?: string | null;
 
         height?: number | null;
 
@@ -1986,6 +1988,8 @@ export namespace Entry {
           | 'refresh'
           | 'wait_for_load';
 
+        connect_url?: string | null;
+
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
@@ -1995,7 +1999,7 @@ export namespace Entry {
        * The setup parameters for the remote browser
        */
       export interface Setup {
-        connect_url: string;
+        connect_url?: string | null;
 
         height?: number | null;
 
@@ -2777,6 +2781,8 @@ export namespace Entry {
           | 'refresh'
           | 'wait_for_load';
 
+        connect_url?: string | null;
+
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
@@ -2786,7 +2792,7 @@ export namespace Entry {
        * The setup parameters for the remote browser
        */
       export interface Setup {
-        connect_url: string;
+        connect_url?: string | null;
 
         height?: number | null;
 
@@ -3931,6 +3937,8 @@ export namespace SessionChatParams {
           | 'refresh'
           | 'wait_for_load';
 
+        connect_url?: string | null;
+
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
@@ -3940,7 +3948,7 @@ export namespace SessionChatParams {
        * The setup parameters for the remote browser
        */
       export interface Setup {
-        connect_url: string;
+        connect_url?: string | null;
 
         height?: number | null;
 
