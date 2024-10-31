@@ -11,7 +11,7 @@ const client = new Julep({
 describe('resource tasks', () => {
   test('create: only required params', async () => {
     const responsePromise = client.tasks.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-      main: [{ evaluate: { foo: 'string' } }],
+      main: [{ evaluate: { foo: ['string', 'string', 'string'] } }],
       name: 'name',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -25,7 +25,7 @@ describe('resource tasks', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.tasks.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-      main: [{ evaluate: { foo: 'string' }, label: 'label' }],
+      main: [{ evaluate: { foo: ['string', 'string', 'string'] }, label: 'label' }],
       name: 'name',
       description: 'description',
       inherit_tools: true,
@@ -177,7 +177,7 @@ describe('resource tasks', () => {
     const responsePromise = client.tasks.createOrUpdate(
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-      { main: [{ evaluate: { foo: 'string' } }], name: 'name' },
+      { main: [{ evaluate: { foo: ['string', 'string', 'string'] } }], name: 'name' },
     );
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -193,7 +193,7 @@ describe('resource tasks', () => {
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       {
-        main: [{ evaluate: { foo: 'string' }, label: 'label' }],
+        main: [{ evaluate: { foo: ['string', 'string', 'string'] }, label: 'label' }],
         name: 'name',
         description: 'description',
         inherit_tools: true,
