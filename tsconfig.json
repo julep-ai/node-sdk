@@ -11,7 +11,7 @@
     "paths": {
       "@julep/sdk/_shims/auto/*": ["src/_shims/auto/*-node"],
       "@julep/sdk/*": ["src/*"],
-      "@julep/sdk": ["src/index.ts"],
+      "@julep/sdk": ["src/index.ts"]
     },
     "noEmit": true,
 

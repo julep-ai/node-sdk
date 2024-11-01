@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as TasksAPI from './tasks';
 import * as SessionsAPI from './sessions';
 import * as Shared from './shared';
 import { OffsetPagination, type OffsetPaginationParams } from '../pagination';
@@ -146,7 +145,9 @@ export namespace Task {
   export interface PromptStepOutput {
     prompt: Array<PromptStepOutput.UnionMember0> | string;
 
-    forward_tool_results?: boolean | null;
+    auto_run_tools?: boolean;
+
+    disable_cache?: boolean;
 
     kind_?: 'prompt';
 
@@ -575,6 +576,12 @@ export namespace Task {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -606,6 +613,12 @@ export namespace Task {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -635,6 +648,12 @@ export namespace Task {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -642,7 +661,7 @@ export namespace Task {
        * browserbase create session integration definition
        */
       export interface BrowserbaseCreateSessionIntegrationDef {
-        arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+        arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
         method?: 'create_session';
 
@@ -656,17 +675,17 @@ export namespace Task {
 
       export namespace BrowserbaseCreateSessionIntegrationDef {
         export interface Arguments {
-          projectId: string;
-
-          browserSettings?: unknown | null;
+          browserSettings?: unknown;
 
           extensionId?: string | null;
 
-          keepAlive?: boolean | null;
+          keepAlive?: boolean;
 
-          proxies?: boolean | Array<unknown> | null;
+          projectId?: string | null;
 
-          timeout?: number | null;
+          proxies?: boolean | Array<unknown>;
+
+          timeout?: number;
         }
 
         /**
@@ -674,6 +693,12 @@ export namespace Task {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -681,7 +706,7 @@ export namespace Task {
        * browserbase get session integration definition
        */
       export interface BrowserbaseGetSessionIntegrationDef {
-        arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+        arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
         method?: 'get_session';
 
@@ -703,6 +728,12 @@ export namespace Task {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -710,7 +741,7 @@ export namespace Task {
        * browserbase complete session integration definition
        */
       export interface BrowserbaseCompleteSessionIntegrationDef {
-        arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+        arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
         method?: 'complete_session';
 
@@ -734,6 +765,12 @@ export namespace Task {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -741,7 +778,7 @@ export namespace Task {
        * browserbase get session live urls integration definition
        */
       export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-        arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+        arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
         method?: 'get_live_urls';
 
@@ -763,6 +800,12 @@ export namespace Task {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -770,7 +813,7 @@ export namespace Task {
        * browserbase get session connect url integration definition
        */
       export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-        arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+        arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
         method?: 'get_connect_url';
 
@@ -792,6 +835,12 @@ export namespace Task {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -800,14 +849,14 @@ export namespace Task {
        */
       export interface RemoteBrowserIntegrationDef {
         /**
-         * The arguments for the remote browser
-         */
-        arguments: RemoteBrowserIntegrationDef.Arguments;
-
-        /**
          * The setup parameters for the remote browser
          */
         setup: RemoteBrowserIntegrationDef.Setup;
+
+        /**
+         * The arguments for the remote browser
+         */
+        arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
         method?: 'perform_action';
 
@@ -815,6 +864,17 @@ export namespace Task {
       }
 
       export namespace RemoteBrowserIntegrationDef {
+        /**
+         * The setup parameters for the remote browser
+         */
+        export interface Setup {
+          connect_url?: string | null;
+
+          height?: number | null;
+
+          width?: number | null;
+        }
+
         /**
          * The arguments for the remote browser
          */
@@ -839,17 +899,6 @@ export namespace Task {
           coordinate?: Array<unknown> | null;
 
           text?: string | null;
-        }
-
-        /**
-         * The setup parameters for the remote browser
-         */
-        export interface Setup {
-          connect_url?: string | null;
-
-          height?: number | null;
-
-          width?: number | null;
         }
       }
 
@@ -1062,7 +1111,9 @@ export namespace Task {
     export interface PromptStepOutput {
       prompt: Array<PromptStepOutput.UnionMember0> | string;
 
-      forward_tool_results?: boolean | null;
+      auto_run_tools?: boolean;
+
+      disable_cache?: boolean;
 
       kind_?: 'prompt';
 
@@ -1491,6 +1542,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -1522,6 +1579,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -1551,6 +1614,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -1558,7 +1627,7 @@ export namespace Task {
          * browserbase create session integration definition
          */
         export interface BrowserbaseCreateSessionIntegrationDef {
-          arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
           method?: 'create_session';
 
@@ -1572,17 +1641,17 @@ export namespace Task {
 
         export namespace BrowserbaseCreateSessionIntegrationDef {
           export interface Arguments {
-            projectId: string;
-
-            browserSettings?: unknown | null;
+            browserSettings?: unknown;
 
             extensionId?: string | null;
 
-            keepAlive?: boolean | null;
+            keepAlive?: boolean;
 
-            proxies?: boolean | Array<unknown> | null;
+            projectId?: string | null;
 
-            timeout?: number | null;
+            proxies?: boolean | Array<unknown>;
+
+            timeout?: number;
           }
 
           /**
@@ -1590,6 +1659,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -1597,7 +1672,7 @@ export namespace Task {
          * browserbase get session integration definition
          */
         export interface BrowserbaseGetSessionIntegrationDef {
-          arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
           method?: 'get_session';
 
@@ -1619,6 +1694,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -1626,7 +1707,7 @@ export namespace Task {
          * browserbase complete session integration definition
          */
         export interface BrowserbaseCompleteSessionIntegrationDef {
-          arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
           method?: 'complete_session';
 
@@ -1650,6 +1731,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -1657,7 +1744,7 @@ export namespace Task {
          * browserbase get session live urls integration definition
          */
         export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-          arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
           method?: 'get_live_urls';
 
@@ -1679,6 +1766,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -1686,7 +1779,7 @@ export namespace Task {
          * browserbase get session connect url integration definition
          */
         export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-          arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
           method?: 'get_connect_url';
 
@@ -1708,6 +1801,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -1716,14 +1815,14 @@ export namespace Task {
          */
         export interface RemoteBrowserIntegrationDef {
           /**
-           * The arguments for the remote browser
-           */
-          arguments: RemoteBrowserIntegrationDef.Arguments;
-
-          /**
            * The setup parameters for the remote browser
            */
           setup: RemoteBrowserIntegrationDef.Setup;
+
+          /**
+           * The arguments for the remote browser
+           */
+          arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
           method?: 'perform_action';
 
@@ -1731,6 +1830,17 @@ export namespace Task {
         }
 
         export namespace RemoteBrowserIntegrationDef {
+          /**
+           * The setup parameters for the remote browser
+           */
+          export interface Setup {
+            connect_url?: string | null;
+
+            height?: number | null;
+
+            width?: number | null;
+          }
+
           /**
            * The arguments for the remote browser
            */
@@ -1755,17 +1865,6 @@ export namespace Task {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
-          }
-
-          /**
-           * The setup parameters for the remote browser
-           */
-          export interface Setup {
-            connect_url?: string | null;
-
-            height?: number | null;
-
-            width?: number | null;
           }
         }
 
@@ -1942,7 +2041,9 @@ export namespace Task {
     export interface PromptStepOutput {
       prompt: Array<PromptStepOutput.UnionMember0> | string;
 
-      forward_tool_results?: boolean | null;
+      auto_run_tools?: boolean;
+
+      disable_cache?: boolean;
 
       kind_?: 'prompt';
 
@@ -2371,6 +2472,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -2402,6 +2509,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -2431,6 +2544,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -2438,7 +2557,7 @@ export namespace Task {
          * browserbase create session integration definition
          */
         export interface BrowserbaseCreateSessionIntegrationDef {
-          arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
           method?: 'create_session';
 
@@ -2452,17 +2571,17 @@ export namespace Task {
 
         export namespace BrowserbaseCreateSessionIntegrationDef {
           export interface Arguments {
-            projectId: string;
-
-            browserSettings?: unknown | null;
+            browserSettings?: unknown;
 
             extensionId?: string | null;
 
-            keepAlive?: boolean | null;
+            keepAlive?: boolean;
 
-            proxies?: boolean | Array<unknown> | null;
+            projectId?: string | null;
 
-            timeout?: number | null;
+            proxies?: boolean | Array<unknown>;
+
+            timeout?: number;
           }
 
           /**
@@ -2470,6 +2589,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -2477,7 +2602,7 @@ export namespace Task {
          * browserbase get session integration definition
          */
         export interface BrowserbaseGetSessionIntegrationDef {
-          arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
           method?: 'get_session';
 
@@ -2499,6 +2624,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -2506,7 +2637,7 @@ export namespace Task {
          * browserbase complete session integration definition
          */
         export interface BrowserbaseCompleteSessionIntegrationDef {
-          arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
           method?: 'complete_session';
 
@@ -2530,6 +2661,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -2537,7 +2674,7 @@ export namespace Task {
          * browserbase get session live urls integration definition
          */
         export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-          arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
           method?: 'get_live_urls';
 
@@ -2559,6 +2696,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -2566,7 +2709,7 @@ export namespace Task {
          * browserbase get session connect url integration definition
          */
         export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-          arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
           method?: 'get_connect_url';
 
@@ -2588,6 +2731,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -2596,14 +2745,14 @@ export namespace Task {
          */
         export interface RemoteBrowserIntegrationDef {
           /**
-           * The arguments for the remote browser
-           */
-          arguments: RemoteBrowserIntegrationDef.Arguments;
-
-          /**
            * The setup parameters for the remote browser
            */
           setup: RemoteBrowserIntegrationDef.Setup;
+
+          /**
+           * The arguments for the remote browser
+           */
+          arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
           method?: 'perform_action';
 
@@ -2611,6 +2760,17 @@ export namespace Task {
         }
 
         export namespace RemoteBrowserIntegrationDef {
+          /**
+           * The setup parameters for the remote browser
+           */
+          export interface Setup {
+            connect_url?: string | null;
+
+            height?: number | null;
+
+            width?: number | null;
+          }
+
           /**
            * The arguments for the remote browser
            */
@@ -2635,17 +2795,6 @@ export namespace Task {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
-          }
-
-          /**
-           * The setup parameters for the remote browser
-           */
-          export interface Setup {
-            connect_url?: string | null;
-
-            height?: number | null;
-
-            width?: number | null;
           }
         }
 
@@ -2853,7 +3002,9 @@ export namespace Task {
       export interface PromptStepOutput {
         prompt: Array<PromptStepOutput.UnionMember0> | string;
 
-        forward_tool_results?: boolean | null;
+        auto_run_tools?: boolean;
+
+        disable_cache?: boolean;
 
         kind_?: 'prompt';
 
@@ -3282,6 +3433,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -3313,6 +3470,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -3342,6 +3505,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -3349,7 +3518,7 @@ export namespace Task {
            * browserbase create session integration definition
            */
           export interface BrowserbaseCreateSessionIntegrationDef {
-            arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
             method?: 'create_session';
 
@@ -3363,17 +3532,17 @@ export namespace Task {
 
           export namespace BrowserbaseCreateSessionIntegrationDef {
             export interface Arguments {
-              projectId: string;
-
-              browserSettings?: unknown | null;
+              browserSettings?: unknown;
 
               extensionId?: string | null;
 
-              keepAlive?: boolean | null;
+              keepAlive?: boolean;
 
-              proxies?: boolean | Array<unknown> | null;
+              projectId?: string | null;
 
-              timeout?: number | null;
+              proxies?: boolean | Array<unknown>;
+
+              timeout?: number;
             }
 
             /**
@@ -3381,6 +3550,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -3388,7 +3563,7 @@ export namespace Task {
            * browserbase get session integration definition
            */
           export interface BrowserbaseGetSessionIntegrationDef {
-            arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
             method?: 'get_session';
 
@@ -3410,6 +3585,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -3417,7 +3598,7 @@ export namespace Task {
            * browserbase complete session integration definition
            */
           export interface BrowserbaseCompleteSessionIntegrationDef {
-            arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
             method?: 'complete_session';
 
@@ -3441,6 +3622,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -3448,7 +3635,7 @@ export namespace Task {
            * browserbase get session live urls integration definition
            */
           export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-            arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
             method?: 'get_live_urls';
 
@@ -3470,6 +3657,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -3477,7 +3670,7 @@ export namespace Task {
            * browserbase get session connect url integration definition
            */
           export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-            arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
             method?: 'get_connect_url';
 
@@ -3499,6 +3692,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -3507,14 +3706,14 @@ export namespace Task {
            */
           export interface RemoteBrowserIntegrationDef {
             /**
-             * The arguments for the remote browser
-             */
-            arguments: RemoteBrowserIntegrationDef.Arguments;
-
-            /**
              * The setup parameters for the remote browser
              */
             setup: RemoteBrowserIntegrationDef.Setup;
+
+            /**
+             * The arguments for the remote browser
+             */
+            arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
             method?: 'perform_action';
 
@@ -3522,6 +3721,17 @@ export namespace Task {
           }
 
           export namespace RemoteBrowserIntegrationDef {
+            /**
+             * The setup parameters for the remote browser
+             */
+            export interface Setup {
+              connect_url?: string | null;
+
+              height?: number | null;
+
+              width?: number | null;
+            }
+
             /**
              * The arguments for the remote browser
              */
@@ -3546,17 +3756,6 @@ export namespace Task {
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
-            }
-
-            /**
-             * The setup parameters for the remote browser
-             */
-            export interface Setup {
-              connect_url?: string | null;
-
-              height?: number | null;
-
-              width?: number | null;
             }
           }
 
@@ -3785,7 +3984,9 @@ export namespace Task {
       export interface PromptStepOutput {
         prompt: Array<PromptStepOutput.UnionMember0> | string;
 
-        forward_tool_results?: boolean | null;
+        auto_run_tools?: boolean;
+
+        disable_cache?: boolean;
 
         kind_?: 'prompt';
 
@@ -4214,6 +4415,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -4245,6 +4452,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -4274,6 +4487,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -4281,7 +4500,7 @@ export namespace Task {
            * browserbase create session integration definition
            */
           export interface BrowserbaseCreateSessionIntegrationDef {
-            arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
             method?: 'create_session';
 
@@ -4295,17 +4514,17 @@ export namespace Task {
 
           export namespace BrowserbaseCreateSessionIntegrationDef {
             export interface Arguments {
-              projectId: string;
-
-              browserSettings?: unknown | null;
+              browserSettings?: unknown;
 
               extensionId?: string | null;
 
-              keepAlive?: boolean | null;
+              keepAlive?: boolean;
 
-              proxies?: boolean | Array<unknown> | null;
+              projectId?: string | null;
 
-              timeout?: number | null;
+              proxies?: boolean | Array<unknown>;
+
+              timeout?: number;
             }
 
             /**
@@ -4313,6 +4532,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -4320,7 +4545,7 @@ export namespace Task {
            * browserbase get session integration definition
            */
           export interface BrowserbaseGetSessionIntegrationDef {
-            arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
             method?: 'get_session';
 
@@ -4342,6 +4567,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -4349,7 +4580,7 @@ export namespace Task {
            * browserbase complete session integration definition
            */
           export interface BrowserbaseCompleteSessionIntegrationDef {
-            arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
             method?: 'complete_session';
 
@@ -4373,6 +4604,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -4380,7 +4617,7 @@ export namespace Task {
            * browserbase get session live urls integration definition
            */
           export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-            arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
             method?: 'get_live_urls';
 
@@ -4402,6 +4639,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -4409,7 +4652,7 @@ export namespace Task {
            * browserbase get session connect url integration definition
            */
           export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-            arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
             method?: 'get_connect_url';
 
@@ -4431,6 +4674,12 @@ export namespace Task {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -4439,14 +4688,14 @@ export namespace Task {
            */
           export interface RemoteBrowserIntegrationDef {
             /**
-             * The arguments for the remote browser
-             */
-            arguments: RemoteBrowserIntegrationDef.Arguments;
-
-            /**
              * The setup parameters for the remote browser
              */
             setup: RemoteBrowserIntegrationDef.Setup;
+
+            /**
+             * The arguments for the remote browser
+             */
+            arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
             method?: 'perform_action';
 
@@ -4454,6 +4703,17 @@ export namespace Task {
           }
 
           export namespace RemoteBrowserIntegrationDef {
+            /**
+             * The setup parameters for the remote browser
+             */
+            export interface Setup {
+              connect_url?: string | null;
+
+              height?: number | null;
+
+              width?: number | null;
+            }
+
             /**
              * The arguments for the remote browser
              */
@@ -4478,17 +4738,6 @@ export namespace Task {
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
-            }
-
-            /**
-             * The setup parameters for the remote browser
-             */
-            export interface Setup {
-              connect_url?: string | null;
-
-              height?: number | null;
-
-              width?: number | null;
             }
           }
 
@@ -4634,7 +4883,9 @@ export namespace Task {
     export interface PromptStepOutput {
       prompt: Array<PromptStepOutput.UnionMember0> | string;
 
-      forward_tool_results?: boolean | null;
+      auto_run_tools?: boolean;
+
+      disable_cache?: boolean;
 
       kind_?: 'prompt';
 
@@ -5063,6 +5314,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -5094,6 +5351,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -5123,6 +5386,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -5130,7 +5399,7 @@ export namespace Task {
          * browserbase create session integration definition
          */
         export interface BrowserbaseCreateSessionIntegrationDef {
-          arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
           method?: 'create_session';
 
@@ -5144,17 +5413,17 @@ export namespace Task {
 
         export namespace BrowserbaseCreateSessionIntegrationDef {
           export interface Arguments {
-            projectId: string;
-
-            browserSettings?: unknown | null;
+            browserSettings?: unknown;
 
             extensionId?: string | null;
 
-            keepAlive?: boolean | null;
+            keepAlive?: boolean;
 
-            proxies?: boolean | Array<unknown> | null;
+            projectId?: string | null;
 
-            timeout?: number | null;
+            proxies?: boolean | Array<unknown>;
+
+            timeout?: number;
           }
 
           /**
@@ -5162,6 +5431,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -5169,7 +5444,7 @@ export namespace Task {
          * browserbase get session integration definition
          */
         export interface BrowserbaseGetSessionIntegrationDef {
-          arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
           method?: 'get_session';
 
@@ -5191,6 +5466,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -5198,7 +5479,7 @@ export namespace Task {
          * browserbase complete session integration definition
          */
         export interface BrowserbaseCompleteSessionIntegrationDef {
-          arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
           method?: 'complete_session';
 
@@ -5222,6 +5503,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -5229,7 +5516,7 @@ export namespace Task {
          * browserbase get session live urls integration definition
          */
         export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-          arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
           method?: 'get_live_urls';
 
@@ -5251,6 +5538,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -5258,7 +5551,7 @@ export namespace Task {
          * browserbase get session connect url integration definition
          */
         export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-          arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
           method?: 'get_connect_url';
 
@@ -5280,6 +5573,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -5288,14 +5587,14 @@ export namespace Task {
          */
         export interface RemoteBrowserIntegrationDef {
           /**
-           * The arguments for the remote browser
-           */
-          arguments: RemoteBrowserIntegrationDef.Arguments;
-
-          /**
            * The setup parameters for the remote browser
            */
           setup: RemoteBrowserIntegrationDef.Setup;
+
+          /**
+           * The arguments for the remote browser
+           */
+          arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
           method?: 'perform_action';
 
@@ -5303,6 +5602,17 @@ export namespace Task {
         }
 
         export namespace RemoteBrowserIntegrationDef {
+          /**
+           * The setup parameters for the remote browser
+           */
+          export interface Setup {
+            connect_url?: string | null;
+
+            height?: number | null;
+
+            width?: number | null;
+          }
+
           /**
            * The arguments for the remote browser
            */
@@ -5327,17 +5637,6 @@ export namespace Task {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
-          }
-
-          /**
-           * The setup parameters for the remote browser
-           */
-          export interface Setup {
-            connect_url?: string | null;
-
-            height?: number | null;
-
-            width?: number | null;
           }
         }
 
@@ -5489,7 +5788,9 @@ export namespace Task {
     export interface PromptStepOutput {
       prompt: Array<PromptStepOutput.UnionMember0> | string;
 
-      forward_tool_results?: boolean | null;
+      auto_run_tools?: boolean;
+
+      disable_cache?: boolean;
 
       kind_?: 'prompt';
 
@@ -5918,6 +6219,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -5949,6 +6256,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -5978,6 +6291,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -5985,7 +6304,7 @@ export namespace Task {
          * browserbase create session integration definition
          */
         export interface BrowserbaseCreateSessionIntegrationDef {
-          arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
           method?: 'create_session';
 
@@ -5999,17 +6318,17 @@ export namespace Task {
 
         export namespace BrowserbaseCreateSessionIntegrationDef {
           export interface Arguments {
-            projectId: string;
-
-            browserSettings?: unknown | null;
+            browserSettings?: unknown;
 
             extensionId?: string | null;
 
-            keepAlive?: boolean | null;
+            keepAlive?: boolean;
 
-            proxies?: boolean | Array<unknown> | null;
+            projectId?: string | null;
 
-            timeout?: number | null;
+            proxies?: boolean | Array<unknown>;
+
+            timeout?: number;
           }
 
           /**
@@ -6017,6 +6336,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -6024,7 +6349,7 @@ export namespace Task {
          * browserbase get session integration definition
          */
         export interface BrowserbaseGetSessionIntegrationDef {
-          arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
           method?: 'get_session';
 
@@ -6046,6 +6371,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -6053,7 +6384,7 @@ export namespace Task {
          * browserbase complete session integration definition
          */
         export interface BrowserbaseCompleteSessionIntegrationDef {
-          arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
           method?: 'complete_session';
 
@@ -6077,6 +6408,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -6084,7 +6421,7 @@ export namespace Task {
          * browserbase get session live urls integration definition
          */
         export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-          arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
           method?: 'get_live_urls';
 
@@ -6106,6 +6443,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -6113,7 +6456,7 @@ export namespace Task {
          * browserbase get session connect url integration definition
          */
         export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-          arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
           method?: 'get_connect_url';
 
@@ -6135,6 +6478,12 @@ export namespace Task {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -6143,14 +6492,14 @@ export namespace Task {
          */
         export interface RemoteBrowserIntegrationDef {
           /**
-           * The arguments for the remote browser
-           */
-          arguments: RemoteBrowserIntegrationDef.Arguments;
-
-          /**
            * The setup parameters for the remote browser
            */
           setup: RemoteBrowserIntegrationDef.Setup;
+
+          /**
+           * The arguments for the remote browser
+           */
+          arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
           method?: 'perform_action';
 
@@ -6158,6 +6507,17 @@ export namespace Task {
         }
 
         export namespace RemoteBrowserIntegrationDef {
+          /**
+           * The setup parameters for the remote browser
+           */
+          export interface Setup {
+            connect_url?: string | null;
+
+            height?: number | null;
+
+            width?: number | null;
+          }
+
           /**
            * The arguments for the remote browser
            */
@@ -6182,17 +6542,6 @@ export namespace Task {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
-          }
-
-          /**
-           * The setup parameters for the remote browser
-           */
-          export interface Setup {
-            connect_url?: string | null;
-
-            height?: number | null;
-
-            width?: number | null;
           }
         }
 
@@ -6609,6 +6958,12 @@ export namespace Task {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -6640,6 +6995,12 @@ export namespace Task {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -6669,6 +7030,12 @@ export namespace Task {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -6676,7 +7043,7 @@ export namespace Task {
      * browserbase create session integration definition
      */
     export interface BrowserbaseCreateSessionIntegrationDef {
-      arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
       method?: 'create_session';
 
@@ -6690,17 +7057,17 @@ export namespace Task {
 
     export namespace BrowserbaseCreateSessionIntegrationDef {
       export interface Arguments {
-        projectId: string;
-
-        browserSettings?: unknown | null;
+        browserSettings?: unknown;
 
         extensionId?: string | null;
 
-        keepAlive?: boolean | null;
+        keepAlive?: boolean;
 
-        proxies?: boolean | Array<unknown> | null;
+        projectId?: string | null;
 
-        timeout?: number | null;
+        proxies?: boolean | Array<unknown>;
+
+        timeout?: number;
       }
 
       /**
@@ -6708,6 +7075,12 @@ export namespace Task {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -6715,7 +7088,7 @@ export namespace Task {
      * browserbase get session integration definition
      */
     export interface BrowserbaseGetSessionIntegrationDef {
-      arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
       method?: 'get_session';
 
@@ -6737,6 +7110,12 @@ export namespace Task {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -6744,7 +7123,7 @@ export namespace Task {
      * browserbase complete session integration definition
      */
     export interface BrowserbaseCompleteSessionIntegrationDef {
-      arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
       method?: 'complete_session';
 
@@ -6768,6 +7147,12 @@ export namespace Task {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -6775,7 +7160,7 @@ export namespace Task {
      * browserbase get session live urls integration definition
      */
     export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-      arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
       method?: 'get_live_urls';
 
@@ -6797,6 +7182,12 @@ export namespace Task {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -6804,7 +7195,7 @@ export namespace Task {
      * browserbase get session connect url integration definition
      */
     export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-      arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
       method?: 'get_connect_url';
 
@@ -6826,6 +7217,12 @@ export namespace Task {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -6834,14 +7231,14 @@ export namespace Task {
      */
     export interface RemoteBrowserIntegrationDef {
       /**
-       * The arguments for the remote browser
-       */
-      arguments: RemoteBrowserIntegrationDef.Arguments;
-
-      /**
        * The setup parameters for the remote browser
        */
       setup: RemoteBrowserIntegrationDef.Setup;
+
+      /**
+       * The arguments for the remote browser
+       */
+      arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
       method?: 'perform_action';
 
@@ -6849,6 +7246,17 @@ export namespace Task {
     }
 
     export namespace RemoteBrowserIntegrationDef {
+      /**
+       * The setup parameters for the remote browser
+       */
+      export interface Setup {
+        connect_url?: string | null;
+
+        height?: number | null;
+
+        width?: number | null;
+      }
+
       /**
        * The arguments for the remote browser
        */
@@ -6873,17 +7281,6 @@ export namespace Task {
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
-      }
-
-      /**
-       * The setup parameters for the remote browser
-       */
-      export interface Setup {
-        connect_url?: string | null;
-
-        height?: number | null;
-
-        width?: number | null;
       }
     }
 
@@ -6995,7 +7392,9 @@ export namespace TaskCreateParams {
   export interface PromptStepInput {
     prompt: Array<PromptStepInput.UnionMember0> | string;
 
-    forward_tool_results?: boolean | null;
+    auto_run_tools?: boolean;
+
+    disable_cache?: boolean;
 
     label?: string | null;
 
@@ -7422,6 +7821,12 @@ export namespace TaskCreateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -7453,6 +7858,12 @@ export namespace TaskCreateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -7482,6 +7893,12 @@ export namespace TaskCreateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -7489,7 +7906,7 @@ export namespace TaskCreateParams {
        * browserbase create session integration definition
        */
       export interface BrowserbaseCreateSessionIntegrationDef {
-        arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+        arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
         method?: 'create_session';
 
@@ -7503,17 +7920,17 @@ export namespace TaskCreateParams {
 
       export namespace BrowserbaseCreateSessionIntegrationDef {
         export interface Arguments {
-          projectId: string;
-
-          browserSettings?: unknown | null;
+          browserSettings?: unknown;
 
           extensionId?: string | null;
 
-          keepAlive?: boolean | null;
+          keepAlive?: boolean;
 
-          proxies?: boolean | Array<unknown> | null;
+          projectId?: string | null;
 
-          timeout?: number | null;
+          proxies?: boolean | Array<unknown>;
+
+          timeout?: number;
         }
 
         /**
@@ -7521,6 +7938,12 @@ export namespace TaskCreateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -7528,7 +7951,7 @@ export namespace TaskCreateParams {
        * browserbase get session integration definition
        */
       export interface BrowserbaseGetSessionIntegrationDef {
-        arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+        arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
         method?: 'get_session';
 
@@ -7550,6 +7973,12 @@ export namespace TaskCreateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -7557,7 +7986,7 @@ export namespace TaskCreateParams {
        * browserbase complete session integration definition
        */
       export interface BrowserbaseCompleteSessionIntegrationDef {
-        arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+        arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
         method?: 'complete_session';
 
@@ -7581,6 +8010,12 @@ export namespace TaskCreateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -7588,7 +8023,7 @@ export namespace TaskCreateParams {
        * browserbase get session live urls integration definition
        */
       export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-        arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+        arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
         method?: 'get_live_urls';
 
@@ -7610,6 +8045,12 @@ export namespace TaskCreateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -7617,7 +8058,7 @@ export namespace TaskCreateParams {
        * browserbase get session connect url integration definition
        */
       export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-        arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+        arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
         method?: 'get_connect_url';
 
@@ -7639,6 +8080,12 @@ export namespace TaskCreateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -7647,14 +8094,14 @@ export namespace TaskCreateParams {
        */
       export interface RemoteBrowserIntegrationDef {
         /**
-         * The arguments for the remote browser
-         */
-        arguments: RemoteBrowserIntegrationDef.Arguments;
-
-        /**
          * The setup parameters for the remote browser
          */
         setup: RemoteBrowserIntegrationDef.Setup;
+
+        /**
+         * The arguments for the remote browser
+         */
+        arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
         method?: 'perform_action';
 
@@ -7662,6 +8109,17 @@ export namespace TaskCreateParams {
       }
 
       export namespace RemoteBrowserIntegrationDef {
+        /**
+         * The setup parameters for the remote browser
+         */
+        export interface Setup {
+          connect_url?: string | null;
+
+          height?: number | null;
+
+          width?: number | null;
+        }
+
         /**
          * The arguments for the remote browser
          */
@@ -7686,17 +8144,6 @@ export namespace TaskCreateParams {
           coordinate?: Array<unknown> | null;
 
           text?: string | null;
-        }
-
-        /**
-         * The setup parameters for the remote browser
-         */
-        export interface Setup {
-          connect_url?: string | null;
-
-          height?: number | null;
-
-          width?: number | null;
         }
       }
 
@@ -7887,7 +8334,9 @@ export namespace TaskCreateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      forward_tool_results?: boolean | null;
+      auto_run_tools?: boolean;
+
+      disable_cache?: boolean;
 
       label?: string | null;
 
@@ -8314,6 +8763,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -8345,6 +8800,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -8374,6 +8835,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -8381,7 +8848,7 @@ export namespace TaskCreateParams {
          * browserbase create session integration definition
          */
         export interface BrowserbaseCreateSessionIntegrationDef {
-          arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
           method?: 'create_session';
 
@@ -8395,17 +8862,17 @@ export namespace TaskCreateParams {
 
         export namespace BrowserbaseCreateSessionIntegrationDef {
           export interface Arguments {
-            projectId: string;
-
-            browserSettings?: unknown | null;
+            browserSettings?: unknown;
 
             extensionId?: string | null;
 
-            keepAlive?: boolean | null;
+            keepAlive?: boolean;
 
-            proxies?: boolean | Array<unknown> | null;
+            projectId?: string | null;
 
-            timeout?: number | null;
+            proxies?: boolean | Array<unknown>;
+
+            timeout?: number;
           }
 
           /**
@@ -8413,6 +8880,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -8420,7 +8893,7 @@ export namespace TaskCreateParams {
          * browserbase get session integration definition
          */
         export interface BrowserbaseGetSessionIntegrationDef {
-          arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
           method?: 'get_session';
 
@@ -8442,6 +8915,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -8449,7 +8928,7 @@ export namespace TaskCreateParams {
          * browserbase complete session integration definition
          */
         export interface BrowserbaseCompleteSessionIntegrationDef {
-          arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
           method?: 'complete_session';
 
@@ -8473,6 +8952,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -8480,7 +8965,7 @@ export namespace TaskCreateParams {
          * browserbase get session live urls integration definition
          */
         export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-          arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
           method?: 'get_live_urls';
 
@@ -8502,6 +8987,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -8509,7 +9000,7 @@ export namespace TaskCreateParams {
          * browserbase get session connect url integration definition
          */
         export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-          arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
           method?: 'get_connect_url';
 
@@ -8531,6 +9022,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -8539,14 +9036,14 @@ export namespace TaskCreateParams {
          */
         export interface RemoteBrowserIntegrationDef {
           /**
-           * The arguments for the remote browser
-           */
-          arguments: RemoteBrowserIntegrationDef.Arguments;
-
-          /**
            * The setup parameters for the remote browser
            */
           setup: RemoteBrowserIntegrationDef.Setup;
+
+          /**
+           * The arguments for the remote browser
+           */
+          arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
           method?: 'perform_action';
 
@@ -8554,6 +9051,17 @@ export namespace TaskCreateParams {
         }
 
         export namespace RemoteBrowserIntegrationDef {
+          /**
+           * The setup parameters for the remote browser
+           */
+          export interface Setup {
+            connect_url?: string | null;
+
+            height?: number | null;
+
+            width?: number | null;
+          }
+
           /**
            * The arguments for the remote browser
            */
@@ -8578,17 +9086,6 @@ export namespace TaskCreateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
-          }
-
-          /**
-           * The setup parameters for the remote browser
-           */
-          export interface Setup {
-            connect_url?: string | null;
-
-            height?: number | null;
-
-            width?: number | null;
           }
         }
 
@@ -8745,7 +9242,9 @@ export namespace TaskCreateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      forward_tool_results?: boolean | null;
+      auto_run_tools?: boolean;
+
+      disable_cache?: boolean;
 
       label?: string | null;
 
@@ -9172,6 +9671,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -9203,6 +9708,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -9232,6 +9743,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -9239,7 +9756,7 @@ export namespace TaskCreateParams {
          * browserbase create session integration definition
          */
         export interface BrowserbaseCreateSessionIntegrationDef {
-          arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
           method?: 'create_session';
 
@@ -9253,17 +9770,17 @@ export namespace TaskCreateParams {
 
         export namespace BrowserbaseCreateSessionIntegrationDef {
           export interface Arguments {
-            projectId: string;
-
-            browserSettings?: unknown | null;
+            browserSettings?: unknown;
 
             extensionId?: string | null;
 
-            keepAlive?: boolean | null;
+            keepAlive?: boolean;
 
-            proxies?: boolean | Array<unknown> | null;
+            projectId?: string | null;
 
-            timeout?: number | null;
+            proxies?: boolean | Array<unknown>;
+
+            timeout?: number;
           }
 
           /**
@@ -9271,6 +9788,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -9278,7 +9801,7 @@ export namespace TaskCreateParams {
          * browserbase get session integration definition
          */
         export interface BrowserbaseGetSessionIntegrationDef {
-          arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
           method?: 'get_session';
 
@@ -9300,6 +9823,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -9307,7 +9836,7 @@ export namespace TaskCreateParams {
          * browserbase complete session integration definition
          */
         export interface BrowserbaseCompleteSessionIntegrationDef {
-          arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
           method?: 'complete_session';
 
@@ -9331,6 +9860,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -9338,7 +9873,7 @@ export namespace TaskCreateParams {
          * browserbase get session live urls integration definition
          */
         export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-          arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
           method?: 'get_live_urls';
 
@@ -9360,6 +9895,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -9367,7 +9908,7 @@ export namespace TaskCreateParams {
          * browserbase get session connect url integration definition
          */
         export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-          arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
           method?: 'get_connect_url';
 
@@ -9389,6 +9930,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -9397,14 +9944,14 @@ export namespace TaskCreateParams {
          */
         export interface RemoteBrowserIntegrationDef {
           /**
-           * The arguments for the remote browser
-           */
-          arguments: RemoteBrowserIntegrationDef.Arguments;
-
-          /**
            * The setup parameters for the remote browser
            */
           setup: RemoteBrowserIntegrationDef.Setup;
+
+          /**
+           * The arguments for the remote browser
+           */
+          arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
           method?: 'perform_action';
 
@@ -9412,6 +9959,17 @@ export namespace TaskCreateParams {
         }
 
         export namespace RemoteBrowserIntegrationDef {
+          /**
+           * The setup parameters for the remote browser
+           */
+          export interface Setup {
+            connect_url?: string | null;
+
+            height?: number | null;
+
+            width?: number | null;
+          }
+
           /**
            * The arguments for the remote browser
            */
@@ -9436,17 +9994,6 @@ export namespace TaskCreateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
-          }
-
-          /**
-           * The setup parameters for the remote browser
-           */
-          export interface Setup {
-            connect_url?: string | null;
-
-            height?: number | null;
-
-            width?: number | null;
           }
         }
 
@@ -9632,7 +10179,9 @@ export namespace TaskCreateParams {
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
-        forward_tool_results?: boolean | null;
+        auto_run_tools?: boolean;
+
+        disable_cache?: boolean;
 
         label?: string | null;
 
@@ -10059,6 +10608,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -10090,6 +10645,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -10119,6 +10680,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -10126,7 +10693,7 @@ export namespace TaskCreateParams {
            * browserbase create session integration definition
            */
           export interface BrowserbaseCreateSessionIntegrationDef {
-            arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
             method?: 'create_session';
 
@@ -10140,17 +10707,17 @@ export namespace TaskCreateParams {
 
           export namespace BrowserbaseCreateSessionIntegrationDef {
             export interface Arguments {
-              projectId: string;
-
-              browserSettings?: unknown | null;
+              browserSettings?: unknown;
 
               extensionId?: string | null;
 
-              keepAlive?: boolean | null;
+              keepAlive?: boolean;
 
-              proxies?: boolean | Array<unknown> | null;
+              projectId?: string | null;
 
-              timeout?: number | null;
+              proxies?: boolean | Array<unknown>;
+
+              timeout?: number;
             }
 
             /**
@@ -10158,6 +10725,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -10165,7 +10738,7 @@ export namespace TaskCreateParams {
            * browserbase get session integration definition
            */
           export interface BrowserbaseGetSessionIntegrationDef {
-            arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
             method?: 'get_session';
 
@@ -10187,6 +10760,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -10194,7 +10773,7 @@ export namespace TaskCreateParams {
            * browserbase complete session integration definition
            */
           export interface BrowserbaseCompleteSessionIntegrationDef {
-            arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
             method?: 'complete_session';
 
@@ -10218,6 +10797,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -10225,7 +10810,7 @@ export namespace TaskCreateParams {
            * browserbase get session live urls integration definition
            */
           export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-            arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
             method?: 'get_live_urls';
 
@@ -10247,6 +10832,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -10254,7 +10845,7 @@ export namespace TaskCreateParams {
            * browserbase get session connect url integration definition
            */
           export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-            arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
             method?: 'get_connect_url';
 
@@ -10276,6 +10867,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -10284,14 +10881,14 @@ export namespace TaskCreateParams {
            */
           export interface RemoteBrowserIntegrationDef {
             /**
-             * The arguments for the remote browser
-             */
-            arguments: RemoteBrowserIntegrationDef.Arguments;
-
-            /**
              * The setup parameters for the remote browser
              */
             setup: RemoteBrowserIntegrationDef.Setup;
+
+            /**
+             * The arguments for the remote browser
+             */
+            arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
             method?: 'perform_action';
 
@@ -10299,6 +10896,17 @@ export namespace TaskCreateParams {
           }
 
           export namespace RemoteBrowserIntegrationDef {
+            /**
+             * The setup parameters for the remote browser
+             */
+            export interface Setup {
+              connect_url?: string | null;
+
+              height?: number | null;
+
+              width?: number | null;
+            }
+
             /**
              * The arguments for the remote browser
              */
@@ -10323,17 +10931,6 @@ export namespace TaskCreateParams {
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
-            }
-
-            /**
-             * The setup parameters for the remote browser
-             */
-            export interface Setup {
-              connect_url?: string | null;
-
-              height?: number | null;
-
-              width?: number | null;
             }
           }
 
@@ -10538,7 +11135,9 @@ export namespace TaskCreateParams {
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
-        forward_tool_results?: boolean | null;
+        auto_run_tools?: boolean;
+
+        disable_cache?: boolean;
 
         label?: string | null;
 
@@ -10965,6 +11564,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -10996,6 +11601,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -11025,6 +11636,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -11032,7 +11649,7 @@ export namespace TaskCreateParams {
            * browserbase create session integration definition
            */
           export interface BrowserbaseCreateSessionIntegrationDef {
-            arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
             method?: 'create_session';
 
@@ -11046,17 +11663,17 @@ export namespace TaskCreateParams {
 
           export namespace BrowserbaseCreateSessionIntegrationDef {
             export interface Arguments {
-              projectId: string;
-
-              browserSettings?: unknown | null;
+              browserSettings?: unknown;
 
               extensionId?: string | null;
 
-              keepAlive?: boolean | null;
+              keepAlive?: boolean;
 
-              proxies?: boolean | Array<unknown> | null;
+              projectId?: string | null;
 
-              timeout?: number | null;
+              proxies?: boolean | Array<unknown>;
+
+              timeout?: number;
             }
 
             /**
@@ -11064,6 +11681,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -11071,7 +11694,7 @@ export namespace TaskCreateParams {
            * browserbase get session integration definition
            */
           export interface BrowserbaseGetSessionIntegrationDef {
-            arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
             method?: 'get_session';
 
@@ -11093,6 +11716,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -11100,7 +11729,7 @@ export namespace TaskCreateParams {
            * browserbase complete session integration definition
            */
           export interface BrowserbaseCompleteSessionIntegrationDef {
-            arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
             method?: 'complete_session';
 
@@ -11124,6 +11753,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -11131,7 +11766,7 @@ export namespace TaskCreateParams {
            * browserbase get session live urls integration definition
            */
           export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-            arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
             method?: 'get_live_urls';
 
@@ -11153,6 +11788,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -11160,7 +11801,7 @@ export namespace TaskCreateParams {
            * browserbase get session connect url integration definition
            */
           export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-            arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
             method?: 'get_connect_url';
 
@@ -11182,6 +11823,12 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -11190,14 +11837,14 @@ export namespace TaskCreateParams {
            */
           export interface RemoteBrowserIntegrationDef {
             /**
-             * The arguments for the remote browser
-             */
-            arguments: RemoteBrowserIntegrationDef.Arguments;
-
-            /**
              * The setup parameters for the remote browser
              */
             setup: RemoteBrowserIntegrationDef.Setup;
+
+            /**
+             * The arguments for the remote browser
+             */
+            arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
             method?: 'perform_action';
 
@@ -11205,6 +11852,17 @@ export namespace TaskCreateParams {
           }
 
           export namespace RemoteBrowserIntegrationDef {
+            /**
+             * The setup parameters for the remote browser
+             */
+            export interface Setup {
+              connect_url?: string | null;
+
+              height?: number | null;
+
+              width?: number | null;
+            }
+
             /**
              * The arguments for the remote browser
              */
@@ -11229,17 +11887,6 @@ export namespace TaskCreateParams {
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
-            }
-
-            /**
-             * The setup parameters for the remote browser
-             */
-            export interface Setup {
-              connect_url?: string | null;
-
-              height?: number | null;
-
-              width?: number | null;
             }
           }
 
@@ -11371,7 +12018,9 @@ export namespace TaskCreateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      forward_tool_results?: boolean | null;
+      auto_run_tools?: boolean;
+
+      disable_cache?: boolean;
 
       label?: string | null;
 
@@ -11798,6 +12447,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -11829,6 +12484,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -11858,6 +12519,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -11865,7 +12532,7 @@ export namespace TaskCreateParams {
          * browserbase create session integration definition
          */
         export interface BrowserbaseCreateSessionIntegrationDef {
-          arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
           method?: 'create_session';
 
@@ -11879,17 +12546,17 @@ export namespace TaskCreateParams {
 
         export namespace BrowserbaseCreateSessionIntegrationDef {
           export interface Arguments {
-            projectId: string;
-
-            browserSettings?: unknown | null;
+            browserSettings?: unknown;
 
             extensionId?: string | null;
 
-            keepAlive?: boolean | null;
+            keepAlive?: boolean;
 
-            proxies?: boolean | Array<unknown> | null;
+            projectId?: string | null;
 
-            timeout?: number | null;
+            proxies?: boolean | Array<unknown>;
+
+            timeout?: number;
           }
 
           /**
@@ -11897,6 +12564,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -11904,7 +12577,7 @@ export namespace TaskCreateParams {
          * browserbase get session integration definition
          */
         export interface BrowserbaseGetSessionIntegrationDef {
-          arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
           method?: 'get_session';
 
@@ -11926,6 +12599,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -11933,7 +12612,7 @@ export namespace TaskCreateParams {
          * browserbase complete session integration definition
          */
         export interface BrowserbaseCompleteSessionIntegrationDef {
-          arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
           method?: 'complete_session';
 
@@ -11957,6 +12636,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -11964,7 +12649,7 @@ export namespace TaskCreateParams {
          * browserbase get session live urls integration definition
          */
         export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-          arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
           method?: 'get_live_urls';
 
@@ -11986,6 +12671,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -11993,7 +12684,7 @@ export namespace TaskCreateParams {
          * browserbase get session connect url integration definition
          */
         export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-          arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
           method?: 'get_connect_url';
 
@@ -12015,6 +12706,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -12023,14 +12720,14 @@ export namespace TaskCreateParams {
          */
         export interface RemoteBrowserIntegrationDef {
           /**
-           * The arguments for the remote browser
-           */
-          arguments: RemoteBrowserIntegrationDef.Arguments;
-
-          /**
            * The setup parameters for the remote browser
            */
           setup: RemoteBrowserIntegrationDef.Setup;
+
+          /**
+           * The arguments for the remote browser
+           */
+          arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
           method?: 'perform_action';
 
@@ -12038,6 +12735,17 @@ export namespace TaskCreateParams {
         }
 
         export namespace RemoteBrowserIntegrationDef {
+          /**
+           * The setup parameters for the remote browser
+           */
+          export interface Setup {
+            connect_url?: string | null;
+
+            height?: number | null;
+
+            width?: number | null;
+          }
+
           /**
            * The arguments for the remote browser
            */
@@ -12062,17 +12770,6 @@ export namespace TaskCreateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
-          }
-
-          /**
-           * The setup parameters for the remote browser
-           */
-          export interface Setup {
-            connect_url?: string | null;
-
-            height?: number | null;
-
-            width?: number | null;
           }
         }
 
@@ -12210,7 +12907,9 @@ export namespace TaskCreateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      forward_tool_results?: boolean | null;
+      auto_run_tools?: boolean;
+
+      disable_cache?: boolean;
 
       label?: string | null;
 
@@ -12637,6 +13336,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -12668,6 +13373,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -12697,6 +13408,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -12704,7 +13421,7 @@ export namespace TaskCreateParams {
          * browserbase create session integration definition
          */
         export interface BrowserbaseCreateSessionIntegrationDef {
-          arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
           method?: 'create_session';
 
@@ -12718,17 +13435,17 @@ export namespace TaskCreateParams {
 
         export namespace BrowserbaseCreateSessionIntegrationDef {
           export interface Arguments {
-            projectId: string;
-
-            browserSettings?: unknown | null;
+            browserSettings?: unknown;
 
             extensionId?: string | null;
 
-            keepAlive?: boolean | null;
+            keepAlive?: boolean;
 
-            proxies?: boolean | Array<unknown> | null;
+            projectId?: string | null;
 
-            timeout?: number | null;
+            proxies?: boolean | Array<unknown>;
+
+            timeout?: number;
           }
 
           /**
@@ -12736,6 +13453,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -12743,7 +13466,7 @@ export namespace TaskCreateParams {
          * browserbase get session integration definition
          */
         export interface BrowserbaseGetSessionIntegrationDef {
-          arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
           method?: 'get_session';
 
@@ -12765,6 +13488,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -12772,7 +13501,7 @@ export namespace TaskCreateParams {
          * browserbase complete session integration definition
          */
         export interface BrowserbaseCompleteSessionIntegrationDef {
-          arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
           method?: 'complete_session';
 
@@ -12796,6 +13525,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -12803,7 +13538,7 @@ export namespace TaskCreateParams {
          * browserbase get session live urls integration definition
          */
         export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-          arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
           method?: 'get_live_urls';
 
@@ -12825,6 +13560,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -12832,7 +13573,7 @@ export namespace TaskCreateParams {
          * browserbase get session connect url integration definition
          */
         export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-          arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
           method?: 'get_connect_url';
 
@@ -12854,6 +13595,12 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -12862,14 +13609,14 @@ export namespace TaskCreateParams {
          */
         export interface RemoteBrowserIntegrationDef {
           /**
-           * The arguments for the remote browser
-           */
-          arguments: RemoteBrowserIntegrationDef.Arguments;
-
-          /**
            * The setup parameters for the remote browser
            */
           setup: RemoteBrowserIntegrationDef.Setup;
+
+          /**
+           * The arguments for the remote browser
+           */
+          arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
           method?: 'perform_action';
 
@@ -12877,6 +13624,17 @@ export namespace TaskCreateParams {
         }
 
         export namespace RemoteBrowserIntegrationDef {
+          /**
+           * The setup parameters for the remote browser
+           */
+          export interface Setup {
+            connect_url?: string | null;
+
+            height?: number | null;
+
+            width?: number | null;
+          }
+
           /**
            * The arguments for the remote browser
            */
@@ -12901,17 +13659,6 @@ export namespace TaskCreateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
-          }
-
-          /**
-           * The setup parameters for the remote browser
-           */
-          export interface Setup {
-            connect_url?: string | null;
-
-            height?: number | null;
-
-            width?: number | null;
           }
         }
 
@@ -13318,6 +14065,12 @@ export namespace TaskCreateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -13349,6 +14102,12 @@ export namespace TaskCreateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -13378,6 +14137,12 @@ export namespace TaskCreateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -13385,7 +14150,7 @@ export namespace TaskCreateParams {
      * browserbase create session integration definition
      */
     export interface BrowserbaseCreateSessionIntegrationDef {
-      arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
       method?: 'create_session';
 
@@ -13399,17 +14164,17 @@ export namespace TaskCreateParams {
 
     export namespace BrowserbaseCreateSessionIntegrationDef {
       export interface Arguments {
-        projectId: string;
-
-        browserSettings?: unknown | null;
+        browserSettings?: unknown;
 
         extensionId?: string | null;
 
-        keepAlive?: boolean | null;
+        keepAlive?: boolean;
 
-        proxies?: boolean | Array<unknown> | null;
+        projectId?: string | null;
 
-        timeout?: number | null;
+        proxies?: boolean | Array<unknown>;
+
+        timeout?: number;
       }
 
       /**
@@ -13417,6 +14182,12 @@ export namespace TaskCreateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -13424,7 +14195,7 @@ export namespace TaskCreateParams {
      * browserbase get session integration definition
      */
     export interface BrowserbaseGetSessionIntegrationDef {
-      arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
       method?: 'get_session';
 
@@ -13446,6 +14217,12 @@ export namespace TaskCreateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -13453,7 +14230,7 @@ export namespace TaskCreateParams {
      * browserbase complete session integration definition
      */
     export interface BrowserbaseCompleteSessionIntegrationDef {
-      arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
       method?: 'complete_session';
 
@@ -13477,6 +14254,12 @@ export namespace TaskCreateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -13484,7 +14267,7 @@ export namespace TaskCreateParams {
      * browserbase get session live urls integration definition
      */
     export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-      arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
       method?: 'get_live_urls';
 
@@ -13506,6 +14289,12 @@ export namespace TaskCreateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -13513,7 +14302,7 @@ export namespace TaskCreateParams {
      * browserbase get session connect url integration definition
      */
     export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-      arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
       method?: 'get_connect_url';
 
@@ -13535,6 +14324,12 @@ export namespace TaskCreateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -13543,14 +14338,14 @@ export namespace TaskCreateParams {
      */
     export interface RemoteBrowserIntegrationDef {
       /**
-       * The arguments for the remote browser
-       */
-      arguments: RemoteBrowserIntegrationDef.Arguments;
-
-      /**
        * The setup parameters for the remote browser
        */
       setup: RemoteBrowserIntegrationDef.Setup;
+
+      /**
+       * The arguments for the remote browser
+       */
+      arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
       method?: 'perform_action';
 
@@ -13558,6 +14353,17 @@ export namespace TaskCreateParams {
     }
 
     export namespace RemoteBrowserIntegrationDef {
+      /**
+       * The setup parameters for the remote browser
+       */
+      export interface Setup {
+        connect_url?: string | null;
+
+        height?: number | null;
+
+        width?: number | null;
+      }
+
       /**
        * The arguments for the remote browser
        */
@@ -13582,17 +14388,6 @@ export namespace TaskCreateParams {
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
-      }
-
-      /**
-       * The setup parameters for the remote browser
-       */
-      export interface Setup {
-        connect_url?: string | null;
-
-        height?: number | null;
-
-        width?: number | null;
       }
     }
 
@@ -13710,7 +14505,9 @@ export namespace TaskCreateOrUpdateParams {
   export interface PromptStepInput {
     prompt: Array<PromptStepInput.UnionMember0> | string;
 
-    forward_tool_results?: boolean | null;
+    auto_run_tools?: boolean;
+
+    disable_cache?: boolean;
 
     label?: string | null;
 
@@ -14137,6 +14934,12 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -14168,6 +14971,12 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -14197,6 +15006,12 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -14204,7 +15019,7 @@ export namespace TaskCreateOrUpdateParams {
        * browserbase create session integration definition
        */
       export interface BrowserbaseCreateSessionIntegrationDef {
-        arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+        arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
         method?: 'create_session';
 
@@ -14218,17 +15033,17 @@ export namespace TaskCreateOrUpdateParams {
 
       export namespace BrowserbaseCreateSessionIntegrationDef {
         export interface Arguments {
-          projectId: string;
-
-          browserSettings?: unknown | null;
+          browserSettings?: unknown;
 
           extensionId?: string | null;
 
-          keepAlive?: boolean | null;
+          keepAlive?: boolean;
 
-          proxies?: boolean | Array<unknown> | null;
+          projectId?: string | null;
 
-          timeout?: number | null;
+          proxies?: boolean | Array<unknown>;
+
+          timeout?: number;
         }
 
         /**
@@ -14236,6 +15051,12 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -14243,7 +15064,7 @@ export namespace TaskCreateOrUpdateParams {
        * browserbase get session integration definition
        */
       export interface BrowserbaseGetSessionIntegrationDef {
-        arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+        arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
         method?: 'get_session';
 
@@ -14265,6 +15086,12 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -14272,7 +15099,7 @@ export namespace TaskCreateOrUpdateParams {
        * browserbase complete session integration definition
        */
       export interface BrowserbaseCompleteSessionIntegrationDef {
-        arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+        arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
         method?: 'complete_session';
 
@@ -14296,6 +15123,12 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -14303,7 +15136,7 @@ export namespace TaskCreateOrUpdateParams {
        * browserbase get session live urls integration definition
        */
       export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-        arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+        arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
         method?: 'get_live_urls';
 
@@ -14325,6 +15158,12 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -14332,7 +15171,7 @@ export namespace TaskCreateOrUpdateParams {
        * browserbase get session connect url integration definition
        */
       export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-        arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+        arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
         method?: 'get_connect_url';
 
@@ -14354,6 +15193,12 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface Setup {
           api_key: string;
+
+          project_id: string;
+
+          api_url?: string | null;
+
+          connect_url?: string | null;
         }
       }
 
@@ -14362,14 +15207,14 @@ export namespace TaskCreateOrUpdateParams {
        */
       export interface RemoteBrowserIntegrationDef {
         /**
-         * The arguments for the remote browser
-         */
-        arguments: RemoteBrowserIntegrationDef.Arguments;
-
-        /**
          * The setup parameters for the remote browser
          */
         setup: RemoteBrowserIntegrationDef.Setup;
+
+        /**
+         * The arguments for the remote browser
+         */
+        arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
         method?: 'perform_action';
 
@@ -14377,6 +15222,17 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       export namespace RemoteBrowserIntegrationDef {
+        /**
+         * The setup parameters for the remote browser
+         */
+        export interface Setup {
+          connect_url?: string | null;
+
+          height?: number | null;
+
+          width?: number | null;
+        }
+
         /**
          * The arguments for the remote browser
          */
@@ -14401,17 +15257,6 @@ export namespace TaskCreateOrUpdateParams {
           coordinate?: Array<unknown> | null;
 
           text?: string | null;
-        }
-
-        /**
-         * The setup parameters for the remote browser
-         */
-        export interface Setup {
-          connect_url?: string | null;
-
-          height?: number | null;
-
-          width?: number | null;
         }
       }
 
@@ -14602,7 +15447,9 @@ export namespace TaskCreateOrUpdateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      forward_tool_results?: boolean | null;
+      auto_run_tools?: boolean;
+
+      disable_cache?: boolean;
 
       label?: string | null;
 
@@ -15029,6 +15876,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -15060,6 +15913,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -15089,6 +15948,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -15096,7 +15961,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase create session integration definition
          */
         export interface BrowserbaseCreateSessionIntegrationDef {
-          arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
           method?: 'create_session';
 
@@ -15110,17 +15975,17 @@ export namespace TaskCreateOrUpdateParams {
 
         export namespace BrowserbaseCreateSessionIntegrationDef {
           export interface Arguments {
-            projectId: string;
-
-            browserSettings?: unknown | null;
+            browserSettings?: unknown;
 
             extensionId?: string | null;
 
-            keepAlive?: boolean | null;
+            keepAlive?: boolean;
 
-            proxies?: boolean | Array<unknown> | null;
+            projectId?: string | null;
 
-            timeout?: number | null;
+            proxies?: boolean | Array<unknown>;
+
+            timeout?: number;
           }
 
           /**
@@ -15128,6 +15993,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -15135,7 +16006,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase get session integration definition
          */
         export interface BrowserbaseGetSessionIntegrationDef {
-          arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
           method?: 'get_session';
 
@@ -15157,6 +16028,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -15164,7 +16041,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase complete session integration definition
          */
         export interface BrowserbaseCompleteSessionIntegrationDef {
-          arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
           method?: 'complete_session';
 
@@ -15188,6 +16065,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -15195,7 +16078,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase get session live urls integration definition
          */
         export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-          arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
           method?: 'get_live_urls';
 
@@ -15217,6 +16100,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -15224,7 +16113,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase get session connect url integration definition
          */
         export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-          arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
           method?: 'get_connect_url';
 
@@ -15246,6 +16135,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -15254,14 +16149,14 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface RemoteBrowserIntegrationDef {
           /**
-           * The arguments for the remote browser
-           */
-          arguments: RemoteBrowserIntegrationDef.Arguments;
-
-          /**
            * The setup parameters for the remote browser
            */
           setup: RemoteBrowserIntegrationDef.Setup;
+
+          /**
+           * The arguments for the remote browser
+           */
+          arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
           method?: 'perform_action';
 
@@ -15269,6 +16164,17 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         export namespace RemoteBrowserIntegrationDef {
+          /**
+           * The setup parameters for the remote browser
+           */
+          export interface Setup {
+            connect_url?: string | null;
+
+            height?: number | null;
+
+            width?: number | null;
+          }
+
           /**
            * The arguments for the remote browser
            */
@@ -15293,17 +16199,6 @@ export namespace TaskCreateOrUpdateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
-          }
-
-          /**
-           * The setup parameters for the remote browser
-           */
-          export interface Setup {
-            connect_url?: string | null;
-
-            height?: number | null;
-
-            width?: number | null;
           }
         }
 
@@ -15460,7 +16355,9 @@ export namespace TaskCreateOrUpdateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      forward_tool_results?: boolean | null;
+      auto_run_tools?: boolean;
+
+      disable_cache?: boolean;
 
       label?: string | null;
 
@@ -15887,6 +16784,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -15918,6 +16821,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -15947,6 +16856,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -15954,7 +16869,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase create session integration definition
          */
         export interface BrowserbaseCreateSessionIntegrationDef {
-          arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
           method?: 'create_session';
 
@@ -15968,17 +16883,17 @@ export namespace TaskCreateOrUpdateParams {
 
         export namespace BrowserbaseCreateSessionIntegrationDef {
           export interface Arguments {
-            projectId: string;
-
-            browserSettings?: unknown | null;
+            browserSettings?: unknown;
 
             extensionId?: string | null;
 
-            keepAlive?: boolean | null;
+            keepAlive?: boolean;
 
-            proxies?: boolean | Array<unknown> | null;
+            projectId?: string | null;
 
-            timeout?: number | null;
+            proxies?: boolean | Array<unknown>;
+
+            timeout?: number;
           }
 
           /**
@@ -15986,6 +16901,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -15993,7 +16914,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase get session integration definition
          */
         export interface BrowserbaseGetSessionIntegrationDef {
-          arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
           method?: 'get_session';
 
@@ -16015,6 +16936,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -16022,7 +16949,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase complete session integration definition
          */
         export interface BrowserbaseCompleteSessionIntegrationDef {
-          arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
           method?: 'complete_session';
 
@@ -16046,6 +16973,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -16053,7 +16986,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase get session live urls integration definition
          */
         export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-          arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
           method?: 'get_live_urls';
 
@@ -16075,6 +17008,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -16082,7 +17021,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase get session connect url integration definition
          */
         export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-          arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
           method?: 'get_connect_url';
 
@@ -16104,6 +17043,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -16112,14 +17057,14 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface RemoteBrowserIntegrationDef {
           /**
-           * The arguments for the remote browser
-           */
-          arguments: RemoteBrowserIntegrationDef.Arguments;
-
-          /**
            * The setup parameters for the remote browser
            */
           setup: RemoteBrowserIntegrationDef.Setup;
+
+          /**
+           * The arguments for the remote browser
+           */
+          arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
           method?: 'perform_action';
 
@@ -16127,6 +17072,17 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         export namespace RemoteBrowserIntegrationDef {
+          /**
+           * The setup parameters for the remote browser
+           */
+          export interface Setup {
+            connect_url?: string | null;
+
+            height?: number | null;
+
+            width?: number | null;
+          }
+
           /**
            * The arguments for the remote browser
            */
@@ -16151,17 +17107,6 @@ export namespace TaskCreateOrUpdateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
-          }
-
-          /**
-           * The setup parameters for the remote browser
-           */
-          export interface Setup {
-            connect_url?: string | null;
-
-            height?: number | null;
-
-            width?: number | null;
           }
         }
 
@@ -16347,7 +17292,9 @@ export namespace TaskCreateOrUpdateParams {
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
-        forward_tool_results?: boolean | null;
+        auto_run_tools?: boolean;
+
+        disable_cache?: boolean;
 
         label?: string | null;
 
@@ -16774,6 +17721,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -16805,6 +17758,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -16834,6 +17793,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -16841,7 +17806,7 @@ export namespace TaskCreateOrUpdateParams {
            * browserbase create session integration definition
            */
           export interface BrowserbaseCreateSessionIntegrationDef {
-            arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
             method?: 'create_session';
 
@@ -16855,17 +17820,17 @@ export namespace TaskCreateOrUpdateParams {
 
           export namespace BrowserbaseCreateSessionIntegrationDef {
             export interface Arguments {
-              projectId: string;
-
-              browserSettings?: unknown | null;
+              browserSettings?: unknown;
 
               extensionId?: string | null;
 
-              keepAlive?: boolean | null;
+              keepAlive?: boolean;
 
-              proxies?: boolean | Array<unknown> | null;
+              projectId?: string | null;
 
-              timeout?: number | null;
+              proxies?: boolean | Array<unknown>;
+
+              timeout?: number;
             }
 
             /**
@@ -16873,6 +17838,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -16880,7 +17851,7 @@ export namespace TaskCreateOrUpdateParams {
            * browserbase get session integration definition
            */
           export interface BrowserbaseGetSessionIntegrationDef {
-            arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
             method?: 'get_session';
 
@@ -16902,6 +17873,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -16909,7 +17886,7 @@ export namespace TaskCreateOrUpdateParams {
            * browserbase complete session integration definition
            */
           export interface BrowserbaseCompleteSessionIntegrationDef {
-            arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
             method?: 'complete_session';
 
@@ -16933,6 +17910,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -16940,7 +17923,7 @@ export namespace TaskCreateOrUpdateParams {
            * browserbase get session live urls integration definition
            */
           export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-            arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
             method?: 'get_live_urls';
 
@@ -16962,6 +17945,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -16969,7 +17958,7 @@ export namespace TaskCreateOrUpdateParams {
            * browserbase get session connect url integration definition
            */
           export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-            arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
             method?: 'get_connect_url';
 
@@ -16991,6 +17980,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -16999,14 +17994,14 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface RemoteBrowserIntegrationDef {
             /**
-             * The arguments for the remote browser
-             */
-            arguments: RemoteBrowserIntegrationDef.Arguments;
-
-            /**
              * The setup parameters for the remote browser
              */
             setup: RemoteBrowserIntegrationDef.Setup;
+
+            /**
+             * The arguments for the remote browser
+             */
+            arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
             method?: 'perform_action';
 
@@ -17014,6 +18009,17 @@ export namespace TaskCreateOrUpdateParams {
           }
 
           export namespace RemoteBrowserIntegrationDef {
+            /**
+             * The setup parameters for the remote browser
+             */
+            export interface Setup {
+              connect_url?: string | null;
+
+              height?: number | null;
+
+              width?: number | null;
+            }
+
             /**
              * The arguments for the remote browser
              */
@@ -17038,17 +18044,6 @@ export namespace TaskCreateOrUpdateParams {
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
-            }
-
-            /**
-             * The setup parameters for the remote browser
-             */
-            export interface Setup {
-              connect_url?: string | null;
-
-              height?: number | null;
-
-              width?: number | null;
             }
           }
 
@@ -17253,7 +18248,9 @@ export namespace TaskCreateOrUpdateParams {
       export interface PromptStepInput {
         prompt: Array<PromptStepInput.UnionMember0> | string;
 
-        forward_tool_results?: boolean | null;
+        auto_run_tools?: boolean;
+
+        disable_cache?: boolean;
 
         label?: string | null;
 
@@ -17680,6 +18677,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -17711,6 +18714,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -17740,6 +18749,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -17747,7 +18762,7 @@ export namespace TaskCreateOrUpdateParams {
            * browserbase create session integration definition
            */
           export interface BrowserbaseCreateSessionIntegrationDef {
-            arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
             method?: 'create_session';
 
@@ -17761,17 +18776,17 @@ export namespace TaskCreateOrUpdateParams {
 
           export namespace BrowserbaseCreateSessionIntegrationDef {
             export interface Arguments {
-              projectId: string;
-
-              browserSettings?: unknown | null;
+              browserSettings?: unknown;
 
               extensionId?: string | null;
 
-              keepAlive?: boolean | null;
+              keepAlive?: boolean;
 
-              proxies?: boolean | Array<unknown> | null;
+              projectId?: string | null;
 
-              timeout?: number | null;
+              proxies?: boolean | Array<unknown>;
+
+              timeout?: number;
             }
 
             /**
@@ -17779,6 +18794,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -17786,7 +18807,7 @@ export namespace TaskCreateOrUpdateParams {
            * browserbase get session integration definition
            */
           export interface BrowserbaseGetSessionIntegrationDef {
-            arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
             method?: 'get_session';
 
@@ -17808,6 +18829,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -17815,7 +18842,7 @@ export namespace TaskCreateOrUpdateParams {
            * browserbase complete session integration definition
            */
           export interface BrowserbaseCompleteSessionIntegrationDef {
-            arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+            arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
             method?: 'complete_session';
 
@@ -17839,6 +18866,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -17846,7 +18879,7 @@ export namespace TaskCreateOrUpdateParams {
            * browserbase get session live urls integration definition
            */
           export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-            arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
             method?: 'get_live_urls';
 
@@ -17868,6 +18901,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -17875,7 +18914,7 @@ export namespace TaskCreateOrUpdateParams {
            * browserbase get session connect url integration definition
            */
           export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-            arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+            arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
             method?: 'get_connect_url';
 
@@ -17897,6 +18936,12 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               api_key: string;
+
+              project_id: string;
+
+              api_url?: string | null;
+
+              connect_url?: string | null;
             }
           }
 
@@ -17905,14 +18950,14 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface RemoteBrowserIntegrationDef {
             /**
-             * The arguments for the remote browser
-             */
-            arguments: RemoteBrowserIntegrationDef.Arguments;
-
-            /**
              * The setup parameters for the remote browser
              */
             setup: RemoteBrowserIntegrationDef.Setup;
+
+            /**
+             * The arguments for the remote browser
+             */
+            arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
             method?: 'perform_action';
 
@@ -17920,6 +18965,17 @@ export namespace TaskCreateOrUpdateParams {
           }
 
           export namespace RemoteBrowserIntegrationDef {
+            /**
+             * The setup parameters for the remote browser
+             */
+            export interface Setup {
+              connect_url?: string | null;
+
+              height?: number | null;
+
+              width?: number | null;
+            }
+
             /**
              * The arguments for the remote browser
              */
@@ -17944,17 +19000,6 @@ export namespace TaskCreateOrUpdateParams {
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
-            }
-
-            /**
-             * The setup parameters for the remote browser
-             */
-            export interface Setup {
-              connect_url?: string | null;
-
-              height?: number | null;
-
-              width?: number | null;
             }
           }
 
@@ -18086,7 +19131,9 @@ export namespace TaskCreateOrUpdateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      forward_tool_results?: boolean | null;
+      auto_run_tools?: boolean;
+
+      disable_cache?: boolean;
 
       label?: string | null;
 
@@ -18513,6 +19560,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -18544,6 +19597,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -18573,6 +19632,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -18580,7 +19645,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase create session integration definition
          */
         export interface BrowserbaseCreateSessionIntegrationDef {
-          arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
           method?: 'create_session';
 
@@ -18594,17 +19659,17 @@ export namespace TaskCreateOrUpdateParams {
 
         export namespace BrowserbaseCreateSessionIntegrationDef {
           export interface Arguments {
-            projectId: string;
-
-            browserSettings?: unknown | null;
+            browserSettings?: unknown;
 
             extensionId?: string | null;
 
-            keepAlive?: boolean | null;
+            keepAlive?: boolean;
 
-            proxies?: boolean | Array<unknown> | null;
+            projectId?: string | null;
 
-            timeout?: number | null;
+            proxies?: boolean | Array<unknown>;
+
+            timeout?: number;
           }
 
           /**
@@ -18612,6 +19677,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -18619,7 +19690,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase get session integration definition
          */
         export interface BrowserbaseGetSessionIntegrationDef {
-          arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
           method?: 'get_session';
 
@@ -18641,6 +19712,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -18648,7 +19725,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase complete session integration definition
          */
         export interface BrowserbaseCompleteSessionIntegrationDef {
-          arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
           method?: 'complete_session';
 
@@ -18672,6 +19749,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -18679,7 +19762,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase get session live urls integration definition
          */
         export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-          arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
           method?: 'get_live_urls';
 
@@ -18701,6 +19784,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -18708,7 +19797,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase get session connect url integration definition
          */
         export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-          arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
           method?: 'get_connect_url';
 
@@ -18730,6 +19819,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -18738,14 +19833,14 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface RemoteBrowserIntegrationDef {
           /**
-           * The arguments for the remote browser
-           */
-          arguments: RemoteBrowserIntegrationDef.Arguments;
-
-          /**
            * The setup parameters for the remote browser
            */
           setup: RemoteBrowserIntegrationDef.Setup;
+
+          /**
+           * The arguments for the remote browser
+           */
+          arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
           method?: 'perform_action';
 
@@ -18753,6 +19848,17 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         export namespace RemoteBrowserIntegrationDef {
+          /**
+           * The setup parameters for the remote browser
+           */
+          export interface Setup {
+            connect_url?: string | null;
+
+            height?: number | null;
+
+            width?: number | null;
+          }
+
           /**
            * The arguments for the remote browser
            */
@@ -18777,17 +19883,6 @@ export namespace TaskCreateOrUpdateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
-          }
-
-          /**
-           * The setup parameters for the remote browser
-           */
-          export interface Setup {
-            connect_url?: string | null;
-
-            height?: number | null;
-
-            width?: number | null;
           }
         }
 
@@ -18925,7 +20020,9 @@ export namespace TaskCreateOrUpdateParams {
     export interface PromptStepInput {
       prompt: Array<PromptStepInput.UnionMember0> | string;
 
-      forward_tool_results?: boolean | null;
+      auto_run_tools?: boolean;
+
+      disable_cache?: boolean;
 
       label?: string | null;
 
@@ -19352,6 +20449,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -19383,6 +20486,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -19412,6 +20521,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -19419,7 +20534,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase create session integration definition
          */
         export interface BrowserbaseCreateSessionIntegrationDef {
-          arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
           method?: 'create_session';
 
@@ -19433,17 +20548,17 @@ export namespace TaskCreateOrUpdateParams {
 
         export namespace BrowserbaseCreateSessionIntegrationDef {
           export interface Arguments {
-            projectId: string;
-
-            browserSettings?: unknown | null;
+            browserSettings?: unknown;
 
             extensionId?: string | null;
 
-            keepAlive?: boolean | null;
+            keepAlive?: boolean;
 
-            proxies?: boolean | Array<unknown> | null;
+            projectId?: string | null;
 
-            timeout?: number | null;
+            proxies?: boolean | Array<unknown>;
+
+            timeout?: number;
           }
 
           /**
@@ -19451,6 +20566,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -19458,7 +20579,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase get session integration definition
          */
         export interface BrowserbaseGetSessionIntegrationDef {
-          arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
           method?: 'get_session';
 
@@ -19480,6 +20601,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -19487,7 +20614,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase complete session integration definition
          */
         export interface BrowserbaseCompleteSessionIntegrationDef {
-          arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+          arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
           method?: 'complete_session';
 
@@ -19511,6 +20638,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -19518,7 +20651,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase get session live urls integration definition
          */
         export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-          arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
           method?: 'get_live_urls';
 
@@ -19540,6 +20673,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -19547,7 +20686,7 @@ export namespace TaskCreateOrUpdateParams {
          * browserbase get session connect url integration definition
          */
         export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-          arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+          arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
           method?: 'get_connect_url';
 
@@ -19569,6 +20708,12 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             api_key: string;
+
+            project_id: string;
+
+            api_url?: string | null;
+
+            connect_url?: string | null;
           }
         }
 
@@ -19577,14 +20722,14 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface RemoteBrowserIntegrationDef {
           /**
-           * The arguments for the remote browser
-           */
-          arguments: RemoteBrowserIntegrationDef.Arguments;
-
-          /**
            * The setup parameters for the remote browser
            */
           setup: RemoteBrowserIntegrationDef.Setup;
+
+          /**
+           * The arguments for the remote browser
+           */
+          arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
           method?: 'perform_action';
 
@@ -19592,6 +20737,17 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         export namespace RemoteBrowserIntegrationDef {
+          /**
+           * The setup parameters for the remote browser
+           */
+          export interface Setup {
+            connect_url?: string | null;
+
+            height?: number | null;
+
+            width?: number | null;
+          }
+
           /**
            * The arguments for the remote browser
            */
@@ -19616,17 +20772,6 @@ export namespace TaskCreateOrUpdateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
-          }
-
-          /**
-           * The setup parameters for the remote browser
-           */
-          export interface Setup {
-            connect_url?: string | null;
-
-            height?: number | null;
-
-            width?: number | null;
           }
         }
 
@@ -20033,6 +21178,12 @@ export namespace TaskCreateOrUpdateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -20064,6 +21215,12 @@ export namespace TaskCreateOrUpdateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -20093,6 +21250,12 @@ export namespace TaskCreateOrUpdateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -20100,7 +21263,7 @@ export namespace TaskCreateOrUpdateParams {
      * browserbase create session integration definition
      */
     export interface BrowserbaseCreateSessionIntegrationDef {
-      arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
       method?: 'create_session';
 
@@ -20114,17 +21277,17 @@ export namespace TaskCreateOrUpdateParams {
 
     export namespace BrowserbaseCreateSessionIntegrationDef {
       export interface Arguments {
-        projectId: string;
-
-        browserSettings?: unknown | null;
+        browserSettings?: unknown;
 
         extensionId?: string | null;
 
-        keepAlive?: boolean | null;
+        keepAlive?: boolean;
 
-        proxies?: boolean | Array<unknown> | null;
+        projectId?: string | null;
 
-        timeout?: number | null;
+        proxies?: boolean | Array<unknown>;
+
+        timeout?: number;
       }
 
       /**
@@ -20132,6 +21295,12 @@ export namespace TaskCreateOrUpdateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -20139,7 +21308,7 @@ export namespace TaskCreateOrUpdateParams {
      * browserbase get session integration definition
      */
     export interface BrowserbaseGetSessionIntegrationDef {
-      arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
       method?: 'get_session';
 
@@ -20161,6 +21330,12 @@ export namespace TaskCreateOrUpdateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -20168,7 +21343,7 @@ export namespace TaskCreateOrUpdateParams {
      * browserbase complete session integration definition
      */
     export interface BrowserbaseCompleteSessionIntegrationDef {
-      arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
       method?: 'complete_session';
 
@@ -20192,6 +21367,12 @@ export namespace TaskCreateOrUpdateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -20199,7 +21380,7 @@ export namespace TaskCreateOrUpdateParams {
      * browserbase get session live urls integration definition
      */
     export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-      arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
       method?: 'get_live_urls';
 
@@ -20221,6 +21402,12 @@ export namespace TaskCreateOrUpdateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -20228,7 +21415,7 @@ export namespace TaskCreateOrUpdateParams {
      * browserbase get session connect url integration definition
      */
     export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-      arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
       method?: 'get_connect_url';
 
@@ -20250,6 +21437,12 @@ export namespace TaskCreateOrUpdateParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -20258,14 +21451,14 @@ export namespace TaskCreateOrUpdateParams {
      */
     export interface RemoteBrowserIntegrationDef {
       /**
-       * The arguments for the remote browser
-       */
-      arguments: RemoteBrowserIntegrationDef.Arguments;
-
-      /**
        * The setup parameters for the remote browser
        */
       setup: RemoteBrowserIntegrationDef.Setup;
+
+      /**
+       * The arguments for the remote browser
+       */
+      arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
       method?: 'perform_action';
 
@@ -20273,6 +21466,17 @@ export namespace TaskCreateOrUpdateParams {
     }
 
     export namespace RemoteBrowserIntegrationDef {
+      /**
+       * The setup parameters for the remote browser
+       */
+      export interface Setup {
+        connect_url?: string | null;
+
+        height?: number | null;
+
+        width?: number | null;
+      }
+
       /**
        * The arguments for the remote browser
        */
@@ -20297,17 +21501,6 @@ export namespace TaskCreateOrUpdateParams {
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
-      }
-
-      /**
-       * The setup parameters for the remote browser
-       */
-      export interface Setup {
-        connect_url?: string | null;
-
-        height?: number | null;
-
-        width?: number | null;
       }
     }
 
@@ -20346,10 +21539,14 @@ export namespace TaskCreateOrUpdateParams {
   }
 }
 
-export namespace Tasks {
-  export import Task = TasksAPI.Task;
-  export import TasksOffsetPagination = TasksAPI.TasksOffsetPagination;
-  export import TaskCreateParams = TasksAPI.TaskCreateParams;
-  export import TaskListParams = TasksAPI.TaskListParams;
-  export import TaskCreateOrUpdateParams = TasksAPI.TaskCreateOrUpdateParams;
+Tasks.TasksOffsetPagination = TasksOffsetPagination;
+
+export declare namespace Tasks {
+  export {
+    type Task as Task,
+    TasksOffsetPagination as TasksOffsetPagination,
+    type TaskCreateParams as TaskCreateParams,
+    type TaskListParams as TaskListParams,
+    type TaskCreateOrUpdateParams as TaskCreateOrUpdateParams,
+  };
 }

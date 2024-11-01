@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as TransitionsAPI from './transitions';
 import * as ExecutionsAPI from './executions';
 import { TransitionsOffsetPagination } from './executions';
 import { type OffsetPaginationParams } from '../../pagination';
@@ -68,10 +67,12 @@ export interface TransitionStreamParams {
   next_page_token?: string | null;
 }
 
-export namespace Transitions {
-  export import TransitionStreamResponse = TransitionsAPI.TransitionStreamResponse;
-  export import TransitionListParams = TransitionsAPI.TransitionListParams;
-  export import TransitionStreamParams = TransitionsAPI.TransitionStreamParams;
+export declare namespace Transitions {
+  export {
+    type TransitionStreamResponse as TransitionStreamResponse,
+    type TransitionListParams as TransitionListParams,
+    type TransitionStreamParams as TransitionStreamParams,
+  };
 }
 
 export { TransitionsOffsetPagination };
