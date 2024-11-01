@@ -1292,7 +1292,7 @@ export namespace ChatResponse {
 
     owner: Doc.Owner;
 
-    snippets: Array<DocsAPI.Snippet>;
+    snippet: DocsAPI.Snippet;
 
     distance?: number | null;
 
@@ -3281,7 +3281,7 @@ export namespace SessionChatResponse {
 
       owner: Doc.Owner;
 
-      snippets: Array<DocsAPI.Snippet>;
+      snippet: DocsAPI.Snippet;
 
       distance?: number | null;
 
