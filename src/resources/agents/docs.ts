@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as AgentsDocsAPI from './docs';
 import * as DocsAPI from '../docs';
 import { DocsOffsetPagination } from '../docs';
 import * as Shared from '../shared';
@@ -159,11 +158,13 @@ export namespace DocSearchParams {
   }
 }
 
-export namespace Docs {
-  export import DocSearchResponse = AgentsDocsAPI.DocSearchResponse;
-  export import DocCreateParams = AgentsDocsAPI.DocCreateParams;
-  export import DocListParams = AgentsDocsAPI.DocListParams;
-  export import DocSearchParams = AgentsDocsAPI.DocSearchParams;
+export declare namespace Docs {
+  export {
+    type DocSearchResponse as DocSearchResponse,
+    type DocCreateParams as DocCreateParams,
+    type DocListParams as DocListParams,
+    type DocSearchParams as DocSearchParams,
+  };
 }
 
 export { DocsOffsetPagination };

@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as ToolsAPI from './tools';
 import * as Shared from '../shared';
 import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
 
@@ -428,6 +427,12 @@ export namespace ToolListResponse {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -459,6 +464,12 @@ export namespace ToolListResponse {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -488,6 +499,12 @@ export namespace ToolListResponse {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -495,7 +512,7 @@ export namespace ToolListResponse {
    * browserbase create session integration definition
    */
   export interface BrowserbaseCreateSessionIntegrationDef {
-    arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+    arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
     method?: 'create_session';
 
@@ -509,17 +526,17 @@ export namespace ToolListResponse {
 
   export namespace BrowserbaseCreateSessionIntegrationDef {
     export interface Arguments {
-      projectId: string;
-
-      browserSettings?: unknown | null;
+      browserSettings?: unknown;
 
       extensionId?: string | null;
 
-      keepAlive?: boolean | null;
+      keepAlive?: boolean;
 
-      proxies?: boolean | Array<unknown> | null;
+      projectId?: string | null;
 
-      timeout?: number | null;
+      proxies?: boolean | Array<unknown>;
+
+      timeout?: number;
     }
 
     /**
@@ -527,6 +544,12 @@ export namespace ToolListResponse {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -534,7 +557,7 @@ export namespace ToolListResponse {
    * browserbase get session integration definition
    */
   export interface BrowserbaseGetSessionIntegrationDef {
-    arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+    arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
     method?: 'get_session';
 
@@ -556,6 +579,12 @@ export namespace ToolListResponse {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -563,7 +592,7 @@ export namespace ToolListResponse {
    * browserbase complete session integration definition
    */
   export interface BrowserbaseCompleteSessionIntegrationDef {
-    arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+    arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
     method?: 'complete_session';
 
@@ -587,6 +616,12 @@ export namespace ToolListResponse {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -594,7 +629,7 @@ export namespace ToolListResponse {
    * browserbase get session live urls integration definition
    */
   export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-    arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+    arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
     method?: 'get_live_urls';
 
@@ -616,6 +651,12 @@ export namespace ToolListResponse {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -623,7 +664,7 @@ export namespace ToolListResponse {
    * browserbase get session connect url integration definition
    */
   export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-    arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+    arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
     method?: 'get_connect_url';
 
@@ -645,6 +686,12 @@ export namespace ToolListResponse {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -653,14 +700,14 @@ export namespace ToolListResponse {
    */
   export interface RemoteBrowserIntegrationDef {
     /**
-     * The arguments for the remote browser
-     */
-    arguments: RemoteBrowserIntegrationDef.Arguments;
-
-    /**
      * The setup parameters for the remote browser
      */
     setup: RemoteBrowserIntegrationDef.Setup;
+
+    /**
+     * The arguments for the remote browser
+     */
+    arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
     method?: 'perform_action';
 
@@ -668,6 +715,17 @@ export namespace ToolListResponse {
   }
 
   export namespace RemoteBrowserIntegrationDef {
+    /**
+     * The setup parameters for the remote browser
+     */
+    export interface Setup {
+      connect_url?: string | null;
+
+      height?: number | null;
+
+      width?: number | null;
+    }
+
     /**
      * The arguments for the remote browser
      */
@@ -692,17 +750,6 @@ export namespace ToolListResponse {
       coordinate?: Array<unknown> | null;
 
       text?: string | null;
-    }
-
-    /**
-     * The setup parameters for the remote browser
-     */
-    export interface Setup {
-      connect_url?: string | null;
-
-      height?: number | null;
-
-      width?: number | null;
     }
   }
 
@@ -1079,6 +1126,12 @@ export namespace ToolCreateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1110,6 +1163,12 @@ export namespace ToolCreateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1139,6 +1198,12 @@ export namespace ToolCreateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1146,7 +1211,7 @@ export namespace ToolCreateParams {
    * browserbase create session integration definition
    */
   export interface BrowserbaseCreateSessionIntegrationDef {
-    arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+    arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
     method?: 'create_session';
 
@@ -1160,17 +1225,17 @@ export namespace ToolCreateParams {
 
   export namespace BrowserbaseCreateSessionIntegrationDef {
     export interface Arguments {
-      projectId: string;
-
-      browserSettings?: unknown | null;
+      browserSettings?: unknown;
 
       extensionId?: string | null;
 
-      keepAlive?: boolean | null;
+      keepAlive?: boolean;
 
-      proxies?: boolean | Array<unknown> | null;
+      projectId?: string | null;
 
-      timeout?: number | null;
+      proxies?: boolean | Array<unknown>;
+
+      timeout?: number;
     }
 
     /**
@@ -1178,6 +1243,12 @@ export namespace ToolCreateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1185,7 +1256,7 @@ export namespace ToolCreateParams {
    * browserbase get session integration definition
    */
   export interface BrowserbaseGetSessionIntegrationDef {
-    arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+    arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
     method?: 'get_session';
 
@@ -1207,6 +1278,12 @@ export namespace ToolCreateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1214,7 +1291,7 @@ export namespace ToolCreateParams {
    * browserbase complete session integration definition
    */
   export interface BrowserbaseCompleteSessionIntegrationDef {
-    arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+    arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
     method?: 'complete_session';
 
@@ -1238,6 +1315,12 @@ export namespace ToolCreateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1245,7 +1328,7 @@ export namespace ToolCreateParams {
    * browserbase get session live urls integration definition
    */
   export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-    arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+    arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
     method?: 'get_live_urls';
 
@@ -1267,6 +1350,12 @@ export namespace ToolCreateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1274,7 +1363,7 @@ export namespace ToolCreateParams {
    * browserbase get session connect url integration definition
    */
   export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-    arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+    arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
     method?: 'get_connect_url';
 
@@ -1296,6 +1385,12 @@ export namespace ToolCreateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1304,14 +1399,14 @@ export namespace ToolCreateParams {
    */
   export interface RemoteBrowserIntegrationDef {
     /**
-     * The arguments for the remote browser
-     */
-    arguments: RemoteBrowserIntegrationDef.Arguments;
-
-    /**
      * The setup parameters for the remote browser
      */
     setup: RemoteBrowserIntegrationDef.Setup;
+
+    /**
+     * The arguments for the remote browser
+     */
+    arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
     method?: 'perform_action';
 
@@ -1319,6 +1414,17 @@ export namespace ToolCreateParams {
   }
 
   export namespace RemoteBrowserIntegrationDef {
+    /**
+     * The setup parameters for the remote browser
+     */
+    export interface Setup {
+      connect_url?: string | null;
+
+      height?: number | null;
+
+      width?: number | null;
+    }
+
     /**
      * The arguments for the remote browser
      */
@@ -1343,17 +1449,6 @@ export namespace ToolCreateParams {
       coordinate?: Array<unknown> | null;
 
       text?: string | null;
-    }
-
-    /**
-     * The setup parameters for the remote browser
-     */
-    export interface Setup {
-      connect_url?: string | null;
-
-      height?: number | null;
-
-      width?: number | null;
     }
   }
 
@@ -1730,6 +1825,12 @@ export namespace ToolUpdateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1761,6 +1862,12 @@ export namespace ToolUpdateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1790,6 +1897,12 @@ export namespace ToolUpdateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1797,7 +1910,7 @@ export namespace ToolUpdateParams {
    * browserbase create session integration definition
    */
   export interface BrowserbaseCreateSessionIntegrationDef {
-    arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+    arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
     method?: 'create_session';
 
@@ -1811,17 +1924,17 @@ export namespace ToolUpdateParams {
 
   export namespace BrowserbaseCreateSessionIntegrationDef {
     export interface Arguments {
-      projectId: string;
-
-      browserSettings?: unknown | null;
+      browserSettings?: unknown;
 
       extensionId?: string | null;
 
-      keepAlive?: boolean | null;
+      keepAlive?: boolean;
 
-      proxies?: boolean | Array<unknown> | null;
+      projectId?: string | null;
 
-      timeout?: number | null;
+      proxies?: boolean | Array<unknown>;
+
+      timeout?: number;
     }
 
     /**
@@ -1829,6 +1942,12 @@ export namespace ToolUpdateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1836,7 +1955,7 @@ export namespace ToolUpdateParams {
    * browserbase get session integration definition
    */
   export interface BrowserbaseGetSessionIntegrationDef {
-    arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+    arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
     method?: 'get_session';
 
@@ -1858,6 +1977,12 @@ export namespace ToolUpdateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1865,7 +1990,7 @@ export namespace ToolUpdateParams {
    * browserbase complete session integration definition
    */
   export interface BrowserbaseCompleteSessionIntegrationDef {
-    arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+    arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
     method?: 'complete_session';
 
@@ -1889,6 +2014,12 @@ export namespace ToolUpdateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1896,7 +2027,7 @@ export namespace ToolUpdateParams {
    * browserbase get session live urls integration definition
    */
   export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-    arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+    arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
     method?: 'get_live_urls';
 
@@ -1918,6 +2049,12 @@ export namespace ToolUpdateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1925,7 +2062,7 @@ export namespace ToolUpdateParams {
    * browserbase get session connect url integration definition
    */
   export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-    arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+    arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
     method?: 'get_connect_url';
 
@@ -1947,6 +2084,12 @@ export namespace ToolUpdateParams {
      */
     export interface Setup {
       api_key: string;
+
+      project_id: string;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
     }
   }
 
@@ -1955,14 +2098,14 @@ export namespace ToolUpdateParams {
    */
   export interface RemoteBrowserIntegrationDef {
     /**
-     * The arguments for the remote browser
-     */
-    arguments: RemoteBrowserIntegrationDef.Arguments;
-
-    /**
      * The setup parameters for the remote browser
      */
     setup: RemoteBrowserIntegrationDef.Setup;
+
+    /**
+     * The arguments for the remote browser
+     */
+    arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
     method?: 'perform_action';
 
@@ -1970,6 +2113,17 @@ export namespace ToolUpdateParams {
   }
 
   export namespace RemoteBrowserIntegrationDef {
+    /**
+     * The setup parameters for the remote browser
+     */
+    export interface Setup {
+      connect_url?: string | null;
+
+      height?: number | null;
+
+      width?: number | null;
+    }
+
     /**
      * The arguments for the remote browser
      */
@@ -1994,17 +2148,6 @@ export namespace ToolUpdateParams {
       coordinate?: Array<unknown> | null;
 
       text?: string | null;
-    }
-
-    /**
-     * The setup parameters for the remote browser
-     */
-    export interface Setup {
-      connect_url?: string | null;
-
-      height?: number | null;
-
-      width?: number | null;
     }
   }
 
@@ -2388,6 +2531,12 @@ export namespace ToolPatchParams {
      */
     export interface Setup {
       api_key?: string | null;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
+
+      project_id?: string | null;
     }
   }
 
@@ -2419,6 +2568,12 @@ export namespace ToolPatchParams {
      */
     export interface Setup {
       api_key?: string | null;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
+
+      project_id?: string | null;
     }
   }
 
@@ -2448,6 +2603,12 @@ export namespace ToolPatchParams {
      */
     export interface Setup {
       api_key?: string | null;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
+
+      project_id?: string | null;
     }
   }
 
@@ -2469,17 +2630,17 @@ export namespace ToolPatchParams {
 
   export namespace BrowserbaseCreateSessionIntegrationDefUpdate {
     export interface Arguments {
-      browserSettings?: unknown | null;
+      browserSettings?: unknown;
 
       extensionId?: string | null;
 
-      keepAlive?: boolean | null;
+      keepAlive?: boolean;
 
       projectId?: string | null;
 
-      proxies?: boolean | Array<unknown> | null;
+      proxies?: boolean | Array<unknown>;
 
-      timeout?: number | null;
+      timeout?: number;
     }
 
     /**
@@ -2487,6 +2648,12 @@ export namespace ToolPatchParams {
      */
     export interface Setup {
       api_key?: string | null;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
+
+      project_id?: string | null;
     }
   }
 
@@ -2516,6 +2683,12 @@ export namespace ToolPatchParams {
      */
     export interface Setup {
       api_key?: string | null;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
+
+      project_id?: string | null;
     }
   }
 
@@ -2547,6 +2720,12 @@ export namespace ToolPatchParams {
      */
     export interface Setup {
       api_key?: string | null;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
+
+      project_id?: string | null;
     }
   }
 
@@ -2576,6 +2755,12 @@ export namespace ToolPatchParams {
      */
     export interface Setup {
       api_key?: string | null;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
+
+      project_id?: string | null;
     }
   }
 
@@ -2605,6 +2790,12 @@ export namespace ToolPatchParams {
      */
     export interface Setup {
       api_key?: string | null;
+
+      api_url?: string | null;
+
+      connect_url?: string | null;
+
+      project_id?: string | null;
     }
   }
 
@@ -2702,11 +2893,15 @@ export namespace ToolPatchParams {
   }
 }
 
-export namespace Tools {
-  export import ToolListResponse = ToolsAPI.ToolListResponse;
-  export import ToolListResponsesOffsetPagination = ToolsAPI.ToolListResponsesOffsetPagination;
-  export import ToolCreateParams = ToolsAPI.ToolCreateParams;
-  export import ToolUpdateParams = ToolsAPI.ToolUpdateParams;
-  export import ToolListParams = ToolsAPI.ToolListParams;
-  export import ToolPatchParams = ToolsAPI.ToolPatchParams;
+Tools.ToolListResponsesOffsetPagination = ToolListResponsesOffsetPagination;
+
+export declare namespace Tools {
+  export {
+    type ToolListResponse as ToolListResponse,
+    ToolListResponsesOffsetPagination as ToolListResponsesOffsetPagination,
+    type ToolCreateParams as ToolCreateParams,
+    type ToolUpdateParams as ToolUpdateParams,
+    type ToolListParams as ToolListParams,
+    type ToolPatchParams as ToolPatchParams,
+  };
 }

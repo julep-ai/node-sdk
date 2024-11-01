@@ -1,11 +1,71 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Errors from './error';
-import * as Uploads from './uploads';
 import { type Agent } from './_shims/index';
 import * as Core from './core';
+import * as Errors from './error';
 import * as Pagination from './pagination';
+import { type OffsetPaginationParams, OffsetPaginationResponse } from './pagination';
+import * as Uploads from './uploads';
 import * as API from './resources/index';
+import { Doc, DocEmbedParams, Docs, EmbedQueryResponse, Snippet } from './resources/docs';
+import { JobStatus, Jobs } from './resources/jobs';
+import {
+  ChatInput,
+  ChatResponse,
+  ChatSettings,
+  Entry,
+  History,
+  Message,
+  Session,
+  SessionChatParams,
+  SessionChatResponse,
+  SessionCreateOrUpdateParams,
+  SessionCreateParams,
+  SessionListParams,
+  SessionPatchParams,
+  SessionUpdateParams,
+  Sessions,
+  SessionsOffsetPagination,
+} from './resources/sessions';
+import {
+  Task,
+  TaskCreateOrUpdateParams,
+  TaskCreateParams,
+  TaskListParams,
+  Tasks,
+  TasksOffsetPagination,
+} from './resources/tasks';
+import {
+  Agent,
+  AgentCreateOrUpdateParams,
+  AgentCreateParams,
+  AgentListParams,
+  AgentPatchParams,
+  AgentUpdateParams,
+  Agents,
+  AgentsOffsetPagination,
+} from './resources/agents/agents';
+import {
+  Execution,
+  ExecutionChangeStatusParams,
+  ExecutionChangeStatusResponse,
+  ExecutionCreateParams,
+  ExecutionListParams,
+  ExecutionPatchParams,
+  Executions,
+  ExecutionsOffsetPagination,
+  Transition,
+} from './resources/executions/executions';
+import {
+  User,
+  UserCreateOrUpdateParams,
+  UserCreateParams,
+  UserListParams,
+  UserPatchParams,
+  UserUpdateParams,
+  Users,
+  UsersOffsetPagination,
+} from './resources/users/users';
 
 const environments = {
   dev: 'https://dev.julep.ai/api',
@@ -191,96 +251,120 @@ export class Julep extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const {
-  JulepError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  AuthenticationError,
-  InternalServerError,
-  PermissionDeniedError,
-  UnprocessableEntityError,
-} = Errors;
+export const JulepError = Errors.JulepError;
+export const APIError = Errors.APIError;
+export const APIConnectionError = Errors.APIConnectionError;
+export const APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
+export const APIUserAbortError = Errors.APIUserAbortError;
+export const NotFoundError = Errors.NotFoundError;
+export const ConflictError = Errors.ConflictError;
+export const RateLimitError = Errors.RateLimitError;
+export const BadRequestError = Errors.BadRequestError;
+export const AuthenticationError = Errors.AuthenticationError;
+export const InternalServerError = Errors.InternalServerError;
+export const PermissionDeniedError = Errors.PermissionDeniedError;
+export const UnprocessableEntityError = Errors.UnprocessableEntityError;
 
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-export namespace Julep {
-  export import RequestOptions = Core.RequestOptions;
+Julep.Agents = Agents;
+Julep.AgentsOffsetPagination = AgentsOffsetPagination;
+Julep.Sessions = Sessions;
+Julep.SessionsOffsetPagination = SessionsOffsetPagination;
+Julep.Users = Users;
+Julep.UsersOffsetPagination = UsersOffsetPagination;
+Julep.Jobs = Jobs;
+Julep.Docs = Docs;
+Julep.Tasks = Tasks;
+Julep.TasksOffsetPagination = TasksOffsetPagination;
+Julep.Executions = Executions;
+Julep.ExecutionsOffsetPagination = ExecutionsOffsetPagination;
+
+export declare namespace Julep {
+  export type RequestOptions = Core.RequestOptions;
 
   export import OffsetPagination = Pagination.OffsetPagination;
-  export import OffsetPaginationParams = Pagination.OffsetPaginationParams;
-  export import OffsetPaginationResponse = Pagination.OffsetPaginationResponse;
+  export {
+    type OffsetPaginationParams as OffsetPaginationParams,
+    type OffsetPaginationResponse as OffsetPaginationResponse,
+  };
 
-  export import Agents = API.Agents;
-  export import Agent = API.Agent;
-  export import AgentsOffsetPagination = API.AgentsOffsetPagination;
-  export import AgentCreateParams = API.AgentCreateParams;
-  export import AgentUpdateParams = API.AgentUpdateParams;
-  export import AgentListParams = API.AgentListParams;
-  export import AgentCreateOrUpdateParams = API.AgentCreateOrUpdateParams;
-  export import AgentPatchParams = API.AgentPatchParams;
+  export {
+    Agents as Agents,
+    type Agent as Agent,
+    AgentsOffsetPagination as AgentsOffsetPagination,
+    type AgentCreateParams as AgentCreateParams,
+    type AgentUpdateParams as AgentUpdateParams,
+    type AgentListParams as AgentListParams,
+    type AgentCreateOrUpdateParams as AgentCreateOrUpdateParams,
+    type AgentPatchParams as AgentPatchParams,
+  };
 
-  export import Sessions = API.Sessions;
-  export import ChatInput = API.ChatInput;
-  export import ChatResponse = API.ChatResponse;
-  export import ChatSettings = API.ChatSettings;
-  export import Entry = API.Entry;
-  export import History = API.History;
-  export import Message = API.Message;
-  export import Session = API.Session;
-  export import SessionChatResponse = API.SessionChatResponse;
-  export import SessionsOffsetPagination = API.SessionsOffsetPagination;
-  export import SessionCreateParams = API.SessionCreateParams;
-  export import SessionUpdateParams = API.SessionUpdateParams;
-  export import SessionListParams = API.SessionListParams;
-  export import SessionChatParams = API.SessionChatParams;
-  export import SessionCreateOrUpdateParams = API.SessionCreateOrUpdateParams;
-  export import SessionPatchParams = API.SessionPatchParams;
+  export {
+    Sessions as Sessions,
+    type ChatInput as ChatInput,
+    type ChatResponse as ChatResponse,
+    type ChatSettings as ChatSettings,
+    type Entry as Entry,
+    type History as History,
+    type Message as Message,
+    type Session as Session,
+    type SessionChatResponse as SessionChatResponse,
+    SessionsOffsetPagination as SessionsOffsetPagination,
+    type SessionCreateParams as SessionCreateParams,
+    type SessionUpdateParams as SessionUpdateParams,
+    type SessionListParams as SessionListParams,
+    type SessionChatParams as SessionChatParams,
+    type SessionCreateOrUpdateParams as SessionCreateOrUpdateParams,
+    type SessionPatchParams as SessionPatchParams,
+  };
 
-  export import Users = API.Users;
-  export import User = API.User;
-  export import UsersOffsetPagination = API.UsersOffsetPagination;
-  export import UserCreateParams = API.UserCreateParams;
-  export import UserUpdateParams = API.UserUpdateParams;
-  export import UserListParams = API.UserListParams;
-  export import UserCreateOrUpdateParams = API.UserCreateOrUpdateParams;
-  export import UserPatchParams = API.UserPatchParams;
+  export {
+    Users as Users,
+    type User as User,
+    UsersOffsetPagination as UsersOffsetPagination,
+    type UserCreateParams as UserCreateParams,
+    type UserUpdateParams as UserUpdateParams,
+    type UserListParams as UserListParams,
+    type UserCreateOrUpdateParams as UserCreateOrUpdateParams,
+    type UserPatchParams as UserPatchParams,
+  };
 
-  export import Jobs = API.Jobs;
-  export import JobStatus = API.JobStatus;
+  export { Jobs as Jobs, type JobStatus as JobStatus };
 
-  export import Docs = API.Docs;
-  export import Doc = API.Doc;
-  export import EmbedQueryResponse = API.EmbedQueryResponse;
-  export import Snippet = API.Snippet;
-  export import DocEmbedParams = API.DocEmbedParams;
+  export {
+    Docs as Docs,
+    type Doc as Doc,
+    type EmbedQueryResponse as EmbedQueryResponse,
+    type Snippet as Snippet,
+    type DocEmbedParams as DocEmbedParams,
+  };
 
-  export import Tasks = API.Tasks;
-  export import Task = API.Task;
-  export import TasksOffsetPagination = API.TasksOffsetPagination;
-  export import TaskCreateParams = API.TaskCreateParams;
-  export import TaskListParams = API.TaskListParams;
-  export import TaskCreateOrUpdateParams = API.TaskCreateOrUpdateParams;
+  export {
+    Tasks as Tasks,
+    type Task as Task,
+    TasksOffsetPagination as TasksOffsetPagination,
+    type TaskCreateParams as TaskCreateParams,
+    type TaskListParams as TaskListParams,
+    type TaskCreateOrUpdateParams as TaskCreateOrUpdateParams,
+  };
 
-  export import Executions = API.Executions;
-  export import Execution = API.Execution;
-  export import Transition = API.Transition;
-  export import ExecutionChangeStatusResponse = API.ExecutionChangeStatusResponse;
-  export import ExecutionsOffsetPagination = API.ExecutionsOffsetPagination;
-  export import ExecutionCreateParams = API.ExecutionCreateParams;
-  export import ExecutionListParams = API.ExecutionListParams;
-  export import ExecutionChangeStatusParams = API.ExecutionChangeStatusParams;
-  export import ExecutionPatchParams = API.ExecutionPatchParams;
+  export {
+    Executions as Executions,
+    type Execution as Execution,
+    type Transition as Transition,
+    type ExecutionChangeStatusResponse as ExecutionChangeStatusResponse,
+    ExecutionsOffsetPagination as ExecutionsOffsetPagination,
+    type ExecutionCreateParams as ExecutionCreateParams,
+    type ExecutionListParams as ExecutionListParams,
+    type ExecutionChangeStatusParams as ExecutionChangeStatusParams,
+    type ExecutionPatchParams as ExecutionPatchParams,
+  };
 
-  export import ResourceCreated = API.ResourceCreated;
-  export import ResourceDeleted = API.ResourceDeleted;
-  export import ResourceUpdated = API.ResourceUpdated;
+  export type ResourceCreated = API.ResourceCreated;
+  export type ResourceDeleted = API.ResourceDeleted;
+  export type ResourceUpdated = API.ResourceUpdated;
 }
 
 export default Julep;

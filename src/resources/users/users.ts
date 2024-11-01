@@ -3,9 +3,9 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as UsersAPI from './users';
 import * as Shared from '../shared';
 import * as DocsAPI from './docs';
+import { DocCreateParams, DocListParams, DocSearchParams, DocSearchResponse, Docs } from './docs';
 import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
 
 export class Users extends APIResource {
@@ -135,17 +135,25 @@ export interface UserPatchParams {
   name?: string;
 }
 
-export namespace Users {
-  export import User = UsersAPI.User;
-  export import UsersOffsetPagination = UsersAPI.UsersOffsetPagination;
-  export import UserCreateParams = UsersAPI.UserCreateParams;
-  export import UserUpdateParams = UsersAPI.UserUpdateParams;
-  export import UserListParams = UsersAPI.UserListParams;
-  export import UserCreateOrUpdateParams = UsersAPI.UserCreateOrUpdateParams;
-  export import UserPatchParams = UsersAPI.UserPatchParams;
-  export import Docs = DocsAPI.Docs;
-  export import DocSearchResponse = DocsAPI.DocSearchResponse;
-  export import DocCreateParams = DocsAPI.DocCreateParams;
-  export import DocListParams = DocsAPI.DocListParams;
-  export import DocSearchParams = DocsAPI.DocSearchParams;
+Users.UsersOffsetPagination = UsersOffsetPagination;
+Users.Docs = Docs;
+
+export declare namespace Users {
+  export {
+    type User as User,
+    UsersOffsetPagination as UsersOffsetPagination,
+    type UserCreateParams as UserCreateParams,
+    type UserUpdateParams as UserUpdateParams,
+    type UserListParams as UserListParams,
+    type UserCreateOrUpdateParams as UserCreateOrUpdateParams,
+    type UserPatchParams as UserPatchParams,
+  };
+
+  export {
+    Docs as Docs,
+    type DocSearchResponse as DocSearchResponse,
+    type DocCreateParams as DocCreateParams,
+    type DocListParams as DocListParams,
+    type DocSearchParams as DocSearchParams,
+  };
 }

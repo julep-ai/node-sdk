@@ -3,10 +3,19 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as AgentsAPI from './agents';
 import * as Shared from '../shared';
 import * as DocsAPI from './docs';
+import { DocCreateParams, DocListParams, DocSearchParams, DocSearchResponse, Docs } from './docs';
 import * as ToolsAPI from './tools';
+import {
+  ToolCreateParams,
+  ToolListParams,
+  ToolListResponse,
+  ToolListResponsesOffsetPagination,
+  ToolPatchParams,
+  ToolUpdateParams,
+  Tools,
+} from './tools';
 import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
 
 export class Agents extends APIResource {
@@ -290,24 +299,37 @@ export namespace AgentPatchParams {
   }
 }
 
-export namespace Agents {
-  export import Agent = AgentsAPI.Agent;
-  export import AgentsOffsetPagination = AgentsAPI.AgentsOffsetPagination;
-  export import AgentCreateParams = AgentsAPI.AgentCreateParams;
-  export import AgentUpdateParams = AgentsAPI.AgentUpdateParams;
-  export import AgentListParams = AgentsAPI.AgentListParams;
-  export import AgentCreateOrUpdateParams = AgentsAPI.AgentCreateOrUpdateParams;
-  export import AgentPatchParams = AgentsAPI.AgentPatchParams;
-  export import Tools = ToolsAPI.Tools;
-  export import ToolListResponse = ToolsAPI.ToolListResponse;
-  export import ToolListResponsesOffsetPagination = ToolsAPI.ToolListResponsesOffsetPagination;
-  export import ToolCreateParams = ToolsAPI.ToolCreateParams;
-  export import ToolUpdateParams = ToolsAPI.ToolUpdateParams;
-  export import ToolListParams = ToolsAPI.ToolListParams;
-  export import ToolPatchParams = ToolsAPI.ToolPatchParams;
-  export import Docs = DocsAPI.Docs;
-  export import DocSearchResponse = DocsAPI.DocSearchResponse;
-  export import DocCreateParams = DocsAPI.DocCreateParams;
-  export import DocListParams = DocsAPI.DocListParams;
-  export import DocSearchParams = DocsAPI.DocSearchParams;
+Agents.AgentsOffsetPagination = AgentsOffsetPagination;
+Agents.Tools = Tools;
+Agents.ToolListResponsesOffsetPagination = ToolListResponsesOffsetPagination;
+Agents.Docs = Docs;
+
+export declare namespace Agents {
+  export {
+    type Agent as Agent,
+    AgentsOffsetPagination as AgentsOffsetPagination,
+    type AgentCreateParams as AgentCreateParams,
+    type AgentUpdateParams as AgentUpdateParams,
+    type AgentListParams as AgentListParams,
+    type AgentCreateOrUpdateParams as AgentCreateOrUpdateParams,
+    type AgentPatchParams as AgentPatchParams,
+  };
+
+  export {
+    Tools as Tools,
+    type ToolListResponse as ToolListResponse,
+    ToolListResponsesOffsetPagination as ToolListResponsesOffsetPagination,
+    type ToolCreateParams as ToolCreateParams,
+    type ToolUpdateParams as ToolUpdateParams,
+    type ToolListParams as ToolListParams,
+    type ToolPatchParams as ToolPatchParams,
+  };
+
+  export {
+    Docs as Docs,
+    type DocSearchResponse as DocSearchResponse,
+    type DocCreateParams as DocCreateParams,
+    type DocListParams as DocListParams,
+    type DocSearchParams as DocSearchParams,
+  };
 }
