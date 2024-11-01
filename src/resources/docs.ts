@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as DocsAPI from './docs';
 import { OffsetPagination } from '../pagination';
 
 export class Docs extends APIResource {
@@ -67,9 +66,11 @@ export namespace DocEmbedParams {
   }
 }
 
-export namespace Docs {
-  export import Doc = DocsAPI.Doc;
-  export import EmbedQueryResponse = DocsAPI.EmbedQueryResponse;
-  export import Snippet = DocsAPI.Snippet;
-  export import DocEmbedParams = DocsAPI.DocEmbedParams;
+export declare namespace Docs {
+  export {
+    type Doc as Doc,
+    type EmbedQueryResponse as EmbedQueryResponse,
+    type Snippet as Snippet,
+    type DocEmbedParams as DocEmbedParams,
+  };
 }
