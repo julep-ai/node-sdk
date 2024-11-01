@@ -75,7 +75,7 @@ export namespace DocSearchResponse {
 
     owner: Doc.Owner;
 
-    snippets: Array<DocsAPI.Snippet>;
+    snippet: DocsAPI.Snippet;
 
     distance?: number | null;
 
