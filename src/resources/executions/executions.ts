@@ -3,9 +3,14 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as ExecutionsAPI from './executions';
 import * as Shared from '../shared';
 import * as TransitionsAPI from './transitions';
+import {
+  TransitionListParams,
+  TransitionStreamParams,
+  TransitionStreamResponse,
+  Transitions,
+} from './transitions';
 import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
 
 export class Executions extends APIResource {
@@ -186,17 +191,25 @@ export interface ExecutionPatchParams {
   status: 'queued' | 'starting' | 'running' | 'awaiting_input' | 'succeeded' | 'failed' | 'cancelled';
 }
 
-export namespace Executions {
-  export import Execution = ExecutionsAPI.Execution;
-  export import Transition = ExecutionsAPI.Transition;
-  export import ExecutionChangeStatusResponse = ExecutionsAPI.ExecutionChangeStatusResponse;
-  export import ExecutionsOffsetPagination = ExecutionsAPI.ExecutionsOffsetPagination;
-  export import ExecutionCreateParams = ExecutionsAPI.ExecutionCreateParams;
-  export import ExecutionListParams = ExecutionsAPI.ExecutionListParams;
-  export import ExecutionChangeStatusParams = ExecutionsAPI.ExecutionChangeStatusParams;
-  export import ExecutionPatchParams = ExecutionsAPI.ExecutionPatchParams;
-  export import Transitions = TransitionsAPI.Transitions;
-  export import TransitionStreamResponse = TransitionsAPI.TransitionStreamResponse;
-  export import TransitionListParams = TransitionsAPI.TransitionListParams;
-  export import TransitionStreamParams = TransitionsAPI.TransitionStreamParams;
+Executions.ExecutionsOffsetPagination = ExecutionsOffsetPagination;
+Executions.Transitions = Transitions;
+
+export declare namespace Executions {
+  export {
+    type Execution as Execution,
+    type Transition as Transition,
+    type ExecutionChangeStatusResponse as ExecutionChangeStatusResponse,
+    ExecutionsOffsetPagination as ExecutionsOffsetPagination,
+    type ExecutionCreateParams as ExecutionCreateParams,
+    type ExecutionListParams as ExecutionListParams,
+    type ExecutionChangeStatusParams as ExecutionChangeStatusParams,
+    type ExecutionPatchParams as ExecutionPatchParams,
+  };
+
+  export {
+    Transitions as Transitions,
+    type TransitionStreamResponse as TransitionStreamResponse,
+    type TransitionListParams as TransitionListParams,
+    type TransitionStreamParams as TransitionStreamParams,
+  };
 }

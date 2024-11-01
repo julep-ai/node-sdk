@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as SessionsAPI from './sessions';
 import * as DocsAPI from './docs';
 import * as Shared from './shared';
 import { OffsetPagination, type OffsetPaginationParams } from '../pagination';
@@ -523,6 +522,12 @@ export namespace ChatInput {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -554,6 +559,12 @@ export namespace ChatInput {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -583,6 +594,12 @@ export namespace ChatInput {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -590,7 +607,7 @@ export namespace ChatInput {
      * browserbase create session integration definition
      */
     export interface BrowserbaseCreateSessionIntegrationDef {
-      arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
       method?: 'create_session';
 
@@ -604,17 +621,17 @@ export namespace ChatInput {
 
     export namespace BrowserbaseCreateSessionIntegrationDef {
       export interface Arguments {
-        projectId: string;
-
-        browserSettings?: unknown | null;
+        browserSettings?: unknown;
 
         extensionId?: string | null;
 
-        keepAlive?: boolean | null;
+        keepAlive?: boolean;
 
-        proxies?: boolean | Array<unknown> | null;
+        projectId?: string | null;
 
-        timeout?: number | null;
+        proxies?: boolean | Array<unknown>;
+
+        timeout?: number;
       }
 
       /**
@@ -622,6 +639,12 @@ export namespace ChatInput {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -629,7 +652,7 @@ export namespace ChatInput {
      * browserbase get session integration definition
      */
     export interface BrowserbaseGetSessionIntegrationDef {
-      arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
       method?: 'get_session';
 
@@ -651,6 +674,12 @@ export namespace ChatInput {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -658,7 +687,7 @@ export namespace ChatInput {
      * browserbase complete session integration definition
      */
     export interface BrowserbaseCompleteSessionIntegrationDef {
-      arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
       method?: 'complete_session';
 
@@ -682,6 +711,12 @@ export namespace ChatInput {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -689,7 +724,7 @@ export namespace ChatInput {
      * browserbase get session live urls integration definition
      */
     export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-      arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
       method?: 'get_live_urls';
 
@@ -711,6 +746,12 @@ export namespace ChatInput {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -718,7 +759,7 @@ export namespace ChatInput {
      * browserbase get session connect url integration definition
      */
     export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-      arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
       method?: 'get_connect_url';
 
@@ -740,6 +781,12 @@ export namespace ChatInput {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -748,14 +795,14 @@ export namespace ChatInput {
      */
     export interface RemoteBrowserIntegrationDef {
       /**
-       * The arguments for the remote browser
-       */
-      arguments: RemoteBrowserIntegrationDef.Arguments;
-
-      /**
        * The setup parameters for the remote browser
        */
       setup: RemoteBrowserIntegrationDef.Setup;
+
+      /**
+       * The arguments for the remote browser
+       */
+      arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
       method?: 'perform_action';
 
@@ -763,6 +810,17 @@ export namespace ChatInput {
     }
 
     export namespace RemoteBrowserIntegrationDef {
+      /**
+       * The setup parameters for the remote browser
+       */
+      export interface Setup {
+        connect_url?: string | null;
+
+        height?: number | null;
+
+        width?: number | null;
+      }
+
       /**
        * The arguments for the remote browser
        */
@@ -787,17 +845,6 @@ export namespace ChatInput {
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
-      }
-
-      /**
-       * The setup parameters for the remote browser
-       */
-      export interface Setup {
-        connect_url?: string | null;
-
-        height?: number | null;
-
-        width?: number | null;
       }
     }
 
@@ -1729,6 +1776,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -1760,6 +1813,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -1789,6 +1848,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -1796,7 +1861,7 @@ export namespace Entry {
      * browserbase create session integration definition
      */
     export interface BrowserbaseCreateSessionIntegrationDef {
-      arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
       method?: 'create_session';
 
@@ -1810,17 +1875,17 @@ export namespace Entry {
 
     export namespace BrowserbaseCreateSessionIntegrationDef {
       export interface Arguments {
-        projectId: string;
-
-        browserSettings?: unknown | null;
+        browserSettings?: unknown;
 
         extensionId?: string | null;
 
-        keepAlive?: boolean | null;
+        keepAlive?: boolean;
 
-        proxies?: boolean | Array<unknown> | null;
+        projectId?: string | null;
 
-        timeout?: number | null;
+        proxies?: boolean | Array<unknown>;
+
+        timeout?: number;
       }
 
       /**
@@ -1828,6 +1893,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -1835,7 +1906,7 @@ export namespace Entry {
      * browserbase get session integration definition
      */
     export interface BrowserbaseGetSessionIntegrationDef {
-      arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
       method?: 'get_session';
 
@@ -1857,6 +1928,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -1864,7 +1941,7 @@ export namespace Entry {
      * browserbase complete session integration definition
      */
     export interface BrowserbaseCompleteSessionIntegrationDef {
-      arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
       method?: 'complete_session';
 
@@ -1888,6 +1965,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -1895,7 +1978,7 @@ export namespace Entry {
      * browserbase get session live urls integration definition
      */
     export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-      arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
       method?: 'get_live_urls';
 
@@ -1917,6 +2000,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -1924,7 +2013,7 @@ export namespace Entry {
      * browserbase get session connect url integration definition
      */
     export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-      arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
       method?: 'get_connect_url';
 
@@ -1946,6 +2035,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -1954,14 +2049,14 @@ export namespace Entry {
      */
     export interface RemoteBrowserIntegrationDef {
       /**
-       * The arguments for the remote browser
-       */
-      arguments: RemoteBrowserIntegrationDef.Arguments;
-
-      /**
        * The setup parameters for the remote browser
        */
       setup: RemoteBrowserIntegrationDef.Setup;
+
+      /**
+       * The arguments for the remote browser
+       */
+      arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
       method?: 'perform_action';
 
@@ -1969,6 +2064,17 @@ export namespace Entry {
     }
 
     export namespace RemoteBrowserIntegrationDef {
+      /**
+       * The setup parameters for the remote browser
+       */
+      export interface Setup {
+        connect_url?: string | null;
+
+        height?: number | null;
+
+        width?: number | null;
+      }
+
       /**
        * The arguments for the remote browser
        */
@@ -1993,17 +2099,6 @@ export namespace Entry {
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
-      }
-
-      /**
-       * The setup parameters for the remote browser
-       */
-      export interface Setup {
-        connect_url?: string | null;
-
-        height?: number | null;
-
-        width?: number | null;
       }
     }
 
@@ -2522,6 +2617,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -2553,6 +2654,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -2582,6 +2689,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -2589,7 +2702,7 @@ export namespace Entry {
      * browserbase create session integration definition
      */
     export interface BrowserbaseCreateSessionIntegrationDef {
-      arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
       method?: 'create_session';
 
@@ -2603,17 +2716,17 @@ export namespace Entry {
 
     export namespace BrowserbaseCreateSessionIntegrationDef {
       export interface Arguments {
-        projectId: string;
-
-        browserSettings?: unknown | null;
+        browserSettings?: unknown;
 
         extensionId?: string | null;
 
-        keepAlive?: boolean | null;
+        keepAlive?: boolean;
 
-        proxies?: boolean | Array<unknown> | null;
+        projectId?: string | null;
 
-        timeout?: number | null;
+        proxies?: boolean | Array<unknown>;
+
+        timeout?: number;
       }
 
       /**
@@ -2621,6 +2734,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -2628,7 +2747,7 @@ export namespace Entry {
      * browserbase get session integration definition
      */
     export interface BrowserbaseGetSessionIntegrationDef {
-      arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
       method?: 'get_session';
 
@@ -2650,6 +2769,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -2657,7 +2782,7 @@ export namespace Entry {
      * browserbase complete session integration definition
      */
     export interface BrowserbaseCompleteSessionIntegrationDef {
-      arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
       method?: 'complete_session';
 
@@ -2681,6 +2806,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -2688,7 +2819,7 @@ export namespace Entry {
      * browserbase get session live urls integration definition
      */
     export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-      arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
       method?: 'get_live_urls';
 
@@ -2710,6 +2841,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -2717,7 +2854,7 @@ export namespace Entry {
      * browserbase get session connect url integration definition
      */
     export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-      arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
       method?: 'get_connect_url';
 
@@ -2739,6 +2876,12 @@ export namespace Entry {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -2747,14 +2890,14 @@ export namespace Entry {
      */
     export interface RemoteBrowserIntegrationDef {
       /**
-       * The arguments for the remote browser
-       */
-      arguments: RemoteBrowserIntegrationDef.Arguments;
-
-      /**
        * The setup parameters for the remote browser
        */
       setup: RemoteBrowserIntegrationDef.Setup;
+
+      /**
+       * The arguments for the remote browser
+       */
+      arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
       method?: 'perform_action';
 
@@ -2762,6 +2905,17 @@ export namespace Entry {
     }
 
     export namespace RemoteBrowserIntegrationDef {
+      /**
+       * The setup parameters for the remote browser
+       */
+      export interface Setup {
+        connect_url?: string | null;
+
+        height?: number | null;
+
+        width?: number | null;
+      }
+
       /**
        * The arguments for the remote browser
        */
@@ -2786,17 +2940,6 @@ export namespace Entry {
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
-      }
-
-      /**
-       * The setup parameters for the remote browser
-       */
-      export interface Setup {
-        connect_url?: string | null;
-
-        height?: number | null;
-
-        width?: number | null;
       }
     }
 
@@ -3010,9 +3153,9 @@ export interface Session {
 
   updated_at: string;
 
-  context_overflow?: 'truncate' | 'adaptive' | null;
+  auto_run_tools?: boolean;
 
-  forward_tool_results?: boolean | null;
+  context_overflow?: 'truncate' | 'adaptive' | null;
 
   kind?: string | null;
 
@@ -3171,9 +3314,9 @@ export interface SessionCreateParams {
 
   agents?: Array<string> | null;
 
-  context_overflow?: 'truncate' | 'adaptive' | null;
+  auto_run_tools?: boolean;
 
-  forward_tool_results?: boolean | null;
+  context_overflow?: 'truncate' | 'adaptive' | null;
 
   metadata?: unknown | null;
 
@@ -3189,9 +3332,9 @@ export interface SessionCreateParams {
 }
 
 export interface SessionUpdateParams {
-  context_overflow?: 'truncate' | 'adaptive' | null;
+  auto_run_tools?: boolean;
 
-  forward_tool_results?: boolean | null;
+  context_overflow?: 'truncate' | 'adaptive' | null;
 
   metadata?: unknown | null;
 
@@ -3678,6 +3821,12 @@ export namespace SessionChatParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -3709,6 +3858,12 @@ export namespace SessionChatParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -3738,6 +3893,12 @@ export namespace SessionChatParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -3745,7 +3906,7 @@ export namespace SessionChatParams {
      * browserbase create session integration definition
      */
     export interface BrowserbaseCreateSessionIntegrationDef {
-      arguments: BrowserbaseCreateSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
 
       method?: 'create_session';
 
@@ -3759,17 +3920,17 @@ export namespace SessionChatParams {
 
     export namespace BrowserbaseCreateSessionIntegrationDef {
       export interface Arguments {
-        projectId: string;
-
-        browserSettings?: unknown | null;
+        browserSettings?: unknown;
 
         extensionId?: string | null;
 
-        keepAlive?: boolean | null;
+        keepAlive?: boolean;
 
-        proxies?: boolean | Array<unknown> | null;
+        projectId?: string | null;
 
-        timeout?: number | null;
+        proxies?: boolean | Array<unknown>;
+
+        timeout?: number;
       }
 
       /**
@@ -3777,6 +3938,12 @@ export namespace SessionChatParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -3784,7 +3951,7 @@ export namespace SessionChatParams {
      * browserbase get session integration definition
      */
     export interface BrowserbaseGetSessionIntegrationDef {
-      arguments: BrowserbaseGetSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
 
       method?: 'get_session';
 
@@ -3806,6 +3973,12 @@ export namespace SessionChatParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -3813,7 +3986,7 @@ export namespace SessionChatParams {
      * browserbase complete session integration definition
      */
     export interface BrowserbaseCompleteSessionIntegrationDef {
-      arguments: BrowserbaseCompleteSessionIntegrationDef.Arguments;
+      arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
 
       method?: 'complete_session';
 
@@ -3837,6 +4010,12 @@ export namespace SessionChatParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -3844,7 +4023,7 @@ export namespace SessionChatParams {
      * browserbase get session live urls integration definition
      */
     export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-      arguments: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
 
       method?: 'get_live_urls';
 
@@ -3866,6 +4045,12 @@ export namespace SessionChatParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -3873,7 +4058,7 @@ export namespace SessionChatParams {
      * browserbase get session connect url integration definition
      */
     export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-      arguments: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments;
+      arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
 
       method?: 'get_connect_url';
 
@@ -3895,6 +4080,12 @@ export namespace SessionChatParams {
        */
       export interface Setup {
         api_key: string;
+
+        project_id: string;
+
+        api_url?: string | null;
+
+        connect_url?: string | null;
       }
     }
 
@@ -3903,14 +4094,14 @@ export namespace SessionChatParams {
      */
     export interface RemoteBrowserIntegrationDef {
       /**
-       * The arguments for the remote browser
-       */
-      arguments: RemoteBrowserIntegrationDef.Arguments;
-
-      /**
        * The setup parameters for the remote browser
        */
       setup: RemoteBrowserIntegrationDef.Setup;
+
+      /**
+       * The arguments for the remote browser
+       */
+      arguments?: RemoteBrowserIntegrationDef.Arguments | null;
 
       method?: 'perform_action';
 
@@ -3918,6 +4109,17 @@ export namespace SessionChatParams {
     }
 
     export namespace RemoteBrowserIntegrationDef {
+      /**
+       * The setup parameters for the remote browser
+       */
+      export interface Setup {
+        connect_url?: string | null;
+
+        height?: number | null;
+
+        width?: number | null;
+      }
+
       /**
        * The arguments for the remote browser
        */
@@ -3942,17 +4144,6 @@ export namespace SessionChatParams {
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
-      }
-
-      /**
-       * The setup parameters for the remote browser
-       */
-      export interface Setup {
-        connect_url?: string | null;
-
-        height?: number | null;
-
-        width?: number | null;
       }
     }
 
@@ -3996,9 +4187,9 @@ export interface SessionCreateOrUpdateParams {
 
   agents?: Array<string> | null;
 
-  context_overflow?: 'truncate' | 'adaptive' | null;
+  auto_run_tools?: boolean;
 
-  forward_tool_results?: boolean | null;
+  context_overflow?: 'truncate' | 'adaptive' | null;
 
   metadata?: unknown | null;
 
@@ -4014,9 +4205,9 @@ export interface SessionCreateOrUpdateParams {
 }
 
 export interface SessionPatchParams {
-  context_overflow?: 'truncate' | 'adaptive' | null;
+  auto_run_tools?: boolean;
 
-  forward_tool_results?: boolean | null;
+  context_overflow?: 'truncate' | 'adaptive' | null;
 
   metadata?: unknown | null;
 
@@ -4027,20 +4218,24 @@ export interface SessionPatchParams {
   token_budget?: number | null;
 }
 
-export namespace Sessions {
-  export import ChatInput = SessionsAPI.ChatInput;
-  export import ChatResponse = SessionsAPI.ChatResponse;
-  export import ChatSettings = SessionsAPI.ChatSettings;
-  export import Entry = SessionsAPI.Entry;
-  export import History = SessionsAPI.History;
-  export import Message = SessionsAPI.Message;
-  export import Session = SessionsAPI.Session;
-  export import SessionChatResponse = SessionsAPI.SessionChatResponse;
-  export import SessionsOffsetPagination = SessionsAPI.SessionsOffsetPagination;
-  export import SessionCreateParams = SessionsAPI.SessionCreateParams;
-  export import SessionUpdateParams = SessionsAPI.SessionUpdateParams;
-  export import SessionListParams = SessionsAPI.SessionListParams;
-  export import SessionChatParams = SessionsAPI.SessionChatParams;
-  export import SessionCreateOrUpdateParams = SessionsAPI.SessionCreateOrUpdateParams;
-  export import SessionPatchParams = SessionsAPI.SessionPatchParams;
+Sessions.SessionsOffsetPagination = SessionsOffsetPagination;
+
+export declare namespace Sessions {
+  export {
+    type ChatInput as ChatInput,
+    type ChatResponse as ChatResponse,
+    type ChatSettings as ChatSettings,
+    type Entry as Entry,
+    type History as History,
+    type Message as Message,
+    type Session as Session,
+    type SessionChatResponse as SessionChatResponse,
+    SessionsOffsetPagination as SessionsOffsetPagination,
+    type SessionCreateParams as SessionCreateParams,
+    type SessionUpdateParams as SessionUpdateParams,
+    type SessionListParams as SessionListParams,
+    type SessionChatParams as SessionChatParams,
+    type SessionCreateOrUpdateParams as SessionCreateOrUpdateParams,
+    type SessionPatchParams as SessionPatchParams,
+  };
 }

@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as JobsAPI from './jobs';
 
 export class Jobs extends APIResource {
   /**
@@ -31,6 +30,6 @@ export interface JobStatus {
   state?: 'pending' | 'in_progress' | 'retrying' | 'succeeded' | 'aborted' | 'failed' | 'unknown';
 }
 
-export namespace Jobs {
-  export import JobStatus = JobsAPI.JobStatus;
+export declare namespace Jobs {
+  export { type JobStatus as JobStatus };
 }
