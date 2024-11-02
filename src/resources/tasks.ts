@@ -891,8 +891,7 @@ export namespace Task {
             | 'screenshot'
             | 'cursor_position'
             | 'navigate'
-            | 'refresh'
-            | 'wait_for_load';
+            | 'refresh';
 
           connect_url?: string | null;
 
@@ -1857,8 +1856,7 @@ export namespace Task {
               | 'screenshot'
               | 'cursor_position'
               | 'navigate'
-              | 'refresh'
-              | 'wait_for_load';
+              | 'refresh';
 
             connect_url?: string | null;
 
@@ -2787,8 +2785,7 @@ export namespace Task {
               | 'screenshot'
               | 'cursor_position'
               | 'navigate'
-              | 'refresh'
-              | 'wait_for_load';
+              | 'refresh';
 
             connect_url?: string | null;
 
@@ -3748,8 +3745,7 @@ export namespace Task {
                 | 'screenshot'
                 | 'cursor_position'
                 | 'navigate'
-                | 'refresh'
-                | 'wait_for_load';
+                | 'refresh';
 
               connect_url?: string | null;
 
@@ -4730,8 +4726,7 @@ export namespace Task {
                 | 'screenshot'
                 | 'cursor_position'
                 | 'navigate'
-                | 'refresh'
-                | 'wait_for_load';
+                | 'refresh';
 
               connect_url?: string | null;
 
@@ -5629,8 +5624,7 @@ export namespace Task {
               | 'screenshot'
               | 'cursor_position'
               | 'navigate'
-              | 'refresh'
-              | 'wait_for_load';
+              | 'refresh';
 
             connect_url?: string | null;
 
@@ -6534,8 +6528,7 @@ export namespace Task {
               | 'screenshot'
               | 'cursor_position'
               | 'navigate'
-              | 'refresh'
-              | 'wait_for_load';
+              | 'refresh';
 
             connect_url?: string | null;
 
@@ -7273,8 +7266,7 @@ export namespace Task {
           | 'screenshot'
           | 'cursor_position'
           | 'navigate'
-          | 'refresh'
-          | 'wait_for_load';
+          | 'refresh';
 
         connect_url?: string | null;
 
@@ -8136,8 +8128,7 @@ export namespace TaskCreateParams {
             | 'screenshot'
             | 'cursor_position'
             | 'navigate'
-            | 'refresh'
-            | 'wait_for_load';
+            | 'refresh';
 
           connect_url?: string | null;
 
@@ -9078,8 +9069,7 @@ export namespace TaskCreateParams {
               | 'screenshot'
               | 'cursor_position'
               | 'navigate'
-              | 'refresh'
-              | 'wait_for_load';
+              | 'refresh';
 
             connect_url?: string | null;
 
@@ -9986,8 +9976,7 @@ export namespace TaskCreateParams {
               | 'screenshot'
               | 'cursor_position'
               | 'navigate'
-              | 'refresh'
-              | 'wait_for_load';
+              | 'refresh';
 
             connect_url?: string | null;
 
@@ -10923,8 +10912,7 @@ export namespace TaskCreateParams {
                 | 'screenshot'
                 | 'cursor_position'
                 | 'navigate'
-                | 'refresh'
-                | 'wait_for_load';
+                | 'refresh';
 
               connect_url?: string | null;
 
@@ -11879,8 +11867,7 @@ export namespace TaskCreateParams {
                 | 'screenshot'
                 | 'cursor_position'
                 | 'navigate'
-                | 'refresh'
-                | 'wait_for_load';
+                | 'refresh';
 
               connect_url?: string | null;
 
@@ -12762,8 +12749,7 @@ export namespace TaskCreateParams {
               | 'screenshot'
               | 'cursor_position'
               | 'navigate'
-              | 'refresh'
-              | 'wait_for_load';
+              | 'refresh';
 
             connect_url?: string | null;
 
@@ -13651,8 +13637,7 @@ export namespace TaskCreateParams {
               | 'screenshot'
               | 'cursor_position'
               | 'navigate'
-              | 'refresh'
-              | 'wait_for_load';
+              | 'refresh';
 
             connect_url?: string | null;
 
@@ -14380,8 +14365,7 @@ export namespace TaskCreateParams {
           | 'screenshot'
           | 'cursor_position'
           | 'navigate'
-          | 'refresh'
-          | 'wait_for_load';
+          | 'refresh';
 
         connect_url?: string | null;
 
@@ -15249,8 +15233,7 @@ export namespace TaskCreateOrUpdateParams {
             | 'screenshot'
             | 'cursor_position'
             | 'navigate'
-            | 'refresh'
-            | 'wait_for_load';
+            | 'refresh';
 
           connect_url?: string | null;
 
@@ -16191,8 +16174,7 @@ export namespace TaskCreateOrUpdateParams {
               | 'screenshot'
               | 'cursor_position'
               | 'navigate'
-              | 'refresh'
-              | 'wait_for_load';
+              | 'refresh';
 
             connect_url?: string | null;
 
@@ -17099,8 +17081,7 @@ export namespace TaskCreateOrUpdateParams {
               | 'screenshot'
               | 'cursor_position'
               | 'navigate'
-              | 'refresh'
-              | 'wait_for_load';
+              | 'refresh';
 
             connect_url?: string | null;
 
@@ -18036,8 +18017,7 @@ export namespace TaskCreateOrUpdateParams {
                 | 'screenshot'
                 | 'cursor_position'
                 | 'navigate'
-                | 'refresh'
-                | 'wait_for_load';
+                | 'refresh';
 
               connect_url?: string | null;
 
@@ -18992,8 +18972,7 @@ export namespace TaskCreateOrUpdateParams {
                 | 'screenshot'
                 | 'cursor_position'
                 | 'navigate'
-                | 'refresh'
-                | 'wait_for_load';
+                | 'refresh';
 
               connect_url?: string | null;
 
@@ -19875,8 +19854,7 @@ export namespace TaskCreateOrUpdateParams {
               | 'screenshot'
               | 'cursor_position'
               | 'navigate'
-              | 'refresh'
-              | 'wait_for_load';
+              | 'refresh';
 
             connect_url?: string | null;
 
@@ -20764,8 +20742,7 @@ export namespace TaskCreateOrUpdateParams {
               | 'screenshot'
               | 'cursor_position'
               | 'navigate'
-              | 'refresh'
-              | 'wait_for_load';
+              | 'refresh';
 
             connect_url?: string | null;
 
@@ -21493,8 +21470,7 @@ export namespace TaskCreateOrUpdateParams {
           | 'screenshot'
           | 'cursor_position'
           | 'navigate'
-          | 'refresh'
-          | 'wait_for_load';
+          | 'refresh';
 
         connect_url?: string | null;
 
