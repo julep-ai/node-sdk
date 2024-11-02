@@ -36,7 +36,7 @@ import {
   TasksOffsetPagination,
 } from './resources/tasks';
 import {
-  Agent,
+  Agent as AgentsAPIAgent,
   AgentCreateOrUpdateParams,
   AgentCreateParams,
   AgentListParams,
@@ -294,7 +294,7 @@ export declare namespace Julep {
 
   export {
     Agents as Agents,
-    type Agent as Agent,
+    type AgentsAPIAgent as Agent,
     AgentsOffsetPagination as AgentsOffsetPagination,
     type AgentCreateParams as AgentCreateParams,
     type AgentUpdateParams as AgentUpdateParams,
