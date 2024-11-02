@@ -742,8 +742,7 @@ export namespace ToolListResponse {
         | 'screenshot'
         | 'cursor_position'
         | 'navigate'
-        | 'refresh'
-        | 'wait_for_load';
+        | 'refresh';
 
       connect_url?: string | null;
 
@@ -1441,8 +1440,7 @@ export namespace ToolCreateParams {
         | 'screenshot'
         | 'cursor_position'
         | 'navigate'
-        | 'refresh'
-        | 'wait_for_load';
+        | 'refresh';
 
       connect_url?: string | null;
 
@@ -2140,8 +2138,7 @@ export namespace ToolUpdateParams {
         | 'screenshot'
         | 'cursor_position'
         | 'navigate'
-        | 'refresh'
-        | 'wait_for_load';
+        | 'refresh';
 
       connect_url?: string | null;
 
@@ -2836,7 +2833,6 @@ export namespace ToolPatchParams {
         | 'cursor_position'
         | 'navigate'
         | 'refresh'
-        | 'wait_for_load'
         | null;
 
       connect_url?: string | null;
