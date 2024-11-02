@@ -837,8 +837,7 @@ export namespace ChatInput {
           | 'screenshot'
           | 'cursor_position'
           | 'navigate'
-          | 'refresh'
-          | 'wait_for_load';
+          | 'refresh';
 
         connect_url?: string | null;
 
@@ -2091,8 +2090,7 @@ export namespace Entry {
           | 'screenshot'
           | 'cursor_position'
           | 'navigate'
-          | 'refresh'
-          | 'wait_for_load';
+          | 'refresh';
 
         connect_url?: string | null;
 
@@ -2932,8 +2930,7 @@ export namespace Entry {
           | 'screenshot'
           | 'cursor_position'
           | 'navigate'
-          | 'refresh'
-          | 'wait_for_load';
+          | 'refresh';
 
         connect_url?: string | null;
 
@@ -4136,8 +4133,7 @@ export namespace SessionChatParams {
           | 'screenshot'
           | 'cursor_position'
           | 'navigate'
-          | 'refresh'
-          | 'wait_for_load';
+          | 'refresh';
 
         connect_url?: string | null;
 
