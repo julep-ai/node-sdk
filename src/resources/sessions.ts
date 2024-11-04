@@ -52,7 +52,15 @@ export class Sessions extends APIResource {
   }
 
   /**
-   * Chat
+   * Initiates a chat session.
+   *
+   * Parameters: developer (Developer): The developer associated with the chat
+   * session. session_id (UUID): The unique identifier of the chat session.
+   * chat_input (ChatInput): The chat input data. background_tasks (BackgroundTasks):
+   * The background tasks to run. x_custom_api_key (Optional[str]): The custom API
+   * key.
+   *
+   * Returns: ChatResponse: The chat response.
    */
   chat(
     sessionId: string,
