@@ -114,6 +114,8 @@ export interface DocCreateParams {
 export interface DocListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
 
+  metadata_filter?: Record<string, unknown>;
+
   sort_by?: 'created_at' | 'updated_at';
 }
 
@@ -130,7 +132,7 @@ export namespace DocSearchParams {
 
     limit?: number;
 
-    metadata_filter?: Record<string, number | string | boolean | null>;
+    metadata_filter?: unknown;
 
     mmr_strength?: number;
   }
@@ -144,7 +146,7 @@ export namespace DocSearchParams {
 
     limit?: number;
 
-    metadata_filter?: Record<string, number | string | boolean | null>;
+    metadata_filter?: unknown;
 
     mmr_strength?: number;
   }
@@ -162,7 +164,7 @@ export namespace DocSearchParams {
 
     limit?: number;
 
-    metadata_filter?: Record<string, number | string | boolean | null>;
+    metadata_filter?: unknown;
 
     mmr_strength?: number;
   }

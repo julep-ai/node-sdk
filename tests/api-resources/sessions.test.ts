@@ -53,7 +53,7 @@ describe('resource sessions', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.sessions.list(
-        { direction: 'asc', limit: 0, offset: 0, sort_by: 'created_at' },
+        { direction: 'asc', limit: 0, metadata_filter: { foo: 'bar' }, offset: 0, sort_by: 'created_at' },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Julep.NotFoundError);
