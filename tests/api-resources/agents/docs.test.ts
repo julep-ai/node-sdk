@@ -55,7 +55,7 @@ describe('resource docs', () => {
     await expect(
       client.agents.docs.list(
         '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-        { direction: 'asc', limit: 0, offset: 0, sort_by: 'created_at' },
+        { direction: 'asc', limit: 0, metadata_filter: { foo: 'bar' }, offset: 0, sort_by: 'created_at' },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Julep.NotFoundError);
@@ -104,7 +104,7 @@ describe('resource docs', () => {
       text: 'text',
       lang: 'en-US',
       limit: 1,
-      metadata_filter: { foo: 0 },
+      metadata_filter: {},
       mmr_strength: 0,
     });
   });

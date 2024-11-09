@@ -3357,6 +3357,8 @@ export interface SessionUpdateParams {
 export interface SessionListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
 
+  metadata_filter?: Record<string, unknown>;
+
   sort_by?: 'created_at' | 'updated_at';
 }
 
