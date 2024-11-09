@@ -1303,6 +1303,8 @@ export namespace ChatResponse {
 
     distance?: number | null;
 
+    metadata?: unknown | null;
+
     title?: string | null;
   }
 
@@ -3289,6 +3291,8 @@ export namespace SessionChatResponse {
       snippet: DocsAPI.Snippet;
 
       distance?: number | null;
+
+      metadata?: unknown | null;
 
       title?: string | null;
     }
