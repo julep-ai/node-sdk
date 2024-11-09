@@ -93,6 +93,8 @@ export namespace DocSearchResponse {
 
     distance?: number | null;
 
+    metadata?: unknown | null;
+
     title?: string | null;
   }
 
