@@ -164,13 +164,22 @@ export namespace Task {
 
   export namespace PromptStepOutput {
     export interface UnionMember0 {
-      content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+      content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-      role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+      role: 'user' | 'assistant' | 'system' | 'tool';
 
       continue?: boolean | null;
 
       name?: string | null;
+
+      tool_call_id?: string | null;
+
+      tool_calls?: Array<
+        | UnionMember0.ChosenFunctionCall
+        | UnionMember0.ChosenComputer20241022
+        | UnionMember0.ChosenTextEditor20241022
+        | UnionMember0.ChosenBash20241022
+      > | null;
     }
 
     export namespace UnionMember0 {
@@ -199,6 +208,112 @@ export namespace Task {
           detail?: 'low' | 'high' | 'auto';
         }
       }
+
+      export interface ChosenFunctionCall {
+        function: ChosenFunctionCall.Function;
+
+        id?: string | null;
+
+        api_call?: unknown | null;
+
+        bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+        computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+        integration?: unknown | null;
+
+        system?: unknown | null;
+
+        text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+        type?: 'function';
+      }
+
+      export namespace ChosenFunctionCall {
+        export interface Function {
+          name: string;
+
+          arguments?: string | null;
+        }
+
+        export interface Bash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
+
+        export interface Computer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface TextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+      }
+
+      export interface ChosenComputer20241022 {
+        action:
+          | 'key'
+          | 'type'
+          | 'cursor_position'
+          | 'mouse_move'
+          | 'left_click'
+          | 'right_click'
+          | 'middle_click'
+          | 'double_click'
+          | 'screenshot';
+
+        coordinate?: Array<number> | null;
+
+        text?: string | null;
+      }
+
+      export interface ChosenTextEditor20241022 {
+        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+        path: string;
+
+        file_text?: string | null;
+
+        insert_line?: number | null;
+
+        new_str?: string | null;
+
+        old_str?: string | null;
+
+        view_range?: Array<number> | null;
+      }
+
+      export interface ChosenBash20241022 {
+        command?: string | null;
+
+        restart?: boolean;
+      }
     }
 
     export interface NamedToolChoice {
@@ -208,6 +323,8 @@ export namespace Task {
     export namespace NamedToolChoice {
       export interface Function {
         name: string;
+
+        arguments?: string | null;
       }
     }
 
@@ -1129,13 +1246,22 @@ export namespace Task {
 
     export namespace PromptStepOutput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+        role: 'user' | 'assistant' | 'system' | 'tool';
 
         continue?: boolean | null;
 
         name?: string | null;
+
+        tool_call_id?: string | null;
+
+        tool_calls?: Array<
+          | UnionMember0.ChosenFunctionCall
+          | UnionMember0.ChosenComputer20241022
+          | UnionMember0.ChosenTextEditor20241022
+          | UnionMember0.ChosenBash20241022
+        > | null;
       }
 
       export namespace UnionMember0 {
@@ -1164,6 +1290,112 @@ export namespace Task {
             detail?: 'low' | 'high' | 'auto';
           }
         }
+
+        export interface ChosenFunctionCall {
+          function: ChosenFunctionCall.Function;
+
+          id?: string | null;
+
+          api_call?: unknown | null;
+
+          bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+          computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+          integration?: unknown | null;
+
+          system?: unknown | null;
+
+          text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+          type?: 'function';
+        }
+
+        export namespace ChosenFunctionCall {
+          export interface Function {
+            name: string;
+
+            arguments?: string | null;
+          }
+
+          export interface Bash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
+
+          export interface Computer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface TextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+        }
+
+        export interface ChosenComputer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface ChosenTextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+
+        export interface ChosenBash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
       }
 
       export interface NamedToolChoice {
@@ -1173,6 +1405,8 @@ export namespace Task {
       export namespace NamedToolChoice {
         export interface Function {
           name: string;
+
+          arguments?: string | null;
         }
       }
 
@@ -2058,13 +2292,22 @@ export namespace Task {
 
     export namespace PromptStepOutput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+        role: 'user' | 'assistant' | 'system' | 'tool';
 
         continue?: boolean | null;
 
         name?: string | null;
+
+        tool_call_id?: string | null;
+
+        tool_calls?: Array<
+          | UnionMember0.ChosenFunctionCall
+          | UnionMember0.ChosenComputer20241022
+          | UnionMember0.ChosenTextEditor20241022
+          | UnionMember0.ChosenBash20241022
+        > | null;
       }
 
       export namespace UnionMember0 {
@@ -2093,6 +2336,112 @@ export namespace Task {
             detail?: 'low' | 'high' | 'auto';
           }
         }
+
+        export interface ChosenFunctionCall {
+          function: ChosenFunctionCall.Function;
+
+          id?: string | null;
+
+          api_call?: unknown | null;
+
+          bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+          computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+          integration?: unknown | null;
+
+          system?: unknown | null;
+
+          text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+          type?: 'function';
+        }
+
+        export namespace ChosenFunctionCall {
+          export interface Function {
+            name: string;
+
+            arguments?: string | null;
+          }
+
+          export interface Bash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
+
+          export interface Computer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface TextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+        }
+
+        export interface ChosenComputer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface ChosenTextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+
+        export interface ChosenBash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
       }
 
       export interface NamedToolChoice {
@@ -2102,6 +2451,8 @@ export namespace Task {
       export namespace NamedToolChoice {
         export interface Function {
           name: string;
+
+          arguments?: string | null;
         }
       }
 
@@ -3018,13 +3369,22 @@ export namespace Task {
 
       export namespace PromptStepOutput {
         export interface UnionMember0 {
-          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-          role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+          role: 'user' | 'assistant' | 'system' | 'tool';
 
           continue?: boolean | null;
 
           name?: string | null;
+
+          tool_call_id?: string | null;
+
+          tool_calls?: Array<
+            | UnionMember0.ChosenFunctionCall
+            | UnionMember0.ChosenComputer20241022
+            | UnionMember0.ChosenTextEditor20241022
+            | UnionMember0.ChosenBash20241022
+          > | null;
         }
 
         export namespace UnionMember0 {
@@ -3053,6 +3413,112 @@ export namespace Task {
               detail?: 'low' | 'high' | 'auto';
             }
           }
+
+          export interface ChosenFunctionCall {
+            function: ChosenFunctionCall.Function;
+
+            id?: string | null;
+
+            api_call?: unknown | null;
+
+            bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+            computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+            integration?: unknown | null;
+
+            system?: unknown | null;
+
+            text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+            type?: 'function';
+          }
+
+          export namespace ChosenFunctionCall {
+            export interface Function {
+              name: string;
+
+              arguments?: string | null;
+            }
+
+            export interface Bash20241022 {
+              command?: string | null;
+
+              restart?: boolean;
+            }
+
+            export interface Computer20241022 {
+              action:
+                | 'key'
+                | 'type'
+                | 'cursor_position'
+                | 'mouse_move'
+                | 'left_click'
+                | 'right_click'
+                | 'middle_click'
+                | 'double_click'
+                | 'screenshot';
+
+              coordinate?: Array<number> | null;
+
+              text?: string | null;
+            }
+
+            export interface TextEditor20241022 {
+              command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+              path: string;
+
+              file_text?: string | null;
+
+              insert_line?: number | null;
+
+              new_str?: string | null;
+
+              old_str?: string | null;
+
+              view_range?: Array<number> | null;
+            }
+          }
+
+          export interface ChosenComputer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface ChosenTextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+
+          export interface ChosenBash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
         }
 
         export interface NamedToolChoice {
@@ -3062,6 +3528,8 @@ export namespace Task {
         export namespace NamedToolChoice {
           export interface Function {
             name: string;
+
+            arguments?: string | null;
           }
         }
 
@@ -3999,13 +4467,22 @@ export namespace Task {
 
       export namespace PromptStepOutput {
         export interface UnionMember0 {
-          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-          role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+          role: 'user' | 'assistant' | 'system' | 'tool';
 
           continue?: boolean | null;
 
           name?: string | null;
+
+          tool_call_id?: string | null;
+
+          tool_calls?: Array<
+            | UnionMember0.ChosenFunctionCall
+            | UnionMember0.ChosenComputer20241022
+            | UnionMember0.ChosenTextEditor20241022
+            | UnionMember0.ChosenBash20241022
+          > | null;
         }
 
         export namespace UnionMember0 {
@@ -4034,6 +4511,112 @@ export namespace Task {
               detail?: 'low' | 'high' | 'auto';
             }
           }
+
+          export interface ChosenFunctionCall {
+            function: ChosenFunctionCall.Function;
+
+            id?: string | null;
+
+            api_call?: unknown | null;
+
+            bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+            computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+            integration?: unknown | null;
+
+            system?: unknown | null;
+
+            text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+            type?: 'function';
+          }
+
+          export namespace ChosenFunctionCall {
+            export interface Function {
+              name: string;
+
+              arguments?: string | null;
+            }
+
+            export interface Bash20241022 {
+              command?: string | null;
+
+              restart?: boolean;
+            }
+
+            export interface Computer20241022 {
+              action:
+                | 'key'
+                | 'type'
+                | 'cursor_position'
+                | 'mouse_move'
+                | 'left_click'
+                | 'right_click'
+                | 'middle_click'
+                | 'double_click'
+                | 'screenshot';
+
+              coordinate?: Array<number> | null;
+
+              text?: string | null;
+            }
+
+            export interface TextEditor20241022 {
+              command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+              path: string;
+
+              file_text?: string | null;
+
+              insert_line?: number | null;
+
+              new_str?: string | null;
+
+              old_str?: string | null;
+
+              view_range?: Array<number> | null;
+            }
+          }
+
+          export interface ChosenComputer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface ChosenTextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+
+          export interface ChosenBash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
         }
 
         export interface NamedToolChoice {
@@ -4043,6 +4626,8 @@ export namespace Task {
         export namespace NamedToolChoice {
           export interface Function {
             name: string;
+
+            arguments?: string | null;
           }
         }
 
@@ -4897,13 +5482,22 @@ export namespace Task {
 
     export namespace PromptStepOutput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+        role: 'user' | 'assistant' | 'system' | 'tool';
 
         continue?: boolean | null;
 
         name?: string | null;
+
+        tool_call_id?: string | null;
+
+        tool_calls?: Array<
+          | UnionMember0.ChosenFunctionCall
+          | UnionMember0.ChosenComputer20241022
+          | UnionMember0.ChosenTextEditor20241022
+          | UnionMember0.ChosenBash20241022
+        > | null;
       }
 
       export namespace UnionMember0 {
@@ -4932,6 +5526,112 @@ export namespace Task {
             detail?: 'low' | 'high' | 'auto';
           }
         }
+
+        export interface ChosenFunctionCall {
+          function: ChosenFunctionCall.Function;
+
+          id?: string | null;
+
+          api_call?: unknown | null;
+
+          bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+          computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+          integration?: unknown | null;
+
+          system?: unknown | null;
+
+          text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+          type?: 'function';
+        }
+
+        export namespace ChosenFunctionCall {
+          export interface Function {
+            name: string;
+
+            arguments?: string | null;
+          }
+
+          export interface Bash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
+
+          export interface Computer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface TextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+        }
+
+        export interface ChosenComputer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface ChosenTextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+
+        export interface ChosenBash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
       }
 
       export interface NamedToolChoice {
@@ -4941,6 +5641,8 @@ export namespace Task {
       export namespace NamedToolChoice {
         export interface Function {
           name: string;
+
+          arguments?: string | null;
         }
       }
 
@@ -5801,13 +6503,22 @@ export namespace Task {
 
     export namespace PromptStepOutput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+        role: 'user' | 'assistant' | 'system' | 'tool';
 
         continue?: boolean | null;
 
         name?: string | null;
+
+        tool_call_id?: string | null;
+
+        tool_calls?: Array<
+          | UnionMember0.ChosenFunctionCall
+          | UnionMember0.ChosenComputer20241022
+          | UnionMember0.ChosenTextEditor20241022
+          | UnionMember0.ChosenBash20241022
+        > | null;
       }
 
       export namespace UnionMember0 {
@@ -5836,6 +6547,112 @@ export namespace Task {
             detail?: 'low' | 'high' | 'auto';
           }
         }
+
+        export interface ChosenFunctionCall {
+          function: ChosenFunctionCall.Function;
+
+          id?: string | null;
+
+          api_call?: unknown | null;
+
+          bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+          computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+          integration?: unknown | null;
+
+          system?: unknown | null;
+
+          text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+          type?: 'function';
+        }
+
+        export namespace ChosenFunctionCall {
+          export interface Function {
+            name: string;
+
+            arguments?: string | null;
+          }
+
+          export interface Bash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
+
+          export interface Computer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface TextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+        }
+
+        export interface ChosenComputer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface ChosenTextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+
+        export interface ChosenBash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
       }
 
       export interface NamedToolChoice {
@@ -5845,6 +6662,8 @@ export namespace Task {
       export namespace NamedToolChoice {
         export interface Function {
           name: string;
+
+          arguments?: string | null;
         }
       }
 
@@ -7394,20 +8213,31 @@ export namespace TaskCreateParams {
 
     tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-    tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+    tools?:
+      | 'all'
+      | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
 
     unwrap?: boolean;
   }
 
   export namespace PromptStepInput {
     export interface UnionMember0 {
-      content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+      content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-      role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+      role: 'user' | 'assistant' | 'system' | 'tool';
 
       continue?: boolean | null;
 
       name?: string | null;
+
+      tool_call_id?: string | null;
+
+      tool_calls?: Array<
+        | UnionMember0.ChosenFunctionCall
+        | UnionMember0.ChosenComputer20241022
+        | UnionMember0.ChosenTextEditor20241022
+        | UnionMember0.ChosenBash20241022
+      > | null;
     }
 
     export namespace UnionMember0 {
@@ -7436,6 +8266,110 @@ export namespace TaskCreateParams {
           detail?: 'low' | 'high' | 'auto';
         }
       }
+
+      export interface ChosenFunctionCall {
+        function: ChosenFunctionCall.Function;
+
+        api_call?: unknown | null;
+
+        bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+        computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+        integration?: unknown | null;
+
+        system?: unknown | null;
+
+        text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+        type?: 'function';
+      }
+
+      export namespace ChosenFunctionCall {
+        export interface Function {
+          name: string;
+
+          arguments?: string | null;
+        }
+
+        export interface Bash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
+
+        export interface Computer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface TextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+      }
+
+      export interface ChosenComputer20241022 {
+        action:
+          | 'key'
+          | 'type'
+          | 'cursor_position'
+          | 'mouse_move'
+          | 'left_click'
+          | 'right_click'
+          | 'middle_click'
+          | 'double_click'
+          | 'screenshot';
+
+        coordinate?: Array<number> | null;
+
+        text?: string | null;
+      }
+
+      export interface ChosenTextEditor20241022 {
+        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+        path: string;
+
+        file_text?: string | null;
+
+        insert_line?: number | null;
+
+        new_str?: string | null;
+
+        old_str?: string | null;
+
+        view_range?: Array<number> | null;
+      }
+
+      export interface ChosenBash20241022 {
+        command?: string | null;
+
+        restart?: boolean;
+      }
     }
 
     export interface NamedToolChoice {
@@ -7445,6 +8379,8 @@ export namespace TaskCreateParams {
     export namespace NamedToolChoice {
       export interface Function {
         name: string;
+
+        arguments?: string | null;
       }
     }
 
@@ -7474,7 +8410,7 @@ export namespace TaskCreateParams {
       }
     }
 
-    export interface CreateToolRequestInput {
+    export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
       name: string;
 
       type:
@@ -7489,52 +8425,52 @@ export namespace TaskCreateParams {
       /**
        * API call definition
        */
-      api_call?: CreateToolRequestInput.APICall | null;
+      api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-      bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+      bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
       /**
        * Anthropic new tools
        */
-      computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+      computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
       description?: string | null;
 
       /**
        * Function definition
        */
-      function?: CreateToolRequestInput.Function | null;
+      function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
       /**
        * Brave integration definition
        */
       integration?:
-        | CreateToolRequestInput.DummyIntegrationDef
-        | CreateToolRequestInput.BraveIntegrationDef
-        | CreateToolRequestInput.EmailIntegrationDef
-        | CreateToolRequestInput.SpiderIntegrationDef
-        | CreateToolRequestInput.WikipediaIntegrationDef
-        | CreateToolRequestInput.WeatherIntegrationDef
-        | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-        | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-        | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-        | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-        | CreateToolRequestInput.RemoteBrowserIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
         | null;
 
       /**
        * System definition
        */
-      system?: CreateToolRequestInput.System | null;
+      system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-      text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+      text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
     }
 
-    export namespace CreateToolRequestInput {
+    export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
       /**
        * API call definition
        */
@@ -8335,20 +9271,31 @@ export namespace TaskCreateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+        role: 'user' | 'assistant' | 'system' | 'tool';
 
         continue?: boolean | null;
 
         name?: string | null;
+
+        tool_call_id?: string | null;
+
+        tool_calls?: Array<
+          | UnionMember0.ChosenFunctionCall
+          | UnionMember0.ChosenComputer20241022
+          | UnionMember0.ChosenTextEditor20241022
+          | UnionMember0.ChosenBash20241022
+        > | null;
       }
 
       export namespace UnionMember0 {
@@ -8377,6 +9324,110 @@ export namespace TaskCreateParams {
             detail?: 'low' | 'high' | 'auto';
           }
         }
+
+        export interface ChosenFunctionCall {
+          function: ChosenFunctionCall.Function;
+
+          api_call?: unknown | null;
+
+          bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+          computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+          integration?: unknown | null;
+
+          system?: unknown | null;
+
+          text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+          type?: 'function';
+        }
+
+        export namespace ChosenFunctionCall {
+          export interface Function {
+            name: string;
+
+            arguments?: string | null;
+          }
+
+          export interface Bash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
+
+          export interface Computer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface TextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+        }
+
+        export interface ChosenComputer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface ChosenTextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+
+        export interface ChosenBash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
       }
 
       export interface NamedToolChoice {
@@ -8386,6 +9437,8 @@ export namespace TaskCreateParams {
       export namespace NamedToolChoice {
         export interface Function {
           name: string;
+
+          arguments?: string | null;
         }
       }
 
@@ -8415,7 +9468,7 @@ export namespace TaskCreateParams {
         }
       }
 
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         name: string;
 
         type:
@@ -8430,52 +9483,52 @@ export namespace TaskCreateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDef
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -9242,20 +10295,31 @@ export namespace TaskCreateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+        role: 'user' | 'assistant' | 'system' | 'tool';
 
         continue?: boolean | null;
 
         name?: string | null;
+
+        tool_call_id?: string | null;
+
+        tool_calls?: Array<
+          | UnionMember0.ChosenFunctionCall
+          | UnionMember0.ChosenComputer20241022
+          | UnionMember0.ChosenTextEditor20241022
+          | UnionMember0.ChosenBash20241022
+        > | null;
       }
 
       export namespace UnionMember0 {
@@ -9284,6 +10348,110 @@ export namespace TaskCreateParams {
             detail?: 'low' | 'high' | 'auto';
           }
         }
+
+        export interface ChosenFunctionCall {
+          function: ChosenFunctionCall.Function;
+
+          api_call?: unknown | null;
+
+          bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+          computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+          integration?: unknown | null;
+
+          system?: unknown | null;
+
+          text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+          type?: 'function';
+        }
+
+        export namespace ChosenFunctionCall {
+          export interface Function {
+            name: string;
+
+            arguments?: string | null;
+          }
+
+          export interface Bash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
+
+          export interface Computer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface TextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+        }
+
+        export interface ChosenComputer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface ChosenTextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+
+        export interface ChosenBash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
       }
 
       export interface NamedToolChoice {
@@ -9293,6 +10461,8 @@ export namespace TaskCreateParams {
       export namespace NamedToolChoice {
         export interface Function {
           name: string;
+
+          arguments?: string | null;
         }
       }
 
@@ -9322,7 +10492,7 @@ export namespace TaskCreateParams {
         }
       }
 
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         name: string;
 
         type:
@@ -9337,52 +10507,52 @@ export namespace TaskCreateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDef
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -10178,20 +11348,33 @@ export namespace TaskCreateParams {
 
         tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-        tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+        tools?:
+          | 'all'
+          | Array<
+              PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput
+            >;
 
         unwrap?: boolean;
       }
 
       export namespace PromptStepInput {
         export interface UnionMember0 {
-          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-          role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+          role: 'user' | 'assistant' | 'system' | 'tool';
 
           continue?: boolean | null;
 
           name?: string | null;
+
+          tool_call_id?: string | null;
+
+          tool_calls?: Array<
+            | UnionMember0.ChosenFunctionCall
+            | UnionMember0.ChosenComputer20241022
+            | UnionMember0.ChosenTextEditor20241022
+            | UnionMember0.ChosenBash20241022
+          > | null;
         }
 
         export namespace UnionMember0 {
@@ -10220,6 +11403,110 @@ export namespace TaskCreateParams {
               detail?: 'low' | 'high' | 'auto';
             }
           }
+
+          export interface ChosenFunctionCall {
+            function: ChosenFunctionCall.Function;
+
+            api_call?: unknown | null;
+
+            bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+            computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+            integration?: unknown | null;
+
+            system?: unknown | null;
+
+            text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+            type?: 'function';
+          }
+
+          export namespace ChosenFunctionCall {
+            export interface Function {
+              name: string;
+
+              arguments?: string | null;
+            }
+
+            export interface Bash20241022 {
+              command?: string | null;
+
+              restart?: boolean;
+            }
+
+            export interface Computer20241022 {
+              action:
+                | 'key'
+                | 'type'
+                | 'cursor_position'
+                | 'mouse_move'
+                | 'left_click'
+                | 'right_click'
+                | 'middle_click'
+                | 'double_click'
+                | 'screenshot';
+
+              coordinate?: Array<number> | null;
+
+              text?: string | null;
+            }
+
+            export interface TextEditor20241022 {
+              command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+              path: string;
+
+              file_text?: string | null;
+
+              insert_line?: number | null;
+
+              new_str?: string | null;
+
+              old_str?: string | null;
+
+              view_range?: Array<number> | null;
+            }
+          }
+
+          export interface ChosenComputer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface ChosenTextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+
+          export interface ChosenBash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
         }
 
         export interface NamedToolChoice {
@@ -10229,6 +11516,8 @@ export namespace TaskCreateParams {
         export namespace NamedToolChoice {
           export interface Function {
             name: string;
+
+            arguments?: string | null;
           }
         }
 
@@ -10258,7 +11547,7 @@ export namespace TaskCreateParams {
           }
         }
 
-        export interface CreateToolRequestInput {
+        export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
           name: string;
 
           type:
@@ -10273,52 +11562,52 @@ export namespace TaskCreateParams {
           /**
            * API call definition
            */
-          api_call?: CreateToolRequestInput.APICall | null;
+          api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-          bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+          bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
           /**
            * Anthropic new tools
            */
-          computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+          computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
           description?: string | null;
 
           /**
            * Function definition
            */
-          function?: CreateToolRequestInput.Function | null;
+          function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
           /**
            * Brave integration definition
            */
           integration?:
-            | CreateToolRequestInput.DummyIntegrationDef
-            | CreateToolRequestInput.BraveIntegrationDef
-            | CreateToolRequestInput.EmailIntegrationDef
-            | CreateToolRequestInput.SpiderIntegrationDef
-            | CreateToolRequestInput.WikipediaIntegrationDef
-            | CreateToolRequestInput.WeatherIntegrationDef
-            | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-            | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-            | CreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
             | null;
 
           /**
            * System definition
            */
-          system?: CreateToolRequestInput.System | null;
+          system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-          text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+          text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
         }
 
-        export namespace CreateToolRequestInput {
+        export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
           /**
            * API call definition
            */
@@ -11133,20 +12422,33 @@ export namespace TaskCreateParams {
 
         tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-        tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+        tools?:
+          | 'all'
+          | Array<
+              PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput
+            >;
 
         unwrap?: boolean;
       }
 
       export namespace PromptStepInput {
         export interface UnionMember0 {
-          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-          role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+          role: 'user' | 'assistant' | 'system' | 'tool';
 
           continue?: boolean | null;
 
           name?: string | null;
+
+          tool_call_id?: string | null;
+
+          tool_calls?: Array<
+            | UnionMember0.ChosenFunctionCall
+            | UnionMember0.ChosenComputer20241022
+            | UnionMember0.ChosenTextEditor20241022
+            | UnionMember0.ChosenBash20241022
+          > | null;
         }
 
         export namespace UnionMember0 {
@@ -11175,6 +12477,110 @@ export namespace TaskCreateParams {
               detail?: 'low' | 'high' | 'auto';
             }
           }
+
+          export interface ChosenFunctionCall {
+            function: ChosenFunctionCall.Function;
+
+            api_call?: unknown | null;
+
+            bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+            computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+            integration?: unknown | null;
+
+            system?: unknown | null;
+
+            text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+            type?: 'function';
+          }
+
+          export namespace ChosenFunctionCall {
+            export interface Function {
+              name: string;
+
+              arguments?: string | null;
+            }
+
+            export interface Bash20241022 {
+              command?: string | null;
+
+              restart?: boolean;
+            }
+
+            export interface Computer20241022 {
+              action:
+                | 'key'
+                | 'type'
+                | 'cursor_position'
+                | 'mouse_move'
+                | 'left_click'
+                | 'right_click'
+                | 'middle_click'
+                | 'double_click'
+                | 'screenshot';
+
+              coordinate?: Array<number> | null;
+
+              text?: string | null;
+            }
+
+            export interface TextEditor20241022 {
+              command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+              path: string;
+
+              file_text?: string | null;
+
+              insert_line?: number | null;
+
+              new_str?: string | null;
+
+              old_str?: string | null;
+
+              view_range?: Array<number> | null;
+            }
+          }
+
+          export interface ChosenComputer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface ChosenTextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+
+          export interface ChosenBash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
         }
 
         export interface NamedToolChoice {
@@ -11184,6 +12590,8 @@ export namespace TaskCreateParams {
         export namespace NamedToolChoice {
           export interface Function {
             name: string;
+
+            arguments?: string | null;
           }
         }
 
@@ -11213,7 +12621,7 @@ export namespace TaskCreateParams {
           }
         }
 
-        export interface CreateToolRequestInput {
+        export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
           name: string;
 
           type:
@@ -11228,52 +12636,52 @@ export namespace TaskCreateParams {
           /**
            * API call definition
            */
-          api_call?: CreateToolRequestInput.APICall | null;
+          api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-          bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+          bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
           /**
            * Anthropic new tools
            */
-          computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+          computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
           description?: string | null;
 
           /**
            * Function definition
            */
-          function?: CreateToolRequestInput.Function | null;
+          function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
           /**
            * Brave integration definition
            */
           integration?:
-            | CreateToolRequestInput.DummyIntegrationDef
-            | CreateToolRequestInput.BraveIntegrationDef
-            | CreateToolRequestInput.EmailIntegrationDef
-            | CreateToolRequestInput.SpiderIntegrationDef
-            | CreateToolRequestInput.WikipediaIntegrationDef
-            | CreateToolRequestInput.WeatherIntegrationDef
-            | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-            | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-            | CreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
             | null;
 
           /**
            * System definition
            */
-          system?: CreateToolRequestInput.System | null;
+          system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-          text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+          text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
         }
 
-        export namespace CreateToolRequestInput {
+        export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
           /**
            * API call definition
            */
@@ -12015,20 +13423,31 @@ export namespace TaskCreateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+        role: 'user' | 'assistant' | 'system' | 'tool';
 
         continue?: boolean | null;
 
         name?: string | null;
+
+        tool_call_id?: string | null;
+
+        tool_calls?: Array<
+          | UnionMember0.ChosenFunctionCall
+          | UnionMember0.ChosenComputer20241022
+          | UnionMember0.ChosenTextEditor20241022
+          | UnionMember0.ChosenBash20241022
+        > | null;
       }
 
       export namespace UnionMember0 {
@@ -12057,6 +13476,110 @@ export namespace TaskCreateParams {
             detail?: 'low' | 'high' | 'auto';
           }
         }
+
+        export interface ChosenFunctionCall {
+          function: ChosenFunctionCall.Function;
+
+          api_call?: unknown | null;
+
+          bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+          computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+          integration?: unknown | null;
+
+          system?: unknown | null;
+
+          text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+          type?: 'function';
+        }
+
+        export namespace ChosenFunctionCall {
+          export interface Function {
+            name: string;
+
+            arguments?: string | null;
+          }
+
+          export interface Bash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
+
+          export interface Computer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface TextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+        }
+
+        export interface ChosenComputer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface ChosenTextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+
+        export interface ChosenBash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
       }
 
       export interface NamedToolChoice {
@@ -12066,6 +13589,8 @@ export namespace TaskCreateParams {
       export namespace NamedToolChoice {
         export interface Function {
           name: string;
+
+          arguments?: string | null;
         }
       }
 
@@ -12095,7 +13620,7 @@ export namespace TaskCreateParams {
         }
       }
 
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         name: string;
 
         type:
@@ -12110,52 +13635,52 @@ export namespace TaskCreateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDef
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -12903,20 +14428,31 @@ export namespace TaskCreateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+        role: 'user' | 'assistant' | 'system' | 'tool';
 
         continue?: boolean | null;
 
         name?: string | null;
+
+        tool_call_id?: string | null;
+
+        tool_calls?: Array<
+          | UnionMember0.ChosenFunctionCall
+          | UnionMember0.ChosenComputer20241022
+          | UnionMember0.ChosenTextEditor20241022
+          | UnionMember0.ChosenBash20241022
+        > | null;
       }
 
       export namespace UnionMember0 {
@@ -12945,6 +14481,110 @@ export namespace TaskCreateParams {
             detail?: 'low' | 'high' | 'auto';
           }
         }
+
+        export interface ChosenFunctionCall {
+          function: ChosenFunctionCall.Function;
+
+          api_call?: unknown | null;
+
+          bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+          computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+          integration?: unknown | null;
+
+          system?: unknown | null;
+
+          text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+          type?: 'function';
+        }
+
+        export namespace ChosenFunctionCall {
+          export interface Function {
+            name: string;
+
+            arguments?: string | null;
+          }
+
+          export interface Bash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
+
+          export interface Computer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface TextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+        }
+
+        export interface ChosenComputer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface ChosenTextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+
+        export interface ChosenBash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
       }
 
       export interface NamedToolChoice {
@@ -12954,6 +14594,8 @@ export namespace TaskCreateParams {
       export namespace NamedToolChoice {
         export interface Function {
           name: string;
+
+          arguments?: string | null;
         }
       }
 
@@ -12983,7 +14625,7 @@ export namespace TaskCreateParams {
         }
       }
 
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         name: string;
 
         type:
@@ -12998,52 +14640,52 @@ export namespace TaskCreateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDef
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -14499,20 +16141,31 @@ export namespace TaskCreateOrUpdateParams {
 
     tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-    tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+    tools?:
+      | 'all'
+      | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
 
     unwrap?: boolean;
   }
 
   export namespace PromptStepInput {
     export interface UnionMember0 {
-      content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+      content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-      role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+      role: 'user' | 'assistant' | 'system' | 'tool';
 
       continue?: boolean | null;
 
       name?: string | null;
+
+      tool_call_id?: string | null;
+
+      tool_calls?: Array<
+        | UnionMember0.ChosenFunctionCall
+        | UnionMember0.ChosenComputer20241022
+        | UnionMember0.ChosenTextEditor20241022
+        | UnionMember0.ChosenBash20241022
+      > | null;
     }
 
     export namespace UnionMember0 {
@@ -14541,6 +16194,110 @@ export namespace TaskCreateOrUpdateParams {
           detail?: 'low' | 'high' | 'auto';
         }
       }
+
+      export interface ChosenFunctionCall {
+        function: ChosenFunctionCall.Function;
+
+        api_call?: unknown | null;
+
+        bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+        computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+        integration?: unknown | null;
+
+        system?: unknown | null;
+
+        text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+        type?: 'function';
+      }
+
+      export namespace ChosenFunctionCall {
+        export interface Function {
+          name: string;
+
+          arguments?: string | null;
+        }
+
+        export interface Bash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
+
+        export interface Computer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface TextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+      }
+
+      export interface ChosenComputer20241022 {
+        action:
+          | 'key'
+          | 'type'
+          | 'cursor_position'
+          | 'mouse_move'
+          | 'left_click'
+          | 'right_click'
+          | 'middle_click'
+          | 'double_click'
+          | 'screenshot';
+
+        coordinate?: Array<number> | null;
+
+        text?: string | null;
+      }
+
+      export interface ChosenTextEditor20241022 {
+        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+        path: string;
+
+        file_text?: string | null;
+
+        insert_line?: number | null;
+
+        new_str?: string | null;
+
+        old_str?: string | null;
+
+        view_range?: Array<number> | null;
+      }
+
+      export interface ChosenBash20241022 {
+        command?: string | null;
+
+        restart?: boolean;
+      }
     }
 
     export interface NamedToolChoice {
@@ -14550,6 +16307,8 @@ export namespace TaskCreateOrUpdateParams {
     export namespace NamedToolChoice {
       export interface Function {
         name: string;
+
+        arguments?: string | null;
       }
     }
 
@@ -14579,7 +16338,7 @@ export namespace TaskCreateOrUpdateParams {
       }
     }
 
-    export interface CreateToolRequestInput {
+    export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
       name: string;
 
       type:
@@ -14594,52 +16353,52 @@ export namespace TaskCreateOrUpdateParams {
       /**
        * API call definition
        */
-      api_call?: CreateToolRequestInput.APICall | null;
+      api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-      bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+      bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
       /**
        * Anthropic new tools
        */
-      computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+      computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
       description?: string | null;
 
       /**
        * Function definition
        */
-      function?: CreateToolRequestInput.Function | null;
+      function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
       /**
        * Brave integration definition
        */
       integration?:
-        | CreateToolRequestInput.DummyIntegrationDef
-        | CreateToolRequestInput.BraveIntegrationDef
-        | CreateToolRequestInput.EmailIntegrationDef
-        | CreateToolRequestInput.SpiderIntegrationDef
-        | CreateToolRequestInput.WikipediaIntegrationDef
-        | CreateToolRequestInput.WeatherIntegrationDef
-        | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-        | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-        | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-        | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-        | CreateToolRequestInput.RemoteBrowserIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
         | null;
 
       /**
        * System definition
        */
-      system?: CreateToolRequestInput.System | null;
+      system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-      text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+      text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
     }
 
-    export namespace CreateToolRequestInput {
+    export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
       /**
        * API call definition
        */
@@ -15440,20 +17199,31 @@ export namespace TaskCreateOrUpdateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+        role: 'user' | 'assistant' | 'system' | 'tool';
 
         continue?: boolean | null;
 
         name?: string | null;
+
+        tool_call_id?: string | null;
+
+        tool_calls?: Array<
+          | UnionMember0.ChosenFunctionCall
+          | UnionMember0.ChosenComputer20241022
+          | UnionMember0.ChosenTextEditor20241022
+          | UnionMember0.ChosenBash20241022
+        > | null;
       }
 
       export namespace UnionMember0 {
@@ -15482,6 +17252,110 @@ export namespace TaskCreateOrUpdateParams {
             detail?: 'low' | 'high' | 'auto';
           }
         }
+
+        export interface ChosenFunctionCall {
+          function: ChosenFunctionCall.Function;
+
+          api_call?: unknown | null;
+
+          bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+          computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+          integration?: unknown | null;
+
+          system?: unknown | null;
+
+          text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+          type?: 'function';
+        }
+
+        export namespace ChosenFunctionCall {
+          export interface Function {
+            name: string;
+
+            arguments?: string | null;
+          }
+
+          export interface Bash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
+
+          export interface Computer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface TextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+        }
+
+        export interface ChosenComputer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface ChosenTextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+
+        export interface ChosenBash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
       }
 
       export interface NamedToolChoice {
@@ -15491,6 +17365,8 @@ export namespace TaskCreateOrUpdateParams {
       export namespace NamedToolChoice {
         export interface Function {
           name: string;
+
+          arguments?: string | null;
         }
       }
 
@@ -15520,7 +17396,7 @@ export namespace TaskCreateOrUpdateParams {
         }
       }
 
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         name: string;
 
         type:
@@ -15535,52 +17411,52 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDef
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -16347,20 +18223,31 @@ export namespace TaskCreateOrUpdateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+        role: 'user' | 'assistant' | 'system' | 'tool';
 
         continue?: boolean | null;
 
         name?: string | null;
+
+        tool_call_id?: string | null;
+
+        tool_calls?: Array<
+          | UnionMember0.ChosenFunctionCall
+          | UnionMember0.ChosenComputer20241022
+          | UnionMember0.ChosenTextEditor20241022
+          | UnionMember0.ChosenBash20241022
+        > | null;
       }
 
       export namespace UnionMember0 {
@@ -16389,6 +18276,110 @@ export namespace TaskCreateOrUpdateParams {
             detail?: 'low' | 'high' | 'auto';
           }
         }
+
+        export interface ChosenFunctionCall {
+          function: ChosenFunctionCall.Function;
+
+          api_call?: unknown | null;
+
+          bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+          computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+          integration?: unknown | null;
+
+          system?: unknown | null;
+
+          text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+          type?: 'function';
+        }
+
+        export namespace ChosenFunctionCall {
+          export interface Function {
+            name: string;
+
+            arguments?: string | null;
+          }
+
+          export interface Bash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
+
+          export interface Computer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface TextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+        }
+
+        export interface ChosenComputer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface ChosenTextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+
+        export interface ChosenBash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
       }
 
       export interface NamedToolChoice {
@@ -16398,6 +18389,8 @@ export namespace TaskCreateOrUpdateParams {
       export namespace NamedToolChoice {
         export interface Function {
           name: string;
+
+          arguments?: string | null;
         }
       }
 
@@ -16427,7 +18420,7 @@ export namespace TaskCreateOrUpdateParams {
         }
       }
 
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         name: string;
 
         type:
@@ -16442,52 +18435,52 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDef
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -17283,20 +19276,33 @@ export namespace TaskCreateOrUpdateParams {
 
         tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-        tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+        tools?:
+          | 'all'
+          | Array<
+              PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput
+            >;
 
         unwrap?: boolean;
       }
 
       export namespace PromptStepInput {
         export interface UnionMember0 {
-          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-          role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+          role: 'user' | 'assistant' | 'system' | 'tool';
 
           continue?: boolean | null;
 
           name?: string | null;
+
+          tool_call_id?: string | null;
+
+          tool_calls?: Array<
+            | UnionMember0.ChosenFunctionCall
+            | UnionMember0.ChosenComputer20241022
+            | UnionMember0.ChosenTextEditor20241022
+            | UnionMember0.ChosenBash20241022
+          > | null;
         }
 
         export namespace UnionMember0 {
@@ -17325,6 +19331,110 @@ export namespace TaskCreateOrUpdateParams {
               detail?: 'low' | 'high' | 'auto';
             }
           }
+
+          export interface ChosenFunctionCall {
+            function: ChosenFunctionCall.Function;
+
+            api_call?: unknown | null;
+
+            bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+            computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+            integration?: unknown | null;
+
+            system?: unknown | null;
+
+            text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+            type?: 'function';
+          }
+
+          export namespace ChosenFunctionCall {
+            export interface Function {
+              name: string;
+
+              arguments?: string | null;
+            }
+
+            export interface Bash20241022 {
+              command?: string | null;
+
+              restart?: boolean;
+            }
+
+            export interface Computer20241022 {
+              action:
+                | 'key'
+                | 'type'
+                | 'cursor_position'
+                | 'mouse_move'
+                | 'left_click'
+                | 'right_click'
+                | 'middle_click'
+                | 'double_click'
+                | 'screenshot';
+
+              coordinate?: Array<number> | null;
+
+              text?: string | null;
+            }
+
+            export interface TextEditor20241022 {
+              command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+              path: string;
+
+              file_text?: string | null;
+
+              insert_line?: number | null;
+
+              new_str?: string | null;
+
+              old_str?: string | null;
+
+              view_range?: Array<number> | null;
+            }
+          }
+
+          export interface ChosenComputer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface ChosenTextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+
+          export interface ChosenBash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
         }
 
         export interface NamedToolChoice {
@@ -17334,6 +19444,8 @@ export namespace TaskCreateOrUpdateParams {
         export namespace NamedToolChoice {
           export interface Function {
             name: string;
+
+            arguments?: string | null;
           }
         }
 
@@ -17363,7 +19475,7 @@ export namespace TaskCreateOrUpdateParams {
           }
         }
 
-        export interface CreateToolRequestInput {
+        export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
           name: string;
 
           type:
@@ -17378,52 +19490,52 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * API call definition
            */
-          api_call?: CreateToolRequestInput.APICall | null;
+          api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-          bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+          bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
           /**
            * Anthropic new tools
            */
-          computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+          computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
           description?: string | null;
 
           /**
            * Function definition
            */
-          function?: CreateToolRequestInput.Function | null;
+          function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
           /**
            * Brave integration definition
            */
           integration?:
-            | CreateToolRequestInput.DummyIntegrationDef
-            | CreateToolRequestInput.BraveIntegrationDef
-            | CreateToolRequestInput.EmailIntegrationDef
-            | CreateToolRequestInput.SpiderIntegrationDef
-            | CreateToolRequestInput.WikipediaIntegrationDef
-            | CreateToolRequestInput.WeatherIntegrationDef
-            | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-            | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-            | CreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
             | null;
 
           /**
            * System definition
            */
-          system?: CreateToolRequestInput.System | null;
+          system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-          text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+          text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
         }
 
-        export namespace CreateToolRequestInput {
+        export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
           /**
            * API call definition
            */
@@ -18238,20 +20350,33 @@ export namespace TaskCreateOrUpdateParams {
 
         tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-        tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+        tools?:
+          | 'all'
+          | Array<
+              PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput
+            >;
 
         unwrap?: boolean;
       }
 
       export namespace PromptStepInput {
         export interface UnionMember0 {
-          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-          role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+          role: 'user' | 'assistant' | 'system' | 'tool';
 
           continue?: boolean | null;
 
           name?: string | null;
+
+          tool_call_id?: string | null;
+
+          tool_calls?: Array<
+            | UnionMember0.ChosenFunctionCall
+            | UnionMember0.ChosenComputer20241022
+            | UnionMember0.ChosenTextEditor20241022
+            | UnionMember0.ChosenBash20241022
+          > | null;
         }
 
         export namespace UnionMember0 {
@@ -18280,6 +20405,110 @@ export namespace TaskCreateOrUpdateParams {
               detail?: 'low' | 'high' | 'auto';
             }
           }
+
+          export interface ChosenFunctionCall {
+            function: ChosenFunctionCall.Function;
+
+            api_call?: unknown | null;
+
+            bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+            computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+            integration?: unknown | null;
+
+            system?: unknown | null;
+
+            text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+            type?: 'function';
+          }
+
+          export namespace ChosenFunctionCall {
+            export interface Function {
+              name: string;
+
+              arguments?: string | null;
+            }
+
+            export interface Bash20241022 {
+              command?: string | null;
+
+              restart?: boolean;
+            }
+
+            export interface Computer20241022 {
+              action:
+                | 'key'
+                | 'type'
+                | 'cursor_position'
+                | 'mouse_move'
+                | 'left_click'
+                | 'right_click'
+                | 'middle_click'
+                | 'double_click'
+                | 'screenshot';
+
+              coordinate?: Array<number> | null;
+
+              text?: string | null;
+            }
+
+            export interface TextEditor20241022 {
+              command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+              path: string;
+
+              file_text?: string | null;
+
+              insert_line?: number | null;
+
+              new_str?: string | null;
+
+              old_str?: string | null;
+
+              view_range?: Array<number> | null;
+            }
+          }
+
+          export interface ChosenComputer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface ChosenTextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+
+          export interface ChosenBash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
         }
 
         export interface NamedToolChoice {
@@ -18289,6 +20518,8 @@ export namespace TaskCreateOrUpdateParams {
         export namespace NamedToolChoice {
           export interface Function {
             name: string;
+
+            arguments?: string | null;
           }
         }
 
@@ -18318,7 +20549,7 @@ export namespace TaskCreateOrUpdateParams {
           }
         }
 
-        export interface CreateToolRequestInput {
+        export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
           name: string;
 
           type:
@@ -18333,52 +20564,52 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * API call definition
            */
-          api_call?: CreateToolRequestInput.APICall | null;
+          api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-          bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+          bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
           /**
            * Anthropic new tools
            */
-          computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+          computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
           description?: string | null;
 
           /**
            * Function definition
            */
-          function?: CreateToolRequestInput.Function | null;
+          function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
           /**
            * Brave integration definition
            */
           integration?:
-            | CreateToolRequestInput.DummyIntegrationDef
-            | CreateToolRequestInput.BraveIntegrationDef
-            | CreateToolRequestInput.EmailIntegrationDef
-            | CreateToolRequestInput.SpiderIntegrationDef
-            | CreateToolRequestInput.WikipediaIntegrationDef
-            | CreateToolRequestInput.WeatherIntegrationDef
-            | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-            | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-            | CreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
             | null;
 
           /**
            * System definition
            */
-          system?: CreateToolRequestInput.System | null;
+          system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-          text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+          text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
         }
 
-        export namespace CreateToolRequestInput {
+        export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
           /**
            * API call definition
            */
@@ -19120,20 +21351,31 @@ export namespace TaskCreateOrUpdateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+        role: 'user' | 'assistant' | 'system' | 'tool';
 
         continue?: boolean | null;
 
         name?: string | null;
+
+        tool_call_id?: string | null;
+
+        tool_calls?: Array<
+          | UnionMember0.ChosenFunctionCall
+          | UnionMember0.ChosenComputer20241022
+          | UnionMember0.ChosenTextEditor20241022
+          | UnionMember0.ChosenBash20241022
+        > | null;
       }
 
       export namespace UnionMember0 {
@@ -19162,6 +21404,110 @@ export namespace TaskCreateOrUpdateParams {
             detail?: 'low' | 'high' | 'auto';
           }
         }
+
+        export interface ChosenFunctionCall {
+          function: ChosenFunctionCall.Function;
+
+          api_call?: unknown | null;
+
+          bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+          computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+          integration?: unknown | null;
+
+          system?: unknown | null;
+
+          text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+          type?: 'function';
+        }
+
+        export namespace ChosenFunctionCall {
+          export interface Function {
+            name: string;
+
+            arguments?: string | null;
+          }
+
+          export interface Bash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
+
+          export interface Computer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface TextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+        }
+
+        export interface ChosenComputer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface ChosenTextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+
+        export interface ChosenBash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
       }
 
       export interface NamedToolChoice {
@@ -19171,6 +21517,8 @@ export namespace TaskCreateOrUpdateParams {
       export namespace NamedToolChoice {
         export interface Function {
           name: string;
+
+          arguments?: string | null;
         }
       }
 
@@ -19200,7 +21548,7 @@ export namespace TaskCreateOrUpdateParams {
         }
       }
 
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         name: string;
 
         type:
@@ -19215,52 +21563,52 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDef
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -20008,20 +22356,31 @@ export namespace TaskCreateOrUpdateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string;
+        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
 
-        role: 'user' | 'assistant' | 'system' | 'function' | 'function_response' | 'function_call' | 'auto';
+        role: 'user' | 'assistant' | 'system' | 'tool';
 
         continue?: boolean | null;
 
         name?: string | null;
+
+        tool_call_id?: string | null;
+
+        tool_calls?: Array<
+          | UnionMember0.ChosenFunctionCall
+          | UnionMember0.ChosenComputer20241022
+          | UnionMember0.ChosenTextEditor20241022
+          | UnionMember0.ChosenBash20241022
+        > | null;
       }
 
       export namespace UnionMember0 {
@@ -20050,6 +22409,110 @@ export namespace TaskCreateOrUpdateParams {
             detail?: 'low' | 'high' | 'auto';
           }
         }
+
+        export interface ChosenFunctionCall {
+          function: ChosenFunctionCall.Function;
+
+          api_call?: unknown | null;
+
+          bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+          computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+          integration?: unknown | null;
+
+          system?: unknown | null;
+
+          text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+          type?: 'function';
+        }
+
+        export namespace ChosenFunctionCall {
+          export interface Function {
+            name: string;
+
+            arguments?: string | null;
+          }
+
+          export interface Bash20241022 {
+            command?: string | null;
+
+            restart?: boolean;
+          }
+
+          export interface Computer20241022 {
+            action:
+              | 'key'
+              | 'type'
+              | 'cursor_position'
+              | 'mouse_move'
+              | 'left_click'
+              | 'right_click'
+              | 'middle_click'
+              | 'double_click'
+              | 'screenshot';
+
+            coordinate?: Array<number> | null;
+
+            text?: string | null;
+          }
+
+          export interface TextEditor20241022 {
+            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+            path: string;
+
+            file_text?: string | null;
+
+            insert_line?: number | null;
+
+            new_str?: string | null;
+
+            old_str?: string | null;
+
+            view_range?: Array<number> | null;
+          }
+        }
+
+        export interface ChosenComputer20241022 {
+          action:
+            | 'key'
+            | 'type'
+            | 'cursor_position'
+            | 'mouse_move'
+            | 'left_click'
+            | 'right_click'
+            | 'middle_click'
+            | 'double_click'
+            | 'screenshot';
+
+          coordinate?: Array<number> | null;
+
+          text?: string | null;
+        }
+
+        export interface ChosenTextEditor20241022 {
+          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+          path: string;
+
+          file_text?: string | null;
+
+          insert_line?: number | null;
+
+          new_str?: string | null;
+
+          old_str?: string | null;
+
+          view_range?: Array<number> | null;
+        }
+
+        export interface ChosenBash20241022 {
+          command?: string | null;
+
+          restart?: boolean;
+        }
       }
 
       export interface NamedToolChoice {
@@ -20059,6 +22522,8 @@ export namespace TaskCreateOrUpdateParams {
       export namespace NamedToolChoice {
         export interface Function {
           name: string;
+
+          arguments?: string | null;
         }
       }
 
@@ -20088,7 +22553,7 @@ export namespace TaskCreateOrUpdateParams {
         }
       }
 
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         name: string;
 
         type:
@@ -20103,52 +22568,52 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDef
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
         /**
          * API call definition
          */

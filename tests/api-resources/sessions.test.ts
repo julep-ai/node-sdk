@@ -79,7 +79,7 @@ describe('resource sessions', () => {
 
   test('chat: only required params', async () => {
     const responsePromise = client.sessions.chat('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-      messages: [{ content: 'string', role: 'user' }],
+      messages: [{ role: 'user' }],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -92,7 +92,71 @@ describe('resource sessions', () => {
 
   test('chat: required and optional params', async () => {
     const response = await client.sessions.chat('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-      messages: [{ content: 'string', role: 'user', continue: true, name: 'name' }],
+      messages: [
+        {
+          role: 'user',
+          content: 'string',
+          continue: true,
+          name: 'name',
+          tool_call_id: 'tool_call_id',
+          tool_calls: [
+            {
+              function: { name: 'name', arguments: 'arguments' },
+              api_call: {},
+              bash_20241022: { command: 'command', restart: true },
+              computer_20241022: { action: 'key', coordinate: [0, 0, 0], text: 'text' },
+              integration: {},
+              system: {},
+              text_editor_20241022: {
+                command: 'str_replace',
+                path: 'path',
+                file_text: 'file_text',
+                insert_line: 0,
+                new_str: 'new_str',
+                old_str: 'old_str',
+                view_range: [0, 0, 0],
+              },
+              type: 'function',
+            },
+            {
+              function: { name: 'name', arguments: 'arguments' },
+              api_call: {},
+              bash_20241022: { command: 'command', restart: true },
+              computer_20241022: { action: 'key', coordinate: [0, 0, 0], text: 'text' },
+              integration: {},
+              system: {},
+              text_editor_20241022: {
+                command: 'str_replace',
+                path: 'path',
+                file_text: 'file_text',
+                insert_line: 0,
+                new_str: 'new_str',
+                old_str: 'old_str',
+                view_range: [0, 0, 0],
+              },
+              type: 'function',
+            },
+            {
+              function: { name: 'name', arguments: 'arguments' },
+              api_call: {},
+              bash_20241022: { command: 'command', restart: true },
+              computer_20241022: { action: 'key', coordinate: [0, 0, 0], text: 'text' },
+              integration: {},
+              system: {},
+              text_editor_20241022: {
+                command: 'str_replace',
+                path: 'path',
+                file_text: 'file_text',
+                insert_line: 0,
+                new_str: 'new_str',
+                old_str: 'old_str',
+                view_range: [0, 0, 0],
+              },
+              type: 'function',
+            },
+          ],
+        },
+      ],
       agent: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       frequency_penalty: -2,
       length_penalty: 0,
