@@ -404,6 +404,7 @@ export namespace Task {
         | CreateToolRequestOutput.BrowserbaseGetSessionLiveURLsIntegrationDef
         | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
         | CreateToolRequestOutput.RemoteBrowserIntegrationDef
+        | CreateToolRequestOutput.LlamaParseIntegrationDef
         | null;
 
       /**
@@ -428,6 +429,8 @@ export namespace Task {
         cookies?: Record<string, string> | null;
 
         data?: unknown | null;
+
+        files?: unknown | null;
 
         follow_redirects?: boolean | null;
 
@@ -1019,6 +1022,51 @@ export namespace Task {
       }
 
       /**
+       * LlamaParse integration definition
+       */
+      export interface LlamaParseIntegrationDef {
+        /**
+         * Arguments for LlamaParse integration
+         */
+        arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+        method?: string | null;
+
+        provider?: 'llama_parse';
+
+        /**
+         * Setup parameters for LlamaParse integration
+         */
+        setup?: LlamaParseIntegrationDef.Setup | null;
+      }
+
+      export namespace LlamaParseIntegrationDef {
+        /**
+         * Arguments for LlamaParse integration
+         */
+        export interface Arguments {
+          file: string;
+
+          filename?: string | null;
+
+          language?: string;
+
+          num_workers?: number;
+
+          result_format?: 'text' | 'markdown';
+
+          verbose?: boolean;
+        }
+
+        /**
+         * Setup parameters for LlamaParse integration
+         */
+        export interface Setup {
+          llamaparse_api_key: string;
+        }
+      }
+
+      /**
        * System definition
        */
       export interface System {
@@ -1486,6 +1534,7 @@ export namespace Task {
           | CreateToolRequestOutput.BrowserbaseGetSessionLiveURLsIntegrationDef
           | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
           | CreateToolRequestOutput.RemoteBrowserIntegrationDef
+          | CreateToolRequestOutput.LlamaParseIntegrationDef
           | null;
 
         /**
@@ -1510,6 +1559,8 @@ export namespace Task {
           cookies?: Record<string, string> | null;
 
           data?: unknown | null;
+
+          files?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -2097,6 +2148,51 @@ export namespace Task {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
+          }
+        }
+
+        /**
+         * LlamaParse integration definition
+         */
+        export interface LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'llama_parse';
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          setup?: LlamaParseIntegrationDef.Setup | null;
+        }
+
+        export namespace LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            language?: string;
+
+            num_workers?: number;
+
+            result_format?: 'text' | 'markdown';
+
+            verbose?: boolean;
+          }
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          export interface Setup {
+            llamaparse_api_key: string;
           }
         }
 
@@ -2532,6 +2628,7 @@ export namespace Task {
           | CreateToolRequestOutput.BrowserbaseGetSessionLiveURLsIntegrationDef
           | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
           | CreateToolRequestOutput.RemoteBrowserIntegrationDef
+          | CreateToolRequestOutput.LlamaParseIntegrationDef
           | null;
 
         /**
@@ -2556,6 +2653,8 @@ export namespace Task {
           cookies?: Record<string, string> | null;
 
           data?: unknown | null;
+
+          files?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -3143,6 +3242,51 @@ export namespace Task {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
+          }
+        }
+
+        /**
+         * LlamaParse integration definition
+         */
+        export interface LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'llama_parse';
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          setup?: LlamaParseIntegrationDef.Setup | null;
+        }
+
+        export namespace LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            language?: string;
+
+            num_workers?: number;
+
+            result_format?: 'text' | 'markdown';
+
+            verbose?: boolean;
+          }
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          export interface Setup {
+            llamaparse_api_key: string;
           }
         }
 
@@ -3609,6 +3753,7 @@ export namespace Task {
             | CreateToolRequestOutput.BrowserbaseGetSessionLiveURLsIntegrationDef
             | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
             | CreateToolRequestOutput.RemoteBrowserIntegrationDef
+            | CreateToolRequestOutput.LlamaParseIntegrationDef
             | null;
 
           /**
@@ -3633,6 +3778,8 @@ export namespace Task {
             cookies?: Record<string, string> | null;
 
             data?: unknown | null;
+
+            files?: unknown | null;
 
             follow_redirects?: boolean | null;
 
@@ -4220,6 +4367,51 @@ export namespace Task {
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
+            }
+          }
+
+          /**
+           * LlamaParse integration definition
+           */
+          export interface LlamaParseIntegrationDef {
+            /**
+             * Arguments for LlamaParse integration
+             */
+            arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'llama_parse';
+
+            /**
+             * Setup parameters for LlamaParse integration
+             */
+            setup?: LlamaParseIntegrationDef.Setup | null;
+          }
+
+          export namespace LlamaParseIntegrationDef {
+            /**
+             * Arguments for LlamaParse integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              language?: string;
+
+              num_workers?: number;
+
+              result_format?: 'text' | 'markdown';
+
+              verbose?: boolean;
+            }
+
+            /**
+             * Setup parameters for LlamaParse integration
+             */
+            export interface Setup {
+              llamaparse_api_key: string;
             }
           }
 
@@ -4707,6 +4899,7 @@ export namespace Task {
             | CreateToolRequestOutput.BrowserbaseGetSessionLiveURLsIntegrationDef
             | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
             | CreateToolRequestOutput.RemoteBrowserIntegrationDef
+            | CreateToolRequestOutput.LlamaParseIntegrationDef
             | null;
 
           /**
@@ -4731,6 +4924,8 @@ export namespace Task {
             cookies?: Record<string, string> | null;
 
             data?: unknown | null;
+
+            files?: unknown | null;
 
             follow_redirects?: boolean | null;
 
@@ -5322,6 +5517,51 @@ export namespace Task {
           }
 
           /**
+           * LlamaParse integration definition
+           */
+          export interface LlamaParseIntegrationDef {
+            /**
+             * Arguments for LlamaParse integration
+             */
+            arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'llama_parse';
+
+            /**
+             * Setup parameters for LlamaParse integration
+             */
+            setup?: LlamaParseIntegrationDef.Setup | null;
+          }
+
+          export namespace LlamaParseIntegrationDef {
+            /**
+             * Arguments for LlamaParse integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              language?: string;
+
+              num_workers?: number;
+
+              result_format?: 'text' | 'markdown';
+
+              verbose?: boolean;
+            }
+
+            /**
+             * Setup parameters for LlamaParse integration
+             */
+            export interface Setup {
+              llamaparse_api_key: string;
+            }
+          }
+
+          /**
            * System definition
            */
           export interface System {
@@ -5722,6 +5962,7 @@ export namespace Task {
           | CreateToolRequestOutput.BrowserbaseGetSessionLiveURLsIntegrationDef
           | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
           | CreateToolRequestOutput.RemoteBrowserIntegrationDef
+          | CreateToolRequestOutput.LlamaParseIntegrationDef
           | null;
 
         /**
@@ -5746,6 +5987,8 @@ export namespace Task {
           cookies?: Record<string, string> | null;
 
           data?: unknown | null;
+
+          files?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -6333,6 +6576,51 @@ export namespace Task {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
+          }
+        }
+
+        /**
+         * LlamaParse integration definition
+         */
+        export interface LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'llama_parse';
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          setup?: LlamaParseIntegrationDef.Setup | null;
+        }
+
+        export namespace LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            language?: string;
+
+            num_workers?: number;
+
+            result_format?: 'text' | 'markdown';
+
+            verbose?: boolean;
+          }
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          export interface Setup {
+            llamaparse_api_key: string;
           }
         }
 
@@ -6743,6 +7031,7 @@ export namespace Task {
           | CreateToolRequestOutput.BrowserbaseGetSessionLiveURLsIntegrationDef
           | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
           | CreateToolRequestOutput.RemoteBrowserIntegrationDef
+          | CreateToolRequestOutput.LlamaParseIntegrationDef
           | null;
 
         /**
@@ -6767,6 +7056,8 @@ export namespace Task {
           cookies?: Record<string, string> | null;
 
           data?: unknown | null;
+
+          files?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -7358,6 +7649,51 @@ export namespace Task {
         }
 
         /**
+         * LlamaParse integration definition
+         */
+        export interface LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'llama_parse';
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          setup?: LlamaParseIntegrationDef.Setup | null;
+        }
+
+        export namespace LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            language?: string;
+
+            num_workers?: number;
+
+            result_format?: 'text' | 'markdown';
+
+            verbose?: boolean;
+          }
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          export interface Setup {
+            llamaparse_api_key: string;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -7481,6 +7817,7 @@ export namespace Task {
       | Tool.BrowserbaseGetSessionLiveURLsIntegrationDef
       | Tool.BrowserbaseGetSessionConnectURLIntegrationDef
       | Tool.RemoteBrowserIntegrationDef
+      | Tool.LlamaParseIntegrationDef
       | null;
 
     /**
@@ -7505,6 +7842,8 @@ export namespace Task {
       cookies?: Record<string, string> | null;
 
       data?: unknown | null;
+
+      files?: unknown | null;
 
       follow_redirects?: boolean | null;
 
@@ -8096,6 +8435,51 @@ export namespace Task {
     }
 
     /**
+     * LlamaParse integration definition
+     */
+    export interface LlamaParseIntegrationDef {
+      /**
+       * Arguments for LlamaParse integration
+       */
+      arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'llama_parse';
+
+      /**
+       * Setup parameters for LlamaParse integration
+       */
+      setup?: LlamaParseIntegrationDef.Setup | null;
+    }
+
+    export namespace LlamaParseIntegrationDef {
+      /**
+       * Arguments for LlamaParse integration
+       */
+      export interface Arguments {
+        file: string;
+
+        filename?: string | null;
+
+        language?: string;
+
+        num_workers?: number;
+
+        result_format?: 'text' | 'markdown';
+
+        verbose?: boolean;
+      }
+
+      /**
+       * Setup parameters for LlamaParse integration
+       */
+      export interface Setup {
+        llamaparse_api_key: string;
+      }
+    }
+
+    /**
      * System definition
      */
     export interface System {
@@ -8460,6 +8844,7 @@ export namespace TaskCreateParams {
         | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
         | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
         | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
         | null;
 
       /**
@@ -8484,6 +8869,8 @@ export namespace TaskCreateParams {
         cookies?: Record<string, string> | null;
 
         data?: unknown | null;
+
+        files?: unknown | null;
 
         follow_redirects?: boolean | null;
 
@@ -9075,6 +9462,51 @@ export namespace TaskCreateParams {
       }
 
       /**
+       * LlamaParse integration definition
+       */
+      export interface LlamaParseIntegrationDef {
+        /**
+         * Arguments for LlamaParse integration
+         */
+        arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+        method?: string | null;
+
+        provider?: 'llama_parse';
+
+        /**
+         * Setup parameters for LlamaParse integration
+         */
+        setup?: LlamaParseIntegrationDef.Setup | null;
+      }
+
+      export namespace LlamaParseIntegrationDef {
+        /**
+         * Arguments for LlamaParse integration
+         */
+        export interface Arguments {
+          file: string;
+
+          filename?: string | null;
+
+          language?: string;
+
+          num_workers?: number;
+
+          result_format?: 'text' | 'markdown';
+
+          verbose?: boolean;
+        }
+
+        /**
+         * Setup parameters for LlamaParse integration
+         */
+        export interface Setup {
+          llamaparse_api_key: string;
+        }
+      }
+
+      /**
        * System definition
        */
       export interface System {
@@ -9518,6 +9950,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
           | null;
 
         /**
@@ -9542,6 +9975,8 @@ export namespace TaskCreateParams {
           cookies?: Record<string, string> | null;
 
           data?: unknown | null;
+
+          files?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -10129,6 +10564,51 @@ export namespace TaskCreateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
+          }
+        }
+
+        /**
+         * LlamaParse integration definition
+         */
+        export interface LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'llama_parse';
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          setup?: LlamaParseIntegrationDef.Setup | null;
+        }
+
+        export namespace LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            language?: string;
+
+            num_workers?: number;
+
+            result_format?: 'text' | 'markdown';
+
+            verbose?: boolean;
+          }
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          export interface Setup {
+            llamaparse_api_key: string;
           }
         }
 
@@ -10542,6 +11022,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
           | null;
 
         /**
@@ -10566,6 +11047,8 @@ export namespace TaskCreateParams {
           cookies?: Record<string, string> | null;
 
           data?: unknown | null;
+
+          files?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -11153,6 +11636,51 @@ export namespace TaskCreateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
+          }
+        }
+
+        /**
+         * LlamaParse integration definition
+         */
+        export interface LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'llama_parse';
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          setup?: LlamaParseIntegrationDef.Setup | null;
+        }
+
+        export namespace LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            language?: string;
+
+            num_workers?: number;
+
+            result_format?: 'text' | 'markdown';
+
+            verbose?: boolean;
+          }
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          export interface Setup {
+            llamaparse_api_key: string;
           }
         }
 
@@ -11597,6 +12125,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
             | null;
 
           /**
@@ -11621,6 +12150,8 @@ export namespace TaskCreateParams {
             cookies?: Record<string, string> | null;
 
             data?: unknown | null;
+
+            files?: unknown | null;
 
             follow_redirects?: boolean | null;
 
@@ -12208,6 +12739,51 @@ export namespace TaskCreateParams {
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
+            }
+          }
+
+          /**
+           * LlamaParse integration definition
+           */
+          export interface LlamaParseIntegrationDef {
+            /**
+             * Arguments for LlamaParse integration
+             */
+            arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'llama_parse';
+
+            /**
+             * Setup parameters for LlamaParse integration
+             */
+            setup?: LlamaParseIntegrationDef.Setup | null;
+          }
+
+          export namespace LlamaParseIntegrationDef {
+            /**
+             * Arguments for LlamaParse integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              language?: string;
+
+              num_workers?: number;
+
+              result_format?: 'text' | 'markdown';
+
+              verbose?: boolean;
+            }
+
+            /**
+             * Setup parameters for LlamaParse integration
+             */
+            export interface Setup {
+              llamaparse_api_key: string;
             }
           }
 
@@ -12671,6 +13247,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
             | null;
 
           /**
@@ -12695,6 +13272,8 @@ export namespace TaskCreateParams {
             cookies?: Record<string, string> | null;
 
             data?: unknown | null;
+
+            files?: unknown | null;
 
             follow_redirects?: boolean | null;
 
@@ -13286,6 +13865,51 @@ export namespace TaskCreateParams {
           }
 
           /**
+           * LlamaParse integration definition
+           */
+          export interface LlamaParseIntegrationDef {
+            /**
+             * Arguments for LlamaParse integration
+             */
+            arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'llama_parse';
+
+            /**
+             * Setup parameters for LlamaParse integration
+             */
+            setup?: LlamaParseIntegrationDef.Setup | null;
+          }
+
+          export namespace LlamaParseIntegrationDef {
+            /**
+             * Arguments for LlamaParse integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              language?: string;
+
+              num_workers?: number;
+
+              result_format?: 'text' | 'markdown';
+
+              verbose?: boolean;
+            }
+
+            /**
+             * Setup parameters for LlamaParse integration
+             */
+            export interface Setup {
+              llamaparse_api_key: string;
+            }
+          }
+
+          /**
            * System definition
            */
           export interface System {
@@ -13670,6 +14294,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
           | null;
 
         /**
@@ -13694,6 +14319,8 @@ export namespace TaskCreateParams {
           cookies?: Record<string, string> | null;
 
           data?: unknown | null;
+
+          files?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -14281,6 +14908,51 @@ export namespace TaskCreateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
+          }
+        }
+
+        /**
+         * LlamaParse integration definition
+         */
+        export interface LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'llama_parse';
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          setup?: LlamaParseIntegrationDef.Setup | null;
+        }
+
+        export namespace LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            language?: string;
+
+            num_workers?: number;
+
+            result_format?: 'text' | 'markdown';
+
+            verbose?: boolean;
+          }
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          export interface Setup {
+            llamaparse_api_key: string;
           }
         }
 
@@ -14675,6 +15347,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
           | null;
 
         /**
@@ -14699,6 +15372,8 @@ export namespace TaskCreateParams {
           cookies?: Record<string, string> | null;
 
           data?: unknown | null;
+
+          files?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -15290,6 +15965,51 @@ export namespace TaskCreateParams {
         }
 
         /**
+         * LlamaParse integration definition
+         */
+        export interface LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'llama_parse';
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          setup?: LlamaParseIntegrationDef.Setup | null;
+        }
+
+        export namespace LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            language?: string;
+
+            num_workers?: number;
+
+            result_format?: 'text' | 'markdown';
+
+            verbose?: boolean;
+          }
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          export interface Setup {
+            llamaparse_api_key: string;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -15403,6 +16123,7 @@ export namespace TaskCreateParams {
       | Tool.BrowserbaseGetSessionLiveURLsIntegrationDef
       | Tool.BrowserbaseGetSessionConnectURLIntegrationDef
       | Tool.RemoteBrowserIntegrationDef
+      | Tool.LlamaParseIntegrationDef
       | null;
 
     /**
@@ -15427,6 +16148,8 @@ export namespace TaskCreateParams {
       cookies?: Record<string, string> | null;
 
       data?: unknown | null;
+
+      files?: unknown | null;
 
       follow_redirects?: boolean | null;
 
@@ -16014,6 +16737,51 @@ export namespace TaskCreateParams {
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
+      }
+    }
+
+    /**
+     * LlamaParse integration definition
+     */
+    export interface LlamaParseIntegrationDef {
+      /**
+       * Arguments for LlamaParse integration
+       */
+      arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'llama_parse';
+
+      /**
+       * Setup parameters for LlamaParse integration
+       */
+      setup?: LlamaParseIntegrationDef.Setup | null;
+    }
+
+    export namespace LlamaParseIntegrationDef {
+      /**
+       * Arguments for LlamaParse integration
+       */
+      export interface Arguments {
+        file: string;
+
+        filename?: string | null;
+
+        language?: string;
+
+        num_workers?: number;
+
+        result_format?: 'text' | 'markdown';
+
+        verbose?: boolean;
+      }
+
+      /**
+       * Setup parameters for LlamaParse integration
+       */
+      export interface Setup {
+        llamaparse_api_key: string;
       }
     }
 
@@ -16388,6 +17156,7 @@ export namespace TaskCreateOrUpdateParams {
         | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
         | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
         | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
         | null;
 
       /**
@@ -16412,6 +17181,8 @@ export namespace TaskCreateOrUpdateParams {
         cookies?: Record<string, string> | null;
 
         data?: unknown | null;
+
+        files?: unknown | null;
 
         follow_redirects?: boolean | null;
 
@@ -17003,6 +17774,51 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       /**
+       * LlamaParse integration definition
+       */
+      export interface LlamaParseIntegrationDef {
+        /**
+         * Arguments for LlamaParse integration
+         */
+        arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+        method?: string | null;
+
+        provider?: 'llama_parse';
+
+        /**
+         * Setup parameters for LlamaParse integration
+         */
+        setup?: LlamaParseIntegrationDef.Setup | null;
+      }
+
+      export namespace LlamaParseIntegrationDef {
+        /**
+         * Arguments for LlamaParse integration
+         */
+        export interface Arguments {
+          file: string;
+
+          filename?: string | null;
+
+          language?: string;
+
+          num_workers?: number;
+
+          result_format?: 'text' | 'markdown';
+
+          verbose?: boolean;
+        }
+
+        /**
+         * Setup parameters for LlamaParse integration
+         */
+        export interface Setup {
+          llamaparse_api_key: string;
+        }
+      }
+
+      /**
        * System definition
        */
       export interface System {
@@ -17446,6 +18262,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
           | null;
 
         /**
@@ -17470,6 +18287,8 @@ export namespace TaskCreateOrUpdateParams {
           cookies?: Record<string, string> | null;
 
           data?: unknown | null;
+
+          files?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -18057,6 +18876,51 @@ export namespace TaskCreateOrUpdateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
+          }
+        }
+
+        /**
+         * LlamaParse integration definition
+         */
+        export interface LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'llama_parse';
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          setup?: LlamaParseIntegrationDef.Setup | null;
+        }
+
+        export namespace LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            language?: string;
+
+            num_workers?: number;
+
+            result_format?: 'text' | 'markdown';
+
+            verbose?: boolean;
+          }
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          export interface Setup {
+            llamaparse_api_key: string;
           }
         }
 
@@ -18470,6 +19334,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
           | null;
 
         /**
@@ -18494,6 +19359,8 @@ export namespace TaskCreateOrUpdateParams {
           cookies?: Record<string, string> | null;
 
           data?: unknown | null;
+
+          files?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -19081,6 +19948,51 @@ export namespace TaskCreateOrUpdateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
+          }
+        }
+
+        /**
+         * LlamaParse integration definition
+         */
+        export interface LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'llama_parse';
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          setup?: LlamaParseIntegrationDef.Setup | null;
+        }
+
+        export namespace LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            language?: string;
+
+            num_workers?: number;
+
+            result_format?: 'text' | 'markdown';
+
+            verbose?: boolean;
+          }
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          export interface Setup {
+            llamaparse_api_key: string;
           }
         }
 
@@ -19525,6 +20437,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
             | null;
 
           /**
@@ -19549,6 +20462,8 @@ export namespace TaskCreateOrUpdateParams {
             cookies?: Record<string, string> | null;
 
             data?: unknown | null;
+
+            files?: unknown | null;
 
             follow_redirects?: boolean | null;
 
@@ -20136,6 +21051,51 @@ export namespace TaskCreateOrUpdateParams {
               coordinate?: Array<unknown> | null;
 
               text?: string | null;
+            }
+          }
+
+          /**
+           * LlamaParse integration definition
+           */
+          export interface LlamaParseIntegrationDef {
+            /**
+             * Arguments for LlamaParse integration
+             */
+            arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'llama_parse';
+
+            /**
+             * Setup parameters for LlamaParse integration
+             */
+            setup?: LlamaParseIntegrationDef.Setup | null;
+          }
+
+          export namespace LlamaParseIntegrationDef {
+            /**
+             * Arguments for LlamaParse integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              language?: string;
+
+              num_workers?: number;
+
+              result_format?: 'text' | 'markdown';
+
+              verbose?: boolean;
+            }
+
+            /**
+             * Setup parameters for LlamaParse integration
+             */
+            export interface Setup {
+              llamaparse_api_key: string;
             }
           }
 
@@ -20599,6 +21559,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
             | null;
 
           /**
@@ -20623,6 +21584,8 @@ export namespace TaskCreateOrUpdateParams {
             cookies?: Record<string, string> | null;
 
             data?: unknown | null;
+
+            files?: unknown | null;
 
             follow_redirects?: boolean | null;
 
@@ -21214,6 +22177,51 @@ export namespace TaskCreateOrUpdateParams {
           }
 
           /**
+           * LlamaParse integration definition
+           */
+          export interface LlamaParseIntegrationDef {
+            /**
+             * Arguments for LlamaParse integration
+             */
+            arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'llama_parse';
+
+            /**
+             * Setup parameters for LlamaParse integration
+             */
+            setup?: LlamaParseIntegrationDef.Setup | null;
+          }
+
+          export namespace LlamaParseIntegrationDef {
+            /**
+             * Arguments for LlamaParse integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              language?: string;
+
+              num_workers?: number;
+
+              result_format?: 'text' | 'markdown';
+
+              verbose?: boolean;
+            }
+
+            /**
+             * Setup parameters for LlamaParse integration
+             */
+            export interface Setup {
+              llamaparse_api_key: string;
+            }
+          }
+
+          /**
            * System definition
            */
           export interface System {
@@ -21598,6 +22606,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
           | null;
 
         /**
@@ -21622,6 +22631,8 @@ export namespace TaskCreateOrUpdateParams {
           cookies?: Record<string, string> | null;
 
           data?: unknown | null;
+
+          files?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -22209,6 +23220,51 @@ export namespace TaskCreateOrUpdateParams {
             coordinate?: Array<unknown> | null;
 
             text?: string | null;
+          }
+        }
+
+        /**
+         * LlamaParse integration definition
+         */
+        export interface LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'llama_parse';
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          setup?: LlamaParseIntegrationDef.Setup | null;
+        }
+
+        export namespace LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            language?: string;
+
+            num_workers?: number;
+
+            result_format?: 'text' | 'markdown';
+
+            verbose?: boolean;
+          }
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          export interface Setup {
+            llamaparse_api_key: string;
           }
         }
 
@@ -22603,6 +23659,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
           | null;
 
         /**
@@ -22627,6 +23684,8 @@ export namespace TaskCreateOrUpdateParams {
           cookies?: Record<string, string> | null;
 
           data?: unknown | null;
+
+          files?: unknown | null;
 
           follow_redirects?: boolean | null;
 
@@ -23218,6 +24277,51 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         /**
+         * LlamaParse integration definition
+         */
+        export interface LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'llama_parse';
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          setup?: LlamaParseIntegrationDef.Setup | null;
+        }
+
+        export namespace LlamaParseIntegrationDef {
+          /**
+           * Arguments for LlamaParse integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            language?: string;
+
+            num_workers?: number;
+
+            result_format?: 'text' | 'markdown';
+
+            verbose?: boolean;
+          }
+
+          /**
+           * Setup parameters for LlamaParse integration
+           */
+          export interface Setup {
+            llamaparse_api_key: string;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -23331,6 +24435,7 @@ export namespace TaskCreateOrUpdateParams {
       | Tool.BrowserbaseGetSessionLiveURLsIntegrationDef
       | Tool.BrowserbaseGetSessionConnectURLIntegrationDef
       | Tool.RemoteBrowserIntegrationDef
+      | Tool.LlamaParseIntegrationDef
       | null;
 
     /**
@@ -23355,6 +24460,8 @@ export namespace TaskCreateOrUpdateParams {
       cookies?: Record<string, string> | null;
 
       data?: unknown | null;
+
+      files?: unknown | null;
 
       follow_redirects?: boolean | null;
 
@@ -23942,6 +25049,51 @@ export namespace TaskCreateOrUpdateParams {
         coordinate?: Array<unknown> | null;
 
         text?: string | null;
+      }
+    }
+
+    /**
+     * LlamaParse integration definition
+     */
+    export interface LlamaParseIntegrationDef {
+      /**
+       * Arguments for LlamaParse integration
+       */
+      arguments?: LlamaParseIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'llama_parse';
+
+      /**
+       * Setup parameters for LlamaParse integration
+       */
+      setup?: LlamaParseIntegrationDef.Setup | null;
+    }
+
+    export namespace LlamaParseIntegrationDef {
+      /**
+       * Arguments for LlamaParse integration
+       */
+      export interface Arguments {
+        file: string;
+
+        filename?: string | null;
+
+        language?: string;
+
+        num_workers?: number;
+
+        result_format?: 'text' | 'markdown';
+
+        verbose?: boolean;
+      }
+
+      /**
+       * Setup parameters for LlamaParse integration
+       */
+      export interface Setup {
+        llamaparse_api_key: string;
       }
     }
 
