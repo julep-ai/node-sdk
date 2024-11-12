@@ -75,7 +75,6 @@ const environments = {
   local: 'http://localhost:8080',
 };
 type Environment = keyof typeof environments;
-
 export interface ClientOptions {
   /**
    * Defaults to process.env['JULEP_API_KEY'].
@@ -256,25 +255,6 @@ export class Julep extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export {
-  JulepError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  AuthenticationError,
-  InternalServerError,
-  PermissionDeniedError,
-  UnprocessableEntityError,
-} from './error';
-
-export import toFile = Uploads.toFile;
-export import fileFromPath = Uploads.fileFromPath;
-
 Julep.Agents = Agents;
 Julep.AgentsOffsetPagination = AgentsOffsetPagination;
 Julep.Sessions = Sessions;
@@ -287,7 +267,6 @@ Julep.Tasks = Tasks;
 Julep.TasksOffsetPagination = TasksOffsetPagination;
 Julep.Executions = Executions;
 Julep.ExecutionsOffsetPagination = ExecutionsOffsetPagination;
-
 export declare namespace Julep {
   export type RequestOptions = Core.RequestOptions;
 
@@ -373,5 +352,22 @@ export declare namespace Julep {
   export type ResourceDeleted = API.ResourceDeleted;
   export type ResourceUpdated = API.ResourceUpdated;
 }
+
+export { toFile, fileFromPath } from '@julep/sdk/uploads';
+export {
+  JulepError,
+  APIError,
+  APIConnectionError,
+  APIConnectionTimeoutError,
+  APIUserAbortError,
+  NotFoundError,
+  ConflictError,
+  RateLimitError,
+  BadRequestError,
+  AuthenticationError,
+  InternalServerError,
+  PermissionDeniedError,
+  UnprocessableEntityError,
+} from '@julep/sdk/error';
 
 export default Julep;
