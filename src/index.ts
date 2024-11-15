@@ -353,7 +353,7 @@ export declare namespace Julep {
   export type ResourceUpdated = API.ResourceUpdated;
 }
 
-export { toFile, fileFromPath } from '@julep/sdk/uploads';
+export { toFile, fileFromPath } from './uploads';
 export {
   JulepError,
   APIError,
@@ -368,6 +368,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from '@julep/sdk/error';
+} from './error';
 
 export default Julep;
