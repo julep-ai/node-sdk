@@ -113,7 +113,7 @@ Error codes are as followed:
 
 ### Retries
 
-Certain errors will be automatically retried 2 times by default, with a short exponential backoff.
+Certain errors will be automatically retried 5 times by default, with a short exponential backoff.
 Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,
 429 Rate Limit, and >=500 Internal errors will all be retried by default.
 
@@ -134,13 +134,13 @@ await client.agents.createOrUpdate('dad00000-0000-4000-a000-000000000000', { ins
 
 ### Timeouts
 
-Requests time out after 1 minute by default. You can configure this with a `timeout` option:
+Requests time out after 2 minutes by default. You can configure this with a `timeout` option:
 
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
 const client = new Julep({
-  timeout: 20 * 1000, // 20 seconds (default is 1 minute)
+  timeout: 20 * 1000, // 20 seconds (default is 2 minutes)
 });
 
 // Override per-request:
