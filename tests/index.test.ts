@@ -175,12 +175,12 @@ describe('instantiate client', () => {
   });
 
   test('maxRetries option is correctly set', () => {
-    const client = new Julep({ maxRetries: 4, apiKey: 'My API Key' });
-    expect(client.maxRetries).toEqual(4);
+    const client = new Julep({ maxRetries: 10, apiKey: 'My API Key' });
+    expect(client.maxRetries).toEqual(10);
 
     // default
     const client2 = new Julep({ apiKey: 'My API Key' });
-    expect(client2.maxRetries).toEqual(2);
+    expect(client2.maxRetries).toEqual(5);
   });
 
   test('with environment variable arguments', () => {
