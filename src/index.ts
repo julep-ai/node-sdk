@@ -128,7 +128,7 @@ export interface ClientOptions {
    * The maximum number of times that the client will retry a request in case of a
    * temporary failure, like a network error or a 5XX error from the server.
    *
-   * @default 2
+   * @default 5
    */
   maxRetries?: number;
 
@@ -163,10 +163,10 @@ export class Julep extends Core.APIClient {
    * @param {string | undefined} [opts.apiKey=process.env['JULEP_API_KEY'] ?? undefined]
    * @param {Environment} [opts.environment=dev] - Specifies the environment URL to use for the API.
    * @param {string} [opts.baseURL=process.env['JULEP_BASE_URL'] ?? https://dev.julep.ai/api] - Override the default base URL for the API.
-   * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
+   * @param {number} [opts.timeout=2 minutes] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
-   * @param {number} [opts.maxRetries=2] - The maximum number of times the client will retry a request.
+   * @param {number} [opts.maxRetries=5] - The maximum number of times the client will retry a request.
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
@@ -196,7 +196,7 @@ export class Julep extends Core.APIClient {
 
     super({
       baseURL: options.baseURL || environments[options.environment || 'dev'],
-      timeout: options.timeout ?? 60000 /* 1 minute */,
+      timeout: options.timeout ?? 120000 /* 2 minutes */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
       fetch: options.fetch,
@@ -235,7 +235,7 @@ export class Julep extends Core.APIClient {
   }
 
   static Julep = this;
-  static DEFAULT_TIMEOUT = 60000; // 1 minute
+  static DEFAULT_TIMEOUT = 120000; // 2 minutes
 
   static JulepError = Errors.JulepError;
   static APIError = Errors.APIError;
