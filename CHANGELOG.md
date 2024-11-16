@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.38.0 (2024-11-16)
+
+Full Changelog: [v1.37.0...v1.38.0](https://github.com/julep-ai/node-sdk/compare/v1.37.0...v1.38.0)
+
+### Features
+
+* **api:** increase retries ([#128](https://github.com/julep-ai/node-sdk/issues/128)) ([ed10072](https://github.com/julep-ai/node-sdk/commit/ed100722f8cc1033d1d81e7360986985e202dd37))
+
 ## 1.37.0 (2024-11-15)
 
 Full Changelog: [v1.36.0...v1.37.0](https://github.com/julep-ai/node-sdk/compare/v1.36.0...v1.37.0)
