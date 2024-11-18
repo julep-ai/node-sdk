@@ -29,7 +29,7 @@ const client = new Julep({
 
 async function main() {
   const resourceCreated = await client.tasks.create('dad00000-0000-4000-a000-000000000000', {
-    main: [{ evaluate: { foo: ['string', 'string', 'string'] } }],
+    main: [{ evaluate: { foo: ['string'] } }],
     name: 'name',
   });
 
