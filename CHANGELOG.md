@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.39.0 (2024-11-20)
+
+Full Changelog: [v1.38.0...v1.39.0](https://github.com/julep-ai/node-sdk/compare/v1.38.0...v1.39.0)
+
+### Features
+
+* **api:** api update ([#134](https://github.com/julep-ai/node-sdk/issues/134)) ([0b34041](https://github.com/julep-ai/node-sdk/commit/0b340411112cc23e68a0acc309fc3fa5c614524b))
+
+
+### Chores
+
+* rebuild project due to codegen change ([#130](https://github.com/julep-ai/node-sdk/issues/130)) ([6750ae5](https://github.com/julep-ai/node-sdk/commit/6750ae5f888b9f1ec04bf715c5c479828f36013e))
+* remove redundant word in comment ([#133](https://github.com/julep-ai/node-sdk/issues/133)) ([11c1575](https://github.com/julep-ai/node-sdk/commit/11c15751e1393c0a58b58adaf9df851fc3dd16ce))
+
+
+### Documentation
+
+* remove suggestion to use `npm` call out ([#132](https://github.com/julep-ai/node-sdk/issues/132)) ([87101a1](https://github.com/julep-ai/node-sdk/commit/87101a1af69d2f64df2dcd2828bfbb825f362254))
+
 ## 1.38.0 (2024-11-16)
 
 Full Changelog: [v1.37.0...v1.38.0](https://github.com/julep-ai/node-sdk/compare/v1.37.0...v1.38.0)
