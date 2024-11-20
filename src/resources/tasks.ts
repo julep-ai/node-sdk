@@ -164,7 +164,15 @@ export namespace Task {
 
   export namespace PromptStepOutput {
     export interface UnionMember0 {
-      content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+      content:
+        | Array<string>
+        | Array<
+            | UnionMember0.Content
+            | UnionMember0.AgentsAPIAutogenTasksContentModel
+            | UnionMember0.AgentsAPIAutogenTasksContentModel1Output
+          >
+        | string
+        | null;
 
       role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -189,16 +197,16 @@ export namespace Task {
         type?: 'text';
       }
 
-      export interface ContentModel {
+      export interface AgentsAPIAutogenTasksContentModel {
         /**
          * The image URL
          */
-        image_url: ContentModel.ImageURL;
+        image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
         type?: 'image_url';
       }
 
-      export namespace ContentModel {
+      export namespace AgentsAPIAutogenTasksContentModel {
         /**
          * The image URL
          */
@@ -206,6 +214,43 @@ export namespace Task {
           url: string;
 
           detail?: 'low' | 'high' | 'auto';
+        }
+      }
+
+      /**
+       * Anthropic image content part
+       */
+      export interface AgentsAPIAutogenTasksContentModel1Output {
+        content:
+          | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember0>
+          | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember1>;
+
+        tool_use_id: string;
+
+        type?: 'tool_result';
+      }
+
+      export namespace AgentsAPIAutogenTasksContentModel1Output {
+        export interface UnionMember0 {
+          text: string;
+
+          type?: 'text';
+        }
+
+        export interface UnionMember1 {
+          source: UnionMember1.Source;
+
+          type?: 'image';
+        }
+
+        export namespace UnionMember1 {
+          export interface Source {
+            data: string;
+
+            media_type: string;
+
+            type?: 'base64';
+          }
         }
       }
 
@@ -405,6 +450,9 @@ export namespace Task {
         | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
         | CreateToolRequestOutput.RemoteBrowserIntegrationDef
         | CreateToolRequestOutput.LlamaParseIntegrationDef
+        | CreateToolRequestOutput.FfmpegIntegrationDef
+        | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
+        | CreateToolRequestOutput.CloudinaryEditIntegrationDef
         | null;
 
       /**
@@ -1067,6 +1115,125 @@ export namespace Task {
       }
 
       /**
+       * Ffmpeg integration definition
+       */
+      export interface FfmpegIntegrationDef {
+        /**
+         * Arguments for Ffmpeg CMD
+         */
+        arguments?: FfmpegIntegrationDef.Arguments | null;
+
+        method?: string | null;
+
+        provider?: 'ffmpeg';
+
+        setup?: unknown | null;
+      }
+
+      export namespace FfmpegIntegrationDef {
+        /**
+         * Arguments for Ffmpeg CMD
+         */
+        export interface Arguments {
+          cmd: string;
+
+          file?: string | null;
+        }
+      }
+
+      /**
+       * Cloudinary upload integration definition
+       */
+      export interface CloudinaryUploadIntegrationDef {
+        /**
+         * Arguments for Cloudinary media upload
+         */
+        arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+        method?: 'media_upload';
+
+        provider?: 'cloudinary';
+
+        /**
+         * Setup parameters for Cloudinary integration
+         */
+        setup?: CloudinaryUploadIntegrationDef.Setup | null;
+      }
+
+      export namespace CloudinaryUploadIntegrationDef {
+        /**
+         * Arguments for Cloudinary media upload
+         */
+        export interface Arguments {
+          file: string;
+
+          public_id?: string | null;
+
+          return_base64?: boolean;
+
+          upload_params?: unknown | null;
+        }
+
+        /**
+         * Setup parameters for Cloudinary integration
+         */
+        export interface Setup {
+          cloudinary_api_key: string;
+
+          cloudinary_api_secret: string;
+
+          cloudinary_cloud_name: string;
+
+          params?: unknown | null;
+        }
+      }
+
+      /**
+       * Cloudinary edit integration definition
+       */
+      export interface CloudinaryEditIntegrationDef {
+        /**
+         * Arguments for Cloudinary media edit
+         */
+        arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+        method?: 'media_edit';
+
+        provider?: 'cloudinary';
+
+        /**
+         * Setup parameters for Cloudinary integration
+         */
+        setup?: CloudinaryEditIntegrationDef.Setup | null;
+      }
+
+      export namespace CloudinaryEditIntegrationDef {
+        /**
+         * Arguments for Cloudinary media edit
+         */
+        export interface Arguments {
+          public_id: string;
+
+          transformation: Array<unknown>;
+
+          return_base64?: boolean;
+        }
+
+        /**
+         * Setup parameters for Cloudinary integration
+         */
+        export interface Setup {
+          cloudinary_api_key: string;
+
+          cloudinary_api_secret: string;
+
+          cloudinary_cloud_name: string;
+
+          params?: unknown | null;
+        }
+      }
+
+      /**
        * System definition
        */
       export interface System {
@@ -1294,7 +1461,15 @@ export namespace Task {
 
     export namespace PromptStepOutput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+        content:
+          | Array<string>
+          | Array<
+              | UnionMember0.Content
+              | UnionMember0.AgentsAPIAutogenTasksContentModel
+              | UnionMember0.AgentsAPIAutogenTasksContentModel1Output
+            >
+          | string
+          | null;
 
         role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -1319,16 +1494,16 @@ export namespace Task {
           type?: 'text';
         }
 
-        export interface ContentModel {
+        export interface AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
-          image_url: ContentModel.ImageURL;
+          image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
           type?: 'image_url';
         }
 
-        export namespace ContentModel {
+        export namespace AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
@@ -1336,6 +1511,43 @@ export namespace Task {
             url: string;
 
             detail?: 'low' | 'high' | 'auto';
+          }
+        }
+
+        /**
+         * Anthropic image content part
+         */
+        export interface AgentsAPIAutogenTasksContentModel1Output {
+          content:
+            | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember0>
+            | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember1>;
+
+          tool_use_id: string;
+
+          type?: 'tool_result';
+        }
+
+        export namespace AgentsAPIAutogenTasksContentModel1Output {
+          export interface UnionMember0 {
+            text: string;
+
+            type?: 'text';
+          }
+
+          export interface UnionMember1 {
+            source: UnionMember1.Source;
+
+            type?: 'image';
+          }
+
+          export namespace UnionMember1 {
+            export interface Source {
+              data: string;
+
+              media_type: string;
+
+              type?: 'base64';
+            }
           }
         }
 
@@ -1535,6 +1747,9 @@ export namespace Task {
           | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
           | CreateToolRequestOutput.RemoteBrowserIntegrationDef
           | CreateToolRequestOutput.LlamaParseIntegrationDef
+          | CreateToolRequestOutput.FfmpegIntegrationDef
+          | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
+          | CreateToolRequestOutput.CloudinaryEditIntegrationDef
           | null;
 
         /**
@@ -2193,6 +2408,125 @@ export namespace Task {
            */
           export interface Setup {
             llamaparse_api_key: string;
+          }
+        }
+
+        /**
+         * Ffmpeg integration definition
+         */
+        export interface FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          arguments?: FfmpegIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'ffmpeg';
+
+          setup?: unknown | null;
+        }
+
+        export namespace FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          export interface Arguments {
+            cmd: string;
+
+            file?: string | null;
+          }
+        }
+
+        /**
+         * Cloudinary upload integration definition
+         */
+        export interface CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+          method?: 'media_upload';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryUploadIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          export interface Arguments {
+            file: string;
+
+            public_id?: string | null;
+
+            return_base64?: boolean;
+
+            upload_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
+         * Cloudinary edit integration definition
+         */
+        export interface CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+          method?: 'media_edit';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryEditIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          export interface Arguments {
+            public_id: string;
+
+            transformation: Array<unknown>;
+
+            return_base64?: boolean;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -2388,7 +2722,15 @@ export namespace Task {
 
     export namespace PromptStepOutput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+        content:
+          | Array<string>
+          | Array<
+              | UnionMember0.Content
+              | UnionMember0.AgentsAPIAutogenTasksContentModel
+              | UnionMember0.AgentsAPIAutogenTasksContentModel1Output
+            >
+          | string
+          | null;
 
         role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -2413,16 +2755,16 @@ export namespace Task {
           type?: 'text';
         }
 
-        export interface ContentModel {
+        export interface AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
-          image_url: ContentModel.ImageURL;
+          image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
           type?: 'image_url';
         }
 
-        export namespace ContentModel {
+        export namespace AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
@@ -2430,6 +2772,43 @@ export namespace Task {
             url: string;
 
             detail?: 'low' | 'high' | 'auto';
+          }
+        }
+
+        /**
+         * Anthropic image content part
+         */
+        export interface AgentsAPIAutogenTasksContentModel1Output {
+          content:
+            | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember0>
+            | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember1>;
+
+          tool_use_id: string;
+
+          type?: 'tool_result';
+        }
+
+        export namespace AgentsAPIAutogenTasksContentModel1Output {
+          export interface UnionMember0 {
+            text: string;
+
+            type?: 'text';
+          }
+
+          export interface UnionMember1 {
+            source: UnionMember1.Source;
+
+            type?: 'image';
+          }
+
+          export namespace UnionMember1 {
+            export interface Source {
+              data: string;
+
+              media_type: string;
+
+              type?: 'base64';
+            }
           }
         }
 
@@ -2629,6 +3008,9 @@ export namespace Task {
           | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
           | CreateToolRequestOutput.RemoteBrowserIntegrationDef
           | CreateToolRequestOutput.LlamaParseIntegrationDef
+          | CreateToolRequestOutput.FfmpegIntegrationDef
+          | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
+          | CreateToolRequestOutput.CloudinaryEditIntegrationDef
           | null;
 
         /**
@@ -3287,6 +3669,125 @@ export namespace Task {
            */
           export interface Setup {
             llamaparse_api_key: string;
+          }
+        }
+
+        /**
+         * Ffmpeg integration definition
+         */
+        export interface FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          arguments?: FfmpegIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'ffmpeg';
+
+          setup?: unknown | null;
+        }
+
+        export namespace FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          export interface Arguments {
+            cmd: string;
+
+            file?: string | null;
+          }
+        }
+
+        /**
+         * Cloudinary upload integration definition
+         */
+        export interface CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+          method?: 'media_upload';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryUploadIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          export interface Arguments {
+            file: string;
+
+            public_id?: string | null;
+
+            return_base64?: boolean;
+
+            upload_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
+         * Cloudinary edit integration definition
+         */
+        export interface CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+          method?: 'media_edit';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryEditIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          export interface Arguments {
+            public_id: string;
+
+            transformation: Array<unknown>;
+
+            return_base64?: boolean;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -3513,7 +4014,15 @@ export namespace Task {
 
       export namespace PromptStepOutput {
         export interface UnionMember0 {
-          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+          content:
+            | Array<string>
+            | Array<
+                | UnionMember0.Content
+                | UnionMember0.AgentsAPIAutogenTasksContentModel
+                | UnionMember0.AgentsAPIAutogenTasksContentModel1Output
+              >
+            | string
+            | null;
 
           role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -3538,16 +4047,16 @@ export namespace Task {
             type?: 'text';
           }
 
-          export interface ContentModel {
+          export interface AgentsAPIAutogenTasksContentModel {
             /**
              * The image URL
              */
-            image_url: ContentModel.ImageURL;
+            image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
             type?: 'image_url';
           }
 
-          export namespace ContentModel {
+          export namespace AgentsAPIAutogenTasksContentModel {
             /**
              * The image URL
              */
@@ -3555,6 +4064,43 @@ export namespace Task {
               url: string;
 
               detail?: 'low' | 'high' | 'auto';
+            }
+          }
+
+          /**
+           * Anthropic image content part
+           */
+          export interface AgentsAPIAutogenTasksContentModel1Output {
+            content:
+              | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember0>
+              | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember1>;
+
+            tool_use_id: string;
+
+            type?: 'tool_result';
+          }
+
+          export namespace AgentsAPIAutogenTasksContentModel1Output {
+            export interface UnionMember0 {
+              text: string;
+
+              type?: 'text';
+            }
+
+            export interface UnionMember1 {
+              source: UnionMember1.Source;
+
+              type?: 'image';
+            }
+
+            export namespace UnionMember1 {
+              export interface Source {
+                data: string;
+
+                media_type: string;
+
+                type?: 'base64';
+              }
             }
           }
 
@@ -3754,6 +4300,9 @@ export namespace Task {
             | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
             | CreateToolRequestOutput.RemoteBrowserIntegrationDef
             | CreateToolRequestOutput.LlamaParseIntegrationDef
+            | CreateToolRequestOutput.FfmpegIntegrationDef
+            | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
+            | CreateToolRequestOutput.CloudinaryEditIntegrationDef
             | null;
 
           /**
@@ -4412,6 +4961,125 @@ export namespace Task {
              */
             export interface Setup {
               llamaparse_api_key: string;
+            }
+          }
+
+          /**
+           * Ffmpeg integration definition
+           */
+          export interface FfmpegIntegrationDef {
+            /**
+             * Arguments for Ffmpeg CMD
+             */
+            arguments?: FfmpegIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'ffmpeg';
+
+            setup?: unknown | null;
+          }
+
+          export namespace FfmpegIntegrationDef {
+            /**
+             * Arguments for Ffmpeg CMD
+             */
+            export interface Arguments {
+              cmd: string;
+
+              file?: string | null;
+            }
+          }
+
+          /**
+           * Cloudinary upload integration definition
+           */
+          export interface CloudinaryUploadIntegrationDef {
+            /**
+             * Arguments for Cloudinary media upload
+             */
+            arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+            method?: 'media_upload';
+
+            provider?: 'cloudinary';
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            setup?: CloudinaryUploadIntegrationDef.Setup | null;
+          }
+
+          export namespace CloudinaryUploadIntegrationDef {
+            /**
+             * Arguments for Cloudinary media upload
+             */
+            export interface Arguments {
+              file: string;
+
+              public_id?: string | null;
+
+              return_base64?: boolean;
+
+              upload_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            export interface Setup {
+              cloudinary_api_key: string;
+
+              cloudinary_api_secret: string;
+
+              cloudinary_cloud_name: string;
+
+              params?: unknown | null;
+            }
+          }
+
+          /**
+           * Cloudinary edit integration definition
+           */
+          export interface CloudinaryEditIntegrationDef {
+            /**
+             * Arguments for Cloudinary media edit
+             */
+            arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+            method?: 'media_edit';
+
+            provider?: 'cloudinary';
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            setup?: CloudinaryEditIntegrationDef.Setup | null;
+          }
+
+          export namespace CloudinaryEditIntegrationDef {
+            /**
+             * Arguments for Cloudinary media edit
+             */
+            export interface Arguments {
+              public_id: string;
+
+              transformation: Array<unknown>;
+
+              return_base64?: boolean;
+            }
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            export interface Setup {
+              cloudinary_api_key: string;
+
+              cloudinary_api_secret: string;
+
+              cloudinary_cloud_name: string;
+
+              params?: unknown | null;
             }
           }
 
@@ -4659,7 +5327,15 @@ export namespace Task {
 
       export namespace PromptStepOutput {
         export interface UnionMember0 {
-          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+          content:
+            | Array<string>
+            | Array<
+                | UnionMember0.Content
+                | UnionMember0.AgentsAPIAutogenTasksContentModel
+                | UnionMember0.AgentsAPIAutogenTasksContentModel1Output
+              >
+            | string
+            | null;
 
           role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -4684,16 +5360,16 @@ export namespace Task {
             type?: 'text';
           }
 
-          export interface ContentModel {
+          export interface AgentsAPIAutogenTasksContentModel {
             /**
              * The image URL
              */
-            image_url: ContentModel.ImageURL;
+            image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
             type?: 'image_url';
           }
 
-          export namespace ContentModel {
+          export namespace AgentsAPIAutogenTasksContentModel {
             /**
              * The image URL
              */
@@ -4701,6 +5377,43 @@ export namespace Task {
               url: string;
 
               detail?: 'low' | 'high' | 'auto';
+            }
+          }
+
+          /**
+           * Anthropic image content part
+           */
+          export interface AgentsAPIAutogenTasksContentModel1Output {
+            content:
+              | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember0>
+              | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember1>;
+
+            tool_use_id: string;
+
+            type?: 'tool_result';
+          }
+
+          export namespace AgentsAPIAutogenTasksContentModel1Output {
+            export interface UnionMember0 {
+              text: string;
+
+              type?: 'text';
+            }
+
+            export interface UnionMember1 {
+              source: UnionMember1.Source;
+
+              type?: 'image';
+            }
+
+            export namespace UnionMember1 {
+              export interface Source {
+                data: string;
+
+                media_type: string;
+
+                type?: 'base64';
+              }
             }
           }
 
@@ -4900,6 +5613,9 @@ export namespace Task {
             | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
             | CreateToolRequestOutput.RemoteBrowserIntegrationDef
             | CreateToolRequestOutput.LlamaParseIntegrationDef
+            | CreateToolRequestOutput.FfmpegIntegrationDef
+            | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
+            | CreateToolRequestOutput.CloudinaryEditIntegrationDef
             | null;
 
           /**
@@ -5562,6 +6278,125 @@ export namespace Task {
           }
 
           /**
+           * Ffmpeg integration definition
+           */
+          export interface FfmpegIntegrationDef {
+            /**
+             * Arguments for Ffmpeg CMD
+             */
+            arguments?: FfmpegIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'ffmpeg';
+
+            setup?: unknown | null;
+          }
+
+          export namespace FfmpegIntegrationDef {
+            /**
+             * Arguments for Ffmpeg CMD
+             */
+            export interface Arguments {
+              cmd: string;
+
+              file?: string | null;
+            }
+          }
+
+          /**
+           * Cloudinary upload integration definition
+           */
+          export interface CloudinaryUploadIntegrationDef {
+            /**
+             * Arguments for Cloudinary media upload
+             */
+            arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+            method?: 'media_upload';
+
+            provider?: 'cloudinary';
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            setup?: CloudinaryUploadIntegrationDef.Setup | null;
+          }
+
+          export namespace CloudinaryUploadIntegrationDef {
+            /**
+             * Arguments for Cloudinary media upload
+             */
+            export interface Arguments {
+              file: string;
+
+              public_id?: string | null;
+
+              return_base64?: boolean;
+
+              upload_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            export interface Setup {
+              cloudinary_api_key: string;
+
+              cloudinary_api_secret: string;
+
+              cloudinary_cloud_name: string;
+
+              params?: unknown | null;
+            }
+          }
+
+          /**
+           * Cloudinary edit integration definition
+           */
+          export interface CloudinaryEditIntegrationDef {
+            /**
+             * Arguments for Cloudinary media edit
+             */
+            arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+            method?: 'media_edit';
+
+            provider?: 'cloudinary';
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            setup?: CloudinaryEditIntegrationDef.Setup | null;
+          }
+
+          export namespace CloudinaryEditIntegrationDef {
+            /**
+             * Arguments for Cloudinary media edit
+             */
+            export interface Arguments {
+              public_id: string;
+
+              transformation: Array<unknown>;
+
+              return_base64?: boolean;
+            }
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            export interface Setup {
+              cloudinary_api_key: string;
+
+              cloudinary_api_secret: string;
+
+              cloudinary_cloud_name: string;
+
+              params?: unknown | null;
+            }
+          }
+
+          /**
            * System definition
            */
           export interface System {
@@ -5722,7 +6557,15 @@ export namespace Task {
 
     export namespace PromptStepOutput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+        content:
+          | Array<string>
+          | Array<
+              | UnionMember0.Content
+              | UnionMember0.AgentsAPIAutogenTasksContentModel
+              | UnionMember0.AgentsAPIAutogenTasksContentModel1Output
+            >
+          | string
+          | null;
 
         role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -5747,16 +6590,16 @@ export namespace Task {
           type?: 'text';
         }
 
-        export interface ContentModel {
+        export interface AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
-          image_url: ContentModel.ImageURL;
+          image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
           type?: 'image_url';
         }
 
-        export namespace ContentModel {
+        export namespace AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
@@ -5764,6 +6607,43 @@ export namespace Task {
             url: string;
 
             detail?: 'low' | 'high' | 'auto';
+          }
+        }
+
+        /**
+         * Anthropic image content part
+         */
+        export interface AgentsAPIAutogenTasksContentModel1Output {
+          content:
+            | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember0>
+            | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember1>;
+
+          tool_use_id: string;
+
+          type?: 'tool_result';
+        }
+
+        export namespace AgentsAPIAutogenTasksContentModel1Output {
+          export interface UnionMember0 {
+            text: string;
+
+            type?: 'text';
+          }
+
+          export interface UnionMember1 {
+            source: UnionMember1.Source;
+
+            type?: 'image';
+          }
+
+          export namespace UnionMember1 {
+            export interface Source {
+              data: string;
+
+              media_type: string;
+
+              type?: 'base64';
+            }
           }
         }
 
@@ -5963,6 +6843,9 @@ export namespace Task {
           | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
           | CreateToolRequestOutput.RemoteBrowserIntegrationDef
           | CreateToolRequestOutput.LlamaParseIntegrationDef
+          | CreateToolRequestOutput.FfmpegIntegrationDef
+          | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
+          | CreateToolRequestOutput.CloudinaryEditIntegrationDef
           | null;
 
         /**
@@ -6621,6 +7504,125 @@ export namespace Task {
            */
           export interface Setup {
             llamaparse_api_key: string;
+          }
+        }
+
+        /**
+         * Ffmpeg integration definition
+         */
+        export interface FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          arguments?: FfmpegIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'ffmpeg';
+
+          setup?: unknown | null;
+        }
+
+        export namespace FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          export interface Arguments {
+            cmd: string;
+
+            file?: string | null;
+          }
+        }
+
+        /**
+         * Cloudinary upload integration definition
+         */
+        export interface CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+          method?: 'media_upload';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryUploadIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          export interface Arguments {
+            file: string;
+
+            public_id?: string | null;
+
+            return_base64?: boolean;
+
+            upload_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
+         * Cloudinary edit integration definition
+         */
+        export interface CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+          method?: 'media_edit';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryEditIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          export interface Arguments {
+            public_id: string;
+
+            transformation: Array<unknown>;
+
+            return_base64?: boolean;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -6791,7 +7793,15 @@ export namespace Task {
 
     export namespace PromptStepOutput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+        content:
+          | Array<string>
+          | Array<
+              | UnionMember0.Content
+              | UnionMember0.AgentsAPIAutogenTasksContentModel
+              | UnionMember0.AgentsAPIAutogenTasksContentModel1Output
+            >
+          | string
+          | null;
 
         role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -6816,16 +7826,16 @@ export namespace Task {
           type?: 'text';
         }
 
-        export interface ContentModel {
+        export interface AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
-          image_url: ContentModel.ImageURL;
+          image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
           type?: 'image_url';
         }
 
-        export namespace ContentModel {
+        export namespace AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
@@ -6833,6 +7843,43 @@ export namespace Task {
             url: string;
 
             detail?: 'low' | 'high' | 'auto';
+          }
+        }
+
+        /**
+         * Anthropic image content part
+         */
+        export interface AgentsAPIAutogenTasksContentModel1Output {
+          content:
+            | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember0>
+            | Array<AgentsAPIAutogenTasksContentModel1Output.UnionMember1>;
+
+          tool_use_id: string;
+
+          type?: 'tool_result';
+        }
+
+        export namespace AgentsAPIAutogenTasksContentModel1Output {
+          export interface UnionMember0 {
+            text: string;
+
+            type?: 'text';
+          }
+
+          export interface UnionMember1 {
+            source: UnionMember1.Source;
+
+            type?: 'image';
+          }
+
+          export namespace UnionMember1 {
+            export interface Source {
+              data: string;
+
+              media_type: string;
+
+              type?: 'base64';
+            }
           }
         }
 
@@ -7032,6 +8079,9 @@ export namespace Task {
           | CreateToolRequestOutput.BrowserbaseGetSessionConnectURLIntegrationDef
           | CreateToolRequestOutput.RemoteBrowserIntegrationDef
           | CreateToolRequestOutput.LlamaParseIntegrationDef
+          | CreateToolRequestOutput.FfmpegIntegrationDef
+          | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
+          | CreateToolRequestOutput.CloudinaryEditIntegrationDef
           | null;
 
         /**
@@ -7694,6 +8744,125 @@ export namespace Task {
         }
 
         /**
+         * Ffmpeg integration definition
+         */
+        export interface FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          arguments?: FfmpegIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'ffmpeg';
+
+          setup?: unknown | null;
+        }
+
+        export namespace FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          export interface Arguments {
+            cmd: string;
+
+            file?: string | null;
+          }
+        }
+
+        /**
+         * Cloudinary upload integration definition
+         */
+        export interface CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+          method?: 'media_upload';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryUploadIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          export interface Arguments {
+            file: string;
+
+            public_id?: string | null;
+
+            return_base64?: boolean;
+
+            upload_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
+         * Cloudinary edit integration definition
+         */
+        export interface CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+          method?: 'media_edit';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryEditIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          export interface Arguments {
+            public_id: string;
+
+            transformation: Array<unknown>;
+
+            return_base64?: boolean;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -7818,6 +8987,9 @@ export namespace Task {
       | Tool.BrowserbaseGetSessionConnectURLIntegrationDef
       | Tool.RemoteBrowserIntegrationDef
       | Tool.LlamaParseIntegrationDef
+      | Tool.FfmpegIntegrationDef
+      | Tool.CloudinaryUploadIntegrationDef
+      | Tool.CloudinaryEditIntegrationDef
       | null;
 
     /**
@@ -8480,6 +9652,125 @@ export namespace Task {
     }
 
     /**
+     * Ffmpeg integration definition
+     */
+    export interface FfmpegIntegrationDef {
+      /**
+       * Arguments for Ffmpeg CMD
+       */
+      arguments?: FfmpegIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'ffmpeg';
+
+      setup?: unknown | null;
+    }
+
+    export namespace FfmpegIntegrationDef {
+      /**
+       * Arguments for Ffmpeg CMD
+       */
+      export interface Arguments {
+        cmd: string;
+
+        file?: string | null;
+      }
+    }
+
+    /**
+     * Cloudinary upload integration definition
+     */
+    export interface CloudinaryUploadIntegrationDef {
+      /**
+       * Arguments for Cloudinary media upload
+       */
+      arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+      method?: 'media_upload';
+
+      provider?: 'cloudinary';
+
+      /**
+       * Setup parameters for Cloudinary integration
+       */
+      setup?: CloudinaryUploadIntegrationDef.Setup | null;
+    }
+
+    export namespace CloudinaryUploadIntegrationDef {
+      /**
+       * Arguments for Cloudinary media upload
+       */
+      export interface Arguments {
+        file: string;
+
+        public_id?: string | null;
+
+        return_base64?: boolean;
+
+        upload_params?: unknown | null;
+      }
+
+      /**
+       * Setup parameters for Cloudinary integration
+       */
+      export interface Setup {
+        cloudinary_api_key: string;
+
+        cloudinary_api_secret: string;
+
+        cloudinary_cloud_name: string;
+
+        params?: unknown | null;
+      }
+    }
+
+    /**
+     * Cloudinary edit integration definition
+     */
+    export interface CloudinaryEditIntegrationDef {
+      /**
+       * Arguments for Cloudinary media edit
+       */
+      arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+      method?: 'media_edit';
+
+      provider?: 'cloudinary';
+
+      /**
+       * Setup parameters for Cloudinary integration
+       */
+      setup?: CloudinaryEditIntegrationDef.Setup | null;
+    }
+
+    export namespace CloudinaryEditIntegrationDef {
+      /**
+       * Arguments for Cloudinary media edit
+       */
+      export interface Arguments {
+        public_id: string;
+
+        transformation: Array<unknown>;
+
+        return_base64?: boolean;
+      }
+
+      /**
+       * Setup parameters for Cloudinary integration
+       */
+      export interface Setup {
+        cloudinary_api_key: string;
+
+        cloudinary_api_secret: string;
+
+        cloudinary_cloud_name: string;
+
+        params?: unknown | null;
+      }
+    }
+
+    /**
      * System definition
      */
     export interface System {
@@ -8606,7 +9897,15 @@ export namespace TaskCreateParams {
 
   export namespace PromptStepInput {
     export interface UnionMember0 {
-      content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+      content:
+        | Array<string>
+        | Array<
+            | UnionMember0.Content
+            | UnionMember0.AgentsAPIAutogenTasksContentModel
+            | UnionMember0.ContentModel1Input
+          >
+        | string
+        | null;
 
       role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -8631,16 +9930,16 @@ export namespace TaskCreateParams {
         type?: 'text';
       }
 
-      export interface ContentModel {
+      export interface AgentsAPIAutogenTasksContentModel {
         /**
          * The image URL
          */
-        image_url: ContentModel.ImageURL;
+        image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
         type?: 'image_url';
       }
 
-      export namespace ContentModel {
+      export namespace AgentsAPIAutogenTasksContentModel {
         /**
          * The image URL
          */
@@ -8648,6 +9947,41 @@ export namespace TaskCreateParams {
           url: string;
 
           detail?: 'low' | 'high' | 'auto';
+        }
+      }
+
+      /**
+       * Anthropic image content part
+       */
+      export interface ContentModel1Input {
+        content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+        tool_use_id: string;
+
+        type?: 'tool_result';
+      }
+
+      export namespace ContentModel1Input {
+        export interface UnionMember0 {
+          text: string;
+
+          type?: 'text';
+        }
+
+        export interface UnionMember1 {
+          source: UnionMember1.Source;
+
+          type?: 'image';
+        }
+
+        export namespace UnionMember1 {
+          export interface Source {
+            data: string;
+
+            media_type: string;
+
+            type?: 'base64';
+          }
         }
       }
 
@@ -8845,6 +10179,9 @@ export namespace TaskCreateParams {
         | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
         | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
         | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
         | null;
 
       /**
@@ -9507,6 +10844,125 @@ export namespace TaskCreateParams {
       }
 
       /**
+       * Ffmpeg integration definition
+       */
+      export interface FfmpegIntegrationDef {
+        /**
+         * Arguments for Ffmpeg CMD
+         */
+        arguments?: FfmpegIntegrationDef.Arguments | null;
+
+        method?: string | null;
+
+        provider?: 'ffmpeg';
+
+        setup?: unknown | null;
+      }
+
+      export namespace FfmpegIntegrationDef {
+        /**
+         * Arguments for Ffmpeg CMD
+         */
+        export interface Arguments {
+          cmd: string;
+
+          file?: string | null;
+        }
+      }
+
+      /**
+       * Cloudinary upload integration definition
+       */
+      export interface CloudinaryUploadIntegrationDef {
+        /**
+         * Arguments for Cloudinary media upload
+         */
+        arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+        method?: 'media_upload';
+
+        provider?: 'cloudinary';
+
+        /**
+         * Setup parameters for Cloudinary integration
+         */
+        setup?: CloudinaryUploadIntegrationDef.Setup | null;
+      }
+
+      export namespace CloudinaryUploadIntegrationDef {
+        /**
+         * Arguments for Cloudinary media upload
+         */
+        export interface Arguments {
+          file: string;
+
+          public_id?: string | null;
+
+          return_base64?: boolean;
+
+          upload_params?: unknown | null;
+        }
+
+        /**
+         * Setup parameters for Cloudinary integration
+         */
+        export interface Setup {
+          cloudinary_api_key: string;
+
+          cloudinary_api_secret: string;
+
+          cloudinary_cloud_name: string;
+
+          params?: unknown | null;
+        }
+      }
+
+      /**
+       * Cloudinary edit integration definition
+       */
+      export interface CloudinaryEditIntegrationDef {
+        /**
+         * Arguments for Cloudinary media edit
+         */
+        arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+        method?: 'media_edit';
+
+        provider?: 'cloudinary';
+
+        /**
+         * Setup parameters for Cloudinary integration
+         */
+        setup?: CloudinaryEditIntegrationDef.Setup | null;
+      }
+
+      export namespace CloudinaryEditIntegrationDef {
+        /**
+         * Arguments for Cloudinary media edit
+         */
+        export interface Arguments {
+          public_id: string;
+
+          transformation: Array<unknown>;
+
+          return_base64?: boolean;
+        }
+
+        /**
+         * Setup parameters for Cloudinary integration
+         */
+        export interface Setup {
+          cloudinary_api_key: string;
+
+          cloudinary_api_secret: string;
+
+          cloudinary_cloud_name: string;
+
+          params?: unknown | null;
+        }
+      }
+
+      /**
        * System definition
        */
       export interface System {
@@ -9712,7 +11168,15 @@ export namespace TaskCreateParams {
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+        content:
+          | Array<string>
+          | Array<
+              | UnionMember0.Content
+              | UnionMember0.AgentsAPIAutogenTasksContentModel
+              | UnionMember0.ContentModel1Input
+            >
+          | string
+          | null;
 
         role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -9737,16 +11201,16 @@ export namespace TaskCreateParams {
           type?: 'text';
         }
 
-        export interface ContentModel {
+        export interface AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
-          image_url: ContentModel.ImageURL;
+          image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
           type?: 'image_url';
         }
 
-        export namespace ContentModel {
+        export namespace AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
@@ -9754,6 +11218,41 @@ export namespace TaskCreateParams {
             url: string;
 
             detail?: 'low' | 'high' | 'auto';
+          }
+        }
+
+        /**
+         * Anthropic image content part
+         */
+        export interface ContentModel1Input {
+          content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+          tool_use_id: string;
+
+          type?: 'tool_result';
+        }
+
+        export namespace ContentModel1Input {
+          export interface UnionMember0 {
+            text: string;
+
+            type?: 'text';
+          }
+
+          export interface UnionMember1 {
+            source: UnionMember1.Source;
+
+            type?: 'image';
+          }
+
+          export namespace UnionMember1 {
+            export interface Source {
+              data: string;
+
+              media_type: string;
+
+              type?: 'base64';
+            }
           }
         }
 
@@ -9951,6 +11450,9 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
           | null;
 
         /**
@@ -10609,6 +12111,125 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+          }
+        }
+
+        /**
+         * Ffmpeg integration definition
+         */
+        export interface FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          arguments?: FfmpegIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'ffmpeg';
+
+          setup?: unknown | null;
+        }
+
+        export namespace FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          export interface Arguments {
+            cmd: string;
+
+            file?: string | null;
+          }
+        }
+
+        /**
+         * Cloudinary upload integration definition
+         */
+        export interface CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+          method?: 'media_upload';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryUploadIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          export interface Arguments {
+            file: string;
+
+            public_id?: string | null;
+
+            return_base64?: boolean;
+
+            upload_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
+         * Cloudinary edit integration definition
+         */
+        export interface CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+          method?: 'media_edit';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryEditIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          export interface Arguments {
+            public_id: string;
+
+            transformation: Array<unknown>;
+
+            return_base64?: boolean;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -10784,7 +12405,15 @@ export namespace TaskCreateParams {
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+        content:
+          | Array<string>
+          | Array<
+              | UnionMember0.Content
+              | UnionMember0.AgentsAPIAutogenTasksContentModel
+              | UnionMember0.ContentModel1Input
+            >
+          | string
+          | null;
 
         role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -10809,16 +12438,16 @@ export namespace TaskCreateParams {
           type?: 'text';
         }
 
-        export interface ContentModel {
+        export interface AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
-          image_url: ContentModel.ImageURL;
+          image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
           type?: 'image_url';
         }
 
-        export namespace ContentModel {
+        export namespace AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
@@ -10826,6 +12455,41 @@ export namespace TaskCreateParams {
             url: string;
 
             detail?: 'low' | 'high' | 'auto';
+          }
+        }
+
+        /**
+         * Anthropic image content part
+         */
+        export interface ContentModel1Input {
+          content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+          tool_use_id: string;
+
+          type?: 'tool_result';
+        }
+
+        export namespace ContentModel1Input {
+          export interface UnionMember0 {
+            text: string;
+
+            type?: 'text';
+          }
+
+          export interface UnionMember1 {
+            source: UnionMember1.Source;
+
+            type?: 'image';
+          }
+
+          export namespace UnionMember1 {
+            export interface Source {
+              data: string;
+
+              media_type: string;
+
+              type?: 'base64';
+            }
           }
         }
 
@@ -11023,6 +12687,9 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
           | null;
 
         /**
@@ -11681,6 +13348,125 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+          }
+        }
+
+        /**
+         * Ffmpeg integration definition
+         */
+        export interface FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          arguments?: FfmpegIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'ffmpeg';
+
+          setup?: unknown | null;
+        }
+
+        export namespace FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          export interface Arguments {
+            cmd: string;
+
+            file?: string | null;
+          }
+        }
+
+        /**
+         * Cloudinary upload integration definition
+         */
+        export interface CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+          method?: 'media_upload';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryUploadIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          export interface Arguments {
+            file: string;
+
+            public_id?: string | null;
+
+            return_base64?: boolean;
+
+            upload_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
+         * Cloudinary edit integration definition
+         */
+        export interface CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+          method?: 'media_edit';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryEditIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          export interface Arguments {
+            public_id: string;
+
+            transformation: Array<unknown>;
+
+            return_base64?: boolean;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -11887,7 +13673,15 @@ export namespace TaskCreateParams {
 
       export namespace PromptStepInput {
         export interface UnionMember0 {
-          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+          content:
+            | Array<string>
+            | Array<
+                | UnionMember0.Content
+                | UnionMember0.AgentsAPIAutogenTasksContentModel
+                | UnionMember0.ContentModel1Input
+              >
+            | string
+            | null;
 
           role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -11912,16 +13706,16 @@ export namespace TaskCreateParams {
             type?: 'text';
           }
 
-          export interface ContentModel {
+          export interface AgentsAPIAutogenTasksContentModel {
             /**
              * The image URL
              */
-            image_url: ContentModel.ImageURL;
+            image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
             type?: 'image_url';
           }
 
-          export namespace ContentModel {
+          export namespace AgentsAPIAutogenTasksContentModel {
             /**
              * The image URL
              */
@@ -11929,6 +13723,41 @@ export namespace TaskCreateParams {
               url: string;
 
               detail?: 'low' | 'high' | 'auto';
+            }
+          }
+
+          /**
+           * Anthropic image content part
+           */
+          export interface ContentModel1Input {
+            content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+            tool_use_id: string;
+
+            type?: 'tool_result';
+          }
+
+          export namespace ContentModel1Input {
+            export interface UnionMember0 {
+              text: string;
+
+              type?: 'text';
+            }
+
+            export interface UnionMember1 {
+              source: UnionMember1.Source;
+
+              type?: 'image';
+            }
+
+            export namespace UnionMember1 {
+              export interface Source {
+                data: string;
+
+                media_type: string;
+
+                type?: 'base64';
+              }
             }
           }
 
@@ -12126,6 +13955,9 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
             | null;
 
           /**
@@ -12784,6 +14616,125 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               llamaparse_api_key: string;
+            }
+          }
+
+          /**
+           * Ffmpeg integration definition
+           */
+          export interface FfmpegIntegrationDef {
+            /**
+             * Arguments for Ffmpeg CMD
+             */
+            arguments?: FfmpegIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'ffmpeg';
+
+            setup?: unknown | null;
+          }
+
+          export namespace FfmpegIntegrationDef {
+            /**
+             * Arguments for Ffmpeg CMD
+             */
+            export interface Arguments {
+              cmd: string;
+
+              file?: string | null;
+            }
+          }
+
+          /**
+           * Cloudinary upload integration definition
+           */
+          export interface CloudinaryUploadIntegrationDef {
+            /**
+             * Arguments for Cloudinary media upload
+             */
+            arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+            method?: 'media_upload';
+
+            provider?: 'cloudinary';
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            setup?: CloudinaryUploadIntegrationDef.Setup | null;
+          }
+
+          export namespace CloudinaryUploadIntegrationDef {
+            /**
+             * Arguments for Cloudinary media upload
+             */
+            export interface Arguments {
+              file: string;
+
+              public_id?: string | null;
+
+              return_base64?: boolean;
+
+              upload_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            export interface Setup {
+              cloudinary_api_key: string;
+
+              cloudinary_api_secret: string;
+
+              cloudinary_cloud_name: string;
+
+              params?: unknown | null;
+            }
+          }
+
+          /**
+           * Cloudinary edit integration definition
+           */
+          export interface CloudinaryEditIntegrationDef {
+            /**
+             * Arguments for Cloudinary media edit
+             */
+            arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+            method?: 'media_edit';
+
+            provider?: 'cloudinary';
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            setup?: CloudinaryEditIntegrationDef.Setup | null;
+          }
+
+          export namespace CloudinaryEditIntegrationDef {
+            /**
+             * Arguments for Cloudinary media edit
+             */
+            export interface Arguments {
+              public_id: string;
+
+              transformation: Array<unknown>;
+
+              return_base64?: boolean;
+            }
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            export interface Setup {
+              cloudinary_api_key: string;
+
+              cloudinary_api_secret: string;
+
+              cloudinary_cloud_name: string;
+
+              params?: unknown | null;
             }
           }
 
@@ -13009,7 +14960,15 @@ export namespace TaskCreateParams {
 
       export namespace PromptStepInput {
         export interface UnionMember0 {
-          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+          content:
+            | Array<string>
+            | Array<
+                | UnionMember0.Content
+                | UnionMember0.AgentsAPIAutogenTasksContentModel
+                | UnionMember0.ContentModel1Input
+              >
+            | string
+            | null;
 
           role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -13034,16 +14993,16 @@ export namespace TaskCreateParams {
             type?: 'text';
           }
 
-          export interface ContentModel {
+          export interface AgentsAPIAutogenTasksContentModel {
             /**
              * The image URL
              */
-            image_url: ContentModel.ImageURL;
+            image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
             type?: 'image_url';
           }
 
-          export namespace ContentModel {
+          export namespace AgentsAPIAutogenTasksContentModel {
             /**
              * The image URL
              */
@@ -13051,6 +15010,41 @@ export namespace TaskCreateParams {
               url: string;
 
               detail?: 'low' | 'high' | 'auto';
+            }
+          }
+
+          /**
+           * Anthropic image content part
+           */
+          export interface ContentModel1Input {
+            content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+            tool_use_id: string;
+
+            type?: 'tool_result';
+          }
+
+          export namespace ContentModel1Input {
+            export interface UnionMember0 {
+              text: string;
+
+              type?: 'text';
+            }
+
+            export interface UnionMember1 {
+              source: UnionMember1.Source;
+
+              type?: 'image';
+            }
+
+            export namespace UnionMember1 {
+              export interface Source {
+                data: string;
+
+                media_type: string;
+
+                type?: 'base64';
+              }
             }
           }
 
@@ -13248,6 +15242,9 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
             | null;
 
           /**
@@ -13910,6 +15907,125 @@ export namespace TaskCreateParams {
           }
 
           /**
+           * Ffmpeg integration definition
+           */
+          export interface FfmpegIntegrationDef {
+            /**
+             * Arguments for Ffmpeg CMD
+             */
+            arguments?: FfmpegIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'ffmpeg';
+
+            setup?: unknown | null;
+          }
+
+          export namespace FfmpegIntegrationDef {
+            /**
+             * Arguments for Ffmpeg CMD
+             */
+            export interface Arguments {
+              cmd: string;
+
+              file?: string | null;
+            }
+          }
+
+          /**
+           * Cloudinary upload integration definition
+           */
+          export interface CloudinaryUploadIntegrationDef {
+            /**
+             * Arguments for Cloudinary media upload
+             */
+            arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+            method?: 'media_upload';
+
+            provider?: 'cloudinary';
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            setup?: CloudinaryUploadIntegrationDef.Setup | null;
+          }
+
+          export namespace CloudinaryUploadIntegrationDef {
+            /**
+             * Arguments for Cloudinary media upload
+             */
+            export interface Arguments {
+              file: string;
+
+              public_id?: string | null;
+
+              return_base64?: boolean;
+
+              upload_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            export interface Setup {
+              cloudinary_api_key: string;
+
+              cloudinary_api_secret: string;
+
+              cloudinary_cloud_name: string;
+
+              params?: unknown | null;
+            }
+          }
+
+          /**
+           * Cloudinary edit integration definition
+           */
+          export interface CloudinaryEditIntegrationDef {
+            /**
+             * Arguments for Cloudinary media edit
+             */
+            arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+            method?: 'media_edit';
+
+            provider?: 'cloudinary';
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            setup?: CloudinaryEditIntegrationDef.Setup | null;
+          }
+
+          export namespace CloudinaryEditIntegrationDef {
+            /**
+             * Arguments for Cloudinary media edit
+             */
+            export interface Arguments {
+              public_id: string;
+
+              transformation: Array<unknown>;
+
+              return_base64?: boolean;
+            }
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            export interface Setup {
+              cloudinary_api_key: string;
+
+              cloudinary_api_secret: string;
+
+              cloudinary_cloud_name: string;
+
+              params?: unknown | null;
+            }
+          }
+
+          /**
            * System definition
            */
           export interface System {
@@ -14056,7 +16172,15 @@ export namespace TaskCreateParams {
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+        content:
+          | Array<string>
+          | Array<
+              | UnionMember0.Content
+              | UnionMember0.AgentsAPIAutogenTasksContentModel
+              | UnionMember0.ContentModel1Input
+            >
+          | string
+          | null;
 
         role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -14081,16 +16205,16 @@ export namespace TaskCreateParams {
           type?: 'text';
         }
 
-        export interface ContentModel {
+        export interface AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
-          image_url: ContentModel.ImageURL;
+          image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
           type?: 'image_url';
         }
 
-        export namespace ContentModel {
+        export namespace AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
@@ -14098,6 +16222,41 @@ export namespace TaskCreateParams {
             url: string;
 
             detail?: 'low' | 'high' | 'auto';
+          }
+        }
+
+        /**
+         * Anthropic image content part
+         */
+        export interface ContentModel1Input {
+          content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+          tool_use_id: string;
+
+          type?: 'tool_result';
+        }
+
+        export namespace ContentModel1Input {
+          export interface UnionMember0 {
+            text: string;
+
+            type?: 'text';
+          }
+
+          export interface UnionMember1 {
+            source: UnionMember1.Source;
+
+            type?: 'image';
+          }
+
+          export namespace UnionMember1 {
+            export interface Source {
+              data: string;
+
+              media_type: string;
+
+              type?: 'base64';
+            }
           }
         }
 
@@ -14295,6 +16454,9 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
           | null;
 
         /**
@@ -14953,6 +17115,125 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+          }
+        }
+
+        /**
+         * Ffmpeg integration definition
+         */
+        export interface FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          arguments?: FfmpegIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'ffmpeg';
+
+          setup?: unknown | null;
+        }
+
+        export namespace FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          export interface Arguments {
+            cmd: string;
+
+            file?: string | null;
+          }
+        }
+
+        /**
+         * Cloudinary upload integration definition
+         */
+        export interface CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+          method?: 'media_upload';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryUploadIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          export interface Arguments {
+            file: string;
+
+            public_id?: string | null;
+
+            return_base64?: boolean;
+
+            upload_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
+         * Cloudinary edit integration definition
+         */
+        export interface CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+          method?: 'media_edit';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryEditIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          export interface Arguments {
+            public_id: string;
+
+            transformation: Array<unknown>;
+
+            return_base64?: boolean;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -15109,7 +17390,15 @@ export namespace TaskCreateParams {
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+        content:
+          | Array<string>
+          | Array<
+              | UnionMember0.Content
+              | UnionMember0.AgentsAPIAutogenTasksContentModel
+              | UnionMember0.ContentModel1Input
+            >
+          | string
+          | null;
 
         role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -15134,16 +17423,16 @@ export namespace TaskCreateParams {
           type?: 'text';
         }
 
-        export interface ContentModel {
+        export interface AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
-          image_url: ContentModel.ImageURL;
+          image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
           type?: 'image_url';
         }
 
-        export namespace ContentModel {
+        export namespace AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
@@ -15151,6 +17440,41 @@ export namespace TaskCreateParams {
             url: string;
 
             detail?: 'low' | 'high' | 'auto';
+          }
+        }
+
+        /**
+         * Anthropic image content part
+         */
+        export interface ContentModel1Input {
+          content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+          tool_use_id: string;
+
+          type?: 'tool_result';
+        }
+
+        export namespace ContentModel1Input {
+          export interface UnionMember0 {
+            text: string;
+
+            type?: 'text';
+          }
+
+          export interface UnionMember1 {
+            source: UnionMember1.Source;
+
+            type?: 'image';
+          }
+
+          export namespace UnionMember1 {
+            export interface Source {
+              data: string;
+
+              media_type: string;
+
+              type?: 'base64';
+            }
           }
         }
 
@@ -15348,6 +17672,9 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
           | null;
 
         /**
@@ -16010,6 +18337,125 @@ export namespace TaskCreateParams {
         }
 
         /**
+         * Ffmpeg integration definition
+         */
+        export interface FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          arguments?: FfmpegIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'ffmpeg';
+
+          setup?: unknown | null;
+        }
+
+        export namespace FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          export interface Arguments {
+            cmd: string;
+
+            file?: string | null;
+          }
+        }
+
+        /**
+         * Cloudinary upload integration definition
+         */
+        export interface CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+          method?: 'media_upload';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryUploadIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          export interface Arguments {
+            file: string;
+
+            public_id?: string | null;
+
+            return_base64?: boolean;
+
+            upload_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
+         * Cloudinary edit integration definition
+         */
+        export interface CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+          method?: 'media_edit';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryEditIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          export interface Arguments {
+            public_id: string;
+
+            transformation: Array<unknown>;
+
+            return_base64?: boolean;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -16124,6 +18570,9 @@ export namespace TaskCreateParams {
       | Tool.BrowserbaseGetSessionConnectURLIntegrationDef
       | Tool.RemoteBrowserIntegrationDef
       | Tool.LlamaParseIntegrationDef
+      | Tool.FfmpegIntegrationDef
+      | Tool.CloudinaryUploadIntegrationDef
+      | Tool.CloudinaryEditIntegrationDef
       | null;
 
     /**
@@ -16782,6 +19231,125 @@ export namespace TaskCreateParams {
        */
       export interface Setup {
         llamaparse_api_key: string;
+      }
+    }
+
+    /**
+     * Ffmpeg integration definition
+     */
+    export interface FfmpegIntegrationDef {
+      /**
+       * Arguments for Ffmpeg CMD
+       */
+      arguments?: FfmpegIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'ffmpeg';
+
+      setup?: unknown | null;
+    }
+
+    export namespace FfmpegIntegrationDef {
+      /**
+       * Arguments for Ffmpeg CMD
+       */
+      export interface Arguments {
+        cmd: string;
+
+        file?: string | null;
+      }
+    }
+
+    /**
+     * Cloudinary upload integration definition
+     */
+    export interface CloudinaryUploadIntegrationDef {
+      /**
+       * Arguments for Cloudinary media upload
+       */
+      arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+      method?: 'media_upload';
+
+      provider?: 'cloudinary';
+
+      /**
+       * Setup parameters for Cloudinary integration
+       */
+      setup?: CloudinaryUploadIntegrationDef.Setup | null;
+    }
+
+    export namespace CloudinaryUploadIntegrationDef {
+      /**
+       * Arguments for Cloudinary media upload
+       */
+      export interface Arguments {
+        file: string;
+
+        public_id?: string | null;
+
+        return_base64?: boolean;
+
+        upload_params?: unknown | null;
+      }
+
+      /**
+       * Setup parameters for Cloudinary integration
+       */
+      export interface Setup {
+        cloudinary_api_key: string;
+
+        cloudinary_api_secret: string;
+
+        cloudinary_cloud_name: string;
+
+        params?: unknown | null;
+      }
+    }
+
+    /**
+     * Cloudinary edit integration definition
+     */
+    export interface CloudinaryEditIntegrationDef {
+      /**
+       * Arguments for Cloudinary media edit
+       */
+      arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+      method?: 'media_edit';
+
+      provider?: 'cloudinary';
+
+      /**
+       * Setup parameters for Cloudinary integration
+       */
+      setup?: CloudinaryEditIntegrationDef.Setup | null;
+    }
+
+    export namespace CloudinaryEditIntegrationDef {
+      /**
+       * Arguments for Cloudinary media edit
+       */
+      export interface Arguments {
+        public_id: string;
+
+        transformation: Array<unknown>;
+
+        return_base64?: boolean;
+      }
+
+      /**
+       * Setup parameters for Cloudinary integration
+       */
+      export interface Setup {
+        cloudinary_api_key: string;
+
+        cloudinary_api_secret: string;
+
+        cloudinary_cloud_name: string;
+
+        params?: unknown | null;
       }
     }
 
@@ -16918,7 +19486,15 @@ export namespace TaskCreateOrUpdateParams {
 
   export namespace PromptStepInput {
     export interface UnionMember0 {
-      content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+      content:
+        | Array<string>
+        | Array<
+            | UnionMember0.Content
+            | UnionMember0.AgentsAPIAutogenTasksContentModel
+            | UnionMember0.ContentModel1Input
+          >
+        | string
+        | null;
 
       role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -16943,16 +19519,16 @@ export namespace TaskCreateOrUpdateParams {
         type?: 'text';
       }
 
-      export interface ContentModel {
+      export interface AgentsAPIAutogenTasksContentModel {
         /**
          * The image URL
          */
-        image_url: ContentModel.ImageURL;
+        image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
         type?: 'image_url';
       }
 
-      export namespace ContentModel {
+      export namespace AgentsAPIAutogenTasksContentModel {
         /**
          * The image URL
          */
@@ -16960,6 +19536,41 @@ export namespace TaskCreateOrUpdateParams {
           url: string;
 
           detail?: 'low' | 'high' | 'auto';
+        }
+      }
+
+      /**
+       * Anthropic image content part
+       */
+      export interface ContentModel1Input {
+        content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+        tool_use_id: string;
+
+        type?: 'tool_result';
+      }
+
+      export namespace ContentModel1Input {
+        export interface UnionMember0 {
+          text: string;
+
+          type?: 'text';
+        }
+
+        export interface UnionMember1 {
+          source: UnionMember1.Source;
+
+          type?: 'image';
+        }
+
+        export namespace UnionMember1 {
+          export interface Source {
+            data: string;
+
+            media_type: string;
+
+            type?: 'base64';
+          }
         }
       }
 
@@ -17157,6 +19768,9 @@ export namespace TaskCreateOrUpdateParams {
         | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
         | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
         | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
         | null;
 
       /**
@@ -17819,6 +20433,125 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       /**
+       * Ffmpeg integration definition
+       */
+      export interface FfmpegIntegrationDef {
+        /**
+         * Arguments for Ffmpeg CMD
+         */
+        arguments?: FfmpegIntegrationDef.Arguments | null;
+
+        method?: string | null;
+
+        provider?: 'ffmpeg';
+
+        setup?: unknown | null;
+      }
+
+      export namespace FfmpegIntegrationDef {
+        /**
+         * Arguments for Ffmpeg CMD
+         */
+        export interface Arguments {
+          cmd: string;
+
+          file?: string | null;
+        }
+      }
+
+      /**
+       * Cloudinary upload integration definition
+       */
+      export interface CloudinaryUploadIntegrationDef {
+        /**
+         * Arguments for Cloudinary media upload
+         */
+        arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+        method?: 'media_upload';
+
+        provider?: 'cloudinary';
+
+        /**
+         * Setup parameters for Cloudinary integration
+         */
+        setup?: CloudinaryUploadIntegrationDef.Setup | null;
+      }
+
+      export namespace CloudinaryUploadIntegrationDef {
+        /**
+         * Arguments for Cloudinary media upload
+         */
+        export interface Arguments {
+          file: string;
+
+          public_id?: string | null;
+
+          return_base64?: boolean;
+
+          upload_params?: unknown | null;
+        }
+
+        /**
+         * Setup parameters for Cloudinary integration
+         */
+        export interface Setup {
+          cloudinary_api_key: string;
+
+          cloudinary_api_secret: string;
+
+          cloudinary_cloud_name: string;
+
+          params?: unknown | null;
+        }
+      }
+
+      /**
+       * Cloudinary edit integration definition
+       */
+      export interface CloudinaryEditIntegrationDef {
+        /**
+         * Arguments for Cloudinary media edit
+         */
+        arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+        method?: 'media_edit';
+
+        provider?: 'cloudinary';
+
+        /**
+         * Setup parameters for Cloudinary integration
+         */
+        setup?: CloudinaryEditIntegrationDef.Setup | null;
+      }
+
+      export namespace CloudinaryEditIntegrationDef {
+        /**
+         * Arguments for Cloudinary media edit
+         */
+        export interface Arguments {
+          public_id: string;
+
+          transformation: Array<unknown>;
+
+          return_base64?: boolean;
+        }
+
+        /**
+         * Setup parameters for Cloudinary integration
+         */
+        export interface Setup {
+          cloudinary_api_key: string;
+
+          cloudinary_api_secret: string;
+
+          cloudinary_cloud_name: string;
+
+          params?: unknown | null;
+        }
+      }
+
+      /**
        * System definition
        */
       export interface System {
@@ -18024,7 +20757,15 @@ export namespace TaskCreateOrUpdateParams {
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+        content:
+          | Array<string>
+          | Array<
+              | UnionMember0.Content
+              | UnionMember0.AgentsAPIAutogenTasksContentModel
+              | UnionMember0.ContentModel1Input
+            >
+          | string
+          | null;
 
         role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -18049,16 +20790,16 @@ export namespace TaskCreateOrUpdateParams {
           type?: 'text';
         }
 
-        export interface ContentModel {
+        export interface AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
-          image_url: ContentModel.ImageURL;
+          image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
           type?: 'image_url';
         }
 
-        export namespace ContentModel {
+        export namespace AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
@@ -18066,6 +20807,41 @@ export namespace TaskCreateOrUpdateParams {
             url: string;
 
             detail?: 'low' | 'high' | 'auto';
+          }
+        }
+
+        /**
+         * Anthropic image content part
+         */
+        export interface ContentModel1Input {
+          content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+          tool_use_id: string;
+
+          type?: 'tool_result';
+        }
+
+        export namespace ContentModel1Input {
+          export interface UnionMember0 {
+            text: string;
+
+            type?: 'text';
+          }
+
+          export interface UnionMember1 {
+            source: UnionMember1.Source;
+
+            type?: 'image';
+          }
+
+          export namespace UnionMember1 {
+            export interface Source {
+              data: string;
+
+              media_type: string;
+
+              type?: 'base64';
+            }
           }
         }
 
@@ -18263,6 +21039,9 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
           | null;
 
         /**
@@ -18921,6 +21700,125 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+          }
+        }
+
+        /**
+         * Ffmpeg integration definition
+         */
+        export interface FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          arguments?: FfmpegIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'ffmpeg';
+
+          setup?: unknown | null;
+        }
+
+        export namespace FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          export interface Arguments {
+            cmd: string;
+
+            file?: string | null;
+          }
+        }
+
+        /**
+         * Cloudinary upload integration definition
+         */
+        export interface CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+          method?: 'media_upload';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryUploadIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          export interface Arguments {
+            file: string;
+
+            public_id?: string | null;
+
+            return_base64?: boolean;
+
+            upload_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
+         * Cloudinary edit integration definition
+         */
+        export interface CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+          method?: 'media_edit';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryEditIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          export interface Arguments {
+            public_id: string;
+
+            transformation: Array<unknown>;
+
+            return_base64?: boolean;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -19096,7 +21994,15 @@ export namespace TaskCreateOrUpdateParams {
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+        content:
+          | Array<string>
+          | Array<
+              | UnionMember0.Content
+              | UnionMember0.AgentsAPIAutogenTasksContentModel
+              | UnionMember0.ContentModel1Input
+            >
+          | string
+          | null;
 
         role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -19121,16 +22027,16 @@ export namespace TaskCreateOrUpdateParams {
           type?: 'text';
         }
 
-        export interface ContentModel {
+        export interface AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
-          image_url: ContentModel.ImageURL;
+          image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
           type?: 'image_url';
         }
 
-        export namespace ContentModel {
+        export namespace AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
@@ -19138,6 +22044,41 @@ export namespace TaskCreateOrUpdateParams {
             url: string;
 
             detail?: 'low' | 'high' | 'auto';
+          }
+        }
+
+        /**
+         * Anthropic image content part
+         */
+        export interface ContentModel1Input {
+          content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+          tool_use_id: string;
+
+          type?: 'tool_result';
+        }
+
+        export namespace ContentModel1Input {
+          export interface UnionMember0 {
+            text: string;
+
+            type?: 'text';
+          }
+
+          export interface UnionMember1 {
+            source: UnionMember1.Source;
+
+            type?: 'image';
+          }
+
+          export namespace UnionMember1 {
+            export interface Source {
+              data: string;
+
+              media_type: string;
+
+              type?: 'base64';
+            }
           }
         }
 
@@ -19335,6 +22276,9 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
           | null;
 
         /**
@@ -19993,6 +22937,125 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+          }
+        }
+
+        /**
+         * Ffmpeg integration definition
+         */
+        export interface FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          arguments?: FfmpegIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'ffmpeg';
+
+          setup?: unknown | null;
+        }
+
+        export namespace FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          export interface Arguments {
+            cmd: string;
+
+            file?: string | null;
+          }
+        }
+
+        /**
+         * Cloudinary upload integration definition
+         */
+        export interface CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+          method?: 'media_upload';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryUploadIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          export interface Arguments {
+            file: string;
+
+            public_id?: string | null;
+
+            return_base64?: boolean;
+
+            upload_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
+         * Cloudinary edit integration definition
+         */
+        export interface CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+          method?: 'media_edit';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryEditIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          export interface Arguments {
+            public_id: string;
+
+            transformation: Array<unknown>;
+
+            return_base64?: boolean;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -20199,7 +23262,15 @@ export namespace TaskCreateOrUpdateParams {
 
       export namespace PromptStepInput {
         export interface UnionMember0 {
-          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+          content:
+            | Array<string>
+            | Array<
+                | UnionMember0.Content
+                | UnionMember0.AgentsAPIAutogenTasksContentModel
+                | UnionMember0.ContentModel1Input
+              >
+            | string
+            | null;
 
           role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -20224,16 +23295,16 @@ export namespace TaskCreateOrUpdateParams {
             type?: 'text';
           }
 
-          export interface ContentModel {
+          export interface AgentsAPIAutogenTasksContentModel {
             /**
              * The image URL
              */
-            image_url: ContentModel.ImageURL;
+            image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
             type?: 'image_url';
           }
 
-          export namespace ContentModel {
+          export namespace AgentsAPIAutogenTasksContentModel {
             /**
              * The image URL
              */
@@ -20241,6 +23312,41 @@ export namespace TaskCreateOrUpdateParams {
               url: string;
 
               detail?: 'low' | 'high' | 'auto';
+            }
+          }
+
+          /**
+           * Anthropic image content part
+           */
+          export interface ContentModel1Input {
+            content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+            tool_use_id: string;
+
+            type?: 'tool_result';
+          }
+
+          export namespace ContentModel1Input {
+            export interface UnionMember0 {
+              text: string;
+
+              type?: 'text';
+            }
+
+            export interface UnionMember1 {
+              source: UnionMember1.Source;
+
+              type?: 'image';
+            }
+
+            export namespace UnionMember1 {
+              export interface Source {
+                data: string;
+
+                media_type: string;
+
+                type?: 'base64';
+              }
             }
           }
 
@@ -20438,6 +23544,9 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
             | null;
 
           /**
@@ -21096,6 +24205,125 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               llamaparse_api_key: string;
+            }
+          }
+
+          /**
+           * Ffmpeg integration definition
+           */
+          export interface FfmpegIntegrationDef {
+            /**
+             * Arguments for Ffmpeg CMD
+             */
+            arguments?: FfmpegIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'ffmpeg';
+
+            setup?: unknown | null;
+          }
+
+          export namespace FfmpegIntegrationDef {
+            /**
+             * Arguments for Ffmpeg CMD
+             */
+            export interface Arguments {
+              cmd: string;
+
+              file?: string | null;
+            }
+          }
+
+          /**
+           * Cloudinary upload integration definition
+           */
+          export interface CloudinaryUploadIntegrationDef {
+            /**
+             * Arguments for Cloudinary media upload
+             */
+            arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+            method?: 'media_upload';
+
+            provider?: 'cloudinary';
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            setup?: CloudinaryUploadIntegrationDef.Setup | null;
+          }
+
+          export namespace CloudinaryUploadIntegrationDef {
+            /**
+             * Arguments for Cloudinary media upload
+             */
+            export interface Arguments {
+              file: string;
+
+              public_id?: string | null;
+
+              return_base64?: boolean;
+
+              upload_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            export interface Setup {
+              cloudinary_api_key: string;
+
+              cloudinary_api_secret: string;
+
+              cloudinary_cloud_name: string;
+
+              params?: unknown | null;
+            }
+          }
+
+          /**
+           * Cloudinary edit integration definition
+           */
+          export interface CloudinaryEditIntegrationDef {
+            /**
+             * Arguments for Cloudinary media edit
+             */
+            arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+            method?: 'media_edit';
+
+            provider?: 'cloudinary';
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            setup?: CloudinaryEditIntegrationDef.Setup | null;
+          }
+
+          export namespace CloudinaryEditIntegrationDef {
+            /**
+             * Arguments for Cloudinary media edit
+             */
+            export interface Arguments {
+              public_id: string;
+
+              transformation: Array<unknown>;
+
+              return_base64?: boolean;
+            }
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            export interface Setup {
+              cloudinary_api_key: string;
+
+              cloudinary_api_secret: string;
+
+              cloudinary_cloud_name: string;
+
+              params?: unknown | null;
             }
           }
 
@@ -21321,7 +24549,15 @@ export namespace TaskCreateOrUpdateParams {
 
       export namespace PromptStepInput {
         export interface UnionMember0 {
-          content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+          content:
+            | Array<string>
+            | Array<
+                | UnionMember0.Content
+                | UnionMember0.AgentsAPIAutogenTasksContentModel
+                | UnionMember0.ContentModel1Input
+              >
+            | string
+            | null;
 
           role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -21346,16 +24582,16 @@ export namespace TaskCreateOrUpdateParams {
             type?: 'text';
           }
 
-          export interface ContentModel {
+          export interface AgentsAPIAutogenTasksContentModel {
             /**
              * The image URL
              */
-            image_url: ContentModel.ImageURL;
+            image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
             type?: 'image_url';
           }
 
-          export namespace ContentModel {
+          export namespace AgentsAPIAutogenTasksContentModel {
             /**
              * The image URL
              */
@@ -21363,6 +24599,41 @@ export namespace TaskCreateOrUpdateParams {
               url: string;
 
               detail?: 'low' | 'high' | 'auto';
+            }
+          }
+
+          /**
+           * Anthropic image content part
+           */
+          export interface ContentModel1Input {
+            content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+            tool_use_id: string;
+
+            type?: 'tool_result';
+          }
+
+          export namespace ContentModel1Input {
+            export interface UnionMember0 {
+              text: string;
+
+              type?: 'text';
+            }
+
+            export interface UnionMember1 {
+              source: UnionMember1.Source;
+
+              type?: 'image';
+            }
+
+            export namespace UnionMember1 {
+              export interface Source {
+                data: string;
+
+                media_type: string;
+
+                type?: 'base64';
+              }
             }
           }
 
@@ -21560,6 +24831,9 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
             | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
             | null;
 
           /**
@@ -22222,6 +25496,125 @@ export namespace TaskCreateOrUpdateParams {
           }
 
           /**
+           * Ffmpeg integration definition
+           */
+          export interface FfmpegIntegrationDef {
+            /**
+             * Arguments for Ffmpeg CMD
+             */
+            arguments?: FfmpegIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'ffmpeg';
+
+            setup?: unknown | null;
+          }
+
+          export namespace FfmpegIntegrationDef {
+            /**
+             * Arguments for Ffmpeg CMD
+             */
+            export interface Arguments {
+              cmd: string;
+
+              file?: string | null;
+            }
+          }
+
+          /**
+           * Cloudinary upload integration definition
+           */
+          export interface CloudinaryUploadIntegrationDef {
+            /**
+             * Arguments for Cloudinary media upload
+             */
+            arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+            method?: 'media_upload';
+
+            provider?: 'cloudinary';
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            setup?: CloudinaryUploadIntegrationDef.Setup | null;
+          }
+
+          export namespace CloudinaryUploadIntegrationDef {
+            /**
+             * Arguments for Cloudinary media upload
+             */
+            export interface Arguments {
+              file: string;
+
+              public_id?: string | null;
+
+              return_base64?: boolean;
+
+              upload_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            export interface Setup {
+              cloudinary_api_key: string;
+
+              cloudinary_api_secret: string;
+
+              cloudinary_cloud_name: string;
+
+              params?: unknown | null;
+            }
+          }
+
+          /**
+           * Cloudinary edit integration definition
+           */
+          export interface CloudinaryEditIntegrationDef {
+            /**
+             * Arguments for Cloudinary media edit
+             */
+            arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+            method?: 'media_edit';
+
+            provider?: 'cloudinary';
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            setup?: CloudinaryEditIntegrationDef.Setup | null;
+          }
+
+          export namespace CloudinaryEditIntegrationDef {
+            /**
+             * Arguments for Cloudinary media edit
+             */
+            export interface Arguments {
+              public_id: string;
+
+              transformation: Array<unknown>;
+
+              return_base64?: boolean;
+            }
+
+            /**
+             * Setup parameters for Cloudinary integration
+             */
+            export interface Setup {
+              cloudinary_api_key: string;
+
+              cloudinary_api_secret: string;
+
+              cloudinary_cloud_name: string;
+
+              params?: unknown | null;
+            }
+          }
+
+          /**
            * System definition
            */
           export interface System {
@@ -22368,7 +25761,15 @@ export namespace TaskCreateOrUpdateParams {
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+        content:
+          | Array<string>
+          | Array<
+              | UnionMember0.Content
+              | UnionMember0.AgentsAPIAutogenTasksContentModel
+              | UnionMember0.ContentModel1Input
+            >
+          | string
+          | null;
 
         role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -22393,16 +25794,16 @@ export namespace TaskCreateOrUpdateParams {
           type?: 'text';
         }
 
-        export interface ContentModel {
+        export interface AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
-          image_url: ContentModel.ImageURL;
+          image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
           type?: 'image_url';
         }
 
-        export namespace ContentModel {
+        export namespace AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
@@ -22410,6 +25811,41 @@ export namespace TaskCreateOrUpdateParams {
             url: string;
 
             detail?: 'low' | 'high' | 'auto';
+          }
+        }
+
+        /**
+         * Anthropic image content part
+         */
+        export interface ContentModel1Input {
+          content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+          tool_use_id: string;
+
+          type?: 'tool_result';
+        }
+
+        export namespace ContentModel1Input {
+          export interface UnionMember0 {
+            text: string;
+
+            type?: 'text';
+          }
+
+          export interface UnionMember1 {
+            source: UnionMember1.Source;
+
+            type?: 'image';
+          }
+
+          export namespace UnionMember1 {
+            export interface Source {
+              data: string;
+
+              media_type: string;
+
+              type?: 'base64';
+            }
           }
         }
 
@@ -22607,6 +26043,9 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
           | null;
 
         /**
@@ -23265,6 +26704,125 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+          }
+        }
+
+        /**
+         * Ffmpeg integration definition
+         */
+        export interface FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          arguments?: FfmpegIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'ffmpeg';
+
+          setup?: unknown | null;
+        }
+
+        export namespace FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          export interface Arguments {
+            cmd: string;
+
+            file?: string | null;
+          }
+        }
+
+        /**
+         * Cloudinary upload integration definition
+         */
+        export interface CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+          method?: 'media_upload';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryUploadIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          export interface Arguments {
+            file: string;
+
+            public_id?: string | null;
+
+            return_base64?: boolean;
+
+            upload_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
+         * Cloudinary edit integration definition
+         */
+        export interface CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+          method?: 'media_edit';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryEditIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          export interface Arguments {
+            public_id: string;
+
+            transformation: Array<unknown>;
+
+            return_base64?: boolean;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -23421,7 +26979,15 @@ export namespace TaskCreateOrUpdateParams {
 
     export namespace PromptStepInput {
       export interface UnionMember0 {
-        content: Array<string> | Array<UnionMember0.Content | UnionMember0.ContentModel> | string | null;
+        content:
+          | Array<string>
+          | Array<
+              | UnionMember0.Content
+              | UnionMember0.AgentsAPIAutogenTasksContentModel
+              | UnionMember0.ContentModel1Input
+            >
+          | string
+          | null;
 
         role: 'user' | 'assistant' | 'system' | 'tool';
 
@@ -23446,16 +27012,16 @@ export namespace TaskCreateOrUpdateParams {
           type?: 'text';
         }
 
-        export interface ContentModel {
+        export interface AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
-          image_url: ContentModel.ImageURL;
+          image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
 
           type?: 'image_url';
         }
 
-        export namespace ContentModel {
+        export namespace AgentsAPIAutogenTasksContentModel {
           /**
            * The image URL
            */
@@ -23463,6 +27029,41 @@ export namespace TaskCreateOrUpdateParams {
             url: string;
 
             detail?: 'low' | 'high' | 'auto';
+          }
+        }
+
+        /**
+         * Anthropic image content part
+         */
+        export interface ContentModel1Input {
+          content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+          tool_use_id: string;
+
+          type?: 'tool_result';
+        }
+
+        export namespace ContentModel1Input {
+          export interface UnionMember0 {
+            text: string;
+
+            type?: 'text';
+          }
+
+          export interface UnionMember1 {
+            source: UnionMember1.Source;
+
+            type?: 'image';
+          }
+
+          export namespace UnionMember1 {
+            export interface Source {
+              data: string;
+
+              media_type: string;
+
+              type?: 'base64';
+            }
           }
         }
 
@@ -23660,6 +27261,9 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
           | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
           | null;
 
         /**
@@ -24322,6 +27926,125 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         /**
+         * Ffmpeg integration definition
+         */
+        export interface FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          arguments?: FfmpegIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'ffmpeg';
+
+          setup?: unknown | null;
+        }
+
+        export namespace FfmpegIntegrationDef {
+          /**
+           * Arguments for Ffmpeg CMD
+           */
+          export interface Arguments {
+            cmd: string;
+
+            file?: string | null;
+          }
+        }
+
+        /**
+         * Cloudinary upload integration definition
+         */
+        export interface CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+          method?: 'media_upload';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryUploadIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryUploadIntegrationDef {
+          /**
+           * Arguments for Cloudinary media upload
+           */
+          export interface Arguments {
+            file: string;
+
+            public_id?: string | null;
+
+            return_base64?: boolean;
+
+            upload_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
+         * Cloudinary edit integration definition
+         */
+        export interface CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+          method?: 'media_edit';
+
+          provider?: 'cloudinary';
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          setup?: CloudinaryEditIntegrationDef.Setup | null;
+        }
+
+        export namespace CloudinaryEditIntegrationDef {
+          /**
+           * Arguments for Cloudinary media edit
+           */
+          export interface Arguments {
+            public_id: string;
+
+            transformation: Array<unknown>;
+
+            return_base64?: boolean;
+          }
+
+          /**
+           * Setup parameters for Cloudinary integration
+           */
+          export interface Setup {
+            cloudinary_api_key: string;
+
+            cloudinary_api_secret: string;
+
+            cloudinary_cloud_name: string;
+
+            params?: unknown | null;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -24436,6 +28159,9 @@ export namespace TaskCreateOrUpdateParams {
       | Tool.BrowserbaseGetSessionConnectURLIntegrationDef
       | Tool.RemoteBrowserIntegrationDef
       | Tool.LlamaParseIntegrationDef
+      | Tool.FfmpegIntegrationDef
+      | Tool.CloudinaryUploadIntegrationDef
+      | Tool.CloudinaryEditIntegrationDef
       | null;
 
     /**
@@ -25094,6 +28820,125 @@ export namespace TaskCreateOrUpdateParams {
        */
       export interface Setup {
         llamaparse_api_key: string;
+      }
+    }
+
+    /**
+     * Ffmpeg integration definition
+     */
+    export interface FfmpegIntegrationDef {
+      /**
+       * Arguments for Ffmpeg CMD
+       */
+      arguments?: FfmpegIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'ffmpeg';
+
+      setup?: unknown | null;
+    }
+
+    export namespace FfmpegIntegrationDef {
+      /**
+       * Arguments for Ffmpeg CMD
+       */
+      export interface Arguments {
+        cmd: string;
+
+        file?: string | null;
+      }
+    }
+
+    /**
+     * Cloudinary upload integration definition
+     */
+    export interface CloudinaryUploadIntegrationDef {
+      /**
+       * Arguments for Cloudinary media upload
+       */
+      arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
+
+      method?: 'media_upload';
+
+      provider?: 'cloudinary';
+
+      /**
+       * Setup parameters for Cloudinary integration
+       */
+      setup?: CloudinaryUploadIntegrationDef.Setup | null;
+    }
+
+    export namespace CloudinaryUploadIntegrationDef {
+      /**
+       * Arguments for Cloudinary media upload
+       */
+      export interface Arguments {
+        file: string;
+
+        public_id?: string | null;
+
+        return_base64?: boolean;
+
+        upload_params?: unknown | null;
+      }
+
+      /**
+       * Setup parameters for Cloudinary integration
+       */
+      export interface Setup {
+        cloudinary_api_key: string;
+
+        cloudinary_api_secret: string;
+
+        cloudinary_cloud_name: string;
+
+        params?: unknown | null;
+      }
+    }
+
+    /**
+     * Cloudinary edit integration definition
+     */
+    export interface CloudinaryEditIntegrationDef {
+      /**
+       * Arguments for Cloudinary media edit
+       */
+      arguments?: CloudinaryEditIntegrationDef.Arguments | null;
+
+      method?: 'media_edit';
+
+      provider?: 'cloudinary';
+
+      /**
+       * Setup parameters for Cloudinary integration
+       */
+      setup?: CloudinaryEditIntegrationDef.Setup | null;
+    }
+
+    export namespace CloudinaryEditIntegrationDef {
+      /**
+       * Arguments for Cloudinary media edit
+       */
+      export interface Arguments {
+        public_id: string;
+
+        transformation: Array<unknown>;
+
+        return_base64?: boolean;
+      }
+
+      /**
+       * Setup parameters for Cloudinary integration
+       */
+      export interface Setup {
+        cloudinary_api_key: string;
+
+        cloudinary_api_secret: string;
+
+        cloudinary_cloud_name: string;
+
+        params?: unknown | null;
       }
     }
 
