@@ -19,6 +19,7 @@ export {
   type Snippet,
   type DocEmbedParams,
 } from './docs';
+export { Files, type File, type FileCreateParams } from './files';
 export { Jobs, type JobStatus } from './jobs';
 export {
   SessionsOffsetPagination,
