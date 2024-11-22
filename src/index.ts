@@ -9,6 +9,7 @@ import { type OffsetPaginationParams, OffsetPaginationResponse } from './paginat
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import { Doc, DocEmbedParams, Docs, EmbedQueryResponse, Snippet } from './resources/docs';
+import { File, FileCreateParams, Files } from './resources/files';
 import { JobStatus, Jobs } from './resources/jobs';
 import {
   ChatInput,
@@ -208,6 +209,7 @@ export class Julep extends Core.APIClient {
   }
 
   agents: API.Agents = new API.Agents(this);
+  files: API.Files = new API.Files(this);
   sessions: API.Sessions = new API.Sessions(this);
   users: API.Users = new API.Users(this);
   jobs: API.Jobs = new API.Jobs(this);
@@ -257,6 +259,7 @@ export class Julep extends Core.APIClient {
 
 Julep.Agents = Agents;
 Julep.AgentsOffsetPagination = AgentsOffsetPagination;
+Julep.Files = Files;
 Julep.Sessions = Sessions;
 Julep.SessionsOffsetPagination = SessionsOffsetPagination;
 Julep.Users = Users;
@@ -286,6 +289,8 @@ export declare namespace Julep {
     type AgentCreateOrUpdateParams as AgentCreateOrUpdateParams,
     type AgentPatchParams as AgentPatchParams,
   };
+
+  export { Files as Files, type File as File, type FileCreateParams as FileCreateParams };
 
   export {
     Sessions as Sessions,
