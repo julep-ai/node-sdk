@@ -49,6 +49,18 @@ Methods:
 - <code title="delete /agents/{agent_id}/docs/{doc_id}">client.agents.docs.<a href="./src/resources/agents/docs.ts">delete</a>(agentId, docId) -> ResourceDeleted</code>
 - <code title="post /agents/{agent_id}/search">client.agents.docs.<a href="./src/resources/agents/docs.ts">search</a>(agentId, { ...params }) -> DocSearchResponse</code>
 
+# Files
+
+Types:
+
+- <code><a href="./src/resources/files.ts">File</a></code>
+
+Methods:
+
+- <code title="post /files">client.files.<a href="./src/resources/files.ts">create</a>({ ...params }) -> ResourceCreated</code>
+- <code title="delete /files/{file_id}">client.files.<a href="./src/resources/files.ts">delete</a>(fileId) -> ResourceDeleted</code>
+- <code title="get /files/{file_id}">client.files.<a href="./src/resources/files.ts">get</a>(fileId) -> File</code>
+
 # Sessions
 
 Types:
