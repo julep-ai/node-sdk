@@ -126,7 +126,7 @@ export interface ToolListResponse {
     | ToolListResponse.DummyIntegrationDef
     | ToolListResponse.BraveIntegrationDef
     | ToolListResponse.EmailIntegrationDef
-    | ToolListResponse.SpiderIntegrationDef
+    | ToolListResponse.SpiderIntegrationDefOutput
     | ToolListResponse.WikipediaIntegrationDef
     | ToolListResponse.WeatherIntegrationDef
     | ToolListResponse.BrowserbaseContextIntegrationDef
@@ -142,6 +142,7 @@ export interface ToolListResponse {
     | ToolListResponse.FfmpegIntegrationDef
     | ToolListResponse.CloudinaryUploadIntegrationDef
     | ToolListResponse.CloudinaryEditIntegrationDef
+    | ToolListResponse.ArxivIntegrationDef
     | null;
 
   /**
@@ -309,11 +310,11 @@ export namespace ToolListResponse {
   /**
    * Spider integration definition
    */
-  export interface SpiderIntegrationDef {
+  export interface SpiderIntegrationDefOutput {
     /**
      * Arguments for Spider integration
      */
-    arguments?: SpiderIntegrationDef.Arguments | null;
+    arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
     method?: string | null;
 
@@ -322,10 +323,10 @@ export namespace ToolListResponse {
     /**
      * Setup parameters for Spider integration
      */
-    setup?: SpiderIntegrationDef.Setup | null;
+    setup?: SpiderIntegrationDefOutput.Setup | null;
   }
 
-  export namespace SpiderIntegrationDef {
+  export namespace SpiderIntegrationDefOutput {
     /**
      * Arguments for Spider integration
      */
@@ -782,17 +783,13 @@ export namespace ToolListResponse {
      * Arguments for LlamaParse integration
      */
     export interface Arguments {
-      file: string;
+      file: string | Array<string>;
+
+      base64?: boolean;
 
       filename?: string | null;
 
-      language?: string;
-
-      num_workers?: number;
-
-      result_format?: 'text' | 'markdown';
-
-      verbose?: boolean;
+      params?: unknown | null;
     }
 
     /**
@@ -800,6 +797,8 @@ export namespace ToolListResponse {
      */
     export interface Setup {
       llamaparse_api_key: string;
+
+      params?: unknown | null;
     }
   }
 
@@ -923,6 +922,41 @@ export namespace ToolListResponse {
   }
 
   /**
+   * Arxiv integration definition
+   */
+  export interface ArxivIntegrationDef {
+    /**
+     * Arguments for Arxiv Search
+     */
+    arguments?: ArxivIntegrationDef.Arguments | null;
+
+    method?: string | null;
+
+    provider?: 'arxiv';
+
+    setup?: unknown | null;
+  }
+
+  export namespace ArxivIntegrationDef {
+    /**
+     * Arguments for Arxiv Search
+     */
+    export interface Arguments {
+      query: string;
+
+      download_pdf?: boolean;
+
+      id_list?: Array<string> | null;
+
+      max_results?: number;
+
+      sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+      sort_order?: 'ascending' | 'descending';
+    }
+  }
+
+  /**
    * System definition
    */
   export interface System {
@@ -994,7 +1028,7 @@ export interface ToolCreateParams {
     | ToolCreateParams.DummyIntegrationDef
     | ToolCreateParams.BraveIntegrationDef
     | ToolCreateParams.EmailIntegrationDef
-    | ToolCreateParams.SpiderIntegrationDef
+    | ToolCreateParams.SpiderIntegrationDefInput
     | ToolCreateParams.WikipediaIntegrationDef
     | ToolCreateParams.WeatherIntegrationDef
     | ToolCreateParams.BrowserbaseContextIntegrationDef
@@ -1010,6 +1044,7 @@ export interface ToolCreateParams {
     | ToolCreateParams.FfmpegIntegrationDef
     | ToolCreateParams.CloudinaryUploadIntegrationDef
     | ToolCreateParams.CloudinaryEditIntegrationDef
+    | ToolCreateParams.ArxivIntegrationDef
     | null;
 
   /**
@@ -1177,11 +1212,11 @@ export namespace ToolCreateParams {
   /**
    * Spider integration definition
    */
-  export interface SpiderIntegrationDef {
+  export interface SpiderIntegrationDefInput {
     /**
      * Arguments for Spider integration
      */
-    arguments?: SpiderIntegrationDef.Arguments | null;
+    arguments?: SpiderIntegrationDefInput.Arguments | null;
 
     method?: string | null;
 
@@ -1190,10 +1225,10 @@ export namespace ToolCreateParams {
     /**
      * Setup parameters for Spider integration
      */
-    setup?: SpiderIntegrationDef.Setup | null;
+    setup?: SpiderIntegrationDefInput.Setup | null;
   }
 
-  export namespace SpiderIntegrationDef {
+  export namespace SpiderIntegrationDefInput {
     /**
      * Arguments for Spider integration
      */
@@ -1650,17 +1685,13 @@ export namespace ToolCreateParams {
      * Arguments for LlamaParse integration
      */
     export interface Arguments {
-      file: string;
+      file: string | Array<string>;
+
+      base64?: boolean;
 
       filename?: string | null;
 
-      language?: string;
-
-      num_workers?: number;
-
-      result_format?: 'text' | 'markdown';
-
-      verbose?: boolean;
+      params?: unknown | null;
     }
 
     /**
@@ -1668,6 +1699,8 @@ export namespace ToolCreateParams {
      */
     export interface Setup {
       llamaparse_api_key: string;
+
+      params?: unknown | null;
     }
   }
 
@@ -1791,6 +1824,41 @@ export namespace ToolCreateParams {
   }
 
   /**
+   * Arxiv integration definition
+   */
+  export interface ArxivIntegrationDef {
+    /**
+     * Arguments for Arxiv Search
+     */
+    arguments?: ArxivIntegrationDef.Arguments | null;
+
+    method?: string | null;
+
+    provider?: 'arxiv';
+
+    setup?: unknown | null;
+  }
+
+  export namespace ArxivIntegrationDef {
+    /**
+     * Arguments for Arxiv Search
+     */
+    export interface Arguments {
+      query: string;
+
+      download_pdf?: boolean;
+
+      id_list?: Array<string> | null;
+
+      max_results?: number;
+
+      sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+      sort_order?: 'ascending' | 'descending';
+    }
+  }
+
+  /**
    * System definition
    */
   export interface System {
@@ -1862,7 +1930,7 @@ export interface ToolUpdateParams {
     | ToolUpdateParams.DummyIntegrationDef
     | ToolUpdateParams.BraveIntegrationDef
     | ToolUpdateParams.EmailIntegrationDef
-    | ToolUpdateParams.SpiderIntegrationDef
+    | ToolUpdateParams.SpiderIntegrationDefInput
     | ToolUpdateParams.WikipediaIntegrationDef
     | ToolUpdateParams.WeatherIntegrationDef
     | ToolUpdateParams.BrowserbaseContextIntegrationDef
@@ -1878,6 +1946,7 @@ export interface ToolUpdateParams {
     | ToolUpdateParams.FfmpegIntegrationDef
     | ToolUpdateParams.CloudinaryUploadIntegrationDef
     | ToolUpdateParams.CloudinaryEditIntegrationDef
+    | ToolUpdateParams.ArxivIntegrationDef
     | null;
 
   /**
@@ -2045,11 +2114,11 @@ export namespace ToolUpdateParams {
   /**
    * Spider integration definition
    */
-  export interface SpiderIntegrationDef {
+  export interface SpiderIntegrationDefInput {
     /**
      * Arguments for Spider integration
      */
-    arguments?: SpiderIntegrationDef.Arguments | null;
+    arguments?: SpiderIntegrationDefInput.Arguments | null;
 
     method?: string | null;
 
@@ -2058,10 +2127,10 @@ export namespace ToolUpdateParams {
     /**
      * Setup parameters for Spider integration
      */
-    setup?: SpiderIntegrationDef.Setup | null;
+    setup?: SpiderIntegrationDefInput.Setup | null;
   }
 
-  export namespace SpiderIntegrationDef {
+  export namespace SpiderIntegrationDefInput {
     /**
      * Arguments for Spider integration
      */
@@ -2518,17 +2587,13 @@ export namespace ToolUpdateParams {
      * Arguments for LlamaParse integration
      */
     export interface Arguments {
-      file: string;
+      file: string | Array<string>;
+
+      base64?: boolean;
 
       filename?: string | null;
 
-      language?: string;
-
-      num_workers?: number;
-
-      result_format?: 'text' | 'markdown';
-
-      verbose?: boolean;
+      params?: unknown | null;
     }
 
     /**
@@ -2536,6 +2601,8 @@ export namespace ToolUpdateParams {
      */
     export interface Setup {
       llamaparse_api_key: string;
+
+      params?: unknown | null;
     }
   }
 
@@ -2659,6 +2726,41 @@ export namespace ToolUpdateParams {
   }
 
   /**
+   * Arxiv integration definition
+   */
+  export interface ArxivIntegrationDef {
+    /**
+     * Arguments for Arxiv Search
+     */
+    arguments?: ArxivIntegrationDef.Arguments | null;
+
+    method?: string | null;
+
+    provider?: 'arxiv';
+
+    setup?: unknown | null;
+  }
+
+  export namespace ArxivIntegrationDef {
+    /**
+     * Arguments for Arxiv Search
+     */
+    export interface Arguments {
+      query: string;
+
+      download_pdf?: boolean;
+
+      id_list?: Array<string> | null;
+
+      max_results?: number;
+
+      sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+      sort_order?: 'ascending' | 'descending';
+    }
+  }
+
+  /**
    * System definition
    */
   export interface System {
@@ -2741,6 +2843,7 @@ export interface ToolPatchParams {
     | ToolPatchParams.FfmpegIntegrationDefUpdate
     | ToolPatchParams.CloudinaryUploadIntegrationDefUpdate
     | ToolPatchParams.CloudinaryEditIntegrationDefUpdate
+    | ToolPatchParams.ArxivIntegrationDefUpdate
     | null;
 
   name?: string | null;
@@ -3394,17 +3497,13 @@ export namespace ToolPatchParams {
      * Arguments for LlamaParse integration
      */
     export interface Arguments {
-      file?: string | null;
+      base64?: boolean;
+
+      file?: string | Array<string> | null;
 
       filename?: string | null;
 
-      language?: string;
-
-      num_workers?: number;
-
-      result_format?: 'text' | 'markdown';
-
-      verbose?: boolean;
+      params?: unknown | null;
     }
 
     /**
@@ -3412,6 +3511,8 @@ export namespace ToolPatchParams {
      */
     export interface Setup {
       llamaparse_api_key?: string | null;
+
+      params?: unknown | null;
     }
   }
 
@@ -3531,6 +3632,41 @@ export namespace ToolPatchParams {
       cloudinary_cloud_name?: string | null;
 
       params?: unknown | null;
+    }
+  }
+
+  /**
+   * Arxiv integration definition
+   */
+  export interface ArxivIntegrationDefUpdate {
+    /**
+     * Arguments for Arxiv Search
+     */
+    arguments?: ArxivIntegrationDefUpdate.Arguments | null;
+
+    method?: string | null;
+
+    provider?: 'arxiv';
+
+    setup?: unknown | null;
+  }
+
+  export namespace ArxivIntegrationDefUpdate {
+    /**
+     * Arguments for Arxiv Search
+     */
+    export interface Arguments {
+      download_pdf?: boolean;
+
+      id_list?: Array<string> | null;
+
+      max_results?: number;
+
+      query?: string | null;
+
+      sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+      sort_order?: 'ascending' | 'descending';
     }
   }
 
