@@ -399,6 +399,9 @@ export namespace Task {
       }
     }
 
+    /**
+     * Payload for creating a tool
+     */
     export interface CreateToolRequestOutput {
       name: string;
 
@@ -437,7 +440,7 @@ export namespace Task {
         | CreateToolRequestOutput.DummyIntegrationDef
         | CreateToolRequestOutput.BraveIntegrationDef
         | CreateToolRequestOutput.EmailIntegrationDef
-        | CreateToolRequestOutput.SpiderIntegrationDef
+        | CreateToolRequestOutput.SpiderIntegrationDefOutput
         | CreateToolRequestOutput.WikipediaIntegrationDef
         | CreateToolRequestOutput.WeatherIntegrationDef
         | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -453,6 +456,7 @@ export namespace Task {
         | CreateToolRequestOutput.FfmpegIntegrationDef
         | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
         | CreateToolRequestOutput.CloudinaryEditIntegrationDef
+        | CreateToolRequestOutput.ArxivIntegrationDef
         | null;
 
       /**
@@ -620,11 +624,11 @@ export namespace Task {
       /**
        * Spider integration definition
        */
-      export interface SpiderIntegrationDef {
+      export interface SpiderIntegrationDefOutput {
         /**
          * Arguments for Spider integration
          */
-        arguments?: SpiderIntegrationDef.Arguments | null;
+        arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
         method?: string | null;
 
@@ -633,10 +637,10 @@ export namespace Task {
         /**
          * Setup parameters for Spider integration
          */
-        setup?: SpiderIntegrationDef.Setup | null;
+        setup?: SpiderIntegrationDefOutput.Setup | null;
       }
 
-      export namespace SpiderIntegrationDef {
+      export namespace SpiderIntegrationDefOutput {
         /**
          * Arguments for Spider integration
          */
@@ -1093,17 +1097,13 @@ export namespace Task {
          * Arguments for LlamaParse integration
          */
         export interface Arguments {
-          file: string;
+          file: string | Array<string>;
+
+          base64?: boolean;
 
           filename?: string | null;
 
-          language?: string;
-
-          num_workers?: number;
-
-          result_format?: 'text' | 'markdown';
-
-          verbose?: boolean;
+          params?: unknown | null;
         }
 
         /**
@@ -1111,6 +1111,8 @@ export namespace Task {
          */
         export interface Setup {
           llamaparse_api_key: string;
+
+          params?: unknown | null;
         }
       }
 
@@ -1230,6 +1232,41 @@ export namespace Task {
           cloudinary_cloud_name: string;
 
           params?: unknown | null;
+        }
+      }
+
+      /**
+       * Arxiv integration definition
+       */
+      export interface ArxivIntegrationDef {
+        /**
+         * Arguments for Arxiv Search
+         */
+        arguments?: ArxivIntegrationDef.Arguments | null;
+
+        method?: string | null;
+
+        provider?: 'arxiv';
+
+        setup?: unknown | null;
+      }
+
+      export namespace ArxivIntegrationDef {
+        /**
+         * Arguments for Arxiv Search
+         */
+        export interface Arguments {
+          query: string;
+
+          download_pdf?: boolean;
+
+          id_list?: Array<string> | null;
+
+          max_results?: number;
+
+          sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+          sort_order?: 'ascending' | 'descending';
         }
       }
 
@@ -1696,6 +1733,9 @@ export namespace Task {
         }
       }
 
+      /**
+       * Payload for creating a tool
+       */
       export interface CreateToolRequestOutput {
         name: string;
 
@@ -1734,7 +1774,7 @@ export namespace Task {
           | CreateToolRequestOutput.DummyIntegrationDef
           | CreateToolRequestOutput.BraveIntegrationDef
           | CreateToolRequestOutput.EmailIntegrationDef
-          | CreateToolRequestOutput.SpiderIntegrationDef
+          | CreateToolRequestOutput.SpiderIntegrationDefOutput
           | CreateToolRequestOutput.WikipediaIntegrationDef
           | CreateToolRequestOutput.WeatherIntegrationDef
           | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -1750,6 +1790,7 @@ export namespace Task {
           | CreateToolRequestOutput.FfmpegIntegrationDef
           | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
           | CreateToolRequestOutput.CloudinaryEditIntegrationDef
+          | CreateToolRequestOutput.ArxivIntegrationDef
           | null;
 
         /**
@@ -1917,11 +1958,11 @@ export namespace Task {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDef {
+        export interface SpiderIntegrationDefOutput {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDef.Arguments | null;
+          arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
           method?: string | null;
 
@@ -1930,10 +1971,10 @@ export namespace Task {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDef.Setup | null;
+          setup?: SpiderIntegrationDefOutput.Setup | null;
         }
 
-        export namespace SpiderIntegrationDef {
+        export namespace SpiderIntegrationDefOutput {
           /**
            * Arguments for Spider integration
            */
@@ -2390,17 +2431,13 @@ export namespace Task {
            * Arguments for LlamaParse integration
            */
           export interface Arguments {
-            file: string;
+            file: string | Array<string>;
+
+            base64?: boolean;
 
             filename?: string | null;
 
-            language?: string;
-
-            num_workers?: number;
-
-            result_format?: 'text' | 'markdown';
-
-            verbose?: boolean;
+            params?: unknown | null;
           }
 
           /**
@@ -2408,6 +2445,8 @@ export namespace Task {
            */
           export interface Setup {
             llamaparse_api_key: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -2527,6 +2566,41 @@ export namespace Task {
             cloudinary_cloud_name: string;
 
             params?: unknown | null;
+          }
+        }
+
+        /**
+         * Arxiv integration definition
+         */
+        export interface ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          arguments?: ArxivIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'arxiv';
+
+          setup?: unknown | null;
+        }
+
+        export namespace ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          export interface Arguments {
+            query: string;
+
+            download_pdf?: boolean;
+
+            id_list?: Array<string> | null;
+
+            max_results?: number;
+
+            sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+            sort_order?: 'ascending' | 'descending';
           }
         }
 
@@ -2957,6 +3031,9 @@ export namespace Task {
         }
       }
 
+      /**
+       * Payload for creating a tool
+       */
       export interface CreateToolRequestOutput {
         name: string;
 
@@ -2995,7 +3072,7 @@ export namespace Task {
           | CreateToolRequestOutput.DummyIntegrationDef
           | CreateToolRequestOutput.BraveIntegrationDef
           | CreateToolRequestOutput.EmailIntegrationDef
-          | CreateToolRequestOutput.SpiderIntegrationDef
+          | CreateToolRequestOutput.SpiderIntegrationDefOutput
           | CreateToolRequestOutput.WikipediaIntegrationDef
           | CreateToolRequestOutput.WeatherIntegrationDef
           | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -3011,6 +3088,7 @@ export namespace Task {
           | CreateToolRequestOutput.FfmpegIntegrationDef
           | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
           | CreateToolRequestOutput.CloudinaryEditIntegrationDef
+          | CreateToolRequestOutput.ArxivIntegrationDef
           | null;
 
         /**
@@ -3178,11 +3256,11 @@ export namespace Task {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDef {
+        export interface SpiderIntegrationDefOutput {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDef.Arguments | null;
+          arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
           method?: string | null;
 
@@ -3191,10 +3269,10 @@ export namespace Task {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDef.Setup | null;
+          setup?: SpiderIntegrationDefOutput.Setup | null;
         }
 
-        export namespace SpiderIntegrationDef {
+        export namespace SpiderIntegrationDefOutput {
           /**
            * Arguments for Spider integration
            */
@@ -3651,17 +3729,13 @@ export namespace Task {
            * Arguments for LlamaParse integration
            */
           export interface Arguments {
-            file: string;
+            file: string | Array<string>;
+
+            base64?: boolean;
 
             filename?: string | null;
 
-            language?: string;
-
-            num_workers?: number;
-
-            result_format?: 'text' | 'markdown';
-
-            verbose?: boolean;
+            params?: unknown | null;
           }
 
           /**
@@ -3669,6 +3743,8 @@ export namespace Task {
            */
           export interface Setup {
             llamaparse_api_key: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -3788,6 +3864,41 @@ export namespace Task {
             cloudinary_cloud_name: string;
 
             params?: unknown | null;
+          }
+        }
+
+        /**
+         * Arxiv integration definition
+         */
+        export interface ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          arguments?: ArxivIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'arxiv';
+
+          setup?: unknown | null;
+        }
+
+        export namespace ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          export interface Arguments {
+            query: string;
+
+            download_pdf?: boolean;
+
+            id_list?: Array<string> | null;
+
+            max_results?: number;
+
+            sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+            sort_order?: 'ascending' | 'descending';
           }
         }
 
@@ -3923,7 +4034,7 @@ export namespace Task {
 
   export namespace SwitchStepOutput {
     export interface Switch {
-      case: '_' | (string & {});
+      case: string;
 
       then:
         | Switch.EvaluateStep
@@ -4249,6 +4360,9 @@ export namespace Task {
           }
         }
 
+        /**
+         * Payload for creating a tool
+         */
         export interface CreateToolRequestOutput {
           name: string;
 
@@ -4287,7 +4401,7 @@ export namespace Task {
             | CreateToolRequestOutput.DummyIntegrationDef
             | CreateToolRequestOutput.BraveIntegrationDef
             | CreateToolRequestOutput.EmailIntegrationDef
-            | CreateToolRequestOutput.SpiderIntegrationDef
+            | CreateToolRequestOutput.SpiderIntegrationDefOutput
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -4303,6 +4417,7 @@ export namespace Task {
             | CreateToolRequestOutput.FfmpegIntegrationDef
             | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
             | CreateToolRequestOutput.CloudinaryEditIntegrationDef
+            | CreateToolRequestOutput.ArxivIntegrationDef
             | null;
 
           /**
@@ -4470,11 +4585,11 @@ export namespace Task {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDef {
+          export interface SpiderIntegrationDefOutput {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDef.Arguments | null;
+            arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
             method?: string | null;
 
@@ -4483,10 +4598,10 @@ export namespace Task {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDef.Setup | null;
+            setup?: SpiderIntegrationDefOutput.Setup | null;
           }
 
-          export namespace SpiderIntegrationDef {
+          export namespace SpiderIntegrationDefOutput {
             /**
              * Arguments for Spider integration
              */
@@ -4943,17 +5058,13 @@ export namespace Task {
              * Arguments for LlamaParse integration
              */
             export interface Arguments {
-              file: string;
+              file: string | Array<string>;
+
+              base64?: boolean;
 
               filename?: string | null;
 
-              language?: string;
-
-              num_workers?: number;
-
-              result_format?: 'text' | 'markdown';
-
-              verbose?: boolean;
+              params?: unknown | null;
             }
 
             /**
@@ -4961,6 +5072,8 @@ export namespace Task {
              */
             export interface Setup {
               llamaparse_api_key: string;
+
+              params?: unknown | null;
             }
           }
 
@@ -5080,6 +5193,41 @@ export namespace Task {
               cloudinary_cloud_name: string;
 
               params?: unknown | null;
+            }
+          }
+
+          /**
+           * Arxiv integration definition
+           */
+          export interface ArxivIntegrationDef {
+            /**
+             * Arguments for Arxiv Search
+             */
+            arguments?: ArxivIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'arxiv';
+
+            setup?: unknown | null;
+          }
+
+          export namespace ArxivIntegrationDef {
+            /**
+             * Arguments for Arxiv Search
+             */
+            export interface Arguments {
+              query: string;
+
+              download_pdf?: boolean;
+
+              id_list?: Array<string> | null;
+
+              max_results?: number;
+
+              sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+              sort_order?: 'ascending' | 'descending';
             }
           }
 
@@ -5562,6 +5710,9 @@ export namespace Task {
           }
         }
 
+        /**
+         * Payload for creating a tool
+         */
         export interface CreateToolRequestOutput {
           name: string;
 
@@ -5600,7 +5751,7 @@ export namespace Task {
             | CreateToolRequestOutput.DummyIntegrationDef
             | CreateToolRequestOutput.BraveIntegrationDef
             | CreateToolRequestOutput.EmailIntegrationDef
-            | CreateToolRequestOutput.SpiderIntegrationDef
+            | CreateToolRequestOutput.SpiderIntegrationDefOutput
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -5616,6 +5767,7 @@ export namespace Task {
             | CreateToolRequestOutput.FfmpegIntegrationDef
             | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
             | CreateToolRequestOutput.CloudinaryEditIntegrationDef
+            | CreateToolRequestOutput.ArxivIntegrationDef
             | null;
 
           /**
@@ -5783,11 +5935,11 @@ export namespace Task {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDef {
+          export interface SpiderIntegrationDefOutput {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDef.Arguments | null;
+            arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
             method?: string | null;
 
@@ -5796,10 +5948,10 @@ export namespace Task {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDef.Setup | null;
+            setup?: SpiderIntegrationDefOutput.Setup | null;
           }
 
-          export namespace SpiderIntegrationDef {
+          export namespace SpiderIntegrationDefOutput {
             /**
              * Arguments for Spider integration
              */
@@ -6256,17 +6408,13 @@ export namespace Task {
              * Arguments for LlamaParse integration
              */
             export interface Arguments {
-              file: string;
+              file: string | Array<string>;
+
+              base64?: boolean;
 
               filename?: string | null;
 
-              language?: string;
-
-              num_workers?: number;
-
-              result_format?: 'text' | 'markdown';
-
-              verbose?: boolean;
+              params?: unknown | null;
             }
 
             /**
@@ -6274,6 +6422,8 @@ export namespace Task {
              */
             export interface Setup {
               llamaparse_api_key: string;
+
+              params?: unknown | null;
             }
           }
 
@@ -6393,6 +6543,41 @@ export namespace Task {
               cloudinary_cloud_name: string;
 
               params?: unknown | null;
+            }
+          }
+
+          /**
+           * Arxiv integration definition
+           */
+          export interface ArxivIntegrationDef {
+            /**
+             * Arguments for Arxiv Search
+             */
+            arguments?: ArxivIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'arxiv';
+
+            setup?: unknown | null;
+          }
+
+          export namespace ArxivIntegrationDef {
+            /**
+             * Arguments for Arxiv Search
+             */
+            export interface Arguments {
+              query: string;
+
+              download_pdf?: boolean;
+
+              id_list?: Array<string> | null;
+
+              max_results?: number;
+
+              sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+              sort_order?: 'ascending' | 'descending';
             }
           }
 
@@ -6792,6 +6977,9 @@ export namespace Task {
         }
       }
 
+      /**
+       * Payload for creating a tool
+       */
       export interface CreateToolRequestOutput {
         name: string;
 
@@ -6830,7 +7018,7 @@ export namespace Task {
           | CreateToolRequestOutput.DummyIntegrationDef
           | CreateToolRequestOutput.BraveIntegrationDef
           | CreateToolRequestOutput.EmailIntegrationDef
-          | CreateToolRequestOutput.SpiderIntegrationDef
+          | CreateToolRequestOutput.SpiderIntegrationDefOutput
           | CreateToolRequestOutput.WikipediaIntegrationDef
           | CreateToolRequestOutput.WeatherIntegrationDef
           | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -6846,6 +7034,7 @@ export namespace Task {
           | CreateToolRequestOutput.FfmpegIntegrationDef
           | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
           | CreateToolRequestOutput.CloudinaryEditIntegrationDef
+          | CreateToolRequestOutput.ArxivIntegrationDef
           | null;
 
         /**
@@ -7013,11 +7202,11 @@ export namespace Task {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDef {
+        export interface SpiderIntegrationDefOutput {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDef.Arguments | null;
+          arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
           method?: string | null;
 
@@ -7026,10 +7215,10 @@ export namespace Task {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDef.Setup | null;
+          setup?: SpiderIntegrationDefOutput.Setup | null;
         }
 
-        export namespace SpiderIntegrationDef {
+        export namespace SpiderIntegrationDefOutput {
           /**
            * Arguments for Spider integration
            */
@@ -7486,17 +7675,13 @@ export namespace Task {
            * Arguments for LlamaParse integration
            */
           export interface Arguments {
-            file: string;
+            file: string | Array<string>;
+
+            base64?: boolean;
 
             filename?: string | null;
 
-            language?: string;
-
-            num_workers?: number;
-
-            result_format?: 'text' | 'markdown';
-
-            verbose?: boolean;
+            params?: unknown | null;
           }
 
           /**
@@ -7504,6 +7689,8 @@ export namespace Task {
            */
           export interface Setup {
             llamaparse_api_key: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -7623,6 +7810,41 @@ export namespace Task {
             cloudinary_cloud_name: string;
 
             params?: unknown | null;
+          }
+        }
+
+        /**
+         * Arxiv integration definition
+         */
+        export interface ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          arguments?: ArxivIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'arxiv';
+
+          setup?: unknown | null;
+        }
+
+        export namespace ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          export interface Arguments {
+            query: string;
+
+            download_pdf?: boolean;
+
+            id_list?: Array<string> | null;
+
+            max_results?: number;
+
+            sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+            sort_order?: 'ascending' | 'descending';
           }
         }
 
@@ -8028,6 +8250,9 @@ export namespace Task {
         }
       }
 
+      /**
+       * Payload for creating a tool
+       */
       export interface CreateToolRequestOutput {
         name: string;
 
@@ -8066,7 +8291,7 @@ export namespace Task {
           | CreateToolRequestOutput.DummyIntegrationDef
           | CreateToolRequestOutput.BraveIntegrationDef
           | CreateToolRequestOutput.EmailIntegrationDef
-          | CreateToolRequestOutput.SpiderIntegrationDef
+          | CreateToolRequestOutput.SpiderIntegrationDefOutput
           | CreateToolRequestOutput.WikipediaIntegrationDef
           | CreateToolRequestOutput.WeatherIntegrationDef
           | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -8082,6 +8307,7 @@ export namespace Task {
           | CreateToolRequestOutput.FfmpegIntegrationDef
           | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
           | CreateToolRequestOutput.CloudinaryEditIntegrationDef
+          | CreateToolRequestOutput.ArxivIntegrationDef
           | null;
 
         /**
@@ -8249,11 +8475,11 @@ export namespace Task {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDef {
+        export interface SpiderIntegrationDefOutput {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDef.Arguments | null;
+          arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
           method?: string | null;
 
@@ -8262,10 +8488,10 @@ export namespace Task {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDef.Setup | null;
+          setup?: SpiderIntegrationDefOutput.Setup | null;
         }
 
-        export namespace SpiderIntegrationDef {
+        export namespace SpiderIntegrationDefOutput {
           /**
            * Arguments for Spider integration
            */
@@ -8722,17 +8948,13 @@ export namespace Task {
            * Arguments for LlamaParse integration
            */
           export interface Arguments {
-            file: string;
+            file: string | Array<string>;
+
+            base64?: boolean;
 
             filename?: string | null;
 
-            language?: string;
-
-            num_workers?: number;
-
-            result_format?: 'text' | 'markdown';
-
-            verbose?: boolean;
+            params?: unknown | null;
           }
 
           /**
@@ -8740,6 +8962,8 @@ export namespace Task {
            */
           export interface Setup {
             llamaparse_api_key: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -8863,6 +9087,41 @@ export namespace Task {
         }
 
         /**
+         * Arxiv integration definition
+         */
+        export interface ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          arguments?: ArxivIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'arxiv';
+
+          setup?: unknown | null;
+        }
+
+        export namespace ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          export interface Arguments {
+            query: string;
+
+            download_pdf?: boolean;
+
+            id_list?: Array<string> | null;
+
+            max_results?: number;
+
+            sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+            sort_order?: 'ascending' | 'descending';
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -8974,7 +9233,7 @@ export namespace Task {
       | Tool.DummyIntegrationDef
       | Tool.BraveIntegrationDef
       | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDef
+      | Tool.SpiderIntegrationDefOutput
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
@@ -8990,6 +9249,7 @@ export namespace Task {
       | Tool.FfmpegIntegrationDef
       | Tool.CloudinaryUploadIntegrationDef
       | Tool.CloudinaryEditIntegrationDef
+      | Tool.ArxivIntegrationDef
       | null;
 
     /**
@@ -9157,11 +9417,11 @@ export namespace Task {
     /**
      * Spider integration definition
      */
-    export interface SpiderIntegrationDef {
+    export interface SpiderIntegrationDefOutput {
       /**
        * Arguments for Spider integration
        */
-      arguments?: SpiderIntegrationDef.Arguments | null;
+      arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
       method?: string | null;
 
@@ -9170,10 +9430,10 @@ export namespace Task {
       /**
        * Setup parameters for Spider integration
        */
-      setup?: SpiderIntegrationDef.Setup | null;
+      setup?: SpiderIntegrationDefOutput.Setup | null;
     }
 
-    export namespace SpiderIntegrationDef {
+    export namespace SpiderIntegrationDefOutput {
       /**
        * Arguments for Spider integration
        */
@@ -9630,17 +9890,13 @@ export namespace Task {
        * Arguments for LlamaParse integration
        */
       export interface Arguments {
-        file: string;
+        file: string | Array<string>;
+
+        base64?: boolean;
 
         filename?: string | null;
 
-        language?: string;
-
-        num_workers?: number;
-
-        result_format?: 'text' | 'markdown';
-
-        verbose?: boolean;
+        params?: unknown | null;
       }
 
       /**
@@ -9648,6 +9904,8 @@ export namespace Task {
        */
       export interface Setup {
         llamaparse_api_key: string;
+
+        params?: unknown | null;
       }
     }
 
@@ -9771,6 +10029,41 @@ export namespace Task {
     }
 
     /**
+     * Arxiv integration definition
+     */
+    export interface ArxivIntegrationDef {
+      /**
+       * Arguments for Arxiv Search
+       */
+      arguments?: ArxivIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'arxiv';
+
+      setup?: unknown | null;
+    }
+
+    export namespace ArxivIntegrationDef {
+      /**
+       * Arguments for Arxiv Search
+       */
+      export interface Arguments {
+        query: string;
+
+        download_pdf?: boolean;
+
+        id_list?: Array<string> | null;
+
+        max_results?: number;
+
+        sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+        sort_order?: 'ascending' | 'descending';
+      }
+    }
+
+    /**
      * System definition
      */
     export interface System {
@@ -9890,7 +10183,7 @@ export namespace TaskCreateParams {
 
     tools?:
       | 'all'
-      | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
+      | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
     unwrap?: boolean;
   }
@@ -10128,7 +10421,10 @@ export namespace TaskCreateParams {
       }
     }
 
-    export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+    /**
+     * Payload for creating a tool
+     */
+    export interface AgentsAPIAutogenToolsCreateToolRequestInput {
       name: string;
 
       type:
@@ -10143,56 +10439,57 @@ export namespace TaskCreateParams {
       /**
        * API call definition
        */
-      api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+      api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-      bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+      bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
       /**
        * Anthropic new tools
        */
-      computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+      computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
       description?: string | null;
 
       /**
        * Function definition
        */
-      function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+      function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
       /**
        * Brave integration definition
        */
       integration?:
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+        | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
         | null;
 
       /**
        * System definition
        */
-      system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+      system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-      text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+      text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
     }
 
-    export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+    export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
       /**
        * API call definition
        */
@@ -10349,11 +10646,11 @@ export namespace TaskCreateParams {
       /**
        * Spider integration definition
        */
-      export interface SpiderIntegrationDef {
+      export interface SpiderIntegrationDefInput {
         /**
          * Arguments for Spider integration
          */
-        arguments?: SpiderIntegrationDef.Arguments | null;
+        arguments?: SpiderIntegrationDefInput.Arguments | null;
 
         method?: string | null;
 
@@ -10362,10 +10659,10 @@ export namespace TaskCreateParams {
         /**
          * Setup parameters for Spider integration
          */
-        setup?: SpiderIntegrationDef.Setup | null;
+        setup?: SpiderIntegrationDefInput.Setup | null;
       }
 
-      export namespace SpiderIntegrationDef {
+      export namespace SpiderIntegrationDefInput {
         /**
          * Arguments for Spider integration
          */
@@ -10822,17 +11119,13 @@ export namespace TaskCreateParams {
          * Arguments for LlamaParse integration
          */
         export interface Arguments {
-          file: string;
+          file: string | Array<string>;
+
+          base64?: boolean;
 
           filename?: string | null;
 
-          language?: string;
-
-          num_workers?: number;
-
-          result_format?: 'text' | 'markdown';
-
-          verbose?: boolean;
+          params?: unknown | null;
         }
 
         /**
@@ -10840,6 +11133,8 @@ export namespace TaskCreateParams {
          */
         export interface Setup {
           llamaparse_api_key: string;
+
+          params?: unknown | null;
         }
       }
 
@@ -10959,6 +11254,41 @@ export namespace TaskCreateParams {
           cloudinary_cloud_name: string;
 
           params?: unknown | null;
+        }
+      }
+
+      /**
+       * Arxiv integration definition
+       */
+      export interface ArxivIntegrationDef {
+        /**
+         * Arguments for Arxiv Search
+         */
+        arguments?: ArxivIntegrationDef.Arguments | null;
+
+        method?: string | null;
+
+        provider?: 'arxiv';
+
+        setup?: unknown | null;
+      }
+
+      export namespace ArxivIntegrationDef {
+        /**
+         * Arguments for Arxiv Search
+         */
+        export interface Arguments {
+          query: string;
+
+          download_pdf?: boolean;
+
+          id_list?: Array<string> | null;
+
+          max_results?: number;
+
+          sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+          sort_order?: 'ascending' | 'descending';
         }
       }
 
@@ -11161,7 +11491,7 @@ export namespace TaskCreateParams {
 
       tools?:
         | 'all'
-        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -11399,7 +11729,10 @@ export namespace TaskCreateParams {
         }
       }
 
-      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      /**
+       * Payload for creating a tool
+       */
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -11414,56 +11747,57 @@ export namespace TaskCreateParams {
         /**
          * API call definition
          */
-        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -11620,11 +11954,11 @@ export namespace TaskCreateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDef {
+        export interface SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDef.Arguments | null;
+          arguments?: SpiderIntegrationDefInput.Arguments | null;
 
           method?: string | null;
 
@@ -11633,10 +11967,10 @@ export namespace TaskCreateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDef.Setup | null;
+          setup?: SpiderIntegrationDefInput.Setup | null;
         }
 
-        export namespace SpiderIntegrationDef {
+        export namespace SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
@@ -12093,17 +12427,13 @@ export namespace TaskCreateParams {
            * Arguments for LlamaParse integration
            */
           export interface Arguments {
-            file: string;
+            file: string | Array<string>;
+
+            base64?: boolean;
 
             filename?: string | null;
 
-            language?: string;
-
-            num_workers?: number;
-
-            result_format?: 'text' | 'markdown';
-
-            verbose?: boolean;
+            params?: unknown | null;
           }
 
           /**
@@ -12111,6 +12441,8 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -12230,6 +12562,41 @@ export namespace TaskCreateParams {
             cloudinary_cloud_name: string;
 
             params?: unknown | null;
+          }
+        }
+
+        /**
+         * Arxiv integration definition
+         */
+        export interface ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          arguments?: ArxivIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'arxiv';
+
+          setup?: unknown | null;
+        }
+
+        export namespace ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          export interface Arguments {
+            query: string;
+
+            download_pdf?: boolean;
+
+            id_list?: Array<string> | null;
+
+            max_results?: number;
+
+            sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+            sort_order?: 'ascending' | 'descending';
           }
         }
 
@@ -12398,7 +12765,7 @@ export namespace TaskCreateParams {
 
       tools?:
         | 'all'
-        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -12636,7 +13003,10 @@ export namespace TaskCreateParams {
         }
       }
 
-      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      /**
+       * Payload for creating a tool
+       */
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -12651,56 +13021,57 @@ export namespace TaskCreateParams {
         /**
          * API call definition
          */
-        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -12857,11 +13228,11 @@ export namespace TaskCreateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDef {
+        export interface SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDef.Arguments | null;
+          arguments?: SpiderIntegrationDefInput.Arguments | null;
 
           method?: string | null;
 
@@ -12870,10 +13241,10 @@ export namespace TaskCreateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDef.Setup | null;
+          setup?: SpiderIntegrationDefInput.Setup | null;
         }
 
-        export namespace SpiderIntegrationDef {
+        export namespace SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
@@ -13330,17 +13701,13 @@ export namespace TaskCreateParams {
            * Arguments for LlamaParse integration
            */
           export interface Arguments {
-            file: string;
+            file: string | Array<string>;
+
+            base64?: boolean;
 
             filename?: string | null;
 
-            language?: string;
-
-            num_workers?: number;
-
-            result_format?: 'text' | 'markdown';
-
-            verbose?: boolean;
+            params?: unknown | null;
           }
 
           /**
@@ -13348,6 +13715,8 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -13471,6 +13840,41 @@ export namespace TaskCreateParams {
         }
 
         /**
+         * Arxiv integration definition
+         */
+        export interface ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          arguments?: ArxivIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'arxiv';
+
+          setup?: unknown | null;
+        }
+
+        export namespace ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          export interface Arguments {
+            query: string;
+
+            download_pdf?: boolean;
+
+            id_list?: Array<string> | null;
+
+            max_results?: number;
+
+            sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+            sort_order?: 'ascending' | 'descending';
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -13584,7 +13988,7 @@ export namespace TaskCreateParams {
 
   export namespace SwitchStepInput {
     export interface Switch {
-      case: '_' | (string & {});
+      case: string;
 
       then:
         | Switch.EvaluateStep
@@ -13664,9 +14068,7 @@ export namespace TaskCreateParams {
 
         tools?:
           | 'all'
-          | Array<
-              PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput
-            >;
+          | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
         unwrap?: boolean;
       }
@@ -13904,7 +14306,10 @@ export namespace TaskCreateParams {
           }
         }
 
-        export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+        /**
+         * Payload for creating a tool
+         */
+        export interface AgentsAPIAutogenToolsCreateToolRequestInput {
           name: string;
 
           type:
@@ -13919,56 +14324,57 @@ export namespace TaskCreateParams {
           /**
            * API call definition
            */
-          api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+          api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-          bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+          bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
           /**
            * Anthropic new tools
            */
-          computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+          computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
           description?: string | null;
 
           /**
            * Function definition
            */
-          function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+          function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
           /**
            * Brave integration definition
            */
           integration?:
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
             | null;
 
           /**
            * System definition
            */
-          system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+          system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-          text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+          text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
         }
 
-        export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+        export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
           /**
            * API call definition
            */
@@ -14125,11 +14531,11 @@ export namespace TaskCreateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDef {
+          export interface SpiderIntegrationDefInput {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDef.Arguments | null;
+            arguments?: SpiderIntegrationDefInput.Arguments | null;
 
             method?: string | null;
 
@@ -14138,10 +14544,10 @@ export namespace TaskCreateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDef.Setup | null;
+            setup?: SpiderIntegrationDefInput.Setup | null;
           }
 
-          export namespace SpiderIntegrationDef {
+          export namespace SpiderIntegrationDefInput {
             /**
              * Arguments for Spider integration
              */
@@ -14598,17 +15004,13 @@ export namespace TaskCreateParams {
              * Arguments for LlamaParse integration
              */
             export interface Arguments {
-              file: string;
+              file: string | Array<string>;
+
+              base64?: boolean;
 
               filename?: string | null;
 
-              language?: string;
-
-              num_workers?: number;
-
-              result_format?: 'text' | 'markdown';
-
-              verbose?: boolean;
+              params?: unknown | null;
             }
 
             /**
@@ -14616,6 +15018,8 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               llamaparse_api_key: string;
+
+              params?: unknown | null;
             }
           }
 
@@ -14735,6 +15139,41 @@ export namespace TaskCreateParams {
               cloudinary_cloud_name: string;
 
               params?: unknown | null;
+            }
+          }
+
+          /**
+           * Arxiv integration definition
+           */
+          export interface ArxivIntegrationDef {
+            /**
+             * Arguments for Arxiv Search
+             */
+            arguments?: ArxivIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'arxiv';
+
+            setup?: unknown | null;
+          }
+
+          export namespace ArxivIntegrationDef {
+            /**
+             * Arguments for Arxiv Search
+             */
+            export interface Arguments {
+              query: string;
+
+              download_pdf?: boolean;
+
+              id_list?: Array<string> | null;
+
+              max_results?: number;
+
+              sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+              sort_order?: 'ascending' | 'descending';
             }
           }
 
@@ -14951,9 +15390,7 @@ export namespace TaskCreateParams {
 
         tools?:
           | 'all'
-          | Array<
-              PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput
-            >;
+          | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
         unwrap?: boolean;
       }
@@ -15191,7 +15628,10 @@ export namespace TaskCreateParams {
           }
         }
 
-        export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+        /**
+         * Payload for creating a tool
+         */
+        export interface AgentsAPIAutogenToolsCreateToolRequestInput {
           name: string;
 
           type:
@@ -15206,56 +15646,57 @@ export namespace TaskCreateParams {
           /**
            * API call definition
            */
-          api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+          api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-          bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+          bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
           /**
            * Anthropic new tools
            */
-          computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+          computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
           description?: string | null;
 
           /**
            * Function definition
            */
-          function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+          function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
           /**
            * Brave integration definition
            */
           integration?:
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
             | null;
 
           /**
            * System definition
            */
-          system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+          system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-          text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+          text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
         }
 
-        export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+        export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
           /**
            * API call definition
            */
@@ -15412,11 +15853,11 @@ export namespace TaskCreateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDef {
+          export interface SpiderIntegrationDefInput {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDef.Arguments | null;
+            arguments?: SpiderIntegrationDefInput.Arguments | null;
 
             method?: string | null;
 
@@ -15425,10 +15866,10 @@ export namespace TaskCreateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDef.Setup | null;
+            setup?: SpiderIntegrationDefInput.Setup | null;
           }
 
-          export namespace SpiderIntegrationDef {
+          export namespace SpiderIntegrationDefInput {
             /**
              * Arguments for Spider integration
              */
@@ -15885,17 +16326,13 @@ export namespace TaskCreateParams {
              * Arguments for LlamaParse integration
              */
             export interface Arguments {
-              file: string;
+              file: string | Array<string>;
+
+              base64?: boolean;
 
               filename?: string | null;
 
-              language?: string;
-
-              num_workers?: number;
-
-              result_format?: 'text' | 'markdown';
-
-              verbose?: boolean;
+              params?: unknown | null;
             }
 
             /**
@@ -15903,6 +16340,8 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               llamaparse_api_key: string;
+
+              params?: unknown | null;
             }
           }
 
@@ -16022,6 +16461,41 @@ export namespace TaskCreateParams {
               cloudinary_cloud_name: string;
 
               params?: unknown | null;
+            }
+          }
+
+          /**
+           * Arxiv integration definition
+           */
+          export interface ArxivIntegrationDef {
+            /**
+             * Arguments for Arxiv Search
+             */
+            arguments?: ArxivIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'arxiv';
+
+            setup?: unknown | null;
+          }
+
+          export namespace ArxivIntegrationDef {
+            /**
+             * Arguments for Arxiv Search
+             */
+            export interface Arguments {
+              query: string;
+
+              download_pdf?: boolean;
+
+              id_list?: Array<string> | null;
+
+              max_results?: number;
+
+              sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+              sort_order?: 'ascending' | 'descending';
             }
           }
 
@@ -16165,7 +16639,7 @@ export namespace TaskCreateParams {
 
       tools?:
         | 'all'
-        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -16403,7 +16877,10 @@ export namespace TaskCreateParams {
         }
       }
 
-      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      /**
+       * Payload for creating a tool
+       */
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -16418,56 +16895,57 @@ export namespace TaskCreateParams {
         /**
          * API call definition
          */
-        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -16624,11 +17102,11 @@ export namespace TaskCreateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDef {
+        export interface SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDef.Arguments | null;
+          arguments?: SpiderIntegrationDefInput.Arguments | null;
 
           method?: string | null;
 
@@ -16637,10 +17115,10 @@ export namespace TaskCreateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDef.Setup | null;
+          setup?: SpiderIntegrationDefInput.Setup | null;
         }
 
-        export namespace SpiderIntegrationDef {
+        export namespace SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
@@ -17097,17 +17575,13 @@ export namespace TaskCreateParams {
            * Arguments for LlamaParse integration
            */
           export interface Arguments {
-            file: string;
+            file: string | Array<string>;
+
+            base64?: boolean;
 
             filename?: string | null;
 
-            language?: string;
-
-            num_workers?: number;
-
-            result_format?: 'text' | 'markdown';
-
-            verbose?: boolean;
+            params?: unknown | null;
           }
 
           /**
@@ -17115,6 +17589,8 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -17234,6 +17710,41 @@ export namespace TaskCreateParams {
             cloudinary_cloud_name: string;
 
             params?: unknown | null;
+          }
+        }
+
+        /**
+         * Arxiv integration definition
+         */
+        export interface ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          arguments?: ArxivIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'arxiv';
+
+          setup?: unknown | null;
+        }
+
+        export namespace ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          export interface Arguments {
+            query: string;
+
+            download_pdf?: boolean;
+
+            id_list?: Array<string> | null;
+
+            max_results?: number;
+
+            sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+            sort_order?: 'ascending' | 'descending';
           }
         }
 
@@ -17383,7 +17894,7 @@ export namespace TaskCreateParams {
 
       tools?:
         | 'all'
-        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -17621,7 +18132,10 @@ export namespace TaskCreateParams {
         }
       }
 
-      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      /**
+       * Payload for creating a tool
+       */
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -17636,56 +18150,57 @@ export namespace TaskCreateParams {
         /**
          * API call definition
          */
-        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -17842,11 +18357,11 @@ export namespace TaskCreateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDef {
+        export interface SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDef.Arguments | null;
+          arguments?: SpiderIntegrationDefInput.Arguments | null;
 
           method?: string | null;
 
@@ -17855,10 +18370,10 @@ export namespace TaskCreateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDef.Setup | null;
+          setup?: SpiderIntegrationDefInput.Setup | null;
         }
 
-        export namespace SpiderIntegrationDef {
+        export namespace SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
@@ -18315,17 +18830,13 @@ export namespace TaskCreateParams {
            * Arguments for LlamaParse integration
            */
           export interface Arguments {
-            file: string;
+            file: string | Array<string>;
+
+            base64?: boolean;
 
             filename?: string | null;
 
-            language?: string;
-
-            num_workers?: number;
-
-            result_format?: 'text' | 'markdown';
-
-            verbose?: boolean;
+            params?: unknown | null;
           }
 
           /**
@@ -18333,6 +18844,8 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -18456,6 +18969,41 @@ export namespace TaskCreateParams {
         }
 
         /**
+         * Arxiv integration definition
+         */
+        export interface ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          arguments?: ArxivIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'arxiv';
+
+          setup?: unknown | null;
+        }
+
+        export namespace ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          export interface Arguments {
+            query: string;
+
+            download_pdf?: boolean;
+
+            id_list?: Array<string> | null;
+
+            max_results?: number;
+
+            sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+            sort_order?: 'ascending' | 'descending';
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -18557,7 +19105,7 @@ export namespace TaskCreateParams {
       | Tool.DummyIntegrationDef
       | Tool.BraveIntegrationDef
       | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDef
+      | Tool.SpiderIntegrationDefInput
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
@@ -18573,6 +19121,7 @@ export namespace TaskCreateParams {
       | Tool.FfmpegIntegrationDef
       | Tool.CloudinaryUploadIntegrationDef
       | Tool.CloudinaryEditIntegrationDef
+      | Tool.ArxivIntegrationDef
       | null;
 
     /**
@@ -18740,11 +19289,11 @@ export namespace TaskCreateParams {
     /**
      * Spider integration definition
      */
-    export interface SpiderIntegrationDef {
+    export interface SpiderIntegrationDefInput {
       /**
        * Arguments for Spider integration
        */
-      arguments?: SpiderIntegrationDef.Arguments | null;
+      arguments?: SpiderIntegrationDefInput.Arguments | null;
 
       method?: string | null;
 
@@ -18753,10 +19302,10 @@ export namespace TaskCreateParams {
       /**
        * Setup parameters for Spider integration
        */
-      setup?: SpiderIntegrationDef.Setup | null;
+      setup?: SpiderIntegrationDefInput.Setup | null;
     }
 
-    export namespace SpiderIntegrationDef {
+    export namespace SpiderIntegrationDefInput {
       /**
        * Arguments for Spider integration
        */
@@ -19213,17 +19762,13 @@ export namespace TaskCreateParams {
        * Arguments for LlamaParse integration
        */
       export interface Arguments {
-        file: string;
+        file: string | Array<string>;
+
+        base64?: boolean;
 
         filename?: string | null;
 
-        language?: string;
-
-        num_workers?: number;
-
-        result_format?: 'text' | 'markdown';
-
-        verbose?: boolean;
+        params?: unknown | null;
       }
 
       /**
@@ -19231,6 +19776,8 @@ export namespace TaskCreateParams {
        */
       export interface Setup {
         llamaparse_api_key: string;
+
+        params?: unknown | null;
       }
     }
 
@@ -19350,6 +19897,41 @@ export namespace TaskCreateParams {
         cloudinary_cloud_name: string;
 
         params?: unknown | null;
+      }
+    }
+
+    /**
+     * Arxiv integration definition
+     */
+    export interface ArxivIntegrationDef {
+      /**
+       * Arguments for Arxiv Search
+       */
+      arguments?: ArxivIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'arxiv';
+
+      setup?: unknown | null;
+    }
+
+    export namespace ArxivIntegrationDef {
+      /**
+       * Arguments for Arxiv Search
+       */
+      export interface Arguments {
+        query: string;
+
+        download_pdf?: boolean;
+
+        id_list?: Array<string> | null;
+
+        max_results?: number;
+
+        sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+        sort_order?: 'ascending' | 'descending';
       }
     }
 
@@ -19479,7 +20061,7 @@ export namespace TaskCreateOrUpdateParams {
 
     tools?:
       | 'all'
-      | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
+      | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
     unwrap?: boolean;
   }
@@ -19717,7 +20299,10 @@ export namespace TaskCreateOrUpdateParams {
       }
     }
 
-    export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+    /**
+     * Payload for creating a tool
+     */
+    export interface AgentsAPIAutogenToolsCreateToolRequestInput {
       name: string;
 
       type:
@@ -19732,56 +20317,57 @@ export namespace TaskCreateOrUpdateParams {
       /**
        * API call definition
        */
-      api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+      api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-      bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+      bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
       /**
        * Anthropic new tools
        */
-      computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+      computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
       description?: string | null;
 
       /**
        * Function definition
        */
-      function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+      function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
       /**
        * Brave integration definition
        */
       integration?:
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-        | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+        | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
         | null;
 
       /**
        * System definition
        */
-      system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+      system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-      text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+      text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
     }
 
-    export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+    export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
       /**
        * API call definition
        */
@@ -19938,11 +20524,11 @@ export namespace TaskCreateOrUpdateParams {
       /**
        * Spider integration definition
        */
-      export interface SpiderIntegrationDef {
+      export interface SpiderIntegrationDefInput {
         /**
          * Arguments for Spider integration
          */
-        arguments?: SpiderIntegrationDef.Arguments | null;
+        arguments?: SpiderIntegrationDefInput.Arguments | null;
 
         method?: string | null;
 
@@ -19951,10 +20537,10 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * Setup parameters for Spider integration
          */
-        setup?: SpiderIntegrationDef.Setup | null;
+        setup?: SpiderIntegrationDefInput.Setup | null;
       }
 
-      export namespace SpiderIntegrationDef {
+      export namespace SpiderIntegrationDefInput {
         /**
          * Arguments for Spider integration
          */
@@ -20411,17 +20997,13 @@ export namespace TaskCreateOrUpdateParams {
          * Arguments for LlamaParse integration
          */
         export interface Arguments {
-          file: string;
+          file: string | Array<string>;
+
+          base64?: boolean;
 
           filename?: string | null;
 
-          language?: string;
-
-          num_workers?: number;
-
-          result_format?: 'text' | 'markdown';
-
-          verbose?: boolean;
+          params?: unknown | null;
         }
 
         /**
@@ -20429,6 +21011,8 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface Setup {
           llamaparse_api_key: string;
+
+          params?: unknown | null;
         }
       }
 
@@ -20548,6 +21132,41 @@ export namespace TaskCreateOrUpdateParams {
           cloudinary_cloud_name: string;
 
           params?: unknown | null;
+        }
+      }
+
+      /**
+       * Arxiv integration definition
+       */
+      export interface ArxivIntegrationDef {
+        /**
+         * Arguments for Arxiv Search
+         */
+        arguments?: ArxivIntegrationDef.Arguments | null;
+
+        method?: string | null;
+
+        provider?: 'arxiv';
+
+        setup?: unknown | null;
+      }
+
+      export namespace ArxivIntegrationDef {
+        /**
+         * Arguments for Arxiv Search
+         */
+        export interface Arguments {
+          query: string;
+
+          download_pdf?: boolean;
+
+          id_list?: Array<string> | null;
+
+          max_results?: number;
+
+          sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+          sort_order?: 'ascending' | 'descending';
         }
       }
 
@@ -20750,7 +21369,7 @@ export namespace TaskCreateOrUpdateParams {
 
       tools?:
         | 'all'
-        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -20988,7 +21607,10 @@ export namespace TaskCreateOrUpdateParams {
         }
       }
 
-      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      /**
+       * Payload for creating a tool
+       */
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -21003,56 +21625,57 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * API call definition
          */
-        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -21209,11 +21832,11 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDef {
+        export interface SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDef.Arguments | null;
+          arguments?: SpiderIntegrationDefInput.Arguments | null;
 
           method?: string | null;
 
@@ -21222,10 +21845,10 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDef.Setup | null;
+          setup?: SpiderIntegrationDefInput.Setup | null;
         }
 
-        export namespace SpiderIntegrationDef {
+        export namespace SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
@@ -21682,17 +22305,13 @@ export namespace TaskCreateOrUpdateParams {
            * Arguments for LlamaParse integration
            */
           export interface Arguments {
-            file: string;
+            file: string | Array<string>;
+
+            base64?: boolean;
 
             filename?: string | null;
 
-            language?: string;
-
-            num_workers?: number;
-
-            result_format?: 'text' | 'markdown';
-
-            verbose?: boolean;
+            params?: unknown | null;
           }
 
           /**
@@ -21700,6 +22319,8 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -21819,6 +22440,41 @@ export namespace TaskCreateOrUpdateParams {
             cloudinary_cloud_name: string;
 
             params?: unknown | null;
+          }
+        }
+
+        /**
+         * Arxiv integration definition
+         */
+        export interface ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          arguments?: ArxivIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'arxiv';
+
+          setup?: unknown | null;
+        }
+
+        export namespace ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          export interface Arguments {
+            query: string;
+
+            download_pdf?: boolean;
+
+            id_list?: Array<string> | null;
+
+            max_results?: number;
+
+            sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+            sort_order?: 'ascending' | 'descending';
           }
         }
 
@@ -21987,7 +22643,7 @@ export namespace TaskCreateOrUpdateParams {
 
       tools?:
         | 'all'
-        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -22225,7 +22881,10 @@ export namespace TaskCreateOrUpdateParams {
         }
       }
 
-      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      /**
+       * Payload for creating a tool
+       */
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -22240,56 +22899,57 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * API call definition
          */
-        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -22446,11 +23106,11 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDef {
+        export interface SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDef.Arguments | null;
+          arguments?: SpiderIntegrationDefInput.Arguments | null;
 
           method?: string | null;
 
@@ -22459,10 +23119,10 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDef.Setup | null;
+          setup?: SpiderIntegrationDefInput.Setup | null;
         }
 
-        export namespace SpiderIntegrationDef {
+        export namespace SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
@@ -22919,17 +23579,13 @@ export namespace TaskCreateOrUpdateParams {
            * Arguments for LlamaParse integration
            */
           export interface Arguments {
-            file: string;
+            file: string | Array<string>;
+
+            base64?: boolean;
 
             filename?: string | null;
 
-            language?: string;
-
-            num_workers?: number;
-
-            result_format?: 'text' | 'markdown';
-
-            verbose?: boolean;
+            params?: unknown | null;
           }
 
           /**
@@ -22937,6 +23593,8 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -23060,6 +23718,41 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         /**
+         * Arxiv integration definition
+         */
+        export interface ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          arguments?: ArxivIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'arxiv';
+
+          setup?: unknown | null;
+        }
+
+        export namespace ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          export interface Arguments {
+            query: string;
+
+            download_pdf?: boolean;
+
+            id_list?: Array<string> | null;
+
+            max_results?: number;
+
+            sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+            sort_order?: 'ascending' | 'descending';
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -23173,7 +23866,7 @@ export namespace TaskCreateOrUpdateParams {
 
   export namespace SwitchStepInput {
     export interface Switch {
-      case: '_' | (string & {});
+      case: string;
 
       then:
         | Switch.EvaluateStep
@@ -23253,9 +23946,7 @@ export namespace TaskCreateOrUpdateParams {
 
         tools?:
           | 'all'
-          | Array<
-              PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput
-            >;
+          | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
         unwrap?: boolean;
       }
@@ -23493,7 +24184,10 @@ export namespace TaskCreateOrUpdateParams {
           }
         }
 
-        export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+        /**
+         * Payload for creating a tool
+         */
+        export interface AgentsAPIAutogenToolsCreateToolRequestInput {
           name: string;
 
           type:
@@ -23508,56 +24202,57 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * API call definition
            */
-          api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+          api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-          bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+          bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
           /**
            * Anthropic new tools
            */
-          computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+          computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
           description?: string | null;
 
           /**
            * Function definition
            */
-          function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+          function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
           /**
            * Brave integration definition
            */
           integration?:
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
             | null;
 
           /**
            * System definition
            */
-          system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+          system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-          text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+          text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
         }
 
-        export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+        export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
           /**
            * API call definition
            */
@@ -23714,11 +24409,11 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDef {
+          export interface SpiderIntegrationDefInput {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDef.Arguments | null;
+            arguments?: SpiderIntegrationDefInput.Arguments | null;
 
             method?: string | null;
 
@@ -23727,10 +24422,10 @@ export namespace TaskCreateOrUpdateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDef.Setup | null;
+            setup?: SpiderIntegrationDefInput.Setup | null;
           }
 
-          export namespace SpiderIntegrationDef {
+          export namespace SpiderIntegrationDefInput {
             /**
              * Arguments for Spider integration
              */
@@ -24187,17 +24882,13 @@ export namespace TaskCreateOrUpdateParams {
              * Arguments for LlamaParse integration
              */
             export interface Arguments {
-              file: string;
+              file: string | Array<string>;
+
+              base64?: boolean;
 
               filename?: string | null;
 
-              language?: string;
-
-              num_workers?: number;
-
-              result_format?: 'text' | 'markdown';
-
-              verbose?: boolean;
+              params?: unknown | null;
             }
 
             /**
@@ -24205,6 +24896,8 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               llamaparse_api_key: string;
+
+              params?: unknown | null;
             }
           }
 
@@ -24324,6 +25017,41 @@ export namespace TaskCreateOrUpdateParams {
               cloudinary_cloud_name: string;
 
               params?: unknown | null;
+            }
+          }
+
+          /**
+           * Arxiv integration definition
+           */
+          export interface ArxivIntegrationDef {
+            /**
+             * Arguments for Arxiv Search
+             */
+            arguments?: ArxivIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'arxiv';
+
+            setup?: unknown | null;
+          }
+
+          export namespace ArxivIntegrationDef {
+            /**
+             * Arguments for Arxiv Search
+             */
+            export interface Arguments {
+              query: string;
+
+              download_pdf?: boolean;
+
+              id_list?: Array<string> | null;
+
+              max_results?: number;
+
+              sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+              sort_order?: 'ascending' | 'descending';
             }
           }
 
@@ -24540,9 +25268,7 @@ export namespace TaskCreateOrUpdateParams {
 
         tools?:
           | 'all'
-          | Array<
-              PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput
-            >;
+          | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
         unwrap?: boolean;
       }
@@ -24780,7 +25506,10 @@ export namespace TaskCreateOrUpdateParams {
           }
         }
 
-        export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+        /**
+         * Payload for creating a tool
+         */
+        export interface AgentsAPIAutogenToolsCreateToolRequestInput {
           name: string;
 
           type:
@@ -24795,56 +25524,57 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * API call definition
            */
-          api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+          api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-          bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+          bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
           /**
            * Anthropic new tools
            */
-          computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+          computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
           description?: string | null;
 
           /**
            * Function definition
            */
-          function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+          function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
           /**
            * Brave integration definition
            */
           integration?:
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-            | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
             | null;
 
           /**
            * System definition
            */
-          system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+          system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-          text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+          text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
         }
 
-        export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+        export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
           /**
            * API call definition
            */
@@ -25001,11 +25731,11 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDef {
+          export interface SpiderIntegrationDefInput {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDef.Arguments | null;
+            arguments?: SpiderIntegrationDefInput.Arguments | null;
 
             method?: string | null;
 
@@ -25014,10 +25744,10 @@ export namespace TaskCreateOrUpdateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDef.Setup | null;
+            setup?: SpiderIntegrationDefInput.Setup | null;
           }
 
-          export namespace SpiderIntegrationDef {
+          export namespace SpiderIntegrationDefInput {
             /**
              * Arguments for Spider integration
              */
@@ -25474,17 +26204,13 @@ export namespace TaskCreateOrUpdateParams {
              * Arguments for LlamaParse integration
              */
             export interface Arguments {
-              file: string;
+              file: string | Array<string>;
+
+              base64?: boolean;
 
               filename?: string | null;
 
-              language?: string;
-
-              num_workers?: number;
-
-              result_format?: 'text' | 'markdown';
-
-              verbose?: boolean;
+              params?: unknown | null;
             }
 
             /**
@@ -25492,6 +26218,8 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               llamaparse_api_key: string;
+
+              params?: unknown | null;
             }
           }
 
@@ -25611,6 +26339,41 @@ export namespace TaskCreateOrUpdateParams {
               cloudinary_cloud_name: string;
 
               params?: unknown | null;
+            }
+          }
+
+          /**
+           * Arxiv integration definition
+           */
+          export interface ArxivIntegrationDef {
+            /**
+             * Arguments for Arxiv Search
+             */
+            arguments?: ArxivIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'arxiv';
+
+            setup?: unknown | null;
+          }
+
+          export namespace ArxivIntegrationDef {
+            /**
+             * Arguments for Arxiv Search
+             */
+            export interface Arguments {
+              query: string;
+
+              download_pdf?: boolean;
+
+              id_list?: Array<string> | null;
+
+              max_results?: number;
+
+              sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+              sort_order?: 'ascending' | 'descending';
             }
           }
 
@@ -25754,7 +26517,7 @@ export namespace TaskCreateOrUpdateParams {
 
       tools?:
         | 'all'
-        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -25992,7 +26755,10 @@ export namespace TaskCreateOrUpdateParams {
         }
       }
 
-      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      /**
+       * Payload for creating a tool
+       */
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -26007,56 +26773,57 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * API call definition
          */
-        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -26213,11 +26980,11 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDef {
+        export interface SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDef.Arguments | null;
+          arguments?: SpiderIntegrationDefInput.Arguments | null;
 
           method?: string | null;
 
@@ -26226,10 +26993,10 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDef.Setup | null;
+          setup?: SpiderIntegrationDefInput.Setup | null;
         }
 
-        export namespace SpiderIntegrationDef {
+        export namespace SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
@@ -26686,17 +27453,13 @@ export namespace TaskCreateOrUpdateParams {
            * Arguments for LlamaParse integration
            */
           export interface Arguments {
-            file: string;
+            file: string | Array<string>;
+
+            base64?: boolean;
 
             filename?: string | null;
 
-            language?: string;
-
-            num_workers?: number;
-
-            result_format?: 'text' | 'markdown';
-
-            verbose?: boolean;
+            params?: unknown | null;
           }
 
           /**
@@ -26704,6 +27467,8 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -26823,6 +27588,41 @@ export namespace TaskCreateOrUpdateParams {
             cloudinary_cloud_name: string;
 
             params?: unknown | null;
+          }
+        }
+
+        /**
+         * Arxiv integration definition
+         */
+        export interface ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          arguments?: ArxivIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'arxiv';
+
+          setup?: unknown | null;
+        }
+
+        export namespace ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          export interface Arguments {
+            query: string;
+
+            download_pdf?: boolean;
+
+            id_list?: Array<string> | null;
+
+            max_results?: number;
+
+            sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+            sort_order?: 'ascending' | 'descending';
           }
         }
 
@@ -26972,7 +27772,7 @@ export namespace TaskCreateOrUpdateParams {
 
       tools?:
         | 'all'
-        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenOpenAPIModelCreateToolRequestInput>;
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -27210,7 +28010,10 @@ export namespace TaskCreateOrUpdateParams {
         }
       }
 
-      export interface AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      /**
+       * Payload for creating a tool
+       */
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -27225,56 +28028,57 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * API call definition
          */
-        api_call?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.DummyIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BraveIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.SpiderIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WikipediaIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.WeatherIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.RemoteBrowserIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.LlamaParseIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.FfmpegIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: AgentsAPIAutogenOpenAPIModelCreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace AgentsAPIAutogenOpenAPIModelCreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -27431,11 +28235,11 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDef {
+        export interface SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDef.Arguments | null;
+          arguments?: SpiderIntegrationDefInput.Arguments | null;
 
           method?: string | null;
 
@@ -27444,10 +28248,10 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDef.Setup | null;
+          setup?: SpiderIntegrationDefInput.Setup | null;
         }
 
-        export namespace SpiderIntegrationDef {
+        export namespace SpiderIntegrationDefInput {
           /**
            * Arguments for Spider integration
            */
@@ -27904,17 +28708,13 @@ export namespace TaskCreateOrUpdateParams {
            * Arguments for LlamaParse integration
            */
           export interface Arguments {
-            file: string;
+            file: string | Array<string>;
+
+            base64?: boolean;
 
             filename?: string | null;
 
-            language?: string;
-
-            num_workers?: number;
-
-            result_format?: 'text' | 'markdown';
-
-            verbose?: boolean;
+            params?: unknown | null;
           }
 
           /**
@@ -27922,6 +28722,8 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             llamaparse_api_key: string;
+
+            params?: unknown | null;
           }
         }
 
@@ -28045,6 +28847,41 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         /**
+         * Arxiv integration definition
+         */
+        export interface ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          arguments?: ArxivIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'arxiv';
+
+          setup?: unknown | null;
+        }
+
+        export namespace ArxivIntegrationDef {
+          /**
+           * Arguments for Arxiv Search
+           */
+          export interface Arguments {
+            query: string;
+
+            download_pdf?: boolean;
+
+            id_list?: Array<string> | null;
+
+            max_results?: number;
+
+            sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+            sort_order?: 'ascending' | 'descending';
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -28146,7 +28983,7 @@ export namespace TaskCreateOrUpdateParams {
       | Tool.DummyIntegrationDef
       | Tool.BraveIntegrationDef
       | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDef
+      | Tool.SpiderIntegrationDefInput
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
@@ -28162,6 +28999,7 @@ export namespace TaskCreateOrUpdateParams {
       | Tool.FfmpegIntegrationDef
       | Tool.CloudinaryUploadIntegrationDef
       | Tool.CloudinaryEditIntegrationDef
+      | Tool.ArxivIntegrationDef
       | null;
 
     /**
@@ -28329,11 +29167,11 @@ export namespace TaskCreateOrUpdateParams {
     /**
      * Spider integration definition
      */
-    export interface SpiderIntegrationDef {
+    export interface SpiderIntegrationDefInput {
       /**
        * Arguments for Spider integration
        */
-      arguments?: SpiderIntegrationDef.Arguments | null;
+      arguments?: SpiderIntegrationDefInput.Arguments | null;
 
       method?: string | null;
 
@@ -28342,10 +29180,10 @@ export namespace TaskCreateOrUpdateParams {
       /**
        * Setup parameters for Spider integration
        */
-      setup?: SpiderIntegrationDef.Setup | null;
+      setup?: SpiderIntegrationDefInput.Setup | null;
     }
 
-    export namespace SpiderIntegrationDef {
+    export namespace SpiderIntegrationDefInput {
       /**
        * Arguments for Spider integration
        */
@@ -28802,17 +29640,13 @@ export namespace TaskCreateOrUpdateParams {
        * Arguments for LlamaParse integration
        */
       export interface Arguments {
-        file: string;
+        file: string | Array<string>;
+
+        base64?: boolean;
 
         filename?: string | null;
 
-        language?: string;
-
-        num_workers?: number;
-
-        result_format?: 'text' | 'markdown';
-
-        verbose?: boolean;
+        params?: unknown | null;
       }
 
       /**
@@ -28820,6 +29654,8 @@ export namespace TaskCreateOrUpdateParams {
        */
       export interface Setup {
         llamaparse_api_key: string;
+
+        params?: unknown | null;
       }
     }
 
@@ -28939,6 +29775,41 @@ export namespace TaskCreateOrUpdateParams {
         cloudinary_cloud_name: string;
 
         params?: unknown | null;
+      }
+    }
+
+    /**
+     * Arxiv integration definition
+     */
+    export interface ArxivIntegrationDef {
+      /**
+       * Arguments for Arxiv Search
+       */
+      arguments?: ArxivIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'arxiv';
+
+      setup?: unknown | null;
+    }
+
+    export namespace ArxivIntegrationDef {
+      /**
+       * Arguments for Arxiv Search
+       */
+      export interface Arguments {
+        query: string;
+
+        download_pdf?: boolean;
+
+        id_list?: Array<string> | null;
+
+        max_results?: number;
+
+        sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
+
+        sort_order?: 'ascending' | 'descending';
       }
     }
 
