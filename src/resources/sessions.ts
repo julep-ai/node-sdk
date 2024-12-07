@@ -418,7 +418,7 @@ export namespace ChatInput {
        */
       arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-      method?: string | null;
+      method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
       provider?: 'spider';
 
@@ -435,7 +435,7 @@ export namespace ChatInput {
       export interface Arguments {
         url: string;
 
-        mode?: 'scrape';
+        content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
         params?: unknown | null;
       }
@@ -2241,7 +2241,7 @@ export namespace Entry {
        */
       arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
-      method?: string | null;
+      method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
       provider?: 'spider';
 
@@ -2258,7 +2258,7 @@ export namespace Entry {
       export interface Arguments {
         url: string;
 
-        mode?: 'scrape';
+        content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
         params?: unknown | null;
       }
@@ -3324,7 +3324,7 @@ export namespace Entry {
        */
       arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
-      method?: string | null;
+      method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
       provider?: 'spider';
 
@@ -3341,7 +3341,7 @@ export namespace Entry {
       export interface Arguments {
         url: string;
 
-        mode?: 'scrape';
+        content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
         params?: unknown | null;
       }
@@ -4446,6 +4446,8 @@ export interface Session {
 
   metadata?: unknown | null;
 
+  recall_options?: Session.RecallOptions | null;
+
   render_templates?: boolean;
 
   situation?: string;
@@ -4453,6 +4455,20 @@ export interface Session {
   summary?: string | null;
 
   token_budget?: number | null;
+}
+
+export namespace Session {
+  export interface RecallOptions {
+    confidence?: number;
+
+    hybrid_alpha?: number;
+
+    max_query_length?: number;
+
+    mode?: 'hybrid' | 'vector' | 'text';
+
+    num_search_messages?: number;
+  }
 }
 
 export type SessionChatResponse = SessionChatResponse.ChunkChatResponse | ChatResponse;
@@ -4880,6 +4896,8 @@ export interface SessionCreateParams {
 
   metadata?: unknown | null;
 
+  recall_options?: SessionCreateParams.RecallOptions | null;
+
   render_templates?: boolean;
 
   situation?: string;
@@ -4891,6 +4909,20 @@ export interface SessionCreateParams {
   users?: Array<string> | null;
 }
 
+export namespace SessionCreateParams {
+  export interface RecallOptions {
+    confidence?: number;
+
+    hybrid_alpha?: number;
+
+    max_query_length?: number;
+
+    mode?: 'hybrid' | 'vector' | 'text';
+
+    num_search_messages?: number;
+  }
+}
+
 export interface SessionUpdateParams {
   auto_run_tools?: boolean;
 
@@ -4898,11 +4930,27 @@ export interface SessionUpdateParams {
 
   metadata?: unknown | null;
 
+  recall_options?: SessionUpdateParams.RecallOptions | null;
+
   render_templates?: boolean;
 
   situation?: string;
 
   token_budget?: number | null;
+}
+
+export namespace SessionUpdateParams {
+  export interface RecallOptions {
+    confidence?: number;
+
+    hybrid_alpha?: number;
+
+    max_query_length?: number;
+
+    mode?: 'hybrid' | 'vector' | 'text';
+
+    num_search_messages?: number;
+  }
 }
 
 export interface SessionListParams extends OffsetPaginationParams {
@@ -5277,7 +5325,7 @@ export namespace SessionChatParams {
        */
       arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-      method?: string | null;
+      method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
       provider?: 'spider';
 
@@ -5294,7 +5342,7 @@ export namespace SessionChatParams {
       export interface Arguments {
         url: string;
 
-        mode?: 'scrape';
+        content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
         params?: unknown | null;
       }
@@ -5963,6 +6011,8 @@ export interface SessionCreateOrUpdateParams {
 
   metadata?: unknown | null;
 
+  recall_options?: SessionCreateOrUpdateParams.RecallOptions | null;
+
   render_templates?: boolean;
 
   situation?: string;
@@ -5974,6 +6024,20 @@ export interface SessionCreateOrUpdateParams {
   users?: Array<string> | null;
 }
 
+export namespace SessionCreateOrUpdateParams {
+  export interface RecallOptions {
+    confidence?: number;
+
+    hybrid_alpha?: number;
+
+    max_query_length?: number;
+
+    mode?: 'hybrid' | 'vector' | 'text';
+
+    num_search_messages?: number;
+  }
+}
+
 export interface SessionPatchParams {
   auto_run_tools?: boolean;
 
@@ -5981,11 +6045,27 @@ export interface SessionPatchParams {
 
   metadata?: unknown | null;
 
+  recall_options?: SessionPatchParams.RecallOptions | null;
+
   render_templates?: boolean;
 
   situation?: string;
 
   token_budget?: number | null;
+}
+
+export namespace SessionPatchParams {
+  export interface RecallOptions {
+    confidence?: number;
+
+    hybrid_alpha?: number;
+
+    max_query_length?: number;
+
+    mode?: 'hybrid' | 'vector' | 'text';
+
+    num_search_messages?: number;
+  }
 }
 
 Sessions.SessionsOffsetPagination = SessionsOffsetPagination;
