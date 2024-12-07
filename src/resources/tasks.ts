@@ -630,7 +630,7 @@ export namespace Task {
          */
         arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
-        method?: string | null;
+        method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
         provider?: 'spider';
 
@@ -647,7 +647,7 @@ export namespace Task {
         export interface Arguments {
           url: string;
 
-          mode?: 'scrape';
+          content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
           params?: unknown | null;
         }
@@ -1964,7 +1964,7 @@ export namespace Task {
            */
           arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
-          method?: string | null;
+          method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
           provider?: 'spider';
 
@@ -1981,7 +1981,7 @@ export namespace Task {
           export interface Arguments {
             url: string;
 
-            mode?: 'scrape';
+            content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
             params?: unknown | null;
           }
@@ -3262,7 +3262,7 @@ export namespace Task {
            */
           arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
-          method?: string | null;
+          method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
           provider?: 'spider';
 
@@ -3279,7 +3279,7 @@ export namespace Task {
           export interface Arguments {
             url: string;
 
-            mode?: 'scrape';
+            content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
             params?: unknown | null;
           }
@@ -4591,7 +4591,7 @@ export namespace Task {
              */
             arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
-            method?: string | null;
+            method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
             provider?: 'spider';
 
@@ -4608,7 +4608,7 @@ export namespace Task {
             export interface Arguments {
               url: string;
 
-              mode?: 'scrape';
+              content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
               params?: unknown | null;
             }
@@ -5941,7 +5941,7 @@ export namespace Task {
              */
             arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
-            method?: string | null;
+            method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
             provider?: 'spider';
 
@@ -5958,7 +5958,7 @@ export namespace Task {
             export interface Arguments {
               url: string;
 
-              mode?: 'scrape';
+              content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
               params?: unknown | null;
             }
@@ -7208,7 +7208,7 @@ export namespace Task {
            */
           arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
-          method?: string | null;
+          method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
           provider?: 'spider';
 
@@ -7225,7 +7225,7 @@ export namespace Task {
           export interface Arguments {
             url: string;
 
-            mode?: 'scrape';
+            content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
             params?: unknown | null;
           }
@@ -8481,7 +8481,7 @@ export namespace Task {
            */
           arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
-          method?: string | null;
+          method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
           provider?: 'spider';
 
@@ -8498,7 +8498,7 @@ export namespace Task {
           export interface Arguments {
             url: string;
 
-            mode?: 'scrape';
+            content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
             params?: unknown | null;
           }
@@ -9423,7 +9423,7 @@ export namespace Task {
        */
       arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
-      method?: string | null;
+      method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
       provider?: 'spider';
 
@@ -9440,7 +9440,7 @@ export namespace Task {
       export interface Arguments {
         url: string;
 
-        mode?: 'scrape';
+        content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
         params?: unknown | null;
       }
@@ -10652,7 +10652,7 @@ export namespace TaskCreateParams {
          */
         arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-        method?: string | null;
+        method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
         provider?: 'spider';
 
@@ -10669,7 +10669,7 @@ export namespace TaskCreateParams {
         export interface Arguments {
           url: string;
 
-          mode?: 'scrape';
+          content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
           params?: unknown | null;
         }
@@ -11960,7 +11960,7 @@ export namespace TaskCreateParams {
            */
           arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-          method?: string | null;
+          method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
           provider?: 'spider';
 
@@ -11977,7 +11977,7 @@ export namespace TaskCreateParams {
           export interface Arguments {
             url: string;
 
-            mode?: 'scrape';
+            content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
             params?: unknown | null;
           }
@@ -13234,7 +13234,7 @@ export namespace TaskCreateParams {
            */
           arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-          method?: string | null;
+          method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
           provider?: 'spider';
 
@@ -13251,7 +13251,7 @@ export namespace TaskCreateParams {
           export interface Arguments {
             url: string;
 
-            mode?: 'scrape';
+            content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
             params?: unknown | null;
           }
@@ -14537,7 +14537,7 @@ export namespace TaskCreateParams {
              */
             arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-            method?: string | null;
+            method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
             provider?: 'spider';
 
@@ -14554,7 +14554,7 @@ export namespace TaskCreateParams {
             export interface Arguments {
               url: string;
 
-              mode?: 'scrape';
+              content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
               params?: unknown | null;
             }
@@ -15859,7 +15859,7 @@ export namespace TaskCreateParams {
              */
             arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-            method?: string | null;
+            method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
             provider?: 'spider';
 
@@ -15876,7 +15876,7 @@ export namespace TaskCreateParams {
             export interface Arguments {
               url: string;
 
-              mode?: 'scrape';
+              content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
               params?: unknown | null;
             }
@@ -17108,7 +17108,7 @@ export namespace TaskCreateParams {
            */
           arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-          method?: string | null;
+          method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
           provider?: 'spider';
 
@@ -17125,7 +17125,7 @@ export namespace TaskCreateParams {
           export interface Arguments {
             url: string;
 
-            mode?: 'scrape';
+            content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
             params?: unknown | null;
           }
@@ -18363,7 +18363,7 @@ export namespace TaskCreateParams {
            */
           arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-          method?: string | null;
+          method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
           provider?: 'spider';
 
@@ -18380,7 +18380,7 @@ export namespace TaskCreateParams {
           export interface Arguments {
             url: string;
 
-            mode?: 'scrape';
+            content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
             params?: unknown | null;
           }
@@ -19295,7 +19295,7 @@ export namespace TaskCreateParams {
        */
       arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-      method?: string | null;
+      method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
       provider?: 'spider';
 
@@ -19312,7 +19312,7 @@ export namespace TaskCreateParams {
       export interface Arguments {
         url: string;
 
-        mode?: 'scrape';
+        content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
         params?: unknown | null;
       }
@@ -20530,7 +20530,7 @@ export namespace TaskCreateOrUpdateParams {
          */
         arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-        method?: string | null;
+        method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
         provider?: 'spider';
 
@@ -20547,7 +20547,7 @@ export namespace TaskCreateOrUpdateParams {
         export interface Arguments {
           url: string;
 
-          mode?: 'scrape';
+          content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
           params?: unknown | null;
         }
@@ -21838,7 +21838,7 @@ export namespace TaskCreateOrUpdateParams {
            */
           arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-          method?: string | null;
+          method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
           provider?: 'spider';
 
@@ -21855,7 +21855,7 @@ export namespace TaskCreateOrUpdateParams {
           export interface Arguments {
             url: string;
 
-            mode?: 'scrape';
+            content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
             params?: unknown | null;
           }
@@ -23112,7 +23112,7 @@ export namespace TaskCreateOrUpdateParams {
            */
           arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-          method?: string | null;
+          method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
           provider?: 'spider';
 
@@ -23129,7 +23129,7 @@ export namespace TaskCreateOrUpdateParams {
           export interface Arguments {
             url: string;
 
-            mode?: 'scrape';
+            content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
             params?: unknown | null;
           }
@@ -24415,7 +24415,7 @@ export namespace TaskCreateOrUpdateParams {
              */
             arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-            method?: string | null;
+            method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
             provider?: 'spider';
 
@@ -24432,7 +24432,7 @@ export namespace TaskCreateOrUpdateParams {
             export interface Arguments {
               url: string;
 
-              mode?: 'scrape';
+              content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
               params?: unknown | null;
             }
@@ -25737,7 +25737,7 @@ export namespace TaskCreateOrUpdateParams {
              */
             arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-            method?: string | null;
+            method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
             provider?: 'spider';
 
@@ -25754,7 +25754,7 @@ export namespace TaskCreateOrUpdateParams {
             export interface Arguments {
               url: string;
 
-              mode?: 'scrape';
+              content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
               params?: unknown | null;
             }
@@ -26986,7 +26986,7 @@ export namespace TaskCreateOrUpdateParams {
            */
           arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-          method?: string | null;
+          method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
           provider?: 'spider';
 
@@ -27003,7 +27003,7 @@ export namespace TaskCreateOrUpdateParams {
           export interface Arguments {
             url: string;
 
-            mode?: 'scrape';
+            content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
             params?: unknown | null;
           }
@@ -28241,7 +28241,7 @@ export namespace TaskCreateOrUpdateParams {
            */
           arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-          method?: string | null;
+          method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
           provider?: 'spider';
 
@@ -28258,7 +28258,7 @@ export namespace TaskCreateOrUpdateParams {
           export interface Arguments {
             url: string;
 
-            mode?: 'scrape';
+            content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
             params?: unknown | null;
           }
@@ -29173,7 +29173,7 @@ export namespace TaskCreateOrUpdateParams {
        */
       arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-      method?: string | null;
+      method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
       provider?: 'spider';
 
@@ -29190,7 +29190,7 @@ export namespace TaskCreateOrUpdateParams {
       export interface Arguments {
         url: string;
 
-        mode?: 'scrape';
+        content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
         params?: unknown | null;
       }
