@@ -316,7 +316,7 @@ export namespace ToolListResponse {
      */
     arguments?: SpiderIntegrationDefOutput.Arguments | null;
 
-    method?: string | null;
+    method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
     provider?: 'spider';
 
@@ -333,7 +333,7 @@ export namespace ToolListResponse {
     export interface Arguments {
       url: string;
 
-      mode?: 'scrape';
+      content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
       params?: unknown | null;
     }
@@ -1218,7 +1218,7 @@ export namespace ToolCreateParams {
      */
     arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-    method?: string | null;
+    method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
     provider?: 'spider';
 
@@ -1235,7 +1235,7 @@ export namespace ToolCreateParams {
     export interface Arguments {
       url: string;
 
-      mode?: 'scrape';
+      content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
       params?: unknown | null;
     }
@@ -2120,7 +2120,7 @@ export namespace ToolUpdateParams {
      */
     arguments?: SpiderIntegrationDefInput.Arguments | null;
 
-    method?: string | null;
+    method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
     provider?: 'spider';
 
@@ -2137,7 +2137,7 @@ export namespace ToolUpdateParams {
     export interface Arguments {
       url: string;
 
-      mode?: 'scrape';
+      content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
       params?: unknown | null;
     }
@@ -3029,7 +3029,7 @@ export namespace ToolPatchParams {
      */
     arguments?: SpiderIntegrationDefUpdate.Arguments | null;
 
-    method?: string | null;
+    method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
     provider?: 'spider';
 
@@ -3044,7 +3044,7 @@ export namespace ToolPatchParams {
      * Arguments for Spider integration
      */
     export interface Arguments {
-      mode?: 'scrape';
+      content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
 
       params?: unknown | null;
 
