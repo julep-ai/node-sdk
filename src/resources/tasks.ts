@@ -4034,7 +4034,7 @@ export namespace Task {
 
   export namespace SwitchStepOutput {
     export interface Switch {
-      case: string;
+      case: '_';
 
       then:
         | Switch.EvaluateStep
@@ -13988,7 +13988,7 @@ export namespace TaskCreateParams {
 
   export namespace SwitchStepInput {
     export interface Switch {
-      case: string;
+      case: '_';
 
       then:
         | Switch.EvaluateStep
@@ -23866,7 +23866,7 @@ export namespace TaskCreateOrUpdateParams {
 
   export namespace SwitchStepInput {
     export interface Switch {
-      case: string;
+      case: '_';
 
       then:
         | Switch.EvaluateStep
