@@ -4459,11 +4459,19 @@ export interface Session {
 
 export namespace Session {
   export interface RecallOptions {
+    alpha?: number;
+
     confidence?: number;
 
-    hybrid_alpha?: number;
+    lang?: 'en-US';
+
+    limit?: number;
 
     max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
 
     mode?: 'hybrid' | 'vector' | 'text';
 
@@ -4911,11 +4919,19 @@ export interface SessionCreateParams {
 
 export namespace SessionCreateParams {
   export interface RecallOptions {
+    alpha?: number;
+
     confidence?: number;
 
-    hybrid_alpha?: number;
+    lang?: 'en-US';
+
+    limit?: number;
 
     max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
 
     mode?: 'hybrid' | 'vector' | 'text';
 
@@ -4941,11 +4957,19 @@ export interface SessionUpdateParams {
 
 export namespace SessionUpdateParams {
   export interface RecallOptions {
+    alpha?: number;
+
     confidence?: number;
 
-    hybrid_alpha?: number;
+    lang?: 'en-US';
+
+    limit?: number;
 
     max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
 
     mode?: 'hybrid' | 'vector' | 'text';
 
@@ -6026,11 +6050,19 @@ export interface SessionCreateOrUpdateParams {
 
 export namespace SessionCreateOrUpdateParams {
   export interface RecallOptions {
+    alpha?: number;
+
     confidence?: number;
 
-    hybrid_alpha?: number;
+    lang?: 'en-US';
+
+    limit?: number;
 
     max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
 
     mode?: 'hybrid' | 'vector' | 'text';
 
@@ -6056,11 +6088,19 @@ export interface SessionPatchParams {
 
 export namespace SessionPatchParams {
   export interface RecallOptions {
+    alpha?: number;
+
     confidence?: number;
 
-    hybrid_alpha?: number;
+    lang?: 'en-US';
+
+    limit?: number;
 
     max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
 
     mode?: 'hybrid' | 'vector' | 'text';
 
