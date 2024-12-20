@@ -163,7 +163,7 @@ export abstract class APIClient {
     maxRetries = 5,
     timeout = 120000, // 2 minutes
     httpAgent,
-    fetch: overridenFetch,
+    fetch: overriddenFetch,
   }: {
     baseURL: string;
     maxRetries?: number | undefined;
@@ -176,7 +176,7 @@ export abstract class APIClient {
     this.timeout = validatePositiveInteger('timeout', timeout);
     this.httpAgent = httpAgent;
 
-    this.fetch = overridenFetch ?? fetch;
+    this.fetch = overriddenFetch ?? fetch;
   }
 
   protected authHeaders(opts: FinalRequestOptions): Headers {
