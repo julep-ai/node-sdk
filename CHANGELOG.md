@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.43.2 (2024-12-24)
+
+Full Changelog: [v1.43.1...v1.43.2](https://github.com/julep-ai/node-sdk/compare/v1.43.1...v1.43.2)
+
+### Bug Fixes
+
+* **client:** normalize method ([#161](https://github.com/julep-ai/node-sdk/issues/161)) ([05348d3](https://github.com/julep-ai/node-sdk/commit/05348d335dd16e281ce3aec8a1b66f778ee3c0d9))
+
+
+### Chores
+
+* **internal:** codegen related update ([#155](https://github.com/julep-ai/node-sdk/issues/155)) ([b91e53a](https://github.com/julep-ai/node-sdk/commit/b91e53aa9c391952eeb9738415e138ae5cb81438))
+* **internal:** codegen related update ([#157](https://github.com/julep-ai/node-sdk/issues/157)) ([63e2be2](https://github.com/julep-ai/node-sdk/commit/63e2be272456056c645e5dcfe3a52b7fec01e8d4))
+* **internal:** codegen related update ([#158](https://github.com/julep-ai/node-sdk/issues/158)) ([90200da](https://github.com/julep-ai/node-sdk/commit/90200da556ba611a9e4004aaf661d099d0056b6c))
+* **internal:** codegen related update ([#159](https://github.com/julep-ai/node-sdk/issues/159)) ([8cf8f24](https://github.com/julep-ai/node-sdk/commit/8cf8f24f7cad704c9b761731cb5e0e7a2927b9ea))
+* **internal:** codegen related update ([#160](https://github.com/julep-ai/node-sdk/issues/160)) ([7795138](https://github.com/julep-ai/node-sdk/commit/779513832d5a69e4671114707d7b7c9e5dd73834))
+
 ## 1.43.1 (2024-12-20)
 
 Full Changelog: [v1.43.0...v1.43.1](https://github.com/julep-ai/node-sdk/compare/v1.43.0...v1.43.1)
