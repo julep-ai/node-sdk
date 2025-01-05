@@ -70,18 +70,6 @@ export class Executions extends APIResource {
   get(executionId: string, options?: Core.RequestOptions): Core.APIPromise<Execution> {
     return this._client.get(`/executions/${executionId}`, options);
   }
-
-  /**
-   * Patch Execution
-   */
-  patch(
-    taskId: string,
-    executionId: string,
-    body: ExecutionPatchParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceUpdated> {
-    return this._client.patch(`/tasks/${taskId}/executions/${executionId}`, { body, ...options });
-  }
 }
 
 export class ExecutionsOffsetPagination extends OffsetPagination<Execution> {}
@@ -187,10 +175,6 @@ export namespace ExecutionChangeStatusParams {
   }
 }
 
-export interface ExecutionPatchParams {
-  status: 'queued' | 'starting' | 'running' | 'awaiting_input' | 'succeeded' | 'failed' | 'cancelled';
-}
-
 Executions.ExecutionsOffsetPagination = ExecutionsOffsetPagination;
 Executions.Transitions = Transitions;
 
@@ -203,7 +187,6 @@ export declare namespace Executions {
     type ExecutionCreateParams as ExecutionCreateParams,
     type ExecutionListParams as ExecutionListParams,
     type ExecutionChangeStatusParams as ExecutionChangeStatusParams,
-    type ExecutionPatchParams as ExecutionPatchParams,
   };
 
   export {

@@ -17,12 +17,4 @@ export {
   type DocListParams,
   type DocSearchParams,
 } from './docs';
-export {
-  ToolListResponsesOffsetPagination,
-  Tools,
-  type ToolListResponse,
-  type ToolCreateParams,
-  type ToolUpdateParams,
-  type ToolListParams,
-  type ToolPatchParams,
-} from './tools';
+export { Tools } from './tools';

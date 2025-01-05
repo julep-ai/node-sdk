@@ -16,5 +16,4 @@ export {
   type ExecutionCreateParams,
   type ExecutionListParams,
   type ExecutionChangeStatusParams,
-  type ExecutionPatchParams,
 } from './executions';
