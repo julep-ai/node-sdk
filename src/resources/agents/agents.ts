@@ -7,15 +7,7 @@ import * as Shared from '../shared';
 import * as DocsAPI from './docs';
 import { DocCreateParams, DocListParams, DocSearchParams, DocSearchResponse, Docs } from './docs';
 import * as ToolsAPI from './tools';
-import {
-  ToolCreateParams,
-  ToolListParams,
-  ToolListResponse,
-  ToolListResponsesOffsetPagination,
-  ToolPatchParams,
-  ToolUpdateParams,
-  Tools,
-} from './tools';
+import { Tools } from './tools';
 import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
 
 export class Agents extends APIResource {
@@ -102,9 +94,13 @@ export interface Agent {
 
   created_at: string;
 
+  name: string;
+
   updated_at: string;
 
   about?: string;
+
+  canonical_name?: string | null;
 
   /**
    * Default settings for the chat session (also used by the agent)
@@ -116,8 +112,6 @@ export interface Agent {
   metadata?: unknown | null;
 
   model?: string;
-
-  name?: string;
 }
 
 export namespace Agent {
@@ -142,7 +136,11 @@ export namespace Agent {
 }
 
 export interface AgentCreateParams {
+  name: string;
+
   about?: string;
+
+  canonical_name?: string | null;
 
   /**
    * Default settings for the chat session (also used by the agent)
@@ -154,8 +152,6 @@ export interface AgentCreateParams {
   metadata?: unknown | null;
 
   model?: string;
-
-  name?: string;
 }
 
 export namespace AgentCreateParams {
@@ -180,7 +176,11 @@ export namespace AgentCreateParams {
 }
 
 export interface AgentUpdateParams {
+  name: string;
+
   about?: string;
+
+  canonical_name?: string | null;
 
   /**
    * Default settings for the chat session (also used by the agent)
@@ -192,8 +192,6 @@ export interface AgentUpdateParams {
   metadata?: unknown | null;
 
   model?: string;
-
-  name?: string;
 }
 
 export namespace AgentUpdateParams {
@@ -226,7 +224,11 @@ export interface AgentListParams extends OffsetPaginationParams {
 }
 
 export interface AgentCreateOrUpdateParams {
+  name: string;
+
   about?: string;
+
+  canonical_name?: string | null;
 
   /**
    * Default settings for the chat session (also used by the agent)
@@ -238,8 +240,6 @@ export interface AgentCreateOrUpdateParams {
   metadata?: unknown | null;
 
   model?: string;
-
-  name?: string;
 }
 
 export namespace AgentCreateOrUpdateParams {
@@ -266,6 +266,8 @@ export namespace AgentCreateOrUpdateParams {
 export interface AgentPatchParams {
   about?: string;
 
+  canonical_name?: string | null;
+
   /**
    * Default settings for the chat session (also used by the agent)
    */
@@ -277,7 +279,7 @@ export interface AgentPatchParams {
 
   model?: string;
 
-  name?: string;
+  name?: string | null;
 }
 
 export namespace AgentPatchParams {
@@ -303,7 +305,6 @@ export namespace AgentPatchParams {
 
 Agents.AgentsOffsetPagination = AgentsOffsetPagination;
 Agents.Tools = Tools;
-Agents.ToolListResponsesOffsetPagination = ToolListResponsesOffsetPagination;
 Agents.Docs = Docs;
 
 export declare namespace Agents {
@@ -317,15 +318,7 @@ export declare namespace Agents {
     type AgentPatchParams as AgentPatchParams,
   };
 
-  export {
-    Tools as Tools,
-    type ToolListResponse as ToolListResponse,
-    ToolListResponsesOffsetPagination as ToolListResponsesOffsetPagination,
-    type ToolCreateParams as ToolCreateParams,
-    type ToolUpdateParams as ToolUpdateParams,
-    type ToolListParams as ToolListParams,
-    type ToolPatchParams as ToolPatchParams,
-  };
+  export { Tools as Tools };
 
   export {
     Docs as Docs,

@@ -31,9 +31,17 @@ export interface Doc {
 
   title: string;
 
+  embedding_dimensions?: number | null;
+
+  embedding_model?: string | null;
+
   embeddings?: Array<number> | Array<Array<number>> | null;
 
+  language?: string | null;
+
   metadata?: unknown | null;
+
+  modality?: string | null;
 }
 
 export interface EmbedQueryResponse {
