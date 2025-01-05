@@ -1931,6 +1931,8 @@ export interface Entry {
 
   tokenizer: string;
 
+  model?: string;
+
   name?: string | null;
 
   tool_call_id?: string | null;
@@ -4442,6 +4444,8 @@ export interface Session {
 
   context_overflow?: 'truncate' | 'adaptive' | null;
 
+  forward_tool_calls?: boolean;
+
   kind?: string | null;
 
   metadata?: unknown | null;
@@ -4450,9 +4454,11 @@ export interface Session {
 
   render_templates?: boolean;
 
-  situation?: string;
+  situation?: string | null;
 
   summary?: string | null;
+
+  system_template?: string;
 
   token_budget?: number | null;
 }
@@ -4902,13 +4908,17 @@ export interface SessionCreateParams {
 
   context_overflow?: 'truncate' | 'adaptive' | null;
 
+  forward_tool_calls?: boolean;
+
   metadata?: unknown | null;
 
   recall_options?: SessionCreateParams.RecallOptions | null;
 
   render_templates?: boolean;
 
-  situation?: string;
+  situation?: string | null;
+
+  system_template?: string;
 
   token_budget?: number | null;
 
@@ -4944,13 +4954,17 @@ export interface SessionUpdateParams {
 
   context_overflow?: 'truncate' | 'adaptive' | null;
 
+  forward_tool_calls?: boolean;
+
   metadata?: unknown | null;
 
   recall_options?: SessionUpdateParams.RecallOptions | null;
 
   render_templates?: boolean;
 
-  situation?: string;
+  situation?: string | null;
+
+  system_template?: string;
 
   token_budget?: number | null;
 }
@@ -6033,13 +6047,17 @@ export interface SessionCreateOrUpdateParams {
 
   context_overflow?: 'truncate' | 'adaptive' | null;
 
+  forward_tool_calls?: boolean;
+
   metadata?: unknown | null;
 
   recall_options?: SessionCreateOrUpdateParams.RecallOptions | null;
 
   render_templates?: boolean;
 
-  situation?: string;
+  situation?: string | null;
+
+  system_template?: string;
 
   token_budget?: number | null;
 
@@ -6075,13 +6093,17 @@ export interface SessionPatchParams {
 
   context_overflow?: 'truncate' | 'adaptive' | null;
 
+  forward_tool_calls?: boolean;
+
   metadata?: unknown | null;
 
   recall_options?: SessionPatchParams.RecallOptions | null;
 
   render_templates?: boolean;
 
-  situation?: string;
+  situation?: string | null;
+
+  system_template?: string;
 
   token_budget?: number | null;
 }

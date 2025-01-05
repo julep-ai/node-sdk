@@ -30,7 +30,7 @@ const client = new Julep({
 async function main() {
   const resourceCreated = await client.tasks.create('dad00000-0000-4000-a000-000000000000', {
     main: [{ evaluate: { foo: ['string'] } }],
-    name: 'name',
+    name: 'x',
   });
 
   console.log(resourceCreated.id);
@@ -54,9 +54,9 @@ const client = new Julep({
 
 async function main() {
   const params: Julep.AgentCreateOrUpdateParams = {
+    name: 'R2D2',
     instructions: ['Protect Leia', 'Kick butt'],
     model: 'o1-preview',
-    name: 'R2D2',
   };
   const agent: Julep.ResourceCreated = await client.agents.createOrUpdate(
     'dad00000-0000-4000-a000-000000000000',
@@ -80,9 +80,9 @@ a subclass of `APIError` will be thrown:
 async function main() {
   const agent = await client.agents
     .createOrUpdate('dad00000-0000-4000-a000-000000000000', {
+      name: 'R2D2',
       instructions: ['Protect Leia', 'Kick butt'],
       model: 'o1-preview',
-      name: 'R2D2',
     })
     .catch(async (err) => {
       if (err instanceof Julep.APIError) {
@@ -127,7 +127,7 @@ const client = new Julep({
 });
 
 // Or, configure per-request:
-await client.agents.createOrUpdate('dad00000-0000-4000-a000-000000000000', { instructions: ['Protect Leia', 'Kick butt'], model: 'o1-preview', name: 'R2D2' }, {
+await client.agents.createOrUpdate('dad00000-0000-4000-a000-000000000000', { name: 'R2D2', instructions: ['Protect Leia', 'Kick butt'], model: 'o1-preview' }, {
   maxRetries: 5,
 });
 ```
@@ -144,7 +144,7 @@ const client = new Julep({
 });
 
 // Override per-request:
-await client.agents.createOrUpdate('dad00000-0000-4000-a000-000000000000', { instructions: ['Protect Leia', 'Kick butt'], model: 'o1-preview', name: 'R2D2' }, {
+await client.agents.createOrUpdate('dad00000-0000-4000-a000-000000000000', { name: 'R2D2', instructions: ['Protect Leia', 'Kick butt'], model: 'o1-preview' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -198,9 +198,9 @@ const client = new Julep();
 
 const response = await client.agents
   .createOrUpdate('dad00000-0000-4000-a000-000000000000', {
+    name: 'R2D2',
     instructions: ['Protect Leia', 'Kick butt'],
     model: 'o1-preview',
-    name: 'R2D2',
   })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
@@ -208,9 +208,9 @@ console.log(response.statusText); // access the underlying Response object
 
 const { data: agent, response: raw } = await client.agents
   .createOrUpdate('dad00000-0000-4000-a000-000000000000', {
+    name: 'R2D2',
     instructions: ['Protect Leia', 'Kick butt'],
     model: 'o1-preview',
-    name: 'R2D2',
   })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
@@ -320,7 +320,7 @@ const client = new Julep({
 // Override per-request:
 await client.agents.createOrUpdate(
   'dad00000-0000-4000-a000-000000000000',
-  { instructions: ['Protect Leia', 'Kick butt'], model: 'o1-preview', name: 'R2D2' },
+  { name: 'R2D2', instructions: ['Protect Leia', 'Kick butt'], model: 'o1-preview' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
