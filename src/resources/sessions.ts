@@ -1925,7 +1925,7 @@ export interface Entry {
 
   source: 'api_request' | 'api_response' | 'tool_response' | 'internal' | 'summarizer' | 'meta';
 
-  timestamp: number;
+  timestamp: string;
 
   token_count: number;
 
