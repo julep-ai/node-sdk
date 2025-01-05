@@ -9,8 +9,8 @@ const client = new Julep({
 });
 
 describe('resource agents', () => {
-  test('create', async () => {
-    const responsePromise = client.agents.create({});
+  test('create: only required params', async () => {
+    const responsePromise = client.agents.create({ name: 'x' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,8 +20,28 @@ describe('resource agents', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('update', async () => {
-    const responsePromise = client.agents.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {});
+  test('create: required and optional params', async () => {
+    const response = await client.agents.create({
+      name: 'x',
+      about: 'about',
+      canonical_name: 'x',
+      default_settings: {
+        frequency_penalty: -2,
+        length_penalty: 0,
+        min_p: 0,
+        presence_penalty: -2,
+        repetition_penalty: 0,
+        temperature: 0,
+        top_p: 0,
+      },
+      instructions: 'string',
+      metadata: {},
+      model: 'model',
+    });
+  });
+
+  test('update: only required params', async () => {
+    const responsePromise = client.agents.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { name: 'x' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -29,6 +49,26 @@ describe('resource agents', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('update: required and optional params', async () => {
+    const response = await client.agents.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      name: 'x',
+      about: 'about',
+      canonical_name: 'x',
+      default_settings: {
+        frequency_penalty: -2,
+        length_penalty: 0,
+        min_p: 0,
+        presence_penalty: -2,
+        repetition_penalty: 0,
+        temperature: 0,
+        top_p: 0,
+      },
+      instructions: 'string',
+      metadata: {},
+      model: 'model',
+    });
   });
 
   test('list', async () => {
@@ -77,8 +117,10 @@ describe('resource agents', () => {
     ).rejects.toThrow(Julep.NotFoundError);
   });
 
-  test('createOrUpdate', async () => {
-    const responsePromise = client.agents.createOrUpdate('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {});
+  test('createOrUpdate: only required params', async () => {
+    const responsePromise = client.agents.createOrUpdate('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      name: 'x',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -86,6 +128,26 @@ describe('resource agents', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('createOrUpdate: required and optional params', async () => {
+    const response = await client.agents.createOrUpdate('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      name: 'x',
+      about: 'about',
+      canonical_name: 'x',
+      default_settings: {
+        frequency_penalty: -2,
+        length_penalty: 0,
+        min_p: 0,
+        presence_penalty: -2,
+        repetition_penalty: 0,
+        temperature: 0,
+        top_p: 0,
+      },
+      instructions: 'string',
+      metadata: {},
+      model: 'model',
+    });
   });
 
   test('get', async () => {

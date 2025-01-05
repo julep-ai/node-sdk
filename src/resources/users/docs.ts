@@ -15,7 +15,7 @@ export class Docs extends APIResource {
    * Parameters: user_id (UUID): The unique identifier of the user associated with
    * the document. data (CreateDocRequest): The data to create the document with.
    * x_developer_id (UUID): The unique identifier of the developer associated with
-   * the document. background_tasks (BackgroundTasks): The background tasks to run.
+   * the document.
    *
    * Returns: ResourceCreatedResponse: The created document.
    */

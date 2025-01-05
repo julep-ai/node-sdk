@@ -53,7 +53,6 @@ import {
   ExecutionChangeStatusResponse,
   ExecutionCreateParams,
   ExecutionListParams,
-  ExecutionPatchParams,
   Executions,
   ExecutionsOffsetPagination,
   Transition,
@@ -350,7 +349,6 @@ export declare namespace Julep {
     type ExecutionCreateParams as ExecutionCreateParams,
     type ExecutionListParams as ExecutionListParams,
     type ExecutionChangeStatusParams as ExecutionChangeStatusParams,
-    type ExecutionPatchParams as ExecutionPatchParams,
   };
 
   export type ResourceCreated = API.ResourceCreated;
