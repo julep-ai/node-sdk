@@ -310,21 +310,21 @@ export namespace ChatInput {
      * Function definition
      */
     export interface Function {
-      description?: unknown | null;
+      description?: unknown;
 
-      name?: unknown | null;
+      name?: unknown;
 
       parameters?: unknown | null;
     }
 
     export interface DummyIntegrationDef {
-      arguments?: unknown | null;
+      arguments?: unknown;
 
       method?: string | null;
 
       provider?: 'dummy';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     /**
@@ -461,7 +461,7 @@ export namespace ChatInput {
 
       provider?: 'wikipedia';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace WikipediaIntegrationDef {
@@ -917,7 +917,7 @@ export namespace ChatInput {
 
       provider?: 'ffmpeg';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace FfmpegIntegrationDef {
@@ -1036,7 +1036,7 @@ export namespace ChatInput {
 
       provider?: 'arxiv';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace ArxivIntegrationDef {
@@ -1225,15 +1225,15 @@ export namespace ChatResponse {
 
         id?: string | null;
 
-        api_call?: unknown | null;
+        api_call?: unknown;
 
         bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
         computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-        integration?: unknown | null;
+        integration?: unknown;
 
-        system?: unknown | null;
+        system?: unknown;
 
         text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -1358,15 +1358,15 @@ export namespace ChatResponse {
 
       id?: string | null;
 
-      api_call?: unknown | null;
+      api_call?: unknown;
 
       bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
       computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-      integration?: unknown | null;
+      integration?: unknown;
 
-      system?: unknown | null;
+      system?: unknown;
 
       text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -1574,15 +1574,15 @@ export namespace ChatResponse {
 
         id?: string | null;
 
-        api_call?: unknown | null;
+        api_call?: unknown;
 
         bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
         computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-        integration?: unknown | null;
+        integration?: unknown;
 
-        system?: unknown | null;
+        system?: unknown;
 
         text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -1707,15 +1707,15 @@ export namespace ChatResponse {
 
       id?: string | null;
 
-      api_call?: unknown | null;
+      api_call?: unknown;
 
       bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
       computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-      integration?: unknown | null;
+      integration?: unknown;
 
-      system?: unknown | null;
+      system?: unknown;
 
       text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -2135,21 +2135,21 @@ export namespace Entry {
      * Function definition
      */
     export interface Function {
-      description?: unknown | null;
+      description?: unknown;
 
-      name?: unknown | null;
+      name?: unknown;
 
       parameters?: unknown | null;
     }
 
     export interface DummyIntegrationDef {
-      arguments?: unknown | null;
+      arguments?: unknown;
 
       method?: string | null;
 
       provider?: 'dummy';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     /**
@@ -2286,7 +2286,7 @@ export namespace Entry {
 
       provider?: 'wikipedia';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace WikipediaIntegrationDef {
@@ -2742,7 +2742,7 @@ export namespace Entry {
 
       provider?: 'ffmpeg';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace FfmpegIntegrationDef {
@@ -2861,7 +2861,7 @@ export namespace Entry {
 
       provider?: 'arxiv';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace ArxivIntegrationDef {
@@ -2922,15 +2922,15 @@ export namespace Entry {
 
     id?: string | null;
 
-    api_call?: unknown | null;
+    api_call?: unknown;
 
     bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
     computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-    integration?: unknown | null;
+    integration?: unknown;
 
-    system?: unknown | null;
+    system?: unknown;
 
     text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -3218,21 +3218,21 @@ export namespace Entry {
      * Function definition
      */
     export interface Function {
-      description?: unknown | null;
+      description?: unknown;
 
-      name?: unknown | null;
+      name?: unknown;
 
       parameters?: unknown | null;
     }
 
     export interface DummyIntegrationDef {
-      arguments?: unknown | null;
+      arguments?: unknown;
 
       method?: string | null;
 
       provider?: 'dummy';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     /**
@@ -3369,7 +3369,7 @@ export namespace Entry {
 
       provider?: 'wikipedia';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace WikipediaIntegrationDef {
@@ -3825,7 +3825,7 @@ export namespace Entry {
 
       provider?: 'ffmpeg';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace FfmpegIntegrationDef {
@@ -3944,7 +3944,7 @@ export namespace Entry {
 
       provider?: 'arxiv';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace ArxivIntegrationDef {
@@ -4005,15 +4005,15 @@ export namespace Entry {
 
     id?: string | null;
 
-    api_call?: unknown | null;
+    api_call?: unknown;
 
     bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
     computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-    integration?: unknown | null;
+    integration?: unknown;
 
-    system?: unknown | null;
+    system?: unknown;
 
     text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -4117,15 +4117,15 @@ export namespace Entry {
 
     id?: string | null;
 
-    api_call?: unknown | null;
+    api_call?: unknown;
 
     bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
     computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-    integration?: unknown | null;
+    integration?: unknown;
 
-    system?: unknown | null;
+    system?: unknown;
 
     text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -4331,15 +4331,15 @@ export namespace Message {
 
     id?: string | null;
 
-    api_call?: unknown | null;
+    api_call?: unknown;
 
     bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
     computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-    integration?: unknown | null;
+    integration?: unknown;
 
-    system?: unknown | null;
+    system?: unknown;
 
     text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -4629,15 +4629,15 @@ export namespace SessionChatResponse {
 
           id?: string | null;
 
-          api_call?: unknown | null;
+          api_call?: unknown;
 
           bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
           computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-          integration?: unknown | null;
+          integration?: unknown;
 
-          system?: unknown | null;
+          system?: unknown;
 
           text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -4762,15 +4762,15 @@ export namespace SessionChatResponse {
 
         id?: string | null;
 
-        api_call?: unknown | null;
+        api_call?: unknown;
 
         bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
         computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-        integration?: unknown | null;
+        integration?: unknown;
 
-        system?: unknown | null;
+        system?: unknown;
 
         text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -5255,21 +5255,21 @@ export namespace SessionChatParams {
      * Function definition
      */
     export interface Function {
-      description?: unknown | null;
+      description?: unknown;
 
-      name?: unknown | null;
+      name?: unknown;
 
       parameters?: unknown | null;
     }
 
     export interface DummyIntegrationDef {
-      arguments?: unknown | null;
+      arguments?: unknown;
 
       method?: string | null;
 
       provider?: 'dummy';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     /**
@@ -5406,7 +5406,7 @@ export namespace SessionChatParams {
 
       provider?: 'wikipedia';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace WikipediaIntegrationDef {
@@ -5862,7 +5862,7 @@ export namespace SessionChatParams {
 
       provider?: 'ffmpeg';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace FfmpegIntegrationDef {
@@ -5981,7 +5981,7 @@ export namespace SessionChatParams {
 
       provider?: 'arxiv';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace ArxivIntegrationDef {

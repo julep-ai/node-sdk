@@ -93,7 +93,7 @@ export interface Execution {
 
   metadata?: unknown | null;
 
-  output?: unknown | null;
+  output?: unknown;
 }
 
 export interface Transition {
@@ -148,7 +148,7 @@ export interface ExecutionCreateParams {
 
   metadata?: unknown | null;
 
-  output?: unknown | null;
+  output?: unknown;
 }
 
 export interface ExecutionListParams extends OffsetPaginationParams {

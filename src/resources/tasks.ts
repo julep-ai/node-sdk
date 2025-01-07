@@ -261,15 +261,15 @@ export namespace Task {
 
         id?: string | null;
 
-        api_call?: unknown | null;
+        api_call?: unknown;
 
         bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
         computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-        integration?: unknown | null;
+        integration?: unknown;
 
-        system?: unknown | null;
+        system?: unknown;
 
         text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -524,21 +524,21 @@ export namespace Task {
        * Function definition
        */
       export interface Function {
-        description?: unknown | null;
+        description?: unknown;
 
-        name?: unknown | null;
+        name?: unknown;
 
         parameters?: unknown | null;
       }
 
       export interface DummyIntegrationDef {
-        arguments?: unknown | null;
+        arguments?: unknown;
 
         method?: string | null;
 
         provider?: 'dummy';
 
-        setup?: unknown | null;
+        setup?: unknown;
       }
 
       /**
@@ -675,7 +675,7 @@ export namespace Task {
 
         provider?: 'wikipedia';
 
-        setup?: unknown | null;
+        setup?: unknown;
       }
 
       export namespace WikipediaIntegrationDef {
@@ -1131,7 +1131,7 @@ export namespace Task {
 
         provider?: 'ffmpeg';
 
-        setup?: unknown | null;
+        setup?: unknown;
       }
 
       export namespace FfmpegIntegrationDef {
@@ -1250,7 +1250,7 @@ export namespace Task {
 
         provider?: 'arxiv';
 
-        setup?: unknown | null;
+        setup?: unknown;
       }
 
       export namespace ArxivIntegrationDef {
@@ -1595,15 +1595,15 @@ export namespace Task {
 
           id?: string | null;
 
-          api_call?: unknown | null;
+          api_call?: unknown;
 
           bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
           computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-          integration?: unknown | null;
+          integration?: unknown;
 
-          system?: unknown | null;
+          system?: unknown;
 
           text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -1858,21 +1858,21 @@ export namespace Task {
          * Function definition
          */
         export interface Function {
-          description?: unknown | null;
+          description?: unknown;
 
-          name?: unknown | null;
+          name?: unknown;
 
           parameters?: unknown | null;
         }
 
         export interface DummyIntegrationDef {
-          arguments?: unknown | null;
+          arguments?: unknown;
 
           method?: string | null;
 
           provider?: 'dummy';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         /**
@@ -2009,7 +2009,7 @@ export namespace Task {
 
           provider?: 'wikipedia';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace WikipediaIntegrationDef {
@@ -2465,7 +2465,7 @@ export namespace Task {
 
           provider?: 'ffmpeg';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace FfmpegIntegrationDef {
@@ -2584,7 +2584,7 @@ export namespace Task {
 
           provider?: 'arxiv';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace ArxivIntegrationDef {
@@ -2893,15 +2893,15 @@ export namespace Task {
 
           id?: string | null;
 
-          api_call?: unknown | null;
+          api_call?: unknown;
 
           bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
           computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-          integration?: unknown | null;
+          integration?: unknown;
 
-          system?: unknown | null;
+          system?: unknown;
 
           text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -3156,21 +3156,21 @@ export namespace Task {
          * Function definition
          */
         export interface Function {
-          description?: unknown | null;
+          description?: unknown;
 
-          name?: unknown | null;
+          name?: unknown;
 
           parameters?: unknown | null;
         }
 
         export interface DummyIntegrationDef {
-          arguments?: unknown | null;
+          arguments?: unknown;
 
           method?: string | null;
 
           provider?: 'dummy';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         /**
@@ -3307,7 +3307,7 @@ export namespace Task {
 
           provider?: 'wikipedia';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace WikipediaIntegrationDef {
@@ -3763,7 +3763,7 @@ export namespace Task {
 
           provider?: 'ffmpeg';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace FfmpegIntegrationDef {
@@ -3882,7 +3882,7 @@ export namespace Task {
 
           provider?: 'arxiv';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace ArxivIntegrationDef {
@@ -4222,15 +4222,15 @@ export namespace Task {
 
             id?: string | null;
 
-            api_call?: unknown | null;
+            api_call?: unknown;
 
             bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
             computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-            integration?: unknown | null;
+            integration?: unknown;
 
-            system?: unknown | null;
+            system?: unknown;
 
             text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -4485,21 +4485,21 @@ export namespace Task {
            * Function definition
            */
           export interface Function {
-            description?: unknown | null;
+            description?: unknown;
 
-            name?: unknown | null;
+            name?: unknown;
 
             parameters?: unknown | null;
           }
 
           export interface DummyIntegrationDef {
-            arguments?: unknown | null;
+            arguments?: unknown;
 
             method?: string | null;
 
             provider?: 'dummy';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           /**
@@ -4636,7 +4636,7 @@ export namespace Task {
 
             provider?: 'wikipedia';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace WikipediaIntegrationDef {
@@ -5092,7 +5092,7 @@ export namespace Task {
 
             provider?: 'ffmpeg';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace FfmpegIntegrationDef {
@@ -5211,7 +5211,7 @@ export namespace Task {
 
             provider?: 'arxiv';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace ArxivIntegrationDef {
@@ -5572,15 +5572,15 @@ export namespace Task {
 
             id?: string | null;
 
-            api_call?: unknown | null;
+            api_call?: unknown;
 
             bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
             computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-            integration?: unknown | null;
+            integration?: unknown;
 
-            system?: unknown | null;
+            system?: unknown;
 
             text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -5835,21 +5835,21 @@ export namespace Task {
            * Function definition
            */
           export interface Function {
-            description?: unknown | null;
+            description?: unknown;
 
-            name?: unknown | null;
+            name?: unknown;
 
             parameters?: unknown | null;
           }
 
           export interface DummyIntegrationDef {
-            arguments?: unknown | null;
+            arguments?: unknown;
 
             method?: string | null;
 
             provider?: 'dummy';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           /**
@@ -5986,7 +5986,7 @@ export namespace Task {
 
             provider?: 'wikipedia';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace WikipediaIntegrationDef {
@@ -6442,7 +6442,7 @@ export namespace Task {
 
             provider?: 'ffmpeg';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace FfmpegIntegrationDef {
@@ -6561,7 +6561,7 @@ export namespace Task {
 
             provider?: 'arxiv';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace ArxivIntegrationDef {
@@ -6839,15 +6839,15 @@ export namespace Task {
 
           id?: string | null;
 
-          api_call?: unknown | null;
+          api_call?: unknown;
 
           bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
           computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-          integration?: unknown | null;
+          integration?: unknown;
 
-          system?: unknown | null;
+          system?: unknown;
 
           text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -7102,21 +7102,21 @@ export namespace Task {
          * Function definition
          */
         export interface Function {
-          description?: unknown | null;
+          description?: unknown;
 
-          name?: unknown | null;
+          name?: unknown;
 
           parameters?: unknown | null;
         }
 
         export interface DummyIntegrationDef {
-          arguments?: unknown | null;
+          arguments?: unknown;
 
           method?: string | null;
 
           provider?: 'dummy';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         /**
@@ -7253,7 +7253,7 @@ export namespace Task {
 
           provider?: 'wikipedia';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace WikipediaIntegrationDef {
@@ -7709,7 +7709,7 @@ export namespace Task {
 
           provider?: 'ffmpeg';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace FfmpegIntegrationDef {
@@ -7828,7 +7828,7 @@ export namespace Task {
 
           provider?: 'arxiv';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace ArxivIntegrationDef {
@@ -8112,15 +8112,15 @@ export namespace Task {
 
           id?: string | null;
 
-          api_call?: unknown | null;
+          api_call?: unknown;
 
           bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
           computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-          integration?: unknown | null;
+          integration?: unknown;
 
-          system?: unknown | null;
+          system?: unknown;
 
           text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -8375,21 +8375,21 @@ export namespace Task {
          * Function definition
          */
         export interface Function {
-          description?: unknown | null;
+          description?: unknown;
 
-          name?: unknown | null;
+          name?: unknown;
 
           parameters?: unknown | null;
         }
 
         export interface DummyIntegrationDef {
-          arguments?: unknown | null;
+          arguments?: unknown;
 
           method?: string | null;
 
           provider?: 'dummy';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         /**
@@ -8526,7 +8526,7 @@ export namespace Task {
 
           provider?: 'wikipedia';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace WikipediaIntegrationDef {
@@ -8982,7 +8982,7 @@ export namespace Task {
 
           provider?: 'ffmpeg';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace FfmpegIntegrationDef {
@@ -9101,7 +9101,7 @@ export namespace Task {
 
           provider?: 'arxiv';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace ArxivIntegrationDef {
@@ -9317,21 +9317,21 @@ export namespace Task {
      * Function definition
      */
     export interface Function {
-      description?: unknown | null;
+      description?: unknown;
 
-      name?: unknown | null;
+      name?: unknown;
 
       parameters?: unknown | null;
     }
 
     export interface DummyIntegrationDef {
-      arguments?: unknown | null;
+      arguments?: unknown;
 
       method?: string | null;
 
       provider?: 'dummy';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     /**
@@ -9468,7 +9468,7 @@ export namespace Task {
 
       provider?: 'wikipedia';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace WikipediaIntegrationDef {
@@ -9924,7 +9924,7 @@ export namespace Task {
 
       provider?: 'ffmpeg';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace FfmpegIntegrationDef {
@@ -10043,7 +10043,7 @@ export namespace Task {
 
       provider?: 'arxiv';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace ArxivIntegrationDef {
@@ -10283,15 +10283,15 @@ export namespace TaskCreateParams {
       export interface ChosenFunctionCall {
         function: ChosenFunctionCall.Function;
 
-        api_call?: unknown | null;
+        api_call?: unknown;
 
         bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
         computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-        integration?: unknown | null;
+        integration?: unknown;
 
-        system?: unknown | null;
+        system?: unknown;
 
         text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -10546,21 +10546,21 @@ export namespace TaskCreateParams {
        * Function definition
        */
       export interface Function {
-        description?: unknown | null;
+        description?: unknown;
 
-        name?: unknown | null;
+        name?: unknown;
 
         parameters?: unknown | null;
       }
 
       export interface DummyIntegrationDef {
-        arguments?: unknown | null;
+        arguments?: unknown;
 
         method?: string | null;
 
         provider?: 'dummy';
 
-        setup?: unknown | null;
+        setup?: unknown;
       }
 
       /**
@@ -10697,7 +10697,7 @@ export namespace TaskCreateParams {
 
         provider?: 'wikipedia';
 
-        setup?: unknown | null;
+        setup?: unknown;
       }
 
       export namespace WikipediaIntegrationDef {
@@ -11153,7 +11153,7 @@ export namespace TaskCreateParams {
 
         provider?: 'ffmpeg';
 
-        setup?: unknown | null;
+        setup?: unknown;
       }
 
       export namespace FfmpegIntegrationDef {
@@ -11272,7 +11272,7 @@ export namespace TaskCreateParams {
 
         provider?: 'arxiv';
 
-        setup?: unknown | null;
+        setup?: unknown;
       }
 
       export namespace ArxivIntegrationDef {
@@ -11589,15 +11589,15 @@ export namespace TaskCreateParams {
         export interface ChosenFunctionCall {
           function: ChosenFunctionCall.Function;
 
-          api_call?: unknown | null;
+          api_call?: unknown;
 
           bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
           computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-          integration?: unknown | null;
+          integration?: unknown;
 
-          system?: unknown | null;
+          system?: unknown;
 
           text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -11852,21 +11852,21 @@ export namespace TaskCreateParams {
          * Function definition
          */
         export interface Function {
-          description?: unknown | null;
+          description?: unknown;
 
-          name?: unknown | null;
+          name?: unknown;
 
           parameters?: unknown | null;
         }
 
         export interface DummyIntegrationDef {
-          arguments?: unknown | null;
+          arguments?: unknown;
 
           method?: string | null;
 
           provider?: 'dummy';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         /**
@@ -12003,7 +12003,7 @@ export namespace TaskCreateParams {
 
           provider?: 'wikipedia';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace WikipediaIntegrationDef {
@@ -12459,7 +12459,7 @@ export namespace TaskCreateParams {
 
           provider?: 'ffmpeg';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace FfmpegIntegrationDef {
@@ -12578,7 +12578,7 @@ export namespace TaskCreateParams {
 
           provider?: 'arxiv';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace ArxivIntegrationDef {
@@ -12861,15 +12861,15 @@ export namespace TaskCreateParams {
         export interface ChosenFunctionCall {
           function: ChosenFunctionCall.Function;
 
-          api_call?: unknown | null;
+          api_call?: unknown;
 
           bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
           computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-          integration?: unknown | null;
+          integration?: unknown;
 
-          system?: unknown | null;
+          system?: unknown;
 
           text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -13124,21 +13124,21 @@ export namespace TaskCreateParams {
          * Function definition
          */
         export interface Function {
-          description?: unknown | null;
+          description?: unknown;
 
-          name?: unknown | null;
+          name?: unknown;
 
           parameters?: unknown | null;
         }
 
         export interface DummyIntegrationDef {
-          arguments?: unknown | null;
+          arguments?: unknown;
 
           method?: string | null;
 
           provider?: 'dummy';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         /**
@@ -13275,7 +13275,7 @@ export namespace TaskCreateParams {
 
           provider?: 'wikipedia';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace WikipediaIntegrationDef {
@@ -13731,7 +13731,7 @@ export namespace TaskCreateParams {
 
           provider?: 'ffmpeg';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace FfmpegIntegrationDef {
@@ -13850,7 +13850,7 @@ export namespace TaskCreateParams {
 
           provider?: 'arxiv';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace ArxivIntegrationDef {
@@ -14162,15 +14162,15 @@ export namespace TaskCreateParams {
           export interface ChosenFunctionCall {
             function: ChosenFunctionCall.Function;
 
-            api_call?: unknown | null;
+            api_call?: unknown;
 
             bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
             computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-            integration?: unknown | null;
+            integration?: unknown;
 
-            system?: unknown | null;
+            system?: unknown;
 
             text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -14425,21 +14425,21 @@ export namespace TaskCreateParams {
            * Function definition
            */
           export interface Function {
-            description?: unknown | null;
+            description?: unknown;
 
-            name?: unknown | null;
+            name?: unknown;
 
             parameters?: unknown | null;
           }
 
           export interface DummyIntegrationDef {
-            arguments?: unknown | null;
+            arguments?: unknown;
 
             method?: string | null;
 
             provider?: 'dummy';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           /**
@@ -14576,7 +14576,7 @@ export namespace TaskCreateParams {
 
             provider?: 'wikipedia';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace WikipediaIntegrationDef {
@@ -15032,7 +15032,7 @@ export namespace TaskCreateParams {
 
             provider?: 'ffmpeg';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace FfmpegIntegrationDef {
@@ -15151,7 +15151,7 @@ export namespace TaskCreateParams {
 
             provider?: 'arxiv';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace ArxivIntegrationDef {
@@ -15482,15 +15482,15 @@ export namespace TaskCreateParams {
           export interface ChosenFunctionCall {
             function: ChosenFunctionCall.Function;
 
-            api_call?: unknown | null;
+            api_call?: unknown;
 
             bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
             computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-            integration?: unknown | null;
+            integration?: unknown;
 
-            system?: unknown | null;
+            system?: unknown;
 
             text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -15745,21 +15745,21 @@ export namespace TaskCreateParams {
            * Function definition
            */
           export interface Function {
-            description?: unknown | null;
+            description?: unknown;
 
-            name?: unknown | null;
+            name?: unknown;
 
             parameters?: unknown | null;
           }
 
           export interface DummyIntegrationDef {
-            arguments?: unknown | null;
+            arguments?: unknown;
 
             method?: string | null;
 
             provider?: 'dummy';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           /**
@@ -15896,7 +15896,7 @@ export namespace TaskCreateParams {
 
             provider?: 'wikipedia';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace WikipediaIntegrationDef {
@@ -16352,7 +16352,7 @@ export namespace TaskCreateParams {
 
             provider?: 'ffmpeg';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace FfmpegIntegrationDef {
@@ -16471,7 +16471,7 @@ export namespace TaskCreateParams {
 
             provider?: 'arxiv';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace ArxivIntegrationDef {
@@ -16729,15 +16729,15 @@ export namespace TaskCreateParams {
         export interface ChosenFunctionCall {
           function: ChosenFunctionCall.Function;
 
-          api_call?: unknown | null;
+          api_call?: unknown;
 
           bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
           computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-          integration?: unknown | null;
+          integration?: unknown;
 
-          system?: unknown | null;
+          system?: unknown;
 
           text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -16992,21 +16992,21 @@ export namespace TaskCreateParams {
          * Function definition
          */
         export interface Function {
-          description?: unknown | null;
+          description?: unknown;
 
-          name?: unknown | null;
+          name?: unknown;
 
           parameters?: unknown | null;
         }
 
         export interface DummyIntegrationDef {
-          arguments?: unknown | null;
+          arguments?: unknown;
 
           method?: string | null;
 
           provider?: 'dummy';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         /**
@@ -17143,7 +17143,7 @@ export namespace TaskCreateParams {
 
           provider?: 'wikipedia';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace WikipediaIntegrationDef {
@@ -17599,7 +17599,7 @@ export namespace TaskCreateParams {
 
           provider?: 'ffmpeg';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace FfmpegIntegrationDef {
@@ -17718,7 +17718,7 @@ export namespace TaskCreateParams {
 
           provider?: 'arxiv';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace ArxivIntegrationDef {
@@ -17982,15 +17982,15 @@ export namespace TaskCreateParams {
         export interface ChosenFunctionCall {
           function: ChosenFunctionCall.Function;
 
-          api_call?: unknown | null;
+          api_call?: unknown;
 
           bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
           computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-          integration?: unknown | null;
+          integration?: unknown;
 
-          system?: unknown | null;
+          system?: unknown;
 
           text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -18245,21 +18245,21 @@ export namespace TaskCreateParams {
          * Function definition
          */
         export interface Function {
-          description?: unknown | null;
+          description?: unknown;
 
-          name?: unknown | null;
+          name?: unknown;
 
           parameters?: unknown | null;
         }
 
         export interface DummyIntegrationDef {
-          arguments?: unknown | null;
+          arguments?: unknown;
 
           method?: string | null;
 
           provider?: 'dummy';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         /**
@@ -18396,7 +18396,7 @@ export namespace TaskCreateParams {
 
           provider?: 'wikipedia';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace WikipediaIntegrationDef {
@@ -18852,7 +18852,7 @@ export namespace TaskCreateParams {
 
           provider?: 'ffmpeg';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace FfmpegIntegrationDef {
@@ -18971,7 +18971,7 @@ export namespace TaskCreateParams {
 
           provider?: 'arxiv';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace ArxivIntegrationDef {
@@ -19177,21 +19177,21 @@ export namespace TaskCreateParams {
      * Function definition
      */
     export interface Function {
-      description?: unknown | null;
+      description?: unknown;
 
-      name?: unknown | null;
+      name?: unknown;
 
       parameters?: unknown | null;
     }
 
     export interface DummyIntegrationDef {
-      arguments?: unknown | null;
+      arguments?: unknown;
 
       method?: string | null;
 
       provider?: 'dummy';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     /**
@@ -19328,7 +19328,7 @@ export namespace TaskCreateParams {
 
       provider?: 'wikipedia';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace WikipediaIntegrationDef {
@@ -19784,7 +19784,7 @@ export namespace TaskCreateParams {
 
       provider?: 'ffmpeg';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace FfmpegIntegrationDef {
@@ -19903,7 +19903,7 @@ export namespace TaskCreateParams {
 
       provider?: 'arxiv';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace ArxivIntegrationDef {
@@ -20149,15 +20149,15 @@ export namespace TaskCreateOrUpdateParams {
       export interface ChosenFunctionCall {
         function: ChosenFunctionCall.Function;
 
-        api_call?: unknown | null;
+        api_call?: unknown;
 
         bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
         computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-        integration?: unknown | null;
+        integration?: unknown;
 
-        system?: unknown | null;
+        system?: unknown;
 
         text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -20412,21 +20412,21 @@ export namespace TaskCreateOrUpdateParams {
        * Function definition
        */
       export interface Function {
-        description?: unknown | null;
+        description?: unknown;
 
-        name?: unknown | null;
+        name?: unknown;
 
         parameters?: unknown | null;
       }
 
       export interface DummyIntegrationDef {
-        arguments?: unknown | null;
+        arguments?: unknown;
 
         method?: string | null;
 
         provider?: 'dummy';
 
-        setup?: unknown | null;
+        setup?: unknown;
       }
 
       /**
@@ -20563,7 +20563,7 @@ export namespace TaskCreateOrUpdateParams {
 
         provider?: 'wikipedia';
 
-        setup?: unknown | null;
+        setup?: unknown;
       }
 
       export namespace WikipediaIntegrationDef {
@@ -21019,7 +21019,7 @@ export namespace TaskCreateOrUpdateParams {
 
         provider?: 'ffmpeg';
 
-        setup?: unknown | null;
+        setup?: unknown;
       }
 
       export namespace FfmpegIntegrationDef {
@@ -21138,7 +21138,7 @@ export namespace TaskCreateOrUpdateParams {
 
         provider?: 'arxiv';
 
-        setup?: unknown | null;
+        setup?: unknown;
       }
 
       export namespace ArxivIntegrationDef {
@@ -21455,15 +21455,15 @@ export namespace TaskCreateOrUpdateParams {
         export interface ChosenFunctionCall {
           function: ChosenFunctionCall.Function;
 
-          api_call?: unknown | null;
+          api_call?: unknown;
 
           bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
           computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-          integration?: unknown | null;
+          integration?: unknown;
 
-          system?: unknown | null;
+          system?: unknown;
 
           text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -21718,21 +21718,21 @@ export namespace TaskCreateOrUpdateParams {
          * Function definition
          */
         export interface Function {
-          description?: unknown | null;
+          description?: unknown;
 
-          name?: unknown | null;
+          name?: unknown;
 
           parameters?: unknown | null;
         }
 
         export interface DummyIntegrationDef {
-          arguments?: unknown | null;
+          arguments?: unknown;
 
           method?: string | null;
 
           provider?: 'dummy';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         /**
@@ -21869,7 +21869,7 @@ export namespace TaskCreateOrUpdateParams {
 
           provider?: 'wikipedia';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace WikipediaIntegrationDef {
@@ -22325,7 +22325,7 @@ export namespace TaskCreateOrUpdateParams {
 
           provider?: 'ffmpeg';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace FfmpegIntegrationDef {
@@ -22444,7 +22444,7 @@ export namespace TaskCreateOrUpdateParams {
 
           provider?: 'arxiv';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace ArxivIntegrationDef {
@@ -22727,15 +22727,15 @@ export namespace TaskCreateOrUpdateParams {
         export interface ChosenFunctionCall {
           function: ChosenFunctionCall.Function;
 
-          api_call?: unknown | null;
+          api_call?: unknown;
 
           bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
           computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-          integration?: unknown | null;
+          integration?: unknown;
 
-          system?: unknown | null;
+          system?: unknown;
 
           text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -22990,21 +22990,21 @@ export namespace TaskCreateOrUpdateParams {
          * Function definition
          */
         export interface Function {
-          description?: unknown | null;
+          description?: unknown;
 
-          name?: unknown | null;
+          name?: unknown;
 
           parameters?: unknown | null;
         }
 
         export interface DummyIntegrationDef {
-          arguments?: unknown | null;
+          arguments?: unknown;
 
           method?: string | null;
 
           provider?: 'dummy';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         /**
@@ -23141,7 +23141,7 @@ export namespace TaskCreateOrUpdateParams {
 
           provider?: 'wikipedia';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace WikipediaIntegrationDef {
@@ -23597,7 +23597,7 @@ export namespace TaskCreateOrUpdateParams {
 
           provider?: 'ffmpeg';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace FfmpegIntegrationDef {
@@ -23716,7 +23716,7 @@ export namespace TaskCreateOrUpdateParams {
 
           provider?: 'arxiv';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace ArxivIntegrationDef {
@@ -24028,15 +24028,15 @@ export namespace TaskCreateOrUpdateParams {
           export interface ChosenFunctionCall {
             function: ChosenFunctionCall.Function;
 
-            api_call?: unknown | null;
+            api_call?: unknown;
 
             bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
             computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-            integration?: unknown | null;
+            integration?: unknown;
 
-            system?: unknown | null;
+            system?: unknown;
 
             text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -24291,21 +24291,21 @@ export namespace TaskCreateOrUpdateParams {
            * Function definition
            */
           export interface Function {
-            description?: unknown | null;
+            description?: unknown;
 
-            name?: unknown | null;
+            name?: unknown;
 
             parameters?: unknown | null;
           }
 
           export interface DummyIntegrationDef {
-            arguments?: unknown | null;
+            arguments?: unknown;
 
             method?: string | null;
 
             provider?: 'dummy';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           /**
@@ -24442,7 +24442,7 @@ export namespace TaskCreateOrUpdateParams {
 
             provider?: 'wikipedia';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace WikipediaIntegrationDef {
@@ -24898,7 +24898,7 @@ export namespace TaskCreateOrUpdateParams {
 
             provider?: 'ffmpeg';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace FfmpegIntegrationDef {
@@ -25017,7 +25017,7 @@ export namespace TaskCreateOrUpdateParams {
 
             provider?: 'arxiv';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace ArxivIntegrationDef {
@@ -25348,15 +25348,15 @@ export namespace TaskCreateOrUpdateParams {
           export interface ChosenFunctionCall {
             function: ChosenFunctionCall.Function;
 
-            api_call?: unknown | null;
+            api_call?: unknown;
 
             bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
             computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-            integration?: unknown | null;
+            integration?: unknown;
 
-            system?: unknown | null;
+            system?: unknown;
 
             text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -25611,21 +25611,21 @@ export namespace TaskCreateOrUpdateParams {
            * Function definition
            */
           export interface Function {
-            description?: unknown | null;
+            description?: unknown;
 
-            name?: unknown | null;
+            name?: unknown;
 
             parameters?: unknown | null;
           }
 
           export interface DummyIntegrationDef {
-            arguments?: unknown | null;
+            arguments?: unknown;
 
             method?: string | null;
 
             provider?: 'dummy';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           /**
@@ -25762,7 +25762,7 @@ export namespace TaskCreateOrUpdateParams {
 
             provider?: 'wikipedia';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace WikipediaIntegrationDef {
@@ -26218,7 +26218,7 @@ export namespace TaskCreateOrUpdateParams {
 
             provider?: 'ffmpeg';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace FfmpegIntegrationDef {
@@ -26337,7 +26337,7 @@ export namespace TaskCreateOrUpdateParams {
 
             provider?: 'arxiv';
 
-            setup?: unknown | null;
+            setup?: unknown;
           }
 
           export namespace ArxivIntegrationDef {
@@ -26595,15 +26595,15 @@ export namespace TaskCreateOrUpdateParams {
         export interface ChosenFunctionCall {
           function: ChosenFunctionCall.Function;
 
-          api_call?: unknown | null;
+          api_call?: unknown;
 
           bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
           computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-          integration?: unknown | null;
+          integration?: unknown;
 
-          system?: unknown | null;
+          system?: unknown;
 
           text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -26858,21 +26858,21 @@ export namespace TaskCreateOrUpdateParams {
          * Function definition
          */
         export interface Function {
-          description?: unknown | null;
+          description?: unknown;
 
-          name?: unknown | null;
+          name?: unknown;
 
           parameters?: unknown | null;
         }
 
         export interface DummyIntegrationDef {
-          arguments?: unknown | null;
+          arguments?: unknown;
 
           method?: string | null;
 
           provider?: 'dummy';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         /**
@@ -27009,7 +27009,7 @@ export namespace TaskCreateOrUpdateParams {
 
           provider?: 'wikipedia';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace WikipediaIntegrationDef {
@@ -27465,7 +27465,7 @@ export namespace TaskCreateOrUpdateParams {
 
           provider?: 'ffmpeg';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace FfmpegIntegrationDef {
@@ -27584,7 +27584,7 @@ export namespace TaskCreateOrUpdateParams {
 
           provider?: 'arxiv';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace ArxivIntegrationDef {
@@ -27848,15 +27848,15 @@ export namespace TaskCreateOrUpdateParams {
         export interface ChosenFunctionCall {
           function: ChosenFunctionCall.Function;
 
-          api_call?: unknown | null;
+          api_call?: unknown;
 
           bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
 
           computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
 
-          integration?: unknown | null;
+          integration?: unknown;
 
-          system?: unknown | null;
+          system?: unknown;
 
           text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
 
@@ -28111,21 +28111,21 @@ export namespace TaskCreateOrUpdateParams {
          * Function definition
          */
         export interface Function {
-          description?: unknown | null;
+          description?: unknown;
 
-          name?: unknown | null;
+          name?: unknown;
 
           parameters?: unknown | null;
         }
 
         export interface DummyIntegrationDef {
-          arguments?: unknown | null;
+          arguments?: unknown;
 
           method?: string | null;
 
           provider?: 'dummy';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         /**
@@ -28262,7 +28262,7 @@ export namespace TaskCreateOrUpdateParams {
 
           provider?: 'wikipedia';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace WikipediaIntegrationDef {
@@ -28718,7 +28718,7 @@ export namespace TaskCreateOrUpdateParams {
 
           provider?: 'ffmpeg';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace FfmpegIntegrationDef {
@@ -28837,7 +28837,7 @@ export namespace TaskCreateOrUpdateParams {
 
           provider?: 'arxiv';
 
-          setup?: unknown | null;
+          setup?: unknown;
         }
 
         export namespace ArxivIntegrationDef {
@@ -29043,21 +29043,21 @@ export namespace TaskCreateOrUpdateParams {
      * Function definition
      */
     export interface Function {
-      description?: unknown | null;
+      description?: unknown;
 
-      name?: unknown | null;
+      name?: unknown;
 
       parameters?: unknown | null;
     }
 
     export interface DummyIntegrationDef {
-      arguments?: unknown | null;
+      arguments?: unknown;
 
       method?: string | null;
 
       provider?: 'dummy';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     /**
@@ -29194,7 +29194,7 @@ export namespace TaskCreateOrUpdateParams {
 
       provider?: 'wikipedia';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace WikipediaIntegrationDef {
@@ -29650,7 +29650,7 @@ export namespace TaskCreateOrUpdateParams {
 
       provider?: 'ffmpeg';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace FfmpegIntegrationDef {
@@ -29769,7 +29769,7 @@ export namespace TaskCreateOrUpdateParams {
 
       provider?: 'arxiv';
 
-      setup?: unknown | null;
+      setup?: unknown;
     }
 
     export namespace ArxivIntegrationDef {
