@@ -21,10 +21,11 @@ export class Docs extends APIResource {
    */
   create(
     userId: string,
-    body: DocCreateParams,
+    params: DocCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Shared.ResourceCreated> {
-    return this._client.post(`/users/${userId}/docs`, { body, ...options });
+    const { connection_pool, ...body } = params;
+    return this._client.post(`/users/${userId}/docs`, { query: { connection_pool }, body, ...options });
   }
 
   /**
@@ -70,10 +71,11 @@ export class Docs extends APIResource {
    */
   search(
     userId: string,
-    body: DocSearchParams,
+    params: DocSearchParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<DocSearchResponse> {
-    return this._client.post(`/users/${userId}/search`, { body, ...options });
+    const { connection_pool, ...body } = params;
+    return this._client.post(`/users/${userId}/search`, { query: { connection_pool }, body, ...options });
   }
 }
 
@@ -108,12 +110,29 @@ export namespace DocSearchResponse {
 }
 
 export interface DocCreateParams {
+  /**
+   * Body param:
+   */
   content: string | Array<string>;
 
+  /**
+   * Body param:
+   */
   title: string;
 
+  /**
+   * Query param:
+   */
+  connection_pool?: unknown;
+
+  /**
+   * Body param:
+   */
   embed_instruction?: string | null;
 
+  /**
+   * Body param:
+   */
   metadata?: unknown | null;
 }
 
@@ -132,46 +151,118 @@ export type DocSearchParams =
 
 export namespace DocSearchParams {
   export interface TextOnlyDocSearchRequest {
+    /**
+     * Body param:
+     */
     text: string;
 
+    /**
+     * Query param:
+     */
+    connection_pool?: unknown;
+
+    /**
+     * Body param:
+     */
     lang?: 'en-US';
 
+    /**
+     * Body param:
+     */
     limit?: number;
 
+    /**
+     * Body param:
+     */
     metadata_filter?: unknown;
 
+    /**
+     * Body param:
+     */
     mmr_strength?: number;
   }
 
   export interface VectorDocSearchRequest {
+    /**
+     * Body param:
+     */
     vector: Array<number>;
 
+    /**
+     * Query param:
+     */
+    connection_pool?: unknown;
+
+    /**
+     * Body param:
+     */
     confidence?: number;
 
+    /**
+     * Body param:
+     */
     lang?: 'en-US';
 
+    /**
+     * Body param:
+     */
     limit?: number;
 
+    /**
+     * Body param:
+     */
     metadata_filter?: unknown;
 
+    /**
+     * Body param:
+     */
     mmr_strength?: number;
   }
 
   export interface HybridDocSearchRequest {
+    /**
+     * Body param:
+     */
     text: string;
 
+    /**
+     * Body param:
+     */
     vector: Array<number>;
 
+    /**
+     * Query param:
+     */
+    connection_pool?: unknown;
+
+    /**
+     * Body param:
+     */
     alpha?: number;
 
+    /**
+     * Body param:
+     */
     confidence?: number;
 
+    /**
+     * Body param:
+     */
     lang?: 'en-US';
 
+    /**
+     * Body param:
+     */
     limit?: number;
 
+    /**
+     * Body param:
+     */
     metadata_filter?: unknown;
 
+    /**
+     * Body param:
+     */
     mmr_strength?: number;
   }
 }
