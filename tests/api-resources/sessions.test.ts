@@ -121,6 +121,7 @@ describe('resource sessions', () => {
           ],
         },
       ],
+      connection_pool: {},
       agent: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       frequency_penalty: -2,
       length_penalty: 0,
