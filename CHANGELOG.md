@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.46.0 (2025-01-10)
+
+Full Changelog: [v1.45.0...v1.46.0](https://github.com/julep-ai/node-sdk/compare/v1.45.0...v1.46.0)
+
+### Features
+
+* **api:** api update ([#173](https://github.com/julep-ai/node-sdk/issues/173)) ([3e761ff](https://github.com/julep-ai/node-sdk/commit/3e761ff9dcfb18ce18e36d57b2e2d741a38f5d2d))
+
+
+### Chores
+
+* **client:** simplify `unknown | null` to just `unknown` ([#171](https://github.com/julep-ai/node-sdk/issues/171)) ([f6b9d12](https://github.com/julep-ai/node-sdk/commit/f6b9d1248ecdaa5259e2e4487d7a7eb9a0292e9a))
+
 ## 1.45.0 (2025-01-05)
 
 Full Changelog: [v1.44.0...v1.45.0](https://github.com/julep-ai/node-sdk/compare/v1.44.0...v1.45.0)
