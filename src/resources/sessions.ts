@@ -67,8 +67,9 @@ export class Sessions extends APIResource {
     params: SessionChatParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<SessionChatResponse> {
-    const { 'X-Custom-Api-Key': xCustomAPIKey, ...body } = params;
+    const { connection_pool, 'X-Custom-Api-Key': xCustomAPIKey, ...body } = params;
     return this._client.post(`/sessions/${sessionId}/chat`, {
+      query: { connection_pool },
       body,
       ...options,
       headers: {
@@ -5004,6 +5005,11 @@ export interface SessionChatParams {
    * Body param:
    */
   messages: Array<Message>;
+
+  /**
+   * Query param:
+   */
+  connection_pool?: unknown;
 
   /**
    * Body param:
