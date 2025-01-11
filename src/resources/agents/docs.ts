@@ -124,7 +124,7 @@ export type DocSearchParams =
   | DocSearchParams.VectorDocSearchRequest
   | DocSearchParams.HybridDocSearchRequest;
 
-export namespace DocSearchParams {
+export declare namespace DocSearchParams {
   export interface TextOnlyDocSearchRequest {
     text: string;
 
