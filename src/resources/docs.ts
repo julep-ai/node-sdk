@@ -60,7 +60,7 @@ export type DocEmbedParams =
   | DocEmbedParams.SingleEmbedQueryRequest
   | DocEmbedParams.MultipleEmbedQueryRequest;
 
-export namespace DocEmbedParams {
+export declare namespace DocEmbedParams {
   export interface SingleEmbedQueryRequest {
     text: string;
 

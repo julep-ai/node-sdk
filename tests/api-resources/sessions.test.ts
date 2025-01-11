@@ -128,7 +128,7 @@ describe('resource sessions', () => {
       logit_bias: { foo: -100 },
       max_tokens: 1,
       min_p: 0,
-      model: 'model',
+      model: 'recNPna{}ip}t',
       presence_penalty: -2,
       recall: true,
       repetition_penalty: 0,

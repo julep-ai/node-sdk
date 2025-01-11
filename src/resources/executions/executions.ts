@@ -161,7 +161,7 @@ export type ExecutionChangeStatusParams =
   | ExecutionChangeStatusParams.ResumeExecutionRequest
   | ExecutionChangeStatusParams.StopExecutionRequest;
 
-export namespace ExecutionChangeStatusParams {
+export declare namespace ExecutionChangeStatusParams {
   export interface ResumeExecutionRequest {
     input?: unknown | null;
 
