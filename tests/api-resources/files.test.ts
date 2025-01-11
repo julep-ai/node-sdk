@@ -10,7 +10,7 @@ const client = new Julep({
 
 describe('resource files', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.files.create({ content: 'content', name: 'name' });
+    const responsePromise = client.files.create({ content: 'content', name: 'recNPna{}ip}t' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,7 +23,7 @@ describe('resource files', () => {
   test('create: required and optional params', async () => {
     const response = await client.files.create({
       content: 'content',
-      name: 'name',
+      name: 'recNPna{}ip}t',
       description: 'description',
       mime_type: 'mime_type',
     });

@@ -27,7 +27,7 @@ describe('resource tasks', () => {
     const response = await client.tasks.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       main: [{ evaluate: { foo: ['string'] }, label: 'label' }],
       name: 'x',
-      canonical_name: 'x',
+      canonical_name: 'canonical_name',
       description: 'description',
       inherit_tools: true,
       input_schema: {},
@@ -125,7 +125,7 @@ describe('resource tasks', () => {
       {
         main: [{ evaluate: { foo: ['string'] }, label: 'label' }],
         name: 'x',
-        canonical_name: 'x',
+        canonical_name: 'canonical_name',
         description: 'description',
         inherit_tools: true,
         input_schema: {},

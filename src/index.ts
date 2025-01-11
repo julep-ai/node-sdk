@@ -75,6 +75,7 @@ const environments = {
   local: 'http://localhost:8080',
 };
 type Environment = keyof typeof environments;
+
 export interface ClientOptions {
   /**
    * Defaults to process.env['JULEP_API_KEY'].
