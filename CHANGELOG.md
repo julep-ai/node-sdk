@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.47.0 (2025-01-11)
+
+Full Changelog: [v1.46.0...v1.47.0](https://github.com/julep-ai/node-sdk/compare/v1.46.0...v1.47.0)
+
+### Features
+
+* **api:** api update ([#177](https://github.com/julep-ai/node-sdk/issues/177)) ([ceb6766](https://github.com/julep-ai/node-sdk/commit/ceb6766b5466f30bc8a6206666a04d2a4a893d22))
+
+
+### Chores
+
+* **internal:** codegen related update ([#175](https://github.com/julep-ai/node-sdk/issues/175)) ([fb57c6c](https://github.com/julep-ai/node-sdk/commit/fb57c6c7bd7d77fd09ee95fe26d754469fd71f27))
+
 ## 1.46.0 (2025-01-10)
 
 Full Changelog: [v1.45.0...v1.46.0](https://github.com/julep-ai/node-sdk/compare/v1.45.0...v1.46.0)
