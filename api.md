@@ -24,6 +24,18 @@ Methods:
 
 ## Tools
 
+Types:
+
+- <code><a href="./src/resources/agents/tools.ts">ToolListResponse</a></code>
+
+Methods:
+
+- <code title="post /agents/{agent_id}/tools">client.agents.tools.<a href="./src/resources/agents/tools.ts">create</a>(agentId, { ...params }) -> ResourceCreated</code>
+- <code title="put /agents/{agent_id}/tools/{tool_id}">client.agents.tools.<a href="./src/resources/agents/tools.ts">update</a>(agentId, toolId, { ...params }) -> ResourceUpdated</code>
+- <code title="get /agents/{agent_id}/tools">client.agents.tools.<a href="./src/resources/agents/tools.ts">list</a>(agentId, { ...params }) -> ToolListResponsesOffsetPagination</code>
+- <code title="delete /agents/{agent_id}/tools/{tool_id}">client.agents.tools.<a href="./src/resources/agents/tools.ts">delete</a>(agentId, toolId) -> ResourceDeleted</code>
+- <code title="patch /agents/{agent_id}/tools/{tool_id}">client.agents.tools.<a href="./src/resources/agents/tools.ts">patch</a>(agentId, toolId, { ...params }) -> ResourceUpdated</code>
+
 ## Docs
 
 Types:

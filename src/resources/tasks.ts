@@ -10185,7 +10185,9 @@ export namespace TaskCreateParams {
 
     tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-    tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+    tools?:
+      | 'all'
+      | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
     unwrap?: boolean;
   }
@@ -10426,7 +10428,7 @@ export namespace TaskCreateParams {
     /**
      * Payload for creating a tool
      */
-    export interface CreateToolRequestInput {
+    export interface AgentsAPIAutogenToolsCreateToolRequestInput {
       name: string;
 
       type:
@@ -10441,57 +10443,57 @@ export namespace TaskCreateParams {
       /**
        * API call definition
        */
-      api_call?: CreateToolRequestInput.APICall | null;
+      api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-      bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+      bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
       /**
        * Anthropic new tools
        */
-      computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+      computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
       description?: string | null;
 
       /**
        * Function definition
        */
-      function?: CreateToolRequestInput.Function | null;
+      function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
       /**
        * Brave integration definition
        */
       integration?:
-        | CreateToolRequestInput.DummyIntegrationDef
-        | CreateToolRequestInput.BraveIntegrationDef
-        | CreateToolRequestInput.EmailIntegrationDef
-        | CreateToolRequestInput.SpiderIntegrationDefInput
-        | CreateToolRequestInput.WikipediaIntegrationDef
-        | CreateToolRequestInput.WeatherIntegrationDef
-        | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-        | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-        | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-        | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-        | CreateToolRequestInput.RemoteBrowserIntegrationDef
-        | CreateToolRequestInput.LlamaParseIntegrationDef
-        | CreateToolRequestInput.FfmpegIntegrationDef
-        | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-        | CreateToolRequestInput.CloudinaryEditIntegrationDef
-        | CreateToolRequestInput.ArxivIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+        | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
         | null;
 
       /**
        * System definition
        */
-      system?: CreateToolRequestInput.System | null;
+      system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-      text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+      text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
     }
 
-    export namespace CreateToolRequestInput {
+    export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
       /**
        * API call definition
        */
@@ -11491,7 +11493,9 @@ export namespace TaskCreateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -11732,7 +11736,7 @@ export namespace TaskCreateParams {
       /**
        * Payload for creating a tool
        */
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -11747,57 +11751,57 @@ export namespace TaskCreateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDefInput
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
-          | CreateToolRequestInput.LlamaParseIntegrationDef
-          | CreateToolRequestInput.FfmpegIntegrationDef
-          | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | CreateToolRequestInput.CloudinaryEditIntegrationDef
-          | CreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -12763,7 +12767,9 @@ export namespace TaskCreateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -13004,7 +13010,7 @@ export namespace TaskCreateParams {
       /**
        * Payload for creating a tool
        */
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -13019,57 +13025,57 @@ export namespace TaskCreateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDefInput
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
-          | CreateToolRequestInput.LlamaParseIntegrationDef
-          | CreateToolRequestInput.FfmpegIntegrationDef
-          | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | CreateToolRequestInput.CloudinaryEditIntegrationDef
-          | CreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -14064,7 +14070,9 @@ export namespace TaskCreateParams {
 
         tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-        tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+        tools?:
+          | 'all'
+          | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
         unwrap?: boolean;
       }
@@ -14305,7 +14313,7 @@ export namespace TaskCreateParams {
         /**
          * Payload for creating a tool
          */
-        export interface CreateToolRequestInput {
+        export interface AgentsAPIAutogenToolsCreateToolRequestInput {
           name: string;
 
           type:
@@ -14320,57 +14328,57 @@ export namespace TaskCreateParams {
           /**
            * API call definition
            */
-          api_call?: CreateToolRequestInput.APICall | null;
+          api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-          bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+          bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
           /**
            * Anthropic new tools
            */
-          computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+          computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
           description?: string | null;
 
           /**
            * Function definition
            */
-          function?: CreateToolRequestInput.Function | null;
+          function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
           /**
            * Brave integration definition
            */
           integration?:
-            | CreateToolRequestInput.DummyIntegrationDef
-            | CreateToolRequestInput.BraveIntegrationDef
-            | CreateToolRequestInput.EmailIntegrationDef
-            | CreateToolRequestInput.SpiderIntegrationDefInput
-            | CreateToolRequestInput.WikipediaIntegrationDef
-            | CreateToolRequestInput.WeatherIntegrationDef
-            | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-            | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-            | CreateToolRequestInput.RemoteBrowserIntegrationDef
-            | CreateToolRequestInput.LlamaParseIntegrationDef
-            | CreateToolRequestInput.FfmpegIntegrationDef
-            | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-            | CreateToolRequestInput.CloudinaryEditIntegrationDef
-            | CreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
             | null;
 
           /**
            * System definition
            */
-          system?: CreateToolRequestInput.System | null;
+          system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-          text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+          text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
         }
 
-        export namespace CreateToolRequestInput {
+        export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
           /**
            * API call definition
            */
@@ -15384,7 +15392,9 @@ export namespace TaskCreateParams {
 
         tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-        tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+        tools?:
+          | 'all'
+          | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
         unwrap?: boolean;
       }
@@ -15625,7 +15635,7 @@ export namespace TaskCreateParams {
         /**
          * Payload for creating a tool
          */
-        export interface CreateToolRequestInput {
+        export interface AgentsAPIAutogenToolsCreateToolRequestInput {
           name: string;
 
           type:
@@ -15640,57 +15650,57 @@ export namespace TaskCreateParams {
           /**
            * API call definition
            */
-          api_call?: CreateToolRequestInput.APICall | null;
+          api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-          bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+          bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
           /**
            * Anthropic new tools
            */
-          computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+          computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
           description?: string | null;
 
           /**
            * Function definition
            */
-          function?: CreateToolRequestInput.Function | null;
+          function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
           /**
            * Brave integration definition
            */
           integration?:
-            | CreateToolRequestInput.DummyIntegrationDef
-            | CreateToolRequestInput.BraveIntegrationDef
-            | CreateToolRequestInput.EmailIntegrationDef
-            | CreateToolRequestInput.SpiderIntegrationDefInput
-            | CreateToolRequestInput.WikipediaIntegrationDef
-            | CreateToolRequestInput.WeatherIntegrationDef
-            | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-            | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-            | CreateToolRequestInput.RemoteBrowserIntegrationDef
-            | CreateToolRequestInput.LlamaParseIntegrationDef
-            | CreateToolRequestInput.FfmpegIntegrationDef
-            | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-            | CreateToolRequestInput.CloudinaryEditIntegrationDef
-            | CreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
             | null;
 
           /**
            * System definition
            */
-          system?: CreateToolRequestInput.System | null;
+          system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-          text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+          text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
         }
 
-        export namespace CreateToolRequestInput {
+        export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
           /**
            * API call definition
            */
@@ -16631,7 +16641,9 @@ export namespace TaskCreateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -16872,7 +16884,7 @@ export namespace TaskCreateParams {
       /**
        * Payload for creating a tool
        */
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -16887,57 +16899,57 @@ export namespace TaskCreateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDefInput
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
-          | CreateToolRequestInput.LlamaParseIntegrationDef
-          | CreateToolRequestInput.FfmpegIntegrationDef
-          | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | CreateToolRequestInput.CloudinaryEditIntegrationDef
-          | CreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -17884,7 +17896,9 @@ export namespace TaskCreateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -18125,7 +18139,7 @@ export namespace TaskCreateParams {
       /**
        * Payload for creating a tool
        */
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -18140,57 +18154,57 @@ export namespace TaskCreateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDefInput
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
-          | CreateToolRequestInput.LlamaParseIntegrationDef
-          | CreateToolRequestInput.FfmpegIntegrationDef
-          | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | CreateToolRequestInput.CloudinaryEditIntegrationDef
-          | CreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -20051,7 +20065,9 @@ export namespace TaskCreateOrUpdateParams {
 
     tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-    tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+    tools?:
+      | 'all'
+      | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
     unwrap?: boolean;
   }
@@ -20292,7 +20308,7 @@ export namespace TaskCreateOrUpdateParams {
     /**
      * Payload for creating a tool
      */
-    export interface CreateToolRequestInput {
+    export interface AgentsAPIAutogenToolsCreateToolRequestInput {
       name: string;
 
       type:
@@ -20307,57 +20323,57 @@ export namespace TaskCreateOrUpdateParams {
       /**
        * API call definition
        */
-      api_call?: CreateToolRequestInput.APICall | null;
+      api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-      bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+      bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
       /**
        * Anthropic new tools
        */
-      computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+      computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
       description?: string | null;
 
       /**
        * Function definition
        */
-      function?: CreateToolRequestInput.Function | null;
+      function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
       /**
        * Brave integration definition
        */
       integration?:
-        | CreateToolRequestInput.DummyIntegrationDef
-        | CreateToolRequestInput.BraveIntegrationDef
-        | CreateToolRequestInput.EmailIntegrationDef
-        | CreateToolRequestInput.SpiderIntegrationDefInput
-        | CreateToolRequestInput.WikipediaIntegrationDef
-        | CreateToolRequestInput.WeatherIntegrationDef
-        | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-        | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-        | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-        | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-        | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-        | CreateToolRequestInput.RemoteBrowserIntegrationDef
-        | CreateToolRequestInput.LlamaParseIntegrationDef
-        | CreateToolRequestInput.FfmpegIntegrationDef
-        | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-        | CreateToolRequestInput.CloudinaryEditIntegrationDef
-        | CreateToolRequestInput.ArxivIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+        | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
         | null;
 
       /**
        * System definition
        */
-      system?: CreateToolRequestInput.System | null;
+      system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-      text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+      text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
     }
 
-    export namespace CreateToolRequestInput {
+    export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
       /**
        * API call definition
        */
@@ -21357,7 +21373,9 @@ export namespace TaskCreateOrUpdateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -21598,7 +21616,7 @@ export namespace TaskCreateOrUpdateParams {
       /**
        * Payload for creating a tool
        */
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -21613,57 +21631,57 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDefInput
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
-          | CreateToolRequestInput.LlamaParseIntegrationDef
-          | CreateToolRequestInput.FfmpegIntegrationDef
-          | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | CreateToolRequestInput.CloudinaryEditIntegrationDef
-          | CreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -22629,7 +22647,9 @@ export namespace TaskCreateOrUpdateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -22870,7 +22890,7 @@ export namespace TaskCreateOrUpdateParams {
       /**
        * Payload for creating a tool
        */
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -22885,57 +22905,57 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDefInput
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
-          | CreateToolRequestInput.LlamaParseIntegrationDef
-          | CreateToolRequestInput.FfmpegIntegrationDef
-          | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | CreateToolRequestInput.CloudinaryEditIntegrationDef
-          | CreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -23930,7 +23950,9 @@ export namespace TaskCreateOrUpdateParams {
 
         tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-        tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+        tools?:
+          | 'all'
+          | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
         unwrap?: boolean;
       }
@@ -24171,7 +24193,7 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * Payload for creating a tool
          */
-        export interface CreateToolRequestInput {
+        export interface AgentsAPIAutogenToolsCreateToolRequestInput {
           name: string;
 
           type:
@@ -24186,57 +24208,57 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * API call definition
            */
-          api_call?: CreateToolRequestInput.APICall | null;
+          api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-          bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+          bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
           /**
            * Anthropic new tools
            */
-          computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+          computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
           description?: string | null;
 
           /**
            * Function definition
            */
-          function?: CreateToolRequestInput.Function | null;
+          function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
           /**
            * Brave integration definition
            */
           integration?:
-            | CreateToolRequestInput.DummyIntegrationDef
-            | CreateToolRequestInput.BraveIntegrationDef
-            | CreateToolRequestInput.EmailIntegrationDef
-            | CreateToolRequestInput.SpiderIntegrationDefInput
-            | CreateToolRequestInput.WikipediaIntegrationDef
-            | CreateToolRequestInput.WeatherIntegrationDef
-            | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-            | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-            | CreateToolRequestInput.RemoteBrowserIntegrationDef
-            | CreateToolRequestInput.LlamaParseIntegrationDef
-            | CreateToolRequestInput.FfmpegIntegrationDef
-            | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-            | CreateToolRequestInput.CloudinaryEditIntegrationDef
-            | CreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
             | null;
 
           /**
            * System definition
            */
-          system?: CreateToolRequestInput.System | null;
+          system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-          text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+          text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
         }
 
-        export namespace CreateToolRequestInput {
+        export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
           /**
            * API call definition
            */
@@ -25250,7 +25272,9 @@ export namespace TaskCreateOrUpdateParams {
 
         tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-        tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+        tools?:
+          | 'all'
+          | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
         unwrap?: boolean;
       }
@@ -25491,7 +25515,7 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * Payload for creating a tool
          */
-        export interface CreateToolRequestInput {
+        export interface AgentsAPIAutogenToolsCreateToolRequestInput {
           name: string;
 
           type:
@@ -25506,57 +25530,57 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * API call definition
            */
-          api_call?: CreateToolRequestInput.APICall | null;
+          api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-          bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+          bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
           /**
            * Anthropic new tools
            */
-          computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+          computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
           description?: string | null;
 
           /**
            * Function definition
            */
-          function?: CreateToolRequestInput.Function | null;
+          function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
           /**
            * Brave integration definition
            */
           integration?:
-            | CreateToolRequestInput.DummyIntegrationDef
-            | CreateToolRequestInput.BraveIntegrationDef
-            | CreateToolRequestInput.EmailIntegrationDef
-            | CreateToolRequestInput.SpiderIntegrationDefInput
-            | CreateToolRequestInput.WikipediaIntegrationDef
-            | CreateToolRequestInput.WeatherIntegrationDef
-            | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-            | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-            | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-            | CreateToolRequestInput.RemoteBrowserIntegrationDef
-            | CreateToolRequestInput.LlamaParseIntegrationDef
-            | CreateToolRequestInput.FfmpegIntegrationDef
-            | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-            | CreateToolRequestInput.CloudinaryEditIntegrationDef
-            | CreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
             | null;
 
           /**
            * System definition
            */
-          system?: CreateToolRequestInput.System | null;
+          system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-          text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+          text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
         }
 
-        export namespace CreateToolRequestInput {
+        export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
           /**
            * API call definition
            */
@@ -26497,7 +26521,9 @@ export namespace TaskCreateOrUpdateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -26738,7 +26764,7 @@ export namespace TaskCreateOrUpdateParams {
       /**
        * Payload for creating a tool
        */
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -26753,57 +26779,57 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDefInput
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
-          | CreateToolRequestInput.LlamaParseIntegrationDef
-          | CreateToolRequestInput.FfmpegIntegrationDef
-          | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | CreateToolRequestInput.CloudinaryEditIntegrationDef
-          | CreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
@@ -27750,7 +27776,9 @@ export namespace TaskCreateOrUpdateParams {
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
-      tools?: 'all' | Array<PromptStepInput.ToolRef | PromptStepInput.CreateToolRequestInput>;
+      tools?:
+        | 'all'
+        | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
 
       unwrap?: boolean;
     }
@@ -27991,7 +28019,7 @@ export namespace TaskCreateOrUpdateParams {
       /**
        * Payload for creating a tool
        */
-      export interface CreateToolRequestInput {
+      export interface AgentsAPIAutogenToolsCreateToolRequestInput {
         name: string;
 
         type:
@@ -28006,57 +28034,57 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * API call definition
          */
-        api_call?: CreateToolRequestInput.APICall | null;
+        api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
-        bash_20241022?: CreateToolRequestInput.Bash20241022 | null;
+        bash_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Bash20241022 | null;
 
         /**
          * Anthropic new tools
          */
-        computer_20241022?: CreateToolRequestInput.Computer20241022 | null;
+        computer_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.Computer20241022 | null;
 
         description?: string | null;
 
         /**
          * Function definition
          */
-        function?: CreateToolRequestInput.Function | null;
+        function?: AgentsAPIAutogenToolsCreateToolRequestInput.Function | null;
 
         /**
          * Brave integration definition
          */
         integration?:
-          | CreateToolRequestInput.DummyIntegrationDef
-          | CreateToolRequestInput.BraveIntegrationDef
-          | CreateToolRequestInput.EmailIntegrationDef
-          | CreateToolRequestInput.SpiderIntegrationDefInput
-          | CreateToolRequestInput.WikipediaIntegrationDef
-          | CreateToolRequestInput.WeatherIntegrationDef
-          | CreateToolRequestInput.BrowserbaseContextIntegrationDef
-          | CreateToolRequestInput.BrowserbaseExtensionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
-          | CreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
-          | CreateToolRequestInput.RemoteBrowserIntegrationDef
-          | CreateToolRequestInput.LlamaParseIntegrationDef
-          | CreateToolRequestInput.FfmpegIntegrationDef
-          | CreateToolRequestInput.CloudinaryUploadIntegrationDef
-          | CreateToolRequestInput.CloudinaryEditIntegrationDef
-          | CreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCreateSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseCompleteSessionIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionLiveURLsIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseGetSessionConnectURLIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.RemoteBrowserIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.LlamaParseIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.FfmpegIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
           | null;
 
         /**
          * System definition
          */
-        system?: CreateToolRequestInput.System | null;
+        system?: AgentsAPIAutogenToolsCreateToolRequestInput.System | null;
 
-        text_editor_20241022?: CreateToolRequestInput.TextEditor20241022 | null;
+        text_editor_20241022?: AgentsAPIAutogenToolsCreateToolRequestInput.TextEditor20241022 | null;
       }
 
-      export namespace CreateToolRequestInput {
+      export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
         /**
          * API call definition
          */
