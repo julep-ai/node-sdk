@@ -8,7 +8,7 @@ export {
   type AgentUpdateParams,
   type AgentListParams,
   type AgentCreateOrUpdateParams,
-  type AgentPatchParams,
+  type AgentResetParams,
 } from './agents';
 export {
   Docs,
@@ -24,5 +24,5 @@ export {
   type ToolCreateParams,
   type ToolUpdateParams,
   type ToolListParams,
-  type ToolPatchParams,
+  type ToolResetParams,
 } from './tools';

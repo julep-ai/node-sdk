@@ -15,5 +15,5 @@ export {
   type UserUpdateParams,
   type UserListParams,
   type UserCreateOrUpdateParams,
-  type UserPatchParams,
+  type UserResetParams,
 } from './users';

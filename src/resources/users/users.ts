@@ -19,14 +19,14 @@ export class Users extends APIResource {
   }
 
   /**
-   * Update User
+   * Patch User
    */
   update(
     userId: string,
     body: UserUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Shared.ResourceUpdated> {
-    return this._client.put(`/users/${userId}`, { body, ...options });
+    return this._client.patch(`/users/${userId}`, { body, ...options });
   }
 
   /**
@@ -70,14 +70,14 @@ export class Users extends APIResource {
   }
 
   /**
-   * Patch User
+   * Update User
    */
-  patch(
+  reset(
     userId: string,
-    body: UserPatchParams,
+    body: UserResetParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Shared.ResourceUpdated> {
-    return this._client.patch(`/users/${userId}`, { body, ...options });
+    return this._client.put(`/users/${userId}`, { body, ...options });
   }
 }
 
@@ -129,7 +129,7 @@ export interface UserCreateOrUpdateParams {
   name?: string;
 }
 
-export interface UserPatchParams {
+export interface UserResetParams {
   about?: string;
 
   metadata?: unknown | null;
@@ -148,7 +148,7 @@ export declare namespace Users {
     type UserUpdateParams as UserUpdateParams,
     type UserListParams as UserListParams,
     type UserCreateOrUpdateParams as UserCreateOrUpdateParams,
-    type UserPatchParams as UserPatchParams,
+    type UserResetParams as UserResetParams,
   };
 
   export {

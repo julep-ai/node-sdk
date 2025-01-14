@@ -16,14 +16,14 @@ export class Sessions extends APIResource {
   }
 
   /**
-   * Update Session
+   * Patch Session
    */
   update(
     sessionId: string,
     body: SessionUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Shared.ResourceUpdated> {
-    return this._client.put(`/sessions/${sessionId}`, { body, ...options });
+    return this._client.patch(`/sessions/${sessionId}`, { body, ...options });
   }
 
   /**
@@ -105,14 +105,14 @@ export class Sessions extends APIResource {
   }
 
   /**
-   * Patch Session
+   * Update Session
    */
-  patch(
+  reset(
     sessionId: string,
-    body: SessionPatchParams,
+    body: SessionResetParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Shared.ResourceUpdated> {
-    return this._client.patch(`/sessions/${sessionId}`, { body, ...options });
+    return this._client.put(`/sessions/${sessionId}`, { body, ...options });
   }
 }
 
@@ -6094,7 +6094,7 @@ export namespace SessionCreateOrUpdateParams {
   }
 }
 
-export interface SessionPatchParams {
+export interface SessionResetParams {
   auto_run_tools?: boolean;
 
   context_overflow?: 'truncate' | 'adaptive' | null;
@@ -6103,7 +6103,7 @@ export interface SessionPatchParams {
 
   metadata?: unknown | null;
 
-  recall_options?: SessionPatchParams.RecallOptions | null;
+  recall_options?: SessionResetParams.RecallOptions | null;
 
   render_templates?: boolean;
 
@@ -6114,7 +6114,7 @@ export interface SessionPatchParams {
   token_budget?: number | null;
 }
 
-export namespace SessionPatchParams {
+export namespace SessionResetParams {
   export interface RecallOptions {
     alpha?: number;
 
@@ -6154,6 +6154,6 @@ export declare namespace Sessions {
     type SessionListParams as SessionListParams,
     type SessionChatParams as SessionChatParams,
     type SessionCreateOrUpdateParams as SessionCreateOrUpdateParams,
-    type SessionPatchParams as SessionPatchParams,
+    type SessionResetParams as SessionResetParams,
   };
 }
