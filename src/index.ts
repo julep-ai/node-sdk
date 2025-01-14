@@ -24,7 +24,7 @@ import {
   SessionCreateOrUpdateParams,
   SessionCreateParams,
   SessionListParams,
-  SessionPatchParams,
+  SessionResetParams,
   SessionUpdateParams,
   Sessions,
   SessionsOffsetPagination,
@@ -42,7 +42,7 @@ import {
   AgentCreateOrUpdateParams,
   AgentCreateParams,
   AgentListParams,
-  AgentPatchParams,
+  AgentResetParams,
   AgentUpdateParams,
   Agents,
   AgentsOffsetPagination,
@@ -62,7 +62,7 @@ import {
   UserCreateOrUpdateParams,
   UserCreateParams,
   UserListParams,
-  UserPatchParams,
+  UserResetParams,
   UserUpdateParams,
   Users,
   UsersOffsetPagination,
@@ -287,7 +287,7 @@ export declare namespace Julep {
     type AgentUpdateParams as AgentUpdateParams,
     type AgentListParams as AgentListParams,
     type AgentCreateOrUpdateParams as AgentCreateOrUpdateParams,
-    type AgentPatchParams as AgentPatchParams,
+    type AgentResetParams as AgentResetParams,
   };
 
   export { Files as Files, type File as File, type FileCreateParams as FileCreateParams };
@@ -308,7 +308,7 @@ export declare namespace Julep {
     type SessionListParams as SessionListParams,
     type SessionChatParams as SessionChatParams,
     type SessionCreateOrUpdateParams as SessionCreateOrUpdateParams,
-    type SessionPatchParams as SessionPatchParams,
+    type SessionResetParams as SessionResetParams,
   };
 
   export {
@@ -319,7 +319,7 @@ export declare namespace Julep {
     type UserUpdateParams as UserUpdateParams,
     type UserListParams as UserListParams,
     type UserCreateOrUpdateParams as UserCreateOrUpdateParams,
-    type UserPatchParams as UserPatchParams,
+    type UserResetParams as UserResetParams,
   };
 
   export { Jobs as Jobs, type JobStatus as JobStatus };

@@ -40,8 +40,8 @@ describe('resource agents', () => {
     });
   });
 
-  test('update: only required params', async () => {
-    const responsePromise = client.agents.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { name: 'x' });
+  test('update', async () => {
+    const responsePromise = client.agents.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -49,26 +49,6 @@ describe('resource agents', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('update: required and optional params', async () => {
-    const response = await client.agents.update('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-      name: 'x',
-      about: 'about',
-      canonical_name: 'canonical_name',
-      default_settings: {
-        frequency_penalty: -2,
-        length_penalty: 0,
-        min_p: 0,
-        presence_penalty: -2,
-        repetition_penalty: 0,
-        temperature: 0,
-        top_p: 0,
-      },
-      instructions: 'string',
-      metadata: {},
-      model: 'model',
-    });
   });
 
   test('list', async () => {
@@ -168,8 +148,8 @@ describe('resource agents', () => {
     ).rejects.toThrow(Julep.NotFoundError);
   });
 
-  test('patch', async () => {
-    const responsePromise = client.agents.patch('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {});
+  test('reset: only required params', async () => {
+    const responsePromise = client.agents.reset('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { name: 'x' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -177,5 +157,25 @@ describe('resource agents', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('reset: required and optional params', async () => {
+    const response = await client.agents.reset('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      name: 'x',
+      about: 'about',
+      canonical_name: 'canonical_name',
+      default_settings: {
+        frequency_penalty: -2,
+        length_penalty: 0,
+        min_p: 0,
+        presence_penalty: -2,
+        repetition_penalty: 0,
+        temperature: 0,
+        top_p: 0,
+      },
+      instructions: 'string',
+      metadata: {},
+      model: 'model',
+    });
   });
 });
