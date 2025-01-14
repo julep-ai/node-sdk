@@ -9,7 +9,7 @@ export {
   type AgentUpdateParams,
   type AgentListParams,
   type AgentCreateOrUpdateParams,
-  type AgentPatchParams,
+  type AgentResetParams,
 } from './agents/agents';
 export {
   DocsOffsetPagination,
@@ -37,7 +37,7 @@ export {
   type SessionListParams,
   type SessionChatParams,
   type SessionCreateOrUpdateParams,
-  type SessionPatchParams,
+  type SessionResetParams,
 } from './sessions';
 export {
   TasksOffsetPagination,
@@ -66,5 +66,5 @@ export {
   type UserUpdateParams,
   type UserListParams,
   type UserCreateOrUpdateParams,
-  type UserPatchParams,
+  type UserResetParams,
 } from './users/users';
