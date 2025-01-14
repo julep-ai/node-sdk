@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.49.0 (2025-01-14)
+
+Full Changelog: [v1.48.0...v1.49.0](https://github.com/julep-ai/node-sdk/compare/v1.48.0...v1.49.0)
+
+### Features
+
+* **api:** put/patch methods swap ([#182](https://github.com/julep-ai/node-sdk/issues/182)) ([8dbcbb2](https://github.com/julep-ai/node-sdk/commit/8dbcbb2069b2d9cbee466f00e6e18a8e4e2e8fd7))
+
 ## 1.48.0 (2025-01-13)
 
 Full Changelog: [v1.47.0...v1.48.0](https://github.com/julep-ai/node-sdk/compare/v1.47.0...v1.48.0)
