@@ -12,7 +12,7 @@ import {
   ToolListParams,
   ToolListResponse,
   ToolListResponsesOffsetPagination,
-  ToolPatchParams,
+  ToolResetParams,
   ToolUpdateParams,
   Tools,
 } from './tools';
@@ -30,14 +30,14 @@ export class Agents extends APIResource {
   }
 
   /**
-   * Update Agent
+   * Patch Agent
    */
   update(
     agentId: string,
     body: AgentUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Shared.ResourceUpdated> {
-    return this._client.put(`/agents/${agentId}`, { body, ...options });
+    return this._client.patch(`/agents/${agentId}`, { body, ...options });
   }
 
   /**
@@ -84,14 +84,14 @@ export class Agents extends APIResource {
   }
 
   /**
-   * Patch Agent
+   * Update Agent
    */
-  patch(
+  reset(
     agentId: string,
-    body: AgentPatchParams,
+    body: AgentResetParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Shared.ResourceUpdated> {
-    return this._client.patch(`/agents/${agentId}`, { body, ...options });
+    return this._client.put(`/agents/${agentId}`, { body, ...options });
   }
 }
 
@@ -184,8 +184,6 @@ export namespace AgentCreateParams {
 }
 
 export interface AgentUpdateParams {
-  name: string;
-
   about?: string;
 
   canonical_name?: string | null;
@@ -200,6 +198,8 @@ export interface AgentUpdateParams {
   metadata?: unknown | null;
 
   model?: string;
+
+  name?: string | null;
 }
 
 export namespace AgentUpdateParams {
@@ -271,7 +271,9 @@ export namespace AgentCreateOrUpdateParams {
   }
 }
 
-export interface AgentPatchParams {
+export interface AgentResetParams {
+  name: string;
+
   about?: string;
 
   canonical_name?: string | null;
@@ -279,18 +281,16 @@ export interface AgentPatchParams {
   /**
    * Default settings for the chat session (also used by the agent)
    */
-  default_settings?: AgentPatchParams.DefaultSettings | null;
+  default_settings?: AgentResetParams.DefaultSettings | null;
 
   instructions?: string | Array<string>;
 
   metadata?: unknown | null;
 
   model?: string;
-
-  name?: string | null;
 }
 
-export namespace AgentPatchParams {
+export namespace AgentResetParams {
   /**
    * Default settings for the chat session (also used by the agent)
    */
@@ -324,7 +324,7 @@ export declare namespace Agents {
     type AgentUpdateParams as AgentUpdateParams,
     type AgentListParams as AgentListParams,
     type AgentCreateOrUpdateParams as AgentCreateOrUpdateParams,
-    type AgentPatchParams as AgentPatchParams,
+    type AgentResetParams as AgentResetParams,
   };
 
   export {
@@ -334,7 +334,7 @@ export declare namespace Agents {
     type ToolCreateParams as ToolCreateParams,
     type ToolUpdateParams as ToolUpdateParams,
     type ToolListParams as ToolListParams,
-    type ToolPatchParams as ToolPatchParams,
+    type ToolResetParams as ToolResetParams,
   };
 
   export {
