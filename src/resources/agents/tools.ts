@@ -136,7 +136,6 @@ export interface ToolListResponse {
     | ToolListResponse.BrowserbaseGetSessionIntegrationDef
     | ToolListResponse.BrowserbaseCompleteSessionIntegrationDef
     | ToolListResponse.BrowserbaseGetSessionLiveURLsIntegrationDef
-    | ToolListResponse.BrowserbaseGetSessionConnectURLIntegrationDef
     | ToolListResponse.RemoteBrowserIntegrationDef
     | ToolListResponse.LlamaParseIntegrationDef
     | ToolListResponse.FfmpegIntegrationDef
@@ -668,41 +667,6 @@ export namespace ToolListResponse {
   }
 
   /**
-   * browserbase get session connect url integration definition
-   */
-  export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-    arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
-
-    method?: 'get_connect_url';
-
-    provider?: 'browserbase';
-
-    /**
-     * The setup parameters for the browserbase integration
-     */
-    setup?: BrowserbaseGetSessionConnectURLIntegrationDef.Setup | null;
-  }
-
-  export namespace BrowserbaseGetSessionConnectURLIntegrationDef {
-    export interface Arguments {
-      id: string;
-    }
-
-    /**
-     * The setup parameters for the browserbase integration
-     */
-    export interface Setup {
-      api_key: string;
-
-      project_id: string;
-
-      api_url?: string | null;
-
-      connect_url?: string | null;
-    }
-  }
-
-  /**
    * The integration definition for the remote browser
    */
   export interface RemoteBrowserIntegrationDef {
@@ -1038,7 +1002,6 @@ export interface ToolCreateParams {
     | ToolCreateParams.BrowserbaseGetSessionIntegrationDef
     | ToolCreateParams.BrowserbaseCompleteSessionIntegrationDef
     | ToolCreateParams.BrowserbaseGetSessionLiveURLsIntegrationDef
-    | ToolCreateParams.BrowserbaseGetSessionConnectURLIntegrationDef
     | ToolCreateParams.RemoteBrowserIntegrationDef
     | ToolCreateParams.LlamaParseIntegrationDef
     | ToolCreateParams.FfmpegIntegrationDef
@@ -1570,41 +1533,6 @@ export namespace ToolCreateParams {
   }
 
   /**
-   * browserbase get session connect url integration definition
-   */
-  export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-    arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
-
-    method?: 'get_connect_url';
-
-    provider?: 'browserbase';
-
-    /**
-     * The setup parameters for the browserbase integration
-     */
-    setup?: BrowserbaseGetSessionConnectURLIntegrationDef.Setup | null;
-  }
-
-  export namespace BrowserbaseGetSessionConnectURLIntegrationDef {
-    export interface Arguments {
-      id: string;
-    }
-
-    /**
-     * The setup parameters for the browserbase integration
-     */
-    export interface Setup {
-      api_key: string;
-
-      project_id: string;
-
-      api_url?: string | null;
-
-      connect_url?: string | null;
-    }
-  }
-
-  /**
    * The integration definition for the remote browser
    */
   export interface RemoteBrowserIntegrationDef {
@@ -1929,7 +1857,6 @@ export interface ToolUpdateParams {
     | ToolUpdateParams.BrowserbaseGetSessionIntegrationDefUpdate
     | ToolUpdateParams.BrowserbaseCompleteSessionIntegrationDefUpdate
     | ToolUpdateParams.BrowserbaseGetSessionLiveURLsIntegrationDefUpdate
-    | ToolUpdateParams.BrowserbaseGetSessionConnectURLIntegrationDefUpdate
     | ToolUpdateParams.RemoteBrowserIntegrationDefUpdate
     | ToolUpdateParams.LlamaParseIntegrationDefUpdate
     | ToolUpdateParams.FfmpegIntegrationDefUpdate
@@ -2473,41 +2400,6 @@ export namespace ToolUpdateParams {
   }
 
   /**
-   * browserbase get session connect url integration definition
-   */
-  export interface BrowserbaseGetSessionConnectURLIntegrationDefUpdate {
-    arguments?: BrowserbaseGetSessionConnectURLIntegrationDefUpdate.Arguments | null;
-
-    method?: 'get_connect_url';
-
-    provider?: 'browserbase';
-
-    /**
-     * The setup parameters for the browserbase integration
-     */
-    setup?: BrowserbaseGetSessionConnectURLIntegrationDefUpdate.Setup | null;
-  }
-
-  export namespace BrowserbaseGetSessionConnectURLIntegrationDefUpdate {
-    export interface Arguments {
-      id?: string | null;
-    }
-
-    /**
-     * The setup parameters for the browserbase integration
-     */
-    export interface Setup {
-      api_key?: string | null;
-
-      api_url?: string | null;
-
-      connect_url?: string | null;
-
-      project_id?: string | null;
-    }
-  }
-
-  /**
    * The integration definition for the remote browser
    */
   export interface RemoteBrowserIntegrationDefUpdate {
@@ -2851,7 +2743,6 @@ export interface ToolResetParams {
     | ToolResetParams.BrowserbaseGetSessionIntegrationDef
     | ToolResetParams.BrowserbaseCompleteSessionIntegrationDef
     | ToolResetParams.BrowserbaseGetSessionLiveURLsIntegrationDef
-    | ToolResetParams.BrowserbaseGetSessionConnectURLIntegrationDef
     | ToolResetParams.RemoteBrowserIntegrationDef
     | ToolResetParams.LlamaParseIntegrationDef
     | ToolResetParams.FfmpegIntegrationDef
@@ -3364,41 +3255,6 @@ export namespace ToolResetParams {
   }
 
   export namespace BrowserbaseGetSessionLiveURLsIntegrationDef {
-    export interface Arguments {
-      id: string;
-    }
-
-    /**
-     * The setup parameters for the browserbase integration
-     */
-    export interface Setup {
-      api_key: string;
-
-      project_id: string;
-
-      api_url?: string | null;
-
-      connect_url?: string | null;
-    }
-  }
-
-  /**
-   * browserbase get session connect url integration definition
-   */
-  export interface BrowserbaseGetSessionConnectURLIntegrationDef {
-    arguments?: BrowserbaseGetSessionConnectURLIntegrationDef.Arguments | null;
-
-    method?: 'get_connect_url';
-
-    provider?: 'browserbase';
-
-    /**
-     * The setup parameters for the browserbase integration
-     */
-    setup?: BrowserbaseGetSessionConnectURLIntegrationDef.Setup | null;
-  }
-
-  export namespace BrowserbaseGetSessionConnectURLIntegrationDef {
     export interface Arguments {
       id: string;
     }
