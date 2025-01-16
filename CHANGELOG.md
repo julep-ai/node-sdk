@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.50.0 (2025-01-16)
+
+Full Changelog: [v1.49.0...v1.50.0](https://github.com/julep-ai/node-sdk/compare/v1.49.0...v1.50.0)
+
+### Features
+
+* **api:** api update ([#187](https://github.com/julep-ai/node-sdk/issues/187)) ([31ba569](https://github.com/julep-ai/node-sdk/commit/31ba56985819c5136ad42baf5b79dd79daf63136))
+* **api:** Switch default environment to production ([#185](https://github.com/julep-ai/node-sdk/issues/185)) ([55cb8e2](https://github.com/julep-ai/node-sdk/commit/55cb8e2f953fb1e78d784fc8499ef50a07f7f484))
+* **api:** Switch default environment to production ([#188](https://github.com/julep-ai/node-sdk/issues/188)) ([b0e61fa](https://github.com/julep-ai/node-sdk/commit/b0e61fa55e69e773fda8418cd3bc74330d3bd1f4))
+
 ## 1.49.0 (2025-01-14)
 
 Full Changelog: [v1.48.0...v1.49.0](https://github.com/julep-ai/node-sdk/compare/v1.48.0...v1.49.0)
