@@ -24,7 +24,7 @@ import Julep from '@julep/sdk';
 
 const client = new Julep({
   apiKey: process.env['JULEP_API_KEY'], // This is the default and can be omitted
-  environment: 'production', // or 'dev' | 'local_multi_tenant' | 'local'; defaults to 'dev'
+  environment: 'dev', // or 'production' | 'local_multi_tenant' | 'local'; defaults to 'production'
 });
 
 async function main() {
@@ -49,7 +49,7 @@ import Julep from '@julep/sdk';
 
 const client = new Julep({
   apiKey: process.env['JULEP_API_KEY'], // This is the default and can be omitted
-  environment: 'production', // or 'dev' | 'local_multi_tenant' | 'local'; defaults to 'dev'
+  environment: 'dev', // or 'production' | 'local_multi_tenant' | 'local'; defaults to 'production'
 });
 
 async function main() {
