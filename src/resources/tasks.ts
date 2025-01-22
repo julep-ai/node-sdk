@@ -105,7 +105,7 @@ export interface Task {
 
 export namespace Task {
   export interface EvaluateStep {
-    evaluate: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
+    evaluate: Record<string, unknown | string>;
 
     kind_?: 'evaluate';
 
@@ -1280,7 +1280,7 @@ export namespace Task {
   }
 
   export interface SetStep {
-    set: Record<string, string>;
+    set: Record<string, unknown | string>;
 
     kind_?: 'set';
 
@@ -1394,10 +1394,7 @@ export namespace Task {
 
   export namespace IfElseWorkflowStepOutput {
     export interface EvaluateStep {
-      evaluate: Record<
-        string,
-        Array<string> | Record<string, string> | Array<Record<string, string>> | string
-      >;
+      evaluate: Record<string, unknown | string>;
 
       kind_?: 'evaluate';
 
@@ -2578,7 +2575,7 @@ export namespace Task {
     }
 
     export interface SetStep {
-      set: Record<string, string>;
+      set: Record<string, unknown | string>;
 
       kind_?: 'set';
 
@@ -2656,10 +2653,7 @@ export namespace Task {
     }
 
     export interface EvaluateStep {
-      evaluate: Record<
-        string,
-        Array<string> | Record<string, string> | Array<Record<string, string>> | string
-      >;
+      evaluate: Record<string, unknown | string>;
 
       kind_?: 'evaluate';
 
@@ -3840,7 +3834,7 @@ export namespace Task {
     }
 
     export interface SetStep {
-      set: Record<string, string>;
+      set: Record<string, unknown | string>;
 
       kind_?: 'set';
 
@@ -3946,10 +3940,7 @@ export namespace Task {
 
     export namespace Switch {
       export interface EvaluateStep {
-        evaluate: Record<
-          string,
-          Array<string> | Record<string, string> | Array<Record<string, string>> | string
-        >;
+        evaluate: Record<string, unknown | string>;
 
         kind_?: 'evaluate';
 
@@ -5133,7 +5124,7 @@ export namespace Task {
       }
 
       export interface SetStep {
-        set: Record<string, string>;
+        set: Record<string, unknown | string>;
 
         kind_?: 'set';
 
@@ -5260,10 +5251,7 @@ export namespace Task {
       }
 
       export interface EvaluateStep {
-        evaluate: Record<
-          string,
-          Array<string> | Record<string, string> | Array<Record<string, string>> | string
-        >;
+        evaluate: Record<string, unknown | string>;
 
         kind_?: 'evaluate';
 
@@ -6447,7 +6435,7 @@ export namespace Task {
       }
 
       export interface SetStep {
-        set: Record<string, string>;
+        set: Record<string, unknown | string>;
 
         kind_?: 'set';
 
@@ -6494,10 +6482,7 @@ export namespace Task {
 
   export namespace ParallelStepOutput {
     export interface EvaluateStep {
-      evaluate: Record<
-        string,
-        Array<string> | Record<string, string> | Array<Record<string, string>> | string
-      >;
+      evaluate: Record<string, unknown | string>;
 
       kind_?: 'evaluate';
 
@@ -7678,7 +7663,7 @@ export namespace Task {
     }
 
     export interface SetStep {
-      set: Record<string, string>;
+      set: Record<string, unknown | string>;
 
       kind_?: 'set';
 
@@ -7731,10 +7716,7 @@ export namespace Task {
 
   export namespace MainOutput {
     export interface EvaluateStep {
-      evaluate: Record<
-        string,
-        Array<string> | Record<string, string> | Array<Record<string, string>> | string
-      >;
+      evaluate: Record<string, unknown | string>;
 
       kind_?: 'evaluate';
 
@@ -8915,7 +8897,7 @@ export namespace Task {
     }
 
     export interface SetStep {
-      set: Record<string, string>;
+      set: Record<string, unknown | string>;
 
       kind_?: 'set';
 
@@ -9849,7 +9831,7 @@ export interface TaskCreateParams {
 
 export namespace TaskCreateParams {
   export interface EvaluateStep {
-    evaluate: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
+    evaluate: Record<string, unknown | string>;
 
     label?: string | null;
   }
@@ -11014,7 +10996,7 @@ export namespace TaskCreateParams {
   }
 
   export interface SetStep {
-    set: Record<string, string>;
+    set: Record<string, unknown | string>;
 
     label?: string | null;
   }
@@ -11112,10 +11094,7 @@ export namespace TaskCreateParams {
 
   export namespace IfElseWorkflowStepInput {
     export interface EvaluateStep {
-      evaluate: Record<
-        string,
-        Array<string> | Record<string, string> | Array<Record<string, string>> | string
-      >;
+      evaluate: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -12286,7 +12265,7 @@ export namespace TaskCreateParams {
     }
 
     export interface SetStep {
-      set: Record<string, string>;
+      set: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -12350,10 +12329,7 @@ export namespace TaskCreateParams {
     }
 
     export interface EvaluateStep {
-      evaluate: Record<
-        string,
-        Array<string> | Record<string, string> | Array<Record<string, string>> | string
-      >;
+      evaluate: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -13524,7 +13500,7 @@ export namespace TaskCreateParams {
     }
 
     export interface SetStep {
-      set: Record<string, string>;
+      set: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -13614,10 +13590,7 @@ export namespace TaskCreateParams {
 
     export namespace Switch {
       export interface EvaluateStep {
-        evaluate: Record<
-          string,
-          Array<string> | Record<string, string> | Array<Record<string, string>> | string
-        >;
+        evaluate: Record<string, unknown | string>;
 
         label?: string | null;
       }
@@ -14791,7 +14764,7 @@ export namespace TaskCreateParams {
       }
 
       export interface SetStep {
-        set: Record<string, string>;
+        set: Record<string, unknown | string>;
 
         label?: string | null;
       }
@@ -14900,10 +14873,7 @@ export namespace TaskCreateParams {
       }
 
       export interface EvaluateStep {
-        evaluate: Record<
-          string,
-          Array<string> | Record<string, string> | Array<Record<string, string>> | string
-        >;
+        evaluate: Record<string, unknown | string>;
 
         label?: string | null;
       }
@@ -16077,7 +16047,7 @@ export namespace TaskCreateParams {
       }
 
       export interface SetStep {
-        set: Record<string, string>;
+        set: Record<string, unknown | string>;
 
         label?: string | null;
       }
@@ -16116,10 +16086,7 @@ export namespace TaskCreateParams {
 
   export namespace ParallelStepInput {
     export interface EvaluateStep {
-      evaluate: Record<
-        string,
-        Array<string> | Record<string, string> | Array<Record<string, string>> | string
-      >;
+      evaluate: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -17290,7 +17257,7 @@ export namespace TaskCreateParams {
     }
 
     export interface SetStep {
-      set: Record<string, string>;
+      set: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -17335,10 +17302,7 @@ export namespace TaskCreateParams {
 
   export namespace MainInput {
     export interface EvaluateStep {
-      evaluate: Record<
-        string,
-        Array<string> | Record<string, string> | Array<Record<string, string>> | string
-      >;
+      evaluate: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -18509,7 +18473,7 @@ export namespace TaskCreateParams {
     }
 
     export interface SetStep {
-      set: Record<string, string>;
+      set: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -19441,7 +19405,7 @@ export interface TaskCreateOrUpdateParams {
 
 export namespace TaskCreateOrUpdateParams {
   export interface EvaluateStep {
-    evaluate: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
+    evaluate: Record<string, unknown | string>;
 
     label?: string | null;
   }
@@ -20606,7 +20570,7 @@ export namespace TaskCreateOrUpdateParams {
   }
 
   export interface SetStep {
-    set: Record<string, string>;
+    set: Record<string, unknown | string>;
 
     label?: string | null;
   }
@@ -20704,10 +20668,7 @@ export namespace TaskCreateOrUpdateParams {
 
   export namespace IfElseWorkflowStepInput {
     export interface EvaluateStep {
-      evaluate: Record<
-        string,
-        Array<string> | Record<string, string> | Array<Record<string, string>> | string
-      >;
+      evaluate: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -21878,7 +21839,7 @@ export namespace TaskCreateOrUpdateParams {
     }
 
     export interface SetStep {
-      set: Record<string, string>;
+      set: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -21942,10 +21903,7 @@ export namespace TaskCreateOrUpdateParams {
     }
 
     export interface EvaluateStep {
-      evaluate: Record<
-        string,
-        Array<string> | Record<string, string> | Array<Record<string, string>> | string
-      >;
+      evaluate: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -23116,7 +23074,7 @@ export namespace TaskCreateOrUpdateParams {
     }
 
     export interface SetStep {
-      set: Record<string, string>;
+      set: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -23206,10 +23164,7 @@ export namespace TaskCreateOrUpdateParams {
 
     export namespace Switch {
       export interface EvaluateStep {
-        evaluate: Record<
-          string,
-          Array<string> | Record<string, string> | Array<Record<string, string>> | string
-        >;
+        evaluate: Record<string, unknown | string>;
 
         label?: string | null;
       }
@@ -24383,7 +24338,7 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       export interface SetStep {
-        set: Record<string, string>;
+        set: Record<string, unknown | string>;
 
         label?: string | null;
       }
@@ -24492,10 +24447,7 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       export interface EvaluateStep {
-        evaluate: Record<
-          string,
-          Array<string> | Record<string, string> | Array<Record<string, string>> | string
-        >;
+        evaluate: Record<string, unknown | string>;
 
         label?: string | null;
       }
@@ -25669,7 +25621,7 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       export interface SetStep {
-        set: Record<string, string>;
+        set: Record<string, unknown | string>;
 
         label?: string | null;
       }
@@ -25708,10 +25660,7 @@ export namespace TaskCreateOrUpdateParams {
 
   export namespace ParallelStepInput {
     export interface EvaluateStep {
-      evaluate: Record<
-        string,
-        Array<string> | Record<string, string> | Array<Record<string, string>> | string
-      >;
+      evaluate: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -26882,7 +26831,7 @@ export namespace TaskCreateOrUpdateParams {
     }
 
     export interface SetStep {
-      set: Record<string, string>;
+      set: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -26927,10 +26876,7 @@ export namespace TaskCreateOrUpdateParams {
 
   export namespace MainInput {
     export interface EvaluateStep {
-      evaluate: Record<
-        string,
-        Array<string> | Record<string, string> | Array<Record<string, string>> | string
-      >;
+      evaluate: Record<string, unknown | string>;
 
       label?: string | null;
     }
@@ -28101,7 +28047,7 @@ export namespace TaskCreateOrUpdateParams {
     }
 
     export interface SetStep {
-      set: Record<string, string>;
+      set: Record<string, unknown | string>;
 
       label?: string | null;
     }
