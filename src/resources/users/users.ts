@@ -14,18 +14,14 @@ export class Users extends APIResource {
   /**
    * Create User
    */
-  create(body: UserCreateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceCreated> {
+  create(body: UserCreateParams, options?: Core.RequestOptions): Core.APIPromise<User> {
     return this._client.post('/users', { body, ...options });
   }
 
   /**
    * Patch User
    */
-  update(
-    userId: string,
-    body: UserUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceUpdated> {
+  update(userId: string, body: UserUpdateParams, options?: Core.RequestOptions): Core.APIPromise<User> {
     return this._client.patch(`/users/${userId}`, { body, ...options });
   }
 
@@ -58,7 +54,7 @@ export class Users extends APIResource {
     userId: string,
     body: UserCreateOrUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceCreated> {
+  ): Core.APIPromise<User> {
     return this._client.post(`/users/${userId}`, { body, ...options });
   }
 
@@ -72,11 +68,7 @@ export class Users extends APIResource {
   /**
    * Update User
    */
-  reset(
-    userId: string,
-    body: UserResetParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceUpdated> {
+  reset(userId: string, body: UserResetParams, options?: Core.RequestOptions): Core.APIPromise<User> {
     return this._client.put(`/users/${userId}`, { body, ...options });
   }
 }

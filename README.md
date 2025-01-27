@@ -28,12 +28,12 @@ const client = new Julep({
 });
 
 async function main() {
-  const resourceCreated = await client.tasks.create('dad00000-0000-4000-a000-000000000000', {
+  const task = await client.tasks.create('dad00000-0000-4000-a000-000000000000', {
     main: [{ evaluate: { foo: {} } }],
     name: 'x',
   });
 
-  console.log(resourceCreated.id);
+  console.log(task.id);
 }
 
 main();
@@ -58,7 +58,7 @@ async function main() {
     instructions: ['Protect Leia', 'Kick butt'],
     model: 'o1-preview',
   };
-  const agent: Julep.ResourceCreated = await client.agents.createOrUpdate(
+  const agent: Julep.Agent = await client.agents.createOrUpdate(
     'dad00000-0000-4000-a000-000000000000',
     params,
   );

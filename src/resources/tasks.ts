@@ -4,18 +4,13 @@ import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
 import * as SessionsAPI from './sessions';
-import * as Shared from './shared';
 import { OffsetPagination, type OffsetPaginationParams } from '../pagination';
 
 export class Tasks extends APIResource {
   /**
    * Create Task
    */
-  create(
-    agentId: string,
-    body: TaskCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceCreated> {
+  create(agentId: string, body: TaskCreateParams, options?: Core.RequestOptions): Core.APIPromise<Task> {
     return this._client.post(`/agents/${agentId}/tasks`, { body, ...options });
   }
 
@@ -47,7 +42,7 @@ export class Tasks extends APIResource {
     taskId: string,
     body: TaskCreateOrUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceUpdated> {
+  ): Core.APIPromise<Task> {
     return this._client.post(`/agents/${agentId}/tasks/${taskId}`, { body, ...options });
   }
 
