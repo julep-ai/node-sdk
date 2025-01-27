@@ -11,7 +11,7 @@ export class Sessions extends APIResource {
   /**
    * Create Session
    */
-  create(body: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceCreated> {
+  create(body: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<Session> {
     return this._client.post('/sessions', { body, ...options });
   }
 
@@ -22,7 +22,7 @@ export class Sessions extends APIResource {
     sessionId: string,
     body: SessionUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceUpdated> {
+  ): Core.APIPromise<Session> {
     return this._client.patch(`/sessions/${sessionId}`, { body, ...options });
   }
 
@@ -86,7 +86,7 @@ export class Sessions extends APIResource {
     sessionId: string,
     body: SessionCreateOrUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceUpdated> {
+  ): Core.APIPromise<Session> {
     return this._client.post(`/sessions/${sessionId}`, { body, ...options });
   }
 
@@ -111,7 +111,7 @@ export class Sessions extends APIResource {
     sessionId: string,
     body: SessionResetParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceUpdated> {
+  ): Core.APIPromise<Session> {
     return this._client.put(`/sessions/${sessionId}`, { body, ...options });
   }
 }

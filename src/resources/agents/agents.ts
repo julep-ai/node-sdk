@@ -9,11 +9,14 @@ import { DocCreateParams, DocListParams, DocSearchParams, DocSearchResponse, Doc
 import * as ToolsAPI from './tools';
 import {
   ToolCreateParams,
+  ToolCreateResponse,
   ToolListParams,
   ToolListResponse,
   ToolListResponsesOffsetPagination,
   ToolResetParams,
+  ToolResetResponse,
   ToolUpdateParams,
+  ToolUpdateResponse,
   Tools,
 } from './tools';
 import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
@@ -25,18 +28,14 @@ export class Agents extends APIResource {
   /**
    * Create Agent
    */
-  create(body: AgentCreateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceCreated> {
+  create(body: AgentCreateParams, options?: Core.RequestOptions): Core.APIPromise<Agent> {
     return this._client.post('/agents', { body, ...options });
   }
 
   /**
    * Patch Agent
    */
-  update(
-    agentId: string,
-    body: AgentUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceUpdated> {
+  update(agentId: string, body: AgentUpdateParams, options?: Core.RequestOptions): Core.APIPromise<Agent> {
     return this._client.patch(`/agents/${agentId}`, { body, ...options });
   }
 
@@ -72,7 +71,7 @@ export class Agents extends APIResource {
     agentId: string,
     body: AgentCreateOrUpdateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceCreated> {
+  ): Core.APIPromise<Agent> {
     return this._client.post(`/agents/${agentId}`, { body, ...options });
   }
 
@@ -86,11 +85,7 @@ export class Agents extends APIResource {
   /**
    * Update Agent
    */
-  reset(
-    agentId: string,
-    body: AgentResetParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceUpdated> {
+  reset(agentId: string, body: AgentResetParams, options?: Core.RequestOptions): Core.APIPromise<Agent> {
     return this._client.put(`/agents/${agentId}`, { body, ...options });
   }
 }
@@ -329,7 +324,10 @@ export declare namespace Agents {
 
   export {
     Tools as Tools,
+    type ToolCreateResponse as ToolCreateResponse,
+    type ToolUpdateResponse as ToolUpdateResponse,
     type ToolListResponse as ToolListResponse,
+    type ToolResetResponse as ToolResetResponse,
     ToolListResponsesOffsetPagination as ToolListResponsesOffsetPagination,
     type ToolCreateParams as ToolCreateParams,
     type ToolUpdateParams as ToolUpdateParams,

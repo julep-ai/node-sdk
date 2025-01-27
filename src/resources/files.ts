@@ -8,7 +8,7 @@ export class Files extends APIResource {
   /**
    * Create File
    */
-  create(body: FileCreateParams, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceCreated> {
+  create(body: FileCreateParams, options?: Core.RequestOptions): Core.APIPromise<File> {
     return this._client.post('/files', { body, ...options });
   }
 
