@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as Shared from '../shared';
 import * as TransitionsAPI from './transitions';
 import {
   TransitionListParams,
@@ -23,7 +22,7 @@ export class Executions extends APIResource {
     taskId: string,
     body: ExecutionCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceCreated> {
+  ): Core.APIPromise<Execution> {
     return this._client.post(`/tasks/${taskId}/executions`, { body, ...options });
   }
 

@@ -27,7 +27,6 @@ describe('resource docs', () => {
     const response = await client.agents.docs.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       content: 'string',
       title: 'title',
-      connection_pool: {},
       embed_instruction: 'embed_instruction',
       metadata: {},
     });

@@ -20,7 +20,10 @@ export {
 export {
   ToolListResponsesOffsetPagination,
   Tools,
+  type ToolCreateResponse,
+  type ToolUpdateResponse,
   type ToolListResponse,
+  type ToolResetResponse,
   type ToolCreateParams,
   type ToolUpdateParams,
   type ToolListParams,
