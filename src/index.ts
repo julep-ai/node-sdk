@@ -352,9 +352,7 @@ export declare namespace Julep {
     type ExecutionChangeStatusParams as ExecutionChangeStatusParams,
   };
 
-  export type ResourceCreated = API.ResourceCreated;
   export type ResourceDeleted = API.ResourceDeleted;
-  export type ResourceUpdated = API.ResourceUpdated;
 }
 
 export { toFile, fileFromPath } from './uploads';
