@@ -14,10 +14,11 @@ export class Docs extends APIResource {
    */
   create(
     agentId: string,
-    body: DocCreateParams,
+    params: DocCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<DocsAPI.Doc> {
-    return this._client.post(`/agents/${agentId}/docs`, { body, ...options });
+    const { connection_pool, ...body } = params;
+    return this._client.post(`/agents/${agentId}/docs`, { query: { connection_pool }, body, ...options });
   }
 
   /**
@@ -103,12 +104,29 @@ export namespace DocSearchResponse {
 }
 
 export interface DocCreateParams {
+  /**
+   * Body param:
+   */
   content: string | Array<string>;
 
+  /**
+   * Body param:
+   */
   title: string;
 
+  /**
+   * Query param:
+   */
+  connection_pool?: unknown;
+
+  /**
+   * Body param:
+   */
   embed_instruction?: string | null;
 
+  /**
+   * Body param:
+   */
   metadata?: unknown | null;
 }
 
