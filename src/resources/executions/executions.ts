@@ -122,6 +122,8 @@ export interface Transition {
   updated_at: string;
 
   metadata?: unknown | null;
+
+  step_label?: string | null;
 }
 
 export namespace Transition {
