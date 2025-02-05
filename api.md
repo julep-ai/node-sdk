@@ -68,7 +68,6 @@ Types:
 
 - <code><a href="./src/resources/sessions.ts">ChatInput</a></code>
 - <code><a href="./src/resources/sessions.ts">ChatResponse</a></code>
-- <code><a href="./src/resources/sessions.ts">ChatSettings</a></code>
 - <code><a href="./src/resources/sessions.ts">Entry</a></code>
 - <code><a href="./src/resources/sessions.ts">History</a></code>
 - <code><a href="./src/resources/sessions.ts">Message</a></code>

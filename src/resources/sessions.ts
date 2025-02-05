@@ -1808,53 +1808,6 @@ export namespace ChatResponse {
   }
 }
 
-export interface ChatSettings {
-  agent?: string | null;
-
-  frequency_penalty?: number | null;
-
-  length_penalty?: number | null;
-
-  logit_bias?: Record<string, number> | null;
-
-  max_tokens?: number | null;
-
-  min_p?: number | null;
-
-  model?: string | null;
-
-  presence_penalty?: number | null;
-
-  repetition_penalty?: number | null;
-
-  response_format?:
-    | ChatSettings.SimpleCompletionResponseFormat
-    | ChatSettings.SchemaCompletionResponseFormat
-    | null;
-
-  seed?: number | null;
-
-  stop?: Array<string>;
-
-  stream?: boolean;
-
-  temperature?: number | null;
-
-  top_p?: number | null;
-}
-
-export namespace ChatSettings {
-  export interface SimpleCompletionResponseFormat {
-    type?: 'text' | 'json_object';
-  }
-
-  export interface SchemaCompletionResponseFormat {
-    json_schema: unknown;
-
-    type?: 'json_schema';
-  }
-}
-
 export interface Entry {
   id: string;
 
@@ -5998,7 +5951,6 @@ export declare namespace Sessions {
   export {
     type ChatInput as ChatInput,
     type ChatResponse as ChatResponse,
-    type ChatSettings as ChatSettings,
     type Entry as Entry,
     type History as History,
     type Message as Message,
