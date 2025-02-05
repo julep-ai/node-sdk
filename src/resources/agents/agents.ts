@@ -105,37 +105,13 @@ export interface Agent {
 
   canonical_name?: string | null;
 
-  /**
-   * Default settings for the chat session (also used by the agent)
-   */
-  default_settings?: Agent.DefaultSettings | null;
+  default_settings?: unknown | null;
 
   instructions?: string | Array<string>;
 
   metadata?: unknown | null;
 
   model?: string;
-}
-
-export namespace Agent {
-  /**
-   * Default settings for the chat session (also used by the agent)
-   */
-  export interface DefaultSettings {
-    frequency_penalty?: number | null;
-
-    length_penalty?: number | null;
-
-    min_p?: number | null;
-
-    presence_penalty?: number | null;
-
-    repetition_penalty?: number | null;
-
-    temperature?: number | null;
-
-    top_p?: number | null;
-  }
 }
 
 export interface AgentCreateParams {
@@ -145,10 +121,7 @@ export interface AgentCreateParams {
 
   canonical_name?: string | null;
 
-  /**
-   * Default settings for the chat session (also used by the agent)
-   */
-  default_settings?: AgentCreateParams.DefaultSettings | null;
+  default_settings?: unknown | null;
 
   instructions?: string | Array<string>;
 
@@ -157,36 +130,12 @@ export interface AgentCreateParams {
   model?: string;
 }
 
-export namespace AgentCreateParams {
-  /**
-   * Default settings for the chat session (also used by the agent)
-   */
-  export interface DefaultSettings {
-    frequency_penalty?: number | null;
-
-    length_penalty?: number | null;
-
-    min_p?: number | null;
-
-    presence_penalty?: number | null;
-
-    repetition_penalty?: number | null;
-
-    temperature?: number | null;
-
-    top_p?: number | null;
-  }
-}
-
 export interface AgentUpdateParams {
   about?: string;
 
   canonical_name?: string | null;
 
-  /**
-   * Default settings for the chat session (also used by the agent)
-   */
-  default_settings?: AgentUpdateParams.DefaultSettings | null;
+  default_settings?: unknown | null;
 
   instructions?: string | Array<string>;
 
@@ -195,27 +144,6 @@ export interface AgentUpdateParams {
   model?: string;
 
   name?: string | null;
-}
-
-export namespace AgentUpdateParams {
-  /**
-   * Default settings for the chat session (also used by the agent)
-   */
-  export interface DefaultSettings {
-    frequency_penalty?: number | null;
-
-    length_penalty?: number | null;
-
-    min_p?: number | null;
-
-    presence_penalty?: number | null;
-
-    repetition_penalty?: number | null;
-
-    temperature?: number | null;
-
-    top_p?: number | null;
-  }
 }
 
 export interface AgentListParams extends OffsetPaginationParams {
@@ -233,37 +161,13 @@ export interface AgentCreateOrUpdateParams {
 
   canonical_name?: string | null;
 
-  /**
-   * Default settings for the chat session (also used by the agent)
-   */
-  default_settings?: AgentCreateOrUpdateParams.DefaultSettings | null;
+  default_settings?: unknown | null;
 
   instructions?: string | Array<string>;
 
   metadata?: unknown | null;
 
   model?: string;
-}
-
-export namespace AgentCreateOrUpdateParams {
-  /**
-   * Default settings for the chat session (also used by the agent)
-   */
-  export interface DefaultSettings {
-    frequency_penalty?: number | null;
-
-    length_penalty?: number | null;
-
-    min_p?: number | null;
-
-    presence_penalty?: number | null;
-
-    repetition_penalty?: number | null;
-
-    temperature?: number | null;
-
-    top_p?: number | null;
-  }
 }
 
 export interface AgentResetParams {
@@ -273,37 +177,13 @@ export interface AgentResetParams {
 
   canonical_name?: string | null;
 
-  /**
-   * Default settings for the chat session (also used by the agent)
-   */
-  default_settings?: AgentResetParams.DefaultSettings | null;
+  default_settings?: unknown | null;
 
   instructions?: string | Array<string>;
 
   metadata?: unknown | null;
 
   model?: string;
-}
-
-export namespace AgentResetParams {
-  /**
-   * Default settings for the chat session (also used by the agent)
-   */
-  export interface DefaultSettings {
-    frequency_penalty?: number | null;
-
-    length_penalty?: number | null;
-
-    min_p?: number | null;
-
-    presence_penalty?: number | null;
-
-    repetition_penalty?: number | null;
-
-    temperature?: number | null;
-
-    top_p?: number | null;
-  }
 }
 
 Agents.AgentsOffsetPagination = AgentsOffsetPagination;
