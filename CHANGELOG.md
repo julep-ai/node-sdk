@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.56.0 (2025-02-05)
+
+Full Changelog: [v1.55.0...v1.56.0](https://github.com/julep-ai/node-sdk/compare/v1.55.0...v1.56.0)
+
+### Features
+
+* **api:** api update ([#209](https://github.com/julep-ai/node-sdk/issues/209)) ([5064479](https://github.com/julep-ai/node-sdk/commit/506447994ffd701b081b906727022ee4e8f4615b))
+* **client:** send `X-Stainless-Timeout` header ([#207](https://github.com/julep-ai/node-sdk/issues/207)) ([fd576e1](https://github.com/julep-ai/node-sdk/commit/fd576e1b819c220a7965ab815bb668d904df5ba0))
+
 ## 1.55.0 (2025-02-03)
 
 Full Changelog: [v1.54.0...v1.55.0](https://github.com/julep-ai/node-sdk/compare/v1.54.0...v1.55.0)
