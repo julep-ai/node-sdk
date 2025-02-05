@@ -14,7 +14,6 @@ import { JobStatus, Jobs } from './resources/jobs';
 import {
   ChatInput,
   ChatResponse,
-  ChatSettings,
   Entry,
   History,
   Message,
@@ -296,7 +295,6 @@ export declare namespace Julep {
     Sessions as Sessions,
     type ChatInput as ChatInput,
     type ChatResponse as ChatResponse,
-    type ChatSettings as ChatSettings,
     type Entry as Entry,
     type History as History,
     type Message as Message,

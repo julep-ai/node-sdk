@@ -26,7 +26,6 @@ export {
   Sessions,
   type ChatInput,
   type ChatResponse,
-  type ChatSettings,
   type Entry,
   type History,
   type Message,

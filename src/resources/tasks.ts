@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as SessionsAPI from './sessions';
 import { OffsetPagination, type OffsetPaginationParams } from '../pagination';
 
 export class Tasks extends APIResource {
@@ -150,7 +149,7 @@ export namespace Task {
 
     label?: string | null;
 
-    settings?: SessionsAPI.ChatSettings | null;
+    settings?: unknown | null;
 
     tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
 
@@ -1445,7 +1444,7 @@ export namespace Task {
 
       label?: string | null;
 
-      settings?: SessionsAPI.ChatSettings | null;
+      settings?: unknown | null;
 
       tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
 
@@ -2704,7 +2703,7 @@ export namespace Task {
 
       label?: string | null;
 
-      settings?: SessionsAPI.ChatSettings | null;
+      settings?: unknown | null;
 
       tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
 
@@ -3994,7 +3993,7 @@ export namespace Task {
 
         label?: string | null;
 
-        settings?: SessionsAPI.ChatSettings | null;
+        settings?: unknown | null;
 
         tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
 
@@ -5305,7 +5304,7 @@ export namespace Task {
 
         label?: string | null;
 
-        settings?: SessionsAPI.ChatSettings | null;
+        settings?: unknown | null;
 
         tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
 
@@ -6533,7 +6532,7 @@ export namespace Task {
 
       label?: string | null;
 
-      settings?: SessionsAPI.ChatSettings | null;
+      settings?: unknown | null;
 
       tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
 
@@ -7767,7 +7766,7 @@ export namespace Task {
 
       label?: string | null;
 
-      settings?: SessionsAPI.ChatSettings | null;
+      settings?: unknown | null;
 
       tool_choice?: 'auto' | 'none' | PromptStepOutput.NamedToolChoice | null;
 
@@ -9870,7 +9869,7 @@ export namespace TaskCreateParams {
 
     label?: string | null;
 
-    settings?: SessionsAPI.ChatSettings | null;
+    settings?: unknown | null;
 
     tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
@@ -11139,7 +11138,7 @@ export namespace TaskCreateParams {
 
       label?: string | null;
 
-      settings?: SessionsAPI.ChatSettings | null;
+      settings?: unknown | null;
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
@@ -12374,7 +12373,7 @@ export namespace TaskCreateParams {
 
       label?: string | null;
 
-      settings?: SessionsAPI.ChatSettings | null;
+      settings?: unknown | null;
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
@@ -13638,7 +13637,7 @@ export namespace TaskCreateParams {
 
         label?: string | null;
 
-        settings?: SessionsAPI.ChatSettings | null;
+        settings?: unknown | null;
 
         tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
@@ -14921,7 +14920,7 @@ export namespace TaskCreateParams {
 
         label?: string | null;
 
-        settings?: SessionsAPI.ChatSettings | null;
+        settings?: unknown | null;
 
         tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
@@ -16131,7 +16130,7 @@ export namespace TaskCreateParams {
 
       label?: string | null;
 
-      settings?: SessionsAPI.ChatSettings | null;
+      settings?: unknown | null;
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
@@ -17347,7 +17346,7 @@ export namespace TaskCreateParams {
 
       label?: string | null;
 
-      settings?: SessionsAPI.ChatSettings | null;
+      settings?: unknown | null;
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
@@ -19444,7 +19443,7 @@ export namespace TaskCreateOrUpdateParams {
 
     label?: string | null;
 
-    settings?: SessionsAPI.ChatSettings | null;
+    settings?: unknown | null;
 
     tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
@@ -20713,7 +20712,7 @@ export namespace TaskCreateOrUpdateParams {
 
       label?: string | null;
 
-      settings?: SessionsAPI.ChatSettings | null;
+      settings?: unknown | null;
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
@@ -21948,7 +21947,7 @@ export namespace TaskCreateOrUpdateParams {
 
       label?: string | null;
 
-      settings?: SessionsAPI.ChatSettings | null;
+      settings?: unknown | null;
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
@@ -23212,7 +23211,7 @@ export namespace TaskCreateOrUpdateParams {
 
         label?: string | null;
 
-        settings?: SessionsAPI.ChatSettings | null;
+        settings?: unknown | null;
 
         tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
@@ -24495,7 +24494,7 @@ export namespace TaskCreateOrUpdateParams {
 
         label?: string | null;
 
-        settings?: SessionsAPI.ChatSettings | null;
+        settings?: unknown | null;
 
         tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
@@ -25705,7 +25704,7 @@ export namespace TaskCreateOrUpdateParams {
 
       label?: string | null;
 
-      settings?: SessionsAPI.ChatSettings | null;
+      settings?: unknown | null;
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
@@ -26921,7 +26920,7 @@ export namespace TaskCreateOrUpdateParams {
 
       label?: string | null;
 
-      settings?: SessionsAPI.ChatSettings | null;
+      settings?: unknown | null;
 
       tool_choice?: 'auto' | 'none' | PromptStepInput.NamedToolChoice | null;
 
