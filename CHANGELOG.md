@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.56.1 (2025-02-14)
+
+Full Changelog: [v1.56.0...v1.56.1](https://github.com/julep-ai/node-sdk/compare/v1.56.0...v1.56.1)
+
+### Bug Fixes
+
+* **client:** fix export map for index exports ([#211](https://github.com/julep-ai/node-sdk/issues/211)) ([66b07f3](https://github.com/julep-ai/node-sdk/commit/66b07f3bf4b4012621216b2f3bc9c43b64d5978b))
+
 ## 1.56.0 (2025-02-05)
 
 Full Changelog: [v1.55.0...v1.56.0](https://github.com/julep-ai/node-sdk/compare/v1.55.0...v1.56.0)
