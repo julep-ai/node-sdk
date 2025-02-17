@@ -1099,7 +1099,7 @@ export namespace Task {
         export interface Arguments {
           cmd: string;
 
-          file?: string | null;
+          file?: string | Array<string> | null;
         }
       }
 
@@ -2394,7 +2394,7 @@ export namespace Task {
           export interface Arguments {
             cmd: string;
 
-            file?: string | null;
+            file?: string | Array<string> | null;
           }
         }
 
@@ -3653,7 +3653,7 @@ export namespace Task {
           export interface Arguments {
             cmd: string;
 
-            file?: string | null;
+            file?: string | Array<string> | null;
           }
         }
 
@@ -4943,7 +4943,7 @@ export namespace Task {
             export interface Arguments {
               cmd: string;
 
-              file?: string | null;
+              file?: string | Array<string> | null;
             }
           }
 
@@ -6254,7 +6254,7 @@ export namespace Task {
             export interface Arguments {
               cmd: string;
 
-              file?: string | null;
+              file?: string | Array<string> | null;
             }
           }
 
@@ -7482,7 +7482,7 @@ export namespace Task {
           export interface Arguments {
             cmd: string;
 
-            file?: string | null;
+            file?: string | Array<string> | null;
           }
         }
 
@@ -8716,7 +8716,7 @@ export namespace Task {
           export interface Arguments {
             cmd: string;
 
-            file?: string | null;
+            file?: string | Array<string> | null;
           }
         }
 
@@ -9622,7 +9622,7 @@ export namespace Task {
       export interface Arguments {
         cmd: string;
 
-        file?: string | null;
+        file?: string | Array<string> | null;
       }
     }
 
@@ -10817,7 +10817,7 @@ export namespace TaskCreateParams {
         export interface Arguments {
           cmd: string;
 
-          file?: string | null;
+          file?: string | Array<string> | null;
         }
       }
 
@@ -12086,7 +12086,7 @@ export namespace TaskCreateParams {
           export interface Arguments {
             cmd: string;
 
-            file?: string | null;
+            file?: string | Array<string> | null;
           }
         }
 
@@ -13321,7 +13321,7 @@ export namespace TaskCreateParams {
           export interface Arguments {
             cmd: string;
 
-            file?: string | null;
+            file?: string | Array<string> | null;
           }
         }
 
@@ -14585,7 +14585,7 @@ export namespace TaskCreateParams {
             export interface Arguments {
               cmd: string;
 
-              file?: string | null;
+              file?: string | Array<string> | null;
             }
           }
 
@@ -15868,7 +15868,7 @@ export namespace TaskCreateParams {
             export interface Arguments {
               cmd: string;
 
-              file?: string | null;
+              file?: string | Array<string> | null;
             }
           }
 
@@ -17078,7 +17078,7 @@ export namespace TaskCreateParams {
           export interface Arguments {
             cmd: string;
 
-            file?: string | null;
+            file?: string | Array<string> | null;
           }
         }
 
@@ -18294,7 +18294,7 @@ export namespace TaskCreateParams {
           export interface Arguments {
             cmd: string;
 
-            file?: string | null;
+            file?: string | Array<string> | null;
           }
         }
 
@@ -19190,7 +19190,7 @@ export namespace TaskCreateParams {
       export interface Arguments {
         cmd: string;
 
-        file?: string | null;
+        file?: string | Array<string> | null;
       }
     }
 
@@ -20391,7 +20391,7 @@ export namespace TaskCreateOrUpdateParams {
         export interface Arguments {
           cmd: string;
 
-          file?: string | null;
+          file?: string | Array<string> | null;
         }
       }
 
@@ -21660,7 +21660,7 @@ export namespace TaskCreateOrUpdateParams {
           export interface Arguments {
             cmd: string;
 
-            file?: string | null;
+            file?: string | Array<string> | null;
           }
         }
 
@@ -22895,7 +22895,7 @@ export namespace TaskCreateOrUpdateParams {
           export interface Arguments {
             cmd: string;
 
-            file?: string | null;
+            file?: string | Array<string> | null;
           }
         }
 
@@ -24159,7 +24159,7 @@ export namespace TaskCreateOrUpdateParams {
             export interface Arguments {
               cmd: string;
 
-              file?: string | null;
+              file?: string | Array<string> | null;
             }
           }
 
@@ -25442,7 +25442,7 @@ export namespace TaskCreateOrUpdateParams {
             export interface Arguments {
               cmd: string;
 
-              file?: string | null;
+              file?: string | Array<string> | null;
             }
           }
 
@@ -26652,7 +26652,7 @@ export namespace TaskCreateOrUpdateParams {
           export interface Arguments {
             cmd: string;
 
-            file?: string | null;
+            file?: string | Array<string> | null;
           }
         }
 
@@ -27868,7 +27868,7 @@ export namespace TaskCreateOrUpdateParams {
           export interface Arguments {
             cmd: string;
 
-            file?: string | null;
+            file?: string | Array<string> | null;
           }
         }
 
@@ -28764,7 +28764,7 @@ export namespace TaskCreateOrUpdateParams {
       export interface Arguments {
         cmd: string;
 
-        file?: string | null;
+        file?: string | Array<string> | null;
       }
     }
 
