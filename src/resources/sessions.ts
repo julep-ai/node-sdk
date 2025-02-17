@@ -892,7 +892,7 @@ export namespace ChatInput {
       export interface Arguments {
         cmd: string;
 
-        file?: string | null;
+        file?: string | Array<string> | null;
       }
     }
 
@@ -2634,7 +2634,7 @@ export namespace Entry {
       export interface Arguments {
         cmd: string;
 
-        file?: string | null;
+        file?: string | Array<string> | null;
       }
     }
 
@@ -3681,7 +3681,7 @@ export namespace Entry {
       export interface Arguments {
         cmd: string;
 
-        file?: string | null;
+        file?: string | Array<string> | null;
       }
     }
 
@@ -5687,7 +5687,7 @@ export namespace SessionChatParams {
       export interface Arguments {
         cmd: string;
 
-        file?: string | null;
+        file?: string | Array<string> | null;
       }
     }
 

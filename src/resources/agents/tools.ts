@@ -789,7 +789,7 @@ export namespace ToolCreateResponse {
     export interface Arguments {
       cmd: string;
 
-      file?: string | null;
+      file?: string | Array<string> | null;
     }
   }
 
@@ -1661,7 +1661,7 @@ export namespace ToolUpdateResponse {
     export interface Arguments {
       cmd: string;
 
-      file?: string | null;
+      file?: string | Array<string> | null;
     }
   }
 
@@ -2533,7 +2533,7 @@ export namespace ToolListResponse {
     export interface Arguments {
       cmd: string;
 
-      file?: string | null;
+      file?: string | Array<string> | null;
     }
   }
 
@@ -3405,7 +3405,7 @@ export namespace ToolResetResponse {
     export interface Arguments {
       cmd: string;
 
-      file?: string | null;
+      file?: string | Array<string> | null;
     }
   }
 
@@ -4271,7 +4271,7 @@ export namespace ToolCreateParams {
     export interface Arguments {
       cmd: string;
 
-      file?: string | null;
+      file?: string | Array<string> | null;
     }
   }
 
@@ -5139,7 +5139,7 @@ export namespace ToolUpdateParams {
     export interface Arguments {
       cmd?: string | null;
 
-      file?: string | null;
+      file?: string | Array<string> | null;
     }
   }
 
@@ -6012,7 +6012,7 @@ export namespace ToolResetParams {
     export interface Arguments {
       cmd: string;
 
-      file?: string | null;
+      file?: string | Array<string> | null;
     }
   }
 
