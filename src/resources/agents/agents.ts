@@ -107,6 +107,8 @@ export interface Agent {
 
   default_settings?: unknown | null;
 
+  default_system_template?: string;
+
   instructions?: string | Array<string>;
 
   metadata?: unknown | null;
@@ -123,6 +125,8 @@ export interface AgentCreateParams {
 
   default_settings?: unknown | null;
 
+  default_system_template?: string;
+
   instructions?: string | Array<string>;
 
   metadata?: unknown | null;
@@ -136,6 +140,8 @@ export interface AgentUpdateParams {
   canonical_name?: string | null;
 
   default_settings?: unknown | null;
+
+  default_system_template?: string;
 
   instructions?: string | Array<string>;
 
@@ -163,6 +169,8 @@ export interface AgentCreateOrUpdateParams {
 
   default_settings?: unknown | null;
 
+  default_system_template?: string;
+
   instructions?: string | Array<string>;
 
   metadata?: unknown | null;
@@ -178,6 +186,8 @@ export interface AgentResetParams {
   canonical_name?: string | null;
 
   default_settings?: unknown | null;
+
+  default_system_template?: string;
 
   instructions?: string | Array<string>;
 
