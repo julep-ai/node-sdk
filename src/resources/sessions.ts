@@ -4304,7 +4304,7 @@ export interface Session {
 
   summary?: string | null;
 
-  system_template?: string;
+  system_template?: string | null;
 
   token_budget?: number | null;
 }
@@ -4764,7 +4764,7 @@ export interface SessionCreateParams {
 
   situation?: string | null;
 
-  system_template?: string;
+  system_template?: string | null;
 
   token_budget?: number | null;
 
@@ -4810,7 +4810,7 @@ export interface SessionUpdateParams {
 
   situation?: string | null;
 
-  system_template?: string;
+  system_template?: string | null;
 
   token_budget?: number | null;
 }
@@ -5872,7 +5872,7 @@ export interface SessionCreateOrUpdateParams {
 
   situation?: string | null;
 
-  system_template?: string;
+  system_template?: string | null;
 
   token_budget?: number | null;
 
@@ -5918,7 +5918,7 @@ export interface SessionResetParams {
 
   situation?: string | null;
 
-  system_template?: string;
+  system_template?: string | null;
 
   token_budget?: number | null;
 }
