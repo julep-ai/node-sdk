@@ -169,11 +169,6 @@ export declare namespace DocSearchParams {
      * Body param:
      */
     metadata_filter?: unknown;
-
-    /**
-     * Body param:
-     */
-    mmr_strength?: number;
   }
 
   export interface VectorDocSearchRequest {
