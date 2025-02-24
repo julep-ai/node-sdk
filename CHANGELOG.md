@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.59.0 (2025-02-24)
+
+Full Changelog: [v1.58.0...v1.59.0](https://github.com/julep-ai/node-sdk/compare/v1.58.0...v1.59.0)
+
+### Features
+
+* **api:** api update ([#222](https://github.com/julep-ai/node-sdk/issues/222)) ([41e7484](https://github.com/julep-ai/node-sdk/commit/41e748442121cdd2bcc54ee8e24de5c00dbd11b8))
+
+
+### Chores
+
+* **internal:** fix devcontainers setup ([#220](https://github.com/julep-ai/node-sdk/issues/220)) ([b56beab](https://github.com/julep-ai/node-sdk/commit/b56beab5f0d9731cf14586834ae84acd09fce2c2))
+
 ## 1.58.0 (2025-02-18)
 
 Full Changelog: [v1.57.0...v1.58.0](https://github.com/julep-ai/node-sdk/compare/v1.57.0...v1.58.0)
