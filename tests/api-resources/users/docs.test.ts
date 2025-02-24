@@ -107,7 +107,6 @@ describe('resource docs', () => {
       lang: 'en-US',
       limit: 1,
       metadata_filter: {},
-      mmr_strength: 0,
     });
   });
 });
