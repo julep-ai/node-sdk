@@ -128,12 +128,16 @@ export interface Transition {
 
 export namespace Transition {
   export interface Current {
+    scope_id: string;
+
     step: number;
 
     workflow: string;
   }
 
   export interface Next {
+    scope_id: string;
+
     step: number;
 
     workflow: string;

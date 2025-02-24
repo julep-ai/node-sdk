@@ -60,6 +60,8 @@ export type TransitionStreamResponse = unknown;
 export interface TransitionListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
 
+  scope_id?: string | null;
+
   sort_by?: 'created_at' | 'updated_at';
 }
 
