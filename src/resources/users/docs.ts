@@ -164,7 +164,7 @@ export declare namespace DocSearchParams {
     /**
      * Body param:
      */
-    lang?: 'en-US';
+    lang?: string;
 
     /**
      * Body param:
@@ -196,7 +196,7 @@ export declare namespace DocSearchParams {
     /**
      * Body param:
      */
-    lang?: 'en-US';
+    lang?: string;
 
     /**
      * Body param:
@@ -243,7 +243,7 @@ export declare namespace DocSearchParams {
     /**
      * Body param:
      */
-    lang?: 'en-US';
+    lang?: string;
 
     /**
      * Body param:

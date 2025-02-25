@@ -4313,7 +4313,7 @@ export namespace Session {
   export interface VectorDocSearch {
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -4329,7 +4329,7 @@ export namespace Session {
   }
 
   export interface TextOnlyDocSearch {
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -4347,7 +4347,7 @@ export namespace Session {
 
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -4813,7 +4813,7 @@ export namespace SessionCreateParams {
   export interface VectorDocSearch {
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -4829,7 +4829,7 @@ export namespace SessionCreateParams {
   }
 
   export interface TextOnlyDocSearch {
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -4847,7 +4847,7 @@ export namespace SessionCreateParams {
 
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -4891,7 +4891,7 @@ export namespace SessionUpdateParams {
   export interface VectorDocSearchUpdate {
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -4907,7 +4907,7 @@ export namespace SessionUpdateParams {
   }
 
   export interface TextOnlyDocSearchUpdate {
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -4925,7 +4925,7 @@ export namespace SessionUpdateParams {
 
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -5993,7 +5993,7 @@ export namespace SessionCreateOrUpdateParams {
   export interface VectorDocSearch {
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -6009,7 +6009,7 @@ export namespace SessionCreateOrUpdateParams {
   }
 
   export interface TextOnlyDocSearch {
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -6027,7 +6027,7 @@ export namespace SessionCreateOrUpdateParams {
 
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -6071,7 +6071,7 @@ export namespace SessionResetParams {
   export interface VectorDocSearch {
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -6087,7 +6087,7 @@ export namespace SessionResetParams {
   }
 
   export interface TextOnlyDocSearch {
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -6105,7 +6105,7 @@ export namespace SessionResetParams {
 
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
