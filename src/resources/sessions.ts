@@ -4311,8 +4311,6 @@ export interface Session {
 
 export namespace Session {
   export interface VectorDocSearch {
-    vector: Array<number>;
-
     confidence?: number;
 
     lang?: 'en-US';
@@ -4328,13 +4326,9 @@ export namespace Session {
     mode?: string;
 
     num_search_messages?: number;
-
-    text?: string | null;
   }
 
   export interface TextOnlyDocSearch {
-    text: string;
-
     lang?: 'en-US';
 
     limit?: number;
@@ -4349,10 +4343,6 @@ export namespace Session {
   }
 
   export interface HybridDocSearch {
-    text: string;
-
-    vector: Array<number>;
-
     alpha?: number;
 
     confidence?: number;
@@ -4821,8 +4811,6 @@ export interface SessionCreateParams {
 
 export namespace SessionCreateParams {
   export interface VectorDocSearch {
-    vector: Array<number>;
-
     confidence?: number;
 
     lang?: 'en-US';
@@ -4838,13 +4826,9 @@ export namespace SessionCreateParams {
     mode?: string;
 
     num_search_messages?: number;
-
-    text?: string | null;
   }
 
   export interface TextOnlyDocSearch {
-    text: string;
-
     lang?: 'en-US';
 
     limit?: number;
@@ -4859,10 +4843,6 @@ export namespace SessionCreateParams {
   }
 
   export interface HybridDocSearch {
-    text: string;
-
-    vector: Array<number>;
-
     alpha?: number;
 
     confidence?: number;
@@ -4924,10 +4904,6 @@ export namespace SessionUpdateParams {
     mode?: string;
 
     num_search_messages?: number;
-
-    text?: string | null;
-
-    vector?: Array<number> | null;
   }
 
   export interface TextOnlyDocSearchUpdate {
@@ -4942,8 +4918,6 @@ export namespace SessionUpdateParams {
     mode?: string;
 
     num_search_messages?: number;
-
-    text?: string | null;
   }
 
   export interface HybridDocSearchUpdate {
@@ -4964,10 +4938,6 @@ export namespace SessionUpdateParams {
     mode?: string;
 
     num_search_messages?: number;
-
-    text?: string | null;
-
-    vector?: Array<number> | null;
   }
 }
 
@@ -6021,8 +5991,6 @@ export interface SessionCreateOrUpdateParams {
 
 export namespace SessionCreateOrUpdateParams {
   export interface VectorDocSearch {
-    vector: Array<number>;
-
     confidence?: number;
 
     lang?: 'en-US';
@@ -6038,13 +6006,9 @@ export namespace SessionCreateOrUpdateParams {
     mode?: string;
 
     num_search_messages?: number;
-
-    text?: string | null;
   }
 
   export interface TextOnlyDocSearch {
-    text: string;
-
     lang?: 'en-US';
 
     limit?: number;
@@ -6059,10 +6023,6 @@ export namespace SessionCreateOrUpdateParams {
   }
 
   export interface HybridDocSearch {
-    text: string;
-
-    vector: Array<number>;
-
     alpha?: number;
 
     confidence?: number;
@@ -6109,8 +6069,6 @@ export interface SessionResetParams {
 
 export namespace SessionResetParams {
   export interface VectorDocSearch {
-    vector: Array<number>;
-
     confidence?: number;
 
     lang?: 'en-US';
@@ -6126,13 +6084,9 @@ export namespace SessionResetParams {
     mode?: string;
 
     num_search_messages?: number;
-
-    text?: string | null;
   }
 
   export interface TextOnlyDocSearch {
-    text: string;
-
     lang?: 'en-US';
 
     limit?: number;
@@ -6147,10 +6101,6 @@ export namespace SessionResetParams {
   }
 
   export interface HybridDocSearch {
-    text: string;
-
-    vector: Array<number>;
-
     alpha?: number;
 
     confidence?: number;
