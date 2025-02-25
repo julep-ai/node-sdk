@@ -104,7 +104,7 @@ describe('resource docs', () => {
     const response = await client.agents.docs.search('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       text: 'text',
       connection_pool: {},
-      lang: 'en-US',
+      lang: 'lang',
       limit: 1,
       metadata_filter: {},
     });
