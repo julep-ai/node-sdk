@@ -164,7 +164,7 @@ export declare namespace DocSearchParams {
     /**
      * Body param:
      */
-    lang?: string;
+    lang?: 'en-US';
 
     /**
      * Body param:
@@ -175,6 +175,11 @@ export declare namespace DocSearchParams {
      * Body param:
      */
     metadata_filter?: unknown;
+
+    /**
+     * Body param:
+     */
+    mmr_strength?: number;
   }
 
   export interface VectorDocSearchRequest {
@@ -196,7 +201,7 @@ export declare namespace DocSearchParams {
     /**
      * Body param:
      */
-    lang?: string;
+    lang?: 'en-US';
 
     /**
      * Body param:
@@ -243,7 +248,7 @@ export declare namespace DocSearchParams {
     /**
      * Body param:
      */
-    lang?: string;
+    lang?: 'en-US';
 
     /**
      * Body param:
