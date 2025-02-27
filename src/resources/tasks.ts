@@ -109,29 +109,7 @@ export namespace Task {
   export interface ToolCallStep {
     tool: string;
 
-    arguments?:
-      | Record<
-          string,
-          | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-          | Array<
-              Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            >
-          | string
-        >
-      | Array<
-          Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        >
-      | '_';
+    arguments?: unknown | '_';
 
     kind_?: 'tool_call';
 
@@ -1398,35 +1376,7 @@ export namespace Task {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?:
-        | Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        | Array<
-            Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          >
-        | '_';
+      arguments?: unknown | '_';
 
       kind_?: 'tool_call';
 
@@ -2657,35 +2607,7 @@ export namespace Task {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?:
-        | Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        | Array<
-            Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          >
-        | '_';
+      arguments?: unknown | '_';
 
       kind_?: 'tool_call';
 
@@ -3944,38 +3866,7 @@ export namespace Task {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?:
-          | Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          | Array<
-              Record<
-                string,
-                | Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                | Array<
-                    Record<
-                      string,
-                      Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                    >
-                  >
-                | string
-              >
-            >
-          | '_';
+        arguments?: unknown | '_';
 
         kind_?: 'tool_call';
 
@@ -5255,38 +5146,7 @@ export namespace Task {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?:
-          | Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          | Array<
-              Record<
-                string,
-                | Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                | Array<
-                    Record<
-                      string,
-                      Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                    >
-                  >
-                | string
-              >
-            >
-          | '_';
+        arguments?: unknown | '_';
 
         kind_?: 'tool_call';
 
@@ -6486,35 +6346,7 @@ export namespace Task {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?:
-        | Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        | Array<
-            Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          >
-        | '_';
+      arguments?: unknown | '_';
 
       kind_?: 'tool_call';
 
@@ -7720,35 +7552,7 @@ export namespace Task {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?:
-        | Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        | Array<
-            Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          >
-        | '_';
+      arguments?: unknown | '_';
 
       kind_?: 'tool_call';
 
@@ -9833,29 +9637,7 @@ export namespace TaskCreateParams {
   export interface ToolCallStep {
     tool: string;
 
-    arguments?:
-      | Record<
-          string,
-          | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-          | Array<
-              Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            >
-          | string
-        >
-      | Array<
-          Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        >
-      | '_';
+    arguments?: unknown | '_';
 
     label?: string | null;
   }
@@ -11096,35 +10878,7 @@ export namespace TaskCreateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?:
-        | Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        | Array<
-            Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          >
-        | '_';
+      arguments?: unknown | '_';
 
       label?: string | null;
     }
@@ -12331,35 +12085,7 @@ export namespace TaskCreateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?:
-        | Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        | Array<
-            Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          >
-        | '_';
+      arguments?: unknown | '_';
 
       label?: string | null;
     }
@@ -13592,38 +13318,7 @@ export namespace TaskCreateParams {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?:
-          | Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          | Array<
-              Record<
-                string,
-                | Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                | Array<
-                    Record<
-                      string,
-                      Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                    >
-                  >
-                | string
-              >
-            >
-          | '_';
+        arguments?: unknown | '_';
 
         label?: string | null;
       }
@@ -14875,38 +14570,7 @@ export namespace TaskCreateParams {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?:
-          | Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          | Array<
-              Record<
-                string,
-                | Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                | Array<
-                    Record<
-                      string,
-                      Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                    >
-                  >
-                | string
-              >
-            >
-          | '_';
+        arguments?: unknown | '_';
 
         label?: string | null;
       }
@@ -16088,35 +15752,7 @@ export namespace TaskCreateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?:
-        | Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        | Array<
-            Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          >
-        | '_';
+      arguments?: unknown | '_';
 
       label?: string | null;
     }
@@ -17304,35 +16940,7 @@ export namespace TaskCreateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?:
-        | Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        | Array<
-            Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          >
-        | '_';
+      arguments?: unknown | '_';
 
       label?: string | null;
     }
@@ -19407,29 +19015,7 @@ export namespace TaskCreateOrUpdateParams {
   export interface ToolCallStep {
     tool: string;
 
-    arguments?:
-      | Record<
-          string,
-          | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-          | Array<
-              Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            >
-          | string
-        >
-      | Array<
-          Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        >
-      | '_';
+    arguments?: unknown | '_';
 
     label?: string | null;
   }
@@ -20670,35 +20256,7 @@ export namespace TaskCreateOrUpdateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?:
-        | Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        | Array<
-            Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          >
-        | '_';
+      arguments?: unknown | '_';
 
       label?: string | null;
     }
@@ -21905,35 +21463,7 @@ export namespace TaskCreateOrUpdateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?:
-        | Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        | Array<
-            Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          >
-        | '_';
+      arguments?: unknown | '_';
 
       label?: string | null;
     }
@@ -23166,38 +22696,7 @@ export namespace TaskCreateOrUpdateParams {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?:
-          | Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          | Array<
-              Record<
-                string,
-                | Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                | Array<
-                    Record<
-                      string,
-                      Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                    >
-                  >
-                | string
-              >
-            >
-          | '_';
+        arguments?: unknown | '_';
 
         label?: string | null;
       }
@@ -24449,38 +23948,7 @@ export namespace TaskCreateOrUpdateParams {
       export interface ToolCallStep {
         tool: string;
 
-        arguments?:
-          | Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          | Array<
-              Record<
-                string,
-                | Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                | Array<
-                    Record<
-                      string,
-                      Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                    >
-                  >
-                | string
-              >
-            >
-          | '_';
+        arguments?: unknown | '_';
 
         label?: string | null;
       }
@@ -25662,35 +25130,7 @@ export namespace TaskCreateOrUpdateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?:
-        | Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        | Array<
-            Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          >
-        | '_';
+      arguments?: unknown | '_';
 
       label?: string | null;
     }
@@ -26878,35 +26318,7 @@ export namespace TaskCreateOrUpdateParams {
     export interface ToolCallStep {
       tool: string;
 
-      arguments?:
-        | Record<
-            string,
-            | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
-            | Array<
-                Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              >
-            | string
-          >
-        | Array<
-            Record<
-              string,
-              | Record<
-                  string,
-                  Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                >
-              | Array<
-                  Record<
-                    string,
-                    Array<string> | Record<string, string> | Array<Record<string, string>> | string
-                  >
-                >
-              | string
-            >
-          >
-        | '_';
+      arguments?: unknown | '_';
 
       label?: string | null;
     }
