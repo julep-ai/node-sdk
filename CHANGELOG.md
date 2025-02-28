@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.64.0 (2025-02-28)
+
+Full Changelog: [v1.63.0...v1.64.0](https://github.com/julep-ai/node-sdk/compare/v1.63.0...v1.64.0)
+
+### Features
+
+* **api:** api update ([#238](https://github.com/julep-ai/node-sdk/issues/238)) ([8136cc2](https://github.com/julep-ai/node-sdk/commit/8136cc2da9013ba1385f8e9d9760f8da816e8031))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#237](https://github.com/julep-ai/node-sdk/issues/237)) ([6386bf2](https://github.com/julep-ai/node-sdk/commit/6386bf2f8df976aff1e546b063ef8f127ca25642))
+
 ## 1.63.0 (2025-02-27)
 
 Full Changelog: [v1.62.0...v1.63.0](https://github.com/julep-ai/node-sdk/compare/v1.62.0...v1.63.0)
