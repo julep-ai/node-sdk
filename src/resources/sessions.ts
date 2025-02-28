@@ -4296,7 +4296,7 @@ export interface Session {
 
   metadata?: unknown | null;
 
-  recall_options?: Session.RecallOptions | null;
+  recall_options?: Session.VectorDocSearch | Session.TextOnlyDocSearch | Session.HybridDocSearch | null;
 
   render_templates?: boolean;
 
@@ -4310,12 +4310,10 @@ export interface Session {
 }
 
 export namespace Session {
-  export interface RecallOptions {
-    alpha?: number;
-
+  export interface VectorDocSearch {
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -4325,7 +4323,41 @@ export namespace Session {
 
     mmr_strength?: number;
 
-    mode?: 'hybrid' | 'vector' | 'text';
+    mode?: string;
+
+    num_search_messages?: number;
+  }
+
+  export interface TextOnlyDocSearch {
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mode?: string;
+
+    num_search_messages?: number;
+  }
+
+  export interface HybridDocSearch {
+    alpha?: number;
+
+    confidence?: number;
+
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
+
+    mode?: string;
 
     num_search_messages?: number;
   }
@@ -4758,7 +4790,11 @@ export interface SessionCreateParams {
 
   metadata?: unknown | null;
 
-  recall_options?: SessionCreateParams.RecallOptions | null;
+  recall_options?:
+    | SessionCreateParams.VectorDocSearch
+    | SessionCreateParams.TextOnlyDocSearch
+    | SessionCreateParams.HybridDocSearch
+    | null;
 
   render_templates?: boolean;
 
@@ -4774,12 +4810,10 @@ export interface SessionCreateParams {
 }
 
 export namespace SessionCreateParams {
-  export interface RecallOptions {
-    alpha?: number;
-
+  export interface VectorDocSearch {
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -4789,7 +4823,41 @@ export namespace SessionCreateParams {
 
     mmr_strength?: number;
 
-    mode?: 'hybrid' | 'vector' | 'text';
+    mode?: string;
+
+    num_search_messages?: number;
+  }
+
+  export interface TextOnlyDocSearch {
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mode?: string;
+
+    num_search_messages?: number;
+  }
+
+  export interface HybridDocSearch {
+    alpha?: number;
+
+    confidence?: number;
+
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
+
+    mode?: string;
 
     num_search_messages?: number;
   }
@@ -4804,7 +4872,11 @@ export interface SessionUpdateParams {
 
   metadata?: unknown | null;
 
-  recall_options?: SessionUpdateParams.RecallOptions | null;
+  recall_options?:
+    | SessionUpdateParams.VectorDocSearchUpdate
+    | SessionUpdateParams.TextOnlyDocSearchUpdate
+    | SessionUpdateParams.HybridDocSearchUpdate
+    | null;
 
   render_templates?: boolean;
 
@@ -4816,12 +4888,10 @@ export interface SessionUpdateParams {
 }
 
 export namespace SessionUpdateParams {
-  export interface RecallOptions {
-    alpha?: number;
-
+  export interface VectorDocSearchUpdate {
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -4831,7 +4901,41 @@ export namespace SessionUpdateParams {
 
     mmr_strength?: number;
 
-    mode?: 'hybrid' | 'vector' | 'text';
+    mode?: string;
+
+    num_search_messages?: number;
+  }
+
+  export interface TextOnlyDocSearchUpdate {
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mode?: string;
+
+    num_search_messages?: number;
+  }
+
+  export interface HybridDocSearchUpdate {
+    alpha?: number;
+
+    confidence?: number;
+
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
+
+    mode?: string;
 
     num_search_messages?: number;
   }
@@ -5866,7 +5970,11 @@ export interface SessionCreateOrUpdateParams {
 
   metadata?: unknown | null;
 
-  recall_options?: SessionCreateOrUpdateParams.RecallOptions | null;
+  recall_options?:
+    | SessionCreateOrUpdateParams.VectorDocSearch
+    | SessionCreateOrUpdateParams.TextOnlyDocSearch
+    | SessionCreateOrUpdateParams.HybridDocSearch
+    | null;
 
   render_templates?: boolean;
 
@@ -5882,12 +5990,10 @@ export interface SessionCreateOrUpdateParams {
 }
 
 export namespace SessionCreateOrUpdateParams {
-  export interface RecallOptions {
-    alpha?: number;
-
+  export interface VectorDocSearch {
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -5897,7 +6003,41 @@ export namespace SessionCreateOrUpdateParams {
 
     mmr_strength?: number;
 
-    mode?: 'hybrid' | 'vector' | 'text';
+    mode?: string;
+
+    num_search_messages?: number;
+  }
+
+  export interface TextOnlyDocSearch {
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mode?: string;
+
+    num_search_messages?: number;
+  }
+
+  export interface HybridDocSearch {
+    alpha?: number;
+
+    confidence?: number;
+
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
+
+    mode?: string;
 
     num_search_messages?: number;
   }
@@ -5912,7 +6052,11 @@ export interface SessionResetParams {
 
   metadata?: unknown | null;
 
-  recall_options?: SessionResetParams.RecallOptions | null;
+  recall_options?:
+    | SessionResetParams.VectorDocSearch
+    | SessionResetParams.TextOnlyDocSearch
+    | SessionResetParams.HybridDocSearch
+    | null;
 
   render_templates?: boolean;
 
@@ -5924,12 +6068,10 @@ export interface SessionResetParams {
 }
 
 export namespace SessionResetParams {
-  export interface RecallOptions {
-    alpha?: number;
-
+  export interface VectorDocSearch {
     confidence?: number;
 
-    lang?: 'en-US';
+    lang?: string;
 
     limit?: number;
 
@@ -5939,7 +6081,41 @@ export namespace SessionResetParams {
 
     mmr_strength?: number;
 
-    mode?: 'hybrid' | 'vector' | 'text';
+    mode?: string;
+
+    num_search_messages?: number;
+  }
+
+  export interface TextOnlyDocSearch {
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mode?: string;
+
+    num_search_messages?: number;
+  }
+
+  export interface HybridDocSearch {
+    alpha?: number;
+
+    confidence?: number;
+
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
+
+    mode?: string;
 
     num_search_messages?: number;
   }
