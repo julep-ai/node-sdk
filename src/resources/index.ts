@@ -30,11 +30,13 @@ export {
   type History,
   type Session,
   type SessionChatResponse,
+  type SessionRenderResponse,
   type SessionCreateParams,
   type SessionUpdateParams,
   type SessionListParams,
   type SessionChatParams,
   type SessionCreateOrUpdateParams,
+  type SessionRenderParams,
   type SessionResetParams,
 } from './sessions';
 export {
