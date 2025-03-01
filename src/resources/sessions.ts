@@ -119,7 +119,7 @@ export class Sessions extends APIResource {
 export class SessionsOffsetPagination extends OffsetPagination<Session> {}
 
 export interface ChatInput {
-  messages: Array<Message>;
+  messages: Array<ChatInput.Message>;
 
   agent?: string | null;
 
@@ -160,12 +160,206 @@ export interface ChatInput {
 
   tool_choice?: 'auto' | 'none' | ChatInput.NamedToolChoice | null;
 
-  tools?: Array<ChatInput.Tool>;
+  tools?: Array<ChatInput.Tool> | null;
 
   top_p?: number | null;
 }
 
 export namespace ChatInput {
+  export interface Message {
+    role: 'user' | 'assistant' | 'system' | 'tool';
+
+    content?:
+      | string
+      | Array<string>
+      | Array<Message.Content | Message.ContentModel7 | Message.AgentsAPIAutogenChatContentModelInput>
+      | null;
+
+    continue?: boolean | null;
+
+    name?: string | null;
+
+    tool_call_id?: string | null;
+
+    tool_calls?: Array<
+      | Message.ChosenFunctionCall
+      | Message.ChosenComputer20241022
+      | Message.ChosenTextEditor20241022
+      | Message.ChosenBash20241022
+    > | null;
+  }
+
+  export namespace Message {
+    export interface Content {
+      text: string;
+
+      type?: 'text';
+    }
+
+    export interface ContentModel7 {
+      /**
+       * The image URL
+       */
+      image_url: ContentModel7.ImageURL;
+
+      type?: 'image_url';
+    }
+
+    export namespace ContentModel7 {
+      /**
+       * The image URL
+       */
+      export interface ImageURL {
+        url: string;
+
+        detail?: 'low' | 'high' | 'auto';
+      }
+    }
+
+    /**
+     * Anthropic image content part
+     */
+    export interface AgentsAPIAutogenChatContentModelInput {
+      content:
+        | Array<AgentsAPIAutogenChatContentModelInput.UnionMember0>
+        | Array<AgentsAPIAutogenChatContentModelInput.UnionMember1>;
+
+      tool_use_id: string;
+
+      type?: 'tool_result';
+    }
+
+    export namespace AgentsAPIAutogenChatContentModelInput {
+      export interface UnionMember0 {
+        text: string;
+
+        type?: 'text';
+      }
+
+      export interface UnionMember1 {
+        source: UnionMember1.Source;
+
+        type?: 'image';
+      }
+
+      export namespace UnionMember1 {
+        export interface Source {
+          data: string;
+
+          media_type: string;
+
+          type?: 'base64';
+        }
+      }
+    }
+
+    export interface ChosenFunctionCall {
+      function: ChosenFunctionCall.Function;
+
+      id?: string | null;
+
+      api_call?: unknown;
+
+      bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+      computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+      integration?: unknown;
+
+      system?: unknown;
+
+      text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+      type?: 'function';
+    }
+
+    export namespace ChosenFunctionCall {
+      export interface Function {
+        name: string;
+
+        arguments?: string | null;
+      }
+
+      export interface Bash20241022 {
+        command?: string | null;
+
+        restart?: boolean;
+      }
+
+      export interface Computer20241022 {
+        action:
+          | 'key'
+          | 'type'
+          | 'cursor_position'
+          | 'mouse_move'
+          | 'left_click'
+          | 'right_click'
+          | 'middle_click'
+          | 'double_click'
+          | 'screenshot';
+
+        coordinate?: Array<number> | null;
+
+        text?: string | null;
+      }
+
+      export interface TextEditor20241022 {
+        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+        path: string;
+
+        file_text?: string | null;
+
+        insert_line?: number | null;
+
+        new_str?: string | null;
+
+        old_str?: string | null;
+
+        view_range?: Array<number> | null;
+      }
+    }
+
+    export interface ChosenComputer20241022 {
+      action:
+        | 'key'
+        | 'type'
+        | 'cursor_position'
+        | 'mouse_move'
+        | 'left_click'
+        | 'right_click'
+        | 'middle_click'
+        | 'double_click'
+        | 'screenshot';
+
+      coordinate?: Array<number> | null;
+
+      text?: string | null;
+    }
+
+    export interface ChosenTextEditor20241022 {
+      command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+      path: string;
+
+      file_text?: string | null;
+
+      insert_line?: number | null;
+
+      new_str?: string | null;
+
+      old_str?: string | null;
+
+      view_range?: Array<number> | null;
+    }
+
+    export interface ChosenBash20241022 {
+      command?: string | null;
+
+      restart?: boolean;
+    }
+  }
+
   export interface SimpleCompletionResponseFormat {
     type?: 'text' | 'json_object';
   }
@@ -4085,200 +4279,6 @@ export namespace History {
   }
 }
 
-export interface Message {
-  role: 'user' | 'assistant' | 'system' | 'tool';
-
-  content?:
-    | string
-    | Array<string>
-    | Array<Message.Content | Message.ContentModel7 | Message.AgentsAPIAutogenChatContentModel>
-    | null;
-
-  continue?: boolean | null;
-
-  name?: string | null;
-
-  tool_call_id?: string | null;
-
-  tool_calls?: Array<
-    | Message.ChosenFunctionCall
-    | Message.ChosenComputer20241022
-    | Message.ChosenTextEditor20241022
-    | Message.ChosenBash20241022
-  > | null;
-}
-
-export namespace Message {
-  export interface Content {
-    text: string;
-
-    type?: 'text';
-  }
-
-  export interface ContentModel7 {
-    /**
-     * The image URL
-     */
-    image_url: ContentModel7.ImageURL;
-
-    type?: 'image_url';
-  }
-
-  export namespace ContentModel7 {
-    /**
-     * The image URL
-     */
-    export interface ImageURL {
-      url: string;
-
-      detail?: 'low' | 'high' | 'auto';
-    }
-  }
-
-  /**
-   * Anthropic image content part
-   */
-  export interface AgentsAPIAutogenChatContentModel {
-    content:
-      | Array<AgentsAPIAutogenChatContentModel.UnionMember0>
-      | Array<AgentsAPIAutogenChatContentModel.UnionMember1>;
-
-    tool_use_id: string;
-
-    type?: 'tool_result';
-  }
-
-  export namespace AgentsAPIAutogenChatContentModel {
-    export interface UnionMember0 {
-      text: string;
-
-      type?: 'text';
-    }
-
-    export interface UnionMember1 {
-      source: UnionMember1.Source;
-
-      type?: 'image';
-    }
-
-    export namespace UnionMember1 {
-      export interface Source {
-        data: string;
-
-        media_type: string;
-
-        type?: 'base64';
-      }
-    }
-  }
-
-  export interface ChosenFunctionCall {
-    function: ChosenFunctionCall.Function;
-
-    id?: string | null;
-
-    api_call?: unknown;
-
-    bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-    computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-    integration?: unknown;
-
-    system?: unknown;
-
-    text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-    type?: 'function';
-  }
-
-  export namespace ChosenFunctionCall {
-    export interface Function {
-      name: string;
-
-      arguments?: string | null;
-    }
-
-    export interface Bash20241022 {
-      command?: string | null;
-
-      restart?: boolean;
-    }
-
-    export interface Computer20241022 {
-      action:
-        | 'key'
-        | 'type'
-        | 'cursor_position'
-        | 'mouse_move'
-        | 'left_click'
-        | 'right_click'
-        | 'middle_click'
-        | 'double_click'
-        | 'screenshot';
-
-      coordinate?: Array<number> | null;
-
-      text?: string | null;
-    }
-
-    export interface TextEditor20241022 {
-      command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-      path: string;
-
-      file_text?: string | null;
-
-      insert_line?: number | null;
-
-      new_str?: string | null;
-
-      old_str?: string | null;
-
-      view_range?: Array<number> | null;
-    }
-  }
-
-  export interface ChosenComputer20241022 {
-    action:
-      | 'key'
-      | 'type'
-      | 'cursor_position'
-      | 'mouse_move'
-      | 'left_click'
-      | 'right_click'
-      | 'middle_click'
-      | 'double_click'
-      | 'screenshot';
-
-    coordinate?: Array<number> | null;
-
-    text?: string | null;
-  }
-
-  export interface ChosenTextEditor20241022 {
-    command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-    path: string;
-
-    file_text?: string | null;
-
-    insert_line?: number | null;
-
-    new_str?: string | null;
-
-    old_str?: string | null;
-
-    view_range?: Array<number> | null;
-  }
-
-  export interface ChosenBash20241022 {
-    command?: string | null;
-
-    restart?: boolean;
-  }
-}
-
 export interface Session {
   id: string;
 
@@ -4296,7 +4296,7 @@ export interface Session {
 
   metadata?: unknown | null;
 
-  recall_options?: Session.VectorDocSearch | Session.TextOnlyDocSearch | Session.HybridDocSearch | null;
+  recall_options?: Session.RecallOptions | null;
 
   render_templates?: boolean;
 
@@ -4310,39 +4310,7 @@ export interface Session {
 }
 
 export namespace Session {
-  export interface VectorDocSearch {
-    confidence?: number;
-
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mmr_strength?: number;
-
-    mode?: string;
-
-    num_search_messages?: number;
-  }
-
-  export interface TextOnlyDocSearch {
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mode?: string;
-
-    num_search_messages?: number;
-  }
-
-  export interface HybridDocSearch {
+  export interface RecallOptions {
     alpha?: number;
 
     confidence?: number;
@@ -4790,11 +4758,7 @@ export interface SessionCreateParams {
 
   metadata?: unknown | null;
 
-  recall_options?:
-    | SessionCreateParams.VectorDocSearch
-    | SessionCreateParams.TextOnlyDocSearch
-    | SessionCreateParams.HybridDocSearch
-    | null;
+  recall_options?: SessionCreateParams.RecallOptions | null;
 
   render_templates?: boolean;
 
@@ -4810,39 +4774,7 @@ export interface SessionCreateParams {
 }
 
 export namespace SessionCreateParams {
-  export interface VectorDocSearch {
-    confidence?: number;
-
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mmr_strength?: number;
-
-    mode?: string;
-
-    num_search_messages?: number;
-  }
-
-  export interface TextOnlyDocSearch {
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mode?: string;
-
-    num_search_messages?: number;
-  }
-
-  export interface HybridDocSearch {
+  export interface RecallOptions {
     alpha?: number;
 
     confidence?: number;
@@ -4872,11 +4804,7 @@ export interface SessionUpdateParams {
 
   metadata?: unknown | null;
 
-  recall_options?:
-    | SessionUpdateParams.VectorDocSearchUpdate
-    | SessionUpdateParams.TextOnlyDocSearchUpdate
-    | SessionUpdateParams.HybridDocSearchUpdate
-    | null;
+  recall_options?: SessionUpdateParams.RecallOptions | null;
 
   render_templates?: boolean;
 
@@ -4888,39 +4816,7 @@ export interface SessionUpdateParams {
 }
 
 export namespace SessionUpdateParams {
-  export interface VectorDocSearchUpdate {
-    confidence?: number;
-
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mmr_strength?: number;
-
-    mode?: string;
-
-    num_search_messages?: number;
-  }
-
-  export interface TextOnlyDocSearchUpdate {
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mode?: string;
-
-    num_search_messages?: number;
-  }
-
-  export interface HybridDocSearchUpdate {
+  export interface RecallOptions {
     alpha?: number;
 
     confidence?: number;
@@ -4953,7 +4849,7 @@ export interface SessionChatParams {
   /**
    * Body param:
    */
-  messages: Array<Message>;
+  messages: Array<SessionChatParams.Message>;
 
   /**
    * Query param:
@@ -5051,7 +4947,7 @@ export interface SessionChatParams {
   /**
    * Body param:
    */
-  tools?: Array<SessionChatParams.Tool>;
+  tools?: Array<SessionChatParams.Tool> | null;
 
   /**
    * Body param:
@@ -5065,6 +4961,198 @@ export interface SessionChatParams {
 }
 
 export namespace SessionChatParams {
+  export interface Message {
+    role: 'user' | 'assistant' | 'system' | 'tool';
+
+    content?:
+      | string
+      | Array<string>
+      | Array<Message.Content | Message.ContentModel7 | Message.AgentsAPIAutogenChatContentModelInput>
+      | null;
+
+    continue?: boolean | null;
+
+    name?: string | null;
+
+    tool_call_id?: string | null;
+
+    tool_calls?: Array<
+      | Message.ChosenFunctionCall
+      | Message.ChosenComputer20241022
+      | Message.ChosenTextEditor20241022
+      | Message.ChosenBash20241022
+    > | null;
+  }
+
+  export namespace Message {
+    export interface Content {
+      text: string;
+
+      type?: 'text';
+    }
+
+    export interface ContentModel7 {
+      /**
+       * The image URL
+       */
+      image_url: ContentModel7.ImageURL;
+
+      type?: 'image_url';
+    }
+
+    export namespace ContentModel7 {
+      /**
+       * The image URL
+       */
+      export interface ImageURL {
+        url: string;
+
+        detail?: 'low' | 'high' | 'auto';
+      }
+    }
+
+    /**
+     * Anthropic image content part
+     */
+    export interface AgentsAPIAutogenChatContentModelInput {
+      content:
+        | Array<AgentsAPIAutogenChatContentModelInput.UnionMember0>
+        | Array<AgentsAPIAutogenChatContentModelInput.UnionMember1>;
+
+      tool_use_id: string;
+
+      type?: 'tool_result';
+    }
+
+    export namespace AgentsAPIAutogenChatContentModelInput {
+      export interface UnionMember0 {
+        text: string;
+
+        type?: 'text';
+      }
+
+      export interface UnionMember1 {
+        source: UnionMember1.Source;
+
+        type?: 'image';
+      }
+
+      export namespace UnionMember1 {
+        export interface Source {
+          data: string;
+
+          media_type: string;
+
+          type?: 'base64';
+        }
+      }
+    }
+
+    export interface ChosenFunctionCall {
+      function: ChosenFunctionCall.Function;
+
+      api_call?: unknown;
+
+      bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
+
+      computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
+
+      integration?: unknown;
+
+      system?: unknown;
+
+      text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
+
+      type?: 'function';
+    }
+
+    export namespace ChosenFunctionCall {
+      export interface Function {
+        name: string;
+
+        arguments?: string | null;
+      }
+
+      export interface Bash20241022 {
+        command?: string | null;
+
+        restart?: boolean;
+      }
+
+      export interface Computer20241022 {
+        action:
+          | 'key'
+          | 'type'
+          | 'cursor_position'
+          | 'mouse_move'
+          | 'left_click'
+          | 'right_click'
+          | 'middle_click'
+          | 'double_click'
+          | 'screenshot';
+
+        coordinate?: Array<number> | null;
+
+        text?: string | null;
+      }
+
+      export interface TextEditor20241022 {
+        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+        path: string;
+
+        file_text?: string | null;
+
+        insert_line?: number | null;
+
+        new_str?: string | null;
+
+        old_str?: string | null;
+
+        view_range?: Array<number> | null;
+      }
+    }
+
+    export interface ChosenComputer20241022 {
+      action:
+        | 'key'
+        | 'type'
+        | 'cursor_position'
+        | 'mouse_move'
+        | 'left_click'
+        | 'right_click'
+        | 'middle_click'
+        | 'double_click'
+        | 'screenshot';
+
+      coordinate?: Array<number> | null;
+
+      text?: string | null;
+    }
+
+    export interface ChosenTextEditor20241022 {
+      command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+      path: string;
+
+      file_text?: string | null;
+
+      insert_line?: number | null;
+
+      new_str?: string | null;
+
+      old_str?: string | null;
+
+      view_range?: Array<number> | null;
+    }
+
+    export interface ChosenBash20241022 {
+      command?: string | null;
+
+      restart?: boolean;
+    }
+  }
+
   export interface SimpleCompletionResponseFormat {
     type?: 'text' | 'json_object';
   }
@@ -5970,11 +6058,7 @@ export interface SessionCreateOrUpdateParams {
 
   metadata?: unknown | null;
 
-  recall_options?:
-    | SessionCreateOrUpdateParams.VectorDocSearch
-    | SessionCreateOrUpdateParams.TextOnlyDocSearch
-    | SessionCreateOrUpdateParams.HybridDocSearch
-    | null;
+  recall_options?: SessionCreateOrUpdateParams.RecallOptions | null;
 
   render_templates?: boolean;
 
@@ -5990,39 +6074,7 @@ export interface SessionCreateOrUpdateParams {
 }
 
 export namespace SessionCreateOrUpdateParams {
-  export interface VectorDocSearch {
-    confidence?: number;
-
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mmr_strength?: number;
-
-    mode?: string;
-
-    num_search_messages?: number;
-  }
-
-  export interface TextOnlyDocSearch {
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mode?: string;
-
-    num_search_messages?: number;
-  }
-
-  export interface HybridDocSearch {
+  export interface RecallOptions {
     alpha?: number;
 
     confidence?: number;
@@ -6052,11 +6104,7 @@ export interface SessionResetParams {
 
   metadata?: unknown | null;
 
-  recall_options?:
-    | SessionResetParams.VectorDocSearch
-    | SessionResetParams.TextOnlyDocSearch
-    | SessionResetParams.HybridDocSearch
-    | null;
+  recall_options?: SessionResetParams.RecallOptions | null;
 
   render_templates?: boolean;
 
@@ -6068,39 +6116,7 @@ export interface SessionResetParams {
 }
 
 export namespace SessionResetParams {
-  export interface VectorDocSearch {
-    confidence?: number;
-
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mmr_strength?: number;
-
-    mode?: string;
-
-    num_search_messages?: number;
-  }
-
-  export interface TextOnlyDocSearch {
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mode?: string;
-
-    num_search_messages?: number;
-  }
-
-  export interface HybridDocSearch {
+  export interface RecallOptions {
     alpha?: number;
 
     confidence?: number;
@@ -6129,7 +6145,6 @@ export declare namespace Sessions {
     type ChatResponse as ChatResponse,
     type Entry as Entry,
     type History as History,
-    type Message as Message,
     type Session as Session,
     type SessionChatResponse as SessionChatResponse,
     SessionsOffsetPagination as SessionsOffsetPagination,
