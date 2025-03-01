@@ -230,6 +230,110 @@ describe('resource sessions', () => {
     ).rejects.toThrow(Julep.NotFoundError);
   });
 
+  test('render: only required params', async () => {
+    const responsePromise = client.sessions.render('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      messages: [{ role: 'user' }],
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('render: required and optional params', async () => {
+    const response = await client.sessions.render('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
+      messages: [
+        {
+          role: 'user',
+          content: 'string',
+          continue: true,
+          name: 'name',
+          tool_call_id: 'tool_call_id',
+          tool_calls: [
+            {
+              function: { name: 'name', arguments: 'arguments' },
+              api_call: {},
+              bash_20241022: { command: 'command', restart: true },
+              computer_20241022: { action: 'key', coordinate: [0], text: 'text' },
+              integration: {},
+              system: {},
+              text_editor_20241022: {
+                command: 'str_replace',
+                path: 'path',
+                file_text: 'file_text',
+                insert_line: 0,
+                new_str: 'new_str',
+                old_str: 'old_str',
+                view_range: [0],
+              },
+              type: 'function',
+            },
+          ],
+        },
+      ],
+      agent: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+      frequency_penalty: -2,
+      length_penalty: 0,
+      logit_bias: { foo: -100 },
+      max_tokens: 1,
+      min_p: 0,
+      model: 'recNPna{}ip}t',
+      presence_penalty: -2,
+      recall: true,
+      repetition_penalty: 0,
+      response_format: { type: 'text' },
+      save: true,
+      seed: -1,
+      stop: ['string'],
+      stream: true,
+      temperature: 0,
+      tool_choice: 'auto',
+      tools: [
+        {
+          name: 'name',
+          type: 'function',
+          api_call: {
+            method: 'GET',
+            url: 'https://example.com',
+            content: 'content',
+            cookies: { foo: 'string' },
+            data: {},
+            files: {},
+            follow_redirects: true,
+            headers: { foo: 'string' },
+            json: {},
+            params: 'string',
+            schema: {},
+            timeout: 0,
+          },
+          bash_20241022: { name: 'name', type: 'bash_20241022' },
+          computer_20241022: {
+            display_height_px: 400,
+            display_number: 1,
+            display_width_px: 600,
+            name: 'name',
+            type: 'computer_20241022',
+          },
+          description: 'description',
+          function: { description: {}, name: {}, parameters: {} },
+          integration: { arguments: {}, method: 'method', provider: 'dummy', setup: {} },
+          system: {
+            operation: 'create',
+            resource: 'agent',
+            arguments: {},
+            resource_id: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
+            subresource: 'tool',
+          },
+          text_editor_20241022: { name: 'name', type: 'text_editor_20241022' },
+        },
+      ],
+      top_p: 0,
+    });
+  });
+
   test('reset', async () => {
     const responsePromise = client.sessions.reset('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {});
     const rawResponse = await responsePromise.asResponse();

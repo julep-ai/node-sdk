@@ -22,6 +22,8 @@ import {
   SessionCreateOrUpdateParams,
   SessionCreateParams,
   SessionListParams,
+  SessionRenderParams,
+  SessionRenderResponse,
   SessionResetParams,
   SessionUpdateParams,
   Sessions,
@@ -298,12 +300,14 @@ export declare namespace Julep {
     type History as History,
     type Session as Session,
     type SessionChatResponse as SessionChatResponse,
+    type SessionRenderResponse as SessionRenderResponse,
     SessionsOffsetPagination as SessionsOffsetPagination,
     type SessionCreateParams as SessionCreateParams,
     type SessionUpdateParams as SessionUpdateParams,
     type SessionListParams as SessionListParams,
     type SessionChatParams as SessionChatParams,
     type SessionCreateOrUpdateParams as SessionCreateOrUpdateParams,
+    type SessionRenderParams as SessionRenderParams,
     type SessionResetParams as SessionResetParams,
   };
 

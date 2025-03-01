@@ -72,6 +72,7 @@ Types:
 - <code><a href="./src/resources/sessions.ts">History</a></code>
 - <code><a href="./src/resources/sessions.ts">Session</a></code>
 - <code><a href="./src/resources/sessions.ts">SessionChatResponse</a></code>
+- <code><a href="./src/resources/sessions.ts">SessionRenderResponse</a></code>
 
 Methods:
 
@@ -83,6 +84,7 @@ Methods:
 - <code title="post /sessions/{session_id}">client.sessions.<a href="./src/resources/sessions.ts">createOrUpdate</a>(sessionId, { ...params }) -> Session</code>
 - <code title="get /sessions/{session_id}">client.sessions.<a href="./src/resources/sessions.ts">get</a>(sessionId) -> Session</code>
 - <code title="get /sessions/{session_id}/history">client.sessions.<a href="./src/resources/sessions.ts">history</a>(sessionId) -> History</code>
+- <code title="post /sessions/{session_id}/render">client.sessions.<a href="./src/resources/sessions.ts">render</a>(sessionId, { ...params }) -> SessionRenderResponse</code>
 - <code title="put /sessions/{session_id}">client.sessions.<a href="./src/resources/sessions.ts">reset</a>(sessionId, { ...params }) -> Session</code>
 
 # Users
