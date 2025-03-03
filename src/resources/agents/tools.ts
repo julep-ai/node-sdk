@@ -126,7 +126,7 @@ export interface ToolCreateResponse {
     | ToolCreateResponse.DummyIntegrationDef
     | ToolCreateResponse.BraveIntegrationDef
     | ToolCreateResponse.EmailIntegrationDef
-    | ToolCreateResponse.SpiderIntegrationDefOutput
+    | ToolCreateResponse.SpiderIntegrationDef
     | ToolCreateResponse.WikipediaIntegrationDef
     | ToolCreateResponse.WeatherIntegrationDef
     | ToolCreateResponse.BrowserbaseContextIntegrationDef
@@ -309,11 +309,11 @@ export namespace ToolCreateResponse {
   /**
    * Spider integration definition
    */
-  export interface SpiderIntegrationDefOutput {
+  export interface SpiderIntegrationDef {
     /**
      * Arguments for Spider integration
      */
-    arguments?: SpiderIntegrationDefOutput.Arguments | null;
+    arguments?: SpiderIntegrationDef.Arguments | null;
 
     method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -322,10 +322,10 @@ export namespace ToolCreateResponse {
     /**
      * Setup parameters for Spider integration
      */
-    setup?: SpiderIntegrationDefOutput.Setup | null;
+    setup?: SpiderIntegrationDef.Setup | null;
   }
 
-  export namespace SpiderIntegrationDefOutput {
+  export namespace SpiderIntegrationDef {
     /**
      * Arguments for Spider integration
      */
@@ -998,7 +998,7 @@ export interface ToolUpdateResponse {
     | ToolUpdateResponse.DummyIntegrationDef
     | ToolUpdateResponse.BraveIntegrationDef
     | ToolUpdateResponse.EmailIntegrationDef
-    | ToolUpdateResponse.SpiderIntegrationDefOutput
+    | ToolUpdateResponse.SpiderIntegrationDef
     | ToolUpdateResponse.WikipediaIntegrationDef
     | ToolUpdateResponse.WeatherIntegrationDef
     | ToolUpdateResponse.BrowserbaseContextIntegrationDef
@@ -1181,11 +1181,11 @@ export namespace ToolUpdateResponse {
   /**
    * Spider integration definition
    */
-  export interface SpiderIntegrationDefOutput {
+  export interface SpiderIntegrationDef {
     /**
      * Arguments for Spider integration
      */
-    arguments?: SpiderIntegrationDefOutput.Arguments | null;
+    arguments?: SpiderIntegrationDef.Arguments | null;
 
     method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -1194,10 +1194,10 @@ export namespace ToolUpdateResponse {
     /**
      * Setup parameters for Spider integration
      */
-    setup?: SpiderIntegrationDefOutput.Setup | null;
+    setup?: SpiderIntegrationDef.Setup | null;
   }
 
-  export namespace SpiderIntegrationDefOutput {
+  export namespace SpiderIntegrationDef {
     /**
      * Arguments for Spider integration
      */
@@ -1870,7 +1870,7 @@ export interface ToolListResponse {
     | ToolListResponse.DummyIntegrationDef
     | ToolListResponse.BraveIntegrationDef
     | ToolListResponse.EmailIntegrationDef
-    | ToolListResponse.SpiderIntegrationDefOutput
+    | ToolListResponse.SpiderIntegrationDef
     | ToolListResponse.WikipediaIntegrationDef
     | ToolListResponse.WeatherIntegrationDef
     | ToolListResponse.BrowserbaseContextIntegrationDef
@@ -2053,11 +2053,11 @@ export namespace ToolListResponse {
   /**
    * Spider integration definition
    */
-  export interface SpiderIntegrationDefOutput {
+  export interface SpiderIntegrationDef {
     /**
      * Arguments for Spider integration
      */
-    arguments?: SpiderIntegrationDefOutput.Arguments | null;
+    arguments?: SpiderIntegrationDef.Arguments | null;
 
     method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -2066,10 +2066,10 @@ export namespace ToolListResponse {
     /**
      * Setup parameters for Spider integration
      */
-    setup?: SpiderIntegrationDefOutput.Setup | null;
+    setup?: SpiderIntegrationDef.Setup | null;
   }
 
-  export namespace SpiderIntegrationDefOutput {
+  export namespace SpiderIntegrationDef {
     /**
      * Arguments for Spider integration
      */
@@ -2742,7 +2742,7 @@ export interface ToolResetResponse {
     | ToolResetResponse.DummyIntegrationDef
     | ToolResetResponse.BraveIntegrationDef
     | ToolResetResponse.EmailIntegrationDef
-    | ToolResetResponse.SpiderIntegrationDefOutput
+    | ToolResetResponse.SpiderIntegrationDef
     | ToolResetResponse.WikipediaIntegrationDef
     | ToolResetResponse.WeatherIntegrationDef
     | ToolResetResponse.BrowserbaseContextIntegrationDef
@@ -2925,11 +2925,11 @@ export namespace ToolResetResponse {
   /**
    * Spider integration definition
    */
-  export interface SpiderIntegrationDefOutput {
+  export interface SpiderIntegrationDef {
     /**
      * Arguments for Spider integration
      */
-    arguments?: SpiderIntegrationDefOutput.Arguments | null;
+    arguments?: SpiderIntegrationDef.Arguments | null;
 
     method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -2938,10 +2938,10 @@ export namespace ToolResetResponse {
     /**
      * Setup parameters for Spider integration
      */
-    setup?: SpiderIntegrationDefOutput.Setup | null;
+    setup?: SpiderIntegrationDef.Setup | null;
   }
 
-  export namespace SpiderIntegrationDefOutput {
+  export namespace SpiderIntegrationDef {
     /**
      * Arguments for Spider integration
      */
@@ -3608,7 +3608,7 @@ export interface ToolCreateParams {
     | ToolCreateParams.DummyIntegrationDef
     | ToolCreateParams.BraveIntegrationDef
     | ToolCreateParams.EmailIntegrationDef
-    | ToolCreateParams.SpiderIntegrationDefInput
+    | ToolCreateParams.SpiderIntegrationDef
     | ToolCreateParams.WikipediaIntegrationDef
     | ToolCreateParams.WeatherIntegrationDef
     | ToolCreateParams.BrowserbaseContextIntegrationDef
@@ -3791,11 +3791,11 @@ export namespace ToolCreateParams {
   /**
    * Spider integration definition
    */
-  export interface SpiderIntegrationDefInput {
+  export interface SpiderIntegrationDef {
     /**
      * Arguments for Spider integration
      */
-    arguments?: SpiderIntegrationDefInput.Arguments | null;
+    arguments?: SpiderIntegrationDef.Arguments | null;
 
     method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -3804,10 +3804,10 @@ export namespace ToolCreateParams {
     /**
      * Setup parameters for Spider integration
      */
-    setup?: SpiderIntegrationDefInput.Setup | null;
+    setup?: SpiderIntegrationDef.Setup | null;
   }
 
-  export namespace SpiderIntegrationDefInput {
+  export namespace SpiderIntegrationDef {
     /**
      * Arguments for Spider integration
      */
@@ -5349,7 +5349,7 @@ export interface ToolResetParams {
     | ToolResetParams.DummyIntegrationDef
     | ToolResetParams.BraveIntegrationDef
     | ToolResetParams.EmailIntegrationDef
-    | ToolResetParams.SpiderIntegrationDefInput
+    | ToolResetParams.SpiderIntegrationDef
     | ToolResetParams.WikipediaIntegrationDef
     | ToolResetParams.WeatherIntegrationDef
     | ToolResetParams.BrowserbaseContextIntegrationDef
@@ -5532,11 +5532,11 @@ export namespace ToolResetParams {
   /**
    * Spider integration definition
    */
-  export interface SpiderIntegrationDefInput {
+  export interface SpiderIntegrationDef {
     /**
      * Arguments for Spider integration
      */
-    arguments?: SpiderIntegrationDefInput.Arguments | null;
+    arguments?: SpiderIntegrationDef.Arguments | null;
 
     method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -5545,10 +5545,10 @@ export namespace ToolResetParams {
     /**
      * Setup parameters for Spider integration
      */
-    setup?: SpiderIntegrationDefInput.Setup | null;
+    setup?: SpiderIntegrationDef.Setup | null;
   }
 
-  export namespace SpiderIntegrationDefInput {
+  export namespace SpiderIntegrationDef {
     /**
      * Arguments for Spider integration
      */

@@ -440,7 +440,7 @@ export namespace ChatInput {
       | Tool.DummyIntegrationDef
       | Tool.BraveIntegrationDef
       | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDefInput
+      | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
@@ -623,11 +623,11 @@ export namespace ChatInput {
     /**
      * Spider integration definition
      */
-    export interface SpiderIntegrationDefInput {
+    export interface SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
-      arguments?: SpiderIntegrationDefInput.Arguments | null;
+      arguments?: SpiderIntegrationDef.Arguments | null;
 
       method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -636,10 +636,10 @@ export namespace ChatInput {
       /**
        * Setup parameters for Spider integration
        */
-      setup?: SpiderIntegrationDefInput.Setup | null;
+      setup?: SpiderIntegrationDef.Setup | null;
     }
 
-    export namespace SpiderIntegrationDefInput {
+    export namespace SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
@@ -2182,7 +2182,7 @@ export namespace Entry {
       | Tool.DummyIntegrationDef
       | Tool.BraveIntegrationDef
       | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDefOutput
+      | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
@@ -2365,11 +2365,11 @@ export namespace Entry {
     /**
      * Spider integration definition
      */
-    export interface SpiderIntegrationDefOutput {
+    export interface SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
-      arguments?: SpiderIntegrationDefOutput.Arguments | null;
+      arguments?: SpiderIntegrationDef.Arguments | null;
 
       method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -2378,10 +2378,10 @@ export namespace Entry {
       /**
        * Setup parameters for Spider integration
        */
-      setup?: SpiderIntegrationDefOutput.Setup | null;
+      setup?: SpiderIntegrationDef.Setup | null;
     }
 
-    export namespace SpiderIntegrationDefOutput {
+    export namespace SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
@@ -3229,7 +3229,7 @@ export namespace Entry {
       | Tool.DummyIntegrationDef
       | Tool.BraveIntegrationDef
       | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDefOutput
+      | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
@@ -3412,11 +3412,11 @@ export namespace Entry {
     /**
      * Spider integration definition
      */
-    export interface SpiderIntegrationDefOutput {
+    export interface SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
-      arguments?: SpiderIntegrationDefOutput.Arguments | null;
+      arguments?: SpiderIntegrationDef.Arguments | null;
 
       method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -3425,10 +3425,10 @@ export namespace Entry {
       /**
        * Setup parameters for Spider integration
        */
-      setup?: SpiderIntegrationDefOutput.Setup | null;
+      setup?: SpiderIntegrationDef.Setup | null;
     }
 
-    export namespace SpiderIntegrationDefOutput {
+    export namespace SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
@@ -4313,7 +4313,7 @@ export interface Session {
 
   metadata?: unknown | null;
 
-  recall_options?: Session.RecallOptions | null;
+  recall_options?: Session.VectorDocSearch | Session.TextOnlyDocSearch | Session.HybridDocSearch | null;
 
   render_templates?: boolean;
 
@@ -4327,7 +4327,39 @@ export interface Session {
 }
 
 export namespace Session {
-  export interface RecallOptions {
+  export interface VectorDocSearch {
+    confidence?: number;
+
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
+
+    mode?: 'vector';
+
+    num_search_messages?: number;
+  }
+
+  export interface TextOnlyDocSearch {
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mode?: 'text';
+
+    num_search_messages?: number;
+  }
+
+  export interface HybridDocSearch {
     alpha?: number;
 
     confidence?: number;
@@ -4342,7 +4374,7 @@ export namespace Session {
 
     mmr_strength?: number;
 
-    mode?: string;
+    mode?: 'hybrid';
 
     num_search_messages?: number;
   }
@@ -5042,7 +5074,7 @@ export namespace SessionRenderResponse {
       | Tool.DummyIntegrationDef
       | Tool.BraveIntegrationDef
       | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDefOutput
+      | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
@@ -5225,11 +5257,11 @@ export namespace SessionRenderResponse {
     /**
      * Spider integration definition
      */
-    export interface SpiderIntegrationDefOutput {
+    export interface SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
-      arguments?: SpiderIntegrationDefOutput.Arguments | null;
+      arguments?: SpiderIntegrationDef.Arguments | null;
 
       method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -5238,10 +5270,10 @@ export namespace SessionRenderResponse {
       /**
        * Setup parameters for Spider integration
        */
-      setup?: SpiderIntegrationDefOutput.Setup | null;
+      setup?: SpiderIntegrationDef.Setup | null;
     }
 
-    export namespace SpiderIntegrationDefOutput {
+    export namespace SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
@@ -5884,7 +5916,11 @@ export interface SessionCreateParams {
 
   metadata?: unknown | null;
 
-  recall_options?: SessionCreateParams.RecallOptions | null;
+  recall_options?:
+    | SessionCreateParams.VectorDocSearch
+    | SessionCreateParams.TextOnlyDocSearch
+    | SessionCreateParams.HybridDocSearch
+    | null;
 
   render_templates?: boolean;
 
@@ -5900,7 +5936,39 @@ export interface SessionCreateParams {
 }
 
 export namespace SessionCreateParams {
-  export interface RecallOptions {
+  export interface VectorDocSearch {
+    confidence?: number;
+
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
+
+    mode?: 'vector';
+
+    num_search_messages?: number;
+  }
+
+  export interface TextOnlyDocSearch {
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mode?: 'text';
+
+    num_search_messages?: number;
+  }
+
+  export interface HybridDocSearch {
     alpha?: number;
 
     confidence?: number;
@@ -5915,7 +5983,7 @@ export namespace SessionCreateParams {
 
     mmr_strength?: number;
 
-    mode?: string;
+    mode?: 'hybrid';
 
     num_search_messages?: number;
   }
@@ -5930,7 +5998,11 @@ export interface SessionUpdateParams {
 
   metadata?: unknown | null;
 
-  recall_options?: SessionUpdateParams.RecallOptions | null;
+  recall_options?:
+    | SessionUpdateParams.VectorDocSearchUpdate
+    | SessionUpdateParams.TextOnlyDocSearchUpdate
+    | SessionUpdateParams.HybridDocSearchUpdate
+    | null;
 
   render_templates?: boolean;
 
@@ -5942,7 +6014,39 @@ export interface SessionUpdateParams {
 }
 
 export namespace SessionUpdateParams {
-  export interface RecallOptions {
+  export interface VectorDocSearchUpdate {
+    confidence?: number;
+
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
+
+    mode?: 'vector';
+
+    num_search_messages?: number;
+  }
+
+  export interface TextOnlyDocSearchUpdate {
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mode?: 'text';
+
+    num_search_messages?: number;
+  }
+
+  export interface HybridDocSearchUpdate {
     alpha?: number;
 
     confidence?: number;
@@ -5957,7 +6061,7 @@ export namespace SessionUpdateParams {
 
     mmr_strength?: number;
 
-    mode?: string;
+    mode?: 'hybrid';
 
     num_search_messages?: number;
   }
@@ -6342,7 +6446,7 @@ export namespace SessionChatParams {
       | Tool.DummyIntegrationDef
       | Tool.BraveIntegrationDef
       | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDefInput
+      | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
@@ -6525,11 +6629,11 @@ export namespace SessionChatParams {
     /**
      * Spider integration definition
      */
-    export interface SpiderIntegrationDefInput {
+    export interface SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
-      arguments?: SpiderIntegrationDefInput.Arguments | null;
+      arguments?: SpiderIntegrationDef.Arguments | null;
 
       method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -6538,10 +6642,10 @@ export namespace SessionChatParams {
       /**
        * Setup parameters for Spider integration
        */
-      setup?: SpiderIntegrationDefInput.Setup | null;
+      setup?: SpiderIntegrationDef.Setup | null;
     }
 
-    export namespace SpiderIntegrationDefInput {
+    export namespace SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
@@ -7184,7 +7288,11 @@ export interface SessionCreateOrUpdateParams {
 
   metadata?: unknown | null;
 
-  recall_options?: SessionCreateOrUpdateParams.RecallOptions | null;
+  recall_options?:
+    | SessionCreateOrUpdateParams.VectorDocSearch
+    | SessionCreateOrUpdateParams.TextOnlyDocSearch
+    | SessionCreateOrUpdateParams.HybridDocSearch
+    | null;
 
   render_templates?: boolean;
 
@@ -7200,7 +7308,39 @@ export interface SessionCreateOrUpdateParams {
 }
 
 export namespace SessionCreateOrUpdateParams {
-  export interface RecallOptions {
+  export interface VectorDocSearch {
+    confidence?: number;
+
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
+
+    mode?: 'vector';
+
+    num_search_messages?: number;
+  }
+
+  export interface TextOnlyDocSearch {
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mode?: 'text';
+
+    num_search_messages?: number;
+  }
+
+  export interface HybridDocSearch {
     alpha?: number;
 
     confidence?: number;
@@ -7215,7 +7355,7 @@ export namespace SessionCreateOrUpdateParams {
 
     mmr_strength?: number;
 
-    mode?: string;
+    mode?: 'hybrid';
 
     num_search_messages?: number;
   }
@@ -7522,7 +7662,7 @@ export namespace SessionRenderParams {
       | Tool.DummyIntegrationDef
       | Tool.BraveIntegrationDef
       | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDefInput
+      | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
@@ -7705,11 +7845,11 @@ export namespace SessionRenderParams {
     /**
      * Spider integration definition
      */
-    export interface SpiderIntegrationDefInput {
+    export interface SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
-      arguments?: SpiderIntegrationDefInput.Arguments | null;
+      arguments?: SpiderIntegrationDef.Arguments | null;
 
       method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -7718,10 +7858,10 @@ export namespace SessionRenderParams {
       /**
        * Setup parameters for Spider integration
        */
-      setup?: SpiderIntegrationDefInput.Setup | null;
+      setup?: SpiderIntegrationDef.Setup | null;
     }
 
-    export namespace SpiderIntegrationDefInput {
+    export namespace SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
@@ -8360,7 +8500,11 @@ export interface SessionResetParams {
 
   metadata?: unknown | null;
 
-  recall_options?: SessionResetParams.RecallOptions | null;
+  recall_options?:
+    | SessionResetParams.VectorDocSearch
+    | SessionResetParams.TextOnlyDocSearch
+    | SessionResetParams.HybridDocSearch
+    | null;
 
   render_templates?: boolean;
 
@@ -8372,7 +8516,39 @@ export interface SessionResetParams {
 }
 
 export namespace SessionResetParams {
-  export interface RecallOptions {
+  export interface VectorDocSearch {
+    confidence?: number;
+
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mmr_strength?: number;
+
+    mode?: 'vector';
+
+    num_search_messages?: number;
+  }
+
+  export interface TextOnlyDocSearch {
+    lang?: string;
+
+    limit?: number;
+
+    max_query_length?: number;
+
+    metadata_filter?: unknown;
+
+    mode?: 'text';
+
+    num_search_messages?: number;
+  }
+
+  export interface HybridDocSearch {
     alpha?: number;
 
     confidence?: number;
@@ -8387,7 +8563,7 @@ export namespace SessionResetParams {
 
     mmr_strength?: number;
 
-    mode?: string;
+    mode?: 'hybrid';
 
     num_search_messages?: number;
   }
