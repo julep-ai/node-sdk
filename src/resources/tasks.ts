@@ -414,7 +414,7 @@ export namespace Task {
         | CreateToolRequestOutput.DummyIntegrationDef
         | CreateToolRequestOutput.BraveIntegrationDef
         | CreateToolRequestOutput.EmailIntegrationDef
-        | CreateToolRequestOutput.SpiderIntegrationDefOutput
+        | CreateToolRequestOutput.SpiderIntegrationDef
         | CreateToolRequestOutput.WikipediaIntegrationDef
         | CreateToolRequestOutput.WeatherIntegrationDef
         | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -597,11 +597,11 @@ export namespace Task {
       /**
        * Spider integration definition
        */
-      export interface SpiderIntegrationDefOutput {
+      export interface SpiderIntegrationDef {
         /**
          * Arguments for Spider integration
          */
-        arguments?: SpiderIntegrationDefOutput.Arguments | null;
+        arguments?: SpiderIntegrationDef.Arguments | null;
 
         method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -610,10 +610,10 @@ export namespace Task {
         /**
          * Setup parameters for Spider integration
          */
-        setup?: SpiderIntegrationDefOutput.Setup | null;
+        setup?: SpiderIntegrationDef.Setup | null;
       }
 
-      export namespace SpiderIntegrationDefOutput {
+      export namespace SpiderIntegrationDef {
         /**
          * Arguments for Spider integration
          */
@@ -1711,7 +1711,7 @@ export namespace Task {
           | CreateToolRequestOutput.DummyIntegrationDef
           | CreateToolRequestOutput.BraveIntegrationDef
           | CreateToolRequestOutput.EmailIntegrationDef
-          | CreateToolRequestOutput.SpiderIntegrationDefOutput
+          | CreateToolRequestOutput.SpiderIntegrationDef
           | CreateToolRequestOutput.WikipediaIntegrationDef
           | CreateToolRequestOutput.WeatherIntegrationDef
           | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -1894,11 +1894,11 @@ export namespace Task {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDefOutput {
+        export interface SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDefOutput.Arguments | null;
+          arguments?: SpiderIntegrationDef.Arguments | null;
 
           method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -1907,10 +1907,10 @@ export namespace Task {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDefOutput.Setup | null;
+          setup?: SpiderIntegrationDef.Setup | null;
         }
 
-        export namespace SpiderIntegrationDefOutput {
+        export namespace SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
@@ -2955,7 +2955,7 @@ export namespace Task {
               | CreateToolRequestOutput.DummyIntegrationDef
               | CreateToolRequestOutput.BraveIntegrationDef
               | CreateToolRequestOutput.EmailIntegrationDef
-              | CreateToolRequestOutput.SpiderIntegrationDefOutput
+              | CreateToolRequestOutput.SpiderIntegrationDef
               | CreateToolRequestOutput.WikipediaIntegrationDef
               | CreateToolRequestOutput.WeatherIntegrationDef
               | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -3138,11 +3138,11 @@ export namespace Task {
             /**
              * Spider integration definition
              */
-            export interface SpiderIntegrationDefOutput {
+            export interface SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
-              arguments?: SpiderIntegrationDefOutput.Arguments | null;
+              arguments?: SpiderIntegrationDef.Arguments | null;
 
               method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -3151,10 +3151,10 @@ export namespace Task {
               /**
                * Setup parameters for Spider integration
                */
-              setup?: SpiderIntegrationDefOutput.Setup | null;
+              setup?: SpiderIntegrationDef.Setup | null;
             }
 
-            export namespace SpiderIntegrationDefOutput {
+            export namespace SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
@@ -4235,7 +4235,7 @@ export namespace Task {
               | CreateToolRequestOutput.DummyIntegrationDef
               | CreateToolRequestOutput.BraveIntegrationDef
               | CreateToolRequestOutput.EmailIntegrationDef
-              | CreateToolRequestOutput.SpiderIntegrationDefOutput
+              | CreateToolRequestOutput.SpiderIntegrationDef
               | CreateToolRequestOutput.WikipediaIntegrationDef
               | CreateToolRequestOutput.WeatherIntegrationDef
               | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -4418,11 +4418,11 @@ export namespace Task {
             /**
              * Spider integration definition
              */
-            export interface SpiderIntegrationDefOutput {
+            export interface SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
-              arguments?: SpiderIntegrationDefOutput.Arguments | null;
+              arguments?: SpiderIntegrationDef.Arguments | null;
 
               method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -4431,10 +4431,10 @@ export namespace Task {
               /**
                * Setup parameters for Spider integration
                */
-              setup?: SpiderIntegrationDefOutput.Setup | null;
+              setup?: SpiderIntegrationDef.Setup | null;
             }
 
-            export namespace SpiderIntegrationDefOutput {
+            export namespace SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
@@ -5435,7 +5435,7 @@ export namespace Task {
             | CreateToolRequestOutput.DummyIntegrationDef
             | CreateToolRequestOutput.BraveIntegrationDef
             | CreateToolRequestOutput.EmailIntegrationDef
-            | CreateToolRequestOutput.SpiderIntegrationDefOutput
+            | CreateToolRequestOutput.SpiderIntegrationDef
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -5618,11 +5618,11 @@ export namespace Task {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefOutput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefOutput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -5631,10 +5631,10 @@ export namespace Task {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefOutput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefOutput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -6644,7 +6644,7 @@ export namespace Task {
             | CreateToolRequestOutput.DummyIntegrationDef
             | CreateToolRequestOutput.BraveIntegrationDef
             | CreateToolRequestOutput.EmailIntegrationDef
-            | CreateToolRequestOutput.SpiderIntegrationDefOutput
+            | CreateToolRequestOutput.SpiderIntegrationDef
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -6827,11 +6827,11 @@ export namespace Task {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefOutput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefOutput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -6840,10 +6840,10 @@ export namespace Task {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefOutput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefOutput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -7840,7 +7840,7 @@ export namespace Task {
           | CreateToolRequestOutput.DummyIntegrationDef
           | CreateToolRequestOutput.BraveIntegrationDef
           | CreateToolRequestOutput.EmailIntegrationDef
-          | CreateToolRequestOutput.SpiderIntegrationDefOutput
+          | CreateToolRequestOutput.SpiderIntegrationDef
           | CreateToolRequestOutput.WikipediaIntegrationDef
           | CreateToolRequestOutput.WeatherIntegrationDef
           | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -8023,11 +8023,11 @@ export namespace Task {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDefOutput {
+        export interface SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDefOutput.Arguments | null;
+          arguments?: SpiderIntegrationDef.Arguments | null;
 
           method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -8036,10 +8036,10 @@ export namespace Task {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDefOutput.Setup | null;
+          setup?: SpiderIntegrationDef.Setup | null;
         }
 
-        export namespace SpiderIntegrationDefOutput {
+        export namespace SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
@@ -9084,7 +9084,7 @@ export namespace Task {
               | CreateToolRequestOutput.DummyIntegrationDef
               | CreateToolRequestOutput.BraveIntegrationDef
               | CreateToolRequestOutput.EmailIntegrationDef
-              | CreateToolRequestOutput.SpiderIntegrationDefOutput
+              | CreateToolRequestOutput.SpiderIntegrationDef
               | CreateToolRequestOutput.WikipediaIntegrationDef
               | CreateToolRequestOutput.WeatherIntegrationDef
               | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -9267,11 +9267,11 @@ export namespace Task {
             /**
              * Spider integration definition
              */
-            export interface SpiderIntegrationDefOutput {
+            export interface SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
-              arguments?: SpiderIntegrationDefOutput.Arguments | null;
+              arguments?: SpiderIntegrationDef.Arguments | null;
 
               method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -9280,10 +9280,10 @@ export namespace Task {
               /**
                * Setup parameters for Spider integration
                */
-              setup?: SpiderIntegrationDefOutput.Setup | null;
+              setup?: SpiderIntegrationDef.Setup | null;
             }
 
-            export namespace SpiderIntegrationDefOutput {
+            export namespace SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
@@ -10364,7 +10364,7 @@ export namespace Task {
               | CreateToolRequestOutput.DummyIntegrationDef
               | CreateToolRequestOutput.BraveIntegrationDef
               | CreateToolRequestOutput.EmailIntegrationDef
-              | CreateToolRequestOutput.SpiderIntegrationDefOutput
+              | CreateToolRequestOutput.SpiderIntegrationDef
               | CreateToolRequestOutput.WikipediaIntegrationDef
               | CreateToolRequestOutput.WeatherIntegrationDef
               | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -10547,11 +10547,11 @@ export namespace Task {
             /**
              * Spider integration definition
              */
-            export interface SpiderIntegrationDefOutput {
+            export interface SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
-              arguments?: SpiderIntegrationDefOutput.Arguments | null;
+              arguments?: SpiderIntegrationDef.Arguments | null;
 
               method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -10560,10 +10560,10 @@ export namespace Task {
               /**
                * Setup parameters for Spider integration
                */
-              setup?: SpiderIntegrationDefOutput.Setup | null;
+              setup?: SpiderIntegrationDef.Setup | null;
             }
 
-            export namespace SpiderIntegrationDefOutput {
+            export namespace SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
@@ -11564,7 +11564,7 @@ export namespace Task {
             | CreateToolRequestOutput.DummyIntegrationDef
             | CreateToolRequestOutput.BraveIntegrationDef
             | CreateToolRequestOutput.EmailIntegrationDef
-            | CreateToolRequestOutput.SpiderIntegrationDefOutput
+            | CreateToolRequestOutput.SpiderIntegrationDef
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -11747,11 +11747,11 @@ export namespace Task {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefOutput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefOutput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -11760,10 +11760,10 @@ export namespace Task {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefOutput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefOutput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -12773,7 +12773,7 @@ export namespace Task {
             | CreateToolRequestOutput.DummyIntegrationDef
             | CreateToolRequestOutput.BraveIntegrationDef
             | CreateToolRequestOutput.EmailIntegrationDef
-            | CreateToolRequestOutput.SpiderIntegrationDefOutput
+            | CreateToolRequestOutput.SpiderIntegrationDef
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -12956,11 +12956,11 @@ export namespace Task {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefOutput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefOutput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -12969,10 +12969,10 @@ export namespace Task {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefOutput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefOutput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -13983,7 +13983,7 @@ export namespace Task {
             | CreateToolRequestOutput.DummyIntegrationDef
             | CreateToolRequestOutput.BraveIntegrationDef
             | CreateToolRequestOutput.EmailIntegrationDef
-            | CreateToolRequestOutput.SpiderIntegrationDefOutput
+            | CreateToolRequestOutput.SpiderIntegrationDef
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -14166,11 +14166,11 @@ export namespace Task {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefOutput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefOutput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -14179,10 +14179,10 @@ export namespace Task {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefOutput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefOutput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -15263,7 +15263,7 @@ export namespace Task {
             | CreateToolRequestOutput.DummyIntegrationDef
             | CreateToolRequestOutput.BraveIntegrationDef
             | CreateToolRequestOutput.EmailIntegrationDef
-            | CreateToolRequestOutput.SpiderIntegrationDefOutput
+            | CreateToolRequestOutput.SpiderIntegrationDef
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -15446,11 +15446,11 @@ export namespace Task {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefOutput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefOutput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -15459,10 +15459,10 @@ export namespace Task {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefOutput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefOutput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -16463,7 +16463,7 @@ export namespace Task {
           | CreateToolRequestOutput.DummyIntegrationDef
           | CreateToolRequestOutput.BraveIntegrationDef
           | CreateToolRequestOutput.EmailIntegrationDef
-          | CreateToolRequestOutput.SpiderIntegrationDefOutput
+          | CreateToolRequestOutput.SpiderIntegrationDef
           | CreateToolRequestOutput.WikipediaIntegrationDef
           | CreateToolRequestOutput.WeatherIntegrationDef
           | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -16646,11 +16646,11 @@ export namespace Task {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDefOutput {
+        export interface SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDefOutput.Arguments | null;
+          arguments?: SpiderIntegrationDef.Arguments | null;
 
           method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -16659,10 +16659,10 @@ export namespace Task {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDefOutput.Setup | null;
+          setup?: SpiderIntegrationDef.Setup | null;
         }
 
-        export namespace SpiderIntegrationDefOutput {
+        export namespace SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
@@ -17669,7 +17669,7 @@ export namespace Task {
           | CreateToolRequestOutput.DummyIntegrationDef
           | CreateToolRequestOutput.BraveIntegrationDef
           | CreateToolRequestOutput.EmailIntegrationDef
-          | CreateToolRequestOutput.SpiderIntegrationDefOutput
+          | CreateToolRequestOutput.SpiderIntegrationDef
           | CreateToolRequestOutput.WikipediaIntegrationDef
           | CreateToolRequestOutput.WeatherIntegrationDef
           | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
@@ -17852,11 +17852,11 @@ export namespace Task {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDefOutput {
+        export interface SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDefOutput.Arguments | null;
+          arguments?: SpiderIntegrationDef.Arguments | null;
 
           method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -17865,10 +17865,10 @@ export namespace Task {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDefOutput.Setup | null;
+          setup?: SpiderIntegrationDef.Setup | null;
         }
 
-        export namespace SpiderIntegrationDefOutput {
+        export namespace SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
@@ -18575,7 +18575,7 @@ export namespace Task {
       | Tool.DummyIntegrationDef
       | Tool.BraveIntegrationDef
       | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDefOutput
+      | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
@@ -18758,11 +18758,11 @@ export namespace Task {
     /**
      * Spider integration definition
      */
-    export interface SpiderIntegrationDefOutput {
+    export interface SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
-      arguments?: SpiderIntegrationDefOutput.Arguments | null;
+      arguments?: SpiderIntegrationDef.Arguments | null;
 
       method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -18771,10 +18771,10 @@ export namespace Task {
       /**
        * Setup parameters for Spider integration
        */
-      setup?: SpiderIntegrationDefOutput.Setup | null;
+      setup?: SpiderIntegrationDef.Setup | null;
     }
 
-    export namespace SpiderIntegrationDefOutput {
+    export namespace SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
@@ -19748,7 +19748,7 @@ export namespace TaskCreateParams {
         | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-        | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+        | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -19931,11 +19931,11 @@ export namespace TaskCreateParams {
       /**
        * Spider integration definition
        */
-      export interface SpiderIntegrationDefInput {
+      export interface SpiderIntegrationDef {
         /**
          * Arguments for Spider integration
          */
-        arguments?: SpiderIntegrationDefInput.Arguments | null;
+        arguments?: SpiderIntegrationDef.Arguments | null;
 
         method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -19944,10 +19944,10 @@ export namespace TaskCreateParams {
         /**
          * Setup parameters for Spider integration
          */
-        setup?: SpiderIntegrationDefInput.Setup | null;
+        setup?: SpiderIntegrationDef.Setup | null;
       }
 
-      export namespace SpiderIntegrationDefInput {
+      export namespace SpiderIntegrationDef {
         /**
          * Arguments for Spider integration
          */
@@ -21017,7 +21017,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -21200,11 +21200,11 @@ export namespace TaskCreateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDefInput {
+        export interface SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDefInput.Arguments | null;
+          arguments?: SpiderIntegrationDef.Arguments | null;
 
           method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -21213,10 +21213,10 @@ export namespace TaskCreateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDefInput.Setup | null;
+          setup?: SpiderIntegrationDef.Setup | null;
         }
 
-        export namespace SpiderIntegrationDefInput {
+        export namespace SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
@@ -22237,7 +22237,7 @@ export namespace TaskCreateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -22420,11 +22420,11 @@ export namespace TaskCreateParams {
             /**
              * Spider integration definition
              */
-            export interface SpiderIntegrationDefInput {
+            export interface SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
-              arguments?: SpiderIntegrationDefInput.Arguments | null;
+              arguments?: SpiderIntegrationDef.Arguments | null;
 
               method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -22433,10 +22433,10 @@ export namespace TaskCreateParams {
               /**
                * Setup parameters for Spider integration
                */
-              setup?: SpiderIntegrationDefInput.Setup | null;
+              setup?: SpiderIntegrationDef.Setup | null;
             }
 
-            export namespace SpiderIntegrationDefInput {
+            export namespace SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
@@ -23489,7 +23489,7 @@ export namespace TaskCreateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -23672,11 +23672,11 @@ export namespace TaskCreateParams {
             /**
              * Spider integration definition
              */
-            export interface SpiderIntegrationDefInput {
+            export interface SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
-              arguments?: SpiderIntegrationDefInput.Arguments | null;
+              arguments?: SpiderIntegrationDef.Arguments | null;
 
               method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -23685,10 +23685,10 @@ export namespace TaskCreateParams {
               /**
                * Setup parameters for Spider integration
                */
-              setup?: SpiderIntegrationDefInput.Setup | null;
+              setup?: SpiderIntegrationDef.Setup | null;
             }
 
-            export namespace SpiderIntegrationDefInput {
+            export namespace SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
@@ -24671,7 +24671,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -24854,11 +24854,11 @@ export namespace TaskCreateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefInput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefInput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -24867,10 +24867,10 @@ export namespace TaskCreateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefInput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefInput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -25862,7 +25862,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -26045,11 +26045,11 @@ export namespace TaskCreateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefInput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefInput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -26058,10 +26058,10 @@ export namespace TaskCreateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefInput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefInput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -27040,7 +27040,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -27223,11 +27223,11 @@ export namespace TaskCreateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDefInput {
+        export interface SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDefInput.Arguments | null;
+          arguments?: SpiderIntegrationDef.Arguments | null;
 
           method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -27236,10 +27236,10 @@ export namespace TaskCreateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDefInput.Setup | null;
+          setup?: SpiderIntegrationDef.Setup | null;
         }
 
-        export namespace SpiderIntegrationDefInput {
+        export namespace SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
@@ -28260,7 +28260,7 @@ export namespace TaskCreateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -28443,11 +28443,11 @@ export namespace TaskCreateParams {
             /**
              * Spider integration definition
              */
-            export interface SpiderIntegrationDefInput {
+            export interface SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
-              arguments?: SpiderIntegrationDefInput.Arguments | null;
+              arguments?: SpiderIntegrationDef.Arguments | null;
 
               method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -28456,10 +28456,10 @@ export namespace TaskCreateParams {
               /**
                * Setup parameters for Spider integration
                */
-              setup?: SpiderIntegrationDefInput.Setup | null;
+              setup?: SpiderIntegrationDef.Setup | null;
             }
 
-            export namespace SpiderIntegrationDefInput {
+            export namespace SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
@@ -29512,7 +29512,7 @@ export namespace TaskCreateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -29695,11 +29695,11 @@ export namespace TaskCreateParams {
             /**
              * Spider integration definition
              */
-            export interface SpiderIntegrationDefInput {
+            export interface SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
-              arguments?: SpiderIntegrationDefInput.Arguments | null;
+              arguments?: SpiderIntegrationDef.Arguments | null;
 
               method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -29708,10 +29708,10 @@ export namespace TaskCreateParams {
               /**
                * Setup parameters for Spider integration
                */
-              setup?: SpiderIntegrationDefInput.Setup | null;
+              setup?: SpiderIntegrationDef.Setup | null;
             }
 
-            export namespace SpiderIntegrationDefInput {
+            export namespace SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
@@ -30694,7 +30694,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -30877,11 +30877,11 @@ export namespace TaskCreateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefInput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefInput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -30890,10 +30890,10 @@ export namespace TaskCreateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefInput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefInput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -31885,7 +31885,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -32068,11 +32068,11 @@ export namespace TaskCreateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefInput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefInput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -32081,10 +32081,10 @@ export namespace TaskCreateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefInput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefInput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -33077,7 +33077,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -33260,11 +33260,11 @@ export namespace TaskCreateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefInput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefInput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -33273,10 +33273,10 @@ export namespace TaskCreateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefInput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefInput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -34329,7 +34329,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -34512,11 +34512,11 @@ export namespace TaskCreateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefInput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefInput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -34525,10 +34525,10 @@ export namespace TaskCreateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefInput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefInput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -35511,7 +35511,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -35694,11 +35694,11 @@ export namespace TaskCreateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDefInput {
+        export interface SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDefInput.Arguments | null;
+          arguments?: SpiderIntegrationDef.Arguments | null;
 
           method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -35707,10 +35707,10 @@ export namespace TaskCreateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDefInput.Setup | null;
+          setup?: SpiderIntegrationDef.Setup | null;
         }
 
-        export namespace SpiderIntegrationDefInput {
+        export namespace SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
@@ -36699,7 +36699,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -36882,11 +36882,11 @@ export namespace TaskCreateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDefInput {
+        export interface SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDefInput.Arguments | null;
+          arguments?: SpiderIntegrationDef.Arguments | null;
 
           method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -36895,10 +36895,10 @@ export namespace TaskCreateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDefInput.Setup | null;
+          setup?: SpiderIntegrationDef.Setup | null;
         }
 
-        export namespace SpiderIntegrationDefInput {
+        export namespace SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
@@ -37595,7 +37595,7 @@ export namespace TaskCreateParams {
       | Tool.DummyIntegrationDef
       | Tool.BraveIntegrationDef
       | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDefInput
+      | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
@@ -37778,11 +37778,11 @@ export namespace TaskCreateParams {
     /**
      * Spider integration definition
      */
-    export interface SpiderIntegrationDefInput {
+    export interface SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
-      arguments?: SpiderIntegrationDefInput.Arguments | null;
+      arguments?: SpiderIntegrationDef.Arguments | null;
 
       method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -37791,10 +37791,10 @@ export namespace TaskCreateParams {
       /**
        * Setup parameters for Spider integration
        */
-      setup?: SpiderIntegrationDefInput.Setup | null;
+      setup?: SpiderIntegrationDef.Setup | null;
     }
 
-    export namespace SpiderIntegrationDefInput {
+    export namespace SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
@@ -38774,7 +38774,7 @@ export namespace TaskCreateOrUpdateParams {
         | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-        | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+        | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -38957,11 +38957,11 @@ export namespace TaskCreateOrUpdateParams {
       /**
        * Spider integration definition
        */
-      export interface SpiderIntegrationDefInput {
+      export interface SpiderIntegrationDef {
         /**
          * Arguments for Spider integration
          */
-        arguments?: SpiderIntegrationDefInput.Arguments | null;
+        arguments?: SpiderIntegrationDef.Arguments | null;
 
         method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -38970,10 +38970,10 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * Setup parameters for Spider integration
          */
-        setup?: SpiderIntegrationDefInput.Setup | null;
+        setup?: SpiderIntegrationDef.Setup | null;
       }
 
-      export namespace SpiderIntegrationDefInput {
+      export namespace SpiderIntegrationDef {
         /**
          * Arguments for Spider integration
          */
@@ -40043,7 +40043,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -40226,11 +40226,11 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDefInput {
+        export interface SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDefInput.Arguments | null;
+          arguments?: SpiderIntegrationDef.Arguments | null;
 
           method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -40239,10 +40239,10 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDefInput.Setup | null;
+          setup?: SpiderIntegrationDef.Setup | null;
         }
 
-        export namespace SpiderIntegrationDefInput {
+        export namespace SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
@@ -41263,7 +41263,7 @@ export namespace TaskCreateOrUpdateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -41446,11 +41446,11 @@ export namespace TaskCreateOrUpdateParams {
             /**
              * Spider integration definition
              */
-            export interface SpiderIntegrationDefInput {
+            export interface SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
-              arguments?: SpiderIntegrationDefInput.Arguments | null;
+              arguments?: SpiderIntegrationDef.Arguments | null;
 
               method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -41459,10 +41459,10 @@ export namespace TaskCreateOrUpdateParams {
               /**
                * Setup parameters for Spider integration
                */
-              setup?: SpiderIntegrationDefInput.Setup | null;
+              setup?: SpiderIntegrationDef.Setup | null;
             }
 
-            export namespace SpiderIntegrationDefInput {
+            export namespace SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
@@ -42515,7 +42515,7 @@ export namespace TaskCreateOrUpdateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -42698,11 +42698,11 @@ export namespace TaskCreateOrUpdateParams {
             /**
              * Spider integration definition
              */
-            export interface SpiderIntegrationDefInput {
+            export interface SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
-              arguments?: SpiderIntegrationDefInput.Arguments | null;
+              arguments?: SpiderIntegrationDef.Arguments | null;
 
               method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -42711,10 +42711,10 @@ export namespace TaskCreateOrUpdateParams {
               /**
                * Setup parameters for Spider integration
                */
-              setup?: SpiderIntegrationDefInput.Setup | null;
+              setup?: SpiderIntegrationDef.Setup | null;
             }
 
-            export namespace SpiderIntegrationDefInput {
+            export namespace SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
@@ -43697,7 +43697,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -43880,11 +43880,11 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefInput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefInput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -43893,10 +43893,10 @@ export namespace TaskCreateOrUpdateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefInput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefInput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -44888,7 +44888,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -45071,11 +45071,11 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefInput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefInput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -45084,10 +45084,10 @@ export namespace TaskCreateOrUpdateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefInput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefInput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -46066,7 +46066,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -46249,11 +46249,11 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDefInput {
+        export interface SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDefInput.Arguments | null;
+          arguments?: SpiderIntegrationDef.Arguments | null;
 
           method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -46262,10 +46262,10 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDefInput.Setup | null;
+          setup?: SpiderIntegrationDef.Setup | null;
         }
 
-        export namespace SpiderIntegrationDefInput {
+        export namespace SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
@@ -47286,7 +47286,7 @@ export namespace TaskCreateOrUpdateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -47469,11 +47469,11 @@ export namespace TaskCreateOrUpdateParams {
             /**
              * Spider integration definition
              */
-            export interface SpiderIntegrationDefInput {
+            export interface SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
-              arguments?: SpiderIntegrationDefInput.Arguments | null;
+              arguments?: SpiderIntegrationDef.Arguments | null;
 
               method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -47482,10 +47482,10 @@ export namespace TaskCreateOrUpdateParams {
               /**
                * Setup parameters for Spider integration
                */
-              setup?: SpiderIntegrationDefInput.Setup | null;
+              setup?: SpiderIntegrationDef.Setup | null;
             }
 
-            export namespace SpiderIntegrationDefInput {
+            export namespace SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
@@ -48538,7 +48538,7 @@ export namespace TaskCreateOrUpdateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+              | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -48721,11 +48721,11 @@ export namespace TaskCreateOrUpdateParams {
             /**
              * Spider integration definition
              */
-            export interface SpiderIntegrationDefInput {
+            export interface SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
-              arguments?: SpiderIntegrationDefInput.Arguments | null;
+              arguments?: SpiderIntegrationDef.Arguments | null;
 
               method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -48734,10 +48734,10 @@ export namespace TaskCreateOrUpdateParams {
               /**
                * Setup parameters for Spider integration
                */
-              setup?: SpiderIntegrationDefInput.Setup | null;
+              setup?: SpiderIntegrationDef.Setup | null;
             }
 
-            export namespace SpiderIntegrationDefInput {
+            export namespace SpiderIntegrationDef {
               /**
                * Arguments for Spider integration
                */
@@ -49720,7 +49720,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -49903,11 +49903,11 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefInput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefInput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -49916,10 +49916,10 @@ export namespace TaskCreateOrUpdateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefInput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefInput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -50911,7 +50911,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -51094,11 +51094,11 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefInput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefInput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -51107,10 +51107,10 @@ export namespace TaskCreateOrUpdateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefInput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefInput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -52103,7 +52103,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -52286,11 +52286,11 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefInput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefInput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -52299,10 +52299,10 @@ export namespace TaskCreateOrUpdateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefInput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefInput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -53355,7 +53355,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+            | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -53538,11 +53538,11 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Spider integration definition
            */
-          export interface SpiderIntegrationDefInput {
+          export interface SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
-            arguments?: SpiderIntegrationDefInput.Arguments | null;
+            arguments?: SpiderIntegrationDef.Arguments | null;
 
             method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -53551,10 +53551,10 @@ export namespace TaskCreateOrUpdateParams {
             /**
              * Setup parameters for Spider integration
              */
-            setup?: SpiderIntegrationDefInput.Setup | null;
+            setup?: SpiderIntegrationDef.Setup | null;
           }
 
-          export namespace SpiderIntegrationDefInput {
+          export namespace SpiderIntegrationDef {
             /**
              * Arguments for Spider integration
              */
@@ -54537,7 +54537,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -54720,11 +54720,11 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDefInput {
+        export interface SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDefInput.Arguments | null;
+          arguments?: SpiderIntegrationDef.Arguments | null;
 
           method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -54733,10 +54733,10 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDefInput.Setup | null;
+          setup?: SpiderIntegrationDef.Setup | null;
         }
 
-        export namespace SpiderIntegrationDefInput {
+        export namespace SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
@@ -55725,7 +55725,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.DummyIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BraveIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.EmailIntegrationDef
-          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDefInput
+          | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
@@ -55908,11 +55908,11 @@ export namespace TaskCreateOrUpdateParams {
         /**
          * Spider integration definition
          */
-        export interface SpiderIntegrationDefInput {
+        export interface SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
-          arguments?: SpiderIntegrationDefInput.Arguments | null;
+          arguments?: SpiderIntegrationDef.Arguments | null;
 
           method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -55921,10 +55921,10 @@ export namespace TaskCreateOrUpdateParams {
           /**
            * Setup parameters for Spider integration
            */
-          setup?: SpiderIntegrationDefInput.Setup | null;
+          setup?: SpiderIntegrationDef.Setup | null;
         }
 
-        export namespace SpiderIntegrationDefInput {
+        export namespace SpiderIntegrationDef {
           /**
            * Arguments for Spider integration
            */
@@ -56621,7 +56621,7 @@ export namespace TaskCreateOrUpdateParams {
       | Tool.DummyIntegrationDef
       | Tool.BraveIntegrationDef
       | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDefInput
+      | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
@@ -56804,11 +56804,11 @@ export namespace TaskCreateOrUpdateParams {
     /**
      * Spider integration definition
      */
-    export interface SpiderIntegrationDefInput {
+    export interface SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
-      arguments?: SpiderIntegrationDefInput.Arguments | null;
+      arguments?: SpiderIntegrationDef.Arguments | null;
 
       method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
 
@@ -56817,10 +56817,10 @@ export namespace TaskCreateOrUpdateParams {
       /**
        * Setup parameters for Spider integration
        */
-      setup?: SpiderIntegrationDefInput.Setup | null;
+      setup?: SpiderIntegrationDef.Setup | null;
     }
 
-    export namespace SpiderIntegrationDefInput {
+    export namespace SpiderIntegrationDef {
       /**
        * Arguments for Spider integration
        */
