@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.68.0 (2025-03-13)
+
+Full Changelog: [v1.67.0...v1.68.0](https://github.com/julep-ai/node-sdk/compare/v1.67.0...v1.68.0)
+
+### Features
+
+* add SKIP_BREW env var to ./scripts/bootstrap ([#250](https://github.com/julep-ai/node-sdk/issues/250)) ([6a07859](https://github.com/julep-ai/node-sdk/commit/6a07859516e664108bc86e8aecaeabffe76dafbf))
+* **api:** api update ([#253](https://github.com/julep-ai/node-sdk/issues/253)) ([9f98aae](https://github.com/julep-ai/node-sdk/commit/9f98aae5dc54af3750ccd925ca581d0071b6d0e1))
+
+
+### Chores
+
+* **internal:** codegen related update ([#252](https://github.com/julep-ai/node-sdk/issues/252)) ([99ea6df](https://github.com/julep-ai/node-sdk/commit/99ea6dff97fbde935c7e658fbb0fb7c90bb443b8))
+
 ## 1.67.0 (2025-03-03)
 
 Full Changelog: [v1.66.0...v1.67.0](https://github.com/julep-ai/node-sdk/compare/v1.66.0...v1.67.0)
