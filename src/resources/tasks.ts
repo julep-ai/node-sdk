@@ -430,6 +430,7 @@ export namespace Task {
         | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
         | CreateToolRequestOutput.CloudinaryEditIntegrationDef
         | CreateToolRequestOutput.ArxivIntegrationDef
+        | CreateToolRequestOutput.UnstructuredIntegrationDef
         | null;
 
       /**
@@ -543,7 +544,7 @@ export namespace Task {
          * Integration definition for Brave Search
          */
         export interface Setup {
-          api_key: string;
+          brave_api_key: string;
         }
       }
 
@@ -1205,6 +1206,55 @@ export namespace Task {
           sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
           sort_order?: 'ascending' | 'descending';
+        }
+      }
+
+      /**
+       * Unstructured integration definition
+       */
+      export interface UnstructuredIntegrationDef {
+        /**
+         * Arguments for Unstructured partition integration
+         */
+        arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+        method?: string | null;
+
+        provider?: 'unstructured';
+
+        /**
+         * Setup parameters for Unstructured integration
+         */
+        setup?: UnstructuredIntegrationDef.Setup | null;
+      }
+
+      export namespace UnstructuredIntegrationDef {
+        /**
+         * Arguments for Unstructured partition integration
+         */
+        export interface Arguments {
+          file: string;
+
+          filename?: string | null;
+
+          partition_params?: unknown | null;
+        }
+
+        /**
+         * Setup parameters for Unstructured integration
+         */
+        export interface Setup {
+          unstructured_api_key: string;
+
+          retry_config?: unknown | null;
+
+          server?: string | null;
+
+          server_url?: string | null;
+
+          timeout_ms?: number | null;
+
+          url_params?: unknown | null;
         }
       }
 
@@ -1727,6 +1777,7 @@ export namespace Task {
           | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
           | CreateToolRequestOutput.CloudinaryEditIntegrationDef
           | CreateToolRequestOutput.ArxivIntegrationDef
+          | CreateToolRequestOutput.UnstructuredIntegrationDef
           | null;
 
         /**
@@ -1840,7 +1891,7 @@ export namespace Task {
            * Integration definition for Brave Search
            */
           export interface Setup {
-            api_key: string;
+            brave_api_key: string;
           }
         }
 
@@ -2506,6 +2557,55 @@ export namespace Task {
         }
 
         /**
+         * Unstructured integration definition
+         */
+        export interface UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'unstructured';
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          setup?: UnstructuredIntegrationDef.Setup | null;
+        }
+
+        export namespace UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            partition_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          export interface Setup {
+            unstructured_api_key: string;
+
+            retry_config?: unknown | null;
+
+            server?: string | null;
+
+            server_url?: string | null;
+
+            timeout_ms?: number | null;
+
+            url_params?: unknown | null;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -2971,6 +3071,7 @@ export namespace Task {
               | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
               | CreateToolRequestOutput.CloudinaryEditIntegrationDef
               | CreateToolRequestOutput.ArxivIntegrationDef
+              | CreateToolRequestOutput.UnstructuredIntegrationDef
               | null;
 
             /**
@@ -3084,7 +3185,7 @@ export namespace Task {
                * Integration definition for Brave Search
                */
               export interface Setup {
-                api_key: string;
+                brave_api_key: string;
               }
             }
 
@@ -3746,6 +3847,55 @@ export namespace Task {
                 sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
                 sort_order?: 'ascending' | 'descending';
+              }
+            }
+
+            /**
+             * Unstructured integration definition
+             */
+            export interface UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+              method?: string | null;
+
+              provider?: 'unstructured';
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              setup?: UnstructuredIntegrationDef.Setup | null;
+            }
+
+            export namespace UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              export interface Arguments {
+                file: string;
+
+                filename?: string | null;
+
+                partition_params?: unknown | null;
+              }
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              export interface Setup {
+                unstructured_api_key: string;
+
+                retry_config?: unknown | null;
+
+                server?: string | null;
+
+                server_url?: string | null;
+
+                timeout_ms?: number | null;
+
+                url_params?: unknown | null;
               }
             }
 
@@ -4251,6 +4401,7 @@ export namespace Task {
               | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
               | CreateToolRequestOutput.CloudinaryEditIntegrationDef
               | CreateToolRequestOutput.ArxivIntegrationDef
+              | CreateToolRequestOutput.UnstructuredIntegrationDef
               | null;
 
             /**
@@ -4364,7 +4515,7 @@ export namespace Task {
                * Integration definition for Brave Search
                */
               export interface Setup {
-                api_key: string;
+                brave_api_key: string;
               }
             }
 
@@ -5030,6 +5181,55 @@ export namespace Task {
             }
 
             /**
+             * Unstructured integration definition
+             */
+            export interface UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+              method?: string | null;
+
+              provider?: 'unstructured';
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              setup?: UnstructuredIntegrationDef.Setup | null;
+            }
+
+            export namespace UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              export interface Arguments {
+                file: string;
+
+                filename?: string | null;
+
+                partition_params?: unknown | null;
+              }
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              export interface Setup {
+                unstructured_api_key: string;
+
+                retry_config?: unknown | null;
+
+                server?: string | null;
+
+                server_url?: string | null;
+
+                timeout_ms?: number | null;
+
+                url_params?: unknown | null;
+              }
+            }
+
+            /**
              * System definition
              */
             export interface System {
@@ -5451,6 +5651,7 @@ export namespace Task {
             | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
             | CreateToolRequestOutput.CloudinaryEditIntegrationDef
             | CreateToolRequestOutput.ArxivIntegrationDef
+            | CreateToolRequestOutput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -5564,7 +5765,7 @@ export namespace Task {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -6226,6 +6427,55 @@ export namespace Task {
               sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
               sort_order?: 'ascending' | 'descending';
+            }
+          }
+
+          /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
             }
           }
 
@@ -6660,6 +6910,7 @@ export namespace Task {
             | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
             | CreateToolRequestOutput.CloudinaryEditIntegrationDef
             | CreateToolRequestOutput.ArxivIntegrationDef
+            | CreateToolRequestOutput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -6773,7 +7024,7 @@ export namespace Task {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -7439,6 +7690,55 @@ export namespace Task {
           }
 
           /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
+            }
+          }
+
+          /**
            * System definition
            */
           export interface System {
@@ -7856,6 +8156,7 @@ export namespace Task {
           | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
           | CreateToolRequestOutput.CloudinaryEditIntegrationDef
           | CreateToolRequestOutput.ArxivIntegrationDef
+          | CreateToolRequestOutput.UnstructuredIntegrationDef
           | null;
 
         /**
@@ -7969,7 +8270,7 @@ export namespace Task {
            * Integration definition for Brave Search
            */
           export interface Setup {
-            api_key: string;
+            brave_api_key: string;
           }
         }
 
@@ -8635,6 +8936,55 @@ export namespace Task {
         }
 
         /**
+         * Unstructured integration definition
+         */
+        export interface UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'unstructured';
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          setup?: UnstructuredIntegrationDef.Setup | null;
+        }
+
+        export namespace UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            partition_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          export interface Setup {
+            unstructured_api_key: string;
+
+            retry_config?: unknown | null;
+
+            server?: string | null;
+
+            server_url?: string | null;
+
+            timeout_ms?: number | null;
+
+            url_params?: unknown | null;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -9100,6 +9450,7 @@ export namespace Task {
               | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
               | CreateToolRequestOutput.CloudinaryEditIntegrationDef
               | CreateToolRequestOutput.ArxivIntegrationDef
+              | CreateToolRequestOutput.UnstructuredIntegrationDef
               | null;
 
             /**
@@ -9213,7 +9564,7 @@ export namespace Task {
                * Integration definition for Brave Search
                */
               export interface Setup {
-                api_key: string;
+                brave_api_key: string;
               }
             }
 
@@ -9875,6 +10226,55 @@ export namespace Task {
                 sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
                 sort_order?: 'ascending' | 'descending';
+              }
+            }
+
+            /**
+             * Unstructured integration definition
+             */
+            export interface UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+              method?: string | null;
+
+              provider?: 'unstructured';
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              setup?: UnstructuredIntegrationDef.Setup | null;
+            }
+
+            export namespace UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              export interface Arguments {
+                file: string;
+
+                filename?: string | null;
+
+                partition_params?: unknown | null;
+              }
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              export interface Setup {
+                unstructured_api_key: string;
+
+                retry_config?: unknown | null;
+
+                server?: string | null;
+
+                server_url?: string | null;
+
+                timeout_ms?: number | null;
+
+                url_params?: unknown | null;
               }
             }
 
@@ -10380,6 +10780,7 @@ export namespace Task {
               | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
               | CreateToolRequestOutput.CloudinaryEditIntegrationDef
               | CreateToolRequestOutput.ArxivIntegrationDef
+              | CreateToolRequestOutput.UnstructuredIntegrationDef
               | null;
 
             /**
@@ -10493,7 +10894,7 @@ export namespace Task {
                * Integration definition for Brave Search
                */
               export interface Setup {
-                api_key: string;
+                brave_api_key: string;
               }
             }
 
@@ -11159,6 +11560,55 @@ export namespace Task {
             }
 
             /**
+             * Unstructured integration definition
+             */
+            export interface UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+              method?: string | null;
+
+              provider?: 'unstructured';
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              setup?: UnstructuredIntegrationDef.Setup | null;
+            }
+
+            export namespace UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              export interface Arguments {
+                file: string;
+
+                filename?: string | null;
+
+                partition_params?: unknown | null;
+              }
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              export interface Setup {
+                unstructured_api_key: string;
+
+                retry_config?: unknown | null;
+
+                server?: string | null;
+
+                server_url?: string | null;
+
+                timeout_ms?: number | null;
+
+                url_params?: unknown | null;
+              }
+            }
+
+            /**
              * System definition
              */
             export interface System {
@@ -11580,6 +12030,7 @@ export namespace Task {
             | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
             | CreateToolRequestOutput.CloudinaryEditIntegrationDef
             | CreateToolRequestOutput.ArxivIntegrationDef
+            | CreateToolRequestOutput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -11693,7 +12144,7 @@ export namespace Task {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -12355,6 +12806,55 @@ export namespace Task {
               sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
               sort_order?: 'ascending' | 'descending';
+            }
+          }
+
+          /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
             }
           }
 
@@ -12789,6 +13289,7 @@ export namespace Task {
             | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
             | CreateToolRequestOutput.CloudinaryEditIntegrationDef
             | CreateToolRequestOutput.ArxivIntegrationDef
+            | CreateToolRequestOutput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -12902,7 +13403,7 @@ export namespace Task {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -13564,6 +14065,55 @@ export namespace Task {
               sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
               sort_order?: 'ascending' | 'descending';
+            }
+          }
+
+          /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
             }
           }
 
@@ -13999,6 +14549,7 @@ export namespace Task {
             | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
             | CreateToolRequestOutput.CloudinaryEditIntegrationDef
             | CreateToolRequestOutput.ArxivIntegrationDef
+            | CreateToolRequestOutput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -14112,7 +14663,7 @@ export namespace Task {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -14774,6 +15325,55 @@ export namespace Task {
               sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
               sort_order?: 'ascending' | 'descending';
+            }
+          }
+
+          /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
             }
           }
 
@@ -15279,6 +15879,7 @@ export namespace Task {
             | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
             | CreateToolRequestOutput.CloudinaryEditIntegrationDef
             | CreateToolRequestOutput.ArxivIntegrationDef
+            | CreateToolRequestOutput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -15392,7 +15993,7 @@ export namespace Task {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -16058,6 +16659,55 @@ export namespace Task {
           }
 
           /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
+            }
+          }
+
+          /**
            * System definition
            */
           export interface System {
@@ -16479,6 +17129,7 @@ export namespace Task {
           | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
           | CreateToolRequestOutput.CloudinaryEditIntegrationDef
           | CreateToolRequestOutput.ArxivIntegrationDef
+          | CreateToolRequestOutput.UnstructuredIntegrationDef
           | null;
 
         /**
@@ -16592,7 +17243,7 @@ export namespace Task {
            * Integration definition for Brave Search
            */
           export interface Setup {
-            api_key: string;
+            brave_api_key: string;
           }
         }
 
@@ -17254,6 +17905,55 @@ export namespace Task {
             sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
             sort_order?: 'ascending' | 'descending';
+          }
+        }
+
+        /**
+         * Unstructured integration definition
+         */
+        export interface UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'unstructured';
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          setup?: UnstructuredIntegrationDef.Setup | null;
+        }
+
+        export namespace UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            partition_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          export interface Setup {
+            unstructured_api_key: string;
+
+            retry_config?: unknown | null;
+
+            server?: string | null;
+
+            server_url?: string | null;
+
+            timeout_ms?: number | null;
+
+            url_params?: unknown | null;
           }
         }
 
@@ -17685,6 +18385,7 @@ export namespace Task {
           | CreateToolRequestOutput.CloudinaryUploadIntegrationDef
           | CreateToolRequestOutput.CloudinaryEditIntegrationDef
           | CreateToolRequestOutput.ArxivIntegrationDef
+          | CreateToolRequestOutput.UnstructuredIntegrationDef
           | null;
 
         /**
@@ -17798,7 +18499,7 @@ export namespace Task {
            * Integration definition for Brave Search
            */
           export interface Setup {
-            api_key: string;
+            brave_api_key: string;
           }
         }
 
@@ -18464,6 +19165,55 @@ export namespace Task {
         }
 
         /**
+         * Unstructured integration definition
+         */
+        export interface UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'unstructured';
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          setup?: UnstructuredIntegrationDef.Setup | null;
+        }
+
+        export namespace UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            partition_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          export interface Setup {
+            unstructured_api_key: string;
+
+            retry_config?: unknown | null;
+
+            server?: string | null;
+
+            server_url?: string | null;
+
+            timeout_ms?: number | null;
+
+            url_params?: unknown | null;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -18591,6 +19341,7 @@ export namespace Task {
       | Tool.CloudinaryUploadIntegrationDef
       | Tool.CloudinaryEditIntegrationDef
       | Tool.ArxivIntegrationDef
+      | Tool.UnstructuredIntegrationDef
       | null;
 
     /**
@@ -18704,7 +19455,7 @@ export namespace Task {
        * Integration definition for Brave Search
        */
       export interface Setup {
-        api_key: string;
+        brave_api_key: string;
       }
     }
 
@@ -19370,6 +20121,55 @@ export namespace Task {
     }
 
     /**
+     * Unstructured integration definition
+     */
+    export interface UnstructuredIntegrationDef {
+      /**
+       * Arguments for Unstructured partition integration
+       */
+      arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'unstructured';
+
+      /**
+       * Setup parameters for Unstructured integration
+       */
+      setup?: UnstructuredIntegrationDef.Setup | null;
+    }
+
+    export namespace UnstructuredIntegrationDef {
+      /**
+       * Arguments for Unstructured partition integration
+       */
+      export interface Arguments {
+        file: string;
+
+        filename?: string | null;
+
+        partition_params?: unknown | null;
+      }
+
+      /**
+       * Setup parameters for Unstructured integration
+       */
+      export interface Setup {
+        unstructured_api_key: string;
+
+        retry_config?: unknown | null;
+
+        server?: string | null;
+
+        server_url?: string | null;
+
+        timeout_ms?: number | null;
+
+        url_params?: unknown | null;
+      }
+    }
+
+    /**
      * System definition
      */
     export interface System {
@@ -19764,6 +20564,7 @@ export namespace TaskCreateParams {
         | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
         | null;
 
       /**
@@ -19877,7 +20678,7 @@ export namespace TaskCreateParams {
          * Integration definition for Brave Search
          */
         export interface Setup {
-          api_key: string;
+          brave_api_key: string;
         }
       }
 
@@ -20543,6 +21344,55 @@ export namespace TaskCreateParams {
       }
 
       /**
+       * Unstructured integration definition
+       */
+      export interface UnstructuredIntegrationDef {
+        /**
+         * Arguments for Unstructured partition integration
+         */
+        arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+        method?: string | null;
+
+        provider?: 'unstructured';
+
+        /**
+         * Setup parameters for Unstructured integration
+         */
+        setup?: UnstructuredIntegrationDef.Setup | null;
+      }
+
+      export namespace UnstructuredIntegrationDef {
+        /**
+         * Arguments for Unstructured partition integration
+         */
+        export interface Arguments {
+          file: string;
+
+          filename?: string | null;
+
+          partition_params?: unknown | null;
+        }
+
+        /**
+         * Setup parameters for Unstructured integration
+         */
+        export interface Setup {
+          unstructured_api_key: string;
+
+          retry_config?: unknown | null;
+
+          server?: string | null;
+
+          server_url?: string | null;
+
+          timeout_ms?: number | null;
+
+          url_params?: unknown | null;
+        }
+      }
+
+      /**
        * System definition
        */
       export interface System {
@@ -21033,6 +21883,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
           | null;
 
         /**
@@ -21146,7 +21997,7 @@ export namespace TaskCreateParams {
            * Integration definition for Brave Search
            */
           export interface Setup {
-            api_key: string;
+            brave_api_key: string;
           }
         }
 
@@ -21812,6 +22663,55 @@ export namespace TaskCreateParams {
         }
 
         /**
+         * Unstructured integration definition
+         */
+        export interface UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'unstructured';
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          setup?: UnstructuredIntegrationDef.Setup | null;
+        }
+
+        export namespace UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            partition_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          export interface Setup {
+            unstructured_api_key: string;
+
+            retry_config?: unknown | null;
+
+            server?: string | null;
+
+            server_url?: string | null;
+
+            timeout_ms?: number | null;
+
+            url_params?: unknown | null;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -22253,6 +23153,7 @@ export namespace TaskCreateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
               | null;
 
             /**
@@ -22366,7 +23267,7 @@ export namespace TaskCreateParams {
                * Integration definition for Brave Search
                */
               export interface Setup {
-                api_key: string;
+                brave_api_key: string;
               }
             }
 
@@ -23028,6 +23929,55 @@ export namespace TaskCreateParams {
                 sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
                 sort_order?: 'ascending' | 'descending';
+              }
+            }
+
+            /**
+             * Unstructured integration definition
+             */
+            export interface UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+              method?: string | null;
+
+              provider?: 'unstructured';
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              setup?: UnstructuredIntegrationDef.Setup | null;
+            }
+
+            export namespace UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              export interface Arguments {
+                file: string;
+
+                filename?: string | null;
+
+                partition_params?: unknown | null;
+              }
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              export interface Setup {
+                unstructured_api_key: string;
+
+                retry_config?: unknown | null;
+
+                server?: string | null;
+
+                server_url?: string | null;
+
+                timeout_ms?: number | null;
+
+                url_params?: unknown | null;
               }
             }
 
@@ -23505,6 +24455,7 @@ export namespace TaskCreateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
               | null;
 
             /**
@@ -23618,7 +24569,7 @@ export namespace TaskCreateParams {
                * Integration definition for Brave Search
                */
               export interface Setup {
-                api_key: string;
+                brave_api_key: string;
               }
             }
 
@@ -24284,6 +25235,55 @@ export namespace TaskCreateParams {
             }
 
             /**
+             * Unstructured integration definition
+             */
+            export interface UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+              method?: string | null;
+
+              provider?: 'unstructured';
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              setup?: UnstructuredIntegrationDef.Setup | null;
+            }
+
+            export namespace UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              export interface Arguments {
+                file: string;
+
+                filename?: string | null;
+
+                partition_params?: unknown | null;
+              }
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              export interface Setup {
+                unstructured_api_key: string;
+
+                retry_config?: unknown | null;
+
+                server?: string | null;
+
+                server_url?: string | null;
+
+                timeout_ms?: number | null;
+
+                url_params?: unknown | null;
+              }
+            }
+
+            /**
              * System definition
              */
             export interface System {
@@ -24687,6 +25687,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -24800,7 +25801,7 @@ export namespace TaskCreateParams {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -25462,6 +26463,55 @@ export namespace TaskCreateParams {
               sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
               sort_order?: 'ascending' | 'descending';
+            }
+          }
+
+          /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
             }
           }
 
@@ -25878,6 +26928,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -25991,7 +27042,7 @@ export namespace TaskCreateParams {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -26657,6 +27708,55 @@ export namespace TaskCreateParams {
           }
 
           /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
+            }
+          }
+
+          /**
            * System definition
            */
           export interface System {
@@ -27056,6 +28156,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
           | null;
 
         /**
@@ -27169,7 +28270,7 @@ export namespace TaskCreateParams {
            * Integration definition for Brave Search
            */
           export interface Setup {
-            api_key: string;
+            brave_api_key: string;
           }
         }
 
@@ -27835,6 +28936,55 @@ export namespace TaskCreateParams {
         }
 
         /**
+         * Unstructured integration definition
+         */
+        export interface UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'unstructured';
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          setup?: UnstructuredIntegrationDef.Setup | null;
+        }
+
+        export namespace UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            partition_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          export interface Setup {
+            unstructured_api_key: string;
+
+            retry_config?: unknown | null;
+
+            server?: string | null;
+
+            server_url?: string | null;
+
+            timeout_ms?: number | null;
+
+            url_params?: unknown | null;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -28276,6 +29426,7 @@ export namespace TaskCreateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
               | null;
 
             /**
@@ -28389,7 +29540,7 @@ export namespace TaskCreateParams {
                * Integration definition for Brave Search
                */
               export interface Setup {
-                api_key: string;
+                brave_api_key: string;
               }
             }
 
@@ -29051,6 +30202,55 @@ export namespace TaskCreateParams {
                 sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
                 sort_order?: 'ascending' | 'descending';
+              }
+            }
+
+            /**
+             * Unstructured integration definition
+             */
+            export interface UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+              method?: string | null;
+
+              provider?: 'unstructured';
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              setup?: UnstructuredIntegrationDef.Setup | null;
+            }
+
+            export namespace UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              export interface Arguments {
+                file: string;
+
+                filename?: string | null;
+
+                partition_params?: unknown | null;
+              }
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              export interface Setup {
+                unstructured_api_key: string;
+
+                retry_config?: unknown | null;
+
+                server?: string | null;
+
+                server_url?: string | null;
+
+                timeout_ms?: number | null;
+
+                url_params?: unknown | null;
               }
             }
 
@@ -29528,6 +30728,7 @@ export namespace TaskCreateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
               | null;
 
             /**
@@ -29641,7 +30842,7 @@ export namespace TaskCreateParams {
                * Integration definition for Brave Search
                */
               export interface Setup {
-                api_key: string;
+                brave_api_key: string;
               }
             }
 
@@ -30307,6 +31508,55 @@ export namespace TaskCreateParams {
             }
 
             /**
+             * Unstructured integration definition
+             */
+            export interface UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+              method?: string | null;
+
+              provider?: 'unstructured';
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              setup?: UnstructuredIntegrationDef.Setup | null;
+            }
+
+            export namespace UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              export interface Arguments {
+                file: string;
+
+                filename?: string | null;
+
+                partition_params?: unknown | null;
+              }
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              export interface Setup {
+                unstructured_api_key: string;
+
+                retry_config?: unknown | null;
+
+                server?: string | null;
+
+                server_url?: string | null;
+
+                timeout_ms?: number | null;
+
+                url_params?: unknown | null;
+              }
+            }
+
+            /**
              * System definition
              */
             export interface System {
@@ -30710,6 +31960,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -30823,7 +32074,7 @@ export namespace TaskCreateParams {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -31485,6 +32736,55 @@ export namespace TaskCreateParams {
               sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
               sort_order?: 'ascending' | 'descending';
+            }
+          }
+
+          /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
             }
           }
 
@@ -31901,6 +33201,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -32014,7 +33315,7 @@ export namespace TaskCreateParams {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -32676,6 +33977,55 @@ export namespace TaskCreateParams {
               sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
               sort_order?: 'ascending' | 'descending';
+            }
+          }
+
+          /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
             }
           }
 
@@ -33093,6 +34443,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -33206,7 +34557,7 @@ export namespace TaskCreateParams {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -33868,6 +35219,55 @@ export namespace TaskCreateParams {
               sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
               sort_order?: 'ascending' | 'descending';
+            }
+          }
+
+          /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
             }
           }
 
@@ -34345,6 +35745,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -34458,7 +35859,7 @@ export namespace TaskCreateParams {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -35124,6 +36525,55 @@ export namespace TaskCreateParams {
           }
 
           /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
+            }
+          }
+
+          /**
            * System definition
            */
           export interface System {
@@ -35527,6 +36977,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
           | null;
 
         /**
@@ -35640,7 +37091,7 @@ export namespace TaskCreateParams {
            * Integration definition for Brave Search
            */
           export interface Setup {
-            api_key: string;
+            brave_api_key: string;
           }
         }
 
@@ -36302,6 +37753,55 @@ export namespace TaskCreateParams {
             sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
             sort_order?: 'ascending' | 'descending';
+          }
+        }
+
+        /**
+         * Unstructured integration definition
+         */
+        export interface UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'unstructured';
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          setup?: UnstructuredIntegrationDef.Setup | null;
+        }
+
+        export namespace UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            partition_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          export interface Setup {
+            unstructured_api_key: string;
+
+            retry_config?: unknown | null;
+
+            server?: string | null;
+
+            server_url?: string | null;
+
+            timeout_ms?: number | null;
+
+            url_params?: unknown | null;
           }
         }
 
@@ -36715,6 +38215,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
           | null;
 
         /**
@@ -36828,7 +38329,7 @@ export namespace TaskCreateParams {
            * Integration definition for Brave Search
            */
           export interface Setup {
-            api_key: string;
+            brave_api_key: string;
           }
         }
 
@@ -37494,6 +38995,55 @@ export namespace TaskCreateParams {
         }
 
         /**
+         * Unstructured integration definition
+         */
+        export interface UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'unstructured';
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          setup?: UnstructuredIntegrationDef.Setup | null;
+        }
+
+        export namespace UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            partition_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          export interface Setup {
+            unstructured_api_key: string;
+
+            retry_config?: unknown | null;
+
+            server?: string | null;
+
+            server_url?: string | null;
+
+            timeout_ms?: number | null;
+
+            url_params?: unknown | null;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -37611,6 +39161,7 @@ export namespace TaskCreateParams {
       | Tool.CloudinaryUploadIntegrationDef
       | Tool.CloudinaryEditIntegrationDef
       | Tool.ArxivIntegrationDef
+      | Tool.UnstructuredIntegrationDef
       | null;
 
     /**
@@ -37724,7 +39275,7 @@ export namespace TaskCreateParams {
        * Integration definition for Brave Search
        */
       export interface Setup {
-        api_key: string;
+        brave_api_key: string;
       }
     }
 
@@ -38386,6 +39937,55 @@ export namespace TaskCreateParams {
         sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
         sort_order?: 'ascending' | 'descending';
+      }
+    }
+
+    /**
+     * Unstructured integration definition
+     */
+    export interface UnstructuredIntegrationDef {
+      /**
+       * Arguments for Unstructured partition integration
+       */
+      arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'unstructured';
+
+      /**
+       * Setup parameters for Unstructured integration
+       */
+      setup?: UnstructuredIntegrationDef.Setup | null;
+    }
+
+    export namespace UnstructuredIntegrationDef {
+      /**
+       * Arguments for Unstructured partition integration
+       */
+      export interface Arguments {
+        file: string;
+
+        filename?: string | null;
+
+        partition_params?: unknown | null;
+      }
+
+      /**
+       * Setup parameters for Unstructured integration
+       */
+      export interface Setup {
+        unstructured_api_key: string;
+
+        retry_config?: unknown | null;
+
+        server?: string | null;
+
+        server_url?: string | null;
+
+        timeout_ms?: number | null;
+
+        url_params?: unknown | null;
       }
     }
 
@@ -38790,6 +40390,7 @@ export namespace TaskCreateOrUpdateParams {
         | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
         | null;
 
       /**
@@ -38903,7 +40504,7 @@ export namespace TaskCreateOrUpdateParams {
          * Integration definition for Brave Search
          */
         export interface Setup {
-          api_key: string;
+          brave_api_key: string;
         }
       }
 
@@ -39569,6 +41170,55 @@ export namespace TaskCreateOrUpdateParams {
       }
 
       /**
+       * Unstructured integration definition
+       */
+      export interface UnstructuredIntegrationDef {
+        /**
+         * Arguments for Unstructured partition integration
+         */
+        arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+        method?: string | null;
+
+        provider?: 'unstructured';
+
+        /**
+         * Setup parameters for Unstructured integration
+         */
+        setup?: UnstructuredIntegrationDef.Setup | null;
+      }
+
+      export namespace UnstructuredIntegrationDef {
+        /**
+         * Arguments for Unstructured partition integration
+         */
+        export interface Arguments {
+          file: string;
+
+          filename?: string | null;
+
+          partition_params?: unknown | null;
+        }
+
+        /**
+         * Setup parameters for Unstructured integration
+         */
+        export interface Setup {
+          unstructured_api_key: string;
+
+          retry_config?: unknown | null;
+
+          server?: string | null;
+
+          server_url?: string | null;
+
+          timeout_ms?: number | null;
+
+          url_params?: unknown | null;
+        }
+      }
+
+      /**
        * System definition
        */
       export interface System {
@@ -40059,6 +41709,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
           | null;
 
         /**
@@ -40172,7 +41823,7 @@ export namespace TaskCreateOrUpdateParams {
            * Integration definition for Brave Search
            */
           export interface Setup {
-            api_key: string;
+            brave_api_key: string;
           }
         }
 
@@ -40838,6 +42489,55 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         /**
+         * Unstructured integration definition
+         */
+        export interface UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'unstructured';
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          setup?: UnstructuredIntegrationDef.Setup | null;
+        }
+
+        export namespace UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            partition_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          export interface Setup {
+            unstructured_api_key: string;
+
+            retry_config?: unknown | null;
+
+            server?: string | null;
+
+            server_url?: string | null;
+
+            timeout_ms?: number | null;
+
+            url_params?: unknown | null;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -41279,6 +42979,7 @@ export namespace TaskCreateOrUpdateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
               | null;
 
             /**
@@ -41392,7 +43093,7 @@ export namespace TaskCreateOrUpdateParams {
                * Integration definition for Brave Search
                */
               export interface Setup {
-                api_key: string;
+                brave_api_key: string;
               }
             }
 
@@ -42054,6 +43755,55 @@ export namespace TaskCreateOrUpdateParams {
                 sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
                 sort_order?: 'ascending' | 'descending';
+              }
+            }
+
+            /**
+             * Unstructured integration definition
+             */
+            export interface UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+              method?: string | null;
+
+              provider?: 'unstructured';
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              setup?: UnstructuredIntegrationDef.Setup | null;
+            }
+
+            export namespace UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              export interface Arguments {
+                file: string;
+
+                filename?: string | null;
+
+                partition_params?: unknown | null;
+              }
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              export interface Setup {
+                unstructured_api_key: string;
+
+                retry_config?: unknown | null;
+
+                server?: string | null;
+
+                server_url?: string | null;
+
+                timeout_ms?: number | null;
+
+                url_params?: unknown | null;
               }
             }
 
@@ -42531,6 +44281,7 @@ export namespace TaskCreateOrUpdateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
               | null;
 
             /**
@@ -42644,7 +44395,7 @@ export namespace TaskCreateOrUpdateParams {
                * Integration definition for Brave Search
                */
               export interface Setup {
-                api_key: string;
+                brave_api_key: string;
               }
             }
 
@@ -43310,6 +45061,55 @@ export namespace TaskCreateOrUpdateParams {
             }
 
             /**
+             * Unstructured integration definition
+             */
+            export interface UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+              method?: string | null;
+
+              provider?: 'unstructured';
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              setup?: UnstructuredIntegrationDef.Setup | null;
+            }
+
+            export namespace UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              export interface Arguments {
+                file: string;
+
+                filename?: string | null;
+
+                partition_params?: unknown | null;
+              }
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              export interface Setup {
+                unstructured_api_key: string;
+
+                retry_config?: unknown | null;
+
+                server?: string | null;
+
+                server_url?: string | null;
+
+                timeout_ms?: number | null;
+
+                url_params?: unknown | null;
+              }
+            }
+
+            /**
              * System definition
              */
             export interface System {
@@ -43713,6 +45513,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -43826,7 +45627,7 @@ export namespace TaskCreateOrUpdateParams {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -44488,6 +46289,55 @@ export namespace TaskCreateOrUpdateParams {
               sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
               sort_order?: 'ascending' | 'descending';
+            }
+          }
+
+          /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
             }
           }
 
@@ -44904,6 +46754,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -45017,7 +46868,7 @@ export namespace TaskCreateOrUpdateParams {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -45683,6 +47534,55 @@ export namespace TaskCreateOrUpdateParams {
           }
 
           /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
+            }
+          }
+
+          /**
            * System definition
            */
           export interface System {
@@ -46082,6 +47982,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
           | null;
 
         /**
@@ -46195,7 +48096,7 @@ export namespace TaskCreateOrUpdateParams {
            * Integration definition for Brave Search
            */
           export interface Setup {
-            api_key: string;
+            brave_api_key: string;
           }
         }
 
@@ -46861,6 +48762,55 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         /**
+         * Unstructured integration definition
+         */
+        export interface UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'unstructured';
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          setup?: UnstructuredIntegrationDef.Setup | null;
+        }
+
+        export namespace UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            partition_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          export interface Setup {
+            unstructured_api_key: string;
+
+            retry_config?: unknown | null;
+
+            server?: string | null;
+
+            server_url?: string | null;
+
+            timeout_ms?: number | null;
+
+            url_params?: unknown | null;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -47302,6 +49252,7 @@ export namespace TaskCreateOrUpdateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
               | null;
 
             /**
@@ -47415,7 +49366,7 @@ export namespace TaskCreateOrUpdateParams {
                * Integration definition for Brave Search
                */
               export interface Setup {
-                api_key: string;
+                brave_api_key: string;
               }
             }
 
@@ -48077,6 +50028,55 @@ export namespace TaskCreateOrUpdateParams {
                 sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
                 sort_order?: 'ascending' | 'descending';
+              }
+            }
+
+            /**
+             * Unstructured integration definition
+             */
+            export interface UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+              method?: string | null;
+
+              provider?: 'unstructured';
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              setup?: UnstructuredIntegrationDef.Setup | null;
+            }
+
+            export namespace UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              export interface Arguments {
+                file: string;
+
+                filename?: string | null;
+
+                partition_params?: unknown | null;
+              }
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              export interface Setup {
+                unstructured_api_key: string;
+
+                retry_config?: unknown | null;
+
+                server?: string | null;
+
+                server_url?: string | null;
+
+                timeout_ms?: number | null;
+
+                url_params?: unknown | null;
               }
             }
 
@@ -48554,6 +50554,7 @@ export namespace TaskCreateOrUpdateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
               | null;
 
             /**
@@ -48667,7 +50668,7 @@ export namespace TaskCreateOrUpdateParams {
                * Integration definition for Brave Search
                */
               export interface Setup {
-                api_key: string;
+                brave_api_key: string;
               }
             }
 
@@ -49333,6 +51334,55 @@ export namespace TaskCreateOrUpdateParams {
             }
 
             /**
+             * Unstructured integration definition
+             */
+            export interface UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+              method?: string | null;
+
+              provider?: 'unstructured';
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              setup?: UnstructuredIntegrationDef.Setup | null;
+            }
+
+            export namespace UnstructuredIntegrationDef {
+              /**
+               * Arguments for Unstructured partition integration
+               */
+              export interface Arguments {
+                file: string;
+
+                filename?: string | null;
+
+                partition_params?: unknown | null;
+              }
+
+              /**
+               * Setup parameters for Unstructured integration
+               */
+              export interface Setup {
+                unstructured_api_key: string;
+
+                retry_config?: unknown | null;
+
+                server?: string | null;
+
+                server_url?: string | null;
+
+                timeout_ms?: number | null;
+
+                url_params?: unknown | null;
+              }
+            }
+
+            /**
              * System definition
              */
             export interface System {
@@ -49736,6 +51786,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -49849,7 +51900,7 @@ export namespace TaskCreateOrUpdateParams {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -50511,6 +52562,55 @@ export namespace TaskCreateOrUpdateParams {
               sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
               sort_order?: 'ascending' | 'descending';
+            }
+          }
+
+          /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
             }
           }
 
@@ -50927,6 +53027,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -51040,7 +53141,7 @@ export namespace TaskCreateOrUpdateParams {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -51702,6 +53803,55 @@ export namespace TaskCreateOrUpdateParams {
               sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
               sort_order?: 'ascending' | 'descending';
+            }
+          }
+
+          /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
             }
           }
 
@@ -52119,6 +54269,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -52232,7 +54383,7 @@ export namespace TaskCreateOrUpdateParams {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -52894,6 +55045,55 @@ export namespace TaskCreateOrUpdateParams {
               sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
               sort_order?: 'ascending' | 'descending';
+            }
+          }
+
+          /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
             }
           }
 
@@ -53371,6 +55571,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
             | null;
 
           /**
@@ -53484,7 +55685,7 @@ export namespace TaskCreateOrUpdateParams {
              * Integration definition for Brave Search
              */
             export interface Setup {
-              api_key: string;
+              brave_api_key: string;
             }
           }
 
@@ -54150,6 +56351,55 @@ export namespace TaskCreateOrUpdateParams {
           }
 
           /**
+           * Unstructured integration definition
+           */
+          export interface UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+            method?: string | null;
+
+            provider?: 'unstructured';
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            setup?: UnstructuredIntegrationDef.Setup | null;
+          }
+
+          export namespace UnstructuredIntegrationDef {
+            /**
+             * Arguments for Unstructured partition integration
+             */
+            export interface Arguments {
+              file: string;
+
+              filename?: string | null;
+
+              partition_params?: unknown | null;
+            }
+
+            /**
+             * Setup parameters for Unstructured integration
+             */
+            export interface Setup {
+              unstructured_api_key: string;
+
+              retry_config?: unknown | null;
+
+              server?: string | null;
+
+              server_url?: string | null;
+
+              timeout_ms?: number | null;
+
+              url_params?: unknown | null;
+            }
+          }
+
+          /**
            * System definition
            */
           export interface System {
@@ -54553,6 +56803,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
           | null;
 
         /**
@@ -54666,7 +56917,7 @@ export namespace TaskCreateOrUpdateParams {
            * Integration definition for Brave Search
            */
           export interface Setup {
-            api_key: string;
+            brave_api_key: string;
           }
         }
 
@@ -55328,6 +57579,55 @@ export namespace TaskCreateOrUpdateParams {
             sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
             sort_order?: 'ascending' | 'descending';
+          }
+        }
+
+        /**
+         * Unstructured integration definition
+         */
+        export interface UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'unstructured';
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          setup?: UnstructuredIntegrationDef.Setup | null;
+        }
+
+        export namespace UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            partition_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          export interface Setup {
+            unstructured_api_key: string;
+
+            retry_config?: unknown | null;
+
+            server?: string | null;
+
+            server_url?: string | null;
+
+            timeout_ms?: number | null;
+
+            url_params?: unknown | null;
           }
         }
 
@@ -55741,6 +58041,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryUploadIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.CloudinaryEditIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.ArxivIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.UnstructuredIntegrationDef
           | null;
 
         /**
@@ -55854,7 +58155,7 @@ export namespace TaskCreateOrUpdateParams {
            * Integration definition for Brave Search
            */
           export interface Setup {
-            api_key: string;
+            brave_api_key: string;
           }
         }
 
@@ -56520,6 +58821,55 @@ export namespace TaskCreateOrUpdateParams {
         }
 
         /**
+         * Unstructured integration definition
+         */
+        export interface UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+          method?: string | null;
+
+          provider?: 'unstructured';
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          setup?: UnstructuredIntegrationDef.Setup | null;
+        }
+
+        export namespace UnstructuredIntegrationDef {
+          /**
+           * Arguments for Unstructured partition integration
+           */
+          export interface Arguments {
+            file: string;
+
+            filename?: string | null;
+
+            partition_params?: unknown | null;
+          }
+
+          /**
+           * Setup parameters for Unstructured integration
+           */
+          export interface Setup {
+            unstructured_api_key: string;
+
+            retry_config?: unknown | null;
+
+            server?: string | null;
+
+            server_url?: string | null;
+
+            timeout_ms?: number | null;
+
+            url_params?: unknown | null;
+          }
+        }
+
+        /**
          * System definition
          */
         export interface System {
@@ -56637,6 +58987,7 @@ export namespace TaskCreateOrUpdateParams {
       | Tool.CloudinaryUploadIntegrationDef
       | Tool.CloudinaryEditIntegrationDef
       | Tool.ArxivIntegrationDef
+      | Tool.UnstructuredIntegrationDef
       | null;
 
     /**
@@ -56750,7 +59101,7 @@ export namespace TaskCreateOrUpdateParams {
        * Integration definition for Brave Search
        */
       export interface Setup {
-        api_key: string;
+        brave_api_key: string;
       }
     }
 
@@ -57412,6 +59763,55 @@ export namespace TaskCreateOrUpdateParams {
         sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
 
         sort_order?: 'ascending' | 'descending';
+      }
+    }
+
+    /**
+     * Unstructured integration definition
+     */
+    export interface UnstructuredIntegrationDef {
+      /**
+       * Arguments for Unstructured partition integration
+       */
+      arguments?: UnstructuredIntegrationDef.Arguments | null;
+
+      method?: string | null;
+
+      provider?: 'unstructured';
+
+      /**
+       * Setup parameters for Unstructured integration
+       */
+      setup?: UnstructuredIntegrationDef.Setup | null;
+    }
+
+    export namespace UnstructuredIntegrationDef {
+      /**
+       * Arguments for Unstructured partition integration
+       */
+      export interface Arguments {
+        file: string;
+
+        filename?: string | null;
+
+        partition_params?: unknown | null;
+      }
+
+      /**
+       * Setup parameters for Unstructured integration
+       */
+      export interface Setup {
+        unstructured_api_key: string;
+
+        retry_config?: unknown | null;
+
+        server?: string | null;
+
+        server_url?: string | null;
+
+        timeout_ms?: number | null;
+
+        url_params?: unknown | null;
       }
     }
 
