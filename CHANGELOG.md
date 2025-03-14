@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.68.1 (2025-03-14)
+
+Full Changelog: [v1.68.0...v1.68.1](https://github.com/julep-ai/node-sdk/compare/v1.68.0...v1.68.1)
+
+### Bug Fixes
+
+* **exports:** ensure resource imports don't require /index ([#257](https://github.com/julep-ai/node-sdk/issues/257)) ([4bf6ee8](https://github.com/julep-ai/node-sdk/commit/4bf6ee870f1c53ec7e1aeb4fd0f8915fbe369535))
+
+
+### Chores
+
+* **internal:** remove extra empty newlines ([#255](https://github.com/julep-ai/node-sdk/issues/255)) ([007bc8e](https://github.com/julep-ai/node-sdk/commit/007bc8e0c0b9819fe642d6c212f4f3966b9a33d4))
+
 ## 1.68.0 (2025-03-13)
 
 Full Changelog: [v1.67.0...v1.68.0](https://github.com/julep-ai/node-sdk/compare/v1.67.0...v1.68.0)
