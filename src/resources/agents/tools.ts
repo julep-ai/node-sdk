@@ -143,6 +143,7 @@ export interface ToolCreateResponse {
     | ToolCreateResponse.CloudinaryEditIntegrationDef
     | ToolCreateResponse.ArxivIntegrationDef
     | ToolCreateResponse.UnstructuredIntegrationDef
+    | ToolCreateResponse.AlgoliaIntegrationDef
     | null;
 
   /**
@@ -971,6 +972,49 @@ export namespace ToolCreateResponse {
   }
 
   /**
+   * Algolia integration definition
+   */
+  export interface AlgoliaIntegrationDef {
+    /**
+     * Arguments for Algolia Search
+     */
+    arguments?: AlgoliaIntegrationDef.Arguments | null;
+
+    method?: string | null;
+
+    provider?: 'algolia';
+
+    /**
+     * Integration definition for Algolia
+     */
+    setup?: AlgoliaIntegrationDef.Setup | null;
+  }
+
+  export namespace AlgoliaIntegrationDef {
+    /**
+     * Arguments for Algolia Search
+     */
+    export interface Arguments {
+      index_name: string;
+
+      query: string;
+
+      attributes_to_retrieve?: unknown | null;
+
+      hits_per_page?: number;
+    }
+
+    /**
+     * Integration definition for Algolia
+     */
+    export interface Setup {
+      algolia_api_key: string;
+
+      algolia_application_id: string;
+    }
+  }
+
+  /**
    * System definition
    */
   export interface System {
@@ -1065,6 +1109,7 @@ export interface ToolUpdateResponse {
     | ToolUpdateResponse.CloudinaryEditIntegrationDef
     | ToolUpdateResponse.ArxivIntegrationDef
     | ToolUpdateResponse.UnstructuredIntegrationDef
+    | ToolUpdateResponse.AlgoliaIntegrationDef
     | null;
 
   /**
@@ -1893,6 +1938,49 @@ export namespace ToolUpdateResponse {
   }
 
   /**
+   * Algolia integration definition
+   */
+  export interface AlgoliaIntegrationDef {
+    /**
+     * Arguments for Algolia Search
+     */
+    arguments?: AlgoliaIntegrationDef.Arguments | null;
+
+    method?: string | null;
+
+    provider?: 'algolia';
+
+    /**
+     * Integration definition for Algolia
+     */
+    setup?: AlgoliaIntegrationDef.Setup | null;
+  }
+
+  export namespace AlgoliaIntegrationDef {
+    /**
+     * Arguments for Algolia Search
+     */
+    export interface Arguments {
+      index_name: string;
+
+      query: string;
+
+      attributes_to_retrieve?: unknown | null;
+
+      hits_per_page?: number;
+    }
+
+    /**
+     * Integration definition for Algolia
+     */
+    export interface Setup {
+      algolia_api_key: string;
+
+      algolia_application_id: string;
+    }
+  }
+
+  /**
    * System definition
    */
   export interface System {
@@ -1987,6 +2075,7 @@ export interface ToolListResponse {
     | ToolListResponse.CloudinaryEditIntegrationDef
     | ToolListResponse.ArxivIntegrationDef
     | ToolListResponse.UnstructuredIntegrationDef
+    | ToolListResponse.AlgoliaIntegrationDef
     | null;
 
   /**
@@ -2815,6 +2904,49 @@ export namespace ToolListResponse {
   }
 
   /**
+   * Algolia integration definition
+   */
+  export interface AlgoliaIntegrationDef {
+    /**
+     * Arguments for Algolia Search
+     */
+    arguments?: AlgoliaIntegrationDef.Arguments | null;
+
+    method?: string | null;
+
+    provider?: 'algolia';
+
+    /**
+     * Integration definition for Algolia
+     */
+    setup?: AlgoliaIntegrationDef.Setup | null;
+  }
+
+  export namespace AlgoliaIntegrationDef {
+    /**
+     * Arguments for Algolia Search
+     */
+    export interface Arguments {
+      index_name: string;
+
+      query: string;
+
+      attributes_to_retrieve?: unknown | null;
+
+      hits_per_page?: number;
+    }
+
+    /**
+     * Integration definition for Algolia
+     */
+    export interface Setup {
+      algolia_api_key: string;
+
+      algolia_application_id: string;
+    }
+  }
+
+  /**
    * System definition
    */
   export interface System {
@@ -2909,6 +3041,7 @@ export interface ToolResetResponse {
     | ToolResetResponse.CloudinaryEditIntegrationDef
     | ToolResetResponse.ArxivIntegrationDef
     | ToolResetResponse.UnstructuredIntegrationDef
+    | ToolResetResponse.AlgoliaIntegrationDef
     | null;
 
   /**
@@ -3737,6 +3870,49 @@ export namespace ToolResetResponse {
   }
 
   /**
+   * Algolia integration definition
+   */
+  export interface AlgoliaIntegrationDef {
+    /**
+     * Arguments for Algolia Search
+     */
+    arguments?: AlgoliaIntegrationDef.Arguments | null;
+
+    method?: string | null;
+
+    provider?: 'algolia';
+
+    /**
+     * Integration definition for Algolia
+     */
+    setup?: AlgoliaIntegrationDef.Setup | null;
+  }
+
+  export namespace AlgoliaIntegrationDef {
+    /**
+     * Arguments for Algolia Search
+     */
+    export interface Arguments {
+      index_name: string;
+
+      query: string;
+
+      attributes_to_retrieve?: unknown | null;
+
+      hits_per_page?: number;
+    }
+
+    /**
+     * Integration definition for Algolia
+     */
+    export interface Setup {
+      algolia_api_key: string;
+
+      algolia_application_id: string;
+    }
+  }
+
+  /**
    * System definition
    */
   export interface System {
@@ -3825,6 +4001,7 @@ export interface ToolCreateParams {
     | ToolCreateParams.CloudinaryEditIntegrationDef
     | ToolCreateParams.ArxivIntegrationDef
     | ToolCreateParams.UnstructuredIntegrationDef
+    | ToolCreateParams.AlgoliaIntegrationDef
     | null;
 
   /**
@@ -4653,6 +4830,49 @@ export namespace ToolCreateParams {
   }
 
   /**
+   * Algolia integration definition
+   */
+  export interface AlgoliaIntegrationDef {
+    /**
+     * Arguments for Algolia Search
+     */
+    arguments?: AlgoliaIntegrationDef.Arguments | null;
+
+    method?: string | null;
+
+    provider?: 'algolia';
+
+    /**
+     * Integration definition for Algolia
+     */
+    setup?: AlgoliaIntegrationDef.Setup | null;
+  }
+
+  export namespace AlgoliaIntegrationDef {
+    /**
+     * Arguments for Algolia Search
+     */
+    export interface Arguments {
+      index_name: string;
+
+      query: string;
+
+      attributes_to_retrieve?: unknown | null;
+
+      hits_per_page?: number;
+    }
+
+    /**
+     * Integration definition for Algolia
+     */
+    export interface Setup {
+      algolia_api_key: string;
+
+      algolia_application_id: string;
+    }
+  }
+
+  /**
    * System definition
    */
   export interface System {
@@ -4730,6 +4950,7 @@ export interface ToolUpdateParams {
     | ToolUpdateParams.CloudinaryEditIntegrationDefUpdate
     | ToolUpdateParams.ArxivIntegrationDefUpdate
     | ToolUpdateParams.UnstructuredIntegrationDefUpdate
+    | ToolUpdateParams.AlgoliaIntegrationDefUpdate
     | null;
 
   name?: string | null;
@@ -5571,6 +5792,49 @@ export namespace ToolUpdateParams {
   }
 
   /**
+   * Algolia integration definition
+   */
+  export interface AlgoliaIntegrationDefUpdate {
+    /**
+     * Arguments for Algolia Search
+     */
+    arguments?: AlgoliaIntegrationDefUpdate.Arguments | null;
+
+    method?: string | null;
+
+    provider?: 'algolia';
+
+    /**
+     * Integration definition for Algolia
+     */
+    setup?: AlgoliaIntegrationDefUpdate.Setup | null;
+  }
+
+  export namespace AlgoliaIntegrationDefUpdate {
+    /**
+     * Arguments for Algolia Search
+     */
+    export interface Arguments {
+      attributes_to_retrieve?: unknown | null;
+
+      hits_per_page?: number;
+
+      index_name?: string | null;
+
+      query?: string | null;
+    }
+
+    /**
+     * Integration definition for Algolia
+     */
+    export interface Setup {
+      algolia_api_key?: string | null;
+
+      algolia_application_id?: string | null;
+    }
+  }
+
+  /**
    * System definition
    */
   export interface System {
@@ -5666,6 +5930,7 @@ export interface ToolResetParams {
     | ToolResetParams.CloudinaryEditIntegrationDef
     | ToolResetParams.ArxivIntegrationDef
     | ToolResetParams.UnstructuredIntegrationDef
+    | ToolResetParams.AlgoliaIntegrationDef
     | null;
 
   /**
@@ -6490,6 +6755,49 @@ export namespace ToolResetParams {
       timeout_ms?: number | null;
 
       url_params?: unknown | null;
+    }
+  }
+
+  /**
+   * Algolia integration definition
+   */
+  export interface AlgoliaIntegrationDef {
+    /**
+     * Arguments for Algolia Search
+     */
+    arguments?: AlgoliaIntegrationDef.Arguments | null;
+
+    method?: string | null;
+
+    provider?: 'algolia';
+
+    /**
+     * Integration definition for Algolia
+     */
+    setup?: AlgoliaIntegrationDef.Setup | null;
+  }
+
+  export namespace AlgoliaIntegrationDef {
+    /**
+     * Arguments for Algolia Search
+     */
+    export interface Arguments {
+      index_name: string;
+
+      query: string;
+
+      attributes_to_retrieve?: unknown | null;
+
+      hits_per_page?: number;
+    }
+
+    /**
+     * Integration definition for Algolia
+     */
+    export interface Setup {
+      algolia_api_key: string;
+
+      algolia_application_id: string;
     }
   }
 
