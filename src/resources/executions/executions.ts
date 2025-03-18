@@ -93,6 +93,8 @@ export interface Execution {
   metadata?: unknown | null;
 
   output?: unknown;
+
+  transition_count?: number | null;
 }
 
 export interface Transition {
@@ -154,6 +156,8 @@ export interface ExecutionCreateParams {
   metadata?: unknown | null;
 
   output?: unknown;
+
+  transition_count?: number | null;
 }
 
 export interface ExecutionListParams extends OffsetPaginationParams {
