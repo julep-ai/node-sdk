@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.70.0 (2025-03-18)
+
+Full Changelog: [v1.69.0...v1.70.0](https://github.com/julep-ai/node-sdk/compare/v1.69.0...v1.70.0)
+
+### Features
+
+* **api:** api update ([#262](https://github.com/julep-ai/node-sdk/issues/262)) ([a4f1214](https://github.com/julep-ai/node-sdk/commit/a4f1214bd59f094a0565733332363e40c7a8c5fd))
+
 ## 1.69.0 (2025-03-14)
 
 Full Changelog: [v1.68.1...v1.69.0](https://github.com/julep-ai/node-sdk/compare/v1.68.1...v1.69.0)
