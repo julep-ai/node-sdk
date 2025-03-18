@@ -26,6 +26,7 @@ describe('resource executions', () => {
       error: 'error',
       metadata: {},
       output: {},
+      transition_count: 0,
     });
   });
 
