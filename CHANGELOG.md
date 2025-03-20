@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.71.0 (2025-03-20)
+
+Full Changelog: [v1.70.0...v1.71.0](https://github.com/julep-ai/node-sdk/compare/v1.70.0...v1.71.0)
+
+### Features
+
+* **api:** api update ([#268](https://github.com/julep-ai/node-sdk/issues/268)) ([bd22a0e](https://github.com/julep-ai/node-sdk/commit/bd22a0ee0228b2c2b4457fcc0bf15d76d8f69b06))
+
+
+### Chores
+
+* **exports:** cleaner resource index imports ([#265](https://github.com/julep-ai/node-sdk/issues/265)) ([296a3bd](https://github.com/julep-ai/node-sdk/commit/296a3bdb3bb2a1c752f4fe20183aac4629714b88))
+* **exports:** stop using path fallbacks ([#267](https://github.com/julep-ai/node-sdk/issues/267)) ([4102eb1](https://github.com/julep-ai/node-sdk/commit/4102eb18f9b500c811f0950c63e8fce5ba18a23f))
+
 ## 1.70.0 (2025-03-18)
 
 Full Changelog: [v1.69.0...v1.70.0](https://github.com/julep-ai/node-sdk/compare/v1.69.0...v1.70.0)
