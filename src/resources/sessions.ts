@@ -1313,7 +1313,7 @@ export namespace ChatInput {
 
         query: string;
 
-        attributes_to_retrieve?: unknown | null;
+        attributes_to_retrieve?: Array<string> | null;
 
         hits_per_page?: number;
       }
@@ -3149,7 +3149,7 @@ export namespace Entry {
 
         query: string;
 
-        attributes_to_retrieve?: unknown | null;
+        attributes_to_retrieve?: Array<string> | null;
 
         hits_per_page?: number;
       }
@@ -4290,7 +4290,7 @@ export namespace Entry {
 
         query: string;
 
-        attributes_to_retrieve?: unknown | null;
+        attributes_to_retrieve?: Array<string> | null;
 
         hits_per_page?: number;
       }
@@ -6229,7 +6229,7 @@ export namespace SessionRenderResponse {
 
         query: string;
 
-        attributes_to_retrieve?: unknown | null;
+        attributes_to_retrieve?: Array<string> | null;
 
         hits_per_page?: number;
       }
@@ -7695,7 +7695,7 @@ export namespace SessionChatParams {
 
         query: string;
 
-        attributes_to_retrieve?: unknown | null;
+        attributes_to_retrieve?: Array<string> | null;
 
         hits_per_page?: number;
       }
@@ -9005,7 +9005,7 @@ export namespace SessionRenderParams {
 
         query: string;
 
-        attributes_to_retrieve?: unknown | null;
+        attributes_to_retrieve?: Array<string> | null;
 
         hits_per_page?: number;
       }
