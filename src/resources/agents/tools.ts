@@ -999,7 +999,7 @@ export namespace ToolCreateResponse {
 
       query: string;
 
-      attributes_to_retrieve?: unknown | null;
+      attributes_to_retrieve?: Array<string> | null;
 
       hits_per_page?: number;
     }
@@ -1965,7 +1965,7 @@ export namespace ToolUpdateResponse {
 
       query: string;
 
-      attributes_to_retrieve?: unknown | null;
+      attributes_to_retrieve?: Array<string> | null;
 
       hits_per_page?: number;
     }
@@ -2931,7 +2931,7 @@ export namespace ToolListResponse {
 
       query: string;
 
-      attributes_to_retrieve?: unknown | null;
+      attributes_to_retrieve?: Array<string> | null;
 
       hits_per_page?: number;
     }
@@ -3897,7 +3897,7 @@ export namespace ToolResetResponse {
 
       query: string;
 
-      attributes_to_retrieve?: unknown | null;
+      attributes_to_retrieve?: Array<string> | null;
 
       hits_per_page?: number;
     }
@@ -4857,7 +4857,7 @@ export namespace ToolCreateParams {
 
       query: string;
 
-      attributes_to_retrieve?: unknown | null;
+      attributes_to_retrieve?: Array<string> | null;
 
       hits_per_page?: number;
     }
@@ -5815,7 +5815,7 @@ export namespace ToolUpdateParams {
      * Arguments for Algolia Search
      */
     export interface Arguments {
-      attributes_to_retrieve?: unknown | null;
+      attributes_to_retrieve?: Array<string> | null;
 
       hits_per_page?: number;
 
@@ -6786,7 +6786,7 @@ export namespace ToolResetParams {
 
       query: string;
 
-      attributes_to_retrieve?: unknown | null;
+      attributes_to_retrieve?: Array<string> | null;
 
       hits_per_page?: number;
     }
