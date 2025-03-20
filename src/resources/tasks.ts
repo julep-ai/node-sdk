@@ -1287,7 +1287,7 @@ export namespace Task {
 
           query: string;
 
-          attributes_to_retrieve?: unknown | null;
+          attributes_to_retrieve?: Array<string> | null;
 
           hits_per_page?: number;
         }
@@ -2678,7 +2678,7 @@ export namespace Task {
 
             query: string;
 
-            attributes_to_retrieve?: unknown | null;
+            attributes_to_retrieve?: Array<string> | null;
 
             hits_per_page?: number;
           }
@@ -4016,7 +4016,7 @@ export namespace Task {
 
                 query: string;
 
-                attributes_to_retrieve?: unknown | null;
+                attributes_to_retrieve?: Array<string> | null;
 
                 hits_per_page?: number;
               }
@@ -5390,7 +5390,7 @@ export namespace Task {
 
                 query: string;
 
-                attributes_to_retrieve?: unknown | null;
+                attributes_to_retrieve?: Array<string> | null;
 
                 hits_per_page?: number;
               }
@@ -6684,7 +6684,7 @@ export namespace Task {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -7987,7 +7987,7 @@ export namespace Task {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -9277,7 +9277,7 @@ export namespace Task {
 
             query: string;
 
-            attributes_to_retrieve?: unknown | null;
+            attributes_to_retrieve?: Array<string> | null;
 
             hits_per_page?: number;
           }
@@ -10615,7 +10615,7 @@ export namespace Task {
 
                 query: string;
 
-                attributes_to_retrieve?: unknown | null;
+                attributes_to_retrieve?: Array<string> | null;
 
                 hits_per_page?: number;
               }
@@ -11989,7 +11989,7 @@ export namespace Task {
 
                 query: string;
 
-                attributes_to_retrieve?: unknown | null;
+                attributes_to_retrieve?: Array<string> | null;
 
                 hits_per_page?: number;
               }
@@ -13283,7 +13283,7 @@ export namespace Task {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -14586,7 +14586,7 @@ export namespace Task {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -15890,7 +15890,7 @@ export namespace Task {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -17264,7 +17264,7 @@ export namespace Task {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -18558,7 +18558,7 @@ export namespace Task {
 
             query: string;
 
-            attributes_to_retrieve?: unknown | null;
+            attributes_to_retrieve?: Array<string> | null;
 
             hits_per_page?: number;
           }
@@ -19858,7 +19858,7 @@ export namespace Task {
 
             query: string;
 
-            attributes_to_retrieve?: unknown | null;
+            attributes_to_retrieve?: Array<string> | null;
 
             hits_per_page?: number;
           }
@@ -20858,7 +20858,7 @@ export namespace Task {
 
         query: string;
 
-        attributes_to_retrieve?: unknown | null;
+        attributes_to_retrieve?: Array<string> | null;
 
         hits_per_page?: number;
       }
@@ -22125,7 +22125,7 @@ export namespace TaskCreateParams {
 
           query: string;
 
-          attributes_to_retrieve?: unknown | null;
+          attributes_to_retrieve?: Array<string> | null;
 
           hits_per_page?: number;
         }
@@ -23488,7 +23488,7 @@ export namespace TaskCreateParams {
 
             query: string;
 
-            attributes_to_retrieve?: unknown | null;
+            attributes_to_retrieve?: Array<string> | null;
 
             hits_per_page?: number;
           }
@@ -24802,7 +24802,7 @@ export namespace TaskCreateParams {
 
                 query: string;
 
-                attributes_to_retrieve?: unknown | null;
+                attributes_to_retrieve?: Array<string> | null;
 
                 hits_per_page?: number;
               }
@@ -26148,7 +26148,7 @@ export namespace TaskCreateParams {
 
                 query: string;
 
-                attributes_to_retrieve?: unknown | null;
+                attributes_to_retrieve?: Array<string> | null;
 
                 hits_per_page?: number;
               }
@@ -27424,7 +27424,7 @@ export namespace TaskCreateParams {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -28709,7 +28709,7 @@ export namespace TaskCreateParams {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -29981,7 +29981,7 @@ export namespace TaskCreateParams {
 
             query: string;
 
-            attributes_to_retrieve?: unknown | null;
+            attributes_to_retrieve?: Array<string> | null;
 
             hits_per_page?: number;
           }
@@ -31295,7 +31295,7 @@ export namespace TaskCreateParams {
 
                 query: string;
 
-                attributes_to_retrieve?: unknown | null;
+                attributes_to_retrieve?: Array<string> | null;
 
                 hits_per_page?: number;
               }
@@ -32641,7 +32641,7 @@ export namespace TaskCreateParams {
 
                 query: string;
 
-                attributes_to_retrieve?: unknown | null;
+                attributes_to_retrieve?: Array<string> | null;
 
                 hits_per_page?: number;
               }
@@ -33917,7 +33917,7 @@ export namespace TaskCreateParams {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -35202,7 +35202,7 @@ export namespace TaskCreateParams {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -36488,7 +36488,7 @@ export namespace TaskCreateParams {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -37834,7 +37834,7 @@ export namespace TaskCreateParams {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -39110,7 +39110,7 @@ export namespace TaskCreateParams {
 
             query: string;
 
-            attributes_to_retrieve?: unknown | null;
+            attributes_to_retrieve?: Array<string> | null;
 
             hits_per_page?: number;
           }
@@ -40392,7 +40392,7 @@ export namespace TaskCreateParams {
 
             query: string;
 
-            attributes_to_retrieve?: unknown | null;
+            attributes_to_retrieve?: Array<string> | null;
 
             hits_per_page?: number;
           }
@@ -41382,7 +41382,7 @@ export namespace TaskCreateParams {
 
         query: string;
 
-        attributes_to_retrieve?: unknown | null;
+        attributes_to_retrieve?: Array<string> | null;
 
         hits_per_page?: number;
       }
@@ -42655,7 +42655,7 @@ export namespace TaskCreateOrUpdateParams {
 
           query: string;
 
-          attributes_to_retrieve?: unknown | null;
+          attributes_to_retrieve?: Array<string> | null;
 
           hits_per_page?: number;
         }
@@ -44018,7 +44018,7 @@ export namespace TaskCreateOrUpdateParams {
 
             query: string;
 
-            attributes_to_retrieve?: unknown | null;
+            attributes_to_retrieve?: Array<string> | null;
 
             hits_per_page?: number;
           }
@@ -45332,7 +45332,7 @@ export namespace TaskCreateOrUpdateParams {
 
                 query: string;
 
-                attributes_to_retrieve?: unknown | null;
+                attributes_to_retrieve?: Array<string> | null;
 
                 hits_per_page?: number;
               }
@@ -46678,7 +46678,7 @@ export namespace TaskCreateOrUpdateParams {
 
                 query: string;
 
-                attributes_to_retrieve?: unknown | null;
+                attributes_to_retrieve?: Array<string> | null;
 
                 hits_per_page?: number;
               }
@@ -47954,7 +47954,7 @@ export namespace TaskCreateOrUpdateParams {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -49239,7 +49239,7 @@ export namespace TaskCreateOrUpdateParams {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -50511,7 +50511,7 @@ export namespace TaskCreateOrUpdateParams {
 
             query: string;
 
-            attributes_to_retrieve?: unknown | null;
+            attributes_to_retrieve?: Array<string> | null;
 
             hits_per_page?: number;
           }
@@ -51825,7 +51825,7 @@ export namespace TaskCreateOrUpdateParams {
 
                 query: string;
 
-                attributes_to_retrieve?: unknown | null;
+                attributes_to_retrieve?: Array<string> | null;
 
                 hits_per_page?: number;
               }
@@ -53171,7 +53171,7 @@ export namespace TaskCreateOrUpdateParams {
 
                 query: string;
 
-                attributes_to_retrieve?: unknown | null;
+                attributes_to_retrieve?: Array<string> | null;
 
                 hits_per_page?: number;
               }
@@ -54447,7 +54447,7 @@ export namespace TaskCreateOrUpdateParams {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -55732,7 +55732,7 @@ export namespace TaskCreateOrUpdateParams {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -57018,7 +57018,7 @@ export namespace TaskCreateOrUpdateParams {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -58364,7 +58364,7 @@ export namespace TaskCreateOrUpdateParams {
 
               query: string;
 
-              attributes_to_retrieve?: unknown | null;
+              attributes_to_retrieve?: Array<string> | null;
 
               hits_per_page?: number;
             }
@@ -59640,7 +59640,7 @@ export namespace TaskCreateOrUpdateParams {
 
             query: string;
 
-            attributes_to_retrieve?: unknown | null;
+            attributes_to_retrieve?: Array<string> | null;
 
             hits_per_page?: number;
           }
@@ -60922,7 +60922,7 @@ export namespace TaskCreateOrUpdateParams {
 
             query: string;
 
-            attributes_to_retrieve?: unknown | null;
+            attributes_to_retrieve?: Array<string> | null;
 
             hits_per_page?: number;
           }
@@ -61912,7 +61912,7 @@ export namespace TaskCreateOrUpdateParams {
 
         query: string;
 
-        attributes_to_retrieve?: unknown | null;
+        attributes_to_retrieve?: Array<string> | null;
 
         hits_per_page?: number;
       }
