@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.71.1 (2025-03-22)
+
+Full Changelog: [v1.71.0...v1.71.1](https://github.com/julep-ai/node-sdk/compare/v1.71.0...v1.71.1)
+
+### Bug Fixes
+
+* avoid type error in certain environments ([#270](https://github.com/julep-ai/node-sdk/issues/270)) ([ddc6820](https://github.com/julep-ai/node-sdk/commit/ddc6820cf528aa035b552f47ca644a50b16f1324))
+
 ## 1.71.0 (2025-03-20)
 
 Full Changelog: [v1.70.0...v1.71.0](https://github.com/julep-ai/node-sdk/compare/v1.70.0...v1.71.0)
