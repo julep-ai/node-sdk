@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.71.2 (2025-03-28)
+
+Full Changelog: [v1.71.1...v1.71.2](https://github.com/julep-ai/node-sdk/compare/v1.71.1...v1.71.2)
+
+### Bug Fixes
+
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#273](https://github.com/julep-ai/node-sdk/issues/273)) ([51c0345](https://github.com/julep-ai/node-sdk/commit/51c0345e8e6d7cdd49f66ab80986a512be2eb9d9))
+
 ## 1.71.1 (2025-03-22)
 
 Full Changelog: [v1.71.0...v1.71.1](https://github.com/julep-ai/node-sdk/compare/v1.71.0...v1.71.1)
