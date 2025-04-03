@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.71.3 (2025-04-03)
+
+Full Changelog: [v1.71.2...v1.71.3](https://github.com/julep-ai/node-sdk/compare/v1.71.2...v1.71.3)
+
+### Bug Fixes
+
+* **client:** send `X-Stainless-Timeout` in seconds ([#276](https://github.com/julep-ai/node-sdk/issues/276)) ([2109c3f](https://github.com/julep-ai/node-sdk/commit/2109c3f4e4e7db57996bd71e9f1be2bd95bf45c6))
+
 ## 1.71.2 (2025-03-28)
 
 Full Changelog: [v1.71.1...v1.71.2](https://github.com/julep-ai/node-sdk/compare/v1.71.1...v1.71.2)
