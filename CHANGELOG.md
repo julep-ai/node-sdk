@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.71.4 (2025-04-04)
+
+Full Changelog: [v1.71.3...v1.71.4](https://github.com/julep-ai/node-sdk/compare/v1.71.3...v1.71.4)
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#281](https://github.com/julep-ai/node-sdk/issues/281)) ([00cd1ad](https://github.com/julep-ai/node-sdk/commit/00cd1ad472f29d54813f7ebbaf628206b8aa61d8))
+
+
+### Chores
+
+* **internal:** add aliases for Record and Array ([#279](https://github.com/julep-ai/node-sdk/issues/279)) ([9d00a78](https://github.com/julep-ai/node-sdk/commit/9d00a7818d006fdbeec350edf7ea44ba75e81a95))
+
 ## 1.71.3 (2025-04-03)
 
 Full Changelog: [v1.71.2...v1.71.3](https://github.com/julep-ai/node-sdk/compare/v1.71.2...v1.71.3)
