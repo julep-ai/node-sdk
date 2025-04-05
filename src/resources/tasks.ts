@@ -94,6 +94,7 @@ export interface Task {
   metadata?: unknown | null;
 
   tools?: Array<Task.Tool>;
+
   [k: string]: unknown;
 }
 
