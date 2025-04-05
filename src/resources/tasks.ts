@@ -20942,6 +20942,8 @@ export interface TaskCreateParams {
   metadata?: unknown | null;
 
   tools?: Array<TaskCreateParams.Tool>;
+
+  [k: string]: unknown;
 }
 
 export namespace TaskCreateParams {
@@ -41472,6 +41474,8 @@ export interface TaskCreateOrUpdateParams {
   metadata?: unknown | null;
 
   tools?: Array<TaskCreateOrUpdateParams.Tool>;
+
+  [k: string]: unknown;
 }
 
 export namespace TaskCreateOrUpdateParams {
