@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.71.5 (2025-04-05)
+
+Full Changelog: [v1.71.4...v1.71.5](https://github.com/julep-ai/node-sdk/compare/v1.71.4...v1.71.5)
+
+### Bug Fixes
+
+* **mcp:** remove unused tools.ts ([#286](https://github.com/julep-ai/node-sdk/issues/286)) ([42e26a9](https://github.com/julep-ai/node-sdk/commit/42e26a9e18a2a53c69308694ef391f2bb192af86))
+
+
+### Chores
+
+* **internal:** codegen related update ([#285](https://github.com/julep-ai/node-sdk/issues/285)) ([260f2c5](https://github.com/julep-ai/node-sdk/commit/260f2c5ce25aa2f49375255aea814ab08279f4f6))
+* **internal:** improve index signature formatting ([#283](https://github.com/julep-ai/node-sdk/issues/283)) ([63900c6](https://github.com/julep-ai/node-sdk/commit/63900c6c079568def787b2f54002124a41db71c4))
+
 ## 1.71.4 (2025-04-04)
 
 Full Changelog: [v1.71.3...v1.71.4](https://github.com/julep-ai/node-sdk/compare/v1.71.3...v1.71.4)
