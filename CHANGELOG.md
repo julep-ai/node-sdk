@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.71.6 (2025-04-15)
+
+Full Changelog: [v1.71.5...v1.71.6](https://github.com/julep-ai/node-sdk/compare/v1.71.5...v1.71.6)
+
+### Chores
+
+* **client:** minor internal fixes ([0403a6f](https://github.com/julep-ai/node-sdk/commit/0403a6fbcfbcf579a7b906d8a08adea2ae2051e3))
+* **internal:** reduce CI branch coverage ([bad37ea](https://github.com/julep-ai/node-sdk/commit/bad37ea300c757af1fef456302ab210f15977f89))
+* **internal:** upload builds and expand CI branch coverage ([e2feb58](https://github.com/julep-ai/node-sdk/commit/e2feb58cee28f5f313cae78a4d995fc28153ff26))
+
 ## 1.71.5 (2025-04-05)
 
 Full Changelog: [v1.71.4...v1.71.5](https://github.com/julep-ai/node-sdk/compare/v1.71.4...v1.71.5)
