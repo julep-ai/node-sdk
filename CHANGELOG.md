@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.71.6 (2025-05-07)
+
+Full Changelog: [v1.71.5...v1.71.6](https://github.com/julep-ai/node-sdk/compare/v1.71.5...v1.71.6)
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([8105c78](https://github.com/julep-ai/node-sdk/commit/8105c78c1d2c722a366c2abed7320518431487e6))
+* **ci:** bump node version for release workflows ([3699b40](https://github.com/julep-ai/node-sdk/commit/3699b40436bed624f6835f2f6c0b06465c6cf24f))
+* **ci:** only use depot for staging repos ([ab0758f](https://github.com/julep-ai/node-sdk/commit/ab0758f4dceeb2673480e428c1e3d71adfc80337))
+* **client:** minor internal fixes ([0403a6f](https://github.com/julep-ai/node-sdk/commit/0403a6fbcfbcf579a7b906d8a08adea2ae2051e3))
+* **internal:** codegen related update ([bca6b03](https://github.com/julep-ai/node-sdk/commit/bca6b03b7360e4b6193dac8b122bd64fca2c45ab))
+* **internal:** reduce CI branch coverage ([bad37ea](https://github.com/julep-ai/node-sdk/commit/bad37ea300c757af1fef456302ab210f15977f89))
+* **internal:** upload builds and expand CI branch coverage ([e2feb58](https://github.com/julep-ai/node-sdk/commit/e2feb58cee28f5f313cae78a4d995fc28153ff26))
+
+
+### Documentation
+
+* **readme:** fix typo ([fb227ad](https://github.com/julep-ai/node-sdk/commit/fb227ad1a4891ea5fd57feab31d3af32e6c672eb))
+
 ## 1.71.5 (2025-04-05)
 
 Full Changelog: [v1.71.4...v1.71.5](https://github.com/julep-ai/node-sdk/compare/v1.71.4...v1.71.5)
