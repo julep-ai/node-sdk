@@ -26,6 +26,7 @@ describe('resource files', () => {
       name: 'recNPna{}ip}t',
       description: 'description',
       mime_type: 'mime_type',
+      project: 'project',
     });
   });
 

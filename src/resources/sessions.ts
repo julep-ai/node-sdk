@@ -498,7 +498,15 @@ export namespace ChatInput {
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
@@ -2382,7 +2390,15 @@ export namespace Entry {
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
@@ -3571,7 +3587,15 @@ export namespace Entry {
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
@@ -5564,7 +5588,15 @@ export namespace SessionRenderResponse {
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
@@ -7090,7 +7122,15 @@ export namespace SessionChatParams {
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
@@ -8454,7 +8494,15 @@ export namespace SessionRenderParams {
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {

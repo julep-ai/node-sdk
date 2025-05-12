@@ -114,6 +114,8 @@ export interface Agent {
   metadata?: unknown | null;
 
   model?: string;
+
+  project?: string | null;
 }
 
 export interface AgentCreateParams {
@@ -132,6 +134,8 @@ export interface AgentCreateParams {
   metadata?: unknown | null;
 
   model?: string;
+
+  project?: string | null;
 }
 
 export interface AgentUpdateParams {
@@ -150,6 +154,8 @@ export interface AgentUpdateParams {
   model?: string;
 
   name?: string | null;
+
+  project?: string | null;
 }
 
 export interface AgentListParams extends OffsetPaginationParams {
@@ -176,6 +182,8 @@ export interface AgentCreateOrUpdateParams {
   metadata?: unknown | null;
 
   model?: string;
+
+  project?: string | null;
 }
 
 export interface AgentResetParams {
@@ -194,6 +202,8 @@ export interface AgentResetParams {
   metadata?: unknown | null;
 
   model?: string;
+
+  project?: string | null;
 }
 
 Agents.AgentsOffsetPagination = AgentsOffsetPagination;

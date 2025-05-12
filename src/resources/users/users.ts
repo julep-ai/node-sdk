@@ -87,6 +87,8 @@ export interface User {
   metadata?: unknown | null;
 
   name?: string;
+
+  project?: string | null;
 }
 
 export interface UserCreateParams {
@@ -95,6 +97,8 @@ export interface UserCreateParams {
   metadata?: unknown | null;
 
   name?: string;
+
+  project?: string | null;
 }
 
 export interface UserUpdateParams {
@@ -103,6 +107,8 @@ export interface UserUpdateParams {
   metadata?: unknown | null;
 
   name?: string;
+
+  project?: string | null;
 }
 
 export interface UserListParams extends OffsetPaginationParams {
@@ -119,6 +125,8 @@ export interface UserCreateOrUpdateParams {
   metadata?: unknown | null;
 
   name?: string;
+
+  project?: string | null;
 }
 
 export interface UserResetParams {
@@ -127,6 +135,8 @@ export interface UserResetParams {
   metadata?: unknown | null;
 
   name?: string;
+
+  project?: string | null;
 }
 
 Users.UsersOffsetPagination = UsersOffsetPagination;
