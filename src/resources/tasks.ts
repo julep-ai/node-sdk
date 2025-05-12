@@ -418,6 +418,7 @@ export namespace Task {
         | CreateToolRequestOutput.SpiderIntegrationDef
         | CreateToolRequestOutput.WikipediaIntegrationDef
         | CreateToolRequestOutput.WeatherIntegrationDef
+        | CreateToolRequestOutput.MailgunIntegrationDef
         | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
         | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
         | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -463,6 +464,8 @@ export namespace Task {
         follow_redirects?: boolean | null;
 
         headers?: Record<string, string> | null;
+
+        include_response_content?: boolean;
 
         json?: unknown | null;
 
@@ -695,6 +698,51 @@ export namespace Task {
          */
         export interface Setup {
           openweathermap_api_key: string;
+        }
+      }
+
+      /**
+       * Mailgun integration definition
+       */
+      export interface MailgunIntegrationDef {
+        /**
+         * Arguments for mailgun.send_email method
+         */
+        arguments?: MailgunIntegrationDef.Arguments | null;
+
+        method?: 'send_email' | null;
+
+        provider?: 'mailgun';
+
+        /**
+         * Setup parameters for Mailgun integration
+         */
+        setup?: MailgunIntegrationDef.Setup | null;
+      }
+
+      export namespace MailgunIntegrationDef {
+        /**
+         * Arguments for mailgun.send_email method
+         */
+        export interface Arguments {
+          body: string;
+
+          from: string;
+
+          subject: string;
+
+          to: string;
+
+          bcc?: string | null;
+
+          cc?: string | null;
+        }
+
+        /**
+         * Setup parameters for Mailgun integration
+         */
+        export interface Setup {
+          api_key: string;
         }
       }
 
@@ -1809,6 +1857,7 @@ export namespace Task {
           | CreateToolRequestOutput.SpiderIntegrationDef
           | CreateToolRequestOutput.WikipediaIntegrationDef
           | CreateToolRequestOutput.WeatherIntegrationDef
+          | CreateToolRequestOutput.MailgunIntegrationDef
           | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
           | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
           | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -1854,6 +1903,8 @@ export namespace Task {
           follow_redirects?: boolean | null;
 
           headers?: Record<string, string> | null;
+
+          include_response_content?: boolean;
 
           json?: unknown | null;
 
@@ -2086,6 +2137,51 @@ export namespace Task {
            */
           export interface Setup {
             openweathermap_api_key: string;
+          }
+        }
+
+        /**
+         * Mailgun integration definition
+         */
+        export interface MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          arguments?: MailgunIntegrationDef.Arguments | null;
+
+          method?: 'send_email' | null;
+
+          provider?: 'mailgun';
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          setup?: MailgunIntegrationDef.Setup | null;
+        }
+
+        export namespace MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          export interface Arguments {
+            body: string;
+
+            from: string;
+
+            subject: string;
+
+            to: string;
+
+            bcc?: string | null;
+
+            cc?: string | null;
+          }
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          export interface Setup {
+            api_key: string;
           }
         }
 
@@ -3147,6 +3243,7 @@ export namespace Task {
               | CreateToolRequestOutput.SpiderIntegrationDef
               | CreateToolRequestOutput.WikipediaIntegrationDef
               | CreateToolRequestOutput.WeatherIntegrationDef
+              | CreateToolRequestOutput.MailgunIntegrationDef
               | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
               | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
               | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -3192,6 +3289,8 @@ export namespace Task {
               follow_redirects?: boolean | null;
 
               headers?: Record<string, string> | null;
+
+              include_response_content?: boolean;
 
               json?: unknown | null;
 
@@ -3424,6 +3523,51 @@ export namespace Task {
                */
               export interface Setup {
                 openweathermap_api_key: string;
+              }
+            }
+
+            /**
+             * Mailgun integration definition
+             */
+            export interface MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              arguments?: MailgunIntegrationDef.Arguments | null;
+
+              method?: 'send_email' | null;
+
+              provider?: 'mailgun';
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              setup?: MailgunIntegrationDef.Setup | null;
+            }
+
+            export namespace MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              export interface Arguments {
+                body: string;
+
+                from: string;
+
+                subject: string;
+
+                to: string;
+
+                bcc?: string | null;
+
+                cc?: string | null;
+              }
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              export interface Setup {
+                api_key: string;
               }
             }
 
@@ -4521,6 +4665,7 @@ export namespace Task {
               | CreateToolRequestOutput.SpiderIntegrationDef
               | CreateToolRequestOutput.WikipediaIntegrationDef
               | CreateToolRequestOutput.WeatherIntegrationDef
+              | CreateToolRequestOutput.MailgunIntegrationDef
               | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
               | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
               | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -4566,6 +4711,8 @@ export namespace Task {
               follow_redirects?: boolean | null;
 
               headers?: Record<string, string> | null;
+
+              include_response_content?: boolean;
 
               json?: unknown | null;
 
@@ -4798,6 +4945,51 @@ export namespace Task {
                */
               export interface Setup {
                 openweathermap_api_key: string;
+              }
+            }
+
+            /**
+             * Mailgun integration definition
+             */
+            export interface MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              arguments?: MailgunIntegrationDef.Arguments | null;
+
+              method?: 'send_email' | null;
+
+              provider?: 'mailgun';
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              setup?: MailgunIntegrationDef.Setup | null;
+            }
+
+            export namespace MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              export interface Arguments {
+                body: string;
+
+                from: string;
+
+                subject: string;
+
+                to: string;
+
+                bcc?: string | null;
+
+                cc?: string | null;
+              }
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              export interface Setup {
+                api_key: string;
               }
             }
 
@@ -5815,6 +6007,7 @@ export namespace Task {
             | CreateToolRequestOutput.SpiderIntegrationDef
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
+            | CreateToolRequestOutput.MailgunIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
             | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
             | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -5860,6 +6053,8 @@ export namespace Task {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -6092,6 +6287,51 @@ export namespace Task {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -7118,6 +7358,7 @@ export namespace Task {
             | CreateToolRequestOutput.SpiderIntegrationDef
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
+            | CreateToolRequestOutput.MailgunIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
             | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
             | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -7163,6 +7404,8 @@ export namespace Task {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -7395,6 +7638,51 @@ export namespace Task {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -8408,6 +8696,7 @@ export namespace Task {
           | CreateToolRequestOutput.SpiderIntegrationDef
           | CreateToolRequestOutput.WikipediaIntegrationDef
           | CreateToolRequestOutput.WeatherIntegrationDef
+          | CreateToolRequestOutput.MailgunIntegrationDef
           | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
           | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
           | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -8453,6 +8742,8 @@ export namespace Task {
           follow_redirects?: boolean | null;
 
           headers?: Record<string, string> | null;
+
+          include_response_content?: boolean;
 
           json?: unknown | null;
 
@@ -8685,6 +8976,51 @@ export namespace Task {
            */
           export interface Setup {
             openweathermap_api_key: string;
+          }
+        }
+
+        /**
+         * Mailgun integration definition
+         */
+        export interface MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          arguments?: MailgunIntegrationDef.Arguments | null;
+
+          method?: 'send_email' | null;
+
+          provider?: 'mailgun';
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          setup?: MailgunIntegrationDef.Setup | null;
+        }
+
+        export namespace MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          export interface Arguments {
+            body: string;
+
+            from: string;
+
+            subject: string;
+
+            to: string;
+
+            bcc?: string | null;
+
+            cc?: string | null;
+          }
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          export interface Setup {
+            api_key: string;
           }
         }
 
@@ -9746,6 +10082,7 @@ export namespace Task {
               | CreateToolRequestOutput.SpiderIntegrationDef
               | CreateToolRequestOutput.WikipediaIntegrationDef
               | CreateToolRequestOutput.WeatherIntegrationDef
+              | CreateToolRequestOutput.MailgunIntegrationDef
               | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
               | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
               | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -9791,6 +10128,8 @@ export namespace Task {
               follow_redirects?: boolean | null;
 
               headers?: Record<string, string> | null;
+
+              include_response_content?: boolean;
 
               json?: unknown | null;
 
@@ -10023,6 +10362,51 @@ export namespace Task {
                */
               export interface Setup {
                 openweathermap_api_key: string;
+              }
+            }
+
+            /**
+             * Mailgun integration definition
+             */
+            export interface MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              arguments?: MailgunIntegrationDef.Arguments | null;
+
+              method?: 'send_email' | null;
+
+              provider?: 'mailgun';
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              setup?: MailgunIntegrationDef.Setup | null;
+            }
+
+            export namespace MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              export interface Arguments {
+                body: string;
+
+                from: string;
+
+                subject: string;
+
+                to: string;
+
+                bcc?: string | null;
+
+                cc?: string | null;
+              }
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              export interface Setup {
+                api_key: string;
               }
             }
 
@@ -11120,6 +11504,7 @@ export namespace Task {
               | CreateToolRequestOutput.SpiderIntegrationDef
               | CreateToolRequestOutput.WikipediaIntegrationDef
               | CreateToolRequestOutput.WeatherIntegrationDef
+              | CreateToolRequestOutput.MailgunIntegrationDef
               | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
               | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
               | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -11165,6 +11550,8 @@ export namespace Task {
               follow_redirects?: boolean | null;
 
               headers?: Record<string, string> | null;
+
+              include_response_content?: boolean;
 
               json?: unknown | null;
 
@@ -11397,6 +11784,51 @@ export namespace Task {
                */
               export interface Setup {
                 openweathermap_api_key: string;
+              }
+            }
+
+            /**
+             * Mailgun integration definition
+             */
+            export interface MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              arguments?: MailgunIntegrationDef.Arguments | null;
+
+              method?: 'send_email' | null;
+
+              provider?: 'mailgun';
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              setup?: MailgunIntegrationDef.Setup | null;
+            }
+
+            export namespace MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              export interface Arguments {
+                body: string;
+
+                from: string;
+
+                subject: string;
+
+                to: string;
+
+                bcc?: string | null;
+
+                cc?: string | null;
+              }
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              export interface Setup {
+                api_key: string;
               }
             }
 
@@ -12414,6 +12846,7 @@ export namespace Task {
             | CreateToolRequestOutput.SpiderIntegrationDef
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
+            | CreateToolRequestOutput.MailgunIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
             | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
             | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -12459,6 +12892,8 @@ export namespace Task {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -12691,6 +13126,51 @@ export namespace Task {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -13717,6 +14197,7 @@ export namespace Task {
             | CreateToolRequestOutput.SpiderIntegrationDef
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
+            | CreateToolRequestOutput.MailgunIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
             | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
             | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -13762,6 +14243,8 @@ export namespace Task {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -13994,6 +14477,51 @@ export namespace Task {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -15021,6 +15549,7 @@ export namespace Task {
             | CreateToolRequestOutput.SpiderIntegrationDef
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
+            | CreateToolRequestOutput.MailgunIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
             | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
             | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -15066,6 +15595,8 @@ export namespace Task {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -15298,6 +15829,51 @@ export namespace Task {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -16395,6 +16971,7 @@ export namespace Task {
             | CreateToolRequestOutput.SpiderIntegrationDef
             | CreateToolRequestOutput.WikipediaIntegrationDef
             | CreateToolRequestOutput.WeatherIntegrationDef
+            | CreateToolRequestOutput.MailgunIntegrationDef
             | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
             | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
             | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -16440,6 +17017,8 @@ export namespace Task {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -16672,6 +17251,51 @@ export namespace Task {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -17689,6 +18313,7 @@ export namespace Task {
           | CreateToolRequestOutput.SpiderIntegrationDef
           | CreateToolRequestOutput.WikipediaIntegrationDef
           | CreateToolRequestOutput.WeatherIntegrationDef
+          | CreateToolRequestOutput.MailgunIntegrationDef
           | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
           | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
           | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -17734,6 +18359,8 @@ export namespace Task {
           follow_redirects?: boolean | null;
 
           headers?: Record<string, string> | null;
+
+          include_response_content?: boolean;
 
           json?: unknown | null;
 
@@ -17966,6 +18593,51 @@ export namespace Task {
            */
           export interface Setup {
             openweathermap_api_key: string;
+          }
+        }
+
+        /**
+         * Mailgun integration definition
+         */
+        export interface MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          arguments?: MailgunIntegrationDef.Arguments | null;
+
+          method?: 'send_email' | null;
+
+          provider?: 'mailgun';
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          setup?: MailgunIntegrationDef.Setup | null;
+        }
+
+        export namespace MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          export interface Arguments {
+            body: string;
+
+            from: string;
+
+            subject: string;
+
+            to: string;
+
+            bcc?: string | null;
+
+            cc?: string | null;
+          }
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          export interface Setup {
+            api_key: string;
           }
         }
 
@@ -18989,6 +19661,7 @@ export namespace Task {
           | CreateToolRequestOutput.SpiderIntegrationDef
           | CreateToolRequestOutput.WikipediaIntegrationDef
           | CreateToolRequestOutput.WeatherIntegrationDef
+          | CreateToolRequestOutput.MailgunIntegrationDef
           | CreateToolRequestOutput.BrowserbaseContextIntegrationDef
           | CreateToolRequestOutput.BrowserbaseExtensionIntegrationDef
           | CreateToolRequestOutput.BrowserbaseListSessionsIntegrationDef
@@ -19034,6 +19707,8 @@ export namespace Task {
           follow_redirects?: boolean | null;
 
           headers?: Record<string, string> | null;
+
+          include_response_content?: boolean;
 
           json?: unknown | null;
 
@@ -19266,6 +19941,51 @@ export namespace Task {
            */
           export interface Setup {
             openweathermap_api_key: string;
+          }
+        }
+
+        /**
+         * Mailgun integration definition
+         */
+        export interface MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          arguments?: MailgunIntegrationDef.Arguments | null;
+
+          method?: 'send_email' | null;
+
+          provider?: 'mailgun';
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          setup?: MailgunIntegrationDef.Setup | null;
+        }
+
+        export namespace MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          export interface Arguments {
+            body: string;
+
+            from: string;
+
+            subject: string;
+
+            to: string;
+
+            bcc?: string | null;
+
+            cc?: string | null;
+          }
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          export interface Setup {
+            api_key: string;
           }
         }
 
@@ -19989,6 +20709,7 @@ export namespace Task {
       | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
+      | Tool.MailgunIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
       | Tool.BrowserbaseExtensionIntegrationDef
       | Tool.BrowserbaseListSessionsIntegrationDef
@@ -20034,6 +20755,8 @@ export namespace Task {
       follow_redirects?: boolean | null;
 
       headers?: Record<string, string> | null;
+
+      include_response_content?: boolean;
 
       json?: unknown | null;
 
@@ -20266,6 +20989,51 @@ export namespace Task {
        */
       export interface Setup {
         openweathermap_api_key: string;
+      }
+    }
+
+    /**
+     * Mailgun integration definition
+     */
+    export interface MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      arguments?: MailgunIntegrationDef.Arguments | null;
+
+      method?: 'send_email' | null;
+
+      provider?: 'mailgun';
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      setup?: MailgunIntegrationDef.Setup | null;
+    }
+
+    export namespace MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      export interface Arguments {
+        body: string;
+
+        from: string;
+
+        subject: string;
+
+        to: string;
+
+        bcc?: string | null;
+
+        cc?: string | null;
+      }
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      export interface Setup {
+        api_key: string;
       }
     }
 
@@ -21258,6 +22026,7 @@ export namespace TaskCreateParams {
         | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -21303,6 +22072,8 @@ export namespace TaskCreateParams {
         follow_redirects?: boolean | null;
 
         headers?: Record<string, string> | null;
+
+        include_response_content?: boolean;
 
         json?: unknown | null;
 
@@ -21535,6 +22306,51 @@ export namespace TaskCreateParams {
          */
         export interface Setup {
           openweathermap_api_key: string;
+        }
+      }
+
+      /**
+       * Mailgun integration definition
+       */
+      export interface MailgunIntegrationDef {
+        /**
+         * Arguments for mailgun.send_email method
+         */
+        arguments?: MailgunIntegrationDef.Arguments | null;
+
+        method?: 'send_email' | null;
+
+        provider?: 'mailgun';
+
+        /**
+         * Setup parameters for Mailgun integration
+         */
+        setup?: MailgunIntegrationDef.Setup | null;
+      }
+
+      export namespace MailgunIntegrationDef {
+        /**
+         * Arguments for mailgun.send_email method
+         */
+        export interface Arguments {
+          body: string;
+
+          from: string;
+
+          subject: string;
+
+          to: string;
+
+          bcc?: string | null;
+
+          cc?: string | null;
+        }
+
+        /**
+         * Setup parameters for Mailgun integration
+         */
+        export interface Setup {
+          api_key: string;
         }
       }
 
@@ -22621,6 +23437,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -22666,6 +23483,8 @@ export namespace TaskCreateParams {
           follow_redirects?: boolean | null;
 
           headers?: Record<string, string> | null;
+
+          include_response_content?: boolean;
 
           json?: unknown | null;
 
@@ -22898,6 +23717,51 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             openweathermap_api_key: string;
+          }
+        }
+
+        /**
+         * Mailgun integration definition
+         */
+        export interface MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          arguments?: MailgunIntegrationDef.Arguments | null;
+
+          method?: 'send_email' | null;
+
+          provider?: 'mailgun';
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          setup?: MailgunIntegrationDef.Setup | null;
+        }
+
+        export namespace MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          export interface Arguments {
+            body: string;
+
+            from: string;
+
+            subject: string;
+
+            to: string;
+
+            bcc?: string | null;
+
+            cc?: string | null;
+          }
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          export interface Setup {
+            api_key: string;
           }
         }
 
@@ -23935,6 +24799,7 @@ export namespace TaskCreateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -23980,6 +24845,8 @@ export namespace TaskCreateParams {
               follow_redirects?: boolean | null;
 
               headers?: Record<string, string> | null;
+
+              include_response_content?: boolean;
 
               json?: unknown | null;
 
@@ -24212,6 +25079,51 @@ export namespace TaskCreateParams {
                */
               export interface Setup {
                 openweathermap_api_key: string;
+              }
+            }
+
+            /**
+             * Mailgun integration definition
+             */
+            export interface MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              arguments?: MailgunIntegrationDef.Arguments | null;
+
+              method?: 'send_email' | null;
+
+              provider?: 'mailgun';
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              setup?: MailgunIntegrationDef.Setup | null;
+            }
+
+            export namespace MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              export interface Arguments {
+                body: string;
+
+                from: string;
+
+                subject: string;
+
+                to: string;
+
+                bcc?: string | null;
+
+                cc?: string | null;
+              }
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              export interface Setup {
+                api_key: string;
               }
             }
 
@@ -25281,6 +26193,7 @@ export namespace TaskCreateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -25326,6 +26239,8 @@ export namespace TaskCreateParams {
               follow_redirects?: boolean | null;
 
               headers?: Record<string, string> | null;
+
+              include_response_content?: boolean;
 
               json?: unknown | null;
 
@@ -25558,6 +26473,51 @@ export namespace TaskCreateParams {
                */
               export interface Setup {
                 openweathermap_api_key: string;
+              }
+            }
+
+            /**
+             * Mailgun integration definition
+             */
+            export interface MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              arguments?: MailgunIntegrationDef.Arguments | null;
+
+              method?: 'send_email' | null;
+
+              provider?: 'mailgun';
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              setup?: MailgunIntegrationDef.Setup | null;
+            }
+
+            export namespace MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              export interface Arguments {
+                body: string;
+
+                from: string;
+
+                subject: string;
+
+                to: string;
+
+                bcc?: string | null;
+
+                cc?: string | null;
+              }
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              export interface Setup {
+                api_key: string;
               }
             }
 
@@ -26557,6 +27517,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -26602,6 +27563,8 @@ export namespace TaskCreateParams {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -26834,6 +27797,51 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -27842,6 +28850,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -27887,6 +28896,8 @@ export namespace TaskCreateParams {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -28119,6 +29130,51 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -29114,6 +30170,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -29159,6 +30216,8 @@ export namespace TaskCreateParams {
           follow_redirects?: boolean | null;
 
           headers?: Record<string, string> | null;
+
+          include_response_content?: boolean;
 
           json?: unknown | null;
 
@@ -29391,6 +30450,51 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             openweathermap_api_key: string;
+          }
+        }
+
+        /**
+         * Mailgun integration definition
+         */
+        export interface MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          arguments?: MailgunIntegrationDef.Arguments | null;
+
+          method?: 'send_email' | null;
+
+          provider?: 'mailgun';
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          setup?: MailgunIntegrationDef.Setup | null;
+        }
+
+        export namespace MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          export interface Arguments {
+            body: string;
+
+            from: string;
+
+            subject: string;
+
+            to: string;
+
+            bcc?: string | null;
+
+            cc?: string | null;
+          }
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          export interface Setup {
+            api_key: string;
           }
         }
 
@@ -30428,6 +31532,7 @@ export namespace TaskCreateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -30473,6 +31578,8 @@ export namespace TaskCreateParams {
               follow_redirects?: boolean | null;
 
               headers?: Record<string, string> | null;
+
+              include_response_content?: boolean;
 
               json?: unknown | null;
 
@@ -30705,6 +31812,51 @@ export namespace TaskCreateParams {
                */
               export interface Setup {
                 openweathermap_api_key: string;
+              }
+            }
+
+            /**
+             * Mailgun integration definition
+             */
+            export interface MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              arguments?: MailgunIntegrationDef.Arguments | null;
+
+              method?: 'send_email' | null;
+
+              provider?: 'mailgun';
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              setup?: MailgunIntegrationDef.Setup | null;
+            }
+
+            export namespace MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              export interface Arguments {
+                body: string;
+
+                from: string;
+
+                subject: string;
+
+                to: string;
+
+                bcc?: string | null;
+
+                cc?: string | null;
+              }
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              export interface Setup {
+                api_key: string;
               }
             }
 
@@ -31774,6 +32926,7 @@ export namespace TaskCreateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -31819,6 +32972,8 @@ export namespace TaskCreateParams {
               follow_redirects?: boolean | null;
 
               headers?: Record<string, string> | null;
+
+              include_response_content?: boolean;
 
               json?: unknown | null;
 
@@ -32051,6 +33206,51 @@ export namespace TaskCreateParams {
                */
               export interface Setup {
                 openweathermap_api_key: string;
+              }
+            }
+
+            /**
+             * Mailgun integration definition
+             */
+            export interface MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              arguments?: MailgunIntegrationDef.Arguments | null;
+
+              method?: 'send_email' | null;
+
+              provider?: 'mailgun';
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              setup?: MailgunIntegrationDef.Setup | null;
+            }
+
+            export namespace MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              export interface Arguments {
+                body: string;
+
+                from: string;
+
+                subject: string;
+
+                to: string;
+
+                bcc?: string | null;
+
+                cc?: string | null;
+              }
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              export interface Setup {
+                api_key: string;
               }
             }
 
@@ -33050,6 +34250,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -33095,6 +34296,8 @@ export namespace TaskCreateParams {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -33327,6 +34530,51 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -34335,6 +35583,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -34380,6 +35629,8 @@ export namespace TaskCreateParams {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -34612,6 +35863,51 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -35621,6 +36917,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -35666,6 +36963,8 @@ export namespace TaskCreateParams {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -35898,6 +37197,51 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -36967,6 +38311,7 @@ export namespace TaskCreateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -37012,6 +38357,8 @@ export namespace TaskCreateParams {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -37244,6 +38591,51 @@ export namespace TaskCreateParams {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -38243,6 +39635,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -38288,6 +39681,8 @@ export namespace TaskCreateParams {
           follow_redirects?: boolean | null;
 
           headers?: Record<string, string> | null;
+
+          include_response_content?: boolean;
 
           json?: unknown | null;
 
@@ -38520,6 +39915,51 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             openweathermap_api_key: string;
+          }
+        }
+
+        /**
+         * Mailgun integration definition
+         */
+        export interface MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          arguments?: MailgunIntegrationDef.Arguments | null;
+
+          method?: 'send_email' | null;
+
+          provider?: 'mailgun';
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          setup?: MailgunIntegrationDef.Setup | null;
+        }
+
+        export namespace MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          export interface Arguments {
+            body: string;
+
+            from: string;
+
+            subject: string;
+
+            to: string;
+
+            bcc?: string | null;
+
+            cc?: string | null;
+          }
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          export interface Setup {
+            api_key: string;
           }
         }
 
@@ -39525,6 +40965,7 @@ export namespace TaskCreateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -39570,6 +41011,8 @@ export namespace TaskCreateParams {
           follow_redirects?: boolean | null;
 
           headers?: Record<string, string> | null;
+
+          include_response_content?: boolean;
 
           json?: unknown | null;
 
@@ -39802,6 +41245,51 @@ export namespace TaskCreateParams {
            */
           export interface Setup {
             openweathermap_api_key: string;
+          }
+        }
+
+        /**
+         * Mailgun integration definition
+         */
+        export interface MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          arguments?: MailgunIntegrationDef.Arguments | null;
+
+          method?: 'send_email' | null;
+
+          provider?: 'mailgun';
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          setup?: MailgunIntegrationDef.Setup | null;
+        }
+
+        export namespace MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          export interface Arguments {
+            body: string;
+
+            from: string;
+
+            subject: string;
+
+            to: string;
+
+            bcc?: string | null;
+
+            cc?: string | null;
+          }
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          export interface Setup {
+            api_key: string;
           }
         }
 
@@ -40515,6 +42003,7 @@ export namespace TaskCreateParams {
       | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
+      | Tool.MailgunIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
       | Tool.BrowserbaseExtensionIntegrationDef
       | Tool.BrowserbaseListSessionsIntegrationDef
@@ -40560,6 +42049,8 @@ export namespace TaskCreateParams {
       follow_redirects?: boolean | null;
 
       headers?: Record<string, string> | null;
+
+      include_response_content?: boolean;
 
       json?: unknown | null;
 
@@ -40792,6 +42283,51 @@ export namespace TaskCreateParams {
        */
       export interface Setup {
         openweathermap_api_key: string;
+      }
+    }
+
+    /**
+     * Mailgun integration definition
+     */
+    export interface MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      arguments?: MailgunIntegrationDef.Arguments | null;
+
+      method?: 'send_email' | null;
+
+      provider?: 'mailgun';
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      setup?: MailgunIntegrationDef.Setup | null;
+    }
+
+    export namespace MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      export interface Arguments {
+        body: string;
+
+        from: string;
+
+        subject: string;
+
+        to: string;
+
+        bcc?: string | null;
+
+        cc?: string | null;
+      }
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      export interface Setup {
+        api_key: string;
       }
     }
 
@@ -41790,6 +43326,7 @@ export namespace TaskCreateOrUpdateParams {
         | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+        | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
         | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -41835,6 +43372,8 @@ export namespace TaskCreateOrUpdateParams {
         follow_redirects?: boolean | null;
 
         headers?: Record<string, string> | null;
+
+        include_response_content?: boolean;
 
         json?: unknown | null;
 
@@ -42067,6 +43606,51 @@ export namespace TaskCreateOrUpdateParams {
          */
         export interface Setup {
           openweathermap_api_key: string;
+        }
+      }
+
+      /**
+       * Mailgun integration definition
+       */
+      export interface MailgunIntegrationDef {
+        /**
+         * Arguments for mailgun.send_email method
+         */
+        arguments?: MailgunIntegrationDef.Arguments | null;
+
+        method?: 'send_email' | null;
+
+        provider?: 'mailgun';
+
+        /**
+         * Setup parameters for Mailgun integration
+         */
+        setup?: MailgunIntegrationDef.Setup | null;
+      }
+
+      export namespace MailgunIntegrationDef {
+        /**
+         * Arguments for mailgun.send_email method
+         */
+        export interface Arguments {
+          body: string;
+
+          from: string;
+
+          subject: string;
+
+          to: string;
+
+          bcc?: string | null;
+
+          cc?: string | null;
+        }
+
+        /**
+         * Setup parameters for Mailgun integration
+         */
+        export interface Setup {
+          api_key: string;
         }
       }
 
@@ -43153,6 +44737,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -43198,6 +44783,8 @@ export namespace TaskCreateOrUpdateParams {
           follow_redirects?: boolean | null;
 
           headers?: Record<string, string> | null;
+
+          include_response_content?: boolean;
 
           json?: unknown | null;
 
@@ -43430,6 +45017,51 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             openweathermap_api_key: string;
+          }
+        }
+
+        /**
+         * Mailgun integration definition
+         */
+        export interface MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          arguments?: MailgunIntegrationDef.Arguments | null;
+
+          method?: 'send_email' | null;
+
+          provider?: 'mailgun';
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          setup?: MailgunIntegrationDef.Setup | null;
+        }
+
+        export namespace MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          export interface Arguments {
+            body: string;
+
+            from: string;
+
+            subject: string;
+
+            to: string;
+
+            bcc?: string | null;
+
+            cc?: string | null;
+          }
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          export interface Setup {
+            api_key: string;
           }
         }
 
@@ -44467,6 +46099,7 @@ export namespace TaskCreateOrUpdateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -44512,6 +46145,8 @@ export namespace TaskCreateOrUpdateParams {
               follow_redirects?: boolean | null;
 
               headers?: Record<string, string> | null;
+
+              include_response_content?: boolean;
 
               json?: unknown | null;
 
@@ -44744,6 +46379,51 @@ export namespace TaskCreateOrUpdateParams {
                */
               export interface Setup {
                 openweathermap_api_key: string;
+              }
+            }
+
+            /**
+             * Mailgun integration definition
+             */
+            export interface MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              arguments?: MailgunIntegrationDef.Arguments | null;
+
+              method?: 'send_email' | null;
+
+              provider?: 'mailgun';
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              setup?: MailgunIntegrationDef.Setup | null;
+            }
+
+            export namespace MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              export interface Arguments {
+                body: string;
+
+                from: string;
+
+                subject: string;
+
+                to: string;
+
+                bcc?: string | null;
+
+                cc?: string | null;
+              }
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              export interface Setup {
+                api_key: string;
               }
             }
 
@@ -45813,6 +47493,7 @@ export namespace TaskCreateOrUpdateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -45858,6 +47539,8 @@ export namespace TaskCreateOrUpdateParams {
               follow_redirects?: boolean | null;
 
               headers?: Record<string, string> | null;
+
+              include_response_content?: boolean;
 
               json?: unknown | null;
 
@@ -46090,6 +47773,51 @@ export namespace TaskCreateOrUpdateParams {
                */
               export interface Setup {
                 openweathermap_api_key: string;
+              }
+            }
+
+            /**
+             * Mailgun integration definition
+             */
+            export interface MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              arguments?: MailgunIntegrationDef.Arguments | null;
+
+              method?: 'send_email' | null;
+
+              provider?: 'mailgun';
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              setup?: MailgunIntegrationDef.Setup | null;
+            }
+
+            export namespace MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              export interface Arguments {
+                body: string;
+
+                from: string;
+
+                subject: string;
+
+                to: string;
+
+                bcc?: string | null;
+
+                cc?: string | null;
+              }
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              export interface Setup {
+                api_key: string;
               }
             }
 
@@ -47089,6 +48817,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -47134,6 +48863,8 @@ export namespace TaskCreateOrUpdateParams {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -47366,6 +49097,51 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -48374,6 +50150,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -48419,6 +50196,8 @@ export namespace TaskCreateOrUpdateParams {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -48651,6 +50430,51 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -49646,6 +51470,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -49691,6 +51516,8 @@ export namespace TaskCreateOrUpdateParams {
           follow_redirects?: boolean | null;
 
           headers?: Record<string, string> | null;
+
+          include_response_content?: boolean;
 
           json?: unknown | null;
 
@@ -49923,6 +51750,51 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             openweathermap_api_key: string;
+          }
+        }
+
+        /**
+         * Mailgun integration definition
+         */
+        export interface MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          arguments?: MailgunIntegrationDef.Arguments | null;
+
+          method?: 'send_email' | null;
+
+          provider?: 'mailgun';
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          setup?: MailgunIntegrationDef.Setup | null;
+        }
+
+        export namespace MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          export interface Arguments {
+            body: string;
+
+            from: string;
+
+            subject: string;
+
+            to: string;
+
+            bcc?: string | null;
+
+            cc?: string | null;
+          }
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          export interface Setup {
+            api_key: string;
           }
         }
 
@@ -50960,6 +52832,7 @@ export namespace TaskCreateOrUpdateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -51005,6 +52878,8 @@ export namespace TaskCreateOrUpdateParams {
               follow_redirects?: boolean | null;
 
               headers?: Record<string, string> | null;
+
+              include_response_content?: boolean;
 
               json?: unknown | null;
 
@@ -51237,6 +53112,51 @@ export namespace TaskCreateOrUpdateParams {
                */
               export interface Setup {
                 openweathermap_api_key: string;
+              }
+            }
+
+            /**
+             * Mailgun integration definition
+             */
+            export interface MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              arguments?: MailgunIntegrationDef.Arguments | null;
+
+              method?: 'send_email' | null;
+
+              provider?: 'mailgun';
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              setup?: MailgunIntegrationDef.Setup | null;
+            }
+
+            export namespace MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              export interface Arguments {
+                body: string;
+
+                from: string;
+
+                subject: string;
+
+                to: string;
+
+                bcc?: string | null;
+
+                cc?: string | null;
+              }
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              export interface Setup {
+                api_key: string;
               }
             }
 
@@ -52306,6 +54226,7 @@ export namespace TaskCreateOrUpdateParams {
               | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+              | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
               | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -52351,6 +54272,8 @@ export namespace TaskCreateOrUpdateParams {
               follow_redirects?: boolean | null;
 
               headers?: Record<string, string> | null;
+
+              include_response_content?: boolean;
 
               json?: unknown | null;
 
@@ -52583,6 +54506,51 @@ export namespace TaskCreateOrUpdateParams {
                */
               export interface Setup {
                 openweathermap_api_key: string;
+              }
+            }
+
+            /**
+             * Mailgun integration definition
+             */
+            export interface MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              arguments?: MailgunIntegrationDef.Arguments | null;
+
+              method?: 'send_email' | null;
+
+              provider?: 'mailgun';
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              setup?: MailgunIntegrationDef.Setup | null;
+            }
+
+            export namespace MailgunIntegrationDef {
+              /**
+               * Arguments for mailgun.send_email method
+               */
+              export interface Arguments {
+                body: string;
+
+                from: string;
+
+                subject: string;
+
+                to: string;
+
+                bcc?: string | null;
+
+                cc?: string | null;
+              }
+
+              /**
+               * Setup parameters for Mailgun integration
+               */
+              export interface Setup {
+                api_key: string;
               }
             }
 
@@ -53582,6 +55550,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -53627,6 +55596,8 @@ export namespace TaskCreateOrUpdateParams {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -53859,6 +55830,51 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -54867,6 +56883,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -54912,6 +56929,8 @@ export namespace TaskCreateOrUpdateParams {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -55144,6 +57163,51 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -56153,6 +58217,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -56198,6 +58263,8 @@ export namespace TaskCreateOrUpdateParams {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -56430,6 +58497,51 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -57499,6 +59611,7 @@ export namespace TaskCreateOrUpdateParams {
             | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+            | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
             | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -57544,6 +59657,8 @@ export namespace TaskCreateOrUpdateParams {
             follow_redirects?: boolean | null;
 
             headers?: Record<string, string> | null;
+
+            include_response_content?: boolean;
 
             json?: unknown | null;
 
@@ -57776,6 +59891,51 @@ export namespace TaskCreateOrUpdateParams {
              */
             export interface Setup {
               openweathermap_api_key: string;
+            }
+          }
+
+          /**
+           * Mailgun integration definition
+           */
+          export interface MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            arguments?: MailgunIntegrationDef.Arguments | null;
+
+            method?: 'send_email' | null;
+
+            provider?: 'mailgun';
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            setup?: MailgunIntegrationDef.Setup | null;
+          }
+
+          export namespace MailgunIntegrationDef {
+            /**
+             * Arguments for mailgun.send_email method
+             */
+            export interface Arguments {
+              body: string;
+
+              from: string;
+
+              subject: string;
+
+              to: string;
+
+              bcc?: string | null;
+
+              cc?: string | null;
+            }
+
+            /**
+             * Setup parameters for Mailgun integration
+             */
+            export interface Setup {
+              api_key: string;
             }
           }
 
@@ -58775,6 +60935,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -58820,6 +60981,8 @@ export namespace TaskCreateOrUpdateParams {
           follow_redirects?: boolean | null;
 
           headers?: Record<string, string> | null;
+
+          include_response_content?: boolean;
 
           json?: unknown | null;
 
@@ -59052,6 +61215,51 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             openweathermap_api_key: string;
+          }
+        }
+
+        /**
+         * Mailgun integration definition
+         */
+        export interface MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          arguments?: MailgunIntegrationDef.Arguments | null;
+
+          method?: 'send_email' | null;
+
+          provider?: 'mailgun';
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          setup?: MailgunIntegrationDef.Setup | null;
+        }
+
+        export namespace MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          export interface Arguments {
+            body: string;
+
+            from: string;
+
+            subject: string;
+
+            to: string;
+
+            bcc?: string | null;
+
+            cc?: string | null;
+          }
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          export interface Setup {
+            api_key: string;
           }
         }
 
@@ -60057,6 +62265,7 @@ export namespace TaskCreateOrUpdateParams {
           | AgentsAPIAutogenToolsCreateToolRequestInput.SpiderIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WikipediaIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.WeatherIntegrationDef
+          | AgentsAPIAutogenToolsCreateToolRequestInput.MailgunIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseContextIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseExtensionIntegrationDef
           | AgentsAPIAutogenToolsCreateToolRequestInput.BrowserbaseListSessionsIntegrationDef
@@ -60102,6 +62311,8 @@ export namespace TaskCreateOrUpdateParams {
           follow_redirects?: boolean | null;
 
           headers?: Record<string, string> | null;
+
+          include_response_content?: boolean;
 
           json?: unknown | null;
 
@@ -60334,6 +62545,51 @@ export namespace TaskCreateOrUpdateParams {
            */
           export interface Setup {
             openweathermap_api_key: string;
+          }
+        }
+
+        /**
+         * Mailgun integration definition
+         */
+        export interface MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          arguments?: MailgunIntegrationDef.Arguments | null;
+
+          method?: 'send_email' | null;
+
+          provider?: 'mailgun';
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          setup?: MailgunIntegrationDef.Setup | null;
+        }
+
+        export namespace MailgunIntegrationDef {
+          /**
+           * Arguments for mailgun.send_email method
+           */
+          export interface Arguments {
+            body: string;
+
+            from: string;
+
+            subject: string;
+
+            to: string;
+
+            bcc?: string | null;
+
+            cc?: string | null;
+          }
+
+          /**
+           * Setup parameters for Mailgun integration
+           */
+          export interface Setup {
+            api_key: string;
           }
         }
 
@@ -61047,6 +63303,7 @@ export namespace TaskCreateOrUpdateParams {
       | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
+      | Tool.MailgunIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
       | Tool.BrowserbaseExtensionIntegrationDef
       | Tool.BrowserbaseListSessionsIntegrationDef
@@ -61092,6 +63349,8 @@ export namespace TaskCreateOrUpdateParams {
       follow_redirects?: boolean | null;
 
       headers?: Record<string, string> | null;
+
+      include_response_content?: boolean;
 
       json?: unknown | null;
 
@@ -61324,6 +63583,51 @@ export namespace TaskCreateOrUpdateParams {
        */
       export interface Setup {
         openweathermap_api_key: string;
+      }
+    }
+
+    /**
+     * Mailgun integration definition
+     */
+    export interface MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      arguments?: MailgunIntegrationDef.Arguments | null;
+
+      method?: 'send_email' | null;
+
+      provider?: 'mailgun';
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      setup?: MailgunIntegrationDef.Setup | null;
+    }
+
+    export namespace MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      export interface Arguments {
+        body: string;
+
+        from: string;
+
+        subject: string;
+
+        to: string;
+
+        bcc?: string | null;
+
+        cc?: string | null;
+      }
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      export interface Setup {
+        api_key: string;
       }
     }
 
