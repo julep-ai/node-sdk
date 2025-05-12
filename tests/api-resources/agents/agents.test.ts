@@ -30,6 +30,7 @@ describe('resource agents', () => {
       instructions: 'string',
       metadata: {},
       model: 'model',
+      project: 'project',
     });
   });
 
@@ -113,6 +114,7 @@ describe('resource agents', () => {
       instructions: 'string',
       metadata: {},
       model: 'model',
+      project: 'project',
     });
   });
 
@@ -155,6 +157,7 @@ describe('resource agents', () => {
       instructions: 'string',
       metadata: {},
       model: 'model',
+      project: 'project',
     });
   });
 });

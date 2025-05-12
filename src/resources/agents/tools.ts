@@ -184,7 +184,15 @@ export namespace ToolCreateResponse {
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name: string;
+    }
   }
 
   export interface Bash20241022 {
@@ -1198,7 +1206,15 @@ export namespace ToolUpdateResponse {
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name: string;
+    }
   }
 
   export interface Bash20241022 {
@@ -2212,7 +2228,15 @@ export namespace ToolListResponse {
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name: string;
+    }
   }
 
   export interface Bash20241022 {
@@ -3226,7 +3250,15 @@ export namespace ToolResetResponse {
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name: string;
+    }
   }
 
   export interface Bash20241022 {
@@ -4234,7 +4266,15 @@ export namespace ToolCreateParams {
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name: string;
+    }
   }
 
   export interface Bash20241022 {
@@ -5241,9 +5281,17 @@ export namespace ToolUpdateParams {
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
 
     url?: string | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name?: string | null;
+    }
   }
 
   export interface Bash20241022 {
@@ -6259,7 +6307,15 @@ export namespace ToolResetParams {
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name: string;
+    }
   }
 
   export interface Bash20241022 {

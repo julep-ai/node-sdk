@@ -473,7 +473,15 @@ export namespace Task {
 
         schema?: unknown | null;
 
+        secrets?: Record<string, APICall.Secrets> | null;
+
         timeout?: number | null;
+      }
+
+      export namespace APICall {
+        export interface Secrets {
+          name: string;
+        }
       }
 
       export interface Bash20241022 {
@@ -1912,7 +1920,15 @@ export namespace Task {
 
           schema?: unknown | null;
 
+          secrets?: Record<string, APICall.Secrets> | null;
+
           timeout?: number | null;
+        }
+
+        export namespace APICall {
+          export interface Secrets {
+            name: string;
+          }
         }
 
         export interface Bash20241022 {
@@ -3298,7 +3314,15 @@ export namespace Task {
 
               schema?: unknown | null;
 
+              secrets?: Record<string, APICall.Secrets> | null;
+
               timeout?: number | null;
+            }
+
+            export namespace APICall {
+              export interface Secrets {
+                name: string;
+              }
             }
 
             export interface Bash20241022 {
@@ -4720,7 +4744,15 @@ export namespace Task {
 
               schema?: unknown | null;
 
+              secrets?: Record<string, APICall.Secrets> | null;
+
               timeout?: number | null;
+            }
+
+            export namespace APICall {
+              export interface Secrets {
+                name: string;
+              }
             }
 
             export interface Bash20241022 {
@@ -6062,7 +6094,15 @@ export namespace Task {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -7413,7 +7453,15 @@ export namespace Task {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -8751,7 +8799,15 @@ export namespace Task {
 
           schema?: unknown | null;
 
+          secrets?: Record<string, APICall.Secrets> | null;
+
           timeout?: number | null;
+        }
+
+        export namespace APICall {
+          export interface Secrets {
+            name: string;
+          }
         }
 
         export interface Bash20241022 {
@@ -10137,7 +10193,15 @@ export namespace Task {
 
               schema?: unknown | null;
 
+              secrets?: Record<string, APICall.Secrets> | null;
+
               timeout?: number | null;
+            }
+
+            export namespace APICall {
+              export interface Secrets {
+                name: string;
+              }
             }
 
             export interface Bash20241022 {
@@ -11559,7 +11623,15 @@ export namespace Task {
 
               schema?: unknown | null;
 
+              secrets?: Record<string, APICall.Secrets> | null;
+
               timeout?: number | null;
+            }
+
+            export namespace APICall {
+              export interface Secrets {
+                name: string;
+              }
             }
 
             export interface Bash20241022 {
@@ -12901,7 +12973,15 @@ export namespace Task {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -14252,7 +14332,15 @@ export namespace Task {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -15604,7 +15692,15 @@ export namespace Task {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -17026,7 +17122,15 @@ export namespace Task {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -18368,7 +18472,15 @@ export namespace Task {
 
           schema?: unknown | null;
 
+          secrets?: Record<string, APICall.Secrets> | null;
+
           timeout?: number | null;
+        }
+
+        export namespace APICall {
+          export interface Secrets {
+            name: string;
+          }
         }
 
         export interface Bash20241022 {
@@ -19716,7 +19828,15 @@ export namespace Task {
 
           schema?: unknown | null;
 
+          secrets?: Record<string, APICall.Secrets> | null;
+
           timeout?: number | null;
+        }
+
+        export namespace APICall {
+          export interface Secrets {
+            name: string;
+          }
         }
 
         export interface Bash20241022 {
@@ -20764,7 +20884,15 @@ export namespace Task {
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
@@ -22081,7 +22209,15 @@ export namespace TaskCreateParams {
 
         schema?: unknown | null;
 
+        secrets?: Record<string, APICall.Secrets> | null;
+
         timeout?: number | null;
+      }
+
+      export namespace APICall {
+        export interface Secrets {
+          name: string;
+        }
       }
 
       export interface Bash20241022 {
@@ -23492,7 +23628,15 @@ export namespace TaskCreateParams {
 
           schema?: unknown | null;
 
+          secrets?: Record<string, APICall.Secrets> | null;
+
           timeout?: number | null;
+        }
+
+        export namespace APICall {
+          export interface Secrets {
+            name: string;
+          }
         }
 
         export interface Bash20241022 {
@@ -24854,7 +24998,15 @@ export namespace TaskCreateParams {
 
               schema?: unknown | null;
 
+              secrets?: Record<string, APICall.Secrets> | null;
+
               timeout?: number | null;
+            }
+
+            export namespace APICall {
+              export interface Secrets {
+                name: string;
+              }
             }
 
             export interface Bash20241022 {
@@ -26248,7 +26400,15 @@ export namespace TaskCreateParams {
 
               schema?: unknown | null;
 
+              secrets?: Record<string, APICall.Secrets> | null;
+
               timeout?: number | null;
+            }
+
+            export namespace APICall {
+              export interface Secrets {
+                name: string;
+              }
             }
 
             export interface Bash20241022 {
@@ -27572,7 +27732,15 @@ export namespace TaskCreateParams {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -28905,7 +29073,15 @@ export namespace TaskCreateParams {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -30225,7 +30401,15 @@ export namespace TaskCreateParams {
 
           schema?: unknown | null;
 
+          secrets?: Record<string, APICall.Secrets> | null;
+
           timeout?: number | null;
+        }
+
+        export namespace APICall {
+          export interface Secrets {
+            name: string;
+          }
         }
 
         export interface Bash20241022 {
@@ -31587,7 +31771,15 @@ export namespace TaskCreateParams {
 
               schema?: unknown | null;
 
+              secrets?: Record<string, APICall.Secrets> | null;
+
               timeout?: number | null;
+            }
+
+            export namespace APICall {
+              export interface Secrets {
+                name: string;
+              }
             }
 
             export interface Bash20241022 {
@@ -32981,7 +33173,15 @@ export namespace TaskCreateParams {
 
               schema?: unknown | null;
 
+              secrets?: Record<string, APICall.Secrets> | null;
+
               timeout?: number | null;
+            }
+
+            export namespace APICall {
+              export interface Secrets {
+                name: string;
+              }
             }
 
             export interface Bash20241022 {
@@ -34305,7 +34505,15 @@ export namespace TaskCreateParams {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -35638,7 +35846,15 @@ export namespace TaskCreateParams {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -36972,7 +37188,15 @@ export namespace TaskCreateParams {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -38366,7 +38590,15 @@ export namespace TaskCreateParams {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -39690,7 +39922,15 @@ export namespace TaskCreateParams {
 
           schema?: unknown | null;
 
+          secrets?: Record<string, APICall.Secrets> | null;
+
           timeout?: number | null;
+        }
+
+        export namespace APICall {
+          export interface Secrets {
+            name: string;
+          }
         }
 
         export interface Bash20241022 {
@@ -41020,7 +41260,15 @@ export namespace TaskCreateParams {
 
           schema?: unknown | null;
 
+          secrets?: Record<string, APICall.Secrets> | null;
+
           timeout?: number | null;
+        }
+
+        export namespace APICall {
+          export interface Secrets {
+            name: string;
+          }
         }
 
         export interface Bash20241022 {
@@ -42058,7 +42306,15 @@ export namespace TaskCreateParams {
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
@@ -43381,7 +43637,15 @@ export namespace TaskCreateOrUpdateParams {
 
         schema?: unknown | null;
 
+        secrets?: Record<string, APICall.Secrets> | null;
+
         timeout?: number | null;
+      }
+
+      export namespace APICall {
+        export interface Secrets {
+          name: string;
+        }
       }
 
       export interface Bash20241022 {
@@ -44792,7 +45056,15 @@ export namespace TaskCreateOrUpdateParams {
 
           schema?: unknown | null;
 
+          secrets?: Record<string, APICall.Secrets> | null;
+
           timeout?: number | null;
+        }
+
+        export namespace APICall {
+          export interface Secrets {
+            name: string;
+          }
         }
 
         export interface Bash20241022 {
@@ -46154,7 +46426,15 @@ export namespace TaskCreateOrUpdateParams {
 
               schema?: unknown | null;
 
+              secrets?: Record<string, APICall.Secrets> | null;
+
               timeout?: number | null;
+            }
+
+            export namespace APICall {
+              export interface Secrets {
+                name: string;
+              }
             }
 
             export interface Bash20241022 {
@@ -47548,7 +47828,15 @@ export namespace TaskCreateOrUpdateParams {
 
               schema?: unknown | null;
 
+              secrets?: Record<string, APICall.Secrets> | null;
+
               timeout?: number | null;
+            }
+
+            export namespace APICall {
+              export interface Secrets {
+                name: string;
+              }
             }
 
             export interface Bash20241022 {
@@ -48872,7 +49160,15 @@ export namespace TaskCreateOrUpdateParams {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -50205,7 +50501,15 @@ export namespace TaskCreateOrUpdateParams {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -51525,7 +51829,15 @@ export namespace TaskCreateOrUpdateParams {
 
           schema?: unknown | null;
 
+          secrets?: Record<string, APICall.Secrets> | null;
+
           timeout?: number | null;
+        }
+
+        export namespace APICall {
+          export interface Secrets {
+            name: string;
+          }
         }
 
         export interface Bash20241022 {
@@ -52887,7 +53199,15 @@ export namespace TaskCreateOrUpdateParams {
 
               schema?: unknown | null;
 
+              secrets?: Record<string, APICall.Secrets> | null;
+
               timeout?: number | null;
+            }
+
+            export namespace APICall {
+              export interface Secrets {
+                name: string;
+              }
             }
 
             export interface Bash20241022 {
@@ -54281,7 +54601,15 @@ export namespace TaskCreateOrUpdateParams {
 
               schema?: unknown | null;
 
+              secrets?: Record<string, APICall.Secrets> | null;
+
               timeout?: number | null;
+            }
+
+            export namespace APICall {
+              export interface Secrets {
+                name: string;
+              }
             }
 
             export interface Bash20241022 {
@@ -55605,7 +55933,15 @@ export namespace TaskCreateOrUpdateParams {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -56938,7 +57274,15 @@ export namespace TaskCreateOrUpdateParams {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -58272,7 +58616,15 @@ export namespace TaskCreateOrUpdateParams {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -59666,7 +60018,15 @@ export namespace TaskCreateOrUpdateParams {
 
             schema?: unknown | null;
 
+            secrets?: Record<string, APICall.Secrets> | null;
+
             timeout?: number | null;
+          }
+
+          export namespace APICall {
+            export interface Secrets {
+              name: string;
+            }
           }
 
           export interface Bash20241022 {
@@ -60990,7 +61350,15 @@ export namespace TaskCreateOrUpdateParams {
 
           schema?: unknown | null;
 
+          secrets?: Record<string, APICall.Secrets> | null;
+
           timeout?: number | null;
+        }
+
+        export namespace APICall {
+          export interface Secrets {
+            name: string;
+          }
         }
 
         export interface Bash20241022 {
@@ -62320,7 +62688,15 @@ export namespace TaskCreateOrUpdateParams {
 
           schema?: unknown | null;
 
+          secrets?: Record<string, APICall.Secrets> | null;
+
           timeout?: number | null;
+        }
+
+        export namespace APICall {
+          export interface Secrets {
+            name: string;
+          }
         }
 
         export interface Bash20241022 {
@@ -63358,7 +63734,15 @@ export namespace TaskCreateOrUpdateParams {
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
