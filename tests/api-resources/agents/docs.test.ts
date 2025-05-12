@@ -107,6 +107,7 @@ describe('resource docs', () => {
       lang: 'lang',
       limit: 1,
       metadata_filter: {},
+      trigram_similarity_threshold: 0,
     });
   });
 });
