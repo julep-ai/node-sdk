@@ -177,3 +177,17 @@ Methods:
 
 - <code title="get /executions/{execution_id}/transitions">client.executions.transitions.<a href="./src/resources/executions/transitions.ts">list</a>(executionId, { ...params }) -> TransitionsOffsetPagination</code>
 - <code title="get /executions/{execution_id}/transitions.stream">client.executions.transitions.<a href="./src/resources/executions/transitions.ts">stream</a>(executionId, { ...params }) -> unknown</code>
+
+# Secrets
+
+Types:
+
+- <code><a href="./src/resources/secrets.ts">Secret</a></code>
+- <code><a href="./src/resources/secrets.ts">SecretListResponse</a></code>
+
+Methods:
+
+- <code title="post /secrets">client.secrets.<a href="./src/resources/secrets.ts">create</a>({ ...params }) -> Secret</code>
+- <code title="put /secrets/{secret_id}">client.secrets.<a href="./src/resources/secrets.ts">update</a>(secretId, { ...params }) -> Secret</code>
+- <code title="get /secrets">client.secrets.<a href="./src/resources/secrets.ts">list</a>({ ...params }) -> SecretListResponse</code>
+- <code title="delete /secrets/{secret_id}">client.secrets.<a href="./src/resources/secrets.ts">delete</a>(secretId) -> ResourceDeleted</code>
