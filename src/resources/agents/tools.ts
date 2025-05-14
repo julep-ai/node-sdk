@@ -129,6 +129,7 @@ export interface ToolCreateResponse {
     | ToolCreateResponse.SpiderIntegrationDef
     | ToolCreateResponse.WikipediaIntegrationDef
     | ToolCreateResponse.WeatherIntegrationDef
+    | ToolCreateResponse.MailgunIntegrationDef
     | ToolCreateResponse.BrowserbaseContextIntegrationDef
     | ToolCreateResponse.BrowserbaseExtensionIntegrationDef
     | ToolCreateResponse.BrowserbaseListSessionsIntegrationDef
@@ -175,13 +176,23 @@ export namespace ToolCreateResponse {
 
     headers?: Record<string, string> | null;
 
+    include_response_content?: boolean;
+
     json?: unknown | null;
 
     params?: string | unknown | null;
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name: string;
+    }
   }
 
   export interface Bash20241022 {
@@ -406,6 +417,51 @@ export namespace ToolCreateResponse {
      */
     export interface Setup {
       openweathermap_api_key: string;
+    }
+  }
+
+  /**
+   * Mailgun integration definition
+   */
+  export interface MailgunIntegrationDef {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    arguments?: MailgunIntegrationDef.Arguments | null;
+
+    method?: 'send_email' | null;
+
+    provider?: 'mailgun';
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    setup?: MailgunIntegrationDef.Setup | null;
+  }
+
+  export namespace MailgunIntegrationDef {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    export interface Arguments {
+      body: string;
+
+      from: string;
+
+      subject: string;
+
+      to: string;
+
+      bcc?: string | null;
+
+      cc?: string | null;
+    }
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    export interface Setup {
+      api_key: string;
     }
   }
 
@@ -1095,6 +1151,7 @@ export interface ToolUpdateResponse {
     | ToolUpdateResponse.SpiderIntegrationDef
     | ToolUpdateResponse.WikipediaIntegrationDef
     | ToolUpdateResponse.WeatherIntegrationDef
+    | ToolUpdateResponse.MailgunIntegrationDef
     | ToolUpdateResponse.BrowserbaseContextIntegrationDef
     | ToolUpdateResponse.BrowserbaseExtensionIntegrationDef
     | ToolUpdateResponse.BrowserbaseListSessionsIntegrationDef
@@ -1141,13 +1198,23 @@ export namespace ToolUpdateResponse {
 
     headers?: Record<string, string> | null;
 
+    include_response_content?: boolean;
+
     json?: unknown | null;
 
     params?: string | unknown | null;
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name: string;
+    }
   }
 
   export interface Bash20241022 {
@@ -1372,6 +1439,51 @@ export namespace ToolUpdateResponse {
      */
     export interface Setup {
       openweathermap_api_key: string;
+    }
+  }
+
+  /**
+   * Mailgun integration definition
+   */
+  export interface MailgunIntegrationDef {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    arguments?: MailgunIntegrationDef.Arguments | null;
+
+    method?: 'send_email' | null;
+
+    provider?: 'mailgun';
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    setup?: MailgunIntegrationDef.Setup | null;
+  }
+
+  export namespace MailgunIntegrationDef {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    export interface Arguments {
+      body: string;
+
+      from: string;
+
+      subject: string;
+
+      to: string;
+
+      bcc?: string | null;
+
+      cc?: string | null;
+    }
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    export interface Setup {
+      api_key: string;
     }
   }
 
@@ -2061,6 +2173,7 @@ export interface ToolListResponse {
     | ToolListResponse.SpiderIntegrationDef
     | ToolListResponse.WikipediaIntegrationDef
     | ToolListResponse.WeatherIntegrationDef
+    | ToolListResponse.MailgunIntegrationDef
     | ToolListResponse.BrowserbaseContextIntegrationDef
     | ToolListResponse.BrowserbaseExtensionIntegrationDef
     | ToolListResponse.BrowserbaseListSessionsIntegrationDef
@@ -2107,13 +2220,23 @@ export namespace ToolListResponse {
 
     headers?: Record<string, string> | null;
 
+    include_response_content?: boolean;
+
     json?: unknown | null;
 
     params?: string | unknown | null;
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name: string;
+    }
   }
 
   export interface Bash20241022 {
@@ -2338,6 +2461,51 @@ export namespace ToolListResponse {
      */
     export interface Setup {
       openweathermap_api_key: string;
+    }
+  }
+
+  /**
+   * Mailgun integration definition
+   */
+  export interface MailgunIntegrationDef {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    arguments?: MailgunIntegrationDef.Arguments | null;
+
+    method?: 'send_email' | null;
+
+    provider?: 'mailgun';
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    setup?: MailgunIntegrationDef.Setup | null;
+  }
+
+  export namespace MailgunIntegrationDef {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    export interface Arguments {
+      body: string;
+
+      from: string;
+
+      subject: string;
+
+      to: string;
+
+      bcc?: string | null;
+
+      cc?: string | null;
+    }
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    export interface Setup {
+      api_key: string;
     }
   }
 
@@ -3027,6 +3195,7 @@ export interface ToolResetResponse {
     | ToolResetResponse.SpiderIntegrationDef
     | ToolResetResponse.WikipediaIntegrationDef
     | ToolResetResponse.WeatherIntegrationDef
+    | ToolResetResponse.MailgunIntegrationDef
     | ToolResetResponse.BrowserbaseContextIntegrationDef
     | ToolResetResponse.BrowserbaseExtensionIntegrationDef
     | ToolResetResponse.BrowserbaseListSessionsIntegrationDef
@@ -3073,13 +3242,23 @@ export namespace ToolResetResponse {
 
     headers?: Record<string, string> | null;
 
+    include_response_content?: boolean;
+
     json?: unknown | null;
 
     params?: string | unknown | null;
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name: string;
+    }
   }
 
   export interface Bash20241022 {
@@ -3304,6 +3483,51 @@ export namespace ToolResetResponse {
      */
     export interface Setup {
       openweathermap_api_key: string;
+    }
+  }
+
+  /**
+   * Mailgun integration definition
+   */
+  export interface MailgunIntegrationDef {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    arguments?: MailgunIntegrationDef.Arguments | null;
+
+    method?: 'send_email' | null;
+
+    provider?: 'mailgun';
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    setup?: MailgunIntegrationDef.Setup | null;
+  }
+
+  export namespace MailgunIntegrationDef {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    export interface Arguments {
+      body: string;
+
+      from: string;
+
+      subject: string;
+
+      to: string;
+
+      bcc?: string | null;
+
+      cc?: string | null;
+    }
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    export interface Setup {
+      api_key: string;
     }
   }
 
@@ -3987,6 +4211,7 @@ export interface ToolCreateParams {
     | ToolCreateParams.SpiderIntegrationDef
     | ToolCreateParams.WikipediaIntegrationDef
     | ToolCreateParams.WeatherIntegrationDef
+    | ToolCreateParams.MailgunIntegrationDef
     | ToolCreateParams.BrowserbaseContextIntegrationDef
     | ToolCreateParams.BrowserbaseExtensionIntegrationDef
     | ToolCreateParams.BrowserbaseListSessionsIntegrationDef
@@ -4033,13 +4258,23 @@ export namespace ToolCreateParams {
 
     headers?: Record<string, string> | null;
 
+    include_response_content?: boolean;
+
     json?: unknown | null;
 
     params?: string | unknown | null;
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name: string;
+    }
   }
 
   export interface Bash20241022 {
@@ -4264,6 +4499,51 @@ export namespace ToolCreateParams {
      */
     export interface Setup {
       openweathermap_api_key: string;
+    }
+  }
+
+  /**
+   * Mailgun integration definition
+   */
+  export interface MailgunIntegrationDef {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    arguments?: MailgunIntegrationDef.Arguments | null;
+
+    method?: 'send_email' | null;
+
+    provider?: 'mailgun';
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    setup?: MailgunIntegrationDef.Setup | null;
+  }
+
+  export namespace MailgunIntegrationDef {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    export interface Arguments {
+      body: string;
+
+      from: string;
+
+      subject: string;
+
+      to: string;
+
+      bcc?: string | null;
+
+      cc?: string | null;
+    }
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    export interface Setup {
+      api_key: string;
     }
   }
 
@@ -4936,6 +5216,7 @@ export interface ToolUpdateParams {
     | ToolUpdateParams.SpiderIntegrationDefUpdate
     | ToolUpdateParams.WikipediaIntegrationDefUpdate
     | ToolUpdateParams.WeatherIntegrationDefUpdate
+    | ToolUpdateParams.MailgunIntegrationDefUpdate
     | ToolUpdateParams.BrowserbaseContextIntegrationDefUpdate
     | ToolUpdateParams.BrowserbaseExtensionIntegrationDefUpdate
     | ToolUpdateParams.BrowserbaseListSessionsIntegrationDefUpdate
@@ -4990,6 +5271,8 @@ export namespace ToolUpdateParams {
 
     headers?: Record<string, string> | null;
 
+    include_response_content?: boolean;
+
     json?: unknown | null;
 
     method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE' | null;
@@ -4998,9 +5281,17 @@ export namespace ToolUpdateParams {
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
 
     url?: string | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name?: string | null;
+    }
   }
 
   export interface Bash20241022 {
@@ -5225,6 +5516,51 @@ export namespace ToolUpdateParams {
      */
     export interface Setup {
       openweathermap_api_key?: string | null;
+    }
+  }
+
+  /**
+   * Mailgun integration definition
+   */
+  export interface MailgunIntegrationDefUpdate {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    arguments?: MailgunIntegrationDefUpdate.Arguments | null;
+
+    method?: 'send_email' | null;
+
+    provider?: 'mailgun';
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    setup?: MailgunIntegrationDefUpdate.Setup | null;
+  }
+
+  export namespace MailgunIntegrationDefUpdate {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    export interface Arguments {
+      bcc?: string | null;
+
+      body?: string | null;
+
+      cc?: string | null;
+
+      from?: string | null;
+
+      subject?: string | null;
+
+      to?: string | null;
+    }
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    export interface Setup {
+      api_key?: string | null;
     }
   }
 
@@ -5916,6 +6252,7 @@ export interface ToolResetParams {
     | ToolResetParams.SpiderIntegrationDef
     | ToolResetParams.WikipediaIntegrationDef
     | ToolResetParams.WeatherIntegrationDef
+    | ToolResetParams.MailgunIntegrationDef
     | ToolResetParams.BrowserbaseContextIntegrationDef
     | ToolResetParams.BrowserbaseExtensionIntegrationDef
     | ToolResetParams.BrowserbaseListSessionsIntegrationDef
@@ -5962,13 +6299,23 @@ export namespace ToolResetParams {
 
     headers?: Record<string, string> | null;
 
+    include_response_content?: boolean;
+
     json?: unknown | null;
 
     params?: string | unknown | null;
 
     schema?: unknown | null;
 
+    secrets?: Record<string, APICall.Secrets> | null;
+
     timeout?: number | null;
+  }
+
+  export namespace APICall {
+    export interface Secrets {
+      name: string;
+    }
   }
 
   export interface Bash20241022 {
@@ -6193,6 +6540,51 @@ export namespace ToolResetParams {
      */
     export interface Setup {
       openweathermap_api_key: string;
+    }
+  }
+
+  /**
+   * Mailgun integration definition
+   */
+  export interface MailgunIntegrationDef {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    arguments?: MailgunIntegrationDef.Arguments | null;
+
+    method?: 'send_email' | null;
+
+    provider?: 'mailgun';
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    setup?: MailgunIntegrationDef.Setup | null;
+  }
+
+  export namespace MailgunIntegrationDef {
+    /**
+     * Arguments for mailgun.send_email method
+     */
+    export interface Arguments {
+      body: string;
+
+      from: string;
+
+      subject: string;
+
+      to: string;
+
+      bcc?: string | null;
+
+      cc?: string | null;
+    }
+
+    /**
+     * Setup parameters for Mailgun integration
+     */
+    export interface Setup {
+      api_key: string;
     }
   }
 

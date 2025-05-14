@@ -443,6 +443,7 @@ export namespace ChatInput {
       | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
+      | Tool.MailgunIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
       | Tool.BrowserbaseExtensionIntegrationDef
       | Tool.BrowserbaseListSessionsIntegrationDef
@@ -489,13 +490,23 @@ export namespace ChatInput {
 
       headers?: Record<string, string> | null;
 
+      include_response_content?: boolean;
+
       json?: unknown | null;
 
       params?: string | unknown | null;
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
@@ -720,6 +731,51 @@ export namespace ChatInput {
        */
       export interface Setup {
         openweathermap_api_key: string;
+      }
+    }
+
+    /**
+     * Mailgun integration definition
+     */
+    export interface MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      arguments?: MailgunIntegrationDef.Arguments | null;
+
+      method?: 'send_email' | null;
+
+      provider?: 'mailgun';
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      setup?: MailgunIntegrationDef.Setup | null;
+    }
+
+    export namespace MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      export interface Arguments {
+        body: string;
+
+        from: string;
+
+        subject: string;
+
+        to: string;
+
+        bcc?: string | null;
+
+        cc?: string | null;
+      }
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      export interface Setup {
+        api_key: string;
       }
     }
 
@@ -2279,6 +2335,7 @@ export namespace Entry {
       | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
+      | Tool.MailgunIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
       | Tool.BrowserbaseExtensionIntegrationDef
       | Tool.BrowserbaseListSessionsIntegrationDef
@@ -2325,13 +2382,23 @@ export namespace Entry {
 
       headers?: Record<string, string> | null;
 
+      include_response_content?: boolean;
+
       json?: unknown | null;
 
       params?: string | unknown | null;
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
@@ -2556,6 +2623,51 @@ export namespace Entry {
        */
       export interface Setup {
         openweathermap_api_key: string;
+      }
+    }
+
+    /**
+     * Mailgun integration definition
+     */
+    export interface MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      arguments?: MailgunIntegrationDef.Arguments | null;
+
+      method?: 'send_email' | null;
+
+      provider?: 'mailgun';
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      setup?: MailgunIntegrationDef.Setup | null;
+    }
+
+    export namespace MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      export interface Arguments {
+        body: string;
+
+        from: string;
+
+        subject: string;
+
+        to: string;
+
+        bcc?: string | null;
+
+        cc?: string | null;
+      }
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      export interface Setup {
+        api_key: string;
       }
     }
 
@@ -3420,6 +3532,7 @@ export namespace Entry {
       | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
+      | Tool.MailgunIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
       | Tool.BrowserbaseExtensionIntegrationDef
       | Tool.BrowserbaseListSessionsIntegrationDef
@@ -3466,13 +3579,23 @@ export namespace Entry {
 
       headers?: Record<string, string> | null;
 
+      include_response_content?: boolean;
+
       json?: unknown | null;
 
       params?: string | unknown | null;
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
@@ -3697,6 +3820,51 @@ export namespace Entry {
        */
       export interface Setup {
         openweathermap_api_key: string;
+      }
+    }
+
+    /**
+     * Mailgun integration definition
+     */
+    export interface MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      arguments?: MailgunIntegrationDef.Arguments | null;
+
+      method?: 'send_email' | null;
+
+      provider?: 'mailgun';
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      setup?: MailgunIntegrationDef.Setup | null;
+    }
+
+    export namespace MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      export interface Arguments {
+        body: string;
+
+        from: string;
+
+        subject: string;
+
+        to: string;
+
+        bcc?: string | null;
+
+        cc?: string | null;
+      }
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      export interface Setup {
+        api_key: string;
       }
     }
 
@@ -4639,12 +4807,16 @@ export namespace Session {
     mode?: 'text';
 
     num_search_messages?: number;
+
+    trigram_similarity_threshold?: number;
   }
 
   export interface HybridDocSearch {
     alpha?: number;
 
     confidence?: number;
+
+    k_multiplier?: number;
 
     lang?: string;
 
@@ -4659,6 +4831,8 @@ export namespace Session {
     mode?: 'hybrid';
 
     num_search_messages?: number;
+
+    trigram_similarity_threshold?: number;
   }
 }
 
@@ -5359,6 +5533,7 @@ export namespace SessionRenderResponse {
       | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
+      | Tool.MailgunIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
       | Tool.BrowserbaseExtensionIntegrationDef
       | Tool.BrowserbaseListSessionsIntegrationDef
@@ -5405,13 +5580,23 @@ export namespace SessionRenderResponse {
 
       headers?: Record<string, string> | null;
 
+      include_response_content?: boolean;
+
       json?: unknown | null;
 
       params?: string | unknown | null;
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
@@ -5636,6 +5821,51 @@ export namespace SessionRenderResponse {
        */
       export interface Setup {
         openweathermap_api_key: string;
+      }
+    }
+
+    /**
+     * Mailgun integration definition
+     */
+    export interface MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      arguments?: MailgunIntegrationDef.Arguments | null;
+
+      method?: 'send_email' | null;
+
+      provider?: 'mailgun';
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      setup?: MailgunIntegrationDef.Setup | null;
+    }
+
+    export namespace MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      export interface Arguments {
+        body: string;
+
+        from: string;
+
+        subject: string;
+
+        to: string;
+
+        bcc?: string | null;
+
+        cc?: string | null;
+      }
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      export interface Setup {
+        api_key: string;
       }
     }
 
@@ -6342,12 +6572,16 @@ export namespace SessionCreateParams {
     mode?: 'text';
 
     num_search_messages?: number;
+
+    trigram_similarity_threshold?: number;
   }
 
   export interface HybridDocSearch {
     alpha?: number;
 
     confidence?: number;
+
+    k_multiplier?: number;
 
     lang?: string;
 
@@ -6362,6 +6596,8 @@ export namespace SessionCreateParams {
     mode?: 'hybrid';
 
     num_search_messages?: number;
+
+    trigram_similarity_threshold?: number;
   }
 }
 
@@ -6420,12 +6656,16 @@ export namespace SessionUpdateParams {
     mode?: 'text';
 
     num_search_messages?: number;
+
+    trigram_similarity_threshold?: number;
   }
 
   export interface HybridDocSearchUpdate {
     alpha?: number;
 
     confidence?: number;
+
+    k_multiplier?: number;
 
     lang?: string;
 
@@ -6440,6 +6680,8 @@ export namespace SessionUpdateParams {
     mode?: 'hybrid';
 
     num_search_messages?: number;
+
+    trigram_similarity_threshold?: number;
   }
 }
 
@@ -6825,6 +7067,7 @@ export namespace SessionChatParams {
       | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
+      | Tool.MailgunIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
       | Tool.BrowserbaseExtensionIntegrationDef
       | Tool.BrowserbaseListSessionsIntegrationDef
@@ -6871,13 +7114,23 @@ export namespace SessionChatParams {
 
       headers?: Record<string, string> | null;
 
+      include_response_content?: boolean;
+
       json?: unknown | null;
 
       params?: string | unknown | null;
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
@@ -7102,6 +7355,51 @@ export namespace SessionChatParams {
        */
       export interface Setup {
         openweathermap_api_key: string;
+      }
+    }
+
+    /**
+     * Mailgun integration definition
+     */
+    export interface MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      arguments?: MailgunIntegrationDef.Arguments | null;
+
+      method?: 'send_email' | null;
+
+      provider?: 'mailgun';
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      setup?: MailgunIntegrationDef.Setup | null;
+    }
+
+    export namespace MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      export interface Arguments {
+        body: string;
+
+        from: string;
+
+        subject: string;
+
+        to: string;
+
+        bcc?: string | null;
+
+        cc?: string | null;
+      }
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      export interface Setup {
+        api_key: string;
       }
     }
 
@@ -7808,12 +8106,16 @@ export namespace SessionCreateOrUpdateParams {
     mode?: 'text';
 
     num_search_messages?: number;
+
+    trigram_similarity_threshold?: number;
   }
 
   export interface HybridDocSearch {
     alpha?: number;
 
     confidence?: number;
+
+    k_multiplier?: number;
 
     lang?: string;
 
@@ -7828,6 +8130,8 @@ export namespace SessionCreateOrUpdateParams {
     mode?: 'hybrid';
 
     num_search_messages?: number;
+
+    trigram_similarity_threshold?: number;
   }
 }
 
@@ -8135,6 +8439,7 @@ export namespace SessionRenderParams {
       | Tool.SpiderIntegrationDef
       | Tool.WikipediaIntegrationDef
       | Tool.WeatherIntegrationDef
+      | Tool.MailgunIntegrationDef
       | Tool.BrowserbaseContextIntegrationDef
       | Tool.BrowserbaseExtensionIntegrationDef
       | Tool.BrowserbaseListSessionsIntegrationDef
@@ -8181,13 +8486,23 @@ export namespace SessionRenderParams {
 
       headers?: Record<string, string> | null;
 
+      include_response_content?: boolean;
+
       json?: unknown | null;
 
       params?: string | unknown | null;
 
       schema?: unknown | null;
 
+      secrets?: Record<string, APICall.Secrets> | null;
+
       timeout?: number | null;
+    }
+
+    export namespace APICall {
+      export interface Secrets {
+        name: string;
+      }
     }
 
     export interface Bash20241022 {
@@ -8412,6 +8727,51 @@ export namespace SessionRenderParams {
        */
       export interface Setup {
         openweathermap_api_key: string;
+      }
+    }
+
+    /**
+     * Mailgun integration definition
+     */
+    export interface MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      arguments?: MailgunIntegrationDef.Arguments | null;
+
+      method?: 'send_email' | null;
+
+      provider?: 'mailgun';
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      setup?: MailgunIntegrationDef.Setup | null;
+    }
+
+    export namespace MailgunIntegrationDef {
+      /**
+       * Arguments for mailgun.send_email method
+       */
+      export interface Arguments {
+        body: string;
+
+        from: string;
+
+        subject: string;
+
+        to: string;
+
+        bcc?: string | null;
+
+        cc?: string | null;
+      }
+
+      /**
+       * Setup parameters for Mailgun integration
+       */
+      export interface Setup {
+        api_key: string;
       }
     }
 
@@ -9110,12 +9470,16 @@ export namespace SessionResetParams {
     mode?: 'text';
 
     num_search_messages?: number;
+
+    trigram_similarity_threshold?: number;
   }
 
   export interface HybridDocSearch {
     alpha?: number;
 
     confidence?: number;
+
+    k_multiplier?: number;
 
     lang?: string;
 
@@ -9130,6 +9494,8 @@ export namespace SessionResetParams {
     mode?: 'hybrid';
 
     num_search_messages?: number;
+
+    trigram_similarity_threshold?: number;
   }
 }
 

@@ -43,6 +43,8 @@ export interface File {
   description?: string;
 
   mime_type?: string | null;
+
+  project?: string | null;
 }
 
 export interface FileCreateParams {
@@ -53,6 +55,8 @@ export interface FileCreateParams {
   description?: string;
 
   mime_type?: string | null;
+
+  project?: string | null;
 }
 
 export declare namespace Files {

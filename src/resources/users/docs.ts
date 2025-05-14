@@ -175,6 +175,11 @@ export declare namespace DocSearchParams {
      * Body param:
      */
     metadata_filter?: unknown;
+
+    /**
+     * Body param:
+     */
+    trigram_similarity_threshold?: number;
   }
 
   export interface VectorDocSearchRequest {
@@ -243,6 +248,11 @@ export declare namespace DocSearchParams {
     /**
      * Body param:
      */
+    k_multiplier?: number;
+
+    /**
+     * Body param:
+     */
     lang?: string;
 
     /**
@@ -259,6 +269,11 @@ export declare namespace DocSearchParams {
      * Body param:
      */
     mmr_strength?: number;
+
+    /**
+     * Body param:
+     */
+    trigram_similarity_threshold?: number;
   }
 }
 

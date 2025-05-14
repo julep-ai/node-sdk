@@ -12,6 +12,14 @@ import { Doc, DocEmbedParams, Docs, EmbedQueryResponse, Snippet } from './resour
 import { File, FileCreateParams, Files } from './resources/files';
 import { JobStatus, Jobs } from './resources/jobs';
 import {
+  Secret,
+  SecretCreateParams,
+  SecretListParams,
+  SecretListResponse,
+  SecretUpdateParams,
+  Secrets,
+} from './resources/secrets';
+import {
   ChatInput,
   ChatResponse,
   Entry,
@@ -216,6 +224,7 @@ export class Julep extends Core.APIClient {
   docs: API.Docs = new API.Docs(this);
   tasks: API.Tasks = new API.Tasks(this);
   executions: API.Executions = new API.Executions(this);
+  secrets: API.Secrets = new API.Secrets(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -270,6 +279,7 @@ Julep.Tasks = Tasks;
 Julep.TasksOffsetPagination = TasksOffsetPagination;
 Julep.Executions = Executions;
 Julep.ExecutionsOffsetPagination = ExecutionsOffsetPagination;
+Julep.Secrets = Secrets;
 export declare namespace Julep {
   export type RequestOptions = Core.RequestOptions;
 
@@ -350,6 +360,15 @@ export declare namespace Julep {
     type ExecutionCreateParams as ExecutionCreateParams,
     type ExecutionListParams as ExecutionListParams,
     type ExecutionChangeStatusParams as ExecutionChangeStatusParams,
+  };
+
+  export {
+    Secrets as Secrets,
+    type Secret as Secret,
+    type SecretListResponse as SecretListResponse,
+    type SecretCreateParams as SecretCreateParams,
+    type SecretUpdateParams as SecretUpdateParams,
+    type SecretListParams as SecretListParams,
   };
 
   export type ResourceDeleted = API.ResourceDeleted;
