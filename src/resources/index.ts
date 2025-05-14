@@ -22,6 +22,14 @@ export {
 export { Files, type File, type FileCreateParams } from './files';
 export { Jobs, type JobStatus } from './jobs';
 export {
+  Secrets,
+  type Secret,
+  type SecretListResponse,
+  type SecretCreateParams,
+  type SecretUpdateParams,
+  type SecretListParams,
+} from './secrets';
+export {
   SessionsOffsetPagination,
   Sessions,
   type ChatInput,
