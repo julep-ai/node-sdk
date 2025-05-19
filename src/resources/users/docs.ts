@@ -60,6 +60,21 @@ export class Docs extends APIResource {
   }
 
   /**
+   * Bulk delete documents owned by a user based on metadata filter
+   */
+  bulkDelete(
+    userId: string,
+    body: DocBulkDeleteParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<DocBulkDeleteResponse> {
+    return (
+      this._client.delete(`/users/${userId}/docs`, { body, ...options }) as Core.APIPromise<{
+        items: DocBulkDeleteResponse;
+      }>
+    )._thenUnwrap((obj) => obj.items);
+  }
+
+  /**
    * Searches for documents associated with a specific user.
    *
    * Parameters: x_developer_id (UUID): The unique identifier of the developer
@@ -78,6 +93,8 @@ export class Docs extends APIResource {
     return this._client.post(`/users/${userId}/search`, { query: { connection_pool }, body, ...options });
   }
 }
+
+export type DocBulkDeleteResponse = Array<Shared.ResourceDeleted>;
 
 export interface DocSearchResponse {
   docs: Array<DocSearchResponse.Doc>;
@@ -142,6 +159,12 @@ export interface DocListParams extends OffsetPaginationParams {
   metadata_filter?: Record<string, unknown>;
 
   sort_by?: 'created_at' | 'updated_at';
+}
+
+export interface DocBulkDeleteParams {
+  delete_all?: boolean;
+
+  metadata_filter?: unknown;
 }
 
 export type DocSearchParams =
@@ -279,9 +302,11 @@ export declare namespace DocSearchParams {
 
 export declare namespace Docs {
   export {
+    type DocBulkDeleteResponse as DocBulkDeleteResponse,
     type DocSearchResponse as DocSearchResponse,
     type DocCreateParams as DocCreateParams,
     type DocListParams as DocListParams,
+    type DocBulkDeleteParams as DocBulkDeleteParams,
     type DocSearchParams as DocSearchParams,
   };
 }

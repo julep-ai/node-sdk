@@ -2,9 +2,11 @@
 
 export {
   Docs,
+  type DocBulkDeleteResponse,
   type DocSearchResponse,
   type DocCreateParams,
   type DocListParams,
+  type DocBulkDeleteParams,
   type DocSearchParams,
 } from './docs';
 export {

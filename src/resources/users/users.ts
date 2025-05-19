@@ -5,7 +5,15 @@ import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
 import * as DocsAPI from './docs';
-import { DocCreateParams, DocListParams, DocSearchParams, DocSearchResponse, Docs } from './docs';
+import {
+  DocBulkDeleteParams,
+  DocBulkDeleteResponse,
+  DocCreateParams,
+  DocListParams,
+  DocSearchParams,
+  DocSearchResponse,
+  Docs,
+} from './docs';
 import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
 
 export class Users extends APIResource {
@@ -155,9 +163,11 @@ export declare namespace Users {
 
   export {
     Docs as Docs,
+    type DocBulkDeleteResponse as DocBulkDeleteResponse,
     type DocSearchResponse as DocSearchResponse,
     type DocCreateParams as DocCreateParams,
     type DocListParams as DocListParams,
+    type DocBulkDeleteParams as DocBulkDeleteParams,
     type DocSearchParams as DocSearchParams,
   };
 }
