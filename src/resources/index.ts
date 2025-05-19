@@ -5,10 +5,12 @@ export {
   AgentsOffsetPagination,
   Agents,
   type Agent,
+  type AgentListModelsResponse,
   type AgentCreateParams,
   type AgentUpdateParams,
   type AgentListParams,
   type AgentCreateOrUpdateParams,
+  type AgentListModelsParams,
   type AgentResetParams,
 } from './agents/agents';
 export {
@@ -19,8 +21,17 @@ export {
   type Snippet,
   type DocEmbedParams,
 } from './docs';
-export { Files, type File, type FileCreateParams } from './files';
+export { Files, type File, type FileListResponse, type FileCreateParams } from './files';
+export { Healthz, type HealthzCheckResponse } from './healthz';
 export { Jobs, type JobStatus } from './jobs';
+export {
+  ProjectListResponsesOffsetPagination,
+  Projects,
+  type ProjectCreateResponse,
+  type ProjectListResponse,
+  type ProjectCreateParams,
+  type ProjectListParams,
+} from './projects';
 export {
   Secrets,
   type Secret,

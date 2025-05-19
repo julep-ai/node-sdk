@@ -87,6 +87,17 @@ describe('resource docs', () => {
     ).rejects.toThrow(Julep.NotFoundError);
   });
 
+  test('bulkDelete', async () => {
+    const responsePromise = client.users.docs.bulkDelete('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {});
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
   test('search: only required params', async () => {
     const responsePromise = client.users.docs.search('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       text: 'text',

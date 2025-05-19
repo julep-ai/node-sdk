@@ -13,6 +13,13 @@ export class Files extends APIResource {
   }
 
   /**
+   * List Files
+   */
+  list(options?: Core.RequestOptions): Core.APIPromise<FileListResponse> {
+    return this._client.get('/files', options);
+  }
+
+  /**
    * Delete File
    */
   delete(fileId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceDeleted> {
@@ -47,6 +54,8 @@ export interface File {
   project?: string | null;
 }
 
+export type FileListResponse = Array<File>;
+
 export interface FileCreateParams {
   content: string;
 
@@ -60,5 +69,9 @@ export interface FileCreateParams {
 }
 
 export declare namespace Files {
-  export { type File as File, type FileCreateParams as FileCreateParams };
+  export {
+    type File as File,
+    type FileListResponse as FileListResponse,
+    type FileCreateParams as FileCreateParams,
+  };
 }
