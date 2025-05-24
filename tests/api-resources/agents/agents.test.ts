@@ -30,6 +30,7 @@ describe('resource agents', () => {
       instructions: 'string',
       metadata: {},
       model: 'model',
+      project: 'project',
     });
   });
 
@@ -113,6 +114,7 @@ describe('resource agents', () => {
       instructions: 'string',
       metadata: {},
       model: 'model',
+      project: 'project',
     });
   });
 
@@ -131,6 +133,34 @@ describe('resource agents', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.agents.get('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Julep.NotFoundError);
+  });
+
+  test('listModels', async () => {
+    const responsePromise = client.agents.listModels();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('listModels: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.agents.listModels({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Julep.NotFoundError,
+    );
+  });
+
+  test('listModels: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.agents.listModels(
+        { 'x-custom-api-key': 'x-custom-api-key' },
+        { path: '/_stainless_unknown_path' },
+      ),
     ).rejects.toThrow(Julep.NotFoundError);
   });
 
@@ -155,6 +185,7 @@ describe('resource agents', () => {
       instructions: 'string',
       metadata: {},
       model: 'model',
+      project: 'project',
     });
   });
 });

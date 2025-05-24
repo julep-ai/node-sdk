@@ -5,7 +5,15 @@ import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
 import * as DocsAPI from './docs';
-import { DocCreateParams, DocListParams, DocSearchParams, DocSearchResponse, Docs } from './docs';
+import {
+  DocBulkDeleteParams,
+  DocBulkDeleteResponse,
+  DocCreateParams,
+  DocListParams,
+  DocSearchParams,
+  DocSearchResponse,
+  Docs,
+} from './docs';
 import * as ToolsAPI from './tools';
 import {
   ToolCreateParams,
@@ -83,6 +91,33 @@ export class Agents extends APIResource {
   }
 
   /**
+   * List all available models that can be used with agents.
+   *
+   * Returns: ListModelsResponse: A list of available models
+   */
+  listModels(
+    params?: AgentListModelsParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<AgentListModelsResponse>;
+  listModels(options?: Core.RequestOptions): Core.APIPromise<AgentListModelsResponse>;
+  listModels(
+    params: AgentListModelsParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<AgentListModelsResponse> {
+    if (isRequestOptions(params)) {
+      return this.listModels({}, params);
+    }
+    const { 'x-custom-api-key': xCustomAPIKey } = params;
+    return this._client.get('/agents/models', {
+      ...options,
+      headers: {
+        ...(xCustomAPIKey != null ? { 'x-custom-api-key': xCustomAPIKey } : undefined),
+        ...options?.headers,
+      },
+    });
+  }
+
+  /**
    * Update Agent
    */
   reset(agentId: string, body: AgentResetParams, options?: Core.RequestOptions): Core.APIPromise<Agent> {
@@ -114,6 +149,24 @@ export interface Agent {
   metadata?: unknown | null;
 
   model?: string;
+
+  project?: string | null;
+}
+
+/**
+ * Response for the list models endpoint
+ */
+export interface AgentListModelsResponse {
+  models: Array<AgentListModelsResponse.Model>;
+}
+
+export namespace AgentListModelsResponse {
+  /**
+   * Model information returned by the model list endpoint
+   */
+  export interface Model {
+    id: string;
+  }
 }
 
 export interface AgentCreateParams {
@@ -132,6 +185,8 @@ export interface AgentCreateParams {
   metadata?: unknown | null;
 
   model?: string;
+
+  project?: string | null;
 }
 
 export interface AgentUpdateParams {
@@ -150,6 +205,8 @@ export interface AgentUpdateParams {
   model?: string;
 
   name?: string | null;
+
+  project?: string | null;
 }
 
 export interface AgentListParams extends OffsetPaginationParams {
@@ -176,6 +233,12 @@ export interface AgentCreateOrUpdateParams {
   metadata?: unknown | null;
 
   model?: string;
+
+  project?: string | null;
+}
+
+export interface AgentListModelsParams {
+  'x-custom-api-key'?: string;
 }
 
 export interface AgentResetParams {
@@ -194,6 +257,8 @@ export interface AgentResetParams {
   metadata?: unknown | null;
 
   model?: string;
+
+  project?: string | null;
 }
 
 Agents.AgentsOffsetPagination = AgentsOffsetPagination;
@@ -204,11 +269,13 @@ Agents.Docs = Docs;
 export declare namespace Agents {
   export {
     type Agent as Agent,
+    type AgentListModelsResponse as AgentListModelsResponse,
     AgentsOffsetPagination as AgentsOffsetPagination,
     type AgentCreateParams as AgentCreateParams,
     type AgentUpdateParams as AgentUpdateParams,
     type AgentListParams as AgentListParams,
     type AgentCreateOrUpdateParams as AgentCreateOrUpdateParams,
+    type AgentListModelsParams as AgentListModelsParams,
     type AgentResetParams as AgentResetParams,
   };
 
@@ -227,9 +294,11 @@ export declare namespace Agents {
 
   export {
     Docs as Docs,
+    type DocBulkDeleteResponse as DocBulkDeleteResponse,
     type DocSearchResponse as DocSearchResponse,
     type DocCreateParams as DocCreateParams,
     type DocListParams as DocListParams,
+    type DocBulkDeleteParams as DocBulkDeleteParams,
     type DocSearchParams as DocSearchParams,
   };
 }

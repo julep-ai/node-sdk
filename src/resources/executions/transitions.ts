@@ -9,6 +9,17 @@ import { type OffsetPaginationParams } from '../../pagination';
 
 export class Transitions extends APIResource {
   /**
+   * Get Execution Transition
+   */
+  retrieve(
+    executionId: string,
+    transitionId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ExecutionsAPI.Transition> {
+    return this._client.get(`/executions/${executionId}/transitions/${transitionId}`, options);
+  }
+
+  /**
    * List Execution Transitions
    */
   list(
