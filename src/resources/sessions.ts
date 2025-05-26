@@ -60,7 +60,8 @@ export class Sessions extends APIResource {
    * The background tasks to run. x_custom_api_key (Optional[str]): The custom API
    * key.
    *
-   * Returns: ChatResponse: The chat response.
+   * Returns: ChatResponse or StreamingResponse: The chat response or streaming
+   * response.
    */
   chat(
     sessionId: string,
