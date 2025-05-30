@@ -187,6 +187,13 @@ Methods:
 - <code title="get /executions/{execution_id}/transitions">client.executions.transitions.<a href="./src/resources/executions/transitions.ts">list</a>(executionId, { ...params }) -> TransitionsOffsetPagination</code>
 - <code title="get /executions/{execution_id}/transitions.stream">client.executions.transitions.<a href="./src/resources/executions/transitions.ts">stream</a>(executionId, { ...params }) -> unknown</code>
 
+## Status
+
+Methods:
+
+- <code title="get /executions/{execution_id}">client.executions.status.<a href="./src/resources/executions/status.ts">get</a>(executionId) -> Execution</code>
+- <code title="get /executions/{execution_id}/status.stream">client.executions.status.<a href="./src/resources/executions/status.ts">stream</a>(executionId) -> void</code>
+
 # Secrets
 
 Types:
