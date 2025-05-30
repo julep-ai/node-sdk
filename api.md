@@ -9,6 +9,7 @@ Types:
 Types:
 
 - <code><a href="./src/resources/agents/agents.ts">Agent</a></code>
+- <code><a href="./src/resources/agents/agents.ts">AgentListModelsResponse</a></code>
 
 Methods:
 
@@ -18,6 +19,7 @@ Methods:
 - <code title="delete /agents/{agent_id}">client.agents.<a href="./src/resources/agents/agents.ts">delete</a>(agentId) -> ResourceDeleted</code>
 - <code title="post /agents/{agent_id}">client.agents.<a href="./src/resources/agents/agents.ts">createOrUpdate</a>(agentId, { ...params }) -> Agent</code>
 - <code title="get /agents/{agent_id}">client.agents.<a href="./src/resources/agents/agents.ts">get</a>(agentId) -> Agent</code>
+- <code title="get /agents/models">client.agents.<a href="./src/resources/agents/agents.ts">listModels</a>({ ...params }) -> AgentListModelsResponse</code>
 - <code title="put /agents/{agent_id}">client.agents.<a href="./src/resources/agents/agents.ts">reset</a>(agentId, { ...params }) -> Agent</code>
 
 ## Tools
@@ -41,6 +43,7 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/agents/docs.ts">DocBulkDeleteResponse</a></code>
 - <code><a href="./src/resources/agents/docs.ts">DocSearchResponse</a></code>
 
 Methods:
@@ -48,6 +51,7 @@ Methods:
 - <code title="post /agents/{agent_id}/docs">client.agents.docs.<a href="./src/resources/agents/docs.ts">create</a>(agentId, { ...params }) -> Doc</code>
 - <code title="get /agents/{agent_id}/docs">client.agents.docs.<a href="./src/resources/agents/docs.ts">list</a>(agentId, { ...params }) -> DocsOffsetPagination</code>
 - <code title="delete /agents/{agent_id}/docs/{doc_id}">client.agents.docs.<a href="./src/resources/agents/docs.ts">delete</a>(agentId, docId) -> ResourceDeleted</code>
+- <code title="delete /agents/{agent_id}/docs">client.agents.docs.<a href="./src/resources/agents/docs.ts">bulkDelete</a>(agentId, { ...params }) -> DocBulkDeleteResponse</code>
 - <code title="post /agents/{agent_id}/search">client.agents.docs.<a href="./src/resources/agents/docs.ts">search</a>(agentId, { ...params }) -> DocSearchResponse</code>
 
 # Files
@@ -55,10 +59,12 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/files.ts">File</a></code>
+- <code><a href="./src/resources/files.ts">FileListResponse</a></code>
 
 Methods:
 
 - <code title="post /files">client.files.<a href="./src/resources/files.ts">create</a>({ ...params }) -> File</code>
+- <code title="get /files">client.files.<a href="./src/resources/files.ts">list</a>() -> FileListResponse</code>
 - <code title="delete /files/{file_id}">client.files.<a href="./src/resources/files.ts">delete</a>(fileId) -> ResourceDeleted</code>
 - <code title="get /files/{file_id}">client.files.<a href="./src/resources/files.ts">get</a>(fileId) -> File</code>
 
@@ -107,6 +113,7 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/users/docs.ts">DocBulkDeleteResponse</a></code>
 - <code><a href="./src/resources/users/docs.ts">DocSearchResponse</a></code>
 
 Methods:
@@ -114,6 +121,7 @@ Methods:
 - <code title="post /users/{user_id}/docs">client.users.docs.<a href="./src/resources/users/docs.ts">create</a>(userId, { ...params }) -> Doc</code>
 - <code title="get /users/{user_id}/docs">client.users.docs.<a href="./src/resources/users/docs.ts">list</a>(userId, { ...params }) -> DocsOffsetPagination</code>
 - <code title="delete /users/{user_id}/docs/{doc_id}">client.users.docs.<a href="./src/resources/users/docs.ts">delete</a>(userId, docId) -> ResourceDeleted</code>
+- <code title="delete /users/{user_id}/docs">client.users.docs.<a href="./src/resources/users/docs.ts">bulkDelete</a>(userId, { ...params }) -> DocBulkDeleteResponse</code>
 - <code title="post /users/{user_id}/search">client.users.docs.<a href="./src/resources/users/docs.ts">search</a>(userId, { ...params }) -> DocSearchResponse</code>
 
 # Jobs
@@ -175,5 +183,49 @@ Types:
 
 Methods:
 
+- <code title="get /executions/{execution_id}/transitions/{transition_id}">client.executions.transitions.<a href="./src/resources/executions/transitions.ts">retrieve</a>(executionId, transitionId) -> Transition</code>
 - <code title="get /executions/{execution_id}/transitions">client.executions.transitions.<a href="./src/resources/executions/transitions.ts">list</a>(executionId, { ...params }) -> TransitionsOffsetPagination</code>
 - <code title="get /executions/{execution_id}/transitions.stream">client.executions.transitions.<a href="./src/resources/executions/transitions.ts">stream</a>(executionId, { ...params }) -> unknown</code>
+
+## Status
+
+Methods:
+
+- <code title="get /executions/{execution_id}">client.executions.status.<a href="./src/resources/executions/status.ts">get</a>(executionId) -> Execution</code>
+- <code title="get /executions/{execution_id}/status.stream">client.executions.status.<a href="./src/resources/executions/status.ts">stream</a>(executionId) -> void</code>
+
+# Secrets
+
+Types:
+
+- <code><a href="./src/resources/secrets.ts">Secret</a></code>
+- <code><a href="./src/resources/secrets.ts">SecretListResponse</a></code>
+
+Methods:
+
+- <code title="post /secrets">client.secrets.<a href="./src/resources/secrets.ts">create</a>({ ...params }) -> Secret</code>
+- <code title="put /secrets/{secret_id}">client.secrets.<a href="./src/resources/secrets.ts">update</a>(secretId, { ...params }) -> Secret</code>
+- <code title="get /secrets">client.secrets.<a href="./src/resources/secrets.ts">list</a>({ ...params }) -> SecretListResponse</code>
+- <code title="delete /secrets/{secret_id}">client.secrets.<a href="./src/resources/secrets.ts">delete</a>(secretId) -> ResourceDeleted</code>
+
+# Projects
+
+Types:
+
+- <code><a href="./src/resources/projects.ts">ProjectCreateResponse</a></code>
+- <code><a href="./src/resources/projects.ts">ProjectListResponse</a></code>
+
+Methods:
+
+- <code title="post /projects">client.projects.<a href="./src/resources/projects.ts">create</a>({ ...params }) -> ProjectCreateResponse</code>
+- <code title="get /projects">client.projects.<a href="./src/resources/projects.ts">list</a>({ ...params }) -> ProjectListResponsesOffsetPagination</code>
+
+# Healthz
+
+Types:
+
+- <code><a href="./src/resources/healthz.ts">HealthzCheckResponse</a></code>
+
+Methods:
+
+- <code title="get /healthz">client.healthz.<a href="./src/resources/healthz.ts">check</a>() -> unknown</code>
