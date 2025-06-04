@@ -27,16 +27,12 @@ const client = new Julep({
   environment: 'dev', // or 'production' | 'local_multi_tenant' | 'local'; defaults to 'production'
 });
 
-async function main() {
-  const task = await client.tasks.create('dad00000-0000-4000-a000-000000000000', {
-    main: [{ evaluate: { foo: {} } }],
-    name: 'x',
-  });
+const task = await client.tasks.create('dad00000-0000-4000-a000-000000000000', {
+  main: [{ evaluate: { foo: {} } }],
+  name: 'x',
+});
 
-  console.log(task.id);
-}
-
-main();
+console.log(task.id);
 ```
 
 ### Request & Response types
@@ -52,19 +48,12 @@ const client = new Julep({
   environment: 'dev', // or 'production' | 'local_multi_tenant' | 'local'; defaults to 'production'
 });
 
-async function main() {
-  const params: Julep.AgentCreateOrUpdateParams = {
-    name: 'R2D2',
-    instructions: ['Protect Leia', 'Kick butt'],
-    model: 'o1-preview',
-  };
-  const agent: Julep.Agent = await client.agents.createOrUpdate(
-    'dad00000-0000-4000-a000-000000000000',
-    params,
-  );
-}
-
-main();
+const params: Julep.AgentCreateOrUpdateParams = {
+  name: 'R2D2',
+  instructions: ['Protect Leia', 'Kick butt'],
+  model: 'o1-preview',
+};
+const agent: Julep.Agent = await client.agents.createOrUpdate('dad00000-0000-4000-a000-000000000000', params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -77,25 +66,21 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const agent = await client.agents
-    .createOrUpdate('dad00000-0000-4000-a000-000000000000', {
-      name: 'R2D2',
-      instructions: ['Protect Leia', 'Kick butt'],
-      model: 'o1-preview',
-    })
-    .catch(async (err) => {
-      if (err instanceof Julep.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.headers); // {server: 'nginx', ...}
-      } else {
-        throw err;
-      }
-    });
-}
-
-main();
+const agent = await client.agents
+  .createOrUpdate('dad00000-0000-4000-a000-000000000000', {
+    name: 'R2D2',
+    instructions: ['Protect Leia', 'Kick butt'],
+    model: 'o1-preview',
+  })
+  .catch(async (err) => {
+    if (err instanceof Julep.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
 Error codes are as follows:
