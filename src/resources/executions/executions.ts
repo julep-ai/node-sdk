@@ -3,6 +3,8 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
+import * as StatusAPI from './status';
+import { Status } from './status';
 import * as TransitionsAPI from './transitions';
 import {
   TransitionListParams,
@@ -14,6 +16,7 @@ import { OffsetPagination, type OffsetPaginationParams } from '../../pagination'
 
 export class Executions extends APIResource {
   transitions: TransitionsAPI.Transitions = new TransitionsAPI.Transitions(this._client);
+  status: StatusAPI.Status = new StatusAPI.Status(this._client);
 
   /**
    * Create Task Execution
@@ -186,6 +189,7 @@ export declare namespace ExecutionChangeStatusParams {
 
 Executions.ExecutionsOffsetPagination = ExecutionsOffsetPagination;
 Executions.Transitions = Transitions;
+Executions.Status = Status;
 
 export declare namespace Executions {
   export {
@@ -204,4 +208,6 @@ export declare namespace Executions {
     type TransitionListParams as TransitionListParams,
     type TransitionStreamParams as TransitionStreamParams,
   };
+
+  export { Status as Status };
 }

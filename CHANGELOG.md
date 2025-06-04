@@ -1,5 +1,43 @@
 # Changelog
 
+## 2.0.0 (2025-06-04)
+
+Full Changelog: [v1.71.5...v2.0.0](https://github.com/julep-ai/node-sdk/compare/v1.71.5...v2.0.0)
+
+### Features
+
+* **api:** api update ([438c09b](https://github.com/julep-ai/node-sdk/commit/438c09b9c17666d96f9508b23cb07254f8987123))
+* **api:** api update ([edcc09c](https://github.com/julep-ai/node-sdk/commit/edcc09cce32e39e360378317a23011904a3fc338))
+* **api:** api update ([c5154b0](https://github.com/julep-ai/node-sdk/commit/c5154b0d43df7837f554741dcaddacd41c891adf))
+* **api:** api update ([7661970](https://github.com/julep-ai/node-sdk/commit/7661970c8257a610a25a695f1f4dd06739c8fc44))
+* **api:** api update ([e6bcf45](https://github.com/julep-ai/node-sdk/commit/e6bcf4531591ae8c847efbbad4bbf8649a8e78a1))
+* **api:** api update ([889138d](https://github.com/julep-ai/node-sdk/commit/889138deb4c292b39e699ece8fb73363a4ebd072))
+* **api:** api update ([6532e7a](https://github.com/julep-ai/node-sdk/commit/6532e7a2c4ced6ebafd06353c63e633bb14dfe38))
+* **api:** api update ([f3745b7](https://github.com/julep-ai/node-sdk/commit/f3745b732249b75c2b6a106a3cffd3ebb30e45cf))
+* **api:** manual updates ([a7894e2](https://github.com/julep-ai/node-sdk/commit/a7894e22d3e42cde307d1892b40d84a9f0d11178))
+* **api:** manual updates ([c6d39e0](https://github.com/julep-ai/node-sdk/commit/c6d39e01032b2b10f9527724fad6a37e5b50c5b6))
+* **api:** manual updates ([416d225](https://github.com/julep-ai/node-sdk/commit/416d2254090d7596d0d6977a3bb40ac0043d07d7))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([8105c78](https://github.com/julep-ai/node-sdk/commit/8105c78c1d2c722a366c2abed7320518431487e6))
+* **ci:** bump node version for release workflows ([3699b40](https://github.com/julep-ai/node-sdk/commit/3699b40436bed624f6835f2f6c0b06465c6cf24f))
+* **ci:** only use depot for staging repos ([ab0758f](https://github.com/julep-ai/node-sdk/commit/ab0758f4dceeb2673480e428c1e3d71adfc80337))
+* **client:** minor internal fixes ([0403a6f](https://github.com/julep-ai/node-sdk/commit/0403a6fbcfbcf579a7b906d8a08adea2ae2051e3))
+* **docs:** grammar improvements ([0c3e348](https://github.com/julep-ai/node-sdk/commit/0c3e348d43356f3a0be86c26b1934c939fd39749))
+* **docs:** use top-level-await in example snippets ([c9eee6c](https://github.com/julep-ai/node-sdk/commit/c9eee6c0a5d452d0cd806d90564192617f405322))
+* improve publish-npm script --latest tag logic ([5805fb3](https://github.com/julep-ai/node-sdk/commit/5805fb37128e0675f87625af405f55dab09a5b7d))
+* **internal:** codegen related update ([bca6b03](https://github.com/julep-ai/node-sdk/commit/bca6b03b7360e4b6193dac8b122bd64fca2c45ab))
+* **internal:** reduce CI branch coverage ([bad37ea](https://github.com/julep-ai/node-sdk/commit/bad37ea300c757af1fef456302ab210f15977f89))
+* **internal:** upload builds and expand CI branch coverage ([e2feb58](https://github.com/julep-ai/node-sdk/commit/e2feb58cee28f5f313cae78a4d995fc28153ff26))
+* update SDK settings ([a64ff32](https://github.com/julep-ai/node-sdk/commit/a64ff3289652c6b74421ad99f0d50f054a7beace))
+
+
+### Documentation
+
+* **readme:** fix typo ([fb227ad](https://github.com/julep-ai/node-sdk/commit/fb227ad1a4891ea5fd57feab31d3af32e6c672eb))
+
 ## 1.71.5 (2025-04-05)
 
 Full Changelog: [v1.71.4...v1.71.5](https://github.com/julep-ai/node-sdk/compare/v1.71.4...v1.71.5)

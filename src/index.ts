@@ -9,8 +9,25 @@ import { type OffsetPaginationParams, OffsetPaginationResponse } from './paginat
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import { Doc, DocEmbedParams, Docs, EmbedQueryResponse, Snippet } from './resources/docs';
-import { File, FileCreateParams, Files } from './resources/files';
+import { File, FileCreateParams, FileListResponse, Files } from './resources/files';
+import { Healthz, HealthzCheckResponse } from './resources/healthz';
 import { JobStatus, Jobs } from './resources/jobs';
+import {
+  ProjectCreateParams,
+  ProjectCreateResponse,
+  ProjectListParams,
+  ProjectListResponse,
+  ProjectListResponsesOffsetPagination,
+  Projects,
+} from './resources/projects';
+import {
+  Secret,
+  SecretCreateParams,
+  SecretListParams,
+  SecretListResponse,
+  SecretUpdateParams,
+  Secrets,
+} from './resources/secrets';
 import {
   ChatInput,
   ChatResponse,
@@ -41,6 +58,8 @@ import {
   Agent as AgentsAPIAgent,
   AgentCreateOrUpdateParams,
   AgentCreateParams,
+  AgentListModelsParams,
+  AgentListModelsResponse,
   AgentListParams,
   AgentResetParams,
   AgentUpdateParams,
@@ -216,6 +235,9 @@ export class Julep extends Core.APIClient {
   docs: API.Docs = new API.Docs(this);
   tasks: API.Tasks = new API.Tasks(this);
   executions: API.Executions = new API.Executions(this);
+  secrets: API.Secrets = new API.Secrets(this);
+  projects: API.Projects = new API.Projects(this);
+  healthz: API.Healthz = new API.Healthz(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -270,6 +292,10 @@ Julep.Tasks = Tasks;
 Julep.TasksOffsetPagination = TasksOffsetPagination;
 Julep.Executions = Executions;
 Julep.ExecutionsOffsetPagination = ExecutionsOffsetPagination;
+Julep.Secrets = Secrets;
+Julep.Projects = Projects;
+Julep.ProjectListResponsesOffsetPagination = ProjectListResponsesOffsetPagination;
+Julep.Healthz = Healthz;
 export declare namespace Julep {
   export type RequestOptions = Core.RequestOptions;
 
@@ -282,15 +308,22 @@ export declare namespace Julep {
   export {
     Agents as Agents,
     type AgentsAPIAgent as Agent,
+    type AgentListModelsResponse as AgentListModelsResponse,
     AgentsOffsetPagination as AgentsOffsetPagination,
     type AgentCreateParams as AgentCreateParams,
     type AgentUpdateParams as AgentUpdateParams,
     type AgentListParams as AgentListParams,
     type AgentCreateOrUpdateParams as AgentCreateOrUpdateParams,
+    type AgentListModelsParams as AgentListModelsParams,
     type AgentResetParams as AgentResetParams,
   };
 
-  export { Files as Files, type File as File, type FileCreateParams as FileCreateParams };
+  export {
+    Files as Files,
+    type File as File,
+    type FileListResponse as FileListResponse,
+    type FileCreateParams as FileCreateParams,
+  };
 
   export {
     Sessions as Sessions,
@@ -351,6 +384,26 @@ export declare namespace Julep {
     type ExecutionListParams as ExecutionListParams,
     type ExecutionChangeStatusParams as ExecutionChangeStatusParams,
   };
+
+  export {
+    Secrets as Secrets,
+    type Secret as Secret,
+    type SecretListResponse as SecretListResponse,
+    type SecretCreateParams as SecretCreateParams,
+    type SecretUpdateParams as SecretUpdateParams,
+    type SecretListParams as SecretListParams,
+  };
+
+  export {
+    Projects as Projects,
+    type ProjectCreateResponse as ProjectCreateResponse,
+    type ProjectListResponse as ProjectListResponse,
+    ProjectListResponsesOffsetPagination as ProjectListResponsesOffsetPagination,
+    type ProjectCreateParams as ProjectCreateParams,
+    type ProjectListParams as ProjectListParams,
+  };
+
+  export { Healthz as Healthz, type HealthzCheckResponse as HealthzCheckResponse };
 
   export type ResourceDeleted = API.ResourceDeleted;
 }
