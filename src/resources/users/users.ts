@@ -5,7 +5,15 @@ import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as Shared from '../shared';
 import * as DocsAPI from './docs';
-import { DocCreateParams, DocListParams, DocSearchParams, DocSearchResponse, Docs } from './docs';
+import {
+  DocBulkDeleteParams,
+  DocBulkDeleteResponse,
+  DocCreateParams,
+  DocListParams,
+  DocSearchParams,
+  DocSearchResponse,
+  Docs,
+} from './docs';
 import { OffsetPagination, type OffsetPaginationParams } from '../../pagination';
 
 export class Users extends APIResource {
@@ -87,6 +95,8 @@ export interface User {
   metadata?: unknown | null;
 
   name?: string;
+
+  project?: string | null;
 }
 
 export interface UserCreateParams {
@@ -95,6 +105,8 @@ export interface UserCreateParams {
   metadata?: unknown | null;
 
   name?: string;
+
+  project?: string | null;
 }
 
 export interface UserUpdateParams {
@@ -103,6 +115,8 @@ export interface UserUpdateParams {
   metadata?: unknown | null;
 
   name?: string;
+
+  project?: string | null;
 }
 
 export interface UserListParams extends OffsetPaginationParams {
@@ -119,6 +133,8 @@ export interface UserCreateOrUpdateParams {
   metadata?: unknown | null;
 
   name?: string;
+
+  project?: string | null;
 }
 
 export interface UserResetParams {
@@ -127,6 +143,8 @@ export interface UserResetParams {
   metadata?: unknown | null;
 
   name?: string;
+
+  project?: string | null;
 }
 
 Users.UsersOffsetPagination = UsersOffsetPagination;
@@ -145,9 +163,11 @@ export declare namespace Users {
 
   export {
     Docs as Docs,
+    type DocBulkDeleteResponse as DocBulkDeleteResponse,
     type DocSearchResponse as DocSearchResponse,
     type DocCreateParams as DocCreateParams,
     type DocListParams as DocListParams,
+    type DocBulkDeleteParams as DocBulkDeleteParams,
     type DocSearchParams as DocSearchParams,
   };
 }

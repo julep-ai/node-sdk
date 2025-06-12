@@ -4,17 +4,21 @@ export {
   AgentsOffsetPagination,
   Agents,
   type Agent,
+  type AgentListModelsResponse,
   type AgentCreateParams,
   type AgentUpdateParams,
   type AgentListParams,
   type AgentCreateOrUpdateParams,
+  type AgentListModelsParams,
   type AgentResetParams,
 } from './agents';
 export {
   Docs,
+  type DocBulkDeleteResponse,
   type DocSearchResponse,
   type DocCreateParams,
   type DocListParams,
+  type DocBulkDeleteParams,
   type DocSearchParams,
 } from './docs';
 export {
