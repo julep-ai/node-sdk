@@ -216,6 +216,7 @@ export class Julep extends Core.APIClient {
 
     super({
       baseURL: options.baseURL || environments[options.environment || 'production'],
+      baseURLOverridden: baseURL ? baseURL !== environments[options.environment || 'production'] : false,
       timeout: options.timeout ?? 120000 /* 2 minutes */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
@@ -238,6 +239,13 @@ export class Julep extends Core.APIClient {
   secrets: API.Secrets = new API.Secrets(this);
   projects: API.Projects = new API.Projects(this);
   healthz: API.Healthz = new API.Healthz(this);
+
+  /**
+   * Check whether the base URL is set to its default.
+   */
+  #baseURLOverridden(): boolean {
+    return this.baseURL !== environments[this._options.environment || 'production'];
+  }
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
