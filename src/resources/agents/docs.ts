@@ -44,11 +44,7 @@ export class Docs extends APIResource {
   /**
    * Delete Agent Doc
    */
-  delete(
-    agentId: string,
-    docId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceDeleted> {
+  delete(agentId: string, docId: string, options?: Core.RequestOptions): Core.APIPromise<DocDeleteResponse> {
     return this._client.delete(`/agents/${agentId}/docs/${docId}`, options);
   }
 
@@ -88,36 +84,30 @@ export class Docs extends APIResource {
   }
 }
 
-export type DocBulkDeleteResponse = Array<Shared.ResourceDeleted>;
+export interface DocDeleteResponse {
+  id: string;
 
-export interface DocSearchResponse {
-  docs: Array<DocSearchResponse.Doc>;
+  deleted_at: string;
 
-  time: number;
+  jobs?: Array<string>;
 }
 
-export namespace DocSearchResponse {
-  export interface Doc {
+export type DocBulkDeleteResponse = Array<DocBulkDeleteResponse.DocBulkDeleteResponseItem>;
+
+export namespace DocBulkDeleteResponse {
+  export interface DocBulkDeleteResponseItem {
     id: string;
 
-    owner: Doc.Owner;
+    deleted_at: string;
 
-    snippet: DocsAPI.Snippet;
-
-    distance?: number | null;
-
-    metadata?: unknown | null;
-
-    title?: string | null;
+    jobs?: Array<string>;
   }
+}
 
-  export namespace Doc {
-    export interface Owner {
-      id: string;
+export interface DocSearchResponse {
+  docs: Array<Shared.DocReference>;
 
-      role: 'user' | 'agent';
-    }
-  }
+  time: number;
 }
 
 export interface DocCreateParams {
@@ -296,6 +286,7 @@ export declare namespace DocSearchParams {
 
 export declare namespace Docs {
   export {
+    type DocDeleteResponse as DocDeleteResponse,
     type DocBulkDeleteResponse as DocBulkDeleteResponse,
     type DocSearchResponse as DocSearchResponse,
     type DocCreateParams as DocCreateParams,

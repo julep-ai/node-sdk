@@ -2,7 +2,6 @@
 
 import { APIResource } from '../resource';
 import * as Core from '../core';
-import * as Shared from './shared';
 
 export class Files extends APIResource {
   /**
@@ -22,7 +21,7 @@ export class Files extends APIResource {
   /**
    * Delete File
    */
-  delete(fileId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceDeleted> {
+  delete(fileId: string, options?: Core.RequestOptions): Core.APIPromise<FileDeleteResponse> {
     return this._client.delete(`/files/${fileId}`, options);
   }
 
@@ -56,6 +55,14 @@ export interface File {
 
 export type FileListResponse = Array<File>;
 
+export interface FileDeleteResponse {
+  id: string;
+
+  deleted_at: string;
+
+  jobs?: Array<string>;
+}
+
 export interface FileCreateParams {
   content: string;
 
@@ -72,6 +79,7 @@ export declare namespace Files {
   export {
     type File as File,
     type FileListResponse as FileListResponse,
+    type FileDeleteResponse as FileDeleteResponse,
     type FileCreateParams as FileCreateParams,
   };
 }
