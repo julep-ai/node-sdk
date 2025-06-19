@@ -1,5 +1,24 @@
 # Changelog
 
+## 2.1.0 (2025-06-17)
+
+Full Changelog: [v2.0.0...v2.1.0](https://github.com/julep-ai/node-sdk/compare/v2.0.0...v2.1.0)
+
+### Features
+
+* **client:** add support for endpoint-specific base URLs ([ac6f8aa](https://github.com/julep-ai/node-sdk/commit/ac6f8aaf9a3079ff1d7c7d784008d22465196658))
+
+
+### Bug Fixes
+
+* publish script — handle NPM errors correctly ([1549179](https://github.com/julep-ai/node-sdk/commit/1549179cc3a032171f96737f3774f116c3cfaa87))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([8098403](https://github.com/julep-ai/node-sdk/commit/80984031cd9a82ba57c6d29d9d0bec0aeb619a15))
+* **internal:** make base APIResource abstract ([8fffc77](https://github.com/julep-ai/node-sdk/commit/8fffc7791a9a167f4f3fee01a35ea6a4ea71147a))
+
 ## 2.0.0 (2025-06-04)
 
 Full Changelog: [v1.71.5...v2.0.0](https://github.com/julep-ai/node-sdk/compare/v1.71.5...v2.0.0)
