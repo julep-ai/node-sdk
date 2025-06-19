@@ -24,6 +24,7 @@ export {
 export {
   ToolListResponsesOffsetPagination,
   Tools,
+  type BrowserbaseSetupUpdate,
   type ToolCreateResponse,
   type ToolUpdateResponse,
   type ToolListResponse,

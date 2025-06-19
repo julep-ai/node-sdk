@@ -3,7 +3,7 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as DocsAPI from './docs';
+import * as SessionsAPI from './sessions';
 import * as Shared from './shared';
 import { OffsetPagination, type OffsetPaginationParams } from '../pagination';
 
@@ -136,6 +136,14 @@ export class Sessions extends APIResource {
 
 export class SessionsOffsetPagination extends OffsetPagination<Session> {}
 
+export interface BaseTokenLogProb {
+  token: string;
+
+  logprob: number;
+
+  bytes?: Array<number> | null;
+}
+
 export interface ChatInput {
   messages: Array<ChatInput.Message>;
 
@@ -161,10 +169,7 @@ export interface ChatInput {
 
   repetition_penalty?: number | null;
 
-  response_format?:
-    | ChatInput.SimpleCompletionResponseFormat
-    | ChatInput.SchemaCompletionResponseFormat
-    | null;
+  response_format?: SimpleCompletionResponseFormat | SchemaCompletionResponseFormat | null;
 
   save?: boolean;
 
@@ -176,7 +181,7 @@ export interface ChatInput {
 
   temperature?: number | null;
 
-  tool_choice?: 'auto' | 'none' | ChatInput.NamedToolChoice | null;
+  tool_choice?: 'auto' | 'none' | Shared.NamedToolChoice | null;
 
   tools?: Array<ChatInput.Tool> | null;
 
@@ -200,10 +205,10 @@ export namespace ChatInput {
     tool_call_id?: string | null;
 
     tool_calls?: Array<
-      | Message.ChosenFunctionCall
-      | Message.ChosenComputer20241022
-      | Message.ChosenTextEditor20241022
-      | Message.ChosenBash20241022
+      | SessionsAPI.ChosenFunctionCall
+      | SessionsAPI.ChosenComputer20241022
+      | SessionsAPI.ChosenTextEditor20241022
+      | SessionsAPI.ChosenBash20241022
     > | null;
   }
 
@@ -270,134 +275,6 @@ export namespace ChatInput {
         }
       }
     }
-
-    export interface ChosenFunctionCall {
-      function: ChosenFunctionCall.Function;
-
-      id?: string | null;
-
-      api_call?: unknown;
-
-      bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-      computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-      integration?: unknown;
-
-      system?: unknown;
-
-      text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-      type?: 'function';
-    }
-
-    export namespace ChosenFunctionCall {
-      export interface Function {
-        name: string;
-
-        arguments?: string | null;
-      }
-
-      export interface Bash20241022 {
-        command?: string | null;
-
-        restart?: boolean;
-      }
-
-      export interface Computer20241022 {
-        action:
-          | 'key'
-          | 'type'
-          | 'cursor_position'
-          | 'mouse_move'
-          | 'left_click'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot';
-
-        coordinate?: Array<number> | null;
-
-        text?: string | null;
-      }
-
-      export interface TextEditor20241022 {
-        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-        path: string;
-
-        file_text?: string | null;
-
-        insert_line?: number | null;
-
-        new_str?: string | null;
-
-        old_str?: string | null;
-
-        view_range?: Array<number> | null;
-      }
-    }
-
-    export interface ChosenComputer20241022 {
-      action:
-        | 'key'
-        | 'type'
-        | 'cursor_position'
-        | 'mouse_move'
-        | 'left_click'
-        | 'right_click'
-        | 'middle_click'
-        | 'double_click'
-        | 'screenshot';
-
-      coordinate?: Array<number> | null;
-
-      text?: string | null;
-    }
-
-    export interface ChosenTextEditor20241022 {
-      command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-      path: string;
-
-      file_text?: string | null;
-
-      insert_line?: number | null;
-
-      new_str?: string | null;
-
-      old_str?: string | null;
-
-      view_range?: Array<number> | null;
-    }
-
-    export interface ChosenBash20241022 {
-      command?: string | null;
-
-      restart?: boolean;
-    }
-  }
-
-  export interface SimpleCompletionResponseFormat {
-    type?: 'text' | 'json_object';
-  }
-
-  export interface SchemaCompletionResponseFormat {
-    json_schema: unknown;
-
-    type?: 'json_schema';
-  }
-
-  export interface NamedToolChoice {
-    function?: NamedToolChoice.Function | null;
-  }
-
-  export namespace NamedToolChoice {
-    export interface Function {
-      name: string;
-
-      arguments?: string | null;
-    }
   }
 
   /**
@@ -418,1005 +295,56 @@ export namespace ChatInput {
     /**
      * API call definition
      */
-    api_call?: Tool.APICall | null;
+    api_call?: Shared.APICallDef | null;
 
-    bash_20241022?: Tool.Bash20241022 | null;
+    bash_20241022?: Shared.Bash20241022Def | null;
 
     /**
      * Anthropic new tools
      */
-    computer_20241022?: Tool.Computer20241022 | null;
+    computer_20241022?: Shared.Computer20241022Def | null;
 
     description?: string | null;
 
     /**
      * Function definition
      */
-    function?: Tool.Function | null;
+    function?: Shared.FunctionDef | null;
 
     /**
      * Brave integration definition
      */
     integration?:
-      | Tool.DummyIntegrationDef
-      | Tool.BraveIntegrationDef
-      | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDef
-      | Tool.WikipediaIntegrationDef
-      | Tool.WeatherIntegrationDef
-      | Tool.MailgunIntegrationDef
-      | Tool.BrowserbaseContextIntegrationDef
-      | Tool.BrowserbaseExtensionIntegrationDef
-      | Tool.BrowserbaseListSessionsIntegrationDef
-      | Tool.BrowserbaseCreateSessionIntegrationDef
-      | Tool.BrowserbaseGetSessionIntegrationDef
-      | Tool.BrowserbaseCompleteSessionIntegrationDef
-      | Tool.BrowserbaseGetSessionLiveURLsIntegrationDef
-      | Tool.RemoteBrowserIntegrationDef
-      | Tool.LlamaParseIntegrationDef
-      | Tool.FfmpegIntegrationDef
-      | Tool.CloudinaryUploadIntegrationDef
-      | Tool.CloudinaryEditIntegrationDef
-      | Tool.ArxivIntegrationDef
-      | Tool.UnstructuredIntegrationDef
-      | Tool.AlgoliaIntegrationDef
+      | Shared.DummyIntegrationDef
+      | Shared.BraveIntegrationDef
+      | Shared.EmailIntegrationDef
+      | Shared.SpiderIntegrationDef
+      | Shared.WikipediaIntegrationDef
+      | Shared.WeatherIntegrationDef
+      | Shared.MailgunIntegrationDef
+      | Shared.BrowserbaseContextIntegrationDef
+      | Shared.BrowserbaseExtensionIntegrationDef
+      | Shared.BrowserbaseListSessionsIntegrationDef
+      | Shared.BrowserbaseCreateSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionIntegrationDef
+      | Shared.BrowserbaseCompleteSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionLiveURLsIntegrationDef
+      | Shared.RemoteBrowserIntegrationDef
+      | Shared.LlamaParseIntegrationDef
+      | Shared.FfmpegIntegrationDef
+      | Shared.CloudinaryUploadIntegrationDef
+      | Shared.CloudinaryEditIntegrationDef
+      | Shared.ArxivIntegrationDef
+      | Shared.UnstructuredIntegrationDef
+      | Shared.AlgoliaIntegrationDef
       | null;
 
     /**
      * System definition
      */
-    system?: Tool.System | null;
+    system?: Shared.SystemDef | null;
 
-    text_editor_20241022?: Tool.TextEditor20241022 | null;
-  }
-
-  export namespace Tool {
-    /**
-     * API call definition
-     */
-    export interface APICall {
-      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
-
-      url: string;
-
-      content?: string | null;
-
-      cookies?: Record<string, string> | null;
-
-      data?: unknown | null;
-
-      files?: unknown | null;
-
-      follow_redirects?: boolean | null;
-
-      headers?: Record<string, string> | null;
-
-      include_response_content?: boolean;
-
-      json?: unknown | null;
-
-      params?: string | unknown | null;
-
-      schema?: unknown | null;
-
-      secrets?: Record<string, APICall.Secrets> | null;
-
-      timeout?: number | null;
-    }
-
-    export namespace APICall {
-      export interface Secrets {
-        name: string;
-      }
-    }
-
-    export interface Bash20241022 {
-      name?: string;
-
-      type?: 'bash_20241022';
-    }
-
-    /**
-     * Anthropic new tools
-     */
-    export interface Computer20241022 {
-      display_height_px?: number;
-
-      display_number?: number;
-
-      display_width_px?: number;
-
-      name?: string;
-
-      type?: 'computer_20241022';
-    }
-
-    /**
-     * Function definition
-     */
-    export interface Function {
-      description?: unknown;
-
-      name?: unknown;
-
-      parameters?: unknown | null;
-    }
-
-    export interface DummyIntegrationDef {
-      arguments?: unknown;
-
-      method?: string | null;
-
-      provider?: 'dummy';
-
-      setup?: unknown;
-    }
-
-    /**
-     * Brave integration definition
-     */
-    export interface BraveIntegrationDef {
-      /**
-       * Arguments for Brave Search
-       */
-      arguments?: BraveIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'brave';
-
-      /**
-       * Integration definition for Brave Search
-       */
-      setup?: BraveIntegrationDef.Setup | null;
-    }
-
-    export namespace BraveIntegrationDef {
-      /**
-       * Arguments for Brave Search
-       */
-      export interface Arguments {
-        query: string;
-      }
-
-      /**
-       * Integration definition for Brave Search
-       */
-      export interface Setup {
-        brave_api_key: string;
-      }
-    }
-
-    /**
-     * Email integration definition
-     */
-    export interface EmailIntegrationDef {
-      /**
-       * Arguments for Email sending
-       */
-      arguments?: EmailIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'email';
-
-      /**
-       * Setup parameters for Email integration
-       */
-      setup?: EmailIntegrationDef.Setup | null;
-    }
-
-    export namespace EmailIntegrationDef {
-      /**
-       * Arguments for Email sending
-       */
-      export interface Arguments {
-        body: string;
-
-        from: string;
-
-        subject: string;
-
-        to: string;
-      }
-
-      /**
-       * Setup parameters for Email integration
-       */
-      export interface Setup {
-        host: string;
-
-        password: string;
-
-        port: number;
-
-        user: string;
-      }
-    }
-
-    /**
-     * Spider integration definition
-     */
-    export interface SpiderIntegrationDef {
-      /**
-       * Arguments for Spider integration
-       */
-      arguments?: SpiderIntegrationDef.Arguments | null;
-
-      method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
-
-      provider?: 'spider';
-
-      /**
-       * Setup parameters for Spider integration
-       */
-      setup?: SpiderIntegrationDef.Setup | null;
-    }
-
-    export namespace SpiderIntegrationDef {
-      /**
-       * Arguments for Spider integration
-       */
-      export interface Arguments {
-        url: string;
-
-        content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
-
-        params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Spider integration
-       */
-      export interface Setup {
-        spider_api_key: string;
-      }
-    }
-
-    /**
-     * Wikipedia integration definition
-     */
-    export interface WikipediaIntegrationDef {
-      /**
-       * Arguments for Wikipedia Search
-       */
-      arguments?: WikipediaIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'wikipedia';
-
-      setup?: unknown;
-    }
-
-    export namespace WikipediaIntegrationDef {
-      /**
-       * Arguments for Wikipedia Search
-       */
-      export interface Arguments {
-        query: string;
-
-        load_max_docs?: number;
-      }
-    }
-
-    /**
-     * Weather integration definition
-     */
-    export interface WeatherIntegrationDef {
-      /**
-       * Arguments for Weather
-       */
-      arguments?: WeatherIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'weather';
-
-      /**
-       * Integration definition for Weather
-       */
-      setup?: WeatherIntegrationDef.Setup | null;
-    }
-
-    export namespace WeatherIntegrationDef {
-      /**
-       * Arguments for Weather
-       */
-      export interface Arguments {
-        location: string;
-      }
-
-      /**
-       * Integration definition for Weather
-       */
-      export interface Setup {
-        openweathermap_api_key: string;
-      }
-    }
-
-    /**
-     * Mailgun integration definition
-     */
-    export interface MailgunIntegrationDef {
-      /**
-       * Arguments for mailgun.send_email method
-       */
-      arguments?: MailgunIntegrationDef.Arguments | null;
-
-      method?: 'send_email' | null;
-
-      provider?: 'mailgun';
-
-      /**
-       * Setup parameters for Mailgun integration
-       */
-      setup?: MailgunIntegrationDef.Setup | null;
-    }
-
-    export namespace MailgunIntegrationDef {
-      /**
-       * Arguments for mailgun.send_email method
-       */
-      export interface Arguments {
-        body: string;
-
-        from: string;
-
-        subject: string;
-
-        to: string;
-
-        bcc?: string | null;
-
-        cc?: string | null;
-      }
-
-      /**
-       * Setup parameters for Mailgun integration
-       */
-      export interface Setup {
-        api_key: string;
-      }
-    }
-
-    /**
-     * browserbase context provider
-     */
-    export interface BrowserbaseContextIntegrationDef {
-      arguments?: BrowserbaseContextIntegrationDef.Arguments | null;
-
-      method?: 'create_context';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseContextIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseContextIntegrationDef {
-      export interface Arguments {
-        projectId: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase extension provider
-     */
-    export interface BrowserbaseExtensionIntegrationDef {
-      arguments?: BrowserbaseExtensionIntegrationDef.Arguments | null;
-
-      method?: 'install_extension_from_github' | null;
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseExtensionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseExtensionIntegrationDef {
-      export interface Arguments {
-        repositoryName: string;
-
-        ref?: string | null;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase list sessions integration definition
-     */
-    export interface BrowserbaseListSessionsIntegrationDef {
-      arguments?: BrowserbaseListSessionsIntegrationDef.Arguments | null;
-
-      method?: 'list_sessions';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseListSessionsIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseListSessionsIntegrationDef {
-      export interface Arguments {
-        status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED' | null;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase create session integration definition
-     */
-    export interface BrowserbaseCreateSessionIntegrationDef {
-      arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
-
-      method?: 'create_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseCreateSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseCreateSessionIntegrationDef {
-      export interface Arguments {
-        browserSettings?: unknown;
-
-        extensionId?: string | null;
-
-        keepAlive?: boolean;
-
-        projectId?: string | null;
-
-        proxies?: boolean | Array<unknown>;
-
-        timeout?: number;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase get session integration definition
-     */
-    export interface BrowserbaseGetSessionIntegrationDef {
-      arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
-
-      method?: 'get_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseGetSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseGetSessionIntegrationDef {
-      export interface Arguments {
-        id: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase complete session integration definition
-     */
-    export interface BrowserbaseCompleteSessionIntegrationDef {
-      arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
-
-      method?: 'complete_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseCompleteSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseCompleteSessionIntegrationDef {
-      export interface Arguments {
-        id: string;
-
-        status?: 'REQUEST_RELEASE';
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase get session live urls integration definition
-     */
-    export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-      arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
-
-      method?: 'get_live_urls';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseGetSessionLiveURLsIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseGetSessionLiveURLsIntegrationDef {
-      export interface Arguments {
-        id: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * The integration definition for the remote browser
-     */
-    export interface RemoteBrowserIntegrationDef {
-      /**
-       * The setup parameters for the remote browser
-       */
-      setup: RemoteBrowserIntegrationDef.Setup;
-
-      /**
-       * The arguments for the remote browser
-       */
-      arguments?: RemoteBrowserIntegrationDef.Arguments | null;
-
-      method?: 'perform_action';
-
-      provider?: 'remote_browser';
-    }
-
-    export namespace RemoteBrowserIntegrationDef {
-      /**
-       * The setup parameters for the remote browser
-       */
-      export interface Setup {
-        connect_url?: string | null;
-
-        height?: number | null;
-
-        width?: number | null;
-      }
-
-      /**
-       * The arguments for the remote browser
-       */
-      export interface Arguments {
-        action:
-          | 'key'
-          | 'type'
-          | 'mouse_move'
-          | 'left_click'
-          | 'left_click_drag'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot'
-          | 'cursor_position'
-          | 'navigate'
-          | 'refresh';
-
-        connect_url?: string | null;
-
-        coordinate?: Array<unknown> | null;
-
-        text?: string | null;
-      }
-    }
-
-    /**
-     * LlamaParse integration definition
-     */
-    export interface LlamaParseIntegrationDef {
-      /**
-       * Arguments for LlamaParse integration
-       */
-      arguments?: LlamaParseIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'llama_parse';
-
-      /**
-       * Setup parameters for LlamaParse integration
-       */
-      setup?: LlamaParseIntegrationDef.Setup | null;
-    }
-
-    export namespace LlamaParseIntegrationDef {
-      /**
-       * Arguments for LlamaParse integration
-       */
-      export interface Arguments {
-        file: string | Array<string>;
-
-        base64?: boolean;
-
-        filename?: string | null;
-
-        params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for LlamaParse integration
-       */
-      export interface Setup {
-        llamaparse_api_key: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Ffmpeg integration definition
-     */
-    export interface FfmpegIntegrationDef {
-      /**
-       * Arguments for Ffmpeg CMD
-       */
-      arguments?: FfmpegIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'ffmpeg';
-
-      setup?: unknown;
-    }
-
-    export namespace FfmpegIntegrationDef {
-      /**
-       * Arguments for Ffmpeg CMD
-       */
-      export interface Arguments {
-        cmd: string;
-
-        file?: string | Array<string> | null;
-      }
-    }
-
-    /**
-     * Cloudinary upload integration definition
-     */
-    export interface CloudinaryUploadIntegrationDef {
-      /**
-       * Arguments for Cloudinary media upload
-       */
-      arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
-
-      method?: 'media_upload';
-
-      provider?: 'cloudinary';
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      setup?: CloudinaryUploadIntegrationDef.Setup | null;
-    }
-
-    export namespace CloudinaryUploadIntegrationDef {
-      /**
-       * Arguments for Cloudinary media upload
-       */
-      export interface Arguments {
-        file: string;
-
-        public_id?: string | null;
-
-        return_base64?: boolean;
-
-        upload_params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      export interface Setup {
-        cloudinary_api_key: string;
-
-        cloudinary_api_secret: string;
-
-        cloudinary_cloud_name: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Cloudinary edit integration definition
-     */
-    export interface CloudinaryEditIntegrationDef {
-      /**
-       * Arguments for Cloudinary media edit
-       */
-      arguments?: CloudinaryEditIntegrationDef.Arguments | null;
-
-      method?: 'media_edit';
-
-      provider?: 'cloudinary';
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      setup?: CloudinaryEditIntegrationDef.Setup | null;
-    }
-
-    export namespace CloudinaryEditIntegrationDef {
-      /**
-       * Arguments for Cloudinary media edit
-       */
-      export interface Arguments {
-        public_id: string;
-
-        transformation: Array<unknown>;
-
-        return_base64?: boolean;
-      }
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      export interface Setup {
-        cloudinary_api_key: string;
-
-        cloudinary_api_secret: string;
-
-        cloudinary_cloud_name: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Arxiv integration definition
-     */
-    export interface ArxivIntegrationDef {
-      /**
-       * Arguments for Arxiv Search
-       */
-      arguments?: ArxivIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'arxiv';
-
-      setup?: unknown;
-    }
-
-    export namespace ArxivIntegrationDef {
-      /**
-       * Arguments for Arxiv Search
-       */
-      export interface Arguments {
-        query: string;
-
-        download_pdf?: boolean;
-
-        id_list?: Array<string> | null;
-
-        max_results?: number;
-
-        sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
-
-        sort_order?: 'ascending' | 'descending';
-      }
-    }
-
-    /**
-     * Unstructured integration definition
-     */
-    export interface UnstructuredIntegrationDef {
-      /**
-       * Arguments for Unstructured partition integration
-       */
-      arguments?: UnstructuredIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'unstructured';
-
-      /**
-       * Setup parameters for Unstructured integration
-       */
-      setup?: UnstructuredIntegrationDef.Setup | null;
-    }
-
-    export namespace UnstructuredIntegrationDef {
-      /**
-       * Arguments for Unstructured partition integration
-       */
-      export interface Arguments {
-        file: string;
-
-        filename?: string | null;
-
-        partition_params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Unstructured integration
-       */
-      export interface Setup {
-        unstructured_api_key: string;
-
-        retry_config?: unknown | null;
-
-        server?: string | null;
-
-        server_url?: string | null;
-
-        timeout_ms?: number | null;
-
-        url_params?: unknown | null;
-      }
-    }
-
-    /**
-     * Algolia integration definition
-     */
-    export interface AlgoliaIntegrationDef {
-      /**
-       * Arguments for Algolia Search
-       */
-      arguments?: AlgoliaIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'algolia';
-
-      /**
-       * Integration definition for Algolia
-       */
-      setup?: AlgoliaIntegrationDef.Setup | null;
-    }
-
-    export namespace AlgoliaIntegrationDef {
-      /**
-       * Arguments for Algolia Search
-       */
-      export interface Arguments {
-        index_name: string;
-
-        query: string;
-
-        attributes_to_retrieve?: Array<string> | null;
-
-        hits_per_page?: number;
-      }
-
-      /**
-       * Integration definition for Algolia
-       */
-      export interface Setup {
-        algolia_api_key: string;
-
-        algolia_application_id: string;
-      }
-    }
-
-    /**
-     * System definition
-     */
-    export interface System {
-      operation:
-        | 'create'
-        | 'update'
-        | 'patch'
-        | 'create_or_update'
-        | 'embed'
-        | 'change_status'
-        | 'search'
-        | 'chat'
-        | 'history'
-        | 'delete'
-        | 'get'
-        | 'list';
-
-      resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
-
-      arguments?: unknown | null;
-
-      resource_id?: string | null;
-
-      subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
-    }
-
-    export interface TextEditor20241022 {
-      name?: string;
-
-      type?: 'text_editor_20241022';
-    }
+    text_editor_20241022?: Shared.TextEditor20241022Def | null;
   }
 }
 
@@ -1427,7 +355,7 @@ export interface ChatResponse {
 
   created_at: string;
 
-  docs?: Array<ChatResponse.Doc>;
+  docs?: Array<Shared.DocReference>;
 
   jobs?: Array<string>;
 
@@ -1449,13 +377,13 @@ export namespace ChatResponse {
 
     finish_reason?: 'stop' | 'length' | 'content_filter' | 'tool_calls';
 
-    logprobs?: SingleChatOutput.Logprobs | null;
+    logprobs?: SessionsAPI.LogProbResponse | null;
 
     tool_calls?: Array<
-      | SingleChatOutput.ChosenFunctionCall
-      | SingleChatOutput.ChosenComputer20241022
-      | SingleChatOutput.ChosenTextEditor20241022
-      | SingleChatOutput.ChosenBash20241022
+      | SessionsAPI.ChosenFunctionCall
+      | SessionsAPI.ChosenComputer20241022
+      | SessionsAPI.ChosenTextEditor20241022
+      | SessionsAPI.ChosenBash20241022
     > | null;
   }
 
@@ -1478,10 +406,10 @@ export namespace ChatResponse {
       tool_call_id?: string | null;
 
       tool_calls?: Array<
-        | Message.ChosenFunctionCall
-        | Message.ChosenComputer20241022
-        | Message.ChosenTextEditor20241022
-        | Message.ChosenBash20241022
+        | SessionsAPI.ChosenFunctionCall
+        | SessionsAPI.ChosenComputer20241022
+        | SessionsAPI.ChosenTextEditor20241022
+        | SessionsAPI.ChosenBash20241022
       > | null;
     }
 
@@ -1546,244 +474,6 @@ export namespace ChatResponse {
           }
         }
       }
-
-      export interface ChosenFunctionCall {
-        function: ChosenFunctionCall.Function;
-
-        id?: string | null;
-
-        api_call?: unknown;
-
-        bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-        computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-        integration?: unknown;
-
-        system?: unknown;
-
-        text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-        type?: 'function';
-      }
-
-      export namespace ChosenFunctionCall {
-        export interface Function {
-          name: string;
-
-          arguments?: string | null;
-        }
-
-        export interface Bash20241022 {
-          command?: string | null;
-
-          restart?: boolean;
-        }
-
-        export interface Computer20241022 {
-          action:
-            | 'key'
-            | 'type'
-            | 'cursor_position'
-            | 'mouse_move'
-            | 'left_click'
-            | 'right_click'
-            | 'middle_click'
-            | 'double_click'
-            | 'screenshot';
-
-          coordinate?: Array<number> | null;
-
-          text?: string | null;
-        }
-
-        export interface TextEditor20241022 {
-          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-          path: string;
-
-          file_text?: string | null;
-
-          insert_line?: number | null;
-
-          new_str?: string | null;
-
-          old_str?: string | null;
-
-          view_range?: Array<number> | null;
-        }
-      }
-
-      export interface ChosenComputer20241022 {
-        action:
-          | 'key'
-          | 'type'
-          | 'cursor_position'
-          | 'mouse_move'
-          | 'left_click'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot';
-
-        coordinate?: Array<number> | null;
-
-        text?: string | null;
-      }
-
-      export interface ChosenTextEditor20241022 {
-        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-        path: string;
-
-        file_text?: string | null;
-
-        insert_line?: number | null;
-
-        new_str?: string | null;
-
-        old_str?: string | null;
-
-        view_range?: Array<number> | null;
-      }
-
-      export interface ChosenBash20241022 {
-        command?: string | null;
-
-        restart?: boolean;
-      }
-    }
-
-    export interface Logprobs {
-      content: Array<Logprobs.Content> | null;
-    }
-
-    export namespace Logprobs {
-      export interface Content {
-        token: string;
-
-        logprob: number;
-
-        top_logprobs: Array<Content.TopLogprob>;
-
-        bytes?: Array<number> | null;
-      }
-
-      export namespace Content {
-        export interface TopLogprob {
-          token: string;
-
-          logprob: number;
-
-          bytes?: Array<number> | null;
-        }
-      }
-    }
-
-    export interface ChosenFunctionCall {
-      function: ChosenFunctionCall.Function;
-
-      id?: string | null;
-
-      api_call?: unknown;
-
-      bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-      computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-      integration?: unknown;
-
-      system?: unknown;
-
-      text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-      type?: 'function';
-    }
-
-    export namespace ChosenFunctionCall {
-      export interface Function {
-        name: string;
-
-        arguments?: string | null;
-      }
-
-      export interface Bash20241022 {
-        command?: string | null;
-
-        restart?: boolean;
-      }
-
-      export interface Computer20241022 {
-        action:
-          | 'key'
-          | 'type'
-          | 'cursor_position'
-          | 'mouse_move'
-          | 'left_click'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot';
-
-        coordinate?: Array<number> | null;
-
-        text?: string | null;
-      }
-
-      export interface TextEditor20241022 {
-        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-        path: string;
-
-        file_text?: string | null;
-
-        insert_line?: number | null;
-
-        new_str?: string | null;
-
-        old_str?: string | null;
-
-        view_range?: Array<number> | null;
-      }
-    }
-
-    export interface ChosenComputer20241022 {
-      action:
-        | 'key'
-        | 'type'
-        | 'cursor_position'
-        | 'mouse_move'
-        | 'left_click'
-        | 'right_click'
-        | 'middle_click'
-        | 'double_click'
-        | 'screenshot';
-
-      coordinate?: Array<number> | null;
-
-      text?: string | null;
-    }
-
-    export interface ChosenTextEditor20241022 {
-      command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-      path: string;
-
-      file_text?: string | null;
-
-      insert_line?: number | null;
-
-      new_str?: string | null;
-
-      old_str?: string | null;
-
-      view_range?: Array<number> | null;
-    }
-
-    export interface ChosenBash20241022 {
-      command?: string | null;
-
-      restart?: boolean;
     }
   }
 
@@ -1798,13 +488,13 @@ export namespace ChatResponse {
 
     finish_reason?: 'stop' | 'length' | 'content_filter' | 'tool_calls';
 
-    logprobs?: MultipleChatOutput.Logprobs | null;
+    logprobs?: SessionsAPI.LogProbResponse | null;
 
     tool_calls?: Array<
-      | MultipleChatOutput.ChosenFunctionCall
-      | MultipleChatOutput.ChosenComputer20241022
-      | MultipleChatOutput.ChosenTextEditor20241022
-      | MultipleChatOutput.ChosenBash20241022
+      | SessionsAPI.ChosenFunctionCall
+      | SessionsAPI.ChosenComputer20241022
+      | SessionsAPI.ChosenTextEditor20241022
+      | SessionsAPI.ChosenBash20241022
     > | null;
   }
 
@@ -1827,10 +517,10 @@ export namespace ChatResponse {
       tool_call_id?: string | null;
 
       tool_calls?: Array<
-        | Message.ChosenFunctionCall
-        | Message.ChosenComputer20241022
-        | Message.ChosenTextEditor20241022
-        | Message.ChosenBash20241022
+        | SessionsAPI.ChosenFunctionCall
+        | SessionsAPI.ChosenComputer20241022
+        | SessionsAPI.ChosenTextEditor20241022
+        | SessionsAPI.ChosenBash20241022
       > | null;
     }
 
@@ -1895,266 +585,6 @@ export namespace ChatResponse {
           }
         }
       }
-
-      export interface ChosenFunctionCall {
-        function: ChosenFunctionCall.Function;
-
-        id?: string | null;
-
-        api_call?: unknown;
-
-        bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-        computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-        integration?: unknown;
-
-        system?: unknown;
-
-        text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-        type?: 'function';
-      }
-
-      export namespace ChosenFunctionCall {
-        export interface Function {
-          name: string;
-
-          arguments?: string | null;
-        }
-
-        export interface Bash20241022 {
-          command?: string | null;
-
-          restart?: boolean;
-        }
-
-        export interface Computer20241022 {
-          action:
-            | 'key'
-            | 'type'
-            | 'cursor_position'
-            | 'mouse_move'
-            | 'left_click'
-            | 'right_click'
-            | 'middle_click'
-            | 'double_click'
-            | 'screenshot';
-
-          coordinate?: Array<number> | null;
-
-          text?: string | null;
-        }
-
-        export interface TextEditor20241022 {
-          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-          path: string;
-
-          file_text?: string | null;
-
-          insert_line?: number | null;
-
-          new_str?: string | null;
-
-          old_str?: string | null;
-
-          view_range?: Array<number> | null;
-        }
-      }
-
-      export interface ChosenComputer20241022 {
-        action:
-          | 'key'
-          | 'type'
-          | 'cursor_position'
-          | 'mouse_move'
-          | 'left_click'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot';
-
-        coordinate?: Array<number> | null;
-
-        text?: string | null;
-      }
-
-      export interface ChosenTextEditor20241022 {
-        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-        path: string;
-
-        file_text?: string | null;
-
-        insert_line?: number | null;
-
-        new_str?: string | null;
-
-        old_str?: string | null;
-
-        view_range?: Array<number> | null;
-      }
-
-      export interface ChosenBash20241022 {
-        command?: string | null;
-
-        restart?: boolean;
-      }
-    }
-
-    export interface Logprobs {
-      content: Array<Logprobs.Content> | null;
-    }
-
-    export namespace Logprobs {
-      export interface Content {
-        token: string;
-
-        logprob: number;
-
-        top_logprobs: Array<Content.TopLogprob>;
-
-        bytes?: Array<number> | null;
-      }
-
-      export namespace Content {
-        export interface TopLogprob {
-          token: string;
-
-          logprob: number;
-
-          bytes?: Array<number> | null;
-        }
-      }
-    }
-
-    export interface ChosenFunctionCall {
-      function: ChosenFunctionCall.Function;
-
-      id?: string | null;
-
-      api_call?: unknown;
-
-      bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-      computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-      integration?: unknown;
-
-      system?: unknown;
-
-      text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-      type?: 'function';
-    }
-
-    export namespace ChosenFunctionCall {
-      export interface Function {
-        name: string;
-
-        arguments?: string | null;
-      }
-
-      export interface Bash20241022 {
-        command?: string | null;
-
-        restart?: boolean;
-      }
-
-      export interface Computer20241022 {
-        action:
-          | 'key'
-          | 'type'
-          | 'cursor_position'
-          | 'mouse_move'
-          | 'left_click'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot';
-
-        coordinate?: Array<number> | null;
-
-        text?: string | null;
-      }
-
-      export interface TextEditor20241022 {
-        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-        path: string;
-
-        file_text?: string | null;
-
-        insert_line?: number | null;
-
-        new_str?: string | null;
-
-        old_str?: string | null;
-
-        view_range?: Array<number> | null;
-      }
-    }
-
-    export interface ChosenComputer20241022 {
-      action:
-        | 'key'
-        | 'type'
-        | 'cursor_position'
-        | 'mouse_move'
-        | 'left_click'
-        | 'right_click'
-        | 'middle_click'
-        | 'double_click'
-        | 'screenshot';
-
-      coordinate?: Array<number> | null;
-
-      text?: string | null;
-    }
-
-    export interface ChosenTextEditor20241022 {
-      command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-      path: string;
-
-      file_text?: string | null;
-
-      insert_line?: number | null;
-
-      new_str?: string | null;
-
-      old_str?: string | null;
-
-      view_range?: Array<number> | null;
-    }
-
-    export interface ChosenBash20241022 {
-      command?: string | null;
-
-      restart?: boolean;
-    }
-  }
-
-  export interface Doc {
-    id: string;
-
-    owner: Doc.Owner;
-
-    snippet: DocsAPI.Snippet;
-
-    distance?: number | null;
-
-    metadata?: unknown | null;
-
-    title?: string | null;
-  }
-
-  export namespace Doc {
-    export interface Owner {
-      id: string;
-
-      role: 'user' | 'agent';
     }
   }
 
@@ -2170,6 +600,65 @@ export namespace ChatResponse {
   }
 }
 
+export interface ChosenBash20241022 {
+  command?: string | null;
+
+  restart?: boolean;
+}
+
+export interface ChosenComputer20241022 {
+  action:
+    | 'key'
+    | 'type'
+    | 'cursor_position'
+    | 'mouse_move'
+    | 'left_click'
+    | 'right_click'
+    | 'middle_click'
+    | 'double_click'
+    | 'screenshot';
+
+  coordinate?: Array<number> | null;
+
+  text?: string | null;
+}
+
+export interface ChosenFunctionCall {
+  function: Shared.FunctionCallOption;
+
+  id?: string | null;
+
+  api_call?: unknown;
+
+  bash_20241022?: ChosenBash20241022 | null;
+
+  computer_20241022?: ChosenComputer20241022 | null;
+
+  integration?: unknown;
+
+  system?: unknown;
+
+  text_editor_20241022?: ChosenTextEditor20241022 | null;
+
+  type?: 'function';
+}
+
+export interface ChosenTextEditor20241022 {
+  command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
+
+  path: string;
+
+  file_text?: string | null;
+
+  insert_line?: number | null;
+
+  new_str?: string | null;
+
+  old_str?: string | null;
+
+  view_range?: Array<number> | null;
+}
+
 export interface Entry {
   id: string;
 
@@ -2178,10 +667,10 @@ export interface Entry {
         Entry.Content | Entry.AgentsAPIAutogenEntriesContentModel3 | Entry.AgentsAPIAutogenEntriesContentModel
       >
     | Entry.Tool
-    | Entry.ChosenFunctionCall
-    | Entry.ChosenComputer20241022
-    | Entry.ChosenTextEditor20241022
-    | Entry.ChosenBash20241022
+    | ChosenFunctionCall
+    | ChosenComputer20241022
+    | ChosenTextEditor20241022
+    | ChosenBash20241022
     | string
     | Entry.ToolResponse
     | Array<
@@ -2191,10 +680,10 @@ export interface Entry {
             | Entry.AgentsAPIAutogenEntriesContentModel2
           >
         | Entry.Tool
-        | Entry.ChosenFunctionCall
-        | Entry.ChosenComputer20241022
-        | Entry.ChosenTextEditor20241022
-        | Entry.ChosenBash20241022
+        | ChosenFunctionCall
+        | ChosenComputer20241022
+        | ChosenTextEditor20241022
+        | ChosenBash20241022
         | string
         | Entry.ToolResponse
       >;
@@ -2218,10 +707,7 @@ export interface Entry {
   tool_call_id?: string | null;
 
   tool_calls?: Array<
-    | Entry.ChosenFunctionCall
-    | Entry.ChosenComputer20241022
-    | Entry.ChosenTextEditor20241022
-    | Entry.ChosenBash20241022
+    ChosenFunctionCall | ChosenComputer20241022 | ChosenTextEditor20241022 | ChosenBash20241022
   > | null;
 }
 
@@ -2310,1111 +796,56 @@ export namespace Entry {
     /**
      * API call definition
      */
-    api_call?: Tool.APICall | null;
+    api_call?: Shared.APICallDef | null;
 
-    bash_20241022?: Tool.Bash20241022 | null;
+    bash_20241022?: Shared.Bash20241022Def | null;
 
     /**
      * Anthropic new tools
      */
-    computer_20241022?: Tool.Computer20241022 | null;
+    computer_20241022?: Shared.Computer20241022Def | null;
 
     description?: string | null;
 
     /**
      * Function definition
      */
-    function?: Tool.Function | null;
+    function?: Shared.FunctionDef | null;
 
     /**
      * Brave integration definition
      */
     integration?:
-      | Tool.DummyIntegrationDef
-      | Tool.BraveIntegrationDef
-      | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDef
-      | Tool.WikipediaIntegrationDef
-      | Tool.WeatherIntegrationDef
-      | Tool.MailgunIntegrationDef
-      | Tool.BrowserbaseContextIntegrationDef
-      | Tool.BrowserbaseExtensionIntegrationDef
-      | Tool.BrowserbaseListSessionsIntegrationDef
-      | Tool.BrowserbaseCreateSessionIntegrationDef
-      | Tool.BrowserbaseGetSessionIntegrationDef
-      | Tool.BrowserbaseCompleteSessionIntegrationDef
-      | Tool.BrowserbaseGetSessionLiveURLsIntegrationDef
-      | Tool.RemoteBrowserIntegrationDef
-      | Tool.LlamaParseIntegrationDef
-      | Tool.FfmpegIntegrationDef
-      | Tool.CloudinaryUploadIntegrationDef
-      | Tool.CloudinaryEditIntegrationDef
-      | Tool.ArxivIntegrationDef
-      | Tool.UnstructuredIntegrationDef
-      | Tool.AlgoliaIntegrationDef
+      | Shared.DummyIntegrationDef
+      | Shared.BraveIntegrationDef
+      | Shared.EmailIntegrationDef
+      | Shared.SpiderIntegrationDef
+      | Shared.WikipediaIntegrationDef
+      | Shared.WeatherIntegrationDef
+      | Shared.MailgunIntegrationDef
+      | Shared.BrowserbaseContextIntegrationDef
+      | Shared.BrowserbaseExtensionIntegrationDef
+      | Shared.BrowserbaseListSessionsIntegrationDef
+      | Shared.BrowserbaseCreateSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionIntegrationDef
+      | Shared.BrowserbaseCompleteSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionLiveURLsIntegrationDef
+      | Shared.RemoteBrowserIntegrationDef
+      | Shared.LlamaParseIntegrationDef
+      | Shared.FfmpegIntegrationDef
+      | Shared.CloudinaryUploadIntegrationDef
+      | Shared.CloudinaryEditIntegrationDef
+      | Shared.ArxivIntegrationDef
+      | Shared.UnstructuredIntegrationDef
+      | Shared.AlgoliaIntegrationDef
       | null;
 
     /**
      * System definition
      */
-    system?: Tool.System | null;
+    system?: Shared.SystemDef | null;
 
-    text_editor_20241022?: Tool.TextEditor20241022 | null;
-  }
-
-  export namespace Tool {
-    /**
-     * API call definition
-     */
-    export interface APICall {
-      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
-
-      url: string;
-
-      content?: string | null;
-
-      cookies?: Record<string, string> | null;
-
-      data?: unknown | null;
-
-      files?: unknown | null;
-
-      follow_redirects?: boolean | null;
-
-      headers?: Record<string, string> | null;
-
-      include_response_content?: boolean;
-
-      json?: unknown | null;
-
-      params?: string | unknown | null;
-
-      schema?: unknown | null;
-
-      secrets?: Record<string, APICall.Secrets> | null;
-
-      timeout?: number | null;
-    }
-
-    export namespace APICall {
-      export interface Secrets {
-        name: string;
-      }
-    }
-
-    export interface Bash20241022 {
-      name?: string;
-
-      type?: 'bash_20241022';
-    }
-
-    /**
-     * Anthropic new tools
-     */
-    export interface Computer20241022 {
-      display_height_px?: number;
-
-      display_number?: number;
-
-      display_width_px?: number;
-
-      name?: string;
-
-      type?: 'computer_20241022';
-    }
-
-    /**
-     * Function definition
-     */
-    export interface Function {
-      description?: unknown;
-
-      name?: unknown;
-
-      parameters?: unknown | null;
-    }
-
-    export interface DummyIntegrationDef {
-      arguments?: unknown;
-
-      method?: string | null;
-
-      provider?: 'dummy';
-
-      setup?: unknown;
-    }
-
-    /**
-     * Brave integration definition
-     */
-    export interface BraveIntegrationDef {
-      /**
-       * Arguments for Brave Search
-       */
-      arguments?: BraveIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'brave';
-
-      /**
-       * Integration definition for Brave Search
-       */
-      setup?: BraveIntegrationDef.Setup | null;
-    }
-
-    export namespace BraveIntegrationDef {
-      /**
-       * Arguments for Brave Search
-       */
-      export interface Arguments {
-        query: string;
-      }
-
-      /**
-       * Integration definition for Brave Search
-       */
-      export interface Setup {
-        brave_api_key: string;
-      }
-    }
-
-    /**
-     * Email integration definition
-     */
-    export interface EmailIntegrationDef {
-      /**
-       * Arguments for Email sending
-       */
-      arguments?: EmailIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'email';
-
-      /**
-       * Setup parameters for Email integration
-       */
-      setup?: EmailIntegrationDef.Setup | null;
-    }
-
-    export namespace EmailIntegrationDef {
-      /**
-       * Arguments for Email sending
-       */
-      export interface Arguments {
-        body: string;
-
-        from: string;
-
-        subject: string;
-
-        to: string;
-      }
-
-      /**
-       * Setup parameters for Email integration
-       */
-      export interface Setup {
-        host: string;
-
-        password: string;
-
-        port: number;
-
-        user: string;
-      }
-    }
-
-    /**
-     * Spider integration definition
-     */
-    export interface SpiderIntegrationDef {
-      /**
-       * Arguments for Spider integration
-       */
-      arguments?: SpiderIntegrationDef.Arguments | null;
-
-      method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
-
-      provider?: 'spider';
-
-      /**
-       * Setup parameters for Spider integration
-       */
-      setup?: SpiderIntegrationDef.Setup | null;
-    }
-
-    export namespace SpiderIntegrationDef {
-      /**
-       * Arguments for Spider integration
-       */
-      export interface Arguments {
-        url: string;
-
-        content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
-
-        params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Spider integration
-       */
-      export interface Setup {
-        spider_api_key: string;
-      }
-    }
-
-    /**
-     * Wikipedia integration definition
-     */
-    export interface WikipediaIntegrationDef {
-      /**
-       * Arguments for Wikipedia Search
-       */
-      arguments?: WikipediaIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'wikipedia';
-
-      setup?: unknown;
-    }
-
-    export namespace WikipediaIntegrationDef {
-      /**
-       * Arguments for Wikipedia Search
-       */
-      export interface Arguments {
-        query: string;
-
-        load_max_docs?: number;
-      }
-    }
-
-    /**
-     * Weather integration definition
-     */
-    export interface WeatherIntegrationDef {
-      /**
-       * Arguments for Weather
-       */
-      arguments?: WeatherIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'weather';
-
-      /**
-       * Integration definition for Weather
-       */
-      setup?: WeatherIntegrationDef.Setup | null;
-    }
-
-    export namespace WeatherIntegrationDef {
-      /**
-       * Arguments for Weather
-       */
-      export interface Arguments {
-        location: string;
-      }
-
-      /**
-       * Integration definition for Weather
-       */
-      export interface Setup {
-        openweathermap_api_key: string;
-      }
-    }
-
-    /**
-     * Mailgun integration definition
-     */
-    export interface MailgunIntegrationDef {
-      /**
-       * Arguments for mailgun.send_email method
-       */
-      arguments?: MailgunIntegrationDef.Arguments | null;
-
-      method?: 'send_email' | null;
-
-      provider?: 'mailgun';
-
-      /**
-       * Setup parameters for Mailgun integration
-       */
-      setup?: MailgunIntegrationDef.Setup | null;
-    }
-
-    export namespace MailgunIntegrationDef {
-      /**
-       * Arguments for mailgun.send_email method
-       */
-      export interface Arguments {
-        body: string;
-
-        from: string;
-
-        subject: string;
-
-        to: string;
-
-        bcc?: string | null;
-
-        cc?: string | null;
-      }
-
-      /**
-       * Setup parameters for Mailgun integration
-       */
-      export interface Setup {
-        api_key: string;
-      }
-    }
-
-    /**
-     * browserbase context provider
-     */
-    export interface BrowserbaseContextIntegrationDef {
-      arguments?: BrowserbaseContextIntegrationDef.Arguments | null;
-
-      method?: 'create_context';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseContextIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseContextIntegrationDef {
-      export interface Arguments {
-        projectId: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase extension provider
-     */
-    export interface BrowserbaseExtensionIntegrationDef {
-      arguments?: BrowserbaseExtensionIntegrationDef.Arguments | null;
-
-      method?: 'install_extension_from_github' | null;
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseExtensionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseExtensionIntegrationDef {
-      export interface Arguments {
-        repositoryName: string;
-
-        ref?: string | null;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase list sessions integration definition
-     */
-    export interface BrowserbaseListSessionsIntegrationDef {
-      arguments?: BrowserbaseListSessionsIntegrationDef.Arguments | null;
-
-      method?: 'list_sessions';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseListSessionsIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseListSessionsIntegrationDef {
-      export interface Arguments {
-        status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED' | null;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase create session integration definition
-     */
-    export interface BrowserbaseCreateSessionIntegrationDef {
-      arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
-
-      method?: 'create_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseCreateSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseCreateSessionIntegrationDef {
-      export interface Arguments {
-        browserSettings?: unknown;
-
-        extensionId?: string | null;
-
-        keepAlive?: boolean;
-
-        projectId?: string | null;
-
-        proxies?: boolean | Array<unknown>;
-
-        timeout?: number;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase get session integration definition
-     */
-    export interface BrowserbaseGetSessionIntegrationDef {
-      arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
-
-      method?: 'get_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseGetSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseGetSessionIntegrationDef {
-      export interface Arguments {
-        id: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase complete session integration definition
-     */
-    export interface BrowserbaseCompleteSessionIntegrationDef {
-      arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
-
-      method?: 'complete_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseCompleteSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseCompleteSessionIntegrationDef {
-      export interface Arguments {
-        id: string;
-
-        status?: 'REQUEST_RELEASE';
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase get session live urls integration definition
-     */
-    export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-      arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
-
-      method?: 'get_live_urls';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseGetSessionLiveURLsIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseGetSessionLiveURLsIntegrationDef {
-      export interface Arguments {
-        id: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * The integration definition for the remote browser
-     */
-    export interface RemoteBrowserIntegrationDef {
-      /**
-       * The setup parameters for the remote browser
-       */
-      setup: RemoteBrowserIntegrationDef.Setup;
-
-      /**
-       * The arguments for the remote browser
-       */
-      arguments?: RemoteBrowserIntegrationDef.Arguments | null;
-
-      method?: 'perform_action';
-
-      provider?: 'remote_browser';
-    }
-
-    export namespace RemoteBrowserIntegrationDef {
-      /**
-       * The setup parameters for the remote browser
-       */
-      export interface Setup {
-        connect_url?: string | null;
-
-        height?: number | null;
-
-        width?: number | null;
-      }
-
-      /**
-       * The arguments for the remote browser
-       */
-      export interface Arguments {
-        action:
-          | 'key'
-          | 'type'
-          | 'mouse_move'
-          | 'left_click'
-          | 'left_click_drag'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot'
-          | 'cursor_position'
-          | 'navigate'
-          | 'refresh';
-
-        connect_url?: string | null;
-
-        coordinate?: Array<unknown> | null;
-
-        text?: string | null;
-      }
-    }
-
-    /**
-     * LlamaParse integration definition
-     */
-    export interface LlamaParseIntegrationDef {
-      /**
-       * Arguments for LlamaParse integration
-       */
-      arguments?: LlamaParseIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'llama_parse';
-
-      /**
-       * Setup parameters for LlamaParse integration
-       */
-      setup?: LlamaParseIntegrationDef.Setup | null;
-    }
-
-    export namespace LlamaParseIntegrationDef {
-      /**
-       * Arguments for LlamaParse integration
-       */
-      export interface Arguments {
-        file: string | Array<string>;
-
-        base64?: boolean;
-
-        filename?: string | null;
-
-        params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for LlamaParse integration
-       */
-      export interface Setup {
-        llamaparse_api_key: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Ffmpeg integration definition
-     */
-    export interface FfmpegIntegrationDef {
-      /**
-       * Arguments for Ffmpeg CMD
-       */
-      arguments?: FfmpegIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'ffmpeg';
-
-      setup?: unknown;
-    }
-
-    export namespace FfmpegIntegrationDef {
-      /**
-       * Arguments for Ffmpeg CMD
-       */
-      export interface Arguments {
-        cmd: string;
-
-        file?: string | Array<string> | null;
-      }
-    }
-
-    /**
-     * Cloudinary upload integration definition
-     */
-    export interface CloudinaryUploadIntegrationDef {
-      /**
-       * Arguments for Cloudinary media upload
-       */
-      arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
-
-      method?: 'media_upload';
-
-      provider?: 'cloudinary';
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      setup?: CloudinaryUploadIntegrationDef.Setup | null;
-    }
-
-    export namespace CloudinaryUploadIntegrationDef {
-      /**
-       * Arguments for Cloudinary media upload
-       */
-      export interface Arguments {
-        file: string;
-
-        public_id?: string | null;
-
-        return_base64?: boolean;
-
-        upload_params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      export interface Setup {
-        cloudinary_api_key: string;
-
-        cloudinary_api_secret: string;
-
-        cloudinary_cloud_name: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Cloudinary edit integration definition
-     */
-    export interface CloudinaryEditIntegrationDef {
-      /**
-       * Arguments for Cloudinary media edit
-       */
-      arguments?: CloudinaryEditIntegrationDef.Arguments | null;
-
-      method?: 'media_edit';
-
-      provider?: 'cloudinary';
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      setup?: CloudinaryEditIntegrationDef.Setup | null;
-    }
-
-    export namespace CloudinaryEditIntegrationDef {
-      /**
-       * Arguments for Cloudinary media edit
-       */
-      export interface Arguments {
-        public_id: string;
-
-        transformation: Array<unknown>;
-
-        return_base64?: boolean;
-      }
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      export interface Setup {
-        cloudinary_api_key: string;
-
-        cloudinary_api_secret: string;
-
-        cloudinary_cloud_name: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Arxiv integration definition
-     */
-    export interface ArxivIntegrationDef {
-      /**
-       * Arguments for Arxiv Search
-       */
-      arguments?: ArxivIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'arxiv';
-
-      setup?: unknown;
-    }
-
-    export namespace ArxivIntegrationDef {
-      /**
-       * Arguments for Arxiv Search
-       */
-      export interface Arguments {
-        query: string;
-
-        download_pdf?: boolean;
-
-        id_list?: Array<string> | null;
-
-        max_results?: number;
-
-        sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
-
-        sort_order?: 'ascending' | 'descending';
-      }
-    }
-
-    /**
-     * Unstructured integration definition
-     */
-    export interface UnstructuredIntegrationDef {
-      /**
-       * Arguments for Unstructured partition integration
-       */
-      arguments?: UnstructuredIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'unstructured';
-
-      /**
-       * Setup parameters for Unstructured integration
-       */
-      setup?: UnstructuredIntegrationDef.Setup | null;
-    }
-
-    export namespace UnstructuredIntegrationDef {
-      /**
-       * Arguments for Unstructured partition integration
-       */
-      export interface Arguments {
-        file: string;
-
-        filename?: string | null;
-
-        partition_params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Unstructured integration
-       */
-      export interface Setup {
-        unstructured_api_key: string;
-
-        retry_config?: unknown | null;
-
-        server?: string | null;
-
-        server_url?: string | null;
-
-        timeout_ms?: number | null;
-
-        url_params?: unknown | null;
-      }
-    }
-
-    /**
-     * Algolia integration definition
-     */
-    export interface AlgoliaIntegrationDef {
-      /**
-       * Arguments for Algolia Search
-       */
-      arguments?: AlgoliaIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'algolia';
-
-      /**
-       * Integration definition for Algolia
-       */
-      setup?: AlgoliaIntegrationDef.Setup | null;
-    }
-
-    export namespace AlgoliaIntegrationDef {
-      /**
-       * Arguments for Algolia Search
-       */
-      export interface Arguments {
-        index_name: string;
-
-        query: string;
-
-        attributes_to_retrieve?: Array<string> | null;
-
-        hits_per_page?: number;
-      }
-
-      /**
-       * Integration definition for Algolia
-       */
-      export interface Setup {
-        algolia_api_key: string;
-
-        algolia_application_id: string;
-      }
-    }
-
-    /**
-     * System definition
-     */
-    export interface System {
-      operation:
-        | 'create'
-        | 'update'
-        | 'patch'
-        | 'create_or_update'
-        | 'embed'
-        | 'change_status'
-        | 'search'
-        | 'chat'
-        | 'history'
-        | 'delete'
-        | 'get'
-        | 'list';
-
-      resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
-
-      arguments?: unknown | null;
-
-      resource_id?: string | null;
-
-      subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
-    }
-
-    export interface TextEditor20241022 {
-      name?: string;
-
-      type?: 'text_editor_20241022';
-    }
-  }
-
-  export interface ChosenFunctionCall {
-    function: ChosenFunctionCall.Function;
-
-    id?: string | null;
-
-    api_call?: unknown;
-
-    bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-    computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-    integration?: unknown;
-
-    system?: unknown;
-
-    text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-    type?: 'function';
-  }
-
-  export namespace ChosenFunctionCall {
-    export interface Function {
-      name: string;
-
-      arguments?: string | null;
-    }
-
-    export interface Bash20241022 {
-      command?: string | null;
-
-      restart?: boolean;
-    }
-
-    export interface Computer20241022 {
-      action:
-        | 'key'
-        | 'type'
-        | 'cursor_position'
-        | 'mouse_move'
-        | 'left_click'
-        | 'right_click'
-        | 'middle_click'
-        | 'double_click'
-        | 'screenshot';
-
-      coordinate?: Array<number> | null;
-
-      text?: string | null;
-    }
-
-    export interface TextEditor20241022 {
-      command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-      path: string;
-
-      file_text?: string | null;
-
-      insert_line?: number | null;
-
-      new_str?: string | null;
-
-      old_str?: string | null;
-
-      view_range?: Array<number> | null;
-    }
-  }
-
-  export interface ChosenComputer20241022 {
-    action:
-      | 'key'
-      | 'type'
-      | 'cursor_position'
-      | 'mouse_move'
-      | 'left_click'
-      | 'right_click'
-      | 'middle_click'
-      | 'double_click'
-      | 'screenshot';
-
-    coordinate?: Array<number> | null;
-
-    text?: string | null;
-  }
-
-  export interface ChosenTextEditor20241022 {
-    command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-    path: string;
-
-    file_text?: string | null;
-
-    insert_line?: number | null;
-
-    new_str?: string | null;
-
-    old_str?: string | null;
-
-    view_range?: Array<number> | null;
-  }
-
-  export interface ChosenBash20241022 {
-    command?: string | null;
-
-    restart?: boolean;
+    text_editor_20241022?: Shared.TextEditor20241022Def | null;
   }
 
   export interface ToolResponse {
@@ -3507,1223 +938,62 @@ export namespace Entry {
     /**
      * API call definition
      */
-    api_call?: Tool.APICall | null;
+    api_call?: Shared.APICallDef | null;
 
-    bash_20241022?: Tool.Bash20241022 | null;
+    bash_20241022?: Shared.Bash20241022Def | null;
 
     /**
      * Anthropic new tools
      */
-    computer_20241022?: Tool.Computer20241022 | null;
+    computer_20241022?: Shared.Computer20241022Def | null;
 
     description?: string | null;
 
     /**
      * Function definition
      */
-    function?: Tool.Function | null;
+    function?: Shared.FunctionDef | null;
 
     /**
      * Brave integration definition
      */
     integration?:
-      | Tool.DummyIntegrationDef
-      | Tool.BraveIntegrationDef
-      | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDef
-      | Tool.WikipediaIntegrationDef
-      | Tool.WeatherIntegrationDef
-      | Tool.MailgunIntegrationDef
-      | Tool.BrowserbaseContextIntegrationDef
-      | Tool.BrowserbaseExtensionIntegrationDef
-      | Tool.BrowserbaseListSessionsIntegrationDef
-      | Tool.BrowserbaseCreateSessionIntegrationDef
-      | Tool.BrowserbaseGetSessionIntegrationDef
-      | Tool.BrowserbaseCompleteSessionIntegrationDef
-      | Tool.BrowserbaseGetSessionLiveURLsIntegrationDef
-      | Tool.RemoteBrowserIntegrationDef
-      | Tool.LlamaParseIntegrationDef
-      | Tool.FfmpegIntegrationDef
-      | Tool.CloudinaryUploadIntegrationDef
-      | Tool.CloudinaryEditIntegrationDef
-      | Tool.ArxivIntegrationDef
-      | Tool.UnstructuredIntegrationDef
-      | Tool.AlgoliaIntegrationDef
+      | Shared.DummyIntegrationDef
+      | Shared.BraveIntegrationDef
+      | Shared.EmailIntegrationDef
+      | Shared.SpiderIntegrationDef
+      | Shared.WikipediaIntegrationDef
+      | Shared.WeatherIntegrationDef
+      | Shared.MailgunIntegrationDef
+      | Shared.BrowserbaseContextIntegrationDef
+      | Shared.BrowserbaseExtensionIntegrationDef
+      | Shared.BrowserbaseListSessionsIntegrationDef
+      | Shared.BrowserbaseCreateSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionIntegrationDef
+      | Shared.BrowserbaseCompleteSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionLiveURLsIntegrationDef
+      | Shared.RemoteBrowserIntegrationDef
+      | Shared.LlamaParseIntegrationDef
+      | Shared.FfmpegIntegrationDef
+      | Shared.CloudinaryUploadIntegrationDef
+      | Shared.CloudinaryEditIntegrationDef
+      | Shared.ArxivIntegrationDef
+      | Shared.UnstructuredIntegrationDef
+      | Shared.AlgoliaIntegrationDef
       | null;
 
     /**
      * System definition
      */
-    system?: Tool.System | null;
+    system?: Shared.SystemDef | null;
 
-    text_editor_20241022?: Tool.TextEditor20241022 | null;
-  }
-
-  export namespace Tool {
-    /**
-     * API call definition
-     */
-    export interface APICall {
-      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
-
-      url: string;
-
-      content?: string | null;
-
-      cookies?: Record<string, string> | null;
-
-      data?: unknown | null;
-
-      files?: unknown | null;
-
-      follow_redirects?: boolean | null;
-
-      headers?: Record<string, string> | null;
-
-      include_response_content?: boolean;
-
-      json?: unknown | null;
-
-      params?: string | unknown | null;
-
-      schema?: unknown | null;
-
-      secrets?: Record<string, APICall.Secrets> | null;
-
-      timeout?: number | null;
-    }
-
-    export namespace APICall {
-      export interface Secrets {
-        name: string;
-      }
-    }
-
-    export interface Bash20241022 {
-      name?: string;
-
-      type?: 'bash_20241022';
-    }
-
-    /**
-     * Anthropic new tools
-     */
-    export interface Computer20241022 {
-      display_height_px?: number;
-
-      display_number?: number;
-
-      display_width_px?: number;
-
-      name?: string;
-
-      type?: 'computer_20241022';
-    }
-
-    /**
-     * Function definition
-     */
-    export interface Function {
-      description?: unknown;
-
-      name?: unknown;
-
-      parameters?: unknown | null;
-    }
-
-    export interface DummyIntegrationDef {
-      arguments?: unknown;
-
-      method?: string | null;
-
-      provider?: 'dummy';
-
-      setup?: unknown;
-    }
-
-    /**
-     * Brave integration definition
-     */
-    export interface BraveIntegrationDef {
-      /**
-       * Arguments for Brave Search
-       */
-      arguments?: BraveIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'brave';
-
-      /**
-       * Integration definition for Brave Search
-       */
-      setup?: BraveIntegrationDef.Setup | null;
-    }
-
-    export namespace BraveIntegrationDef {
-      /**
-       * Arguments for Brave Search
-       */
-      export interface Arguments {
-        query: string;
-      }
-
-      /**
-       * Integration definition for Brave Search
-       */
-      export interface Setup {
-        brave_api_key: string;
-      }
-    }
-
-    /**
-     * Email integration definition
-     */
-    export interface EmailIntegrationDef {
-      /**
-       * Arguments for Email sending
-       */
-      arguments?: EmailIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'email';
-
-      /**
-       * Setup parameters for Email integration
-       */
-      setup?: EmailIntegrationDef.Setup | null;
-    }
-
-    export namespace EmailIntegrationDef {
-      /**
-       * Arguments for Email sending
-       */
-      export interface Arguments {
-        body: string;
-
-        from: string;
-
-        subject: string;
-
-        to: string;
-      }
-
-      /**
-       * Setup parameters for Email integration
-       */
-      export interface Setup {
-        host: string;
-
-        password: string;
-
-        port: number;
-
-        user: string;
-      }
-    }
-
-    /**
-     * Spider integration definition
-     */
-    export interface SpiderIntegrationDef {
-      /**
-       * Arguments for Spider integration
-       */
-      arguments?: SpiderIntegrationDef.Arguments | null;
-
-      method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
-
-      provider?: 'spider';
-
-      /**
-       * Setup parameters for Spider integration
-       */
-      setup?: SpiderIntegrationDef.Setup | null;
-    }
-
-    export namespace SpiderIntegrationDef {
-      /**
-       * Arguments for Spider integration
-       */
-      export interface Arguments {
-        url: string;
-
-        content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
-
-        params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Spider integration
-       */
-      export interface Setup {
-        spider_api_key: string;
-      }
-    }
-
-    /**
-     * Wikipedia integration definition
-     */
-    export interface WikipediaIntegrationDef {
-      /**
-       * Arguments for Wikipedia Search
-       */
-      arguments?: WikipediaIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'wikipedia';
-
-      setup?: unknown;
-    }
-
-    export namespace WikipediaIntegrationDef {
-      /**
-       * Arguments for Wikipedia Search
-       */
-      export interface Arguments {
-        query: string;
-
-        load_max_docs?: number;
-      }
-    }
-
-    /**
-     * Weather integration definition
-     */
-    export interface WeatherIntegrationDef {
-      /**
-       * Arguments for Weather
-       */
-      arguments?: WeatherIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'weather';
-
-      /**
-       * Integration definition for Weather
-       */
-      setup?: WeatherIntegrationDef.Setup | null;
-    }
-
-    export namespace WeatherIntegrationDef {
-      /**
-       * Arguments for Weather
-       */
-      export interface Arguments {
-        location: string;
-      }
-
-      /**
-       * Integration definition for Weather
-       */
-      export interface Setup {
-        openweathermap_api_key: string;
-      }
-    }
-
-    /**
-     * Mailgun integration definition
-     */
-    export interface MailgunIntegrationDef {
-      /**
-       * Arguments for mailgun.send_email method
-       */
-      arguments?: MailgunIntegrationDef.Arguments | null;
-
-      method?: 'send_email' | null;
-
-      provider?: 'mailgun';
-
-      /**
-       * Setup parameters for Mailgun integration
-       */
-      setup?: MailgunIntegrationDef.Setup | null;
-    }
-
-    export namespace MailgunIntegrationDef {
-      /**
-       * Arguments for mailgun.send_email method
-       */
-      export interface Arguments {
-        body: string;
-
-        from: string;
-
-        subject: string;
-
-        to: string;
-
-        bcc?: string | null;
-
-        cc?: string | null;
-      }
-
-      /**
-       * Setup parameters for Mailgun integration
-       */
-      export interface Setup {
-        api_key: string;
-      }
-    }
-
-    /**
-     * browserbase context provider
-     */
-    export interface BrowserbaseContextIntegrationDef {
-      arguments?: BrowserbaseContextIntegrationDef.Arguments | null;
-
-      method?: 'create_context';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseContextIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseContextIntegrationDef {
-      export interface Arguments {
-        projectId: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase extension provider
-     */
-    export interface BrowserbaseExtensionIntegrationDef {
-      arguments?: BrowserbaseExtensionIntegrationDef.Arguments | null;
-
-      method?: 'install_extension_from_github' | null;
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseExtensionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseExtensionIntegrationDef {
-      export interface Arguments {
-        repositoryName: string;
-
-        ref?: string | null;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase list sessions integration definition
-     */
-    export interface BrowserbaseListSessionsIntegrationDef {
-      arguments?: BrowserbaseListSessionsIntegrationDef.Arguments | null;
-
-      method?: 'list_sessions';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseListSessionsIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseListSessionsIntegrationDef {
-      export interface Arguments {
-        status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED' | null;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase create session integration definition
-     */
-    export interface BrowserbaseCreateSessionIntegrationDef {
-      arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
-
-      method?: 'create_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseCreateSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseCreateSessionIntegrationDef {
-      export interface Arguments {
-        browserSettings?: unknown;
-
-        extensionId?: string | null;
-
-        keepAlive?: boolean;
-
-        projectId?: string | null;
-
-        proxies?: boolean | Array<unknown>;
-
-        timeout?: number;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase get session integration definition
-     */
-    export interface BrowserbaseGetSessionIntegrationDef {
-      arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
-
-      method?: 'get_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseGetSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseGetSessionIntegrationDef {
-      export interface Arguments {
-        id: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase complete session integration definition
-     */
-    export interface BrowserbaseCompleteSessionIntegrationDef {
-      arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
-
-      method?: 'complete_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseCompleteSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseCompleteSessionIntegrationDef {
-      export interface Arguments {
-        id: string;
-
-        status?: 'REQUEST_RELEASE';
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase get session live urls integration definition
-     */
-    export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-      arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
-
-      method?: 'get_live_urls';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseGetSessionLiveURLsIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseGetSessionLiveURLsIntegrationDef {
-      export interface Arguments {
-        id: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * The integration definition for the remote browser
-     */
-    export interface RemoteBrowserIntegrationDef {
-      /**
-       * The setup parameters for the remote browser
-       */
-      setup: RemoteBrowserIntegrationDef.Setup;
-
-      /**
-       * The arguments for the remote browser
-       */
-      arguments?: RemoteBrowserIntegrationDef.Arguments | null;
-
-      method?: 'perform_action';
-
-      provider?: 'remote_browser';
-    }
-
-    export namespace RemoteBrowserIntegrationDef {
-      /**
-       * The setup parameters for the remote browser
-       */
-      export interface Setup {
-        connect_url?: string | null;
-
-        height?: number | null;
-
-        width?: number | null;
-      }
-
-      /**
-       * The arguments for the remote browser
-       */
-      export interface Arguments {
-        action:
-          | 'key'
-          | 'type'
-          | 'mouse_move'
-          | 'left_click'
-          | 'left_click_drag'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot'
-          | 'cursor_position'
-          | 'navigate'
-          | 'refresh';
-
-        connect_url?: string | null;
-
-        coordinate?: Array<unknown> | null;
-
-        text?: string | null;
-      }
-    }
-
-    /**
-     * LlamaParse integration definition
-     */
-    export interface LlamaParseIntegrationDef {
-      /**
-       * Arguments for LlamaParse integration
-       */
-      arguments?: LlamaParseIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'llama_parse';
-
-      /**
-       * Setup parameters for LlamaParse integration
-       */
-      setup?: LlamaParseIntegrationDef.Setup | null;
-    }
-
-    export namespace LlamaParseIntegrationDef {
-      /**
-       * Arguments for LlamaParse integration
-       */
-      export interface Arguments {
-        file: string | Array<string>;
-
-        base64?: boolean;
-
-        filename?: string | null;
-
-        params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for LlamaParse integration
-       */
-      export interface Setup {
-        llamaparse_api_key: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Ffmpeg integration definition
-     */
-    export interface FfmpegIntegrationDef {
-      /**
-       * Arguments for Ffmpeg CMD
-       */
-      arguments?: FfmpegIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'ffmpeg';
-
-      setup?: unknown;
-    }
-
-    export namespace FfmpegIntegrationDef {
-      /**
-       * Arguments for Ffmpeg CMD
-       */
-      export interface Arguments {
-        cmd: string;
-
-        file?: string | Array<string> | null;
-      }
-    }
-
-    /**
-     * Cloudinary upload integration definition
-     */
-    export interface CloudinaryUploadIntegrationDef {
-      /**
-       * Arguments for Cloudinary media upload
-       */
-      arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
-
-      method?: 'media_upload';
-
-      provider?: 'cloudinary';
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      setup?: CloudinaryUploadIntegrationDef.Setup | null;
-    }
-
-    export namespace CloudinaryUploadIntegrationDef {
-      /**
-       * Arguments for Cloudinary media upload
-       */
-      export interface Arguments {
-        file: string;
-
-        public_id?: string | null;
-
-        return_base64?: boolean;
-
-        upload_params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      export interface Setup {
-        cloudinary_api_key: string;
-
-        cloudinary_api_secret: string;
-
-        cloudinary_cloud_name: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Cloudinary edit integration definition
-     */
-    export interface CloudinaryEditIntegrationDef {
-      /**
-       * Arguments for Cloudinary media edit
-       */
-      arguments?: CloudinaryEditIntegrationDef.Arguments | null;
-
-      method?: 'media_edit';
-
-      provider?: 'cloudinary';
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      setup?: CloudinaryEditIntegrationDef.Setup | null;
-    }
-
-    export namespace CloudinaryEditIntegrationDef {
-      /**
-       * Arguments for Cloudinary media edit
-       */
-      export interface Arguments {
-        public_id: string;
-
-        transformation: Array<unknown>;
-
-        return_base64?: boolean;
-      }
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      export interface Setup {
-        cloudinary_api_key: string;
-
-        cloudinary_api_secret: string;
-
-        cloudinary_cloud_name: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Arxiv integration definition
-     */
-    export interface ArxivIntegrationDef {
-      /**
-       * Arguments for Arxiv Search
-       */
-      arguments?: ArxivIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'arxiv';
-
-      setup?: unknown;
-    }
-
-    export namespace ArxivIntegrationDef {
-      /**
-       * Arguments for Arxiv Search
-       */
-      export interface Arguments {
-        query: string;
-
-        download_pdf?: boolean;
-
-        id_list?: Array<string> | null;
-
-        max_results?: number;
-
-        sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
-
-        sort_order?: 'ascending' | 'descending';
-      }
-    }
-
-    /**
-     * Unstructured integration definition
-     */
-    export interface UnstructuredIntegrationDef {
-      /**
-       * Arguments for Unstructured partition integration
-       */
-      arguments?: UnstructuredIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'unstructured';
-
-      /**
-       * Setup parameters for Unstructured integration
-       */
-      setup?: UnstructuredIntegrationDef.Setup | null;
-    }
-
-    export namespace UnstructuredIntegrationDef {
-      /**
-       * Arguments for Unstructured partition integration
-       */
-      export interface Arguments {
-        file: string;
-
-        filename?: string | null;
-
-        partition_params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Unstructured integration
-       */
-      export interface Setup {
-        unstructured_api_key: string;
-
-        retry_config?: unknown | null;
-
-        server?: string | null;
-
-        server_url?: string | null;
-
-        timeout_ms?: number | null;
-
-        url_params?: unknown | null;
-      }
-    }
-
-    /**
-     * Algolia integration definition
-     */
-    export interface AlgoliaIntegrationDef {
-      /**
-       * Arguments for Algolia Search
-       */
-      arguments?: AlgoliaIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'algolia';
-
-      /**
-       * Integration definition for Algolia
-       */
-      setup?: AlgoliaIntegrationDef.Setup | null;
-    }
-
-    export namespace AlgoliaIntegrationDef {
-      /**
-       * Arguments for Algolia Search
-       */
-      export interface Arguments {
-        index_name: string;
-
-        query: string;
-
-        attributes_to_retrieve?: Array<string> | null;
-
-        hits_per_page?: number;
-      }
-
-      /**
-       * Integration definition for Algolia
-       */
-      export interface Setup {
-        algolia_api_key: string;
-
-        algolia_application_id: string;
-      }
-    }
-
-    /**
-     * System definition
-     */
-    export interface System {
-      operation:
-        | 'create'
-        | 'update'
-        | 'patch'
-        | 'create_or_update'
-        | 'embed'
-        | 'change_status'
-        | 'search'
-        | 'chat'
-        | 'history'
-        | 'delete'
-        | 'get'
-        | 'list';
-
-      resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
-
-      arguments?: unknown | null;
-
-      resource_id?: string | null;
-
-      subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
-    }
-
-    export interface TextEditor20241022 {
-      name?: string;
-
-      type?: 'text_editor_20241022';
-    }
-  }
-
-  export interface ChosenFunctionCall {
-    function: ChosenFunctionCall.Function;
-
-    id?: string | null;
-
-    api_call?: unknown;
-
-    bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-    computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-    integration?: unknown;
-
-    system?: unknown;
-
-    text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-    type?: 'function';
-  }
-
-  export namespace ChosenFunctionCall {
-    export interface Function {
-      name: string;
-
-      arguments?: string | null;
-    }
-
-    export interface Bash20241022 {
-      command?: string | null;
-
-      restart?: boolean;
-    }
-
-    export interface Computer20241022 {
-      action:
-        | 'key'
-        | 'type'
-        | 'cursor_position'
-        | 'mouse_move'
-        | 'left_click'
-        | 'right_click'
-        | 'middle_click'
-        | 'double_click'
-        | 'screenshot';
-
-      coordinate?: Array<number> | null;
-
-      text?: string | null;
-    }
-
-    export interface TextEditor20241022 {
-      command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-      path: string;
-
-      file_text?: string | null;
-
-      insert_line?: number | null;
-
-      new_str?: string | null;
-
-      old_str?: string | null;
-
-      view_range?: Array<number> | null;
-    }
-  }
-
-  export interface ChosenComputer20241022 {
-    action:
-      | 'key'
-      | 'type'
-      | 'cursor_position'
-      | 'mouse_move'
-      | 'left_click'
-      | 'right_click'
-      | 'middle_click'
-      | 'double_click'
-      | 'screenshot';
-
-    coordinate?: Array<number> | null;
-
-    text?: string | null;
-  }
-
-  export interface ChosenTextEditor20241022 {
-    command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-    path: string;
-
-    file_text?: string | null;
-
-    insert_line?: number | null;
-
-    new_str?: string | null;
-
-    old_str?: string | null;
-
-    view_range?: Array<number> | null;
-  }
-
-  export interface ChosenBash20241022 {
-    command?: string | null;
-
-    restart?: boolean;
+    text_editor_20241022?: Shared.TextEditor20241022Def | null;
   }
 
   export interface ToolResponse {
     id: string;
 
     output: unknown;
-  }
-
-  export interface ChosenFunctionCall {
-    function: ChosenFunctionCall.Function;
-
-    id?: string | null;
-
-    api_call?: unknown;
-
-    bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-    computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-    integration?: unknown;
-
-    system?: unknown;
-
-    text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-    type?: 'function';
-  }
-
-  export namespace ChosenFunctionCall {
-    export interface Function {
-      name: string;
-
-      arguments?: string | null;
-    }
-
-    export interface Bash20241022 {
-      command?: string | null;
-
-      restart?: boolean;
-    }
-
-    export interface Computer20241022 {
-      action:
-        | 'key'
-        | 'type'
-        | 'cursor_position'
-        | 'mouse_move'
-        | 'left_click'
-        | 'right_click'
-        | 'middle_click'
-        | 'double_click'
-        | 'screenshot';
-
-      coordinate?: Array<number> | null;
-
-      text?: string | null;
-    }
-
-    export interface TextEditor20241022 {
-      command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-      path: string;
-
-      file_text?: string | null;
-
-      insert_line?: number | null;
-
-      new_str?: string | null;
-
-      old_str?: string | null;
-
-      view_range?: Array<number> | null;
-    }
-  }
-
-  export interface ChosenComputer20241022 {
-    action:
-      | 'key'
-      | 'type'
-      | 'cursor_position'
-      | 'mouse_move'
-      | 'left_click'
-      | 'right_click'
-      | 'middle_click'
-      | 'double_click'
-      | 'screenshot';
-
-    coordinate?: Array<number> | null;
-
-    text?: string | null;
-  }
-
-  export interface ChosenTextEditor20241022 {
-    command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-    path: string;
-
-    file_text?: string | null;
-
-    insert_line?: number | null;
-
-    new_str?: string | null;
-
-    old_str?: string | null;
-
-    view_range?: Array<number> | null;
-  }
-
-  export interface ChosenBash20241022 {
-    command?: string | null;
-
-    restart?: boolean;
   }
 }
 
@@ -4747,6 +1017,40 @@ export namespace History {
   }
 }
 
+export interface HybridDocSearch {
+  alpha?: number;
+
+  confidence?: number;
+
+  k_multiplier?: number;
+
+  lang?: string;
+
+  limit?: number;
+
+  max_query_length?: number;
+
+  metadata_filter?: unknown;
+
+  mmr_strength?: number;
+
+  mode?: 'hybrid';
+
+  num_search_messages?: number;
+
+  trigram_similarity_threshold?: number;
+}
+
+export interface LogProbResponse {
+  content: Array<TokenLogProb> | null;
+}
+
+export interface SchemaCompletionResponseFormat {
+  json_schema: unknown;
+
+  type?: 'json_schema';
+}
+
 export interface Session {
   id: string;
 
@@ -4764,7 +1068,7 @@ export interface Session {
 
   metadata?: unknown | null;
 
-  recall_options?: Session.VectorDocSearch | Session.TextOnlyDocSearch | Session.HybridDocSearch | null;
+  recall_options?: VectorDocSearch | TextOnlyDocSearch | HybridDocSearch | null;
 
   render_templates?: boolean;
 
@@ -4777,64 +1081,52 @@ export interface Session {
   token_budget?: number | null;
 }
 
-export namespace Session {
-  export interface VectorDocSearch {
-    confidence?: number;
+export interface SimpleCompletionResponseFormat {
+  type?: 'text' | 'json_object';
+}
 
-    lang?: string;
+export interface TextOnlyDocSearch {
+  lang?: string;
 
-    limit?: number;
+  limit?: number;
 
-    max_query_length?: number;
+  max_query_length?: number;
 
-    metadata_filter?: unknown;
+  metadata_filter?: unknown;
 
-    mmr_strength?: number;
+  mode?: 'text';
 
-    mode?: 'vector';
+  num_search_messages?: number;
 
-    num_search_messages?: number;
-  }
+  trigram_similarity_threshold?: number;
+}
 
-  export interface TextOnlyDocSearch {
-    lang?: string;
+export interface TokenLogProb {
+  token: string;
 
-    limit?: number;
+  logprob: number;
 
-    max_query_length?: number;
+  top_logprobs: Array<BaseTokenLogProb>;
 
-    metadata_filter?: unknown;
+  bytes?: Array<number> | null;
+}
 
-    mode?: 'text';
+export interface VectorDocSearch {
+  confidence?: number;
 
-    num_search_messages?: number;
+  lang?: string;
 
-    trigram_similarity_threshold?: number;
-  }
+  limit?: number;
 
-  export interface HybridDocSearch {
-    alpha?: number;
+  max_query_length?: number;
 
-    confidence?: number;
+  metadata_filter?: unknown;
 
-    k_multiplier?: number;
+  mmr_strength?: number;
 
-    lang?: string;
+  mode?: 'vector';
 
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mmr_strength?: number;
-
-    mode?: 'hybrid';
-
-    num_search_messages?: number;
-
-    trigram_similarity_threshold?: number;
-  }
+  num_search_messages?: number;
 }
 
 export type SessionChatResponse = SessionChatResponse.ChunkChatResponse | ChatResponse;
@@ -4847,7 +1139,7 @@ export namespace SessionChatResponse {
 
     created_at: string;
 
-    docs?: Array<ChunkChatResponse.Doc>;
+    docs?: Array<Shared.DocReference>;
 
     jobs?: Array<string>;
 
@@ -4871,13 +1163,13 @@ export namespace SessionChatResponse {
 
       finish_reason?: 'stop' | 'length' | 'content_filter' | 'tool_calls';
 
-      logprobs?: Choice.Logprobs | null;
+      logprobs?: SessionsAPI.LogProbResponse | null;
 
       tool_calls?: Array<
-        | Choice.ChosenFunctionCall
-        | Choice.ChosenComputer20241022
-        | Choice.ChosenTextEditor20241022
-        | Choice.ChosenBash20241022
+        | SessionsAPI.ChosenFunctionCall
+        | SessionsAPI.ChosenComputer20241022
+        | SessionsAPI.ChosenTextEditor20241022
+        | SessionsAPI.ChosenBash20241022
       > | null;
     }
 
@@ -4905,10 +1197,10 @@ export namespace SessionChatResponse {
         tool_call_id?: string | null;
 
         tool_calls?: Array<
-          | Delta.ChosenFunctionCall
-          | Delta.ChosenComputer20241022
-          | Delta.ChosenTextEditor20241022
-          | Delta.ChosenBash20241022
+          | SessionsAPI.ChosenFunctionCall
+          | SessionsAPI.ChosenComputer20241022
+          | SessionsAPI.ChosenTextEditor20241022
+          | SessionsAPI.ChosenBash20241022
         > | null;
       }
 
@@ -4975,266 +1267,6 @@ export namespace SessionChatResponse {
             }
           }
         }
-
-        export interface ChosenFunctionCall {
-          function: ChosenFunctionCall.Function;
-
-          id?: string | null;
-
-          api_call?: unknown;
-
-          bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-          computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-          integration?: unknown;
-
-          system?: unknown;
-
-          text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-          type?: 'function';
-        }
-
-        export namespace ChosenFunctionCall {
-          export interface Function {
-            name: string;
-
-            arguments?: string | null;
-          }
-
-          export interface Bash20241022 {
-            command?: string | null;
-
-            restart?: boolean;
-          }
-
-          export interface Computer20241022 {
-            action:
-              | 'key'
-              | 'type'
-              | 'cursor_position'
-              | 'mouse_move'
-              | 'left_click'
-              | 'right_click'
-              | 'middle_click'
-              | 'double_click'
-              | 'screenshot';
-
-            coordinate?: Array<number> | null;
-
-            text?: string | null;
-          }
-
-          export interface TextEditor20241022 {
-            command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-            path: string;
-
-            file_text?: string | null;
-
-            insert_line?: number | null;
-
-            new_str?: string | null;
-
-            old_str?: string | null;
-
-            view_range?: Array<number> | null;
-          }
-        }
-
-        export interface ChosenComputer20241022 {
-          action:
-            | 'key'
-            | 'type'
-            | 'cursor_position'
-            | 'mouse_move'
-            | 'left_click'
-            | 'right_click'
-            | 'middle_click'
-            | 'double_click'
-            | 'screenshot';
-
-          coordinate?: Array<number> | null;
-
-          text?: string | null;
-        }
-
-        export interface ChosenTextEditor20241022 {
-          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-          path: string;
-
-          file_text?: string | null;
-
-          insert_line?: number | null;
-
-          new_str?: string | null;
-
-          old_str?: string | null;
-
-          view_range?: Array<number> | null;
-        }
-
-        export interface ChosenBash20241022 {
-          command?: string | null;
-
-          restart?: boolean;
-        }
-      }
-
-      export interface Logprobs {
-        content: Array<Logprobs.Content> | null;
-      }
-
-      export namespace Logprobs {
-        export interface Content {
-          token: string;
-
-          logprob: number;
-
-          top_logprobs: Array<Content.TopLogprob>;
-
-          bytes?: Array<number> | null;
-        }
-
-        export namespace Content {
-          export interface TopLogprob {
-            token: string;
-
-            logprob: number;
-
-            bytes?: Array<number> | null;
-          }
-        }
-      }
-
-      export interface ChosenFunctionCall {
-        function: ChosenFunctionCall.Function;
-
-        id?: string | null;
-
-        api_call?: unknown;
-
-        bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-        computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-        integration?: unknown;
-
-        system?: unknown;
-
-        text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-        type?: 'function';
-      }
-
-      export namespace ChosenFunctionCall {
-        export interface Function {
-          name: string;
-
-          arguments?: string | null;
-        }
-
-        export interface Bash20241022 {
-          command?: string | null;
-
-          restart?: boolean;
-        }
-
-        export interface Computer20241022 {
-          action:
-            | 'key'
-            | 'type'
-            | 'cursor_position'
-            | 'mouse_move'
-            | 'left_click'
-            | 'right_click'
-            | 'middle_click'
-            | 'double_click'
-            | 'screenshot';
-
-          coordinate?: Array<number> | null;
-
-          text?: string | null;
-        }
-
-        export interface TextEditor20241022 {
-          command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-          path: string;
-
-          file_text?: string | null;
-
-          insert_line?: number | null;
-
-          new_str?: string | null;
-
-          old_str?: string | null;
-
-          view_range?: Array<number> | null;
-        }
-      }
-
-      export interface ChosenComputer20241022 {
-        action:
-          | 'key'
-          | 'type'
-          | 'cursor_position'
-          | 'mouse_move'
-          | 'left_click'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot';
-
-        coordinate?: Array<number> | null;
-
-        text?: string | null;
-      }
-
-      export interface ChosenTextEditor20241022 {
-        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-        path: string;
-
-        file_text?: string | null;
-
-        insert_line?: number | null;
-
-        new_str?: string | null;
-
-        old_str?: string | null;
-
-        view_range?: Array<number> | null;
-      }
-
-      export interface ChosenBash20241022 {
-        command?: string | null;
-
-        restart?: boolean;
-      }
-    }
-
-    export interface Doc {
-      id: string;
-
-      owner: Doc.Owner;
-
-      snippet: DocsAPI.Snippet;
-
-      distance?: number | null;
-
-      metadata?: unknown | null;
-
-      title?: string | null;
-    }
-
-    export namespace Doc {
-      export interface Owner {
-        id: string;
-
-        role: 'user' | 'agent';
       }
     }
 
@@ -5254,9 +1286,9 @@ export namespace SessionChatResponse {
 export interface SessionRenderResponse {
   messages: Array<SessionRenderResponse.Message>;
 
-  docs?: Array<SessionRenderResponse.Doc>;
+  docs?: Array<Shared.DocReference>;
 
-  tool_choice?: 'auto' | 'none' | SessionRenderResponse.NamedToolChoice | null;
+  tool_choice?: 'auto' | 'none' | Shared.NamedToolChoice | null;
 
   tools?: Array<SessionRenderResponse.Tool> | null;
 }
@@ -5278,10 +1310,10 @@ export namespace SessionRenderResponse {
     tool_call_id?: string | null;
 
     tool_calls?: Array<
-      | Message.ChosenFunctionCall
-      | Message.ChosenComputer20241022
-      | Message.ChosenTextEditor20241022
-      | Message.ChosenBash20241022
+      | SessionsAPI.ChosenFunctionCall
+      | SessionsAPI.ChosenComputer20241022
+      | SessionsAPI.ChosenTextEditor20241022
+      | SessionsAPI.ChosenBash20241022
     > | null;
   }
 
@@ -5348,146 +1380,6 @@ export namespace SessionRenderResponse {
         }
       }
     }
-
-    export interface ChosenFunctionCall {
-      function: ChosenFunctionCall.Function;
-
-      id?: string | null;
-
-      api_call?: unknown;
-
-      bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-      computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-      integration?: unknown;
-
-      system?: unknown;
-
-      text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-      type?: 'function';
-    }
-
-    export namespace ChosenFunctionCall {
-      export interface Function {
-        name: string;
-
-        arguments?: string | null;
-      }
-
-      export interface Bash20241022 {
-        command?: string | null;
-
-        restart?: boolean;
-      }
-
-      export interface Computer20241022 {
-        action:
-          | 'key'
-          | 'type'
-          | 'cursor_position'
-          | 'mouse_move'
-          | 'left_click'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot';
-
-        coordinate?: Array<number> | null;
-
-        text?: string | null;
-      }
-
-      export interface TextEditor20241022 {
-        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-        path: string;
-
-        file_text?: string | null;
-
-        insert_line?: number | null;
-
-        new_str?: string | null;
-
-        old_str?: string | null;
-
-        view_range?: Array<number> | null;
-      }
-    }
-
-    export interface ChosenComputer20241022 {
-      action:
-        | 'key'
-        | 'type'
-        | 'cursor_position'
-        | 'mouse_move'
-        | 'left_click'
-        | 'right_click'
-        | 'middle_click'
-        | 'double_click'
-        | 'screenshot';
-
-      coordinate?: Array<number> | null;
-
-      text?: string | null;
-    }
-
-    export interface ChosenTextEditor20241022 {
-      command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-      path: string;
-
-      file_text?: string | null;
-
-      insert_line?: number | null;
-
-      new_str?: string | null;
-
-      old_str?: string | null;
-
-      view_range?: Array<number> | null;
-    }
-
-    export interface ChosenBash20241022 {
-      command?: string | null;
-
-      restart?: boolean;
-    }
-  }
-
-  export interface Doc {
-    id: string;
-
-    owner: Doc.Owner;
-
-    snippet: DocsAPI.Snippet;
-
-    distance?: number | null;
-
-    metadata?: unknown | null;
-
-    title?: string | null;
-  }
-
-  export namespace Doc {
-    export interface Owner {
-      id: string;
-
-      role: 'user' | 'agent';
-    }
-  }
-
-  export interface NamedToolChoice {
-    function?: NamedToolChoice.Function | null;
-  }
-
-  export namespace NamedToolChoice {
-    export interface Function {
-      name: string;
-
-      arguments?: string | null;
-    }
   }
 
   /**
@@ -5508,1005 +1400,56 @@ export namespace SessionRenderResponse {
     /**
      * API call definition
      */
-    api_call?: Tool.APICall | null;
+    api_call?: Shared.APICallDef | null;
 
-    bash_20241022?: Tool.Bash20241022 | null;
+    bash_20241022?: Shared.Bash20241022Def | null;
 
     /**
      * Anthropic new tools
      */
-    computer_20241022?: Tool.Computer20241022 | null;
+    computer_20241022?: Shared.Computer20241022Def | null;
 
     description?: string | null;
 
     /**
      * Function definition
      */
-    function?: Tool.Function | null;
+    function?: Shared.FunctionDef | null;
 
     /**
      * Brave integration definition
      */
     integration?:
-      | Tool.DummyIntegrationDef
-      | Tool.BraveIntegrationDef
-      | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDef
-      | Tool.WikipediaIntegrationDef
-      | Tool.WeatherIntegrationDef
-      | Tool.MailgunIntegrationDef
-      | Tool.BrowserbaseContextIntegrationDef
-      | Tool.BrowserbaseExtensionIntegrationDef
-      | Tool.BrowserbaseListSessionsIntegrationDef
-      | Tool.BrowserbaseCreateSessionIntegrationDef
-      | Tool.BrowserbaseGetSessionIntegrationDef
-      | Tool.BrowserbaseCompleteSessionIntegrationDef
-      | Tool.BrowserbaseGetSessionLiveURLsIntegrationDef
-      | Tool.RemoteBrowserIntegrationDef
-      | Tool.LlamaParseIntegrationDef
-      | Tool.FfmpegIntegrationDef
-      | Tool.CloudinaryUploadIntegrationDef
-      | Tool.CloudinaryEditIntegrationDef
-      | Tool.ArxivIntegrationDef
-      | Tool.UnstructuredIntegrationDef
-      | Tool.AlgoliaIntegrationDef
+      | Shared.DummyIntegrationDef
+      | Shared.BraveIntegrationDef
+      | Shared.EmailIntegrationDef
+      | Shared.SpiderIntegrationDef
+      | Shared.WikipediaIntegrationDef
+      | Shared.WeatherIntegrationDef
+      | Shared.MailgunIntegrationDef
+      | Shared.BrowserbaseContextIntegrationDef
+      | Shared.BrowserbaseExtensionIntegrationDef
+      | Shared.BrowserbaseListSessionsIntegrationDef
+      | Shared.BrowserbaseCreateSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionIntegrationDef
+      | Shared.BrowserbaseCompleteSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionLiveURLsIntegrationDef
+      | Shared.RemoteBrowserIntegrationDef
+      | Shared.LlamaParseIntegrationDef
+      | Shared.FfmpegIntegrationDef
+      | Shared.CloudinaryUploadIntegrationDef
+      | Shared.CloudinaryEditIntegrationDef
+      | Shared.ArxivIntegrationDef
+      | Shared.UnstructuredIntegrationDef
+      | Shared.AlgoliaIntegrationDef
       | null;
 
     /**
      * System definition
      */
-    system?: Tool.System | null;
+    system?: Shared.SystemDef | null;
 
-    text_editor_20241022?: Tool.TextEditor20241022 | null;
-  }
-
-  export namespace Tool {
-    /**
-     * API call definition
-     */
-    export interface APICall {
-      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
-
-      url: string;
-
-      content?: string | null;
-
-      cookies?: Record<string, string> | null;
-
-      data?: unknown | null;
-
-      files?: unknown | null;
-
-      follow_redirects?: boolean | null;
-
-      headers?: Record<string, string> | null;
-
-      include_response_content?: boolean;
-
-      json?: unknown | null;
-
-      params?: string | unknown | null;
-
-      schema?: unknown | null;
-
-      secrets?: Record<string, APICall.Secrets> | null;
-
-      timeout?: number | null;
-    }
-
-    export namespace APICall {
-      export interface Secrets {
-        name: string;
-      }
-    }
-
-    export interface Bash20241022 {
-      name?: string;
-
-      type?: 'bash_20241022';
-    }
-
-    /**
-     * Anthropic new tools
-     */
-    export interface Computer20241022 {
-      display_height_px?: number;
-
-      display_number?: number;
-
-      display_width_px?: number;
-
-      name?: string;
-
-      type?: 'computer_20241022';
-    }
-
-    /**
-     * Function definition
-     */
-    export interface Function {
-      description?: unknown;
-
-      name?: unknown;
-
-      parameters?: unknown | null;
-    }
-
-    export interface DummyIntegrationDef {
-      arguments?: unknown;
-
-      method?: string | null;
-
-      provider?: 'dummy';
-
-      setup?: unknown;
-    }
-
-    /**
-     * Brave integration definition
-     */
-    export interface BraveIntegrationDef {
-      /**
-       * Arguments for Brave Search
-       */
-      arguments?: BraveIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'brave';
-
-      /**
-       * Integration definition for Brave Search
-       */
-      setup?: BraveIntegrationDef.Setup | null;
-    }
-
-    export namespace BraveIntegrationDef {
-      /**
-       * Arguments for Brave Search
-       */
-      export interface Arguments {
-        query: string;
-      }
-
-      /**
-       * Integration definition for Brave Search
-       */
-      export interface Setup {
-        brave_api_key: string;
-      }
-    }
-
-    /**
-     * Email integration definition
-     */
-    export interface EmailIntegrationDef {
-      /**
-       * Arguments for Email sending
-       */
-      arguments?: EmailIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'email';
-
-      /**
-       * Setup parameters for Email integration
-       */
-      setup?: EmailIntegrationDef.Setup | null;
-    }
-
-    export namespace EmailIntegrationDef {
-      /**
-       * Arguments for Email sending
-       */
-      export interface Arguments {
-        body: string;
-
-        from: string;
-
-        subject: string;
-
-        to: string;
-      }
-
-      /**
-       * Setup parameters for Email integration
-       */
-      export interface Setup {
-        host: string;
-
-        password: string;
-
-        port: number;
-
-        user: string;
-      }
-    }
-
-    /**
-     * Spider integration definition
-     */
-    export interface SpiderIntegrationDef {
-      /**
-       * Arguments for Spider integration
-       */
-      arguments?: SpiderIntegrationDef.Arguments | null;
-
-      method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
-
-      provider?: 'spider';
-
-      /**
-       * Setup parameters for Spider integration
-       */
-      setup?: SpiderIntegrationDef.Setup | null;
-    }
-
-    export namespace SpiderIntegrationDef {
-      /**
-       * Arguments for Spider integration
-       */
-      export interface Arguments {
-        url: string;
-
-        content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
-
-        params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Spider integration
-       */
-      export interface Setup {
-        spider_api_key: string;
-      }
-    }
-
-    /**
-     * Wikipedia integration definition
-     */
-    export interface WikipediaIntegrationDef {
-      /**
-       * Arguments for Wikipedia Search
-       */
-      arguments?: WikipediaIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'wikipedia';
-
-      setup?: unknown;
-    }
-
-    export namespace WikipediaIntegrationDef {
-      /**
-       * Arguments for Wikipedia Search
-       */
-      export interface Arguments {
-        query: string;
-
-        load_max_docs?: number;
-      }
-    }
-
-    /**
-     * Weather integration definition
-     */
-    export interface WeatherIntegrationDef {
-      /**
-       * Arguments for Weather
-       */
-      arguments?: WeatherIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'weather';
-
-      /**
-       * Integration definition for Weather
-       */
-      setup?: WeatherIntegrationDef.Setup | null;
-    }
-
-    export namespace WeatherIntegrationDef {
-      /**
-       * Arguments for Weather
-       */
-      export interface Arguments {
-        location: string;
-      }
-
-      /**
-       * Integration definition for Weather
-       */
-      export interface Setup {
-        openweathermap_api_key: string;
-      }
-    }
-
-    /**
-     * Mailgun integration definition
-     */
-    export interface MailgunIntegrationDef {
-      /**
-       * Arguments for mailgun.send_email method
-       */
-      arguments?: MailgunIntegrationDef.Arguments | null;
-
-      method?: 'send_email' | null;
-
-      provider?: 'mailgun';
-
-      /**
-       * Setup parameters for Mailgun integration
-       */
-      setup?: MailgunIntegrationDef.Setup | null;
-    }
-
-    export namespace MailgunIntegrationDef {
-      /**
-       * Arguments for mailgun.send_email method
-       */
-      export interface Arguments {
-        body: string;
-
-        from: string;
-
-        subject: string;
-
-        to: string;
-
-        bcc?: string | null;
-
-        cc?: string | null;
-      }
-
-      /**
-       * Setup parameters for Mailgun integration
-       */
-      export interface Setup {
-        api_key: string;
-      }
-    }
-
-    /**
-     * browserbase context provider
-     */
-    export interface BrowserbaseContextIntegrationDef {
-      arguments?: BrowserbaseContextIntegrationDef.Arguments | null;
-
-      method?: 'create_context';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseContextIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseContextIntegrationDef {
-      export interface Arguments {
-        projectId: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase extension provider
-     */
-    export interface BrowserbaseExtensionIntegrationDef {
-      arguments?: BrowserbaseExtensionIntegrationDef.Arguments | null;
-
-      method?: 'install_extension_from_github' | null;
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseExtensionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseExtensionIntegrationDef {
-      export interface Arguments {
-        repositoryName: string;
-
-        ref?: string | null;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase list sessions integration definition
-     */
-    export interface BrowserbaseListSessionsIntegrationDef {
-      arguments?: BrowserbaseListSessionsIntegrationDef.Arguments | null;
-
-      method?: 'list_sessions';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseListSessionsIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseListSessionsIntegrationDef {
-      export interface Arguments {
-        status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED' | null;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase create session integration definition
-     */
-    export interface BrowserbaseCreateSessionIntegrationDef {
-      arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
-
-      method?: 'create_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseCreateSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseCreateSessionIntegrationDef {
-      export interface Arguments {
-        browserSettings?: unknown;
-
-        extensionId?: string | null;
-
-        keepAlive?: boolean;
-
-        projectId?: string | null;
-
-        proxies?: boolean | Array<unknown>;
-
-        timeout?: number;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase get session integration definition
-     */
-    export interface BrowserbaseGetSessionIntegrationDef {
-      arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
-
-      method?: 'get_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseGetSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseGetSessionIntegrationDef {
-      export interface Arguments {
-        id: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase complete session integration definition
-     */
-    export interface BrowserbaseCompleteSessionIntegrationDef {
-      arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
-
-      method?: 'complete_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseCompleteSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseCompleteSessionIntegrationDef {
-      export interface Arguments {
-        id: string;
-
-        status?: 'REQUEST_RELEASE';
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase get session live urls integration definition
-     */
-    export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-      arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
-
-      method?: 'get_live_urls';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseGetSessionLiveURLsIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseGetSessionLiveURLsIntegrationDef {
-      export interface Arguments {
-        id: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * The integration definition for the remote browser
-     */
-    export interface RemoteBrowserIntegrationDef {
-      /**
-       * The setup parameters for the remote browser
-       */
-      setup: RemoteBrowserIntegrationDef.Setup;
-
-      /**
-       * The arguments for the remote browser
-       */
-      arguments?: RemoteBrowserIntegrationDef.Arguments | null;
-
-      method?: 'perform_action';
-
-      provider?: 'remote_browser';
-    }
-
-    export namespace RemoteBrowserIntegrationDef {
-      /**
-       * The setup parameters for the remote browser
-       */
-      export interface Setup {
-        connect_url?: string | null;
-
-        height?: number | null;
-
-        width?: number | null;
-      }
-
-      /**
-       * The arguments for the remote browser
-       */
-      export interface Arguments {
-        action:
-          | 'key'
-          | 'type'
-          | 'mouse_move'
-          | 'left_click'
-          | 'left_click_drag'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot'
-          | 'cursor_position'
-          | 'navigate'
-          | 'refresh';
-
-        connect_url?: string | null;
-
-        coordinate?: Array<unknown> | null;
-
-        text?: string | null;
-      }
-    }
-
-    /**
-     * LlamaParse integration definition
-     */
-    export interface LlamaParseIntegrationDef {
-      /**
-       * Arguments for LlamaParse integration
-       */
-      arguments?: LlamaParseIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'llama_parse';
-
-      /**
-       * Setup parameters for LlamaParse integration
-       */
-      setup?: LlamaParseIntegrationDef.Setup | null;
-    }
-
-    export namespace LlamaParseIntegrationDef {
-      /**
-       * Arguments for LlamaParse integration
-       */
-      export interface Arguments {
-        file: string | Array<string>;
-
-        base64?: boolean;
-
-        filename?: string | null;
-
-        params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for LlamaParse integration
-       */
-      export interface Setup {
-        llamaparse_api_key: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Ffmpeg integration definition
-     */
-    export interface FfmpegIntegrationDef {
-      /**
-       * Arguments for Ffmpeg CMD
-       */
-      arguments?: FfmpegIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'ffmpeg';
-
-      setup?: unknown;
-    }
-
-    export namespace FfmpegIntegrationDef {
-      /**
-       * Arguments for Ffmpeg CMD
-       */
-      export interface Arguments {
-        cmd: string;
-
-        file?: string | Array<string> | null;
-      }
-    }
-
-    /**
-     * Cloudinary upload integration definition
-     */
-    export interface CloudinaryUploadIntegrationDef {
-      /**
-       * Arguments for Cloudinary media upload
-       */
-      arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
-
-      method?: 'media_upload';
-
-      provider?: 'cloudinary';
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      setup?: CloudinaryUploadIntegrationDef.Setup | null;
-    }
-
-    export namespace CloudinaryUploadIntegrationDef {
-      /**
-       * Arguments for Cloudinary media upload
-       */
-      export interface Arguments {
-        file: string;
-
-        public_id?: string | null;
-
-        return_base64?: boolean;
-
-        upload_params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      export interface Setup {
-        cloudinary_api_key: string;
-
-        cloudinary_api_secret: string;
-
-        cloudinary_cloud_name: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Cloudinary edit integration definition
-     */
-    export interface CloudinaryEditIntegrationDef {
-      /**
-       * Arguments for Cloudinary media edit
-       */
-      arguments?: CloudinaryEditIntegrationDef.Arguments | null;
-
-      method?: 'media_edit';
-
-      provider?: 'cloudinary';
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      setup?: CloudinaryEditIntegrationDef.Setup | null;
-    }
-
-    export namespace CloudinaryEditIntegrationDef {
-      /**
-       * Arguments for Cloudinary media edit
-       */
-      export interface Arguments {
-        public_id: string;
-
-        transformation: Array<unknown>;
-
-        return_base64?: boolean;
-      }
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      export interface Setup {
-        cloudinary_api_key: string;
-
-        cloudinary_api_secret: string;
-
-        cloudinary_cloud_name: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Arxiv integration definition
-     */
-    export interface ArxivIntegrationDef {
-      /**
-       * Arguments for Arxiv Search
-       */
-      arguments?: ArxivIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'arxiv';
-
-      setup?: unknown;
-    }
-
-    export namespace ArxivIntegrationDef {
-      /**
-       * Arguments for Arxiv Search
-       */
-      export interface Arguments {
-        query: string;
-
-        download_pdf?: boolean;
-
-        id_list?: Array<string> | null;
-
-        max_results?: number;
-
-        sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
-
-        sort_order?: 'ascending' | 'descending';
-      }
-    }
-
-    /**
-     * Unstructured integration definition
-     */
-    export interface UnstructuredIntegrationDef {
-      /**
-       * Arguments for Unstructured partition integration
-       */
-      arguments?: UnstructuredIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'unstructured';
-
-      /**
-       * Setup parameters for Unstructured integration
-       */
-      setup?: UnstructuredIntegrationDef.Setup | null;
-    }
-
-    export namespace UnstructuredIntegrationDef {
-      /**
-       * Arguments for Unstructured partition integration
-       */
-      export interface Arguments {
-        file: string;
-
-        filename?: string | null;
-
-        partition_params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Unstructured integration
-       */
-      export interface Setup {
-        unstructured_api_key: string;
-
-        retry_config?: unknown | null;
-
-        server?: string | null;
-
-        server_url?: string | null;
-
-        timeout_ms?: number | null;
-
-        url_params?: unknown | null;
-      }
-    }
-
-    /**
-     * Algolia integration definition
-     */
-    export interface AlgoliaIntegrationDef {
-      /**
-       * Arguments for Algolia Search
-       */
-      arguments?: AlgoliaIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'algolia';
-
-      /**
-       * Integration definition for Algolia
-       */
-      setup?: AlgoliaIntegrationDef.Setup | null;
-    }
-
-    export namespace AlgoliaIntegrationDef {
-      /**
-       * Arguments for Algolia Search
-       */
-      export interface Arguments {
-        index_name: string;
-
-        query: string;
-
-        attributes_to_retrieve?: Array<string> | null;
-
-        hits_per_page?: number;
-      }
-
-      /**
-       * Integration definition for Algolia
-       */
-      export interface Setup {
-        algolia_api_key: string;
-
-        algolia_application_id: string;
-      }
-    }
-
-    /**
-     * System definition
-     */
-    export interface System {
-      operation:
-        | 'create'
-        | 'update'
-        | 'patch'
-        | 'create_or_update'
-        | 'embed'
-        | 'change_status'
-        | 'search'
-        | 'chat'
-        | 'history'
-        | 'delete'
-        | 'get'
-        | 'list';
-
-      resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
-
-      arguments?: unknown | null;
-
-      resource_id?: string | null;
-
-      subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
-    }
-
-    export interface TextEditor20241022 {
-      name?: string;
-
-      type?: 'text_editor_20241022';
-    }
+    text_editor_20241022?: Shared.TextEditor20241022Def | null;
   }
 }
 
@@ -6523,11 +1466,7 @@ export interface SessionCreateParams {
 
   metadata?: unknown | null;
 
-  recall_options?:
-    | SessionCreateParams.VectorDocSearch
-    | SessionCreateParams.TextOnlyDocSearch
-    | SessionCreateParams.HybridDocSearch
-    | null;
+  recall_options?: VectorDocSearch | TextOnlyDocSearch | HybridDocSearch | null;
 
   render_templates?: boolean;
 
@@ -6540,66 +1479,6 @@ export interface SessionCreateParams {
   user?: string | null;
 
   users?: Array<string> | null;
-}
-
-export namespace SessionCreateParams {
-  export interface VectorDocSearch {
-    confidence?: number;
-
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mmr_strength?: number;
-
-    mode?: 'vector';
-
-    num_search_messages?: number;
-  }
-
-  export interface TextOnlyDocSearch {
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mode?: 'text';
-
-    num_search_messages?: number;
-
-    trigram_similarity_threshold?: number;
-  }
-
-  export interface HybridDocSearch {
-    alpha?: number;
-
-    confidence?: number;
-
-    k_multiplier?: number;
-
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mmr_strength?: number;
-
-    mode?: 'hybrid';
-
-    num_search_messages?: number;
-
-    trigram_similarity_threshold?: number;
-  }
 }
 
 export interface SessionUpdateParams {
@@ -6758,10 +1637,7 @@ export interface SessionChatParams {
   /**
    * Body param:
    */
-  response_format?:
-    | SessionChatParams.SimpleCompletionResponseFormat
-    | SessionChatParams.SchemaCompletionResponseFormat
-    | null;
+  response_format?: SimpleCompletionResponseFormat | SchemaCompletionResponseFormat | null;
 
   /**
    * Body param:
@@ -6791,7 +1667,7 @@ export interface SessionChatParams {
   /**
    * Body param:
    */
-  tool_choice?: 'auto' | 'none' | SessionChatParams.NamedToolChoice | null;
+  tool_choice?: 'auto' | 'none' | Shared.NamedToolChoice | null;
 
   /**
    * Body param:
@@ -6826,10 +1702,10 @@ export namespace SessionChatParams {
     tool_call_id?: string | null;
 
     tool_calls?: Array<
-      | Message.ChosenFunctionCall
-      | Message.ChosenComputer20241022
-      | Message.ChosenTextEditor20241022
-      | Message.ChosenBash20241022
+      | SessionsAPI.ChosenFunctionCall
+      | SessionsAPI.ChosenComputer20241022
+      | SessionsAPI.ChosenTextEditor20241022
+      | SessionsAPI.ChosenBash20241022
     > | null;
   }
 
@@ -6896,132 +1772,6 @@ export namespace SessionChatParams {
         }
       }
     }
-
-    export interface ChosenFunctionCall {
-      function: ChosenFunctionCall.Function;
-
-      api_call?: unknown;
-
-      bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-      computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-      integration?: unknown;
-
-      system?: unknown;
-
-      text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-      type?: 'function';
-    }
-
-    export namespace ChosenFunctionCall {
-      export interface Function {
-        name: string;
-
-        arguments?: string | null;
-      }
-
-      export interface Bash20241022 {
-        command?: string | null;
-
-        restart?: boolean;
-      }
-
-      export interface Computer20241022 {
-        action:
-          | 'key'
-          | 'type'
-          | 'cursor_position'
-          | 'mouse_move'
-          | 'left_click'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot';
-
-        coordinate?: Array<number> | null;
-
-        text?: string | null;
-      }
-
-      export interface TextEditor20241022 {
-        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-        path: string;
-
-        file_text?: string | null;
-
-        insert_line?: number | null;
-
-        new_str?: string | null;
-
-        old_str?: string | null;
-
-        view_range?: Array<number> | null;
-      }
-    }
-
-    export interface ChosenComputer20241022 {
-      action:
-        | 'key'
-        | 'type'
-        | 'cursor_position'
-        | 'mouse_move'
-        | 'left_click'
-        | 'right_click'
-        | 'middle_click'
-        | 'double_click'
-        | 'screenshot';
-
-      coordinate?: Array<number> | null;
-
-      text?: string | null;
-    }
-
-    export interface ChosenTextEditor20241022 {
-      command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-      path: string;
-
-      file_text?: string | null;
-
-      insert_line?: number | null;
-
-      new_str?: string | null;
-
-      old_str?: string | null;
-
-      view_range?: Array<number> | null;
-    }
-
-    export interface ChosenBash20241022 {
-      command?: string | null;
-
-      restart?: boolean;
-    }
-  }
-
-  export interface SimpleCompletionResponseFormat {
-    type?: 'text' | 'json_object';
-  }
-
-  export interface SchemaCompletionResponseFormat {
-    json_schema: unknown;
-
-    type?: 'json_schema';
-  }
-
-  export interface NamedToolChoice {
-    function?: NamedToolChoice.Function | null;
-  }
-
-  export namespace NamedToolChoice {
-    export interface Function {
-      name: string;
-
-      arguments?: string | null;
-    }
   }
 
   /**
@@ -7042,1005 +1792,56 @@ export namespace SessionChatParams {
     /**
      * API call definition
      */
-    api_call?: Tool.APICall | null;
+    api_call?: Shared.APICallDef | null;
 
-    bash_20241022?: Tool.Bash20241022 | null;
+    bash_20241022?: Shared.Bash20241022Def | null;
 
     /**
      * Anthropic new tools
      */
-    computer_20241022?: Tool.Computer20241022 | null;
+    computer_20241022?: Shared.Computer20241022Def | null;
 
     description?: string | null;
 
     /**
      * Function definition
      */
-    function?: Tool.Function | null;
+    function?: Shared.FunctionDef | null;
 
     /**
      * Brave integration definition
      */
     integration?:
-      | Tool.DummyIntegrationDef
-      | Tool.BraveIntegrationDef
-      | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDef
-      | Tool.WikipediaIntegrationDef
-      | Tool.WeatherIntegrationDef
-      | Tool.MailgunIntegrationDef
-      | Tool.BrowserbaseContextIntegrationDef
-      | Tool.BrowserbaseExtensionIntegrationDef
-      | Tool.BrowserbaseListSessionsIntegrationDef
-      | Tool.BrowserbaseCreateSessionIntegrationDef
-      | Tool.BrowserbaseGetSessionIntegrationDef
-      | Tool.BrowserbaseCompleteSessionIntegrationDef
-      | Tool.BrowserbaseGetSessionLiveURLsIntegrationDef
-      | Tool.RemoteBrowserIntegrationDef
-      | Tool.LlamaParseIntegrationDef
-      | Tool.FfmpegIntegrationDef
-      | Tool.CloudinaryUploadIntegrationDef
-      | Tool.CloudinaryEditIntegrationDef
-      | Tool.ArxivIntegrationDef
-      | Tool.UnstructuredIntegrationDef
-      | Tool.AlgoliaIntegrationDef
+      | Shared.DummyIntegrationDef
+      | Shared.BraveIntegrationDef
+      | Shared.EmailIntegrationDef
+      | Shared.SpiderIntegrationDef
+      | Shared.WikipediaIntegrationDef
+      | Shared.WeatherIntegrationDef
+      | Shared.MailgunIntegrationDef
+      | Shared.BrowserbaseContextIntegrationDef
+      | Shared.BrowserbaseExtensionIntegrationDef
+      | Shared.BrowserbaseListSessionsIntegrationDef
+      | Shared.BrowserbaseCreateSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionIntegrationDef
+      | Shared.BrowserbaseCompleteSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionLiveURLsIntegrationDef
+      | Shared.RemoteBrowserIntegrationDef
+      | Shared.LlamaParseIntegrationDef
+      | Shared.FfmpegIntegrationDef
+      | Shared.CloudinaryUploadIntegrationDef
+      | Shared.CloudinaryEditIntegrationDef
+      | Shared.ArxivIntegrationDef
+      | Shared.UnstructuredIntegrationDef
+      | Shared.AlgoliaIntegrationDef
       | null;
 
     /**
      * System definition
      */
-    system?: Tool.System | null;
+    system?: Shared.SystemDef | null;
 
-    text_editor_20241022?: Tool.TextEditor20241022 | null;
-  }
-
-  export namespace Tool {
-    /**
-     * API call definition
-     */
-    export interface APICall {
-      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
-
-      url: string;
-
-      content?: string | null;
-
-      cookies?: Record<string, string> | null;
-
-      data?: unknown | null;
-
-      files?: unknown | null;
-
-      follow_redirects?: boolean | null;
-
-      headers?: Record<string, string> | null;
-
-      include_response_content?: boolean;
-
-      json?: unknown | null;
-
-      params?: string | unknown | null;
-
-      schema?: unknown | null;
-
-      secrets?: Record<string, APICall.Secrets> | null;
-
-      timeout?: number | null;
-    }
-
-    export namespace APICall {
-      export interface Secrets {
-        name: string;
-      }
-    }
-
-    export interface Bash20241022 {
-      name?: string;
-
-      type?: 'bash_20241022';
-    }
-
-    /**
-     * Anthropic new tools
-     */
-    export interface Computer20241022 {
-      display_height_px?: number;
-
-      display_number?: number;
-
-      display_width_px?: number;
-
-      name?: string;
-
-      type?: 'computer_20241022';
-    }
-
-    /**
-     * Function definition
-     */
-    export interface Function {
-      description?: unknown;
-
-      name?: unknown;
-
-      parameters?: unknown | null;
-    }
-
-    export interface DummyIntegrationDef {
-      arguments?: unknown;
-
-      method?: string | null;
-
-      provider?: 'dummy';
-
-      setup?: unknown;
-    }
-
-    /**
-     * Brave integration definition
-     */
-    export interface BraveIntegrationDef {
-      /**
-       * Arguments for Brave Search
-       */
-      arguments?: BraveIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'brave';
-
-      /**
-       * Integration definition for Brave Search
-       */
-      setup?: BraveIntegrationDef.Setup | null;
-    }
-
-    export namespace BraveIntegrationDef {
-      /**
-       * Arguments for Brave Search
-       */
-      export interface Arguments {
-        query: string;
-      }
-
-      /**
-       * Integration definition for Brave Search
-       */
-      export interface Setup {
-        brave_api_key: string;
-      }
-    }
-
-    /**
-     * Email integration definition
-     */
-    export interface EmailIntegrationDef {
-      /**
-       * Arguments for Email sending
-       */
-      arguments?: EmailIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'email';
-
-      /**
-       * Setup parameters for Email integration
-       */
-      setup?: EmailIntegrationDef.Setup | null;
-    }
-
-    export namespace EmailIntegrationDef {
-      /**
-       * Arguments for Email sending
-       */
-      export interface Arguments {
-        body: string;
-
-        from: string;
-
-        subject: string;
-
-        to: string;
-      }
-
-      /**
-       * Setup parameters for Email integration
-       */
-      export interface Setup {
-        host: string;
-
-        password: string;
-
-        port: number;
-
-        user: string;
-      }
-    }
-
-    /**
-     * Spider integration definition
-     */
-    export interface SpiderIntegrationDef {
-      /**
-       * Arguments for Spider integration
-       */
-      arguments?: SpiderIntegrationDef.Arguments | null;
-
-      method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
-
-      provider?: 'spider';
-
-      /**
-       * Setup parameters for Spider integration
-       */
-      setup?: SpiderIntegrationDef.Setup | null;
-    }
-
-    export namespace SpiderIntegrationDef {
-      /**
-       * Arguments for Spider integration
-       */
-      export interface Arguments {
-        url: string;
-
-        content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
-
-        params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Spider integration
-       */
-      export interface Setup {
-        spider_api_key: string;
-      }
-    }
-
-    /**
-     * Wikipedia integration definition
-     */
-    export interface WikipediaIntegrationDef {
-      /**
-       * Arguments for Wikipedia Search
-       */
-      arguments?: WikipediaIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'wikipedia';
-
-      setup?: unknown;
-    }
-
-    export namespace WikipediaIntegrationDef {
-      /**
-       * Arguments for Wikipedia Search
-       */
-      export interface Arguments {
-        query: string;
-
-        load_max_docs?: number;
-      }
-    }
-
-    /**
-     * Weather integration definition
-     */
-    export interface WeatherIntegrationDef {
-      /**
-       * Arguments for Weather
-       */
-      arguments?: WeatherIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'weather';
-
-      /**
-       * Integration definition for Weather
-       */
-      setup?: WeatherIntegrationDef.Setup | null;
-    }
-
-    export namespace WeatherIntegrationDef {
-      /**
-       * Arguments for Weather
-       */
-      export interface Arguments {
-        location: string;
-      }
-
-      /**
-       * Integration definition for Weather
-       */
-      export interface Setup {
-        openweathermap_api_key: string;
-      }
-    }
-
-    /**
-     * Mailgun integration definition
-     */
-    export interface MailgunIntegrationDef {
-      /**
-       * Arguments for mailgun.send_email method
-       */
-      arguments?: MailgunIntegrationDef.Arguments | null;
-
-      method?: 'send_email' | null;
-
-      provider?: 'mailgun';
-
-      /**
-       * Setup parameters for Mailgun integration
-       */
-      setup?: MailgunIntegrationDef.Setup | null;
-    }
-
-    export namespace MailgunIntegrationDef {
-      /**
-       * Arguments for mailgun.send_email method
-       */
-      export interface Arguments {
-        body: string;
-
-        from: string;
-
-        subject: string;
-
-        to: string;
-
-        bcc?: string | null;
-
-        cc?: string | null;
-      }
-
-      /**
-       * Setup parameters for Mailgun integration
-       */
-      export interface Setup {
-        api_key: string;
-      }
-    }
-
-    /**
-     * browserbase context provider
-     */
-    export interface BrowserbaseContextIntegrationDef {
-      arguments?: BrowserbaseContextIntegrationDef.Arguments | null;
-
-      method?: 'create_context';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseContextIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseContextIntegrationDef {
-      export interface Arguments {
-        projectId: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase extension provider
-     */
-    export interface BrowserbaseExtensionIntegrationDef {
-      arguments?: BrowserbaseExtensionIntegrationDef.Arguments | null;
-
-      method?: 'install_extension_from_github' | null;
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseExtensionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseExtensionIntegrationDef {
-      export interface Arguments {
-        repositoryName: string;
-
-        ref?: string | null;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase list sessions integration definition
-     */
-    export interface BrowserbaseListSessionsIntegrationDef {
-      arguments?: BrowserbaseListSessionsIntegrationDef.Arguments | null;
-
-      method?: 'list_sessions';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseListSessionsIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseListSessionsIntegrationDef {
-      export interface Arguments {
-        status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED' | null;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase create session integration definition
-     */
-    export interface BrowserbaseCreateSessionIntegrationDef {
-      arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
-
-      method?: 'create_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseCreateSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseCreateSessionIntegrationDef {
-      export interface Arguments {
-        browserSettings?: unknown;
-
-        extensionId?: string | null;
-
-        keepAlive?: boolean;
-
-        projectId?: string | null;
-
-        proxies?: boolean | Array<unknown>;
-
-        timeout?: number;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase get session integration definition
-     */
-    export interface BrowserbaseGetSessionIntegrationDef {
-      arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
-
-      method?: 'get_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseGetSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseGetSessionIntegrationDef {
-      export interface Arguments {
-        id: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase complete session integration definition
-     */
-    export interface BrowserbaseCompleteSessionIntegrationDef {
-      arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
-
-      method?: 'complete_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseCompleteSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseCompleteSessionIntegrationDef {
-      export interface Arguments {
-        id: string;
-
-        status?: 'REQUEST_RELEASE';
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase get session live urls integration definition
-     */
-    export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-      arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
-
-      method?: 'get_live_urls';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseGetSessionLiveURLsIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseGetSessionLiveURLsIntegrationDef {
-      export interface Arguments {
-        id: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * The integration definition for the remote browser
-     */
-    export interface RemoteBrowserIntegrationDef {
-      /**
-       * The setup parameters for the remote browser
-       */
-      setup: RemoteBrowserIntegrationDef.Setup;
-
-      /**
-       * The arguments for the remote browser
-       */
-      arguments?: RemoteBrowserIntegrationDef.Arguments | null;
-
-      method?: 'perform_action';
-
-      provider?: 'remote_browser';
-    }
-
-    export namespace RemoteBrowserIntegrationDef {
-      /**
-       * The setup parameters for the remote browser
-       */
-      export interface Setup {
-        connect_url?: string | null;
-
-        height?: number | null;
-
-        width?: number | null;
-      }
-
-      /**
-       * The arguments for the remote browser
-       */
-      export interface Arguments {
-        action:
-          | 'key'
-          | 'type'
-          | 'mouse_move'
-          | 'left_click'
-          | 'left_click_drag'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot'
-          | 'cursor_position'
-          | 'navigate'
-          | 'refresh';
-
-        connect_url?: string | null;
-
-        coordinate?: Array<unknown> | null;
-
-        text?: string | null;
-      }
-    }
-
-    /**
-     * LlamaParse integration definition
-     */
-    export interface LlamaParseIntegrationDef {
-      /**
-       * Arguments for LlamaParse integration
-       */
-      arguments?: LlamaParseIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'llama_parse';
-
-      /**
-       * Setup parameters for LlamaParse integration
-       */
-      setup?: LlamaParseIntegrationDef.Setup | null;
-    }
-
-    export namespace LlamaParseIntegrationDef {
-      /**
-       * Arguments for LlamaParse integration
-       */
-      export interface Arguments {
-        file: string | Array<string>;
-
-        base64?: boolean;
-
-        filename?: string | null;
-
-        params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for LlamaParse integration
-       */
-      export interface Setup {
-        llamaparse_api_key: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Ffmpeg integration definition
-     */
-    export interface FfmpegIntegrationDef {
-      /**
-       * Arguments for Ffmpeg CMD
-       */
-      arguments?: FfmpegIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'ffmpeg';
-
-      setup?: unknown;
-    }
-
-    export namespace FfmpegIntegrationDef {
-      /**
-       * Arguments for Ffmpeg CMD
-       */
-      export interface Arguments {
-        cmd: string;
-
-        file?: string | Array<string> | null;
-      }
-    }
-
-    /**
-     * Cloudinary upload integration definition
-     */
-    export interface CloudinaryUploadIntegrationDef {
-      /**
-       * Arguments for Cloudinary media upload
-       */
-      arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
-
-      method?: 'media_upload';
-
-      provider?: 'cloudinary';
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      setup?: CloudinaryUploadIntegrationDef.Setup | null;
-    }
-
-    export namespace CloudinaryUploadIntegrationDef {
-      /**
-       * Arguments for Cloudinary media upload
-       */
-      export interface Arguments {
-        file: string;
-
-        public_id?: string | null;
-
-        return_base64?: boolean;
-
-        upload_params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      export interface Setup {
-        cloudinary_api_key: string;
-
-        cloudinary_api_secret: string;
-
-        cloudinary_cloud_name: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Cloudinary edit integration definition
-     */
-    export interface CloudinaryEditIntegrationDef {
-      /**
-       * Arguments for Cloudinary media edit
-       */
-      arguments?: CloudinaryEditIntegrationDef.Arguments | null;
-
-      method?: 'media_edit';
-
-      provider?: 'cloudinary';
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      setup?: CloudinaryEditIntegrationDef.Setup | null;
-    }
-
-    export namespace CloudinaryEditIntegrationDef {
-      /**
-       * Arguments for Cloudinary media edit
-       */
-      export interface Arguments {
-        public_id: string;
-
-        transformation: Array<unknown>;
-
-        return_base64?: boolean;
-      }
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      export interface Setup {
-        cloudinary_api_key: string;
-
-        cloudinary_api_secret: string;
-
-        cloudinary_cloud_name: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Arxiv integration definition
-     */
-    export interface ArxivIntegrationDef {
-      /**
-       * Arguments for Arxiv Search
-       */
-      arguments?: ArxivIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'arxiv';
-
-      setup?: unknown;
-    }
-
-    export namespace ArxivIntegrationDef {
-      /**
-       * Arguments for Arxiv Search
-       */
-      export interface Arguments {
-        query: string;
-
-        download_pdf?: boolean;
-
-        id_list?: Array<string> | null;
-
-        max_results?: number;
-
-        sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
-
-        sort_order?: 'ascending' | 'descending';
-      }
-    }
-
-    /**
-     * Unstructured integration definition
-     */
-    export interface UnstructuredIntegrationDef {
-      /**
-       * Arguments for Unstructured partition integration
-       */
-      arguments?: UnstructuredIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'unstructured';
-
-      /**
-       * Setup parameters for Unstructured integration
-       */
-      setup?: UnstructuredIntegrationDef.Setup | null;
-    }
-
-    export namespace UnstructuredIntegrationDef {
-      /**
-       * Arguments for Unstructured partition integration
-       */
-      export interface Arguments {
-        file: string;
-
-        filename?: string | null;
-
-        partition_params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Unstructured integration
-       */
-      export interface Setup {
-        unstructured_api_key: string;
-
-        retry_config?: unknown | null;
-
-        server?: string | null;
-
-        server_url?: string | null;
-
-        timeout_ms?: number | null;
-
-        url_params?: unknown | null;
-      }
-    }
-
-    /**
-     * Algolia integration definition
-     */
-    export interface AlgoliaIntegrationDef {
-      /**
-       * Arguments for Algolia Search
-       */
-      arguments?: AlgoliaIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'algolia';
-
-      /**
-       * Integration definition for Algolia
-       */
-      setup?: AlgoliaIntegrationDef.Setup | null;
-    }
-
-    export namespace AlgoliaIntegrationDef {
-      /**
-       * Arguments for Algolia Search
-       */
-      export interface Arguments {
-        index_name: string;
-
-        query: string;
-
-        attributes_to_retrieve?: Array<string> | null;
-
-        hits_per_page?: number;
-      }
-
-      /**
-       * Integration definition for Algolia
-       */
-      export interface Setup {
-        algolia_api_key: string;
-
-        algolia_application_id: string;
-      }
-    }
-
-    /**
-     * System definition
-     */
-    export interface System {
-      operation:
-        | 'create'
-        | 'update'
-        | 'patch'
-        | 'create_or_update'
-        | 'embed'
-        | 'change_status'
-        | 'search'
-        | 'chat'
-        | 'history'
-        | 'delete'
-        | 'get'
-        | 'list';
-
-      resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
-
-      arguments?: unknown | null;
-
-      resource_id?: string | null;
-
-      subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
-    }
-
-    export interface TextEditor20241022 {
-      name?: string;
-
-      type?: 'text_editor_20241022';
-    }
+    text_editor_20241022?: Shared.TextEditor20241022Def | null;
   }
 }
 
@@ -8057,11 +1858,7 @@ export interface SessionCreateOrUpdateParams {
 
   metadata?: unknown | null;
 
-  recall_options?:
-    | SessionCreateOrUpdateParams.VectorDocSearch
-    | SessionCreateOrUpdateParams.TextOnlyDocSearch
-    | SessionCreateOrUpdateParams.HybridDocSearch
-    | null;
+  recall_options?: VectorDocSearch | TextOnlyDocSearch | HybridDocSearch | null;
 
   render_templates?: boolean;
 
@@ -8074,66 +1871,6 @@ export interface SessionCreateOrUpdateParams {
   user?: string | null;
 
   users?: Array<string> | null;
-}
-
-export namespace SessionCreateOrUpdateParams {
-  export interface VectorDocSearch {
-    confidence?: number;
-
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mmr_strength?: number;
-
-    mode?: 'vector';
-
-    num_search_messages?: number;
-  }
-
-  export interface TextOnlyDocSearch {
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mode?: 'text';
-
-    num_search_messages?: number;
-
-    trigram_similarity_threshold?: number;
-  }
-
-  export interface HybridDocSearch {
-    alpha?: number;
-
-    confidence?: number;
-
-    k_multiplier?: number;
-
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mmr_strength?: number;
-
-    mode?: 'hybrid';
-
-    num_search_messages?: number;
-
-    trigram_similarity_threshold?: number;
-  }
 }
 
 export interface SessionRenderParams {
@@ -8159,10 +1896,7 @@ export interface SessionRenderParams {
 
   repetition_penalty?: number | null;
 
-  response_format?:
-    | SessionRenderParams.SimpleCompletionResponseFormat
-    | SessionRenderParams.SchemaCompletionResponseFormat
-    | null;
+  response_format?: SimpleCompletionResponseFormat | SchemaCompletionResponseFormat | null;
 
   save?: boolean;
 
@@ -8174,7 +1908,7 @@ export interface SessionRenderParams {
 
   temperature?: number | null;
 
-  tool_choice?: 'auto' | 'none' | SessionRenderParams.NamedToolChoice | null;
+  tool_choice?: 'auto' | 'none' | Shared.NamedToolChoice | null;
 
   tools?: Array<SessionRenderParams.Tool> | null;
 
@@ -8198,10 +1932,10 @@ export namespace SessionRenderParams {
     tool_call_id?: string | null;
 
     tool_calls?: Array<
-      | Message.ChosenFunctionCall
-      | Message.ChosenComputer20241022
-      | Message.ChosenTextEditor20241022
-      | Message.ChosenBash20241022
+      | SessionsAPI.ChosenFunctionCall
+      | SessionsAPI.ChosenComputer20241022
+      | SessionsAPI.ChosenTextEditor20241022
+      | SessionsAPI.ChosenBash20241022
     > | null;
   }
 
@@ -8268,132 +2002,6 @@ export namespace SessionRenderParams {
         }
       }
     }
-
-    export interface ChosenFunctionCall {
-      function: ChosenFunctionCall.Function;
-
-      api_call?: unknown;
-
-      bash_20241022?: ChosenFunctionCall.Bash20241022 | null;
-
-      computer_20241022?: ChosenFunctionCall.Computer20241022 | null;
-
-      integration?: unknown;
-
-      system?: unknown;
-
-      text_editor_20241022?: ChosenFunctionCall.TextEditor20241022 | null;
-
-      type?: 'function';
-    }
-
-    export namespace ChosenFunctionCall {
-      export interface Function {
-        name: string;
-
-        arguments?: string | null;
-      }
-
-      export interface Bash20241022 {
-        command?: string | null;
-
-        restart?: boolean;
-      }
-
-      export interface Computer20241022 {
-        action:
-          | 'key'
-          | 'type'
-          | 'cursor_position'
-          | 'mouse_move'
-          | 'left_click'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot';
-
-        coordinate?: Array<number> | null;
-
-        text?: string | null;
-      }
-
-      export interface TextEditor20241022 {
-        command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-        path: string;
-
-        file_text?: string | null;
-
-        insert_line?: number | null;
-
-        new_str?: string | null;
-
-        old_str?: string | null;
-
-        view_range?: Array<number> | null;
-      }
-    }
-
-    export interface ChosenComputer20241022 {
-      action:
-        | 'key'
-        | 'type'
-        | 'cursor_position'
-        | 'mouse_move'
-        | 'left_click'
-        | 'right_click'
-        | 'middle_click'
-        | 'double_click'
-        | 'screenshot';
-
-      coordinate?: Array<number> | null;
-
-      text?: string | null;
-    }
-
-    export interface ChosenTextEditor20241022 {
-      command: 'str_replace' | 'insert' | 'view' | 'undo_edit';
-
-      path: string;
-
-      file_text?: string | null;
-
-      insert_line?: number | null;
-
-      new_str?: string | null;
-
-      old_str?: string | null;
-
-      view_range?: Array<number> | null;
-    }
-
-    export interface ChosenBash20241022 {
-      command?: string | null;
-
-      restart?: boolean;
-    }
-  }
-
-  export interface SimpleCompletionResponseFormat {
-    type?: 'text' | 'json_object';
-  }
-
-  export interface SchemaCompletionResponseFormat {
-    json_schema: unknown;
-
-    type?: 'json_schema';
-  }
-
-  export interface NamedToolChoice {
-    function?: NamedToolChoice.Function | null;
-  }
-
-  export namespace NamedToolChoice {
-    export interface Function {
-      name: string;
-
-      arguments?: string | null;
-    }
   }
 
   /**
@@ -8414,1005 +2022,56 @@ export namespace SessionRenderParams {
     /**
      * API call definition
      */
-    api_call?: Tool.APICall | null;
+    api_call?: Shared.APICallDef | null;
 
-    bash_20241022?: Tool.Bash20241022 | null;
+    bash_20241022?: Shared.Bash20241022Def | null;
 
     /**
      * Anthropic new tools
      */
-    computer_20241022?: Tool.Computer20241022 | null;
+    computer_20241022?: Shared.Computer20241022Def | null;
 
     description?: string | null;
 
     /**
      * Function definition
      */
-    function?: Tool.Function | null;
+    function?: Shared.FunctionDef | null;
 
     /**
      * Brave integration definition
      */
     integration?:
-      | Tool.DummyIntegrationDef
-      | Tool.BraveIntegrationDef
-      | Tool.EmailIntegrationDef
-      | Tool.SpiderIntegrationDef
-      | Tool.WikipediaIntegrationDef
-      | Tool.WeatherIntegrationDef
-      | Tool.MailgunIntegrationDef
-      | Tool.BrowserbaseContextIntegrationDef
-      | Tool.BrowserbaseExtensionIntegrationDef
-      | Tool.BrowserbaseListSessionsIntegrationDef
-      | Tool.BrowserbaseCreateSessionIntegrationDef
-      | Tool.BrowserbaseGetSessionIntegrationDef
-      | Tool.BrowserbaseCompleteSessionIntegrationDef
-      | Tool.BrowserbaseGetSessionLiveURLsIntegrationDef
-      | Tool.RemoteBrowserIntegrationDef
-      | Tool.LlamaParseIntegrationDef
-      | Tool.FfmpegIntegrationDef
-      | Tool.CloudinaryUploadIntegrationDef
-      | Tool.CloudinaryEditIntegrationDef
-      | Tool.ArxivIntegrationDef
-      | Tool.UnstructuredIntegrationDef
-      | Tool.AlgoliaIntegrationDef
+      | Shared.DummyIntegrationDef
+      | Shared.BraveIntegrationDef
+      | Shared.EmailIntegrationDef
+      | Shared.SpiderIntegrationDef
+      | Shared.WikipediaIntegrationDef
+      | Shared.WeatherIntegrationDef
+      | Shared.MailgunIntegrationDef
+      | Shared.BrowserbaseContextIntegrationDef
+      | Shared.BrowserbaseExtensionIntegrationDef
+      | Shared.BrowserbaseListSessionsIntegrationDef
+      | Shared.BrowserbaseCreateSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionIntegrationDef
+      | Shared.BrowserbaseCompleteSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionLiveURLsIntegrationDef
+      | Shared.RemoteBrowserIntegrationDef
+      | Shared.LlamaParseIntegrationDef
+      | Shared.FfmpegIntegrationDef
+      | Shared.CloudinaryUploadIntegrationDef
+      | Shared.CloudinaryEditIntegrationDef
+      | Shared.ArxivIntegrationDef
+      | Shared.UnstructuredIntegrationDef
+      | Shared.AlgoliaIntegrationDef
       | null;
 
     /**
      * System definition
      */
-    system?: Tool.System | null;
+    system?: Shared.SystemDef | null;
 
-    text_editor_20241022?: Tool.TextEditor20241022 | null;
-  }
-
-  export namespace Tool {
-    /**
-     * API call definition
-     */
-    export interface APICall {
-      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
-
-      url: string;
-
-      content?: string | null;
-
-      cookies?: Record<string, string> | null;
-
-      data?: unknown | null;
-
-      files?: unknown | null;
-
-      follow_redirects?: boolean | null;
-
-      headers?: Record<string, string> | null;
-
-      include_response_content?: boolean;
-
-      json?: unknown | null;
-
-      params?: string | unknown | null;
-
-      schema?: unknown | null;
-
-      secrets?: Record<string, APICall.Secrets> | null;
-
-      timeout?: number | null;
-    }
-
-    export namespace APICall {
-      export interface Secrets {
-        name: string;
-      }
-    }
-
-    export interface Bash20241022 {
-      name?: string;
-
-      type?: 'bash_20241022';
-    }
-
-    /**
-     * Anthropic new tools
-     */
-    export interface Computer20241022 {
-      display_height_px?: number;
-
-      display_number?: number;
-
-      display_width_px?: number;
-
-      name?: string;
-
-      type?: 'computer_20241022';
-    }
-
-    /**
-     * Function definition
-     */
-    export interface Function {
-      description?: unknown;
-
-      name?: unknown;
-
-      parameters?: unknown | null;
-    }
-
-    export interface DummyIntegrationDef {
-      arguments?: unknown;
-
-      method?: string | null;
-
-      provider?: 'dummy';
-
-      setup?: unknown;
-    }
-
-    /**
-     * Brave integration definition
-     */
-    export interface BraveIntegrationDef {
-      /**
-       * Arguments for Brave Search
-       */
-      arguments?: BraveIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'brave';
-
-      /**
-       * Integration definition for Brave Search
-       */
-      setup?: BraveIntegrationDef.Setup | null;
-    }
-
-    export namespace BraveIntegrationDef {
-      /**
-       * Arguments for Brave Search
-       */
-      export interface Arguments {
-        query: string;
-      }
-
-      /**
-       * Integration definition for Brave Search
-       */
-      export interface Setup {
-        brave_api_key: string;
-      }
-    }
-
-    /**
-     * Email integration definition
-     */
-    export interface EmailIntegrationDef {
-      /**
-       * Arguments for Email sending
-       */
-      arguments?: EmailIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'email';
-
-      /**
-       * Setup parameters for Email integration
-       */
-      setup?: EmailIntegrationDef.Setup | null;
-    }
-
-    export namespace EmailIntegrationDef {
-      /**
-       * Arguments for Email sending
-       */
-      export interface Arguments {
-        body: string;
-
-        from: string;
-
-        subject: string;
-
-        to: string;
-      }
-
-      /**
-       * Setup parameters for Email integration
-       */
-      export interface Setup {
-        host: string;
-
-        password: string;
-
-        port: number;
-
-        user: string;
-      }
-    }
-
-    /**
-     * Spider integration definition
-     */
-    export interface SpiderIntegrationDef {
-      /**
-       * Arguments for Spider integration
-       */
-      arguments?: SpiderIntegrationDef.Arguments | null;
-
-      method?: 'crawl' | 'links' | 'screenshot' | 'search' | null;
-
-      provider?: 'spider';
-
-      /**
-       * Setup parameters for Spider integration
-       */
-      setup?: SpiderIntegrationDef.Setup | null;
-    }
-
-    export namespace SpiderIntegrationDef {
-      /**
-       * Arguments for Spider integration
-       */
-      export interface Arguments {
-        url: string;
-
-        content_type?: 'application/json' | 'text/csv' | 'application/xml' | 'application/jsonl';
-
-        params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Spider integration
-       */
-      export interface Setup {
-        spider_api_key: string;
-      }
-    }
-
-    /**
-     * Wikipedia integration definition
-     */
-    export interface WikipediaIntegrationDef {
-      /**
-       * Arguments for Wikipedia Search
-       */
-      arguments?: WikipediaIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'wikipedia';
-
-      setup?: unknown;
-    }
-
-    export namespace WikipediaIntegrationDef {
-      /**
-       * Arguments for Wikipedia Search
-       */
-      export interface Arguments {
-        query: string;
-
-        load_max_docs?: number;
-      }
-    }
-
-    /**
-     * Weather integration definition
-     */
-    export interface WeatherIntegrationDef {
-      /**
-       * Arguments for Weather
-       */
-      arguments?: WeatherIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'weather';
-
-      /**
-       * Integration definition for Weather
-       */
-      setup?: WeatherIntegrationDef.Setup | null;
-    }
-
-    export namespace WeatherIntegrationDef {
-      /**
-       * Arguments for Weather
-       */
-      export interface Arguments {
-        location: string;
-      }
-
-      /**
-       * Integration definition for Weather
-       */
-      export interface Setup {
-        openweathermap_api_key: string;
-      }
-    }
-
-    /**
-     * Mailgun integration definition
-     */
-    export interface MailgunIntegrationDef {
-      /**
-       * Arguments for mailgun.send_email method
-       */
-      arguments?: MailgunIntegrationDef.Arguments | null;
-
-      method?: 'send_email' | null;
-
-      provider?: 'mailgun';
-
-      /**
-       * Setup parameters for Mailgun integration
-       */
-      setup?: MailgunIntegrationDef.Setup | null;
-    }
-
-    export namespace MailgunIntegrationDef {
-      /**
-       * Arguments for mailgun.send_email method
-       */
-      export interface Arguments {
-        body: string;
-
-        from: string;
-
-        subject: string;
-
-        to: string;
-
-        bcc?: string | null;
-
-        cc?: string | null;
-      }
-
-      /**
-       * Setup parameters for Mailgun integration
-       */
-      export interface Setup {
-        api_key: string;
-      }
-    }
-
-    /**
-     * browserbase context provider
-     */
-    export interface BrowserbaseContextIntegrationDef {
-      arguments?: BrowserbaseContextIntegrationDef.Arguments | null;
-
-      method?: 'create_context';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseContextIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseContextIntegrationDef {
-      export interface Arguments {
-        projectId: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase extension provider
-     */
-    export interface BrowserbaseExtensionIntegrationDef {
-      arguments?: BrowserbaseExtensionIntegrationDef.Arguments | null;
-
-      method?: 'install_extension_from_github' | null;
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseExtensionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseExtensionIntegrationDef {
-      export interface Arguments {
-        repositoryName: string;
-
-        ref?: string | null;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase list sessions integration definition
-     */
-    export interface BrowserbaseListSessionsIntegrationDef {
-      arguments?: BrowserbaseListSessionsIntegrationDef.Arguments | null;
-
-      method?: 'list_sessions';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseListSessionsIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseListSessionsIntegrationDef {
-      export interface Arguments {
-        status?: 'RUNNING' | 'ERROR' | 'TIMED_OUT' | 'COMPLETED' | null;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase create session integration definition
-     */
-    export interface BrowserbaseCreateSessionIntegrationDef {
-      arguments?: BrowserbaseCreateSessionIntegrationDef.Arguments | null;
-
-      method?: 'create_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseCreateSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseCreateSessionIntegrationDef {
-      export interface Arguments {
-        browserSettings?: unknown;
-
-        extensionId?: string | null;
-
-        keepAlive?: boolean;
-
-        projectId?: string | null;
-
-        proxies?: boolean | Array<unknown>;
-
-        timeout?: number;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase get session integration definition
-     */
-    export interface BrowserbaseGetSessionIntegrationDef {
-      arguments?: BrowserbaseGetSessionIntegrationDef.Arguments | null;
-
-      method?: 'get_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseGetSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseGetSessionIntegrationDef {
-      export interface Arguments {
-        id: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase complete session integration definition
-     */
-    export interface BrowserbaseCompleteSessionIntegrationDef {
-      arguments?: BrowserbaseCompleteSessionIntegrationDef.Arguments | null;
-
-      method?: 'complete_session';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseCompleteSessionIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseCompleteSessionIntegrationDef {
-      export interface Arguments {
-        id: string;
-
-        status?: 'REQUEST_RELEASE';
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * browserbase get session live urls integration definition
-     */
-    export interface BrowserbaseGetSessionLiveURLsIntegrationDef {
-      arguments?: BrowserbaseGetSessionLiveURLsIntegrationDef.Arguments | null;
-
-      method?: 'get_live_urls';
-
-      provider?: 'browserbase';
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      setup?: BrowserbaseGetSessionLiveURLsIntegrationDef.Setup | null;
-    }
-
-    export namespace BrowserbaseGetSessionLiveURLsIntegrationDef {
-      export interface Arguments {
-        id: string;
-      }
-
-      /**
-       * The setup parameters for the browserbase integration
-       */
-      export interface Setup {
-        api_key: string;
-
-        project_id: string;
-
-        api_url?: string | null;
-
-        connect_url?: string | null;
-      }
-    }
-
-    /**
-     * The integration definition for the remote browser
-     */
-    export interface RemoteBrowserIntegrationDef {
-      /**
-       * The setup parameters for the remote browser
-       */
-      setup: RemoteBrowserIntegrationDef.Setup;
-
-      /**
-       * The arguments for the remote browser
-       */
-      arguments?: RemoteBrowserIntegrationDef.Arguments | null;
-
-      method?: 'perform_action';
-
-      provider?: 'remote_browser';
-    }
-
-    export namespace RemoteBrowserIntegrationDef {
-      /**
-       * The setup parameters for the remote browser
-       */
-      export interface Setup {
-        connect_url?: string | null;
-
-        height?: number | null;
-
-        width?: number | null;
-      }
-
-      /**
-       * The arguments for the remote browser
-       */
-      export interface Arguments {
-        action:
-          | 'key'
-          | 'type'
-          | 'mouse_move'
-          | 'left_click'
-          | 'left_click_drag'
-          | 'right_click'
-          | 'middle_click'
-          | 'double_click'
-          | 'screenshot'
-          | 'cursor_position'
-          | 'navigate'
-          | 'refresh';
-
-        connect_url?: string | null;
-
-        coordinate?: Array<unknown> | null;
-
-        text?: string | null;
-      }
-    }
-
-    /**
-     * LlamaParse integration definition
-     */
-    export interface LlamaParseIntegrationDef {
-      /**
-       * Arguments for LlamaParse integration
-       */
-      arguments?: LlamaParseIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'llama_parse';
-
-      /**
-       * Setup parameters for LlamaParse integration
-       */
-      setup?: LlamaParseIntegrationDef.Setup | null;
-    }
-
-    export namespace LlamaParseIntegrationDef {
-      /**
-       * Arguments for LlamaParse integration
-       */
-      export interface Arguments {
-        file: string | Array<string>;
-
-        base64?: boolean;
-
-        filename?: string | null;
-
-        params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for LlamaParse integration
-       */
-      export interface Setup {
-        llamaparse_api_key: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Ffmpeg integration definition
-     */
-    export interface FfmpegIntegrationDef {
-      /**
-       * Arguments for Ffmpeg CMD
-       */
-      arguments?: FfmpegIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'ffmpeg';
-
-      setup?: unknown;
-    }
-
-    export namespace FfmpegIntegrationDef {
-      /**
-       * Arguments for Ffmpeg CMD
-       */
-      export interface Arguments {
-        cmd: string;
-
-        file?: string | Array<string> | null;
-      }
-    }
-
-    /**
-     * Cloudinary upload integration definition
-     */
-    export interface CloudinaryUploadIntegrationDef {
-      /**
-       * Arguments for Cloudinary media upload
-       */
-      arguments?: CloudinaryUploadIntegrationDef.Arguments | null;
-
-      method?: 'media_upload';
-
-      provider?: 'cloudinary';
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      setup?: CloudinaryUploadIntegrationDef.Setup | null;
-    }
-
-    export namespace CloudinaryUploadIntegrationDef {
-      /**
-       * Arguments for Cloudinary media upload
-       */
-      export interface Arguments {
-        file: string;
-
-        public_id?: string | null;
-
-        return_base64?: boolean;
-
-        upload_params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      export interface Setup {
-        cloudinary_api_key: string;
-
-        cloudinary_api_secret: string;
-
-        cloudinary_cloud_name: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Cloudinary edit integration definition
-     */
-    export interface CloudinaryEditIntegrationDef {
-      /**
-       * Arguments for Cloudinary media edit
-       */
-      arguments?: CloudinaryEditIntegrationDef.Arguments | null;
-
-      method?: 'media_edit';
-
-      provider?: 'cloudinary';
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      setup?: CloudinaryEditIntegrationDef.Setup | null;
-    }
-
-    export namespace CloudinaryEditIntegrationDef {
-      /**
-       * Arguments for Cloudinary media edit
-       */
-      export interface Arguments {
-        public_id: string;
-
-        transformation: Array<unknown>;
-
-        return_base64?: boolean;
-      }
-
-      /**
-       * Setup parameters for Cloudinary integration
-       */
-      export interface Setup {
-        cloudinary_api_key: string;
-
-        cloudinary_api_secret: string;
-
-        cloudinary_cloud_name: string;
-
-        params?: unknown | null;
-      }
-    }
-
-    /**
-     * Arxiv integration definition
-     */
-    export interface ArxivIntegrationDef {
-      /**
-       * Arguments for Arxiv Search
-       */
-      arguments?: ArxivIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'arxiv';
-
-      setup?: unknown;
-    }
-
-    export namespace ArxivIntegrationDef {
-      /**
-       * Arguments for Arxiv Search
-       */
-      export interface Arguments {
-        query: string;
-
-        download_pdf?: boolean;
-
-        id_list?: Array<string> | null;
-
-        max_results?: number;
-
-        sort_by?: 'relevance' | 'lastUpdatedDate' | 'submittedDate';
-
-        sort_order?: 'ascending' | 'descending';
-      }
-    }
-
-    /**
-     * Unstructured integration definition
-     */
-    export interface UnstructuredIntegrationDef {
-      /**
-       * Arguments for Unstructured partition integration
-       */
-      arguments?: UnstructuredIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'unstructured';
-
-      /**
-       * Setup parameters for Unstructured integration
-       */
-      setup?: UnstructuredIntegrationDef.Setup | null;
-    }
-
-    export namespace UnstructuredIntegrationDef {
-      /**
-       * Arguments for Unstructured partition integration
-       */
-      export interface Arguments {
-        file: string;
-
-        filename?: string | null;
-
-        partition_params?: unknown | null;
-      }
-
-      /**
-       * Setup parameters for Unstructured integration
-       */
-      export interface Setup {
-        unstructured_api_key: string;
-
-        retry_config?: unknown | null;
-
-        server?: string | null;
-
-        server_url?: string | null;
-
-        timeout_ms?: number | null;
-
-        url_params?: unknown | null;
-      }
-    }
-
-    /**
-     * Algolia integration definition
-     */
-    export interface AlgoliaIntegrationDef {
-      /**
-       * Arguments for Algolia Search
-       */
-      arguments?: AlgoliaIntegrationDef.Arguments | null;
-
-      method?: string | null;
-
-      provider?: 'algolia';
-
-      /**
-       * Integration definition for Algolia
-       */
-      setup?: AlgoliaIntegrationDef.Setup | null;
-    }
-
-    export namespace AlgoliaIntegrationDef {
-      /**
-       * Arguments for Algolia Search
-       */
-      export interface Arguments {
-        index_name: string;
-
-        query: string;
-
-        attributes_to_retrieve?: Array<string> | null;
-
-        hits_per_page?: number;
-      }
-
-      /**
-       * Integration definition for Algolia
-       */
-      export interface Setup {
-        algolia_api_key: string;
-
-        algolia_application_id: string;
-      }
-    }
-
-    /**
-     * System definition
-     */
-    export interface System {
-      operation:
-        | 'create'
-        | 'update'
-        | 'patch'
-        | 'create_or_update'
-        | 'embed'
-        | 'change_status'
-        | 'search'
-        | 'chat'
-        | 'history'
-        | 'delete'
-        | 'get'
-        | 'list';
-
-      resource: 'agent' | 'user' | 'task' | 'execution' | 'doc' | 'session' | 'job';
-
-      arguments?: unknown | null;
-
-      resource_id?: string | null;
-
-      subresource?: 'tool' | 'doc' | 'execution' | 'transition' | null;
-    }
-
-    export interface TextEditor20241022 {
-      name?: string;
-
-      type?: 'text_editor_20241022';
-    }
+    text_editor_20241022?: Shared.TextEditor20241022Def | null;
   }
 }
 
@@ -9425,11 +2084,7 @@ export interface SessionResetParams {
 
   metadata?: unknown | null;
 
-  recall_options?:
-    | SessionResetParams.VectorDocSearch
-    | SessionResetParams.TextOnlyDocSearch
-    | SessionResetParams.HybridDocSearch
-    | null;
+  recall_options?: VectorDocSearch | TextOnlyDocSearch | HybridDocSearch | null;
 
   render_templates?: boolean;
 
@@ -9440,75 +2095,27 @@ export interface SessionResetParams {
   token_budget?: number | null;
 }
 
-export namespace SessionResetParams {
-  export interface VectorDocSearch {
-    confidence?: number;
-
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mmr_strength?: number;
-
-    mode?: 'vector';
-
-    num_search_messages?: number;
-  }
-
-  export interface TextOnlyDocSearch {
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mode?: 'text';
-
-    num_search_messages?: number;
-
-    trigram_similarity_threshold?: number;
-  }
-
-  export interface HybridDocSearch {
-    alpha?: number;
-
-    confidence?: number;
-
-    k_multiplier?: number;
-
-    lang?: string;
-
-    limit?: number;
-
-    max_query_length?: number;
-
-    metadata_filter?: unknown;
-
-    mmr_strength?: number;
-
-    mode?: 'hybrid';
-
-    num_search_messages?: number;
-
-    trigram_similarity_threshold?: number;
-  }
-}
-
 Sessions.SessionsOffsetPagination = SessionsOffsetPagination;
 
 export declare namespace Sessions {
   export {
+    type BaseTokenLogProb as BaseTokenLogProb,
     type ChatInput as ChatInput,
     type ChatResponse as ChatResponse,
+    type ChosenBash20241022 as ChosenBash20241022,
+    type ChosenComputer20241022 as ChosenComputer20241022,
+    type ChosenFunctionCall as ChosenFunctionCall,
+    type ChosenTextEditor20241022 as ChosenTextEditor20241022,
     type Entry as Entry,
     type History as History,
+    type HybridDocSearch as HybridDocSearch,
+    type LogProbResponse as LogProbResponse,
+    type SchemaCompletionResponseFormat as SchemaCompletionResponseFormat,
     type Session as Session,
+    type SimpleCompletionResponseFormat as SimpleCompletionResponseFormat,
+    type TextOnlyDocSearch as TextOnlyDocSearch,
+    type TokenLogProb as TokenLogProb,
+    type VectorDocSearch as VectorDocSearch,
     type SessionChatResponse as SessionChatResponse,
     type SessionRenderResponse as SessionRenderResponse,
     SessionsOffsetPagination as SessionsOffsetPagination,

@@ -29,10 +29,18 @@ import {
   Secrets,
 } from './resources/secrets';
 import {
+  BaseTokenLogProb,
   ChatInput,
   ChatResponse,
+  ChosenBash20241022,
+  ChosenComputer20241022,
+  ChosenFunctionCall,
+  ChosenTextEditor20241022,
   Entry,
   History,
+  HybridDocSearch,
+  LogProbResponse,
+  SchemaCompletionResponseFormat,
   Session,
   SessionChatParams,
   SessionChatResponse,
@@ -45,14 +53,36 @@ import {
   SessionUpdateParams,
   Sessions,
   SessionsOffsetPagination,
+  SimpleCompletionResponseFormat,
+  TextOnlyDocSearch,
+  TokenLogProb,
+  VectorDocSearch,
 } from './resources/sessions';
 import {
+  CaseThenOutput,
+  ErrorWorkflowStep,
+  EvaluateStep,
+  ForeachDoOutput,
+  ForeachStepOutput,
+  GetStep,
+  LogStep,
+  ParallelStepOutput,
+  PromptStepOutput,
+  ReturnStep,
+  SetStep,
+  SleepFor,
+  SleepStep,
+  SwitchStepOutput,
   Task,
   TaskCreateOrUpdateParams,
   TaskCreateParams,
   TaskListParams,
   Tasks,
   TasksOffsetPagination,
+  ToolCallStep,
+  WaitForInputInfo,
+  WaitForInputStep,
+  YieldStep,
 } from './resources/tasks';
 import {
   Agent as AgentsAPIAgent,
@@ -335,11 +365,23 @@ export declare namespace Julep {
 
   export {
     Sessions as Sessions,
+    type BaseTokenLogProb as BaseTokenLogProb,
     type ChatInput as ChatInput,
     type ChatResponse as ChatResponse,
+    type ChosenBash20241022 as ChosenBash20241022,
+    type ChosenComputer20241022 as ChosenComputer20241022,
+    type ChosenFunctionCall as ChosenFunctionCall,
+    type ChosenTextEditor20241022 as ChosenTextEditor20241022,
     type Entry as Entry,
     type History as History,
+    type HybridDocSearch as HybridDocSearch,
+    type LogProbResponse as LogProbResponse,
+    type SchemaCompletionResponseFormat as SchemaCompletionResponseFormat,
     type Session as Session,
+    type SimpleCompletionResponseFormat as SimpleCompletionResponseFormat,
+    type TextOnlyDocSearch as TextOnlyDocSearch,
+    type TokenLogProb as TokenLogProb,
+    type VectorDocSearch as VectorDocSearch,
     type SessionChatResponse as SessionChatResponse,
     type SessionRenderResponse as SessionRenderResponse,
     SessionsOffsetPagination as SessionsOffsetPagination,
@@ -375,7 +417,25 @@ export declare namespace Julep {
 
   export {
     Tasks as Tasks,
+    type CaseThenOutput as CaseThenOutput,
+    type ErrorWorkflowStep as ErrorWorkflowStep,
+    type EvaluateStep as EvaluateStep,
+    type ForeachDoOutput as ForeachDoOutput,
+    type ForeachStepOutput as ForeachStepOutput,
+    type GetStep as GetStep,
+    type LogStep as LogStep,
+    type ParallelStepOutput as ParallelStepOutput,
+    type PromptStepOutput as PromptStepOutput,
+    type ReturnStep as ReturnStep,
+    type SetStep as SetStep,
+    type SleepFor as SleepFor,
+    type SleepStep as SleepStep,
+    type SwitchStepOutput as SwitchStepOutput,
     type Task as Task,
+    type ToolCallStep as ToolCallStep,
+    type WaitForInputInfo as WaitForInputInfo,
+    type WaitForInputStep as WaitForInputStep,
+    type YieldStep as YieldStep,
     TasksOffsetPagination as TasksOffsetPagination,
     type TaskCreateParams as TaskCreateParams,
     type TaskListParams as TaskListParams,
@@ -413,7 +473,72 @@ export declare namespace Julep {
 
   export { Healthz as Healthz, type HealthzCheckResponse as HealthzCheckResponse };
 
+  export type AlgoliaIntegrationDef = API.AlgoliaIntegrationDef;
+  export type AlgoliaSearchArguments = API.AlgoliaSearchArguments;
+  export type AlgoliaSetup = API.AlgoliaSetup;
+  export type APICallDef = API.APICallDef;
+  export type ArxivIntegrationDef = API.ArxivIntegrationDef;
+  export type ArxivSearchArguments = API.ArxivSearchArguments;
+  export type Bash20241022Def = API.Bash20241022Def;
+  export type BraveIntegrationDef = API.BraveIntegrationDef;
+  export type BraveSearchArguments = API.BraveSearchArguments;
+  export type BraveSearchSetup = API.BraveSearchSetup;
+  export type BrowserbaseCompleteSessionArguments = API.BrowserbaseCompleteSessionArguments;
+  export type BrowserbaseCompleteSessionIntegrationDef = API.BrowserbaseCompleteSessionIntegrationDef;
+  export type BrowserbaseContextArguments = API.BrowserbaseContextArguments;
+  export type BrowserbaseContextIntegrationDef = API.BrowserbaseContextIntegrationDef;
+  export type BrowserbaseCreateSessionArguments = API.BrowserbaseCreateSessionArguments;
+  export type BrowserbaseCreateSessionIntegrationDef = API.BrowserbaseCreateSessionIntegrationDef;
+  export type BrowserbaseExtensionArguments = API.BrowserbaseExtensionArguments;
+  export type BrowserbaseExtensionIntegrationDef = API.BrowserbaseExtensionIntegrationDef;
+  export type BrowserbaseGetSessionArguments = API.BrowserbaseGetSessionArguments;
+  export type BrowserbaseGetSessionIntegrationDef = API.BrowserbaseGetSessionIntegrationDef;
+  export type BrowserbaseGetSessionLiveURLsArguments = API.BrowserbaseGetSessionLiveURLsArguments;
+  export type BrowserbaseGetSessionLiveURLsIntegrationDef = API.BrowserbaseGetSessionLiveURLsIntegrationDef;
+  export type BrowserbaseListSessionsArguments = API.BrowserbaseListSessionsArguments;
+  export type BrowserbaseListSessionsIntegrationDef = API.BrowserbaseListSessionsIntegrationDef;
+  export type BrowserbaseSetup = API.BrowserbaseSetup;
+  export type CloudinaryEditArguments = API.CloudinaryEditArguments;
+  export type CloudinaryEditIntegrationDef = API.CloudinaryEditIntegrationDef;
+  export type CloudinarySetup = API.CloudinarySetup;
+  export type CloudinaryUploadArguments = API.CloudinaryUploadArguments;
+  export type CloudinaryUploadIntegrationDef = API.CloudinaryUploadIntegrationDef;
+  export type Computer20241022Def = API.Computer20241022Def;
+  export type DocOwner = API.DocOwner;
+  export type DocReference = API.DocReference;
+  export type DummyIntegrationDef = API.DummyIntegrationDef;
+  export type EmailArguments = API.EmailArguments;
+  export type EmailIntegrationDef = API.EmailIntegrationDef;
+  export type EmailSetup = API.EmailSetup;
+  export type FfmpegIntegrationDef = API.FfmpegIntegrationDef;
+  export type FfmpegSearchArguments = API.FfmpegSearchArguments;
+  export type FunctionCallOption = API.FunctionCallOption;
+  export type FunctionDef = API.FunctionDef;
+  export type LlamaParseFetchArguments = API.LlamaParseFetchArguments;
+  export type LlamaParseIntegrationDef = API.LlamaParseIntegrationDef;
+  export type LlamaParseSetup = API.LlamaParseSetup;
+  export type MailgunIntegrationDef = API.MailgunIntegrationDef;
+  export type MailgunSendEmailArguments = API.MailgunSendEmailArguments;
+  export type MailgunSetup = API.MailgunSetup;
+  export type NamedToolChoice = API.NamedToolChoice;
+  export type RemoteBrowserArguments = API.RemoteBrowserArguments;
+  export type RemoteBrowserIntegrationDef = API.RemoteBrowserIntegrationDef;
+  export type RemoteBrowserSetup = API.RemoteBrowserSetup;
   export type ResourceDeleted = API.ResourceDeleted;
+  export type SecretRef = API.SecretRef;
+  export type SpiderFetchArguments = API.SpiderFetchArguments;
+  export type SpiderIntegrationDef = API.SpiderIntegrationDef;
+  export type SpiderSetup = API.SpiderSetup;
+  export type SystemDef = API.SystemDef;
+  export type TextEditor20241022Def = API.TextEditor20241022Def;
+  export type UnstructuredIntegrationDef = API.UnstructuredIntegrationDef;
+  export type UnstructuredPartitionArguments = API.UnstructuredPartitionArguments;
+  export type UnstructuredSetup = API.UnstructuredSetup;
+  export type WeatherGetArguments = API.WeatherGetArguments;
+  export type WeatherIntegrationDef = API.WeatherIntegrationDef;
+  export type WeatherSetup = API.WeatherSetup;
+  export type WikipediaIntegrationDef = API.WikipediaIntegrationDef;
+  export type WikipediaSearchArguments = API.WikipediaSearchArguments;
 }
 
 export { toFile, fileFromPath } from './uploads';

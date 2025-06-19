@@ -97,33 +97,9 @@ export class Docs extends APIResource {
 export type DocBulkDeleteResponse = Array<Shared.ResourceDeleted>;
 
 export interface DocSearchResponse {
-  docs: Array<DocSearchResponse.Doc>;
+  docs: Array<Shared.DocReference>;
 
   time: number;
-}
-
-export namespace DocSearchResponse {
-  export interface Doc {
-    id: string;
-
-    owner: Doc.Owner;
-
-    snippet: DocsAPI.Snippet;
-
-    distance?: number | null;
-
-    metadata?: unknown | null;
-
-    title?: string | null;
-  }
-
-  export namespace Doc {
-    export interface Owner {
-      id: string;
-
-      role: 'user' | 'agent';
-    }
-  }
 }
 
 export interface DocCreateParams {
