@@ -37,420 +37,7 @@ export const tool: Tool = {
               $ref: '#/$defs/tool_call_step',
             },
             {
-              type: 'object',
-              title: 'PromptStep',
-              properties: {
-                prompt: {
-                  anyOf: [
-                    {
-                      type: 'array',
-                      items: {
-                        type: 'object',
-                        title: 'PromptItem',
-                        properties: {
-                          content: {
-                            anyOf: [
-                              {
-                                type: 'array',
-                                items: {
-                                  type: 'string',
-                                },
-                              },
-                              {
-                                type: 'array',
-                                items: {
-                                  anyOf: [
-                                    {
-                                      type: 'object',
-                                      title: 'Content',
-                                      properties: {
-                                        text: {
-                                          type: 'string',
-                                          title: 'Text',
-                                        },
-                                        type: {
-                                          type: 'string',
-                                          title: 'Type',
-                                          enum: ['text'],
-                                        },
-                                      },
-                                      required: ['text'],
-                                    },
-                                    {
-                                      type: 'object',
-                                      title: 'ContentModel',
-                                      properties: {
-                                        image_url: {
-                                          type: 'object',
-                                          title: 'ImageUrl',
-                                          description: 'The image URL',
-                                          properties: {
-                                            url: {
-                                              type: 'string',
-                                              title: 'Url',
-                                            },
-                                            detail: {
-                                              type: 'string',
-                                              title: 'Detail',
-                                              enum: ['low', 'high', 'auto'],
-                                            },
-                                          },
-                                          required: ['url'],
-                                        },
-                                        type: {
-                                          type: 'string',
-                                          title: 'Type',
-                                          enum: ['image_url'],
-                                        },
-                                      },
-                                      required: ['image_url'],
-                                    },
-                                    {
-                                      type: 'object',
-                                      title: 'ContentModel1',
-                                      description: 'Anthropic image content part',
-                                      properties: {
-                                        content: {
-                                          anyOf: [
-                                            {
-                                              type: 'array',
-                                              items: {
-                                                type: 'object',
-                                                title: 'ContentItem',
-                                                properties: {
-                                                  text: {
-                                                    type: 'string',
-                                                    title: 'Text',
-                                                  },
-                                                  type: {
-                                                    type: 'string',
-                                                    title: 'Type',
-                                                    enum: ['text'],
-                                                  },
-                                                },
-                                                required: ['text'],
-                                              },
-                                            },
-                                            {
-                                              type: 'array',
-                                              items: {
-                                                type: 'object',
-                                                title: 'ContentItemModel',
-                                                properties: {
-                                                  source: {
-                                                    type: 'object',
-                                                    title: 'Source',
-                                                    properties: {
-                                                      data: {
-                                                        type: 'string',
-                                                        title: 'Data',
-                                                      },
-                                                      media_type: {
-                                                        type: 'string',
-                                                        title: 'Media Type',
-                                                      },
-                                                      type: {
-                                                        type: 'string',
-                                                        title: 'Type',
-                                                        enum: ['base64'],
-                                                      },
-                                                    },
-                                                    required: ['data', 'media_type'],
-                                                  },
-                                                  type: {
-                                                    type: 'string',
-                                                    title: 'Type',
-                                                    enum: ['image'],
-                                                  },
-                                                },
-                                                required: ['source'],
-                                              },
-                                            },
-                                          ],
-                                          title: 'Content',
-                                        },
-                                        tool_use_id: {
-                                          type: 'string',
-                                          title: 'Tool Use Id',
-                                        },
-                                        type: {
-                                          type: 'string',
-                                          title: 'Type',
-                                          enum: ['tool_result'],
-                                        },
-                                      },
-                                      required: ['content', 'tool_use_id'],
-                                    },
-                                  ],
-                                  description: 'Anthropic image content part',
-                                },
-                              },
-                              {
-                                type: 'string',
-                              },
-                            ],
-                            title: 'Content',
-                          },
-                          role: {
-                            type: 'string',
-                            title: 'Role',
-                            enum: ['user', 'assistant', 'system', 'tool'],
-                          },
-                          continue: {
-                            type: 'boolean',
-                            title: 'Continue',
-                          },
-                          name: {
-                            type: 'string',
-                            title: 'Name',
-                          },
-                          tool_call_id: {
-                            type: 'string',
-                            title: 'Tool Call Id',
-                          },
-                          tool_calls: {
-                            type: 'array',
-                            title: 'Tool Calls',
-                            items: {
-                              anyOf: [
-                                {
-                                  $ref: '#/$defs/chosen_function_call',
-                                },
-                                {
-                                  $ref: '#/$defs/chosen_computer20241022',
-                                },
-                                {
-                                  $ref: '#/$defs/chosen_text_editor20241022',
-                                },
-                                {
-                                  $ref: '#/$defs/chosen_bash20241022',
-                                },
-                              ],
-                            },
-                          },
-                        },
-                        required: ['content', 'role'],
-                      },
-                    },
-                    {
-                      type: 'string',
-                    },
-                  ],
-                  title: 'Prompt',
-                },
-                auto_run_tools: {
-                  type: 'boolean',
-                  title: 'Auto Run Tools',
-                },
-                disable_cache: {
-                  type: 'boolean',
-                  title: 'Disable Cache',
-                },
-                kind_: {
-                  type: 'string',
-                  title: 'Kind',
-                  enum: ['prompt'],
-                },
-                label: {
-                  type: 'string',
-                  title: 'Label',
-                },
-                settings: {
-                  type: 'object',
-                  title: 'Settings',
-                },
-                tool_choice: {
-                  anyOf: [
-                    {
-                      type: 'string',
-                      enum: ['auto', 'none'],
-                    },
-                    {
-                      $ref: '#/$defs/named_tool_choice',
-                    },
-                  ],
-                  title: 'Tool Choice',
-                },
-                tools: {
-                  anyOf: [
-                    {
-                      type: 'string',
-                      enum: ['all'],
-                    },
-                    {
-                      type: 'array',
-                      items: {
-                        anyOf: [
-                          {
-                            type: 'object',
-                            title: 'ToolRef',
-                            description: 'Reference to a tool',
-                            properties: {
-                              ref: {
-                                anyOf: [
-                                  {
-                                    type: 'object',
-                                    title: 'ToolRefById',
-                                    description: 'Reference to a tool by id',
-                                    properties: {
-                                      id: {
-                                        type: 'string',
-                                        title: 'Id',
-                                      },
-                                    },
-                                    required: [],
-                                  },
-                                  {
-                                    type: 'object',
-                                    title: 'ToolRefByName',
-                                    description: 'Reference to a tool by name',
-                                    properties: {
-                                      name: {
-                                        type: 'string',
-                                        title: 'Name',
-                                      },
-                                    },
-                                    required: [],
-                                  },
-                                ],
-                                title: 'Ref',
-                                description: 'Reference to a tool by id',
-                              },
-                            },
-                            required: ['ref'],
-                          },
-                          {
-                            type: 'object',
-                            title: 'CreateToolRequest',
-                            description: 'Payload for creating a tool',
-                            properties: {
-                              name: {
-                                type: 'string',
-                                title: 'Name',
-                              },
-                              type: {
-                                type: 'string',
-                                title: 'Type',
-                                enum: [
-                                  'function',
-                                  'integration',
-                                  'system',
-                                  'api_call',
-                                  'computer_20241022',
-                                  'text_editor_20241022',
-                                  'bash_20241022',
-                                ],
-                              },
-                              api_call: {
-                                $ref: '#/$defs/api_call_def',
-                              },
-                              bash_20241022: {
-                                $ref: '#/$defs/bash20241022_def',
-                              },
-                              computer_20241022: {
-                                $ref: '#/$defs/computer20241022_def',
-                              },
-                              description: {
-                                type: 'string',
-                                title: 'Description',
-                              },
-                              function: {
-                                $ref: '#/$defs/function_def',
-                              },
-                              integration: {
-                                anyOf: [
-                                  {
-                                    $ref: '#/$defs/dummy_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/brave_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/email_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/spider_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/wikipedia_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/weather_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/mailgun_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/browserbase_context_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/browserbase_extension_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/browserbase_create_session_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/browserbase_get_session_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/remote_browser_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/llama_parse_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/ffmpeg_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/cloudinary_upload_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/cloudinary_edit_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/arxiv_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/unstructured_integration_def',
-                                  },
-                                  {
-                                    $ref: '#/$defs/algolia_integration_def',
-                                  },
-                                ],
-                                title: 'Integration',
-                                description: 'Brave integration definition',
-                              },
-                              system: {
-                                $ref: '#/$defs/system_def',
-                              },
-                              text_editor_20241022: {
-                                $ref: '#/$defs/text_editor20241022_def',
-                              },
-                            },
-                            required: ['name', 'type'],
-                          },
-                        ],
-                        description: 'Reference to a tool',
-                      },
-                    },
-                  ],
-                  title: 'Tools',
-                },
-                unwrap: {
-                  type: 'boolean',
-                  title: 'Unwrap',
-                },
-              },
-              required: ['prompt'],
+              $ref: '#/$defs/prompt_step_input',
             },
             {
               $ref: '#/$defs/get_step',
@@ -477,4698 +64,7 @@ export const tool: Tool = {
               $ref: '#/$defs/wait_for_input_step',
             },
             {
-              type: 'object',
-              title: 'IfElseWorkflowStep',
-              properties: {
-                if: {
-                  type: 'string',
-                  title: 'If',
-                },
-                then: {
-                  anyOf: [
-                    {
-                      $ref: '#/$defs/wait_for_input_step',
-                    },
-                    {
-                      $ref: '#/$defs/evaluate_step',
-                    },
-                    {
-                      $ref: '#/$defs/tool_call_step',
-                    },
-                    {
-                      type: 'object',
-                      title: 'PromptStep',
-                      properties: {
-                        prompt: {
-                          anyOf: [
-                            {
-                              type: 'array',
-                              items: {
-                                type: 'object',
-                                title: 'PromptItem',
-                                properties: {
-                                  content: {
-                                    anyOf: [
-                                      {
-                                        type: 'array',
-                                        items: {
-                                          type: 'string',
-                                        },
-                                      },
-                                      {
-                                        type: 'array',
-                                        items: {
-                                          anyOf: [
-                                            {
-                                              type: 'object',
-                                              title: 'Content',
-                                              properties: {
-                                                text: {
-                                                  type: 'string',
-                                                  title: 'Text',
-                                                },
-                                                type: {
-                                                  type: 'string',
-                                                  title: 'Type',
-                                                  enum: ['text'],
-                                                },
-                                              },
-                                              required: ['text'],
-                                            },
-                                            {
-                                              type: 'object',
-                                              title: 'ContentModel',
-                                              properties: {
-                                                image_url: {
-                                                  type: 'object',
-                                                  title: 'ImageUrl',
-                                                  description: 'The image URL',
-                                                  properties: {
-                                                    url: {
-                                                      type: 'string',
-                                                      title: 'Url',
-                                                    },
-                                                    detail: {
-                                                      type: 'string',
-                                                      title: 'Detail',
-                                                      enum: ['low', 'high', 'auto'],
-                                                    },
-                                                  },
-                                                  required: ['url'],
-                                                },
-                                                type: {
-                                                  type: 'string',
-                                                  title: 'Type',
-                                                  enum: ['image_url'],
-                                                },
-                                              },
-                                              required: ['image_url'],
-                                            },
-                                            {
-                                              type: 'object',
-                                              title: 'ContentModel1',
-                                              description: 'Anthropic image content part',
-                                              properties: {
-                                                content: {
-                                                  anyOf: [
-                                                    {
-                                                      type: 'array',
-                                                      items: {
-                                                        type: 'object',
-                                                        title: 'ContentItem',
-                                                        properties: {
-                                                          text: {
-                                                            type: 'string',
-                                                            title: 'Text',
-                                                          },
-                                                          type: {
-                                                            type: 'string',
-                                                            title: 'Type',
-                                                            enum: ['text'],
-                                                          },
-                                                        },
-                                                        required: ['text'],
-                                                      },
-                                                    },
-                                                    {
-                                                      type: 'array',
-                                                      items: {
-                                                        type: 'object',
-                                                        title: 'ContentItemModel',
-                                                        properties: {
-                                                          source: {
-                                                            type: 'object',
-                                                            title: 'Source',
-                                                            properties: {
-                                                              data: {
-                                                                type: 'string',
-                                                                title: 'Data',
-                                                              },
-                                                              media_type: {
-                                                                type: 'string',
-                                                                title: 'Media Type',
-                                                              },
-                                                              type: {
-                                                                type: 'string',
-                                                                title: 'Type',
-                                                                enum: ['base64'],
-                                                              },
-                                                            },
-                                                            required: ['data', 'media_type'],
-                                                          },
-                                                          type: {
-                                                            type: 'string',
-                                                            title: 'Type',
-                                                            enum: ['image'],
-                                                          },
-                                                        },
-                                                        required: ['source'],
-                                                      },
-                                                    },
-                                                  ],
-                                                  title: 'Content',
-                                                },
-                                                tool_use_id: {
-                                                  type: 'string',
-                                                  title: 'Tool Use Id',
-                                                },
-                                                type: {
-                                                  type: 'string',
-                                                  title: 'Type',
-                                                  enum: ['tool_result'],
-                                                },
-                                              },
-                                              required: ['content', 'tool_use_id'],
-                                            },
-                                          ],
-                                          description: 'Anthropic image content part',
-                                        },
-                                      },
-                                      {
-                                        type: 'string',
-                                      },
-                                    ],
-                                    title: 'Content',
-                                  },
-                                  role: {
-                                    type: 'string',
-                                    title: 'Role',
-                                    enum: ['user', 'assistant', 'system', 'tool'],
-                                  },
-                                  continue: {
-                                    type: 'boolean',
-                                    title: 'Continue',
-                                  },
-                                  name: {
-                                    type: 'string',
-                                    title: 'Name',
-                                  },
-                                  tool_call_id: {
-                                    type: 'string',
-                                    title: 'Tool Call Id',
-                                  },
-                                  tool_calls: {
-                                    type: 'array',
-                                    title: 'Tool Calls',
-                                    items: {
-                                      anyOf: [
-                                        {
-                                          $ref: '#/$defs/chosen_function_call',
-                                        },
-                                        {
-                                          $ref: '#/$defs/chosen_computer20241022',
-                                        },
-                                        {
-                                          $ref: '#/$defs/chosen_text_editor20241022',
-                                        },
-                                        {
-                                          $ref: '#/$defs/chosen_bash20241022',
-                                        },
-                                      ],
-                                    },
-                                  },
-                                },
-                                required: ['content', 'role'],
-                              },
-                            },
-                            {
-                              type: 'string',
-                            },
-                          ],
-                          title: 'Prompt',
-                        },
-                        auto_run_tools: {
-                          type: 'boolean',
-                          title: 'Auto Run Tools',
-                        },
-                        disable_cache: {
-                          type: 'boolean',
-                          title: 'Disable Cache',
-                        },
-                        kind_: {
-                          type: 'string',
-                          title: 'Kind',
-                          enum: ['prompt'],
-                        },
-                        label: {
-                          type: 'string',
-                          title: 'Label',
-                        },
-                        settings: {
-                          type: 'object',
-                          title: 'Settings',
-                        },
-                        tool_choice: {
-                          anyOf: [
-                            {
-                              type: 'string',
-                              enum: ['auto', 'none'],
-                            },
-                            {
-                              $ref: '#/$defs/named_tool_choice',
-                            },
-                          ],
-                          title: 'Tool Choice',
-                        },
-                        tools: {
-                          anyOf: [
-                            {
-                              type: 'string',
-                              enum: ['all'],
-                            },
-                            {
-                              type: 'array',
-                              items: {
-                                anyOf: [
-                                  {
-                                    type: 'object',
-                                    title: 'ToolRef',
-                                    description: 'Reference to a tool',
-                                    properties: {
-                                      ref: {
-                                        anyOf: [
-                                          {
-                                            type: 'object',
-                                            title: 'ToolRefById',
-                                            description: 'Reference to a tool by id',
-                                            properties: {
-                                              id: {
-                                                type: 'string',
-                                                title: 'Id',
-                                              },
-                                            },
-                                            required: [],
-                                          },
-                                          {
-                                            type: 'object',
-                                            title: 'ToolRefByName',
-                                            description: 'Reference to a tool by name',
-                                            properties: {
-                                              name: {
-                                                type: 'string',
-                                                title: 'Name',
-                                              },
-                                            },
-                                            required: [],
-                                          },
-                                        ],
-                                        title: 'Ref',
-                                        description: 'Reference to a tool by id',
-                                      },
-                                    },
-                                    required: ['ref'],
-                                  },
-                                  {
-                                    type: 'object',
-                                    title: 'CreateToolRequest',
-                                    description: 'Payload for creating a tool',
-                                    properties: {
-                                      name: {
-                                        type: 'string',
-                                        title: 'Name',
-                                      },
-                                      type: {
-                                        type: 'string',
-                                        title: 'Type',
-                                        enum: [
-                                          'function',
-                                          'integration',
-                                          'system',
-                                          'api_call',
-                                          'computer_20241022',
-                                          'text_editor_20241022',
-                                          'bash_20241022',
-                                        ],
-                                      },
-                                      api_call: {
-                                        $ref: '#/$defs/api_call_def',
-                                      },
-                                      bash_20241022: {
-                                        $ref: '#/$defs/bash20241022_def',
-                                      },
-                                      computer_20241022: {
-                                        $ref: '#/$defs/computer20241022_def',
-                                      },
-                                      description: {
-                                        type: 'string',
-                                        title: 'Description',
-                                      },
-                                      function: {
-                                        $ref: '#/$defs/function_def',
-                                      },
-                                      integration: {
-                                        anyOf: [
-                                          {
-                                            $ref: '#/$defs/dummy_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/brave_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/email_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/spider_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/wikipedia_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/weather_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/mailgun_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_context_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_extension_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_create_session_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_get_session_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/remote_browser_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/llama_parse_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/ffmpeg_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/cloudinary_upload_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/cloudinary_edit_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/arxiv_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/unstructured_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/algolia_integration_def',
-                                          },
-                                        ],
-                                        title: 'Integration',
-                                        description: 'Brave integration definition',
-                                      },
-                                      system: {
-                                        $ref: '#/$defs/system_def',
-                                      },
-                                      text_editor_20241022: {
-                                        $ref: '#/$defs/text_editor20241022_def',
-                                      },
-                                    },
-                                    required: ['name', 'type'],
-                                  },
-                                ],
-                                description: 'Reference to a tool',
-                              },
-                            },
-                          ],
-                          title: 'Tools',
-                        },
-                        unwrap: {
-                          type: 'boolean',
-                          title: 'Unwrap',
-                        },
-                      },
-                      required: ['prompt'],
-                    },
-                    {
-                      $ref: '#/$defs/get_step',
-                    },
-                    {
-                      $ref: '#/$defs/set_step',
-                    },
-                    {
-                      $ref: '#/$defs/log_step',
-                    },
-                    {
-                      $ref: '#/$defs/yield_step',
-                    },
-                    {
-                      $ref: '#/$defs/return_step',
-                    },
-                    {
-                      $ref: '#/$defs/sleep_step',
-                    },
-                    {
-                      $ref: '#/$defs/error_workflow_step',
-                    },
-                    {
-                      type: 'object',
-                    },
-                    {
-                      type: 'object',
-                      title: 'SwitchStep',
-                      properties: {
-                        switch: {
-                          type: 'array',
-                          title: 'Switch',
-                          items: {
-                            type: 'object',
-                            title: 'CaseThen',
-                            properties: {
-                              case: {
-                                type: 'string',
-                                title: 'Case',
-                                enum: ['_'],
-                              },
-                              then: {
-                                anyOf: [
-                                  {
-                                    $ref: '#/$defs/evaluate_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/tool_call_step',
-                                  },
-                                  {
-                                    type: 'object',
-                                    title: 'PromptStep',
-                                    properties: {
-                                      prompt: {
-                                        anyOf: [
-                                          {
-                                            type: 'array',
-                                            items: {
-                                              type: 'object',
-                                              title: 'PromptItem',
-                                              properties: {
-                                                content: {
-                                                  anyOf: [
-                                                    {
-                                                      type: 'array',
-                                                      items: {
-                                                        type: 'string',
-                                                      },
-                                                    },
-                                                    {
-                                                      type: 'array',
-                                                      items: {
-                                                        anyOf: [
-                                                          {
-                                                            type: 'object',
-                                                            title: 'Content',
-                                                            properties: {
-                                                              text: {
-                                                                type: 'string',
-                                                                title: 'Text',
-                                                              },
-                                                              type: {
-                                                                type: 'string',
-                                                                title: 'Type',
-                                                                enum: ['text'],
-                                                              },
-                                                            },
-                                                            required: ['text'],
-                                                          },
-                                                          {
-                                                            type: 'object',
-                                                            title: 'ContentModel',
-                                                            properties: {
-                                                              image_url: {
-                                                                type: 'object',
-                                                                title: 'ImageUrl',
-                                                                description: 'The image URL',
-                                                                properties: {
-                                                                  url: {
-                                                                    type: 'string',
-                                                                    title: 'Url',
-                                                                  },
-                                                                  detail: {
-                                                                    type: 'string',
-                                                                    title: 'Detail',
-                                                                    enum: ['low', 'high', 'auto'],
-                                                                  },
-                                                                },
-                                                                required: ['url'],
-                                                              },
-                                                              type: {
-                                                                type: 'string',
-                                                                title: 'Type',
-                                                                enum: ['image_url'],
-                                                              },
-                                                            },
-                                                            required: ['image_url'],
-                                                          },
-                                                          {
-                                                            type: 'object',
-                                                            title: 'ContentModel1',
-                                                            description: 'Anthropic image content part',
-                                                            properties: {
-                                                              content: {
-                                                                anyOf: [
-                                                                  {
-                                                                    type: 'array',
-                                                                    items: {
-                                                                      type: 'object',
-                                                                      title: 'ContentItem',
-                                                                      properties: {
-                                                                        text: {
-                                                                          type: 'string',
-                                                                          title: 'Text',
-                                                                        },
-                                                                        type: {
-                                                                          type: 'string',
-                                                                          title: 'Type',
-                                                                          enum: ['text'],
-                                                                        },
-                                                                      },
-                                                                      required: ['text'],
-                                                                    },
-                                                                  },
-                                                                  {
-                                                                    type: 'array',
-                                                                    items: {
-                                                                      type: 'object',
-                                                                      title: 'ContentItemModel',
-                                                                      properties: {
-                                                                        source: {
-                                                                          type: 'object',
-                                                                          title: 'Source',
-                                                                          properties: {
-                                                                            data: {
-                                                                              type: 'string',
-                                                                              title: 'Data',
-                                                                            },
-                                                                            media_type: {
-                                                                              type: 'string',
-                                                                              title: 'Media Type',
-                                                                            },
-                                                                            type: {
-                                                                              type: 'string',
-                                                                              title: 'Type',
-                                                                              enum: ['base64'],
-                                                                            },
-                                                                          },
-                                                                          required: ['data', 'media_type'],
-                                                                        },
-                                                                        type: {
-                                                                          type: 'string',
-                                                                          title: 'Type',
-                                                                          enum: ['image'],
-                                                                        },
-                                                                      },
-                                                                      required: ['source'],
-                                                                    },
-                                                                  },
-                                                                ],
-                                                                title: 'Content',
-                                                              },
-                                                              tool_use_id: {
-                                                                type: 'string',
-                                                                title: 'Tool Use Id',
-                                                              },
-                                                              type: {
-                                                                type: 'string',
-                                                                title: 'Type',
-                                                                enum: ['tool_result'],
-                                                              },
-                                                            },
-                                                            required: ['content', 'tool_use_id'],
-                                                          },
-                                                        ],
-                                                        description: 'Anthropic image content part',
-                                                      },
-                                                    },
-                                                    {
-                                                      type: 'string',
-                                                    },
-                                                  ],
-                                                  title: 'Content',
-                                                },
-                                                role: {
-                                                  type: 'string',
-                                                  title: 'Role',
-                                                  enum: ['user', 'assistant', 'system', 'tool'],
-                                                },
-                                                continue: {
-                                                  type: 'boolean',
-                                                  title: 'Continue',
-                                                },
-                                                name: {
-                                                  type: 'string',
-                                                  title: 'Name',
-                                                },
-                                                tool_call_id: {
-                                                  type: 'string',
-                                                  title: 'Tool Call Id',
-                                                },
-                                                tool_calls: {
-                                                  type: 'array',
-                                                  title: 'Tool Calls',
-                                                  items: {
-                                                    anyOf: [
-                                                      {
-                                                        $ref: '#/$defs/chosen_function_call',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/chosen_computer20241022',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/chosen_text_editor20241022',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/chosen_bash20241022',
-                                                      },
-                                                    ],
-                                                  },
-                                                },
-                                              },
-                                              required: ['content', 'role'],
-                                            },
-                                          },
-                                          {
-                                            type: 'string',
-                                          },
-                                        ],
-                                        title: 'Prompt',
-                                      },
-                                      auto_run_tools: {
-                                        type: 'boolean',
-                                        title: 'Auto Run Tools',
-                                      },
-                                      disable_cache: {
-                                        type: 'boolean',
-                                        title: 'Disable Cache',
-                                      },
-                                      kind_: {
-                                        type: 'string',
-                                        title: 'Kind',
-                                        enum: ['prompt'],
-                                      },
-                                      label: {
-                                        type: 'string',
-                                        title: 'Label',
-                                      },
-                                      settings: {
-                                        type: 'object',
-                                        title: 'Settings',
-                                      },
-                                      tool_choice: {
-                                        anyOf: [
-                                          {
-                                            type: 'string',
-                                            enum: ['auto', 'none'],
-                                          },
-                                          {
-                                            $ref: '#/$defs/named_tool_choice',
-                                          },
-                                        ],
-                                        title: 'Tool Choice',
-                                      },
-                                      tools: {
-                                        anyOf: [
-                                          {
-                                            type: 'string',
-                                            enum: ['all'],
-                                          },
-                                          {
-                                            type: 'array',
-                                            items: {
-                                              anyOf: [
-                                                {
-                                                  type: 'object',
-                                                  title: 'ToolRef',
-                                                  description: 'Reference to a tool',
-                                                  properties: {
-                                                    ref: {
-                                                      anyOf: [
-                                                        {
-                                                          type: 'object',
-                                                          title: 'ToolRefById',
-                                                          description: 'Reference to a tool by id',
-                                                          properties: {
-                                                            id: {
-                                                              type: 'string',
-                                                              title: 'Id',
-                                                            },
-                                                          },
-                                                          required: [],
-                                                        },
-                                                        {
-                                                          type: 'object',
-                                                          title: 'ToolRefByName',
-                                                          description: 'Reference to a tool by name',
-                                                          properties: {
-                                                            name: {
-                                                              type: 'string',
-                                                              title: 'Name',
-                                                            },
-                                                          },
-                                                          required: [],
-                                                        },
-                                                      ],
-                                                      title: 'Ref',
-                                                      description: 'Reference to a tool by id',
-                                                    },
-                                                  },
-                                                  required: ['ref'],
-                                                },
-                                                {
-                                                  type: 'object',
-                                                  title: 'CreateToolRequest',
-                                                  description: 'Payload for creating a tool',
-                                                  properties: {
-                                                    name: {
-                                                      type: 'string',
-                                                      title: 'Name',
-                                                    },
-                                                    type: {
-                                                      type: 'string',
-                                                      title: 'Type',
-                                                      enum: [
-                                                        'function',
-                                                        'integration',
-                                                        'system',
-                                                        'api_call',
-                                                        'computer_20241022',
-                                                        'text_editor_20241022',
-                                                        'bash_20241022',
-                                                      ],
-                                                    },
-                                                    api_call: {
-                                                      $ref: '#/$defs/api_call_def',
-                                                    },
-                                                    bash_20241022: {
-                                                      $ref: '#/$defs/bash20241022_def',
-                                                    },
-                                                    computer_20241022: {
-                                                      $ref: '#/$defs/computer20241022_def',
-                                                    },
-                                                    description: {
-                                                      type: 'string',
-                                                      title: 'Description',
-                                                    },
-                                                    function: {
-                                                      $ref: '#/$defs/function_def',
-                                                    },
-                                                    integration: {
-                                                      anyOf: [
-                                                        {
-                                                          $ref: '#/$defs/dummy_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/brave_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/email_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/spider_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/wikipedia_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/weather_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/mailgun_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_context_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_extension_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_create_session_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_get_session_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/remote_browser_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/llama_parse_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/ffmpeg_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/cloudinary_upload_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/cloudinary_edit_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/arxiv_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/unstructured_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/algolia_integration_def',
-                                                        },
-                                                      ],
-                                                      title: 'Integration',
-                                                      description: 'Brave integration definition',
-                                                    },
-                                                    system: {
-                                                      $ref: '#/$defs/system_def',
-                                                    },
-                                                    text_editor_20241022: {
-                                                      $ref: '#/$defs/text_editor20241022_def',
-                                                    },
-                                                  },
-                                                  required: ['name', 'type'],
-                                                },
-                                              ],
-                                              description: 'Reference to a tool',
-                                            },
-                                          },
-                                        ],
-                                        title: 'Tools',
-                                      },
-                                      unwrap: {
-                                        type: 'boolean',
-                                        title: 'Unwrap',
-                                      },
-                                    },
-                                    required: ['prompt'],
-                                  },
-                                  {
-                                    $ref: '#/$defs/get_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/set_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/log_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/yield_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/return_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/sleep_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/error_workflow_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/wait_for_input_step',
-                                  },
-                                ],
-                                title: 'Then',
-                              },
-                            },
-                            required: ['case', 'then'],
-                          },
-                        },
-                        kind_: {
-                          type: 'string',
-                          title: 'Kind',
-                          enum: ['switch'],
-                        },
-                        label: {
-                          type: 'string',
-                          title: 'Label',
-                        },
-                      },
-                      required: ['switch'],
-                    },
-                    {
-                      type: 'object',
-                      title: 'ForeachStep',
-                      properties: {
-                        foreach: {
-                          type: 'object',
-                          title: 'ForeachDo',
-                          properties: {
-                            do: {
-                              anyOf: [
-                                {
-                                  $ref: '#/$defs/wait_for_input_step',
-                                },
-                                {
-                                  $ref: '#/$defs/evaluate_step',
-                                },
-                                {
-                                  $ref: '#/$defs/tool_call_step',
-                                },
-                                {
-                                  type: 'object',
-                                  title: 'PromptStep',
-                                  properties: {
-                                    prompt: {
-                                      anyOf: [
-                                        {
-                                          type: 'array',
-                                          items: {
-                                            type: 'object',
-                                            title: 'PromptItem',
-                                            properties: {
-                                              content: {
-                                                anyOf: [
-                                                  {
-                                                    type: 'array',
-                                                    items: {
-                                                      type: 'string',
-                                                    },
-                                                  },
-                                                  {
-                                                    type: 'array',
-                                                    items: {
-                                                      anyOf: [
-                                                        {
-                                                          type: 'object',
-                                                          title: 'Content',
-                                                          properties: {
-                                                            text: {
-                                                              type: 'string',
-                                                              title: 'Text',
-                                                            },
-                                                            type: {
-                                                              type: 'string',
-                                                              title: 'Type',
-                                                              enum: ['text'],
-                                                            },
-                                                          },
-                                                          required: ['text'],
-                                                        },
-                                                        {
-                                                          type: 'object',
-                                                          title: 'ContentModel',
-                                                          properties: {
-                                                            image_url: {
-                                                              type: 'object',
-                                                              title: 'ImageUrl',
-                                                              description: 'The image URL',
-                                                              properties: {
-                                                                url: {
-                                                                  type: 'string',
-                                                                  title: 'Url',
-                                                                },
-                                                                detail: {
-                                                                  type: 'string',
-                                                                  title: 'Detail',
-                                                                  enum: ['low', 'high', 'auto'],
-                                                                },
-                                                              },
-                                                              required: ['url'],
-                                                            },
-                                                            type: {
-                                                              type: 'string',
-                                                              title: 'Type',
-                                                              enum: ['image_url'],
-                                                            },
-                                                          },
-                                                          required: ['image_url'],
-                                                        },
-                                                        {
-                                                          type: 'object',
-                                                          title: 'ContentModel1',
-                                                          description: 'Anthropic image content part',
-                                                          properties: {
-                                                            content: {
-                                                              anyOf: [
-                                                                {
-                                                                  type: 'array',
-                                                                  items: {
-                                                                    type: 'object',
-                                                                    title: 'ContentItem',
-                                                                    properties: {
-                                                                      text: {
-                                                                        type: 'string',
-                                                                        title: 'Text',
-                                                                      },
-                                                                      type: {
-                                                                        type: 'string',
-                                                                        title: 'Type',
-                                                                        enum: ['text'],
-                                                                      },
-                                                                    },
-                                                                    required: ['text'],
-                                                                  },
-                                                                },
-                                                                {
-                                                                  type: 'array',
-                                                                  items: {
-                                                                    type: 'object',
-                                                                    title: 'ContentItemModel',
-                                                                    properties: {
-                                                                      source: {
-                                                                        type: 'object',
-                                                                        title: 'Source',
-                                                                        properties: {
-                                                                          data: {
-                                                                            type: 'string',
-                                                                            title: 'Data',
-                                                                          },
-                                                                          media_type: {
-                                                                            type: 'string',
-                                                                            title: 'Media Type',
-                                                                          },
-                                                                          type: {
-                                                                            type: 'string',
-                                                                            title: 'Type',
-                                                                            enum: ['base64'],
-                                                                          },
-                                                                        },
-                                                                        required: ['data', 'media_type'],
-                                                                      },
-                                                                      type: {
-                                                                        type: 'string',
-                                                                        title: 'Type',
-                                                                        enum: ['image'],
-                                                                      },
-                                                                    },
-                                                                    required: ['source'],
-                                                                  },
-                                                                },
-                                                              ],
-                                                              title: 'Content',
-                                                            },
-                                                            tool_use_id: {
-                                                              type: 'string',
-                                                              title: 'Tool Use Id',
-                                                            },
-                                                            type: {
-                                                              type: 'string',
-                                                              title: 'Type',
-                                                              enum: ['tool_result'],
-                                                            },
-                                                          },
-                                                          required: ['content', 'tool_use_id'],
-                                                        },
-                                                      ],
-                                                      description: 'Anthropic image content part',
-                                                    },
-                                                  },
-                                                  {
-                                                    type: 'string',
-                                                  },
-                                                ],
-                                                title: 'Content',
-                                              },
-                                              role: {
-                                                type: 'string',
-                                                title: 'Role',
-                                                enum: ['user', 'assistant', 'system', 'tool'],
-                                              },
-                                              continue: {
-                                                type: 'boolean',
-                                                title: 'Continue',
-                                              },
-                                              name: {
-                                                type: 'string',
-                                                title: 'Name',
-                                              },
-                                              tool_call_id: {
-                                                type: 'string',
-                                                title: 'Tool Call Id',
-                                              },
-                                              tool_calls: {
-                                                type: 'array',
-                                                title: 'Tool Calls',
-                                                items: {
-                                                  anyOf: [
-                                                    {
-                                                      $ref: '#/$defs/chosen_function_call',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/chosen_computer20241022',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/chosen_text_editor20241022',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/chosen_bash20241022',
-                                                    },
-                                                  ],
-                                                },
-                                              },
-                                            },
-                                            required: ['content', 'role'],
-                                          },
-                                        },
-                                        {
-                                          type: 'string',
-                                        },
-                                      ],
-                                      title: 'Prompt',
-                                    },
-                                    auto_run_tools: {
-                                      type: 'boolean',
-                                      title: 'Auto Run Tools',
-                                    },
-                                    disable_cache: {
-                                      type: 'boolean',
-                                      title: 'Disable Cache',
-                                    },
-                                    kind_: {
-                                      type: 'string',
-                                      title: 'Kind',
-                                      enum: ['prompt'],
-                                    },
-                                    label: {
-                                      type: 'string',
-                                      title: 'Label',
-                                    },
-                                    settings: {
-                                      type: 'object',
-                                      title: 'Settings',
-                                    },
-                                    tool_choice: {
-                                      anyOf: [
-                                        {
-                                          type: 'string',
-                                          enum: ['auto', 'none'],
-                                        },
-                                        {
-                                          $ref: '#/$defs/named_tool_choice',
-                                        },
-                                      ],
-                                      title: 'Tool Choice',
-                                    },
-                                    tools: {
-                                      anyOf: [
-                                        {
-                                          type: 'string',
-                                          enum: ['all'],
-                                        },
-                                        {
-                                          type: 'array',
-                                          items: {
-                                            anyOf: [
-                                              {
-                                                type: 'object',
-                                                title: 'ToolRef',
-                                                description: 'Reference to a tool',
-                                                properties: {
-                                                  ref: {
-                                                    anyOf: [
-                                                      {
-                                                        type: 'object',
-                                                        title: 'ToolRefById',
-                                                        description: 'Reference to a tool by id',
-                                                        properties: {
-                                                          id: {
-                                                            type: 'string',
-                                                            title: 'Id',
-                                                          },
-                                                        },
-                                                        required: [],
-                                                      },
-                                                      {
-                                                        type: 'object',
-                                                        title: 'ToolRefByName',
-                                                        description: 'Reference to a tool by name',
-                                                        properties: {
-                                                          name: {
-                                                            type: 'string',
-                                                            title: 'Name',
-                                                          },
-                                                        },
-                                                        required: [],
-                                                      },
-                                                    ],
-                                                    title: 'Ref',
-                                                    description: 'Reference to a tool by id',
-                                                  },
-                                                },
-                                                required: ['ref'],
-                                              },
-                                              {
-                                                type: 'object',
-                                                title: 'CreateToolRequest',
-                                                description: 'Payload for creating a tool',
-                                                properties: {
-                                                  name: {
-                                                    type: 'string',
-                                                    title: 'Name',
-                                                  },
-                                                  type: {
-                                                    type: 'string',
-                                                    title: 'Type',
-                                                    enum: [
-                                                      'function',
-                                                      'integration',
-                                                      'system',
-                                                      'api_call',
-                                                      'computer_20241022',
-                                                      'text_editor_20241022',
-                                                      'bash_20241022',
-                                                    ],
-                                                  },
-                                                  api_call: {
-                                                    $ref: '#/$defs/api_call_def',
-                                                  },
-                                                  bash_20241022: {
-                                                    $ref: '#/$defs/bash20241022_def',
-                                                  },
-                                                  computer_20241022: {
-                                                    $ref: '#/$defs/computer20241022_def',
-                                                  },
-                                                  description: {
-                                                    type: 'string',
-                                                    title: 'Description',
-                                                  },
-                                                  function: {
-                                                    $ref: '#/$defs/function_def',
-                                                  },
-                                                  integration: {
-                                                    anyOf: [
-                                                      {
-                                                        $ref: '#/$defs/dummy_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/brave_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/email_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/spider_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/wikipedia_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/weather_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/mailgun_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_context_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_extension_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_create_session_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_get_session_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/remote_browser_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/llama_parse_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/ffmpeg_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/cloudinary_upload_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/cloudinary_edit_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/arxiv_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/unstructured_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/algolia_integration_def',
-                                                      },
-                                                    ],
-                                                    title: 'Integration',
-                                                    description: 'Brave integration definition',
-                                                  },
-                                                  system: {
-                                                    $ref: '#/$defs/system_def',
-                                                  },
-                                                  text_editor_20241022: {
-                                                    $ref: '#/$defs/text_editor20241022_def',
-                                                  },
-                                                },
-                                                required: ['name', 'type'],
-                                              },
-                                            ],
-                                            description: 'Reference to a tool',
-                                          },
-                                        },
-                                      ],
-                                      title: 'Tools',
-                                    },
-                                    unwrap: {
-                                      type: 'boolean',
-                                      title: 'Unwrap',
-                                    },
-                                  },
-                                  required: ['prompt'],
-                                },
-                                {
-                                  $ref: '#/$defs/get_step',
-                                },
-                                {
-                                  $ref: '#/$defs/set_step',
-                                },
-                                {
-                                  $ref: '#/$defs/log_step',
-                                },
-                                {
-                                  $ref: '#/$defs/yield_step',
-                                },
-                              ],
-                              title: 'Do',
-                            },
-                            in: {
-                              type: 'string',
-                              title: 'In',
-                            },
-                          },
-                          required: ['do', 'in'],
-                        },
-                        kind_: {
-                          type: 'string',
-                          title: 'Kind',
-                          enum: ['foreach'],
-                        },
-                        label: {
-                          type: 'string',
-                          title: 'Label',
-                        },
-                      },
-                      required: ['foreach'],
-                    },
-                    {
-                      type: 'object',
-                      title: 'ParallelStep',
-                      properties: {
-                        parallel: {
-                          type: 'array',
-                          title: 'Parallel',
-                          items: {
-                            anyOf: [
-                              {
-                                $ref: '#/$defs/evaluate_step',
-                              },
-                              {
-                                $ref: '#/$defs/tool_call_step',
-                              },
-                              {
-                                type: 'object',
-                                title: 'PromptStep',
-                                properties: {
-                                  prompt: {
-                                    anyOf: [
-                                      {
-                                        type: 'array',
-                                        items: {
-                                          type: 'object',
-                                          title: 'PromptItem',
-                                          properties: {
-                                            content: {
-                                              anyOf: [
-                                                {
-                                                  type: 'array',
-                                                  items: {
-                                                    type: 'string',
-                                                  },
-                                                },
-                                                {
-                                                  type: 'array',
-                                                  items: {
-                                                    anyOf: [
-                                                      {
-                                                        type: 'object',
-                                                        title: 'Content',
-                                                        properties: {
-                                                          text: {
-                                                            type: 'string',
-                                                            title: 'Text',
-                                                          },
-                                                          type: {
-                                                            type: 'string',
-                                                            title: 'Type',
-                                                            enum: ['text'],
-                                                          },
-                                                        },
-                                                        required: ['text'],
-                                                      },
-                                                      {
-                                                        type: 'object',
-                                                        title: 'ContentModel',
-                                                        properties: {
-                                                          image_url: {
-                                                            type: 'object',
-                                                            title: 'ImageUrl',
-                                                            description: 'The image URL',
-                                                            properties: {
-                                                              url: {
-                                                                type: 'string',
-                                                                title: 'Url',
-                                                              },
-                                                              detail: {
-                                                                type: 'string',
-                                                                title: 'Detail',
-                                                                enum: ['low', 'high', 'auto'],
-                                                              },
-                                                            },
-                                                            required: ['url'],
-                                                          },
-                                                          type: {
-                                                            type: 'string',
-                                                            title: 'Type',
-                                                            enum: ['image_url'],
-                                                          },
-                                                        },
-                                                        required: ['image_url'],
-                                                      },
-                                                      {
-                                                        type: 'object',
-                                                        title: 'ContentModel1',
-                                                        description: 'Anthropic image content part',
-                                                        properties: {
-                                                          content: {
-                                                            anyOf: [
-                                                              {
-                                                                type: 'array',
-                                                                items: {
-                                                                  type: 'object',
-                                                                  title: 'ContentItem',
-                                                                  properties: {
-                                                                    text: {
-                                                                      type: 'string',
-                                                                      title: 'Text',
-                                                                    },
-                                                                    type: {
-                                                                      type: 'string',
-                                                                      title: 'Type',
-                                                                      enum: ['text'],
-                                                                    },
-                                                                  },
-                                                                  required: ['text'],
-                                                                },
-                                                              },
-                                                              {
-                                                                type: 'array',
-                                                                items: {
-                                                                  type: 'object',
-                                                                  title: 'ContentItemModel',
-                                                                  properties: {
-                                                                    source: {
-                                                                      type: 'object',
-                                                                      title: 'Source',
-                                                                      properties: {
-                                                                        data: {
-                                                                          type: 'string',
-                                                                          title: 'Data',
-                                                                        },
-                                                                        media_type: {
-                                                                          type: 'string',
-                                                                          title: 'Media Type',
-                                                                        },
-                                                                        type: {
-                                                                          type: 'string',
-                                                                          title: 'Type',
-                                                                          enum: ['base64'],
-                                                                        },
-                                                                      },
-                                                                      required: ['data', 'media_type'],
-                                                                    },
-                                                                    type: {
-                                                                      type: 'string',
-                                                                      title: 'Type',
-                                                                      enum: ['image'],
-                                                                    },
-                                                                  },
-                                                                  required: ['source'],
-                                                                },
-                                                              },
-                                                            ],
-                                                            title: 'Content',
-                                                          },
-                                                          tool_use_id: {
-                                                            type: 'string',
-                                                            title: 'Tool Use Id',
-                                                          },
-                                                          type: {
-                                                            type: 'string',
-                                                            title: 'Type',
-                                                            enum: ['tool_result'],
-                                                          },
-                                                        },
-                                                        required: ['content', 'tool_use_id'],
-                                                      },
-                                                    ],
-                                                    description: 'Anthropic image content part',
-                                                  },
-                                                },
-                                                {
-                                                  type: 'string',
-                                                },
-                                              ],
-                                              title: 'Content',
-                                            },
-                                            role: {
-                                              type: 'string',
-                                              title: 'Role',
-                                              enum: ['user', 'assistant', 'system', 'tool'],
-                                            },
-                                            continue: {
-                                              type: 'boolean',
-                                              title: 'Continue',
-                                            },
-                                            name: {
-                                              type: 'string',
-                                              title: 'Name',
-                                            },
-                                            tool_call_id: {
-                                              type: 'string',
-                                              title: 'Tool Call Id',
-                                            },
-                                            tool_calls: {
-                                              type: 'array',
-                                              title: 'Tool Calls',
-                                              items: {
-                                                anyOf: [
-                                                  {
-                                                    $ref: '#/$defs/chosen_function_call',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/chosen_computer20241022',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/chosen_text_editor20241022',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/chosen_bash20241022',
-                                                  },
-                                                ],
-                                              },
-                                            },
-                                          },
-                                          required: ['content', 'role'],
-                                        },
-                                      },
-                                      {
-                                        type: 'string',
-                                      },
-                                    ],
-                                    title: 'Prompt',
-                                  },
-                                  auto_run_tools: {
-                                    type: 'boolean',
-                                    title: 'Auto Run Tools',
-                                  },
-                                  disable_cache: {
-                                    type: 'boolean',
-                                    title: 'Disable Cache',
-                                  },
-                                  kind_: {
-                                    type: 'string',
-                                    title: 'Kind',
-                                    enum: ['prompt'],
-                                  },
-                                  label: {
-                                    type: 'string',
-                                    title: 'Label',
-                                  },
-                                  settings: {
-                                    type: 'object',
-                                    title: 'Settings',
-                                  },
-                                  tool_choice: {
-                                    anyOf: [
-                                      {
-                                        type: 'string',
-                                        enum: ['auto', 'none'],
-                                      },
-                                      {
-                                        $ref: '#/$defs/named_tool_choice',
-                                      },
-                                    ],
-                                    title: 'Tool Choice',
-                                  },
-                                  tools: {
-                                    anyOf: [
-                                      {
-                                        type: 'string',
-                                        enum: ['all'],
-                                      },
-                                      {
-                                        type: 'array',
-                                        items: {
-                                          anyOf: [
-                                            {
-                                              type: 'object',
-                                              title: 'ToolRef',
-                                              description: 'Reference to a tool',
-                                              properties: {
-                                                ref: {
-                                                  anyOf: [
-                                                    {
-                                                      type: 'object',
-                                                      title: 'ToolRefById',
-                                                      description: 'Reference to a tool by id',
-                                                      properties: {
-                                                        id: {
-                                                          type: 'string',
-                                                          title: 'Id',
-                                                        },
-                                                      },
-                                                      required: [],
-                                                    },
-                                                    {
-                                                      type: 'object',
-                                                      title: 'ToolRefByName',
-                                                      description: 'Reference to a tool by name',
-                                                      properties: {
-                                                        name: {
-                                                          type: 'string',
-                                                          title: 'Name',
-                                                        },
-                                                      },
-                                                      required: [],
-                                                    },
-                                                  ],
-                                                  title: 'Ref',
-                                                  description: 'Reference to a tool by id',
-                                                },
-                                              },
-                                              required: ['ref'],
-                                            },
-                                            {
-                                              type: 'object',
-                                              title: 'CreateToolRequest',
-                                              description: 'Payload for creating a tool',
-                                              properties: {
-                                                name: {
-                                                  type: 'string',
-                                                  title: 'Name',
-                                                },
-                                                type: {
-                                                  type: 'string',
-                                                  title: 'Type',
-                                                  enum: [
-                                                    'function',
-                                                    'integration',
-                                                    'system',
-                                                    'api_call',
-                                                    'computer_20241022',
-                                                    'text_editor_20241022',
-                                                    'bash_20241022',
-                                                  ],
-                                                },
-                                                api_call: {
-                                                  $ref: '#/$defs/api_call_def',
-                                                },
-                                                bash_20241022: {
-                                                  $ref: '#/$defs/bash20241022_def',
-                                                },
-                                                computer_20241022: {
-                                                  $ref: '#/$defs/computer20241022_def',
-                                                },
-                                                description: {
-                                                  type: 'string',
-                                                  title: 'Description',
-                                                },
-                                                function: {
-                                                  $ref: '#/$defs/function_def',
-                                                },
-                                                integration: {
-                                                  anyOf: [
-                                                    {
-                                                      $ref: '#/$defs/dummy_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/brave_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/email_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/spider_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/wikipedia_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/weather_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/mailgun_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_context_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_extension_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_create_session_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_get_session_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/remote_browser_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/llama_parse_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/ffmpeg_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/cloudinary_upload_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/cloudinary_edit_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/arxiv_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/unstructured_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/algolia_integration_def',
-                                                    },
-                                                  ],
-                                                  title: 'Integration',
-                                                  description: 'Brave integration definition',
-                                                },
-                                                system: {
-                                                  $ref: '#/$defs/system_def',
-                                                },
-                                                text_editor_20241022: {
-                                                  $ref: '#/$defs/text_editor20241022_def',
-                                                },
-                                              },
-                                              required: ['name', 'type'],
-                                            },
-                                          ],
-                                          description: 'Reference to a tool',
-                                        },
-                                      },
-                                    ],
-                                    title: 'Tools',
-                                  },
-                                  unwrap: {
-                                    type: 'boolean',
-                                    title: 'Unwrap',
-                                  },
-                                },
-                                required: ['prompt'],
-                              },
-                              {
-                                $ref: '#/$defs/get_step',
-                              },
-                              {
-                                $ref: '#/$defs/set_step',
-                              },
-                              {
-                                $ref: '#/$defs/log_step',
-                              },
-                              {
-                                $ref: '#/$defs/yield_step',
-                              },
-                            ],
-                          },
-                        },
-                        kind_: {
-                          type: 'string',
-                          title: 'Kind',
-                          enum: ['parallel'],
-                        },
-                        label: {
-                          type: 'string',
-                          title: 'Label',
-                        },
-                      },
-                      required: ['parallel'],
-                    },
-                    {
-                      type: 'object',
-                      title: 'Then',
-                      description: 'The steps to run if the condition is true',
-                      properties: {
-                        map: {
-                          anyOf: [
-                            {
-                              $ref: '#/$defs/evaluate_step',
-                            },
-                            {
-                              $ref: '#/$defs/tool_call_step',
-                            },
-                            {
-                              type: 'object',
-                              title: 'PromptStep',
-                              properties: {
-                                prompt: {
-                                  anyOf: [
-                                    {
-                                      type: 'array',
-                                      items: {
-                                        type: 'object',
-                                        title: 'PromptItem',
-                                        properties: {
-                                          content: {
-                                            anyOf: [
-                                              {
-                                                type: 'array',
-                                                items: {
-                                                  type: 'string',
-                                                },
-                                              },
-                                              {
-                                                type: 'array',
-                                                items: {
-                                                  anyOf: [
-                                                    {
-                                                      type: 'object',
-                                                      title: 'Content',
-                                                      properties: {
-                                                        text: {
-                                                          type: 'string',
-                                                          title: 'Text',
-                                                        },
-                                                        type: {
-                                                          type: 'string',
-                                                          title: 'Type',
-                                                          enum: ['text'],
-                                                        },
-                                                      },
-                                                      required: ['text'],
-                                                    },
-                                                    {
-                                                      type: 'object',
-                                                      title: 'ContentModel',
-                                                      properties: {
-                                                        image_url: {
-                                                          type: 'object',
-                                                          title: 'ImageUrl',
-                                                          description: 'The image URL',
-                                                          properties: {
-                                                            url: {
-                                                              type: 'string',
-                                                              title: 'Url',
-                                                            },
-                                                            detail: {
-                                                              type: 'string',
-                                                              title: 'Detail',
-                                                              enum: ['low', 'high', 'auto'],
-                                                            },
-                                                          },
-                                                          required: ['url'],
-                                                        },
-                                                        type: {
-                                                          type: 'string',
-                                                          title: 'Type',
-                                                          enum: ['image_url'],
-                                                        },
-                                                      },
-                                                      required: ['image_url'],
-                                                    },
-                                                    {
-                                                      type: 'object',
-                                                      title: 'ContentModel1',
-                                                      description: 'Anthropic image content part',
-                                                      properties: {
-                                                        content: {
-                                                          anyOf: [
-                                                            {
-                                                              type: 'array',
-                                                              items: {
-                                                                type: 'object',
-                                                                title: 'ContentItem',
-                                                                properties: {
-                                                                  text: {
-                                                                    type: 'string',
-                                                                    title: 'Text',
-                                                                  },
-                                                                  type: {
-                                                                    type: 'string',
-                                                                    title: 'Type',
-                                                                    enum: ['text'],
-                                                                  },
-                                                                },
-                                                                required: ['text'],
-                                                              },
-                                                            },
-                                                            {
-                                                              type: 'array',
-                                                              items: {
-                                                                type: 'object',
-                                                                title: 'ContentItemModel',
-                                                                properties: {
-                                                                  source: {
-                                                                    type: 'object',
-                                                                    title: 'Source',
-                                                                    properties: {
-                                                                      data: {
-                                                                        type: 'string',
-                                                                        title: 'Data',
-                                                                      },
-                                                                      media_type: {
-                                                                        type: 'string',
-                                                                        title: 'Media Type',
-                                                                      },
-                                                                      type: {
-                                                                        type: 'string',
-                                                                        title: 'Type',
-                                                                        enum: ['base64'],
-                                                                      },
-                                                                    },
-                                                                    required: ['data', 'media_type'],
-                                                                  },
-                                                                  type: {
-                                                                    type: 'string',
-                                                                    title: 'Type',
-                                                                    enum: ['image'],
-                                                                  },
-                                                                },
-                                                                required: ['source'],
-                                                              },
-                                                            },
-                                                          ],
-                                                          title: 'Content',
-                                                        },
-                                                        tool_use_id: {
-                                                          type: 'string',
-                                                          title: 'Tool Use Id',
-                                                        },
-                                                        type: {
-                                                          type: 'string',
-                                                          title: 'Type',
-                                                          enum: ['tool_result'],
-                                                        },
-                                                      },
-                                                      required: ['content', 'tool_use_id'],
-                                                    },
-                                                  ],
-                                                  description: 'Anthropic image content part',
-                                                },
-                                              },
-                                              {
-                                                type: 'string',
-                                              },
-                                            ],
-                                            title: 'Content',
-                                          },
-                                          role: {
-                                            type: 'string',
-                                            title: 'Role',
-                                            enum: ['user', 'assistant', 'system', 'tool'],
-                                          },
-                                          continue: {
-                                            type: 'boolean',
-                                            title: 'Continue',
-                                          },
-                                          name: {
-                                            type: 'string',
-                                            title: 'Name',
-                                          },
-                                          tool_call_id: {
-                                            type: 'string',
-                                            title: 'Tool Call Id',
-                                          },
-                                          tool_calls: {
-                                            type: 'array',
-                                            title: 'Tool Calls',
-                                            items: {
-                                              anyOf: [
-                                                {
-                                                  $ref: '#/$defs/chosen_function_call',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/chosen_computer20241022',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/chosen_text_editor20241022',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/chosen_bash20241022',
-                                                },
-                                              ],
-                                            },
-                                          },
-                                        },
-                                        required: ['content', 'role'],
-                                      },
-                                    },
-                                    {
-                                      type: 'string',
-                                    },
-                                  ],
-                                  title: 'Prompt',
-                                },
-                                auto_run_tools: {
-                                  type: 'boolean',
-                                  title: 'Auto Run Tools',
-                                },
-                                disable_cache: {
-                                  type: 'boolean',
-                                  title: 'Disable Cache',
-                                },
-                                kind_: {
-                                  type: 'string',
-                                  title: 'Kind',
-                                  enum: ['prompt'],
-                                },
-                                label: {
-                                  type: 'string',
-                                  title: 'Label',
-                                },
-                                settings: {
-                                  type: 'object',
-                                  title: 'Settings',
-                                },
-                                tool_choice: {
-                                  anyOf: [
-                                    {
-                                      type: 'string',
-                                      enum: ['auto', 'none'],
-                                    },
-                                    {
-                                      $ref: '#/$defs/named_tool_choice',
-                                    },
-                                  ],
-                                  title: 'Tool Choice',
-                                },
-                                tools: {
-                                  anyOf: [
-                                    {
-                                      type: 'string',
-                                      enum: ['all'],
-                                    },
-                                    {
-                                      type: 'array',
-                                      items: {
-                                        anyOf: [
-                                          {
-                                            type: 'object',
-                                            title: 'ToolRef',
-                                            description: 'Reference to a tool',
-                                            properties: {
-                                              ref: {
-                                                anyOf: [
-                                                  {
-                                                    type: 'object',
-                                                    title: 'ToolRefById',
-                                                    description: 'Reference to a tool by id',
-                                                    properties: {
-                                                      id: {
-                                                        type: 'string',
-                                                        title: 'Id',
-                                                      },
-                                                    },
-                                                    required: [],
-                                                  },
-                                                  {
-                                                    type: 'object',
-                                                    title: 'ToolRefByName',
-                                                    description: 'Reference to a tool by name',
-                                                    properties: {
-                                                      name: {
-                                                        type: 'string',
-                                                        title: 'Name',
-                                                      },
-                                                    },
-                                                    required: [],
-                                                  },
-                                                ],
-                                                title: 'Ref',
-                                                description: 'Reference to a tool by id',
-                                              },
-                                            },
-                                            required: ['ref'],
-                                          },
-                                          {
-                                            type: 'object',
-                                            title: 'CreateToolRequest',
-                                            description: 'Payload for creating a tool',
-                                            properties: {
-                                              name: {
-                                                type: 'string',
-                                                title: 'Name',
-                                              },
-                                              type: {
-                                                type: 'string',
-                                                title: 'Type',
-                                                enum: [
-                                                  'function',
-                                                  'integration',
-                                                  'system',
-                                                  'api_call',
-                                                  'computer_20241022',
-                                                  'text_editor_20241022',
-                                                  'bash_20241022',
-                                                ],
-                                              },
-                                              api_call: {
-                                                $ref: '#/$defs/api_call_def',
-                                              },
-                                              bash_20241022: {
-                                                $ref: '#/$defs/bash20241022_def',
-                                              },
-                                              computer_20241022: {
-                                                $ref: '#/$defs/computer20241022_def',
-                                              },
-                                              description: {
-                                                type: 'string',
-                                                title: 'Description',
-                                              },
-                                              function: {
-                                                $ref: '#/$defs/function_def',
-                                              },
-                                              integration: {
-                                                anyOf: [
-                                                  {
-                                                    $ref: '#/$defs/dummy_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/brave_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/email_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/spider_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/wikipedia_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/weather_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/mailgun_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_context_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_extension_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_create_session_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_get_session_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/remote_browser_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/llama_parse_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/ffmpeg_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/cloudinary_upload_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/cloudinary_edit_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/arxiv_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/unstructured_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/algolia_integration_def',
-                                                  },
-                                                ],
-                                                title: 'Integration',
-                                                description: 'Brave integration definition',
-                                              },
-                                              system: {
-                                                $ref: '#/$defs/system_def',
-                                              },
-                                              text_editor_20241022: {
-                                                $ref: '#/$defs/text_editor20241022_def',
-                                              },
-                                            },
-                                            required: ['name', 'type'],
-                                          },
-                                        ],
-                                        description: 'Reference to a tool',
-                                      },
-                                    },
-                                  ],
-                                  title: 'Tools',
-                                },
-                                unwrap: {
-                                  type: 'boolean',
-                                  title: 'Unwrap',
-                                },
-                              },
-                              required: ['prompt'],
-                            },
-                            {
-                              $ref: '#/$defs/get_step',
-                            },
-                            {
-                              $ref: '#/$defs/set_step',
-                            },
-                            {
-                              $ref: '#/$defs/log_step',
-                            },
-                            {
-                              $ref: '#/$defs/yield_step',
-                            },
-                          ],
-                          title: 'Map',
-                        },
-                        over: {
-                          type: 'string',
-                          title: 'Over',
-                        },
-                        initial: {
-                          type: 'object',
-                          title: 'Initial',
-                        },
-                        kind_: {
-                          type: 'string',
-                          title: 'Kind',
-                          enum: ['map_reduce'],
-                        },
-                        label: {
-                          type: 'string',
-                          title: 'Label',
-                        },
-                        parallelism: {
-                          type: 'integer',
-                          title: 'Parallelism',
-                        },
-                        reduce: {
-                          type: 'string',
-                          title: 'Reduce',
-                        },
-                      },
-                      required: ['map', 'over'],
-                    },
-                  ],
-                  title: 'Then',
-                  description: 'The steps to run if the condition is true',
-                },
-                else: {
-                  anyOf: [
-                    {
-                      $ref: '#/$defs/wait_for_input_step',
-                    },
-                    {
-                      $ref: '#/$defs/evaluate_step',
-                    },
-                    {
-                      $ref: '#/$defs/tool_call_step',
-                    },
-                    {
-                      type: 'object',
-                      title: 'PromptStep',
-                      properties: {
-                        prompt: {
-                          anyOf: [
-                            {
-                              type: 'array',
-                              items: {
-                                type: 'object',
-                                title: 'PromptItem',
-                                properties: {
-                                  content: {
-                                    anyOf: [
-                                      {
-                                        type: 'array',
-                                        items: {
-                                          type: 'string',
-                                        },
-                                      },
-                                      {
-                                        type: 'array',
-                                        items: {
-                                          anyOf: [
-                                            {
-                                              type: 'object',
-                                              title: 'Content',
-                                              properties: {
-                                                text: {
-                                                  type: 'string',
-                                                  title: 'Text',
-                                                },
-                                                type: {
-                                                  type: 'string',
-                                                  title: 'Type',
-                                                  enum: ['text'],
-                                                },
-                                              },
-                                              required: ['text'],
-                                            },
-                                            {
-                                              type: 'object',
-                                              title: 'ContentModel',
-                                              properties: {
-                                                image_url: {
-                                                  type: 'object',
-                                                  title: 'ImageUrl',
-                                                  description: 'The image URL',
-                                                  properties: {
-                                                    url: {
-                                                      type: 'string',
-                                                      title: 'Url',
-                                                    },
-                                                    detail: {
-                                                      type: 'string',
-                                                      title: 'Detail',
-                                                      enum: ['low', 'high', 'auto'],
-                                                    },
-                                                  },
-                                                  required: ['url'],
-                                                },
-                                                type: {
-                                                  type: 'string',
-                                                  title: 'Type',
-                                                  enum: ['image_url'],
-                                                },
-                                              },
-                                              required: ['image_url'],
-                                            },
-                                            {
-                                              type: 'object',
-                                              title: 'ContentModel1',
-                                              description: 'Anthropic image content part',
-                                              properties: {
-                                                content: {
-                                                  anyOf: [
-                                                    {
-                                                      type: 'array',
-                                                      items: {
-                                                        type: 'object',
-                                                        title: 'ContentItem',
-                                                        properties: {
-                                                          text: {
-                                                            type: 'string',
-                                                            title: 'Text',
-                                                          },
-                                                          type: {
-                                                            type: 'string',
-                                                            title: 'Type',
-                                                            enum: ['text'],
-                                                          },
-                                                        },
-                                                        required: ['text'],
-                                                      },
-                                                    },
-                                                    {
-                                                      type: 'array',
-                                                      items: {
-                                                        type: 'object',
-                                                        title: 'ContentItemModel',
-                                                        properties: {
-                                                          source: {
-                                                            type: 'object',
-                                                            title: 'Source',
-                                                            properties: {
-                                                              data: {
-                                                                type: 'string',
-                                                                title: 'Data',
-                                                              },
-                                                              media_type: {
-                                                                type: 'string',
-                                                                title: 'Media Type',
-                                                              },
-                                                              type: {
-                                                                type: 'string',
-                                                                title: 'Type',
-                                                                enum: ['base64'],
-                                                              },
-                                                            },
-                                                            required: ['data', 'media_type'],
-                                                          },
-                                                          type: {
-                                                            type: 'string',
-                                                            title: 'Type',
-                                                            enum: ['image'],
-                                                          },
-                                                        },
-                                                        required: ['source'],
-                                                      },
-                                                    },
-                                                  ],
-                                                  title: 'Content',
-                                                },
-                                                tool_use_id: {
-                                                  type: 'string',
-                                                  title: 'Tool Use Id',
-                                                },
-                                                type: {
-                                                  type: 'string',
-                                                  title: 'Type',
-                                                  enum: ['tool_result'],
-                                                },
-                                              },
-                                              required: ['content', 'tool_use_id'],
-                                            },
-                                          ],
-                                          description: 'Anthropic image content part',
-                                        },
-                                      },
-                                      {
-                                        type: 'string',
-                                      },
-                                    ],
-                                    title: 'Content',
-                                  },
-                                  role: {
-                                    type: 'string',
-                                    title: 'Role',
-                                    enum: ['user', 'assistant', 'system', 'tool'],
-                                  },
-                                  continue: {
-                                    type: 'boolean',
-                                    title: 'Continue',
-                                  },
-                                  name: {
-                                    type: 'string',
-                                    title: 'Name',
-                                  },
-                                  tool_call_id: {
-                                    type: 'string',
-                                    title: 'Tool Call Id',
-                                  },
-                                  tool_calls: {
-                                    type: 'array',
-                                    title: 'Tool Calls',
-                                    items: {
-                                      anyOf: [
-                                        {
-                                          $ref: '#/$defs/chosen_function_call',
-                                        },
-                                        {
-                                          $ref: '#/$defs/chosen_computer20241022',
-                                        },
-                                        {
-                                          $ref: '#/$defs/chosen_text_editor20241022',
-                                        },
-                                        {
-                                          $ref: '#/$defs/chosen_bash20241022',
-                                        },
-                                      ],
-                                    },
-                                  },
-                                },
-                                required: ['content', 'role'],
-                              },
-                            },
-                            {
-                              type: 'string',
-                            },
-                          ],
-                          title: 'Prompt',
-                        },
-                        auto_run_tools: {
-                          type: 'boolean',
-                          title: 'Auto Run Tools',
-                        },
-                        disable_cache: {
-                          type: 'boolean',
-                          title: 'Disable Cache',
-                        },
-                        kind_: {
-                          type: 'string',
-                          title: 'Kind',
-                          enum: ['prompt'],
-                        },
-                        label: {
-                          type: 'string',
-                          title: 'Label',
-                        },
-                        settings: {
-                          type: 'object',
-                          title: 'Settings',
-                        },
-                        tool_choice: {
-                          anyOf: [
-                            {
-                              type: 'string',
-                              enum: ['auto', 'none'],
-                            },
-                            {
-                              $ref: '#/$defs/named_tool_choice',
-                            },
-                          ],
-                          title: 'Tool Choice',
-                        },
-                        tools: {
-                          anyOf: [
-                            {
-                              type: 'string',
-                              enum: ['all'],
-                            },
-                            {
-                              type: 'array',
-                              items: {
-                                anyOf: [
-                                  {
-                                    type: 'object',
-                                    title: 'ToolRef',
-                                    description: 'Reference to a tool',
-                                    properties: {
-                                      ref: {
-                                        anyOf: [
-                                          {
-                                            type: 'object',
-                                            title: 'ToolRefById',
-                                            description: 'Reference to a tool by id',
-                                            properties: {
-                                              id: {
-                                                type: 'string',
-                                                title: 'Id',
-                                              },
-                                            },
-                                            required: [],
-                                          },
-                                          {
-                                            type: 'object',
-                                            title: 'ToolRefByName',
-                                            description: 'Reference to a tool by name',
-                                            properties: {
-                                              name: {
-                                                type: 'string',
-                                                title: 'Name',
-                                              },
-                                            },
-                                            required: [],
-                                          },
-                                        ],
-                                        title: 'Ref',
-                                        description: 'Reference to a tool by id',
-                                      },
-                                    },
-                                    required: ['ref'],
-                                  },
-                                  {
-                                    type: 'object',
-                                    title: 'CreateToolRequest',
-                                    description: 'Payload for creating a tool',
-                                    properties: {
-                                      name: {
-                                        type: 'string',
-                                        title: 'Name',
-                                      },
-                                      type: {
-                                        type: 'string',
-                                        title: 'Type',
-                                        enum: [
-                                          'function',
-                                          'integration',
-                                          'system',
-                                          'api_call',
-                                          'computer_20241022',
-                                          'text_editor_20241022',
-                                          'bash_20241022',
-                                        ],
-                                      },
-                                      api_call: {
-                                        $ref: '#/$defs/api_call_def',
-                                      },
-                                      bash_20241022: {
-                                        $ref: '#/$defs/bash20241022_def',
-                                      },
-                                      computer_20241022: {
-                                        $ref: '#/$defs/computer20241022_def',
-                                      },
-                                      description: {
-                                        type: 'string',
-                                        title: 'Description',
-                                      },
-                                      function: {
-                                        $ref: '#/$defs/function_def',
-                                      },
-                                      integration: {
-                                        anyOf: [
-                                          {
-                                            $ref: '#/$defs/dummy_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/brave_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/email_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/spider_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/wikipedia_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/weather_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/mailgun_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_context_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_extension_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_create_session_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_get_session_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/remote_browser_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/llama_parse_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/ffmpeg_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/cloudinary_upload_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/cloudinary_edit_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/arxiv_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/unstructured_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/algolia_integration_def',
-                                          },
-                                        ],
-                                        title: 'Integration',
-                                        description: 'Brave integration definition',
-                                      },
-                                      system: {
-                                        $ref: '#/$defs/system_def',
-                                      },
-                                      text_editor_20241022: {
-                                        $ref: '#/$defs/text_editor20241022_def',
-                                      },
-                                    },
-                                    required: ['name', 'type'],
-                                  },
-                                ],
-                                description: 'Reference to a tool',
-                              },
-                            },
-                          ],
-                          title: 'Tools',
-                        },
-                        unwrap: {
-                          type: 'boolean',
-                          title: 'Unwrap',
-                        },
-                      },
-                      required: ['prompt'],
-                    },
-                    {
-                      $ref: '#/$defs/get_step',
-                    },
-                    {
-                      $ref: '#/$defs/set_step',
-                    },
-                    {
-                      $ref: '#/$defs/log_step',
-                    },
-                    {
-                      $ref: '#/$defs/yield_step',
-                    },
-                    {
-                      $ref: '#/$defs/return_step',
-                    },
-                    {
-                      $ref: '#/$defs/sleep_step',
-                    },
-                    {
-                      $ref: '#/$defs/error_workflow_step',
-                    },
-                    {
-                      type: 'object',
-                    },
-                    {
-                      type: 'object',
-                      title: 'SwitchStep',
-                      properties: {
-                        switch: {
-                          type: 'array',
-                          title: 'Switch',
-                          items: {
-                            type: 'object',
-                            title: 'CaseThen',
-                            properties: {
-                              case: {
-                                type: 'string',
-                                title: 'Case',
-                                enum: ['_'],
-                              },
-                              then: {
-                                anyOf: [
-                                  {
-                                    $ref: '#/$defs/evaluate_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/tool_call_step',
-                                  },
-                                  {
-                                    type: 'object',
-                                    title: 'PromptStep',
-                                    properties: {
-                                      prompt: {
-                                        anyOf: [
-                                          {
-                                            type: 'array',
-                                            items: {
-                                              type: 'object',
-                                              title: 'PromptItem',
-                                              properties: {
-                                                content: {
-                                                  anyOf: [
-                                                    {
-                                                      type: 'array',
-                                                      items: {
-                                                        type: 'string',
-                                                      },
-                                                    },
-                                                    {
-                                                      type: 'array',
-                                                      items: {
-                                                        anyOf: [
-                                                          {
-                                                            type: 'object',
-                                                            title: 'Content',
-                                                            properties: {
-                                                              text: {
-                                                                type: 'string',
-                                                                title: 'Text',
-                                                              },
-                                                              type: {
-                                                                type: 'string',
-                                                                title: 'Type',
-                                                                enum: ['text'],
-                                                              },
-                                                            },
-                                                            required: ['text'],
-                                                          },
-                                                          {
-                                                            type: 'object',
-                                                            title: 'ContentModel',
-                                                            properties: {
-                                                              image_url: {
-                                                                type: 'object',
-                                                                title: 'ImageUrl',
-                                                                description: 'The image URL',
-                                                                properties: {
-                                                                  url: {
-                                                                    type: 'string',
-                                                                    title: 'Url',
-                                                                  },
-                                                                  detail: {
-                                                                    type: 'string',
-                                                                    title: 'Detail',
-                                                                    enum: ['low', 'high', 'auto'],
-                                                                  },
-                                                                },
-                                                                required: ['url'],
-                                                              },
-                                                              type: {
-                                                                type: 'string',
-                                                                title: 'Type',
-                                                                enum: ['image_url'],
-                                                              },
-                                                            },
-                                                            required: ['image_url'],
-                                                          },
-                                                          {
-                                                            type: 'object',
-                                                            title: 'ContentModel1',
-                                                            description: 'Anthropic image content part',
-                                                            properties: {
-                                                              content: {
-                                                                anyOf: [
-                                                                  {
-                                                                    type: 'array',
-                                                                    items: {
-                                                                      type: 'object',
-                                                                      title: 'ContentItem',
-                                                                      properties: {
-                                                                        text: {
-                                                                          type: 'string',
-                                                                          title: 'Text',
-                                                                        },
-                                                                        type: {
-                                                                          type: 'string',
-                                                                          title: 'Type',
-                                                                          enum: ['text'],
-                                                                        },
-                                                                      },
-                                                                      required: ['text'],
-                                                                    },
-                                                                  },
-                                                                  {
-                                                                    type: 'array',
-                                                                    items: {
-                                                                      type: 'object',
-                                                                      title: 'ContentItemModel',
-                                                                      properties: {
-                                                                        source: {
-                                                                          type: 'object',
-                                                                          title: 'Source',
-                                                                          properties: {
-                                                                            data: {
-                                                                              type: 'string',
-                                                                              title: 'Data',
-                                                                            },
-                                                                            media_type: {
-                                                                              type: 'string',
-                                                                              title: 'Media Type',
-                                                                            },
-                                                                            type: {
-                                                                              type: 'string',
-                                                                              title: 'Type',
-                                                                              enum: ['base64'],
-                                                                            },
-                                                                          },
-                                                                          required: ['data', 'media_type'],
-                                                                        },
-                                                                        type: {
-                                                                          type: 'string',
-                                                                          title: 'Type',
-                                                                          enum: ['image'],
-                                                                        },
-                                                                      },
-                                                                      required: ['source'],
-                                                                    },
-                                                                  },
-                                                                ],
-                                                                title: 'Content',
-                                                              },
-                                                              tool_use_id: {
-                                                                type: 'string',
-                                                                title: 'Tool Use Id',
-                                                              },
-                                                              type: {
-                                                                type: 'string',
-                                                                title: 'Type',
-                                                                enum: ['tool_result'],
-                                                              },
-                                                            },
-                                                            required: ['content', 'tool_use_id'],
-                                                          },
-                                                        ],
-                                                        description: 'Anthropic image content part',
-                                                      },
-                                                    },
-                                                    {
-                                                      type: 'string',
-                                                    },
-                                                  ],
-                                                  title: 'Content',
-                                                },
-                                                role: {
-                                                  type: 'string',
-                                                  title: 'Role',
-                                                  enum: ['user', 'assistant', 'system', 'tool'],
-                                                },
-                                                continue: {
-                                                  type: 'boolean',
-                                                  title: 'Continue',
-                                                },
-                                                name: {
-                                                  type: 'string',
-                                                  title: 'Name',
-                                                },
-                                                tool_call_id: {
-                                                  type: 'string',
-                                                  title: 'Tool Call Id',
-                                                },
-                                                tool_calls: {
-                                                  type: 'array',
-                                                  title: 'Tool Calls',
-                                                  items: {
-                                                    anyOf: [
-                                                      {
-                                                        $ref: '#/$defs/chosen_function_call',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/chosen_computer20241022',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/chosen_text_editor20241022',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/chosen_bash20241022',
-                                                      },
-                                                    ],
-                                                  },
-                                                },
-                                              },
-                                              required: ['content', 'role'],
-                                            },
-                                          },
-                                          {
-                                            type: 'string',
-                                          },
-                                        ],
-                                        title: 'Prompt',
-                                      },
-                                      auto_run_tools: {
-                                        type: 'boolean',
-                                        title: 'Auto Run Tools',
-                                      },
-                                      disable_cache: {
-                                        type: 'boolean',
-                                        title: 'Disable Cache',
-                                      },
-                                      kind_: {
-                                        type: 'string',
-                                        title: 'Kind',
-                                        enum: ['prompt'],
-                                      },
-                                      label: {
-                                        type: 'string',
-                                        title: 'Label',
-                                      },
-                                      settings: {
-                                        type: 'object',
-                                        title: 'Settings',
-                                      },
-                                      tool_choice: {
-                                        anyOf: [
-                                          {
-                                            type: 'string',
-                                            enum: ['auto', 'none'],
-                                          },
-                                          {
-                                            $ref: '#/$defs/named_tool_choice',
-                                          },
-                                        ],
-                                        title: 'Tool Choice',
-                                      },
-                                      tools: {
-                                        anyOf: [
-                                          {
-                                            type: 'string',
-                                            enum: ['all'],
-                                          },
-                                          {
-                                            type: 'array',
-                                            items: {
-                                              anyOf: [
-                                                {
-                                                  type: 'object',
-                                                  title: 'ToolRef',
-                                                  description: 'Reference to a tool',
-                                                  properties: {
-                                                    ref: {
-                                                      anyOf: [
-                                                        {
-                                                          type: 'object',
-                                                          title: 'ToolRefById',
-                                                          description: 'Reference to a tool by id',
-                                                          properties: {
-                                                            id: {
-                                                              type: 'string',
-                                                              title: 'Id',
-                                                            },
-                                                          },
-                                                          required: [],
-                                                        },
-                                                        {
-                                                          type: 'object',
-                                                          title: 'ToolRefByName',
-                                                          description: 'Reference to a tool by name',
-                                                          properties: {
-                                                            name: {
-                                                              type: 'string',
-                                                              title: 'Name',
-                                                            },
-                                                          },
-                                                          required: [],
-                                                        },
-                                                      ],
-                                                      title: 'Ref',
-                                                      description: 'Reference to a tool by id',
-                                                    },
-                                                  },
-                                                  required: ['ref'],
-                                                },
-                                                {
-                                                  type: 'object',
-                                                  title: 'CreateToolRequest',
-                                                  description: 'Payload for creating a tool',
-                                                  properties: {
-                                                    name: {
-                                                      type: 'string',
-                                                      title: 'Name',
-                                                    },
-                                                    type: {
-                                                      type: 'string',
-                                                      title: 'Type',
-                                                      enum: [
-                                                        'function',
-                                                        'integration',
-                                                        'system',
-                                                        'api_call',
-                                                        'computer_20241022',
-                                                        'text_editor_20241022',
-                                                        'bash_20241022',
-                                                      ],
-                                                    },
-                                                    api_call: {
-                                                      $ref: '#/$defs/api_call_def',
-                                                    },
-                                                    bash_20241022: {
-                                                      $ref: '#/$defs/bash20241022_def',
-                                                    },
-                                                    computer_20241022: {
-                                                      $ref: '#/$defs/computer20241022_def',
-                                                    },
-                                                    description: {
-                                                      type: 'string',
-                                                      title: 'Description',
-                                                    },
-                                                    function: {
-                                                      $ref: '#/$defs/function_def',
-                                                    },
-                                                    integration: {
-                                                      anyOf: [
-                                                        {
-                                                          $ref: '#/$defs/dummy_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/brave_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/email_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/spider_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/wikipedia_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/weather_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/mailgun_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_context_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_extension_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_create_session_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_get_session_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/remote_browser_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/llama_parse_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/ffmpeg_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/cloudinary_upload_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/cloudinary_edit_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/arxiv_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/unstructured_integration_def',
-                                                        },
-                                                        {
-                                                          $ref: '#/$defs/algolia_integration_def',
-                                                        },
-                                                      ],
-                                                      title: 'Integration',
-                                                      description: 'Brave integration definition',
-                                                    },
-                                                    system: {
-                                                      $ref: '#/$defs/system_def',
-                                                    },
-                                                    text_editor_20241022: {
-                                                      $ref: '#/$defs/text_editor20241022_def',
-                                                    },
-                                                  },
-                                                  required: ['name', 'type'],
-                                                },
-                                              ],
-                                              description: 'Reference to a tool',
-                                            },
-                                          },
-                                        ],
-                                        title: 'Tools',
-                                      },
-                                      unwrap: {
-                                        type: 'boolean',
-                                        title: 'Unwrap',
-                                      },
-                                    },
-                                    required: ['prompt'],
-                                  },
-                                  {
-                                    $ref: '#/$defs/get_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/set_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/log_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/yield_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/return_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/sleep_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/error_workflow_step',
-                                  },
-                                  {
-                                    $ref: '#/$defs/wait_for_input_step',
-                                  },
-                                ],
-                                title: 'Then',
-                              },
-                            },
-                            required: ['case', 'then'],
-                          },
-                        },
-                        kind_: {
-                          type: 'string',
-                          title: 'Kind',
-                          enum: ['switch'],
-                        },
-                        label: {
-                          type: 'string',
-                          title: 'Label',
-                        },
-                      },
-                      required: ['switch'],
-                    },
-                    {
-                      type: 'object',
-                      title: 'ForeachStep',
-                      properties: {
-                        foreach: {
-                          type: 'object',
-                          title: 'ForeachDo',
-                          properties: {
-                            do: {
-                              anyOf: [
-                                {
-                                  $ref: '#/$defs/wait_for_input_step',
-                                },
-                                {
-                                  $ref: '#/$defs/evaluate_step',
-                                },
-                                {
-                                  $ref: '#/$defs/tool_call_step',
-                                },
-                                {
-                                  type: 'object',
-                                  title: 'PromptStep',
-                                  properties: {
-                                    prompt: {
-                                      anyOf: [
-                                        {
-                                          type: 'array',
-                                          items: {
-                                            type: 'object',
-                                            title: 'PromptItem',
-                                            properties: {
-                                              content: {
-                                                anyOf: [
-                                                  {
-                                                    type: 'array',
-                                                    items: {
-                                                      type: 'string',
-                                                    },
-                                                  },
-                                                  {
-                                                    type: 'array',
-                                                    items: {
-                                                      anyOf: [
-                                                        {
-                                                          type: 'object',
-                                                          title: 'Content',
-                                                          properties: {
-                                                            text: {
-                                                              type: 'string',
-                                                              title: 'Text',
-                                                            },
-                                                            type: {
-                                                              type: 'string',
-                                                              title: 'Type',
-                                                              enum: ['text'],
-                                                            },
-                                                          },
-                                                          required: ['text'],
-                                                        },
-                                                        {
-                                                          type: 'object',
-                                                          title: 'ContentModel',
-                                                          properties: {
-                                                            image_url: {
-                                                              type: 'object',
-                                                              title: 'ImageUrl',
-                                                              description: 'The image URL',
-                                                              properties: {
-                                                                url: {
-                                                                  type: 'string',
-                                                                  title: 'Url',
-                                                                },
-                                                                detail: {
-                                                                  type: 'string',
-                                                                  title: 'Detail',
-                                                                  enum: ['low', 'high', 'auto'],
-                                                                },
-                                                              },
-                                                              required: ['url'],
-                                                            },
-                                                            type: {
-                                                              type: 'string',
-                                                              title: 'Type',
-                                                              enum: ['image_url'],
-                                                            },
-                                                          },
-                                                          required: ['image_url'],
-                                                        },
-                                                        {
-                                                          type: 'object',
-                                                          title: 'ContentModel1',
-                                                          description: 'Anthropic image content part',
-                                                          properties: {
-                                                            content: {
-                                                              anyOf: [
-                                                                {
-                                                                  type: 'array',
-                                                                  items: {
-                                                                    type: 'object',
-                                                                    title: 'ContentItem',
-                                                                    properties: {
-                                                                      text: {
-                                                                        type: 'string',
-                                                                        title: 'Text',
-                                                                      },
-                                                                      type: {
-                                                                        type: 'string',
-                                                                        title: 'Type',
-                                                                        enum: ['text'],
-                                                                      },
-                                                                    },
-                                                                    required: ['text'],
-                                                                  },
-                                                                },
-                                                                {
-                                                                  type: 'array',
-                                                                  items: {
-                                                                    type: 'object',
-                                                                    title: 'ContentItemModel',
-                                                                    properties: {
-                                                                      source: {
-                                                                        type: 'object',
-                                                                        title: 'Source',
-                                                                        properties: {
-                                                                          data: {
-                                                                            type: 'string',
-                                                                            title: 'Data',
-                                                                          },
-                                                                          media_type: {
-                                                                            type: 'string',
-                                                                            title: 'Media Type',
-                                                                          },
-                                                                          type: {
-                                                                            type: 'string',
-                                                                            title: 'Type',
-                                                                            enum: ['base64'],
-                                                                          },
-                                                                        },
-                                                                        required: ['data', 'media_type'],
-                                                                      },
-                                                                      type: {
-                                                                        type: 'string',
-                                                                        title: 'Type',
-                                                                        enum: ['image'],
-                                                                      },
-                                                                    },
-                                                                    required: ['source'],
-                                                                  },
-                                                                },
-                                                              ],
-                                                              title: 'Content',
-                                                            },
-                                                            tool_use_id: {
-                                                              type: 'string',
-                                                              title: 'Tool Use Id',
-                                                            },
-                                                            type: {
-                                                              type: 'string',
-                                                              title: 'Type',
-                                                              enum: ['tool_result'],
-                                                            },
-                                                          },
-                                                          required: ['content', 'tool_use_id'],
-                                                        },
-                                                      ],
-                                                      description: 'Anthropic image content part',
-                                                    },
-                                                  },
-                                                  {
-                                                    type: 'string',
-                                                  },
-                                                ],
-                                                title: 'Content',
-                                              },
-                                              role: {
-                                                type: 'string',
-                                                title: 'Role',
-                                                enum: ['user', 'assistant', 'system', 'tool'],
-                                              },
-                                              continue: {
-                                                type: 'boolean',
-                                                title: 'Continue',
-                                              },
-                                              name: {
-                                                type: 'string',
-                                                title: 'Name',
-                                              },
-                                              tool_call_id: {
-                                                type: 'string',
-                                                title: 'Tool Call Id',
-                                              },
-                                              tool_calls: {
-                                                type: 'array',
-                                                title: 'Tool Calls',
-                                                items: {
-                                                  anyOf: [
-                                                    {
-                                                      $ref: '#/$defs/chosen_function_call',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/chosen_computer20241022',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/chosen_text_editor20241022',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/chosen_bash20241022',
-                                                    },
-                                                  ],
-                                                },
-                                              },
-                                            },
-                                            required: ['content', 'role'],
-                                          },
-                                        },
-                                        {
-                                          type: 'string',
-                                        },
-                                      ],
-                                      title: 'Prompt',
-                                    },
-                                    auto_run_tools: {
-                                      type: 'boolean',
-                                      title: 'Auto Run Tools',
-                                    },
-                                    disable_cache: {
-                                      type: 'boolean',
-                                      title: 'Disable Cache',
-                                    },
-                                    kind_: {
-                                      type: 'string',
-                                      title: 'Kind',
-                                      enum: ['prompt'],
-                                    },
-                                    label: {
-                                      type: 'string',
-                                      title: 'Label',
-                                    },
-                                    settings: {
-                                      type: 'object',
-                                      title: 'Settings',
-                                    },
-                                    tool_choice: {
-                                      anyOf: [
-                                        {
-                                          type: 'string',
-                                          enum: ['auto', 'none'],
-                                        },
-                                        {
-                                          $ref: '#/$defs/named_tool_choice',
-                                        },
-                                      ],
-                                      title: 'Tool Choice',
-                                    },
-                                    tools: {
-                                      anyOf: [
-                                        {
-                                          type: 'string',
-                                          enum: ['all'],
-                                        },
-                                        {
-                                          type: 'array',
-                                          items: {
-                                            anyOf: [
-                                              {
-                                                type: 'object',
-                                                title: 'ToolRef',
-                                                description: 'Reference to a tool',
-                                                properties: {
-                                                  ref: {
-                                                    anyOf: [
-                                                      {
-                                                        type: 'object',
-                                                        title: 'ToolRefById',
-                                                        description: 'Reference to a tool by id',
-                                                        properties: {
-                                                          id: {
-                                                            type: 'string',
-                                                            title: 'Id',
-                                                          },
-                                                        },
-                                                        required: [],
-                                                      },
-                                                      {
-                                                        type: 'object',
-                                                        title: 'ToolRefByName',
-                                                        description: 'Reference to a tool by name',
-                                                        properties: {
-                                                          name: {
-                                                            type: 'string',
-                                                            title: 'Name',
-                                                          },
-                                                        },
-                                                        required: [],
-                                                      },
-                                                    ],
-                                                    title: 'Ref',
-                                                    description: 'Reference to a tool by id',
-                                                  },
-                                                },
-                                                required: ['ref'],
-                                              },
-                                              {
-                                                type: 'object',
-                                                title: 'CreateToolRequest',
-                                                description: 'Payload for creating a tool',
-                                                properties: {
-                                                  name: {
-                                                    type: 'string',
-                                                    title: 'Name',
-                                                  },
-                                                  type: {
-                                                    type: 'string',
-                                                    title: 'Type',
-                                                    enum: [
-                                                      'function',
-                                                      'integration',
-                                                      'system',
-                                                      'api_call',
-                                                      'computer_20241022',
-                                                      'text_editor_20241022',
-                                                      'bash_20241022',
-                                                    ],
-                                                  },
-                                                  api_call: {
-                                                    $ref: '#/$defs/api_call_def',
-                                                  },
-                                                  bash_20241022: {
-                                                    $ref: '#/$defs/bash20241022_def',
-                                                  },
-                                                  computer_20241022: {
-                                                    $ref: '#/$defs/computer20241022_def',
-                                                  },
-                                                  description: {
-                                                    type: 'string',
-                                                    title: 'Description',
-                                                  },
-                                                  function: {
-                                                    $ref: '#/$defs/function_def',
-                                                  },
-                                                  integration: {
-                                                    anyOf: [
-                                                      {
-                                                        $ref: '#/$defs/dummy_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/brave_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/email_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/spider_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/wikipedia_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/weather_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/mailgun_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_context_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_extension_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_create_session_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_get_session_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/remote_browser_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/llama_parse_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/ffmpeg_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/cloudinary_upload_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/cloudinary_edit_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/arxiv_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/unstructured_integration_def',
-                                                      },
-                                                      {
-                                                        $ref: '#/$defs/algolia_integration_def',
-                                                      },
-                                                    ],
-                                                    title: 'Integration',
-                                                    description: 'Brave integration definition',
-                                                  },
-                                                  system: {
-                                                    $ref: '#/$defs/system_def',
-                                                  },
-                                                  text_editor_20241022: {
-                                                    $ref: '#/$defs/text_editor20241022_def',
-                                                  },
-                                                },
-                                                required: ['name', 'type'],
-                                              },
-                                            ],
-                                            description: 'Reference to a tool',
-                                          },
-                                        },
-                                      ],
-                                      title: 'Tools',
-                                    },
-                                    unwrap: {
-                                      type: 'boolean',
-                                      title: 'Unwrap',
-                                    },
-                                  },
-                                  required: ['prompt'],
-                                },
-                                {
-                                  $ref: '#/$defs/get_step',
-                                },
-                                {
-                                  $ref: '#/$defs/set_step',
-                                },
-                                {
-                                  $ref: '#/$defs/log_step',
-                                },
-                                {
-                                  $ref: '#/$defs/yield_step',
-                                },
-                              ],
-                              title: 'Do',
-                            },
-                            in: {
-                              type: 'string',
-                              title: 'In',
-                            },
-                          },
-                          required: ['do', 'in'],
-                        },
-                        kind_: {
-                          type: 'string',
-                          title: 'Kind',
-                          enum: ['foreach'],
-                        },
-                        label: {
-                          type: 'string',
-                          title: 'Label',
-                        },
-                      },
-                      required: ['foreach'],
-                    },
-                    {
-                      type: 'object',
-                      title: 'ParallelStep',
-                      properties: {
-                        parallel: {
-                          type: 'array',
-                          title: 'Parallel',
-                          items: {
-                            anyOf: [
-                              {
-                                $ref: '#/$defs/evaluate_step',
-                              },
-                              {
-                                $ref: '#/$defs/tool_call_step',
-                              },
-                              {
-                                type: 'object',
-                                title: 'PromptStep',
-                                properties: {
-                                  prompt: {
-                                    anyOf: [
-                                      {
-                                        type: 'array',
-                                        items: {
-                                          type: 'object',
-                                          title: 'PromptItem',
-                                          properties: {
-                                            content: {
-                                              anyOf: [
-                                                {
-                                                  type: 'array',
-                                                  items: {
-                                                    type: 'string',
-                                                  },
-                                                },
-                                                {
-                                                  type: 'array',
-                                                  items: {
-                                                    anyOf: [
-                                                      {
-                                                        type: 'object',
-                                                        title: 'Content',
-                                                        properties: {
-                                                          text: {
-                                                            type: 'string',
-                                                            title: 'Text',
-                                                          },
-                                                          type: {
-                                                            type: 'string',
-                                                            title: 'Type',
-                                                            enum: ['text'],
-                                                          },
-                                                        },
-                                                        required: ['text'],
-                                                      },
-                                                      {
-                                                        type: 'object',
-                                                        title: 'ContentModel',
-                                                        properties: {
-                                                          image_url: {
-                                                            type: 'object',
-                                                            title: 'ImageUrl',
-                                                            description: 'The image URL',
-                                                            properties: {
-                                                              url: {
-                                                                type: 'string',
-                                                                title: 'Url',
-                                                              },
-                                                              detail: {
-                                                                type: 'string',
-                                                                title: 'Detail',
-                                                                enum: ['low', 'high', 'auto'],
-                                                              },
-                                                            },
-                                                            required: ['url'],
-                                                          },
-                                                          type: {
-                                                            type: 'string',
-                                                            title: 'Type',
-                                                            enum: ['image_url'],
-                                                          },
-                                                        },
-                                                        required: ['image_url'],
-                                                      },
-                                                      {
-                                                        type: 'object',
-                                                        title: 'ContentModel1',
-                                                        description: 'Anthropic image content part',
-                                                        properties: {
-                                                          content: {
-                                                            anyOf: [
-                                                              {
-                                                                type: 'array',
-                                                                items: {
-                                                                  type: 'object',
-                                                                  title: 'ContentItem',
-                                                                  properties: {
-                                                                    text: {
-                                                                      type: 'string',
-                                                                      title: 'Text',
-                                                                    },
-                                                                    type: {
-                                                                      type: 'string',
-                                                                      title: 'Type',
-                                                                      enum: ['text'],
-                                                                    },
-                                                                  },
-                                                                  required: ['text'],
-                                                                },
-                                                              },
-                                                              {
-                                                                type: 'array',
-                                                                items: {
-                                                                  type: 'object',
-                                                                  title: 'ContentItemModel',
-                                                                  properties: {
-                                                                    source: {
-                                                                      type: 'object',
-                                                                      title: 'Source',
-                                                                      properties: {
-                                                                        data: {
-                                                                          type: 'string',
-                                                                          title: 'Data',
-                                                                        },
-                                                                        media_type: {
-                                                                          type: 'string',
-                                                                          title: 'Media Type',
-                                                                        },
-                                                                        type: {
-                                                                          type: 'string',
-                                                                          title: 'Type',
-                                                                          enum: ['base64'],
-                                                                        },
-                                                                      },
-                                                                      required: ['data', 'media_type'],
-                                                                    },
-                                                                    type: {
-                                                                      type: 'string',
-                                                                      title: 'Type',
-                                                                      enum: ['image'],
-                                                                    },
-                                                                  },
-                                                                  required: ['source'],
-                                                                },
-                                                              },
-                                                            ],
-                                                            title: 'Content',
-                                                          },
-                                                          tool_use_id: {
-                                                            type: 'string',
-                                                            title: 'Tool Use Id',
-                                                          },
-                                                          type: {
-                                                            type: 'string',
-                                                            title: 'Type',
-                                                            enum: ['tool_result'],
-                                                          },
-                                                        },
-                                                        required: ['content', 'tool_use_id'],
-                                                      },
-                                                    ],
-                                                    description: 'Anthropic image content part',
-                                                  },
-                                                },
-                                                {
-                                                  type: 'string',
-                                                },
-                                              ],
-                                              title: 'Content',
-                                            },
-                                            role: {
-                                              type: 'string',
-                                              title: 'Role',
-                                              enum: ['user', 'assistant', 'system', 'tool'],
-                                            },
-                                            continue: {
-                                              type: 'boolean',
-                                              title: 'Continue',
-                                            },
-                                            name: {
-                                              type: 'string',
-                                              title: 'Name',
-                                            },
-                                            tool_call_id: {
-                                              type: 'string',
-                                              title: 'Tool Call Id',
-                                            },
-                                            tool_calls: {
-                                              type: 'array',
-                                              title: 'Tool Calls',
-                                              items: {
-                                                anyOf: [
-                                                  {
-                                                    $ref: '#/$defs/chosen_function_call',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/chosen_computer20241022',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/chosen_text_editor20241022',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/chosen_bash20241022',
-                                                  },
-                                                ],
-                                              },
-                                            },
-                                          },
-                                          required: ['content', 'role'],
-                                        },
-                                      },
-                                      {
-                                        type: 'string',
-                                      },
-                                    ],
-                                    title: 'Prompt',
-                                  },
-                                  auto_run_tools: {
-                                    type: 'boolean',
-                                    title: 'Auto Run Tools',
-                                  },
-                                  disable_cache: {
-                                    type: 'boolean',
-                                    title: 'Disable Cache',
-                                  },
-                                  kind_: {
-                                    type: 'string',
-                                    title: 'Kind',
-                                    enum: ['prompt'],
-                                  },
-                                  label: {
-                                    type: 'string',
-                                    title: 'Label',
-                                  },
-                                  settings: {
-                                    type: 'object',
-                                    title: 'Settings',
-                                  },
-                                  tool_choice: {
-                                    anyOf: [
-                                      {
-                                        type: 'string',
-                                        enum: ['auto', 'none'],
-                                      },
-                                      {
-                                        $ref: '#/$defs/named_tool_choice',
-                                      },
-                                    ],
-                                    title: 'Tool Choice',
-                                  },
-                                  tools: {
-                                    anyOf: [
-                                      {
-                                        type: 'string',
-                                        enum: ['all'],
-                                      },
-                                      {
-                                        type: 'array',
-                                        items: {
-                                          anyOf: [
-                                            {
-                                              type: 'object',
-                                              title: 'ToolRef',
-                                              description: 'Reference to a tool',
-                                              properties: {
-                                                ref: {
-                                                  anyOf: [
-                                                    {
-                                                      type: 'object',
-                                                      title: 'ToolRefById',
-                                                      description: 'Reference to a tool by id',
-                                                      properties: {
-                                                        id: {
-                                                          type: 'string',
-                                                          title: 'Id',
-                                                        },
-                                                      },
-                                                      required: [],
-                                                    },
-                                                    {
-                                                      type: 'object',
-                                                      title: 'ToolRefByName',
-                                                      description: 'Reference to a tool by name',
-                                                      properties: {
-                                                        name: {
-                                                          type: 'string',
-                                                          title: 'Name',
-                                                        },
-                                                      },
-                                                      required: [],
-                                                    },
-                                                  ],
-                                                  title: 'Ref',
-                                                  description: 'Reference to a tool by id',
-                                                },
-                                              },
-                                              required: ['ref'],
-                                            },
-                                            {
-                                              type: 'object',
-                                              title: 'CreateToolRequest',
-                                              description: 'Payload for creating a tool',
-                                              properties: {
-                                                name: {
-                                                  type: 'string',
-                                                  title: 'Name',
-                                                },
-                                                type: {
-                                                  type: 'string',
-                                                  title: 'Type',
-                                                  enum: [
-                                                    'function',
-                                                    'integration',
-                                                    'system',
-                                                    'api_call',
-                                                    'computer_20241022',
-                                                    'text_editor_20241022',
-                                                    'bash_20241022',
-                                                  ],
-                                                },
-                                                api_call: {
-                                                  $ref: '#/$defs/api_call_def',
-                                                },
-                                                bash_20241022: {
-                                                  $ref: '#/$defs/bash20241022_def',
-                                                },
-                                                computer_20241022: {
-                                                  $ref: '#/$defs/computer20241022_def',
-                                                },
-                                                description: {
-                                                  type: 'string',
-                                                  title: 'Description',
-                                                },
-                                                function: {
-                                                  $ref: '#/$defs/function_def',
-                                                },
-                                                integration: {
-                                                  anyOf: [
-                                                    {
-                                                      $ref: '#/$defs/dummy_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/brave_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/email_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/spider_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/wikipedia_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/weather_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/mailgun_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_context_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_extension_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_create_session_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_get_session_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/remote_browser_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/llama_parse_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/ffmpeg_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/cloudinary_upload_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/cloudinary_edit_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/arxiv_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/unstructured_integration_def',
-                                                    },
-                                                    {
-                                                      $ref: '#/$defs/algolia_integration_def',
-                                                    },
-                                                  ],
-                                                  title: 'Integration',
-                                                  description: 'Brave integration definition',
-                                                },
-                                                system: {
-                                                  $ref: '#/$defs/system_def',
-                                                },
-                                                text_editor_20241022: {
-                                                  $ref: '#/$defs/text_editor20241022_def',
-                                                },
-                                              },
-                                              required: ['name', 'type'],
-                                            },
-                                          ],
-                                          description: 'Reference to a tool',
-                                        },
-                                      },
-                                    ],
-                                    title: 'Tools',
-                                  },
-                                  unwrap: {
-                                    type: 'boolean',
-                                    title: 'Unwrap',
-                                  },
-                                },
-                                required: ['prompt'],
-                              },
-                              {
-                                $ref: '#/$defs/get_step',
-                              },
-                              {
-                                $ref: '#/$defs/set_step',
-                              },
-                              {
-                                $ref: '#/$defs/log_step',
-                              },
-                              {
-                                $ref: '#/$defs/yield_step',
-                              },
-                            ],
-                          },
-                        },
-                        kind_: {
-                          type: 'string',
-                          title: 'Kind',
-                          enum: ['parallel'],
-                        },
-                        label: {
-                          type: 'string',
-                          title: 'Label',
-                        },
-                      },
-                      required: ['parallel'],
-                    },
-                    {
-                      type: 'object',
-                      title: 'Else',
-                      description: 'The steps to run if the condition is false',
-                      properties: {
-                        map: {
-                          anyOf: [
-                            {
-                              $ref: '#/$defs/evaluate_step',
-                            },
-                            {
-                              $ref: '#/$defs/tool_call_step',
-                            },
-                            {
-                              type: 'object',
-                              title: 'PromptStep',
-                              properties: {
-                                prompt: {
-                                  anyOf: [
-                                    {
-                                      type: 'array',
-                                      items: {
-                                        type: 'object',
-                                        title: 'PromptItem',
-                                        properties: {
-                                          content: {
-                                            anyOf: [
-                                              {
-                                                type: 'array',
-                                                items: {
-                                                  type: 'string',
-                                                },
-                                              },
-                                              {
-                                                type: 'array',
-                                                items: {
-                                                  anyOf: [
-                                                    {
-                                                      type: 'object',
-                                                      title: 'Content',
-                                                      properties: {
-                                                        text: {
-                                                          type: 'string',
-                                                          title: 'Text',
-                                                        },
-                                                        type: {
-                                                          type: 'string',
-                                                          title: 'Type',
-                                                          enum: ['text'],
-                                                        },
-                                                      },
-                                                      required: ['text'],
-                                                    },
-                                                    {
-                                                      type: 'object',
-                                                      title: 'ContentModel',
-                                                      properties: {
-                                                        image_url: {
-                                                          type: 'object',
-                                                          title: 'ImageUrl',
-                                                          description: 'The image URL',
-                                                          properties: {
-                                                            url: {
-                                                              type: 'string',
-                                                              title: 'Url',
-                                                            },
-                                                            detail: {
-                                                              type: 'string',
-                                                              title: 'Detail',
-                                                              enum: ['low', 'high', 'auto'],
-                                                            },
-                                                          },
-                                                          required: ['url'],
-                                                        },
-                                                        type: {
-                                                          type: 'string',
-                                                          title: 'Type',
-                                                          enum: ['image_url'],
-                                                        },
-                                                      },
-                                                      required: ['image_url'],
-                                                    },
-                                                    {
-                                                      type: 'object',
-                                                      title: 'ContentModel1',
-                                                      description: 'Anthropic image content part',
-                                                      properties: {
-                                                        content: {
-                                                          anyOf: [
-                                                            {
-                                                              type: 'array',
-                                                              items: {
-                                                                type: 'object',
-                                                                title: 'ContentItem',
-                                                                properties: {
-                                                                  text: {
-                                                                    type: 'string',
-                                                                    title: 'Text',
-                                                                  },
-                                                                  type: {
-                                                                    type: 'string',
-                                                                    title: 'Type',
-                                                                    enum: ['text'],
-                                                                  },
-                                                                },
-                                                                required: ['text'],
-                                                              },
-                                                            },
-                                                            {
-                                                              type: 'array',
-                                                              items: {
-                                                                type: 'object',
-                                                                title: 'ContentItemModel',
-                                                                properties: {
-                                                                  source: {
-                                                                    type: 'object',
-                                                                    title: 'Source',
-                                                                    properties: {
-                                                                      data: {
-                                                                        type: 'string',
-                                                                        title: 'Data',
-                                                                      },
-                                                                      media_type: {
-                                                                        type: 'string',
-                                                                        title: 'Media Type',
-                                                                      },
-                                                                      type: {
-                                                                        type: 'string',
-                                                                        title: 'Type',
-                                                                        enum: ['base64'],
-                                                                      },
-                                                                    },
-                                                                    required: ['data', 'media_type'],
-                                                                  },
-                                                                  type: {
-                                                                    type: 'string',
-                                                                    title: 'Type',
-                                                                    enum: ['image'],
-                                                                  },
-                                                                },
-                                                                required: ['source'],
-                                                              },
-                                                            },
-                                                          ],
-                                                          title: 'Content',
-                                                        },
-                                                        tool_use_id: {
-                                                          type: 'string',
-                                                          title: 'Tool Use Id',
-                                                        },
-                                                        type: {
-                                                          type: 'string',
-                                                          title: 'Type',
-                                                          enum: ['tool_result'],
-                                                        },
-                                                      },
-                                                      required: ['content', 'tool_use_id'],
-                                                    },
-                                                  ],
-                                                  description: 'Anthropic image content part',
-                                                },
-                                              },
-                                              {
-                                                type: 'string',
-                                              },
-                                            ],
-                                            title: 'Content',
-                                          },
-                                          role: {
-                                            type: 'string',
-                                            title: 'Role',
-                                            enum: ['user', 'assistant', 'system', 'tool'],
-                                          },
-                                          continue: {
-                                            type: 'boolean',
-                                            title: 'Continue',
-                                          },
-                                          name: {
-                                            type: 'string',
-                                            title: 'Name',
-                                          },
-                                          tool_call_id: {
-                                            type: 'string',
-                                            title: 'Tool Call Id',
-                                          },
-                                          tool_calls: {
-                                            type: 'array',
-                                            title: 'Tool Calls',
-                                            items: {
-                                              anyOf: [
-                                                {
-                                                  $ref: '#/$defs/chosen_function_call',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/chosen_computer20241022',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/chosen_text_editor20241022',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/chosen_bash20241022',
-                                                },
-                                              ],
-                                            },
-                                          },
-                                        },
-                                        required: ['content', 'role'],
-                                      },
-                                    },
-                                    {
-                                      type: 'string',
-                                    },
-                                  ],
-                                  title: 'Prompt',
-                                },
-                                auto_run_tools: {
-                                  type: 'boolean',
-                                  title: 'Auto Run Tools',
-                                },
-                                disable_cache: {
-                                  type: 'boolean',
-                                  title: 'Disable Cache',
-                                },
-                                kind_: {
-                                  type: 'string',
-                                  title: 'Kind',
-                                  enum: ['prompt'],
-                                },
-                                label: {
-                                  type: 'string',
-                                  title: 'Label',
-                                },
-                                settings: {
-                                  type: 'object',
-                                  title: 'Settings',
-                                },
-                                tool_choice: {
-                                  anyOf: [
-                                    {
-                                      type: 'string',
-                                      enum: ['auto', 'none'],
-                                    },
-                                    {
-                                      $ref: '#/$defs/named_tool_choice',
-                                    },
-                                  ],
-                                  title: 'Tool Choice',
-                                },
-                                tools: {
-                                  anyOf: [
-                                    {
-                                      type: 'string',
-                                      enum: ['all'],
-                                    },
-                                    {
-                                      type: 'array',
-                                      items: {
-                                        anyOf: [
-                                          {
-                                            type: 'object',
-                                            title: 'ToolRef',
-                                            description: 'Reference to a tool',
-                                            properties: {
-                                              ref: {
-                                                anyOf: [
-                                                  {
-                                                    type: 'object',
-                                                    title: 'ToolRefById',
-                                                    description: 'Reference to a tool by id',
-                                                    properties: {
-                                                      id: {
-                                                        type: 'string',
-                                                        title: 'Id',
-                                                      },
-                                                    },
-                                                    required: [],
-                                                  },
-                                                  {
-                                                    type: 'object',
-                                                    title: 'ToolRefByName',
-                                                    description: 'Reference to a tool by name',
-                                                    properties: {
-                                                      name: {
-                                                        type: 'string',
-                                                        title: 'Name',
-                                                      },
-                                                    },
-                                                    required: [],
-                                                  },
-                                                ],
-                                                title: 'Ref',
-                                                description: 'Reference to a tool by id',
-                                              },
-                                            },
-                                            required: ['ref'],
-                                          },
-                                          {
-                                            type: 'object',
-                                            title: 'CreateToolRequest',
-                                            description: 'Payload for creating a tool',
-                                            properties: {
-                                              name: {
-                                                type: 'string',
-                                                title: 'Name',
-                                              },
-                                              type: {
-                                                type: 'string',
-                                                title: 'Type',
-                                                enum: [
-                                                  'function',
-                                                  'integration',
-                                                  'system',
-                                                  'api_call',
-                                                  'computer_20241022',
-                                                  'text_editor_20241022',
-                                                  'bash_20241022',
-                                                ],
-                                              },
-                                              api_call: {
-                                                $ref: '#/$defs/api_call_def',
-                                              },
-                                              bash_20241022: {
-                                                $ref: '#/$defs/bash20241022_def',
-                                              },
-                                              computer_20241022: {
-                                                $ref: '#/$defs/computer20241022_def',
-                                              },
-                                              description: {
-                                                type: 'string',
-                                                title: 'Description',
-                                              },
-                                              function: {
-                                                $ref: '#/$defs/function_def',
-                                              },
-                                              integration: {
-                                                anyOf: [
-                                                  {
-                                                    $ref: '#/$defs/dummy_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/brave_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/email_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/spider_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/wikipedia_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/weather_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/mailgun_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_context_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_extension_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_create_session_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_get_session_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/remote_browser_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/llama_parse_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/ffmpeg_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/cloudinary_upload_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/cloudinary_edit_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/arxiv_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/unstructured_integration_def',
-                                                  },
-                                                  {
-                                                    $ref: '#/$defs/algolia_integration_def',
-                                                  },
-                                                ],
-                                                title: 'Integration',
-                                                description: 'Brave integration definition',
-                                              },
-                                              system: {
-                                                $ref: '#/$defs/system_def',
-                                              },
-                                              text_editor_20241022: {
-                                                $ref: '#/$defs/text_editor20241022_def',
-                                              },
-                                            },
-                                            required: ['name', 'type'],
-                                          },
-                                        ],
-                                        description: 'Reference to a tool',
-                                      },
-                                    },
-                                  ],
-                                  title: 'Tools',
-                                },
-                                unwrap: {
-                                  type: 'boolean',
-                                  title: 'Unwrap',
-                                },
-                              },
-                              required: ['prompt'],
-                            },
-                            {
-                              $ref: '#/$defs/get_step',
-                            },
-                            {
-                              $ref: '#/$defs/set_step',
-                            },
-                            {
-                              $ref: '#/$defs/log_step',
-                            },
-                            {
-                              $ref: '#/$defs/yield_step',
-                            },
-                          ],
-                          title: 'Map',
-                        },
-                        over: {
-                          type: 'string',
-                          title: 'Over',
-                        },
-                        initial: {
-                          type: 'object',
-                          title: 'Initial',
-                        },
-                        kind_: {
-                          type: 'string',
-                          title: 'Kind',
-                          enum: ['map_reduce'],
-                        },
-                        label: {
-                          type: 'string',
-                          title: 'Label',
-                        },
-                        parallelism: {
-                          type: 'integer',
-                          title: 'Parallelism',
-                        },
-                        reduce: {
-                          type: 'string',
-                          title: 'Reduce',
-                        },
-                      },
-                      required: ['map', 'over'],
-                    },
-                  ],
-                  title: 'Else',
-                  description: 'The steps to run if the condition is false',
-                },
-                kind_: {
-                  type: 'string',
-                  title: 'Kind',
-                  enum: ['if_else'],
-                },
-                label: {
-                  type: 'string',
-                  title: 'Label',
-                },
-              },
-              required: ['if', 'then'],
+              $ref: '#/$defs/if_else_step_input',
             },
             {
               type: 'object',
@@ -5195,420 +91,7 @@ export const tool: Tool = {
                             $ref: '#/$defs/tool_call_step',
                           },
                           {
-                            type: 'object',
-                            title: 'PromptStep',
-                            properties: {
-                              prompt: {
-                                anyOf: [
-                                  {
-                                    type: 'array',
-                                    items: {
-                                      type: 'object',
-                                      title: 'PromptItem',
-                                      properties: {
-                                        content: {
-                                          anyOf: [
-                                            {
-                                              type: 'array',
-                                              items: {
-                                                type: 'string',
-                                              },
-                                            },
-                                            {
-                                              type: 'array',
-                                              items: {
-                                                anyOf: [
-                                                  {
-                                                    type: 'object',
-                                                    title: 'Content',
-                                                    properties: {
-                                                      text: {
-                                                        type: 'string',
-                                                        title: 'Text',
-                                                      },
-                                                      type: {
-                                                        type: 'string',
-                                                        title: 'Type',
-                                                        enum: ['text'],
-                                                      },
-                                                    },
-                                                    required: ['text'],
-                                                  },
-                                                  {
-                                                    type: 'object',
-                                                    title: 'ContentModel',
-                                                    properties: {
-                                                      image_url: {
-                                                        type: 'object',
-                                                        title: 'ImageUrl',
-                                                        description: 'The image URL',
-                                                        properties: {
-                                                          url: {
-                                                            type: 'string',
-                                                            title: 'Url',
-                                                          },
-                                                          detail: {
-                                                            type: 'string',
-                                                            title: 'Detail',
-                                                            enum: ['low', 'high', 'auto'],
-                                                          },
-                                                        },
-                                                        required: ['url'],
-                                                      },
-                                                      type: {
-                                                        type: 'string',
-                                                        title: 'Type',
-                                                        enum: ['image_url'],
-                                                      },
-                                                    },
-                                                    required: ['image_url'],
-                                                  },
-                                                  {
-                                                    type: 'object',
-                                                    title: 'ContentModel1',
-                                                    description: 'Anthropic image content part',
-                                                    properties: {
-                                                      content: {
-                                                        anyOf: [
-                                                          {
-                                                            type: 'array',
-                                                            items: {
-                                                              type: 'object',
-                                                              title: 'ContentItem',
-                                                              properties: {
-                                                                text: {
-                                                                  type: 'string',
-                                                                  title: 'Text',
-                                                                },
-                                                                type: {
-                                                                  type: 'string',
-                                                                  title: 'Type',
-                                                                  enum: ['text'],
-                                                                },
-                                                              },
-                                                              required: ['text'],
-                                                            },
-                                                          },
-                                                          {
-                                                            type: 'array',
-                                                            items: {
-                                                              type: 'object',
-                                                              title: 'ContentItemModel',
-                                                              properties: {
-                                                                source: {
-                                                                  type: 'object',
-                                                                  title: 'Source',
-                                                                  properties: {
-                                                                    data: {
-                                                                      type: 'string',
-                                                                      title: 'Data',
-                                                                    },
-                                                                    media_type: {
-                                                                      type: 'string',
-                                                                      title: 'Media Type',
-                                                                    },
-                                                                    type: {
-                                                                      type: 'string',
-                                                                      title: 'Type',
-                                                                      enum: ['base64'],
-                                                                    },
-                                                                  },
-                                                                  required: ['data', 'media_type'],
-                                                                },
-                                                                type: {
-                                                                  type: 'string',
-                                                                  title: 'Type',
-                                                                  enum: ['image'],
-                                                                },
-                                                              },
-                                                              required: ['source'],
-                                                            },
-                                                          },
-                                                        ],
-                                                        title: 'Content',
-                                                      },
-                                                      tool_use_id: {
-                                                        type: 'string',
-                                                        title: 'Tool Use Id',
-                                                      },
-                                                      type: {
-                                                        type: 'string',
-                                                        title: 'Type',
-                                                        enum: ['tool_result'],
-                                                      },
-                                                    },
-                                                    required: ['content', 'tool_use_id'],
-                                                  },
-                                                ],
-                                                description: 'Anthropic image content part',
-                                              },
-                                            },
-                                            {
-                                              type: 'string',
-                                            },
-                                          ],
-                                          title: 'Content',
-                                        },
-                                        role: {
-                                          type: 'string',
-                                          title: 'Role',
-                                          enum: ['user', 'assistant', 'system', 'tool'],
-                                        },
-                                        continue: {
-                                          type: 'boolean',
-                                          title: 'Continue',
-                                        },
-                                        name: {
-                                          type: 'string',
-                                          title: 'Name',
-                                        },
-                                        tool_call_id: {
-                                          type: 'string',
-                                          title: 'Tool Call Id',
-                                        },
-                                        tool_calls: {
-                                          type: 'array',
-                                          title: 'Tool Calls',
-                                          items: {
-                                            anyOf: [
-                                              {
-                                                $ref: '#/$defs/chosen_function_call',
-                                              },
-                                              {
-                                                $ref: '#/$defs/chosen_computer20241022',
-                                              },
-                                              {
-                                                $ref: '#/$defs/chosen_text_editor20241022',
-                                              },
-                                              {
-                                                $ref: '#/$defs/chosen_bash20241022',
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      },
-                                      required: ['content', 'role'],
-                                    },
-                                  },
-                                  {
-                                    type: 'string',
-                                  },
-                                ],
-                                title: 'Prompt',
-                              },
-                              auto_run_tools: {
-                                type: 'boolean',
-                                title: 'Auto Run Tools',
-                              },
-                              disable_cache: {
-                                type: 'boolean',
-                                title: 'Disable Cache',
-                              },
-                              kind_: {
-                                type: 'string',
-                                title: 'Kind',
-                                enum: ['prompt'],
-                              },
-                              label: {
-                                type: 'string',
-                                title: 'Label',
-                              },
-                              settings: {
-                                type: 'object',
-                                title: 'Settings',
-                              },
-                              tool_choice: {
-                                anyOf: [
-                                  {
-                                    type: 'string',
-                                    enum: ['auto', 'none'],
-                                  },
-                                  {
-                                    $ref: '#/$defs/named_tool_choice',
-                                  },
-                                ],
-                                title: 'Tool Choice',
-                              },
-                              tools: {
-                                anyOf: [
-                                  {
-                                    type: 'string',
-                                    enum: ['all'],
-                                  },
-                                  {
-                                    type: 'array',
-                                    items: {
-                                      anyOf: [
-                                        {
-                                          type: 'object',
-                                          title: 'ToolRef',
-                                          description: 'Reference to a tool',
-                                          properties: {
-                                            ref: {
-                                              anyOf: [
-                                                {
-                                                  type: 'object',
-                                                  title: 'ToolRefById',
-                                                  description: 'Reference to a tool by id',
-                                                  properties: {
-                                                    id: {
-                                                      type: 'string',
-                                                      title: 'Id',
-                                                    },
-                                                  },
-                                                  required: [],
-                                                },
-                                                {
-                                                  type: 'object',
-                                                  title: 'ToolRefByName',
-                                                  description: 'Reference to a tool by name',
-                                                  properties: {
-                                                    name: {
-                                                      type: 'string',
-                                                      title: 'Name',
-                                                    },
-                                                  },
-                                                  required: [],
-                                                },
-                                              ],
-                                              title: 'Ref',
-                                              description: 'Reference to a tool by id',
-                                            },
-                                          },
-                                          required: ['ref'],
-                                        },
-                                        {
-                                          type: 'object',
-                                          title: 'CreateToolRequest',
-                                          description: 'Payload for creating a tool',
-                                          properties: {
-                                            name: {
-                                              type: 'string',
-                                              title: 'Name',
-                                            },
-                                            type: {
-                                              type: 'string',
-                                              title: 'Type',
-                                              enum: [
-                                                'function',
-                                                'integration',
-                                                'system',
-                                                'api_call',
-                                                'computer_20241022',
-                                                'text_editor_20241022',
-                                                'bash_20241022',
-                                              ],
-                                            },
-                                            api_call: {
-                                              $ref: '#/$defs/api_call_def',
-                                            },
-                                            bash_20241022: {
-                                              $ref: '#/$defs/bash20241022_def',
-                                            },
-                                            computer_20241022: {
-                                              $ref: '#/$defs/computer20241022_def',
-                                            },
-                                            description: {
-                                              type: 'string',
-                                              title: 'Description',
-                                            },
-                                            function: {
-                                              $ref: '#/$defs/function_def',
-                                            },
-                                            integration: {
-                                              anyOf: [
-                                                {
-                                                  $ref: '#/$defs/dummy_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/brave_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/email_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/spider_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/wikipedia_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/weather_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/mailgun_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/browserbase_context_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/browserbase_extension_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/browserbase_create_session_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/browserbase_get_session_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/remote_browser_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/llama_parse_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/ffmpeg_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/cloudinary_upload_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/cloudinary_edit_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/arxiv_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/unstructured_integration_def',
-                                                },
-                                                {
-                                                  $ref: '#/$defs/algolia_integration_def',
-                                                },
-                                              ],
-                                              title: 'Integration',
-                                              description: 'Brave integration definition',
-                                            },
-                                            system: {
-                                              $ref: '#/$defs/system_def',
-                                            },
-                                            text_editor_20241022: {
-                                              $ref: '#/$defs/text_editor20241022_def',
-                                            },
-                                          },
-                                          required: ['name', 'type'],
-                                        },
-                                      ],
-                                      description: 'Reference to a tool',
-                                    },
-                                  },
-                                ],
-                                title: 'Tools',
-                              },
-                              unwrap: {
-                                type: 'boolean',
-                                title: 'Unwrap',
-                              },
-                            },
-                            required: ['prompt'],
+                            $ref: '#/$defs/prompt_step_input',
                           },
                           {
                             $ref: '#/$defs/get_step',
@@ -5673,420 +156,7 @@ export const tool: Tool = {
                           $ref: '#/$defs/tool_call_step',
                         },
                         {
-                          type: 'object',
-                          title: 'PromptStep',
-                          properties: {
-                            prompt: {
-                              anyOf: [
-                                {
-                                  type: 'array',
-                                  items: {
-                                    type: 'object',
-                                    title: 'PromptItem',
-                                    properties: {
-                                      content: {
-                                        anyOf: [
-                                          {
-                                            type: 'array',
-                                            items: {
-                                              type: 'string',
-                                            },
-                                          },
-                                          {
-                                            type: 'array',
-                                            items: {
-                                              anyOf: [
-                                                {
-                                                  type: 'object',
-                                                  title: 'Content',
-                                                  properties: {
-                                                    text: {
-                                                      type: 'string',
-                                                      title: 'Text',
-                                                    },
-                                                    type: {
-                                                      type: 'string',
-                                                      title: 'Type',
-                                                      enum: ['text'],
-                                                    },
-                                                  },
-                                                  required: ['text'],
-                                                },
-                                                {
-                                                  type: 'object',
-                                                  title: 'ContentModel',
-                                                  properties: {
-                                                    image_url: {
-                                                      type: 'object',
-                                                      title: 'ImageUrl',
-                                                      description: 'The image URL',
-                                                      properties: {
-                                                        url: {
-                                                          type: 'string',
-                                                          title: 'Url',
-                                                        },
-                                                        detail: {
-                                                          type: 'string',
-                                                          title: 'Detail',
-                                                          enum: ['low', 'high', 'auto'],
-                                                        },
-                                                      },
-                                                      required: ['url'],
-                                                    },
-                                                    type: {
-                                                      type: 'string',
-                                                      title: 'Type',
-                                                      enum: ['image_url'],
-                                                    },
-                                                  },
-                                                  required: ['image_url'],
-                                                },
-                                                {
-                                                  type: 'object',
-                                                  title: 'ContentModel1',
-                                                  description: 'Anthropic image content part',
-                                                  properties: {
-                                                    content: {
-                                                      anyOf: [
-                                                        {
-                                                          type: 'array',
-                                                          items: {
-                                                            type: 'object',
-                                                            title: 'ContentItem',
-                                                            properties: {
-                                                              text: {
-                                                                type: 'string',
-                                                                title: 'Text',
-                                                              },
-                                                              type: {
-                                                                type: 'string',
-                                                                title: 'Type',
-                                                                enum: ['text'],
-                                                              },
-                                                            },
-                                                            required: ['text'],
-                                                          },
-                                                        },
-                                                        {
-                                                          type: 'array',
-                                                          items: {
-                                                            type: 'object',
-                                                            title: 'ContentItemModel',
-                                                            properties: {
-                                                              source: {
-                                                                type: 'object',
-                                                                title: 'Source',
-                                                                properties: {
-                                                                  data: {
-                                                                    type: 'string',
-                                                                    title: 'Data',
-                                                                  },
-                                                                  media_type: {
-                                                                    type: 'string',
-                                                                    title: 'Media Type',
-                                                                  },
-                                                                  type: {
-                                                                    type: 'string',
-                                                                    title: 'Type',
-                                                                    enum: ['base64'],
-                                                                  },
-                                                                },
-                                                                required: ['data', 'media_type'],
-                                                              },
-                                                              type: {
-                                                                type: 'string',
-                                                                title: 'Type',
-                                                                enum: ['image'],
-                                                              },
-                                                            },
-                                                            required: ['source'],
-                                                          },
-                                                        },
-                                                      ],
-                                                      title: 'Content',
-                                                    },
-                                                    tool_use_id: {
-                                                      type: 'string',
-                                                      title: 'Tool Use Id',
-                                                    },
-                                                    type: {
-                                                      type: 'string',
-                                                      title: 'Type',
-                                                      enum: ['tool_result'],
-                                                    },
-                                                  },
-                                                  required: ['content', 'tool_use_id'],
-                                                },
-                                              ],
-                                              description: 'Anthropic image content part',
-                                            },
-                                          },
-                                          {
-                                            type: 'string',
-                                          },
-                                        ],
-                                        title: 'Content',
-                                      },
-                                      role: {
-                                        type: 'string',
-                                        title: 'Role',
-                                        enum: ['user', 'assistant', 'system', 'tool'],
-                                      },
-                                      continue: {
-                                        type: 'boolean',
-                                        title: 'Continue',
-                                      },
-                                      name: {
-                                        type: 'string',
-                                        title: 'Name',
-                                      },
-                                      tool_call_id: {
-                                        type: 'string',
-                                        title: 'Tool Call Id',
-                                      },
-                                      tool_calls: {
-                                        type: 'array',
-                                        title: 'Tool Calls',
-                                        items: {
-                                          anyOf: [
-                                            {
-                                              $ref: '#/$defs/chosen_function_call',
-                                            },
-                                            {
-                                              $ref: '#/$defs/chosen_computer20241022',
-                                            },
-                                            {
-                                              $ref: '#/$defs/chosen_text_editor20241022',
-                                            },
-                                            {
-                                              $ref: '#/$defs/chosen_bash20241022',
-                                            },
-                                          ],
-                                        },
-                                      },
-                                    },
-                                    required: ['content', 'role'],
-                                  },
-                                },
-                                {
-                                  type: 'string',
-                                },
-                              ],
-                              title: 'Prompt',
-                            },
-                            auto_run_tools: {
-                              type: 'boolean',
-                              title: 'Auto Run Tools',
-                            },
-                            disable_cache: {
-                              type: 'boolean',
-                              title: 'Disable Cache',
-                            },
-                            kind_: {
-                              type: 'string',
-                              title: 'Kind',
-                              enum: ['prompt'],
-                            },
-                            label: {
-                              type: 'string',
-                              title: 'Label',
-                            },
-                            settings: {
-                              type: 'object',
-                              title: 'Settings',
-                            },
-                            tool_choice: {
-                              anyOf: [
-                                {
-                                  type: 'string',
-                                  enum: ['auto', 'none'],
-                                },
-                                {
-                                  $ref: '#/$defs/named_tool_choice',
-                                },
-                              ],
-                              title: 'Tool Choice',
-                            },
-                            tools: {
-                              anyOf: [
-                                {
-                                  type: 'string',
-                                  enum: ['all'],
-                                },
-                                {
-                                  type: 'array',
-                                  items: {
-                                    anyOf: [
-                                      {
-                                        type: 'object',
-                                        title: 'ToolRef',
-                                        description: 'Reference to a tool',
-                                        properties: {
-                                          ref: {
-                                            anyOf: [
-                                              {
-                                                type: 'object',
-                                                title: 'ToolRefById',
-                                                description: 'Reference to a tool by id',
-                                                properties: {
-                                                  id: {
-                                                    type: 'string',
-                                                    title: 'Id',
-                                                  },
-                                                },
-                                                required: [],
-                                              },
-                                              {
-                                                type: 'object',
-                                                title: 'ToolRefByName',
-                                                description: 'Reference to a tool by name',
-                                                properties: {
-                                                  name: {
-                                                    type: 'string',
-                                                    title: 'Name',
-                                                  },
-                                                },
-                                                required: [],
-                                              },
-                                            ],
-                                            title: 'Ref',
-                                            description: 'Reference to a tool by id',
-                                          },
-                                        },
-                                        required: ['ref'],
-                                      },
-                                      {
-                                        type: 'object',
-                                        title: 'CreateToolRequest',
-                                        description: 'Payload for creating a tool',
-                                        properties: {
-                                          name: {
-                                            type: 'string',
-                                            title: 'Name',
-                                          },
-                                          type: {
-                                            type: 'string',
-                                            title: 'Type',
-                                            enum: [
-                                              'function',
-                                              'integration',
-                                              'system',
-                                              'api_call',
-                                              'computer_20241022',
-                                              'text_editor_20241022',
-                                              'bash_20241022',
-                                            ],
-                                          },
-                                          api_call: {
-                                            $ref: '#/$defs/api_call_def',
-                                          },
-                                          bash_20241022: {
-                                            $ref: '#/$defs/bash20241022_def',
-                                          },
-                                          computer_20241022: {
-                                            $ref: '#/$defs/computer20241022_def',
-                                          },
-                                          description: {
-                                            type: 'string',
-                                            title: 'Description',
-                                          },
-                                          function: {
-                                            $ref: '#/$defs/function_def',
-                                          },
-                                          integration: {
-                                            anyOf: [
-                                              {
-                                                $ref: '#/$defs/dummy_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/brave_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/email_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/spider_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/wikipedia_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/weather_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/mailgun_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/browserbase_context_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/browserbase_extension_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/browserbase_create_session_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/browserbase_get_session_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/remote_browser_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/llama_parse_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/ffmpeg_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/cloudinary_upload_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/cloudinary_edit_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/arxiv_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/unstructured_integration_def',
-                                              },
-                                              {
-                                                $ref: '#/$defs/algolia_integration_def',
-                                              },
-                                            ],
-                                            title: 'Integration',
-                                            description: 'Brave integration definition',
-                                          },
-                                          system: {
-                                            $ref: '#/$defs/system_def',
-                                          },
-                                          text_editor_20241022: {
-                                            $ref: '#/$defs/text_editor20241022_def',
-                                          },
-                                        },
-                                        required: ['name', 'type'],
-                                      },
-                                    ],
-                                    description: 'Reference to a tool',
-                                  },
-                                },
-                              ],
-                              title: 'Tools',
-                            },
-                            unwrap: {
-                              type: 'boolean',
-                              title: 'Unwrap',
-                            },
-                          },
-                          required: ['prompt'],
+                          $ref: '#/$defs/prompt_step_input',
                         },
                         {
                           $ref: '#/$defs/get_step',
@@ -6138,420 +208,7 @@ export const tool: Tool = {
                         $ref: '#/$defs/tool_call_step',
                       },
                       {
-                        type: 'object',
-                        title: 'PromptStep',
-                        properties: {
-                          prompt: {
-                            anyOf: [
-                              {
-                                type: 'array',
-                                items: {
-                                  type: 'object',
-                                  title: 'PromptItem',
-                                  properties: {
-                                    content: {
-                                      anyOf: [
-                                        {
-                                          type: 'array',
-                                          items: {
-                                            type: 'string',
-                                          },
-                                        },
-                                        {
-                                          type: 'array',
-                                          items: {
-                                            anyOf: [
-                                              {
-                                                type: 'object',
-                                                title: 'Content',
-                                                properties: {
-                                                  text: {
-                                                    type: 'string',
-                                                    title: 'Text',
-                                                  },
-                                                  type: {
-                                                    type: 'string',
-                                                    title: 'Type',
-                                                    enum: ['text'],
-                                                  },
-                                                },
-                                                required: ['text'],
-                                              },
-                                              {
-                                                type: 'object',
-                                                title: 'ContentModel',
-                                                properties: {
-                                                  image_url: {
-                                                    type: 'object',
-                                                    title: 'ImageUrl',
-                                                    description: 'The image URL',
-                                                    properties: {
-                                                      url: {
-                                                        type: 'string',
-                                                        title: 'Url',
-                                                      },
-                                                      detail: {
-                                                        type: 'string',
-                                                        title: 'Detail',
-                                                        enum: ['low', 'high', 'auto'],
-                                                      },
-                                                    },
-                                                    required: ['url'],
-                                                  },
-                                                  type: {
-                                                    type: 'string',
-                                                    title: 'Type',
-                                                    enum: ['image_url'],
-                                                  },
-                                                },
-                                                required: ['image_url'],
-                                              },
-                                              {
-                                                type: 'object',
-                                                title: 'ContentModel1',
-                                                description: 'Anthropic image content part',
-                                                properties: {
-                                                  content: {
-                                                    anyOf: [
-                                                      {
-                                                        type: 'array',
-                                                        items: {
-                                                          type: 'object',
-                                                          title: 'ContentItem',
-                                                          properties: {
-                                                            text: {
-                                                              type: 'string',
-                                                              title: 'Text',
-                                                            },
-                                                            type: {
-                                                              type: 'string',
-                                                              title: 'Type',
-                                                              enum: ['text'],
-                                                            },
-                                                          },
-                                                          required: ['text'],
-                                                        },
-                                                      },
-                                                      {
-                                                        type: 'array',
-                                                        items: {
-                                                          type: 'object',
-                                                          title: 'ContentItemModel',
-                                                          properties: {
-                                                            source: {
-                                                              type: 'object',
-                                                              title: 'Source',
-                                                              properties: {
-                                                                data: {
-                                                                  type: 'string',
-                                                                  title: 'Data',
-                                                                },
-                                                                media_type: {
-                                                                  type: 'string',
-                                                                  title: 'Media Type',
-                                                                },
-                                                                type: {
-                                                                  type: 'string',
-                                                                  title: 'Type',
-                                                                  enum: ['base64'],
-                                                                },
-                                                              },
-                                                              required: ['data', 'media_type'],
-                                                            },
-                                                            type: {
-                                                              type: 'string',
-                                                              title: 'Type',
-                                                              enum: ['image'],
-                                                            },
-                                                          },
-                                                          required: ['source'],
-                                                        },
-                                                      },
-                                                    ],
-                                                    title: 'Content',
-                                                  },
-                                                  tool_use_id: {
-                                                    type: 'string',
-                                                    title: 'Tool Use Id',
-                                                  },
-                                                  type: {
-                                                    type: 'string',
-                                                    title: 'Type',
-                                                    enum: ['tool_result'],
-                                                  },
-                                                },
-                                                required: ['content', 'tool_use_id'],
-                                              },
-                                            ],
-                                            description: 'Anthropic image content part',
-                                          },
-                                        },
-                                        {
-                                          type: 'string',
-                                        },
-                                      ],
-                                      title: 'Content',
-                                    },
-                                    role: {
-                                      type: 'string',
-                                      title: 'Role',
-                                      enum: ['user', 'assistant', 'system', 'tool'],
-                                    },
-                                    continue: {
-                                      type: 'boolean',
-                                      title: 'Continue',
-                                    },
-                                    name: {
-                                      type: 'string',
-                                      title: 'Name',
-                                    },
-                                    tool_call_id: {
-                                      type: 'string',
-                                      title: 'Tool Call Id',
-                                    },
-                                    tool_calls: {
-                                      type: 'array',
-                                      title: 'Tool Calls',
-                                      items: {
-                                        anyOf: [
-                                          {
-                                            $ref: '#/$defs/chosen_function_call',
-                                          },
-                                          {
-                                            $ref: '#/$defs/chosen_computer20241022',
-                                          },
-                                          {
-                                            $ref: '#/$defs/chosen_text_editor20241022',
-                                          },
-                                          {
-                                            $ref: '#/$defs/chosen_bash20241022',
-                                          },
-                                        ],
-                                      },
-                                    },
-                                  },
-                                  required: ['content', 'role'],
-                                },
-                              },
-                              {
-                                type: 'string',
-                              },
-                            ],
-                            title: 'Prompt',
-                          },
-                          auto_run_tools: {
-                            type: 'boolean',
-                            title: 'Auto Run Tools',
-                          },
-                          disable_cache: {
-                            type: 'boolean',
-                            title: 'Disable Cache',
-                          },
-                          kind_: {
-                            type: 'string',
-                            title: 'Kind',
-                            enum: ['prompt'],
-                          },
-                          label: {
-                            type: 'string',
-                            title: 'Label',
-                          },
-                          settings: {
-                            type: 'object',
-                            title: 'Settings',
-                          },
-                          tool_choice: {
-                            anyOf: [
-                              {
-                                type: 'string',
-                                enum: ['auto', 'none'],
-                              },
-                              {
-                                $ref: '#/$defs/named_tool_choice',
-                              },
-                            ],
-                            title: 'Tool Choice',
-                          },
-                          tools: {
-                            anyOf: [
-                              {
-                                type: 'string',
-                                enum: ['all'],
-                              },
-                              {
-                                type: 'array',
-                                items: {
-                                  anyOf: [
-                                    {
-                                      type: 'object',
-                                      title: 'ToolRef',
-                                      description: 'Reference to a tool',
-                                      properties: {
-                                        ref: {
-                                          anyOf: [
-                                            {
-                                              type: 'object',
-                                              title: 'ToolRefById',
-                                              description: 'Reference to a tool by id',
-                                              properties: {
-                                                id: {
-                                                  type: 'string',
-                                                  title: 'Id',
-                                                },
-                                              },
-                                              required: [],
-                                            },
-                                            {
-                                              type: 'object',
-                                              title: 'ToolRefByName',
-                                              description: 'Reference to a tool by name',
-                                              properties: {
-                                                name: {
-                                                  type: 'string',
-                                                  title: 'Name',
-                                                },
-                                              },
-                                              required: [],
-                                            },
-                                          ],
-                                          title: 'Ref',
-                                          description: 'Reference to a tool by id',
-                                        },
-                                      },
-                                      required: ['ref'],
-                                    },
-                                    {
-                                      type: 'object',
-                                      title: 'CreateToolRequest',
-                                      description: 'Payload for creating a tool',
-                                      properties: {
-                                        name: {
-                                          type: 'string',
-                                          title: 'Name',
-                                        },
-                                        type: {
-                                          type: 'string',
-                                          title: 'Type',
-                                          enum: [
-                                            'function',
-                                            'integration',
-                                            'system',
-                                            'api_call',
-                                            'computer_20241022',
-                                            'text_editor_20241022',
-                                            'bash_20241022',
-                                          ],
-                                        },
-                                        api_call: {
-                                          $ref: '#/$defs/api_call_def',
-                                        },
-                                        bash_20241022: {
-                                          $ref: '#/$defs/bash20241022_def',
-                                        },
-                                        computer_20241022: {
-                                          $ref: '#/$defs/computer20241022_def',
-                                        },
-                                        description: {
-                                          type: 'string',
-                                          title: 'Description',
-                                        },
-                                        function: {
-                                          $ref: '#/$defs/function_def',
-                                        },
-                                        integration: {
-                                          anyOf: [
-                                            {
-                                              $ref: '#/$defs/dummy_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/brave_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/email_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/spider_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/wikipedia_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/weather_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/mailgun_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/browserbase_context_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/browserbase_extension_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/browserbase_create_session_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/browserbase_get_session_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/remote_browser_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/llama_parse_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/ffmpeg_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/cloudinary_upload_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/cloudinary_edit_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/arxiv_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/unstructured_integration_def',
-                                            },
-                                            {
-                                              $ref: '#/$defs/algolia_integration_def',
-                                            },
-                                          ],
-                                          title: 'Integration',
-                                          description: 'Brave integration definition',
-                                        },
-                                        system: {
-                                          $ref: '#/$defs/system_def',
-                                        },
-                                        text_editor_20241022: {
-                                          $ref: '#/$defs/text_editor20241022_def',
-                                        },
-                                      },
-                                      required: ['name', 'type'],
-                                    },
-                                  ],
-                                  description: 'Reference to a tool',
-                                },
-                              },
-                            ],
-                            title: 'Tools',
-                          },
-                          unwrap: {
-                            type: 'boolean',
-                            title: 'Unwrap',
-                          },
-                        },
-                        required: ['prompt'],
+                        $ref: '#/$defs/prompt_step_input',
                       },
                       {
                         $ref: '#/$defs/get_step',
@@ -6593,420 +250,7 @@ export const tool: Tool = {
                       $ref: '#/$defs/tool_call_step',
                     },
                     {
-                      type: 'object',
-                      title: 'PromptStep',
-                      properties: {
-                        prompt: {
-                          anyOf: [
-                            {
-                              type: 'array',
-                              items: {
-                                type: 'object',
-                                title: 'PromptItem',
-                                properties: {
-                                  content: {
-                                    anyOf: [
-                                      {
-                                        type: 'array',
-                                        items: {
-                                          type: 'string',
-                                        },
-                                      },
-                                      {
-                                        type: 'array',
-                                        items: {
-                                          anyOf: [
-                                            {
-                                              type: 'object',
-                                              title: 'Content',
-                                              properties: {
-                                                text: {
-                                                  type: 'string',
-                                                  title: 'Text',
-                                                },
-                                                type: {
-                                                  type: 'string',
-                                                  title: 'Type',
-                                                  enum: ['text'],
-                                                },
-                                              },
-                                              required: ['text'],
-                                            },
-                                            {
-                                              type: 'object',
-                                              title: 'ContentModel',
-                                              properties: {
-                                                image_url: {
-                                                  type: 'object',
-                                                  title: 'ImageUrl',
-                                                  description: 'The image URL',
-                                                  properties: {
-                                                    url: {
-                                                      type: 'string',
-                                                      title: 'Url',
-                                                    },
-                                                    detail: {
-                                                      type: 'string',
-                                                      title: 'Detail',
-                                                      enum: ['low', 'high', 'auto'],
-                                                    },
-                                                  },
-                                                  required: ['url'],
-                                                },
-                                                type: {
-                                                  type: 'string',
-                                                  title: 'Type',
-                                                  enum: ['image_url'],
-                                                },
-                                              },
-                                              required: ['image_url'],
-                                            },
-                                            {
-                                              type: 'object',
-                                              title: 'ContentModel1',
-                                              description: 'Anthropic image content part',
-                                              properties: {
-                                                content: {
-                                                  anyOf: [
-                                                    {
-                                                      type: 'array',
-                                                      items: {
-                                                        type: 'object',
-                                                        title: 'ContentItem',
-                                                        properties: {
-                                                          text: {
-                                                            type: 'string',
-                                                            title: 'Text',
-                                                          },
-                                                          type: {
-                                                            type: 'string',
-                                                            title: 'Type',
-                                                            enum: ['text'],
-                                                          },
-                                                        },
-                                                        required: ['text'],
-                                                      },
-                                                    },
-                                                    {
-                                                      type: 'array',
-                                                      items: {
-                                                        type: 'object',
-                                                        title: 'ContentItemModel',
-                                                        properties: {
-                                                          source: {
-                                                            type: 'object',
-                                                            title: 'Source',
-                                                            properties: {
-                                                              data: {
-                                                                type: 'string',
-                                                                title: 'Data',
-                                                              },
-                                                              media_type: {
-                                                                type: 'string',
-                                                                title: 'Media Type',
-                                                              },
-                                                              type: {
-                                                                type: 'string',
-                                                                title: 'Type',
-                                                                enum: ['base64'],
-                                                              },
-                                                            },
-                                                            required: ['data', 'media_type'],
-                                                          },
-                                                          type: {
-                                                            type: 'string',
-                                                            title: 'Type',
-                                                            enum: ['image'],
-                                                          },
-                                                        },
-                                                        required: ['source'],
-                                                      },
-                                                    },
-                                                  ],
-                                                  title: 'Content',
-                                                },
-                                                tool_use_id: {
-                                                  type: 'string',
-                                                  title: 'Tool Use Id',
-                                                },
-                                                type: {
-                                                  type: 'string',
-                                                  title: 'Type',
-                                                  enum: ['tool_result'],
-                                                },
-                                              },
-                                              required: ['content', 'tool_use_id'],
-                                            },
-                                          ],
-                                          description: 'Anthropic image content part',
-                                        },
-                                      },
-                                      {
-                                        type: 'string',
-                                      },
-                                    ],
-                                    title: 'Content',
-                                  },
-                                  role: {
-                                    type: 'string',
-                                    title: 'Role',
-                                    enum: ['user', 'assistant', 'system', 'tool'],
-                                  },
-                                  continue: {
-                                    type: 'boolean',
-                                    title: 'Continue',
-                                  },
-                                  name: {
-                                    type: 'string',
-                                    title: 'Name',
-                                  },
-                                  tool_call_id: {
-                                    type: 'string',
-                                    title: 'Tool Call Id',
-                                  },
-                                  tool_calls: {
-                                    type: 'array',
-                                    title: 'Tool Calls',
-                                    items: {
-                                      anyOf: [
-                                        {
-                                          $ref: '#/$defs/chosen_function_call',
-                                        },
-                                        {
-                                          $ref: '#/$defs/chosen_computer20241022',
-                                        },
-                                        {
-                                          $ref: '#/$defs/chosen_text_editor20241022',
-                                        },
-                                        {
-                                          $ref: '#/$defs/chosen_bash20241022',
-                                        },
-                                      ],
-                                    },
-                                  },
-                                },
-                                required: ['content', 'role'],
-                              },
-                            },
-                            {
-                              type: 'string',
-                            },
-                          ],
-                          title: 'Prompt',
-                        },
-                        auto_run_tools: {
-                          type: 'boolean',
-                          title: 'Auto Run Tools',
-                        },
-                        disable_cache: {
-                          type: 'boolean',
-                          title: 'Disable Cache',
-                        },
-                        kind_: {
-                          type: 'string',
-                          title: 'Kind',
-                          enum: ['prompt'],
-                        },
-                        label: {
-                          type: 'string',
-                          title: 'Label',
-                        },
-                        settings: {
-                          type: 'object',
-                          title: 'Settings',
-                        },
-                        tool_choice: {
-                          anyOf: [
-                            {
-                              type: 'string',
-                              enum: ['auto', 'none'],
-                            },
-                            {
-                              $ref: '#/$defs/named_tool_choice',
-                            },
-                          ],
-                          title: 'Tool Choice',
-                        },
-                        tools: {
-                          anyOf: [
-                            {
-                              type: 'string',
-                              enum: ['all'],
-                            },
-                            {
-                              type: 'array',
-                              items: {
-                                anyOf: [
-                                  {
-                                    type: 'object',
-                                    title: 'ToolRef',
-                                    description: 'Reference to a tool',
-                                    properties: {
-                                      ref: {
-                                        anyOf: [
-                                          {
-                                            type: 'object',
-                                            title: 'ToolRefById',
-                                            description: 'Reference to a tool by id',
-                                            properties: {
-                                              id: {
-                                                type: 'string',
-                                                title: 'Id',
-                                              },
-                                            },
-                                            required: [],
-                                          },
-                                          {
-                                            type: 'object',
-                                            title: 'ToolRefByName',
-                                            description: 'Reference to a tool by name',
-                                            properties: {
-                                              name: {
-                                                type: 'string',
-                                                title: 'Name',
-                                              },
-                                            },
-                                            required: [],
-                                          },
-                                        ],
-                                        title: 'Ref',
-                                        description: 'Reference to a tool by id',
-                                      },
-                                    },
-                                    required: ['ref'],
-                                  },
-                                  {
-                                    type: 'object',
-                                    title: 'CreateToolRequest',
-                                    description: 'Payload for creating a tool',
-                                    properties: {
-                                      name: {
-                                        type: 'string',
-                                        title: 'Name',
-                                      },
-                                      type: {
-                                        type: 'string',
-                                        title: 'Type',
-                                        enum: [
-                                          'function',
-                                          'integration',
-                                          'system',
-                                          'api_call',
-                                          'computer_20241022',
-                                          'text_editor_20241022',
-                                          'bash_20241022',
-                                        ],
-                                      },
-                                      api_call: {
-                                        $ref: '#/$defs/api_call_def',
-                                      },
-                                      bash_20241022: {
-                                        $ref: '#/$defs/bash20241022_def',
-                                      },
-                                      computer_20241022: {
-                                        $ref: '#/$defs/computer20241022_def',
-                                      },
-                                      description: {
-                                        type: 'string',
-                                        title: 'Description',
-                                      },
-                                      function: {
-                                        $ref: '#/$defs/function_def',
-                                      },
-                                      integration: {
-                                        anyOf: [
-                                          {
-                                            $ref: '#/$defs/dummy_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/brave_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/email_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/spider_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/wikipedia_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/weather_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/mailgun_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_context_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_extension_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_list_sessions_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_create_session_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_get_session_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_complete_session_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/remote_browser_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/llama_parse_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/ffmpeg_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/cloudinary_upload_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/cloudinary_edit_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/arxiv_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/unstructured_integration_def',
-                                          },
-                                          {
-                                            $ref: '#/$defs/algolia_integration_def',
-                                          },
-                                        ],
-                                        title: 'Integration',
-                                        description: 'Brave integration definition',
-                                      },
-                                      system: {
-                                        $ref: '#/$defs/system_def',
-                                      },
-                                      text_editor_20241022: {
-                                        $ref: '#/$defs/text_editor20241022_def',
-                                      },
-                                    },
-                                    required: ['name', 'type'],
-                                  },
-                                ],
-                                description: 'Reference to a tool',
-                              },
-                            },
-                          ],
-                          title: 'Tools',
-                        },
-                        unwrap: {
-                          type: 'boolean',
-                          title: 'Unwrap',
-                        },
-                      },
-                      required: ['prompt'],
+                      $ref: '#/$defs/prompt_step_input',
                     },
                     {
                       $ref: '#/$defs/get_step',
@@ -7257,6 +501,422 @@ export const tool: Tool = {
           },
         },
         required: ['tool'],
+      },
+      prompt_step_input: {
+        type: 'object',
+        title: 'PromptStep',
+        properties: {
+          prompt: {
+            anyOf: [
+              {
+                type: 'array',
+                items: {
+                  type: 'object',
+                  title: 'PromptItem',
+                  properties: {
+                    content: {
+                      anyOf: [
+                        {
+                          type: 'array',
+                          items: {
+                            type: 'string',
+                          },
+                        },
+                        {
+                          type: 'array',
+                          items: {
+                            anyOf: [
+                              {
+                                type: 'object',
+                                title: 'Content',
+                                properties: {
+                                  text: {
+                                    type: 'string',
+                                    title: 'Text',
+                                  },
+                                  type: {
+                                    type: 'string',
+                                    title: 'Type',
+                                    enum: ['text'],
+                                  },
+                                },
+                                required: ['text'],
+                              },
+                              {
+                                type: 'object',
+                                title: 'ContentModel',
+                                properties: {
+                                  image_url: {
+                                    type: 'object',
+                                    title: 'ImageUrl',
+                                    description: 'The image URL',
+                                    properties: {
+                                      url: {
+                                        type: 'string',
+                                        title: 'Url',
+                                      },
+                                      detail: {
+                                        type: 'string',
+                                        title: 'Detail',
+                                        enum: ['low', 'high', 'auto'],
+                                      },
+                                    },
+                                    required: ['url'],
+                                  },
+                                  type: {
+                                    type: 'string',
+                                    title: 'Type',
+                                    enum: ['image_url'],
+                                  },
+                                },
+                                required: ['image_url'],
+                              },
+                              {
+                                type: 'object',
+                                title: 'ContentModel1',
+                                description: 'Anthropic image content part',
+                                properties: {
+                                  content: {
+                                    anyOf: [
+                                      {
+                                        type: 'array',
+                                        items: {
+                                          type: 'object',
+                                          title: 'ContentItem',
+                                          properties: {
+                                            text: {
+                                              type: 'string',
+                                              title: 'Text',
+                                            },
+                                            type: {
+                                              type: 'string',
+                                              title: 'Type',
+                                              enum: ['text'],
+                                            },
+                                          },
+                                          required: ['text'],
+                                        },
+                                      },
+                                      {
+                                        type: 'array',
+                                        items: {
+                                          type: 'object',
+                                          title: 'ContentItemModel',
+                                          properties: {
+                                            source: {
+                                              type: 'object',
+                                              title: 'Source',
+                                              properties: {
+                                                data: {
+                                                  type: 'string',
+                                                  title: 'Data',
+                                                },
+                                                media_type: {
+                                                  type: 'string',
+                                                  title: 'Media Type',
+                                                },
+                                                type: {
+                                                  type: 'string',
+                                                  title: 'Type',
+                                                  enum: ['base64'],
+                                                },
+                                              },
+                                              required: ['data', 'media_type'],
+                                            },
+                                            type: {
+                                              type: 'string',
+                                              title: 'Type',
+                                              enum: ['image'],
+                                            },
+                                          },
+                                          required: ['source'],
+                                        },
+                                      },
+                                    ],
+                                    title: 'Content',
+                                  },
+                                  tool_use_id: {
+                                    type: 'string',
+                                    title: 'Tool Use Id',
+                                  },
+                                  type: {
+                                    type: 'string',
+                                    title: 'Type',
+                                    enum: ['tool_result'],
+                                  },
+                                },
+                                required: ['content', 'tool_use_id'],
+                              },
+                            ],
+                            description: 'Anthropic image content part',
+                          },
+                        },
+                        {
+                          type: 'string',
+                        },
+                      ],
+                      title: 'Content',
+                    },
+                    role: {
+                      type: 'string',
+                      title: 'Role',
+                      enum: ['user', 'assistant', 'system', 'tool'],
+                    },
+                    continue: {
+                      type: 'boolean',
+                      title: 'Continue',
+                    },
+                    name: {
+                      type: 'string',
+                      title: 'Name',
+                    },
+                    tool_call_id: {
+                      type: 'string',
+                      title: 'Tool Call Id',
+                    },
+                    tool_calls: {
+                      type: 'array',
+                      title: 'Tool Calls',
+                      items: {
+                        anyOf: [
+                          {
+                            $ref: '#/$defs/chosen_function_call',
+                          },
+                          {
+                            $ref: '#/$defs/chosen_computer20241022',
+                          },
+                          {
+                            $ref: '#/$defs/chosen_text_editor20241022',
+                          },
+                          {
+                            $ref: '#/$defs/chosen_bash20241022',
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  required: ['content', 'role'],
+                },
+              },
+              {
+                type: 'string',
+              },
+            ],
+            title: 'Prompt',
+          },
+          auto_run_tools: {
+            type: 'boolean',
+            title: 'Auto Run Tools',
+          },
+          disable_cache: {
+            type: 'boolean',
+            title: 'Disable Cache',
+          },
+          kind_: {
+            type: 'string',
+            title: 'Kind',
+            enum: ['prompt'],
+          },
+          label: {
+            type: 'string',
+            title: 'Label',
+          },
+          settings: {
+            type: 'object',
+            title: 'Settings',
+          },
+          tool_choice: {
+            anyOf: [
+              {
+                type: 'string',
+                enum: ['auto', 'none'],
+              },
+              {
+                $ref: '#/$defs/named_tool_choice',
+              },
+            ],
+            title: 'Tool Choice',
+          },
+          tools: {
+            anyOf: [
+              {
+                type: 'string',
+                enum: ['all'],
+              },
+              {
+                type: 'array',
+                items: {
+                  anyOf: [
+                    {
+                      type: 'object',
+                      title: 'ToolRef',
+                      description: 'Reference to a tool',
+                      properties: {
+                        ref: {
+                          anyOf: [
+                            {
+                              type: 'object',
+                              title: 'ToolRefById',
+                              description: 'Reference to a tool by id',
+                              properties: {
+                                id: {
+                                  type: 'string',
+                                  title: 'Id',
+                                },
+                              },
+                              required: [],
+                            },
+                            {
+                              type: 'object',
+                              title: 'ToolRefByName',
+                              description: 'Reference to a tool by name',
+                              properties: {
+                                name: {
+                                  type: 'string',
+                                  title: 'Name',
+                                },
+                              },
+                              required: [],
+                            },
+                          ],
+                          title: 'Ref',
+                          description: 'Reference to a tool by id',
+                        },
+                      },
+                      required: ['ref'],
+                    },
+                    {
+                      type: 'object',
+                      title: 'CreateToolRequest',
+                      description: 'Payload for creating a tool',
+                      properties: {
+                        name: {
+                          type: 'string',
+                          title: 'Name',
+                        },
+                        type: {
+                          type: 'string',
+                          title: 'Type',
+                          enum: [
+                            'function',
+                            'integration',
+                            'system',
+                            'api_call',
+                            'computer_20241022',
+                            'text_editor_20241022',
+                            'bash_20241022',
+                          ],
+                        },
+                        api_call: {
+                          $ref: '#/$defs/api_call_def',
+                        },
+                        bash_20241022: {
+                          $ref: '#/$defs/bash20241022_def',
+                        },
+                        computer_20241022: {
+                          $ref: '#/$defs/computer20241022_def',
+                        },
+                        description: {
+                          type: 'string',
+                          title: 'Description',
+                        },
+                        function: {
+                          $ref: '#/$defs/function_def',
+                        },
+                        integration: {
+                          anyOf: [
+                            {
+                              $ref: '#/$defs/dummy_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/brave_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/email_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/spider_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/wikipedia_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/weather_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/mailgun_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/browserbase_context_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/browserbase_extension_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/browserbase_list_sessions_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/browserbase_create_session_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/browserbase_get_session_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/browserbase_complete_session_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/browserbase_get_session_live_urls_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/remote_browser_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/llama_parse_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/ffmpeg_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/cloudinary_upload_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/cloudinary_edit_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/arxiv_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/unstructured_integration_def',
+                            },
+                            {
+                              $ref: '#/$defs/algolia_integration_def',
+                            },
+                          ],
+                          title: 'Integration',
+                          description: 'Brave integration definition',
+                        },
+                        system: {
+                          $ref: '#/$defs/system_def',
+                        },
+                        text_editor_20241022: {
+                          $ref: '#/$defs/text_editor20241022_def',
+                        },
+                      },
+                      required: ['name', 'type'],
+                    },
+                  ],
+                  description: 'Reference to a tool',
+                },
+              },
+            ],
+            title: 'Tools',
+          },
+          unwrap: {
+            type: 'boolean',
+            title: 'Unwrap',
+          },
+        },
+        required: ['prompt'],
       },
       chosen_function_call: {
         type: 'object',
@@ -9002,6 +2662,570 @@ export const tool: Tool = {
           },
         },
         required: ['info'],
+      },
+      if_else_step_input: {
+        type: 'object',
+        title: 'IfElseWorkflowStep',
+        properties: {
+          if: {
+            type: 'string',
+            title: 'If',
+          },
+          then: {
+            anyOf: [
+              {
+                $ref: '#/$defs/wait_for_input_step',
+              },
+              {
+                $ref: '#/$defs/evaluate_step',
+              },
+              {
+                $ref: '#/$defs/tool_call_step',
+              },
+              {
+                $ref: '#/$defs/prompt_step_input',
+              },
+              {
+                $ref: '#/$defs/get_step',
+              },
+              {
+                $ref: '#/$defs/set_step',
+              },
+              {
+                $ref: '#/$defs/log_step',
+              },
+              {
+                $ref: '#/$defs/yield_step',
+              },
+              {
+                $ref: '#/$defs/return_step',
+              },
+              {
+                $ref: '#/$defs/sleep_step',
+              },
+              {
+                $ref: '#/$defs/error_workflow_step',
+              },
+              {
+                $ref: '#/$defs/if_else_step_input',
+              },
+              {
+                type: 'object',
+                title: 'SwitchStep',
+                properties: {
+                  switch: {
+                    type: 'array',
+                    title: 'Switch',
+                    items: {
+                      type: 'object',
+                      title: 'CaseThen',
+                      properties: {
+                        case: {
+                          type: 'string',
+                          title: 'Case',
+                          enum: ['_'],
+                        },
+                        then: {
+                          anyOf: [
+                            {
+                              $ref: '#/$defs/evaluate_step',
+                            },
+                            {
+                              $ref: '#/$defs/tool_call_step',
+                            },
+                            {
+                              $ref: '#/$defs/prompt_step_input',
+                            },
+                            {
+                              $ref: '#/$defs/get_step',
+                            },
+                            {
+                              $ref: '#/$defs/set_step',
+                            },
+                            {
+                              $ref: '#/$defs/log_step',
+                            },
+                            {
+                              $ref: '#/$defs/yield_step',
+                            },
+                            {
+                              $ref: '#/$defs/return_step',
+                            },
+                            {
+                              $ref: '#/$defs/sleep_step',
+                            },
+                            {
+                              $ref: '#/$defs/error_workflow_step',
+                            },
+                            {
+                              $ref: '#/$defs/wait_for_input_step',
+                            },
+                          ],
+                          title: 'Then',
+                        },
+                      },
+                      required: ['case', 'then'],
+                    },
+                  },
+                  kind_: {
+                    type: 'string',
+                    title: 'Kind',
+                    enum: ['switch'],
+                  },
+                  label: {
+                    type: 'string',
+                    title: 'Label',
+                  },
+                },
+                required: ['switch'],
+              },
+              {
+                type: 'object',
+                title: 'ForeachStep',
+                properties: {
+                  foreach: {
+                    type: 'object',
+                    title: 'ForeachDo',
+                    properties: {
+                      do: {
+                        anyOf: [
+                          {
+                            $ref: '#/$defs/wait_for_input_step',
+                          },
+                          {
+                            $ref: '#/$defs/evaluate_step',
+                          },
+                          {
+                            $ref: '#/$defs/tool_call_step',
+                          },
+                          {
+                            $ref: '#/$defs/prompt_step_input',
+                          },
+                          {
+                            $ref: '#/$defs/get_step',
+                          },
+                          {
+                            $ref: '#/$defs/set_step',
+                          },
+                          {
+                            $ref: '#/$defs/log_step',
+                          },
+                          {
+                            $ref: '#/$defs/yield_step',
+                          },
+                        ],
+                        title: 'Do',
+                      },
+                      in: {
+                        type: 'string',
+                        title: 'In',
+                      },
+                    },
+                    required: ['do', 'in'],
+                  },
+                  kind_: {
+                    type: 'string',
+                    title: 'Kind',
+                    enum: ['foreach'],
+                  },
+                  label: {
+                    type: 'string',
+                    title: 'Label',
+                  },
+                },
+                required: ['foreach'],
+              },
+              {
+                type: 'object',
+                title: 'ParallelStep',
+                properties: {
+                  parallel: {
+                    type: 'array',
+                    title: 'Parallel',
+                    items: {
+                      anyOf: [
+                        {
+                          $ref: '#/$defs/evaluate_step',
+                        },
+                        {
+                          $ref: '#/$defs/tool_call_step',
+                        },
+                        {
+                          $ref: '#/$defs/prompt_step_input',
+                        },
+                        {
+                          $ref: '#/$defs/get_step',
+                        },
+                        {
+                          $ref: '#/$defs/set_step',
+                        },
+                        {
+                          $ref: '#/$defs/log_step',
+                        },
+                        {
+                          $ref: '#/$defs/yield_step',
+                        },
+                      ],
+                    },
+                  },
+                  kind_: {
+                    type: 'string',
+                    title: 'Kind',
+                    enum: ['parallel'],
+                  },
+                  label: {
+                    type: 'string',
+                    title: 'Label',
+                  },
+                },
+                required: ['parallel'],
+              },
+              {
+                type: 'object',
+                title: 'Then',
+                description: 'The steps to run if the condition is true',
+                properties: {
+                  map: {
+                    anyOf: [
+                      {
+                        $ref: '#/$defs/evaluate_step',
+                      },
+                      {
+                        $ref: '#/$defs/tool_call_step',
+                      },
+                      {
+                        $ref: '#/$defs/prompt_step_input',
+                      },
+                      {
+                        $ref: '#/$defs/get_step',
+                      },
+                      {
+                        $ref: '#/$defs/set_step',
+                      },
+                      {
+                        $ref: '#/$defs/log_step',
+                      },
+                      {
+                        $ref: '#/$defs/yield_step',
+                      },
+                    ],
+                    title: 'Map',
+                  },
+                  over: {
+                    type: 'string',
+                    title: 'Over',
+                  },
+                  initial: {
+                    type: 'object',
+                    title: 'Initial',
+                  },
+                  kind_: {
+                    type: 'string',
+                    title: 'Kind',
+                    enum: ['map_reduce'],
+                  },
+                  label: {
+                    type: 'string',
+                    title: 'Label',
+                  },
+                  parallelism: {
+                    type: 'integer',
+                    title: 'Parallelism',
+                  },
+                  reduce: {
+                    type: 'string',
+                    title: 'Reduce',
+                  },
+                },
+                required: ['map', 'over'],
+              },
+            ],
+            title: 'Then',
+            description: 'The steps to run if the condition is true',
+          },
+          else: {
+            anyOf: [
+              {
+                $ref: '#/$defs/wait_for_input_step',
+              },
+              {
+                $ref: '#/$defs/evaluate_step',
+              },
+              {
+                $ref: '#/$defs/tool_call_step',
+              },
+              {
+                $ref: '#/$defs/prompt_step_input',
+              },
+              {
+                $ref: '#/$defs/get_step',
+              },
+              {
+                $ref: '#/$defs/set_step',
+              },
+              {
+                $ref: '#/$defs/log_step',
+              },
+              {
+                $ref: '#/$defs/yield_step',
+              },
+              {
+                $ref: '#/$defs/return_step',
+              },
+              {
+                $ref: '#/$defs/sleep_step',
+              },
+              {
+                $ref: '#/$defs/error_workflow_step',
+              },
+              {
+                $ref: '#/$defs/if_else_step_input',
+              },
+              {
+                type: 'object',
+                title: 'SwitchStep',
+                properties: {
+                  switch: {
+                    type: 'array',
+                    title: 'Switch',
+                    items: {
+                      type: 'object',
+                      title: 'CaseThen',
+                      properties: {
+                        case: {
+                          type: 'string',
+                          title: 'Case',
+                          enum: ['_'],
+                        },
+                        then: {
+                          anyOf: [
+                            {
+                              $ref: '#/$defs/evaluate_step',
+                            },
+                            {
+                              $ref: '#/$defs/tool_call_step',
+                            },
+                            {
+                              $ref: '#/$defs/prompt_step_input',
+                            },
+                            {
+                              $ref: '#/$defs/get_step',
+                            },
+                            {
+                              $ref: '#/$defs/set_step',
+                            },
+                            {
+                              $ref: '#/$defs/log_step',
+                            },
+                            {
+                              $ref: '#/$defs/yield_step',
+                            },
+                            {
+                              $ref: '#/$defs/return_step',
+                            },
+                            {
+                              $ref: '#/$defs/sleep_step',
+                            },
+                            {
+                              $ref: '#/$defs/error_workflow_step',
+                            },
+                            {
+                              $ref: '#/$defs/wait_for_input_step',
+                            },
+                          ],
+                          title: 'Then',
+                        },
+                      },
+                      required: ['case', 'then'],
+                    },
+                  },
+                  kind_: {
+                    type: 'string',
+                    title: 'Kind',
+                    enum: ['switch'],
+                  },
+                  label: {
+                    type: 'string',
+                    title: 'Label',
+                  },
+                },
+                required: ['switch'],
+              },
+              {
+                type: 'object',
+                title: 'ForeachStep',
+                properties: {
+                  foreach: {
+                    type: 'object',
+                    title: 'ForeachDo',
+                    properties: {
+                      do: {
+                        anyOf: [
+                          {
+                            $ref: '#/$defs/wait_for_input_step',
+                          },
+                          {
+                            $ref: '#/$defs/evaluate_step',
+                          },
+                          {
+                            $ref: '#/$defs/tool_call_step',
+                          },
+                          {
+                            $ref: '#/$defs/prompt_step_input',
+                          },
+                          {
+                            $ref: '#/$defs/get_step',
+                          },
+                          {
+                            $ref: '#/$defs/set_step',
+                          },
+                          {
+                            $ref: '#/$defs/log_step',
+                          },
+                          {
+                            $ref: '#/$defs/yield_step',
+                          },
+                        ],
+                        title: 'Do',
+                      },
+                      in: {
+                        type: 'string',
+                        title: 'In',
+                      },
+                    },
+                    required: ['do', 'in'],
+                  },
+                  kind_: {
+                    type: 'string',
+                    title: 'Kind',
+                    enum: ['foreach'],
+                  },
+                  label: {
+                    type: 'string',
+                    title: 'Label',
+                  },
+                },
+                required: ['foreach'],
+              },
+              {
+                type: 'object',
+                title: 'ParallelStep',
+                properties: {
+                  parallel: {
+                    type: 'array',
+                    title: 'Parallel',
+                    items: {
+                      anyOf: [
+                        {
+                          $ref: '#/$defs/evaluate_step',
+                        },
+                        {
+                          $ref: '#/$defs/tool_call_step',
+                        },
+                        {
+                          $ref: '#/$defs/prompt_step_input',
+                        },
+                        {
+                          $ref: '#/$defs/get_step',
+                        },
+                        {
+                          $ref: '#/$defs/set_step',
+                        },
+                        {
+                          $ref: '#/$defs/log_step',
+                        },
+                        {
+                          $ref: '#/$defs/yield_step',
+                        },
+                      ],
+                    },
+                  },
+                  kind_: {
+                    type: 'string',
+                    title: 'Kind',
+                    enum: ['parallel'],
+                  },
+                  label: {
+                    type: 'string',
+                    title: 'Label',
+                  },
+                },
+                required: ['parallel'],
+              },
+              {
+                type: 'object',
+                title: 'Else',
+                description: 'The steps to run if the condition is false',
+                properties: {
+                  map: {
+                    anyOf: [
+                      {
+                        $ref: '#/$defs/evaluate_step',
+                      },
+                      {
+                        $ref: '#/$defs/tool_call_step',
+                      },
+                      {
+                        $ref: '#/$defs/prompt_step_input',
+                      },
+                      {
+                        $ref: '#/$defs/get_step',
+                      },
+                      {
+                        $ref: '#/$defs/set_step',
+                      },
+                      {
+                        $ref: '#/$defs/log_step',
+                      },
+                      {
+                        $ref: '#/$defs/yield_step',
+                      },
+                    ],
+                    title: 'Map',
+                  },
+                  over: {
+                    type: 'string',
+                    title: 'Over',
+                  },
+                  initial: {
+                    type: 'object',
+                    title: 'Initial',
+                  },
+                  kind_: {
+                    type: 'string',
+                    title: 'Kind',
+                    enum: ['map_reduce'],
+                  },
+                  label: {
+                    type: 'string',
+                    title: 'Label',
+                  },
+                  parallelism: {
+                    type: 'integer',
+                    title: 'Parallelism',
+                  },
+                  reduce: {
+                    type: 'string',
+                    title: 'Reduce',
+                  },
+                },
+                required: ['map', 'over'],
+              },
+            ],
+            title: 'Else',
+            description: 'The steps to run if the condition is false',
+          },
+          kind_: {
+            type: 'string',
+            title: 'Kind',
+            enum: ['if_else'],
+          },
+          label: {
+            type: 'string',
+            title: 'Label',
+          },
+        },
+        required: ['if', 'then'],
       },
     },
   },

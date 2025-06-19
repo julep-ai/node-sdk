@@ -3,12 +3,12 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as Shared from '../shared';
 import * as DocsAPI from './docs';
 import {
   DocBulkDeleteParams,
   DocBulkDeleteResponse,
   DocCreateParams,
+  DocDeleteResponse,
   DocListParams,
   DocSearchParams,
   DocSearchResponse,
@@ -19,6 +19,7 @@ import {
   BrowserbaseSetupUpdate,
   ToolCreateParams,
   ToolCreateResponse,
+  ToolDeleteResponse,
   ToolListParams,
   ToolListResponse,
   ToolListResponsesOffsetPagination,
@@ -69,7 +70,7 @@ export class Agents extends APIResource {
   /**
    * Delete Agent
    */
-  delete(agentId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceDeleted> {
+  delete(agentId: string, options?: Core.RequestOptions): Core.APIPromise<AgentDeleteResponse> {
     return this._client.delete(`/agents/${agentId}`, options);
   }
 
@@ -152,6 +153,14 @@ export interface Agent {
   model?: string;
 
   project?: string | null;
+}
+
+export interface AgentDeleteResponse {
+  id: string;
+
+  deleted_at: string;
+
+  jobs?: Array<string>;
 }
 
 /**
@@ -270,6 +279,7 @@ Agents.Docs = Docs;
 export declare namespace Agents {
   export {
     type Agent as Agent,
+    type AgentDeleteResponse as AgentDeleteResponse,
     type AgentListModelsResponse as AgentListModelsResponse,
     AgentsOffsetPagination as AgentsOffsetPagination,
     type AgentCreateParams as AgentCreateParams,
@@ -286,6 +296,7 @@ export declare namespace Agents {
     type ToolCreateResponse as ToolCreateResponse,
     type ToolUpdateResponse as ToolUpdateResponse,
     type ToolListResponse as ToolListResponse,
+    type ToolDeleteResponse as ToolDeleteResponse,
     type ToolResetResponse as ToolResetResponse,
     ToolListResponsesOffsetPagination as ToolListResponsesOffsetPagination,
     type ToolCreateParams as ToolCreateParams,
@@ -296,6 +307,7 @@ export declare namespace Agents {
 
   export {
     Docs as Docs,
+    type DocDeleteResponse as DocDeleteResponse,
     type DocBulkDeleteResponse as DocBulkDeleteResponse,
     type DocSearchResponse as DocSearchResponse,
     type DocCreateParams as DocCreateParams,

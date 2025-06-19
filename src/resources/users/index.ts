@@ -2,6 +2,7 @@
 
 export {
   Docs,
+  type DocDeleteResponse,
   type DocBulkDeleteResponse,
   type DocSearchResponse,
   type DocCreateParams,
@@ -13,6 +14,7 @@ export {
   UsersOffsetPagination,
   Users,
   type User,
+  type UserDeleteResponse,
   type UserCreateParams,
   type UserUpdateParams,
   type UserListParams,

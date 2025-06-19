@@ -47,7 +47,7 @@ export class Sessions extends APIResource {
   /**
    * Delete Session
    */
-  delete(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceDeleted> {
+  delete(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<SessionDeleteResponse> {
     return this._client.delete(`/sessions/${sessionId}`, options);
   }
 
@@ -1129,6 +1129,14 @@ export interface VectorDocSearch {
   num_search_messages?: number;
 }
 
+export interface SessionDeleteResponse {
+  id: string;
+
+  deleted_at: string;
+
+  jobs?: Array<string>;
+}
+
 export type SessionChatResponse = SessionChatResponse.ChunkChatResponse | ChatResponse;
 
 export namespace SessionChatResponse {
@@ -2116,6 +2124,7 @@ export declare namespace Sessions {
     type TextOnlyDocSearch as TextOnlyDocSearch,
     type TokenLogProb as TokenLogProb,
     type VectorDocSearch as VectorDocSearch,
+    type SessionDeleteResponse as SessionDeleteResponse,
     type SessionChatResponse as SessionChatResponse,
     type SessionRenderResponse as SessionRenderResponse,
     SessionsOffsetPagination as SessionsOffsetPagination,

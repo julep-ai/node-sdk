@@ -9,7 +9,7 @@ import { type OffsetPaginationParams, OffsetPaginationResponse } from './paginat
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import { Doc, DocEmbedParams, Docs, EmbedQueryResponse, Snippet } from './resources/docs';
-import { File, FileCreateParams, FileListResponse, Files } from './resources/files';
+import { File, FileCreateParams, FileDeleteResponse, FileListResponse, Files } from './resources/files';
 import { Healthz, HealthzCheckResponse } from './resources/healthz';
 import { JobStatus, Jobs } from './resources/jobs';
 import {
@@ -23,6 +23,7 @@ import {
 import {
   Secret,
   SecretCreateParams,
+  SecretDeleteResponse,
   SecretListParams,
   SecretListResponse,
   SecretUpdateParams,
@@ -46,6 +47,7 @@ import {
   SessionChatResponse,
   SessionCreateOrUpdateParams,
   SessionCreateParams,
+  SessionDeleteResponse,
   SessionListParams,
   SessionRenderParams,
   SessionRenderResponse,
@@ -88,6 +90,7 @@ import {
   Agent as AgentsAPIAgent,
   AgentCreateOrUpdateParams,
   AgentCreateParams,
+  AgentDeleteResponse,
   AgentListModelsParams,
   AgentListModelsResponse,
   AgentListParams,
@@ -110,6 +113,7 @@ import {
   User,
   UserCreateOrUpdateParams,
   UserCreateParams,
+  UserDeleteResponse,
   UserListParams,
   UserResetParams,
   UserUpdateParams,
@@ -346,6 +350,7 @@ export declare namespace Julep {
   export {
     Agents as Agents,
     type AgentsAPIAgent as Agent,
+    type AgentDeleteResponse as AgentDeleteResponse,
     type AgentListModelsResponse as AgentListModelsResponse,
     AgentsOffsetPagination as AgentsOffsetPagination,
     type AgentCreateParams as AgentCreateParams,
@@ -360,6 +365,7 @@ export declare namespace Julep {
     Files as Files,
     type File as File,
     type FileListResponse as FileListResponse,
+    type FileDeleteResponse as FileDeleteResponse,
     type FileCreateParams as FileCreateParams,
   };
 
@@ -382,6 +388,7 @@ export declare namespace Julep {
     type TextOnlyDocSearch as TextOnlyDocSearch,
     type TokenLogProb as TokenLogProb,
     type VectorDocSearch as VectorDocSearch,
+    type SessionDeleteResponse as SessionDeleteResponse,
     type SessionChatResponse as SessionChatResponse,
     type SessionRenderResponse as SessionRenderResponse,
     SessionsOffsetPagination as SessionsOffsetPagination,
@@ -397,6 +404,7 @@ export declare namespace Julep {
   export {
     Users as Users,
     type User as User,
+    type UserDeleteResponse as UserDeleteResponse,
     UsersOffsetPagination as UsersOffsetPagination,
     type UserCreateParams as UserCreateParams,
     type UserUpdateParams as UserUpdateParams,
@@ -457,6 +465,7 @@ export declare namespace Julep {
     Secrets as Secrets,
     type Secret as Secret,
     type SecretListResponse as SecretListResponse,
+    type SecretDeleteResponse as SecretDeleteResponse,
     type SecretCreateParams as SecretCreateParams,
     type SecretUpdateParams as SecretUpdateParams,
     type SecretListParams as SecretListParams,
@@ -514,6 +523,8 @@ export declare namespace Julep {
   export type FfmpegSearchArguments = API.FfmpegSearchArguments;
   export type FunctionCallOption = API.FunctionCallOption;
   export type FunctionDef = API.FunctionDef;
+  export type IfElseStepInput = API.IfElseStepInput;
+  export type IfElseStepOutput = API.IfElseStepOutput;
   export type LlamaParseFetchArguments = API.LlamaParseFetchArguments;
   export type LlamaParseIntegrationDef = API.LlamaParseIntegrationDef;
   export type LlamaParseSetup = API.LlamaParseSetup;
@@ -521,10 +532,10 @@ export declare namespace Julep {
   export type MailgunSendEmailArguments = API.MailgunSendEmailArguments;
   export type MailgunSetup = API.MailgunSetup;
   export type NamedToolChoice = API.NamedToolChoice;
+  export type PromptStepInput = API.PromptStepInput;
   export type RemoteBrowserArguments = API.RemoteBrowserArguments;
   export type RemoteBrowserIntegrationDef = API.RemoteBrowserIntegrationDef;
   export type RemoteBrowserSetup = API.RemoteBrowserSetup;
-  export type ResourceDeleted = API.ResourceDeleted;
   export type SecretRef = API.SecretRef;
   export type SpiderFetchArguments = API.SpiderFetchArguments;
   export type SpiderIntegrationDef = API.SpiderIntegrationDef;

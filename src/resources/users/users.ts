@@ -3,12 +3,12 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as Shared from '../shared';
 import * as DocsAPI from './docs';
 import {
   DocBulkDeleteParams,
   DocBulkDeleteResponse,
   DocCreateParams,
+  DocDeleteResponse,
   DocListParams,
   DocSearchParams,
   DocSearchResponse,
@@ -51,7 +51,7 @@ export class Users extends APIResource {
   /**
    * Delete User
    */
-  delete(userId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceDeleted> {
+  delete(userId: string, options?: Core.RequestOptions): Core.APIPromise<UserDeleteResponse> {
     return this._client.delete(`/users/${userId}`, options);
   }
 
@@ -97,6 +97,14 @@ export interface User {
   name?: string;
 
   project?: string | null;
+}
+
+export interface UserDeleteResponse {
+  id: string;
+
+  deleted_at: string;
+
+  jobs?: Array<string>;
 }
 
 export interface UserCreateParams {
@@ -153,6 +161,7 @@ Users.Docs = Docs;
 export declare namespace Users {
   export {
     type User as User,
+    type UserDeleteResponse as UserDeleteResponse,
     UsersOffsetPagination as UsersOffsetPagination,
     type UserCreateParams as UserCreateParams,
     type UserUpdateParams as UserUpdateParams,
@@ -163,6 +172,7 @@ export declare namespace Users {
 
   export {
     Docs as Docs,
+    type DocDeleteResponse as DocDeleteResponse,
     type DocBulkDeleteResponse as DocBulkDeleteResponse,
     type DocSearchResponse as DocSearchResponse,
     type DocCreateParams as DocCreateParams,
