@@ -64,7 +64,7 @@ export class Tools extends APIResource {
     agentId: string,
     toolId: string,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Shared.ResourceDeleted> {
+  ): Core.APIPromise<ToolDeleteResponse> {
     return this._client.delete(`/agents/${agentId}/tools/${toolId}`, options);
   }
 
@@ -313,6 +313,14 @@ export interface ToolListResponse {
   system?: Shared.SystemDef | null;
 
   text_editor_20241022?: Shared.TextEditor20241022Def | null;
+}
+
+export interface ToolDeleteResponse {
+  id: string;
+
+  deleted_at: string;
+
+  jobs?: Array<string>;
 }
 
 export interface ToolResetResponse {
@@ -1420,6 +1428,7 @@ export declare namespace Tools {
     type ToolCreateResponse as ToolCreateResponse,
     type ToolUpdateResponse as ToolUpdateResponse,
     type ToolListResponse as ToolListResponse,
+    type ToolDeleteResponse as ToolDeleteResponse,
     type ToolResetResponse as ToolResetResponse,
     ToolListResponsesOffsetPagination as ToolListResponsesOffsetPagination,
     type ToolCreateParams as ToolCreateParams,

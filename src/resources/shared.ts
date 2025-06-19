@@ -1,6 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import * as Shared from './shared';
 import * as DocsAPI from './docs';
+import * as SessionsAPI from './sessions';
+import * as TasksAPI from './tasks';
 
 /**
  * Algolia integration definition
@@ -522,6 +525,350 @@ export interface FunctionDef {
   parameters?: unknown | null;
 }
 
+export interface IfElseStepInput {
+  if: string;
+
+  /**
+   * The steps to run if the condition is true
+   */
+  then:
+    | TasksAPI.WaitForInputStep
+    | TasksAPI.EvaluateStep
+    | TasksAPI.ToolCallStep
+    | PromptStepInput
+    | TasksAPI.GetStep
+    | TasksAPI.SetStep
+    | TasksAPI.LogStep
+    | TasksAPI.YieldStep
+    | TasksAPI.ReturnStep
+    | TasksAPI.SleepStep
+    | TasksAPI.ErrorWorkflowStep
+    | IfElseStepInput
+    | IfElseStepInput.SwitchStepInput
+    | IfElseStepInput.ForeachStepInput
+    | IfElseStepInput.ParallelStepInput
+    | IfElseStepInput.ThenInput;
+
+  /**
+   * The steps to run if the condition is false
+   */
+  else?:
+    | TasksAPI.WaitForInputStep
+    | TasksAPI.EvaluateStep
+    | TasksAPI.ToolCallStep
+    | PromptStepInput
+    | TasksAPI.GetStep
+    | TasksAPI.SetStep
+    | TasksAPI.LogStep
+    | TasksAPI.YieldStep
+    | TasksAPI.ReturnStep
+    | TasksAPI.SleepStep
+    | TasksAPI.ErrorWorkflowStep
+    | IfElseStepInput
+    | IfElseStepInput.SwitchStepInput
+    | IfElseStepInput.ForeachStepInput
+    | IfElseStepInput.ParallelStepInput
+    | IfElseStepInput.ElseInput
+    | null;
+
+  kind_?: 'if_else';
+
+  label?: string | null;
+}
+
+export namespace IfElseStepInput {
+  export interface SwitchStepInput {
+    switch: Array<SwitchStepInput.Switch>;
+
+    kind_?: 'switch';
+
+    label?: string | null;
+  }
+
+  export namespace SwitchStepInput {
+    export interface Switch {
+      case: '_';
+
+      then:
+        | TasksAPI.EvaluateStep
+        | TasksAPI.ToolCallStep
+        | Shared.PromptStepInput
+        | TasksAPI.GetStep
+        | TasksAPI.SetStep
+        | TasksAPI.LogStep
+        | TasksAPI.YieldStep
+        | TasksAPI.ReturnStep
+        | TasksAPI.SleepStep
+        | TasksAPI.ErrorWorkflowStep
+        | TasksAPI.WaitForInputStep;
+    }
+  }
+
+  export interface ForeachStepInput {
+    foreach: ForeachStepInput.Foreach;
+
+    kind_?: 'foreach';
+
+    label?: string | null;
+  }
+
+  export namespace ForeachStepInput {
+    export interface Foreach {
+      do:
+        | TasksAPI.WaitForInputStep
+        | TasksAPI.EvaluateStep
+        | TasksAPI.ToolCallStep
+        | Shared.PromptStepInput
+        | TasksAPI.GetStep
+        | TasksAPI.SetStep
+        | TasksAPI.LogStep
+        | TasksAPI.YieldStep;
+
+      in: string;
+    }
+  }
+
+  export interface ParallelStepInput {
+    parallel: Array<
+      | TasksAPI.EvaluateStep
+      | TasksAPI.ToolCallStep
+      | Shared.PromptStepInput
+      | TasksAPI.GetStep
+      | TasksAPI.SetStep
+      | TasksAPI.LogStep
+      | TasksAPI.YieldStep
+    >;
+
+    kind_?: 'parallel';
+
+    label?: string | null;
+  }
+
+  /**
+   * The steps to run if the condition is true
+   */
+  export interface ThenInput {
+    map:
+      | TasksAPI.EvaluateStep
+      | TasksAPI.ToolCallStep
+      | Shared.PromptStepInput
+      | TasksAPI.GetStep
+      | TasksAPI.SetStep
+      | TasksAPI.LogStep
+      | TasksAPI.YieldStep;
+
+    over: string;
+
+    initial?: unknown;
+
+    kind_?: 'map_reduce';
+
+    label?: string | null;
+
+    parallelism?: number | null;
+
+    reduce?: string | null;
+  }
+
+  export interface SwitchStepInput {
+    switch: Array<SwitchStepInput.Switch>;
+
+    kind_?: 'switch';
+
+    label?: string | null;
+  }
+
+  export namespace SwitchStepInput {
+    export interface Switch {
+      case: '_';
+
+      then:
+        | TasksAPI.EvaluateStep
+        | TasksAPI.ToolCallStep
+        | Shared.PromptStepInput
+        | TasksAPI.GetStep
+        | TasksAPI.SetStep
+        | TasksAPI.LogStep
+        | TasksAPI.YieldStep
+        | TasksAPI.ReturnStep
+        | TasksAPI.SleepStep
+        | TasksAPI.ErrorWorkflowStep
+        | TasksAPI.WaitForInputStep;
+    }
+  }
+
+  export interface ForeachStepInput {
+    foreach: ForeachStepInput.Foreach;
+
+    kind_?: 'foreach';
+
+    label?: string | null;
+  }
+
+  export namespace ForeachStepInput {
+    export interface Foreach {
+      do:
+        | TasksAPI.WaitForInputStep
+        | TasksAPI.EvaluateStep
+        | TasksAPI.ToolCallStep
+        | Shared.PromptStepInput
+        | TasksAPI.GetStep
+        | TasksAPI.SetStep
+        | TasksAPI.LogStep
+        | TasksAPI.YieldStep;
+
+      in: string;
+    }
+  }
+
+  export interface ParallelStepInput {
+    parallel: Array<
+      | TasksAPI.EvaluateStep
+      | TasksAPI.ToolCallStep
+      | Shared.PromptStepInput
+      | TasksAPI.GetStep
+      | TasksAPI.SetStep
+      | TasksAPI.LogStep
+      | TasksAPI.YieldStep
+    >;
+
+    kind_?: 'parallel';
+
+    label?: string | null;
+  }
+
+  /**
+   * The steps to run if the condition is false
+   */
+  export interface ElseInput {
+    map:
+      | TasksAPI.EvaluateStep
+      | TasksAPI.ToolCallStep
+      | Shared.PromptStepInput
+      | TasksAPI.GetStep
+      | TasksAPI.SetStep
+      | TasksAPI.LogStep
+      | TasksAPI.YieldStep;
+
+    over: string;
+
+    initial?: unknown;
+
+    kind_?: 'map_reduce';
+
+    label?: string | null;
+
+    parallelism?: number | null;
+
+    reduce?: string | null;
+  }
+}
+
+export interface IfElseStepOutput {
+  if: string;
+
+  /**
+   * The steps to run if the condition is true
+   */
+  then:
+    | TasksAPI.WaitForInputStep
+    | TasksAPI.EvaluateStep
+    | TasksAPI.ToolCallStep
+    | TasksAPI.PromptStepOutput
+    | TasksAPI.GetStep
+    | TasksAPI.SetStep
+    | TasksAPI.LogStep
+    | TasksAPI.YieldStep
+    | TasksAPI.ReturnStep
+    | TasksAPI.SleepStep
+    | TasksAPI.ErrorWorkflowStep
+    | IfElseStepOutput
+    | TasksAPI.SwitchStepOutput
+    | TasksAPI.ForeachStepOutput
+    | TasksAPI.ParallelStepOutput
+    | IfElseStepOutput.ThenOutput;
+
+  /**
+   * The steps to run if the condition is false
+   */
+  else?:
+    | TasksAPI.WaitForInputStep
+    | TasksAPI.EvaluateStep
+    | TasksAPI.ToolCallStep
+    | TasksAPI.PromptStepOutput
+    | TasksAPI.GetStep
+    | TasksAPI.SetStep
+    | TasksAPI.LogStep
+    | TasksAPI.YieldStep
+    | TasksAPI.ReturnStep
+    | TasksAPI.SleepStep
+    | TasksAPI.ErrorWorkflowStep
+    | IfElseStepOutput
+    | TasksAPI.SwitchStepOutput
+    | TasksAPI.ForeachStepOutput
+    | TasksAPI.ParallelStepOutput
+    | IfElseStepOutput.ElseOutput
+    | null;
+
+  kind_?: 'if_else';
+
+  label?: string | null;
+}
+
+export namespace IfElseStepOutput {
+  /**
+   * The steps to run if the condition is true
+   */
+  export interface ThenOutput {
+    map:
+      | TasksAPI.EvaluateStep
+      | TasksAPI.ToolCallStep
+      | TasksAPI.PromptStepOutput
+      | TasksAPI.GetStep
+      | TasksAPI.SetStep
+      | TasksAPI.LogStep
+      | TasksAPI.YieldStep;
+
+    over: string;
+
+    initial?: unknown;
+
+    kind_?: 'map_reduce';
+
+    label?: string | null;
+
+    parallelism?: number | null;
+
+    reduce?: string | null;
+  }
+
+  /**
+   * The steps to run if the condition is false
+   */
+  export interface ElseOutput {
+    map:
+      | TasksAPI.EvaluateStep
+      | TasksAPI.ToolCallStep
+      | TasksAPI.PromptStepOutput
+      | TasksAPI.GetStep
+      | TasksAPI.SetStep
+      | TasksAPI.LogStep
+      | TasksAPI.YieldStep;
+
+    over: string;
+
+    initial?: unknown;
+
+    kind_?: 'map_reduce';
+
+    label?: string | null;
+
+    parallelism?: number | null;
+
+    reduce?: string | null;
+  }
+}
+
 /**
  * Arguments for LlamaParse integration
  */
@@ -610,6 +957,216 @@ export interface NamedToolChoice {
   function?: FunctionCallOption | null;
 }
 
+export interface PromptStepInput {
+  prompt: Array<PromptStepInput.UnionMember0> | string;
+
+  auto_run_tools?: boolean;
+
+  disable_cache?: boolean;
+
+  kind_?: 'prompt';
+
+  label?: string | null;
+
+  settings?: unknown | null;
+
+  tool_choice?: 'auto' | 'none' | NamedToolChoice | null;
+
+  tools?:
+    | 'all'
+    | Array<PromptStepInput.ToolRef | PromptStepInput.AgentsAPIAutogenToolsCreateToolRequestInput>;
+
+  unwrap?: boolean;
+}
+
+export namespace PromptStepInput {
+  export interface UnionMember0 {
+    content:
+      | Array<string>
+      | Array<
+          | UnionMember0.Content
+          | UnionMember0.AgentsAPIAutogenTasksContentModel
+          | UnionMember0.ContentModel1Input
+        >
+      | string
+      | null;
+
+    role: 'user' | 'assistant' | 'system' | 'tool';
+
+    continue?: boolean | null;
+
+    name?: string | null;
+
+    tool_call_id?: string | null;
+
+    tool_calls?: Array<
+      | SessionsAPI.ChosenFunctionCall
+      | SessionsAPI.ChosenComputer20241022
+      | SessionsAPI.ChosenTextEditor20241022
+      | SessionsAPI.ChosenBash20241022
+    > | null;
+  }
+
+  export namespace UnionMember0 {
+    export interface Content {
+      text: string;
+
+      type?: 'text';
+    }
+
+    export interface AgentsAPIAutogenTasksContentModel {
+      /**
+       * The image URL
+       */
+      image_url: AgentsAPIAutogenTasksContentModel.ImageURL;
+
+      type?: 'image_url';
+    }
+
+    export namespace AgentsAPIAutogenTasksContentModel {
+      /**
+       * The image URL
+       */
+      export interface ImageURL {
+        url: string;
+
+        detail?: 'low' | 'high' | 'auto';
+      }
+    }
+
+    /**
+     * Anthropic image content part
+     */
+    export interface ContentModel1Input {
+      content: Array<ContentModel1Input.UnionMember0> | Array<ContentModel1Input.UnionMember1>;
+
+      tool_use_id: string;
+
+      type?: 'tool_result';
+    }
+
+    export namespace ContentModel1Input {
+      export interface UnionMember0 {
+        text: string;
+
+        type?: 'text';
+      }
+
+      export interface UnionMember1 {
+        source: UnionMember1.Source;
+
+        type?: 'image';
+      }
+
+      export namespace UnionMember1 {
+        export interface Source {
+          data: string;
+
+          media_type: string;
+
+          type?: 'base64';
+        }
+      }
+    }
+  }
+
+  /**
+   * Reference to a tool
+   */
+  export interface ToolRef {
+    /**
+     * Reference to a tool by id
+     */
+    ref: ToolRef.ToolRefByID | ToolRef.ToolRefByName;
+  }
+
+  export namespace ToolRef {
+    /**
+     * Reference to a tool by id
+     */
+    export interface ToolRefByID {
+      id?: string | null;
+    }
+
+    /**
+     * Reference to a tool by name
+     */
+    export interface ToolRefByName {
+      name?: string | null;
+    }
+  }
+
+  /**
+   * Payload for creating a tool
+   */
+  export interface AgentsAPIAutogenToolsCreateToolRequestInput {
+    name: string;
+
+    type:
+      | 'function'
+      | 'integration'
+      | 'system'
+      | 'api_call'
+      | 'computer_20241022'
+      | 'text_editor_20241022'
+      | 'bash_20241022';
+
+    /**
+     * API call definition
+     */
+    api_call?: Shared.APICallDef | null;
+
+    bash_20241022?: Shared.Bash20241022Def | null;
+
+    /**
+     * Anthropic new tools
+     */
+    computer_20241022?: Shared.Computer20241022Def | null;
+
+    description?: string | null;
+
+    /**
+     * Function definition
+     */
+    function?: Shared.FunctionDef | null;
+
+    /**
+     * Brave integration definition
+     */
+    integration?:
+      | Shared.DummyIntegrationDef
+      | Shared.BraveIntegrationDef
+      | Shared.EmailIntegrationDef
+      | Shared.SpiderIntegrationDef
+      | Shared.WikipediaIntegrationDef
+      | Shared.WeatherIntegrationDef
+      | Shared.MailgunIntegrationDef
+      | Shared.BrowserbaseContextIntegrationDef
+      | Shared.BrowserbaseExtensionIntegrationDef
+      | Shared.BrowserbaseListSessionsIntegrationDef
+      | Shared.BrowserbaseCreateSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionIntegrationDef
+      | Shared.BrowserbaseCompleteSessionIntegrationDef
+      | Shared.BrowserbaseGetSessionLiveURLsIntegrationDef
+      | Shared.RemoteBrowserIntegrationDef
+      | Shared.LlamaParseIntegrationDef
+      | Shared.FfmpegIntegrationDef
+      | Shared.CloudinaryUploadIntegrationDef
+      | Shared.CloudinaryEditIntegrationDef
+      | Shared.ArxivIntegrationDef
+      | Shared.UnstructuredIntegrationDef
+      | Shared.AlgoliaIntegrationDef
+      | null;
+
+    /**
+     * System definition
+     */
+    system?: Shared.SystemDef | null;
+
+    text_editor_20241022?: Shared.TextEditor20241022Def | null;
+  }
+}
+
 /**
  * The arguments for the remote browser
  */
@@ -663,14 +1220,6 @@ export interface RemoteBrowserSetup {
   height?: number | null;
 
   width?: number | null;
-}
-
-export interface ResourceDeleted {
-  id: string;
-
-  deleted_at: string;
-
-  jobs?: Array<string>;
 }
 
 export interface SecretRef {

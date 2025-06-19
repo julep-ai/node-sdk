@@ -4,6 +4,7 @@ export {
   AgentsOffsetPagination,
   Agents,
   type Agent,
+  type AgentDeleteResponse,
   type AgentListModelsResponse,
   type AgentCreateParams,
   type AgentUpdateParams,
@@ -14,6 +15,7 @@ export {
 } from './agents';
 export {
   Docs,
+  type DocDeleteResponse,
   type DocBulkDeleteResponse,
   type DocSearchResponse,
   type DocCreateParams,
@@ -28,6 +30,7 @@ export {
   type ToolCreateResponse,
   type ToolUpdateResponse,
   type ToolListResponse,
+  type ToolDeleteResponse,
   type ToolResetResponse,
   type ToolCreateParams,
   type ToolUpdateParams,

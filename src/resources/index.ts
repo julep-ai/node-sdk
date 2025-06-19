@@ -5,6 +5,7 @@ export {
   AgentsOffsetPagination,
   Agents,
   type Agent,
+  type AgentDeleteResponse,
   type AgentListModelsResponse,
   type AgentCreateParams,
   type AgentUpdateParams,
@@ -21,7 +22,13 @@ export {
   type Snippet,
   type DocEmbedParams,
 } from './docs';
-export { Files, type File, type FileListResponse, type FileCreateParams } from './files';
+export {
+  Files,
+  type File,
+  type FileListResponse,
+  type FileDeleteResponse,
+  type FileCreateParams,
+} from './files';
 export { Healthz, type HealthzCheckResponse } from './healthz';
 export { Jobs, type JobStatus } from './jobs';
 export {
@@ -36,6 +43,7 @@ export {
   Secrets,
   type Secret,
   type SecretListResponse,
+  type SecretDeleteResponse,
   type SecretCreateParams,
   type SecretUpdateParams,
   type SecretListParams,
@@ -60,6 +68,7 @@ export {
   type TextOnlyDocSearch,
   type TokenLogProb,
   type VectorDocSearch,
+  type SessionDeleteResponse,
   type SessionChatResponse,
   type SessionRenderResponse,
   type SessionCreateParams,
@@ -111,6 +120,7 @@ export {
   UsersOffsetPagination,
   Users,
   type User,
+  type UserDeleteResponse,
   type UserCreateParams,
   type UserUpdateParams,
   type UserListParams,

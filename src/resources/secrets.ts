@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as Shared from './shared';
 
 export class Secrets extends APIResource {
   /**
@@ -65,7 +64,7 @@ export class Secrets extends APIResource {
    *
    * Raises: HTTPException: If the secret doesn't exist
    */
-  delete(secretId: string, options?: Core.RequestOptions): Core.APIPromise<Shared.ResourceDeleted> {
+  delete(secretId: string, options?: Core.RequestOptions): Core.APIPromise<SecretDeleteResponse> {
     return this._client.delete(`/secrets/${secretId}`, options);
   }
 }
@@ -90,6 +89,14 @@ export interface Secret {
 }
 
 export type SecretListResponse = Array<Secret>;
+
+export interface SecretDeleteResponse {
+  id: string;
+
+  deleted_at: string;
+
+  jobs?: Array<string>;
+}
 
 export interface SecretCreateParams {
   name: string;
@@ -121,6 +128,7 @@ export declare namespace Secrets {
   export {
     type Secret as Secret,
     type SecretListResponse as SecretListResponse,
+    type SecretDeleteResponse as SecretDeleteResponse,
     type SecretCreateParams as SecretCreateParams,
     type SecretUpdateParams as SecretUpdateParams,
     type SecretListParams as SecretListParams,
