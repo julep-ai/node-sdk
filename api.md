@@ -2,7 +2,72 @@
 
 Types:
 
+- <code><a href="./src/resources/shared.ts">AlgoliaIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">AlgoliaSearchArguments</a></code>
+- <code><a href="./src/resources/shared.ts">AlgoliaSetup</a></code>
+- <code><a href="./src/resources/shared.ts">APICallDef</a></code>
+- <code><a href="./src/resources/shared.ts">ArxivIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">ArxivSearchArguments</a></code>
+- <code><a href="./src/resources/shared.ts">Bash20241022Def</a></code>
+- <code><a href="./src/resources/shared.ts">BraveIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">BraveSearchArguments</a></code>
+- <code><a href="./src/resources/shared.ts">BraveSearchSetup</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseCompleteSessionArguments</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseCompleteSessionIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseContextArguments</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseContextIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseCreateSessionArguments</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseCreateSessionIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseExtensionArguments</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseExtensionIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseGetSessionArguments</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseGetSessionIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseGetSessionLiveURLsArguments</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseGetSessionLiveURLsIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseListSessionsArguments</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseListSessionsIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">BrowserbaseSetup</a></code>
+- <code><a href="./src/resources/shared.ts">CloudinaryEditArguments</a></code>
+- <code><a href="./src/resources/shared.ts">CloudinaryEditIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">CloudinarySetup</a></code>
+- <code><a href="./src/resources/shared.ts">CloudinaryUploadArguments</a></code>
+- <code><a href="./src/resources/shared.ts">CloudinaryUploadIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">Computer20241022Def</a></code>
+- <code><a href="./src/resources/shared.ts">DocOwner</a></code>
+- <code><a href="./src/resources/shared.ts">DocReference</a></code>
+- <code><a href="./src/resources/shared.ts">DummyIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">EmailArguments</a></code>
+- <code><a href="./src/resources/shared.ts">EmailIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">EmailSetup</a></code>
+- <code><a href="./src/resources/shared.ts">FfmpegIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">FfmpegSearchArguments</a></code>
+- <code><a href="./src/resources/shared.ts">FunctionCallOption</a></code>
+- <code><a href="./src/resources/shared.ts">FunctionDef</a></code>
+- <code><a href="./src/resources/shared.ts">LlamaParseFetchArguments</a></code>
+- <code><a href="./src/resources/shared.ts">LlamaParseIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">LlamaParseSetup</a></code>
+- <code><a href="./src/resources/shared.ts">MailgunIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">MailgunSendEmailArguments</a></code>
+- <code><a href="./src/resources/shared.ts">MailgunSetup</a></code>
+- <code><a href="./src/resources/shared.ts">NamedToolChoice</a></code>
+- <code><a href="./src/resources/shared.ts">RemoteBrowserArguments</a></code>
+- <code><a href="./src/resources/shared.ts">RemoteBrowserIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">RemoteBrowserSetup</a></code>
 - <code><a href="./src/resources/shared.ts">ResourceDeleted</a></code>
+- <code><a href="./src/resources/shared.ts">SecretRef</a></code>
+- <code><a href="./src/resources/shared.ts">SpiderFetchArguments</a></code>
+- <code><a href="./src/resources/shared.ts">SpiderIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">SpiderSetup</a></code>
+- <code><a href="./src/resources/shared.ts">SystemDef</a></code>
+- <code><a href="./src/resources/shared.ts">TextEditor20241022Def</a></code>
+- <code><a href="./src/resources/shared.ts">UnstructuredIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">UnstructuredPartitionArguments</a></code>
+- <code><a href="./src/resources/shared.ts">UnstructuredSetup</a></code>
+- <code><a href="./src/resources/shared.ts">WeatherGetArguments</a></code>
+- <code><a href="./src/resources/shared.ts">WeatherIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">WeatherSetup</a></code>
+- <code><a href="./src/resources/shared.ts">WikipediaIntegrationDef</a></code>
+- <code><a href="./src/resources/shared.ts">WikipediaSearchArguments</a></code>
 
 # Agents
 
@@ -26,6 +91,7 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/agents/tools.ts">BrowserbaseSetupUpdate</a></code>
 - <code><a href="./src/resources/agents/tools.ts">ToolCreateResponse</a></code>
 - <code><a href="./src/resources/agents/tools.ts">ToolUpdateResponse</a></code>
 - <code><a href="./src/resources/agents/tools.ts">ToolListResponse</a></code>
@@ -72,11 +138,23 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/sessions.ts">BaseTokenLogProb</a></code>
 - <code><a href="./src/resources/sessions.ts">ChatInput</a></code>
 - <code><a href="./src/resources/sessions.ts">ChatResponse</a></code>
+- <code><a href="./src/resources/sessions.ts">ChosenBash20241022</a></code>
+- <code><a href="./src/resources/sessions.ts">ChosenComputer20241022</a></code>
+- <code><a href="./src/resources/sessions.ts">ChosenFunctionCall</a></code>
+- <code><a href="./src/resources/sessions.ts">ChosenTextEditor20241022</a></code>
 - <code><a href="./src/resources/sessions.ts">Entry</a></code>
 - <code><a href="./src/resources/sessions.ts">History</a></code>
+- <code><a href="./src/resources/sessions.ts">HybridDocSearch</a></code>
+- <code><a href="./src/resources/sessions.ts">LogProbResponse</a></code>
+- <code><a href="./src/resources/sessions.ts">SchemaCompletionResponseFormat</a></code>
 - <code><a href="./src/resources/sessions.ts">Session</a></code>
+- <code><a href="./src/resources/sessions.ts">SimpleCompletionResponseFormat</a></code>
+- <code><a href="./src/resources/sessions.ts">TextOnlyDocSearch</a></code>
+- <code><a href="./src/resources/sessions.ts">TokenLogProb</a></code>
+- <code><a href="./src/resources/sessions.ts">VectorDocSearch</a></code>
 - <code><a href="./src/resources/sessions.ts">SessionChatResponse</a></code>
 - <code><a href="./src/resources/sessions.ts">SessionRenderResponse</a></code>
 
@@ -151,7 +229,25 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/tasks.ts">CaseThenOutput</a></code>
+- <code><a href="./src/resources/tasks.ts">ErrorWorkflowStep</a></code>
+- <code><a href="./src/resources/tasks.ts">EvaluateStep</a></code>
+- <code><a href="./src/resources/tasks.ts">ForeachDoOutput</a></code>
+- <code><a href="./src/resources/tasks.ts">ForeachStepOutput</a></code>
+- <code><a href="./src/resources/tasks.ts">GetStep</a></code>
+- <code><a href="./src/resources/tasks.ts">LogStep</a></code>
+- <code><a href="./src/resources/tasks.ts">ParallelStepOutput</a></code>
+- <code><a href="./src/resources/tasks.ts">PromptStepOutput</a></code>
+- <code><a href="./src/resources/tasks.ts">ReturnStep</a></code>
+- <code><a href="./src/resources/tasks.ts">SetStep</a></code>
+- <code><a href="./src/resources/tasks.ts">SleepFor</a></code>
+- <code><a href="./src/resources/tasks.ts">SleepStep</a></code>
+- <code><a href="./src/resources/tasks.ts">SwitchStepOutput</a></code>
 - <code><a href="./src/resources/tasks.ts">Task</a></code>
+- <code><a href="./src/resources/tasks.ts">ToolCallStep</a></code>
+- <code><a href="./src/resources/tasks.ts">WaitForInputInfo</a></code>
+- <code><a href="./src/resources/tasks.ts">WaitForInputStep</a></code>
+- <code><a href="./src/resources/tasks.ts">YieldStep</a></code>
 
 Methods:
 

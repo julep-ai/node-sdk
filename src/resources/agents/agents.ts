@@ -16,6 +16,7 @@ import {
 } from './docs';
 import * as ToolsAPI from './tools';
 import {
+  BrowserbaseSetupUpdate,
   ToolCreateParams,
   ToolCreateResponse,
   ToolListParams,
@@ -281,6 +282,7 @@ export declare namespace Agents {
 
   export {
     Tools as Tools,
+    type BrowserbaseSetupUpdate as BrowserbaseSetupUpdate,
     type ToolCreateResponse as ToolCreateResponse,
     type ToolUpdateResponse as ToolUpdateResponse,
     type ToolListResponse as ToolListResponse,
