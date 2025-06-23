@@ -237,6 +237,10 @@ export const tool: Tool = {
         type: 'integer',
         title: 'Max Tokens',
       },
+      metadata: {
+        type: 'object',
+        title: 'Metadata',
+      },
       min_p: {
         type: 'number',
         title: 'Min P',

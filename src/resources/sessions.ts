@@ -157,6 +157,8 @@ export interface ChatInput {
 
   max_tokens?: number | null;
 
+  metadata?: unknown | null;
+
   min_p?: number | null;
 
   model?: string | null;
@@ -1620,6 +1622,11 @@ export interface SessionChatParams {
   /**
    * Body param:
    */
+  metadata?: unknown | null;
+
+  /**
+   * Body param:
+   */
   min_p?: number | null;
 
   /**
@@ -1893,6 +1900,8 @@ export interface SessionRenderParams {
   logit_bias?: Record<string, number> | null;
 
   max_tokens?: number | null;
+
+  metadata?: unknown | null;
 
   min_p?: number | null;
 
