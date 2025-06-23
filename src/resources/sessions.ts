@@ -197,7 +197,11 @@ export namespace ChatInput {
     content?:
       | string
       | Array<string>
-      | Array<Message.Content | Message.ContentModel7 | Message.AgentsAPIAutogenChatContentModelInput>
+      | Array<
+          | Message.AgentsAPIAutogenChatContent
+          | Message.ContentModel7
+          | Message.AgentsAPIAutogenChatContentModelInput
+        >
       | null;
 
     continue?: boolean | null;
@@ -215,7 +219,7 @@ export namespace ChatInput {
   }
 
   export namespace Message {
-    export interface Content {
+    export interface AgentsAPIAutogenChatContent {
       text: string;
 
       type?: 'text';
@@ -666,7 +670,9 @@ export interface Entry {
 
   content:
     | Array<
-        Entry.Content | Entry.AgentsAPIAutogenEntriesContentModel3 | Entry.AgentsAPIAutogenEntriesContentModel
+        | Entry.ContentOutput
+        | Entry.AgentsAPIAutogenEntriesContentModel3
+        | Entry.AgentsAPIAutogenEntriesContentModel
       >
     | Entry.Tool
     | ChosenFunctionCall
@@ -714,7 +720,7 @@ export interface Entry {
 }
 
 export namespace Entry {
-  export interface Content {
+  export interface ContentOutput {
     text: string;
 
     type?: 'text';
@@ -1310,7 +1316,7 @@ export namespace SessionRenderResponse {
     content?:
       | string
       | Array<string>
-      | Array<Message.Content | Message.ContentModel7 | Message.AgentsAPIAutogenChatContentModelOutput>
+      | Array<Message.ContentOutput | Message.ContentModel7 | Message.AgentsAPIAutogenChatContentModelOutput>
       | null;
 
     continue?: boolean | null;
@@ -1328,7 +1334,7 @@ export namespace SessionRenderResponse {
   }
 
   export namespace Message {
-    export interface Content {
+    export interface ContentOutput {
       text: string;
 
       type?: 'text';
@@ -1707,7 +1713,11 @@ export namespace SessionChatParams {
     content?:
       | string
       | Array<string>
-      | Array<Message.Content | Message.ContentModel7 | Message.AgentsAPIAutogenChatContentModelInput>
+      | Array<
+          | Message.AgentsAPIAutogenChatContent
+          | Message.ContentModel7
+          | Message.AgentsAPIAutogenChatContentModelInput
+        >
       | null;
 
     continue?: boolean | null;
@@ -1725,7 +1735,7 @@ export namespace SessionChatParams {
   }
 
   export namespace Message {
-    export interface Content {
+    export interface AgentsAPIAutogenChatContent {
       text: string;
 
       type?: 'text';
@@ -1939,7 +1949,11 @@ export namespace SessionRenderParams {
     content?:
       | string
       | Array<string>
-      | Array<Message.Content | Message.ContentModel7 | Message.AgentsAPIAutogenChatContentModelInput>
+      | Array<
+          | Message.AgentsAPIAutogenChatContent
+          | Message.ContentModel7
+          | Message.AgentsAPIAutogenChatContentModelInput
+        >
       | null;
 
     continue?: boolean | null;
@@ -1957,7 +1971,7 @@ export namespace SessionRenderParams {
   }
 
   export namespace Message {
-    export interface Content {
+    export interface AgentsAPIAutogenChatContent {
       text: string;
 
       type?: 'text';

@@ -984,7 +984,7 @@ export namespace PromptStepInput {
     content:
       | Array<string>
       | Array<
-          | UnionMember0.Content
+          | UnionMember0.AgentsAPIAutogenTasksContent
           | UnionMember0.AgentsAPIAutogenTasksContentModel
           | UnionMember0.ContentModel1Input
         >
@@ -1008,7 +1008,7 @@ export namespace PromptStepInput {
   }
 
   export namespace UnionMember0 {
-    export interface Content {
+    export interface AgentsAPIAutogenTasksContent {
       text: string;
 
       type?: 'text';

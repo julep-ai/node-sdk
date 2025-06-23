@@ -192,7 +192,7 @@ export declare namespace DocSearchParams {
     /**
      * Body param:
      */
-    trigram_similarity_threshold?: number;
+    trigram_similarity_threshold?: number | null;
   }
 
   export interface VectorDocSearchRequest {
@@ -210,11 +210,6 @@ export declare namespace DocSearchParams {
      * Body param:
      */
     confidence?: number;
-
-    /**
-     * Body param:
-     */
-    lang?: string;
 
     /**
      * Body param:
@@ -286,7 +281,7 @@ export declare namespace DocSearchParams {
     /**
      * Body param:
      */
-    trigram_similarity_threshold?: number;
+    trigram_similarity_threshold?: number | null;
   }
 }
 

@@ -29,11 +29,13 @@ export const tool: Tool = {
         anyOf: [
           {
             type: 'string',
+            title: 'Content',
           },
           {
             type: 'array',
             items: {
               type: 'string',
+              title: 'Content',
             },
           },
         ],
