@@ -77,10 +77,6 @@ export const tool: Tool = {
             type: 'number',
             title: 'Confidence',
           },
-          lang: {
-            type: 'string',
-            title: 'Lang',
-          },
           limit: {
             type: 'integer',
             title: 'Limit',

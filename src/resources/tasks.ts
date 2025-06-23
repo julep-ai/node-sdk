@@ -162,7 +162,7 @@ export namespace PromptStepOutput {
     content:
       | Array<string>
       | Array<
-          | UnionMember0.Content
+          | UnionMember0.ContentOutput
           | UnionMember0.AgentsAPIAutogenTasksContentModel
           | UnionMember0.AgentsAPIAutogenTasksContentModel1Output
         >
@@ -186,7 +186,7 @@ export namespace PromptStepOutput {
   }
 
   export namespace UnionMember0 {
-    export interface Content {
+    export interface ContentOutput {
       text: string;
 
       type?: 'text';
