@@ -153,7 +153,7 @@ export interface ChatInput {
 
   length_penalty?: number | null;
 
-  logit_bias?: Record<string, number> | null;
+  logit_bias?: { [key: string]: number } | null;
 
   max_tokens?: number | null;
 
@@ -1584,7 +1584,7 @@ export namespace SessionUpdateParams {
 export interface SessionListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
 
-  metadata_filter?: Record<string, unknown>;
+  metadata_filter?: { [key: string]: unknown };
 
   sort_by?: 'created_at' | 'updated_at';
 }
@@ -1618,7 +1618,7 @@ export interface SessionChatParams {
   /**
    * Body param:
    */
-  logit_bias?: Record<string, number> | null;
+  logit_bias?: { [key: string]: number } | null;
 
   /**
    * Body param:
@@ -1907,7 +1907,7 @@ export interface SessionRenderParams {
 
   length_penalty?: number | null;
 
-  logit_bias?: Record<string, number> | null;
+  logit_bias?: { [key: string]: number } | null;
 
   max_tokens?: number | null;
 

@@ -84,7 +84,7 @@ export interface ErrorWorkflowStep {
 }
 
 export interface EvaluateStep {
-  evaluate: Record<string, unknown | string>;
+  evaluate: { [key: string]: unknown | string };
 
   kind_?: 'evaluate';
 
@@ -348,7 +348,9 @@ export namespace PromptStepOutput {
 }
 
 export interface ReturnStep {
-  return: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
+  return: {
+    [key: string]: Array<string> | { [key: string]: string } | Array<{ [key: string]: string }> | string;
+  };
 
   kind_?: 'return';
 
@@ -356,7 +358,7 @@ export interface ReturnStep {
 }
 
 export interface SetStep {
-  set: Record<string, unknown | string>;
+  set: { [key: string]: unknown | string };
 
   kind_?: 'set';
 
@@ -537,7 +539,9 @@ export interface ToolCallStep {
 }
 
 export interface WaitForInputInfo {
-  info: Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>;
+  info: {
+    [key: string]: Array<string> | { [key: string]: string } | Array<{ [key: string]: string }> | string;
+  };
 }
 
 export interface WaitForInputStep {
@@ -552,7 +556,7 @@ export interface YieldStep {
   workflow: string;
 
   arguments?:
-    | Record<string, Array<string> | Record<string, string> | Array<Record<string, string>> | string>
+    | { [key: string]: Array<string> | { [key: string]: string } | Array<{ [key: string]: string }> | string }
     | '_';
 
   kind_?: 'yield';

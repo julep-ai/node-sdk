@@ -56,7 +56,7 @@ export interface APICallDef {
 
   content?: string | null;
 
-  cookies?: Record<string, string> | null;
+  cookies?: { [key: string]: string } | null;
 
   data?: unknown | null;
 
@@ -64,7 +64,7 @@ export interface APICallDef {
 
   follow_redirects?: boolean | null;
 
-  headers?: Record<string, string> | null;
+  headers?: { [key: string]: string } | null;
 
   include_response_content?: boolean;
 
@@ -74,7 +74,7 @@ export interface APICallDef {
 
   schema?: unknown | null;
 
-  secrets?: Record<string, SecretRef> | null;
+  secrets?: { [key: string]: SecretRef } | null;
 
   timeout?: number | null;
 }

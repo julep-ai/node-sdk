@@ -222,7 +222,7 @@ export interface AgentUpdateParams {
 export interface AgentListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
 
-  metadata_filter?: Record<string, unknown>;
+  metadata_filter?: { [key: string]: unknown };
 
   sort_by?: 'created_at' | 'updated_at';
 }

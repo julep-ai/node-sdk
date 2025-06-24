@@ -538,7 +538,7 @@ export namespace ToolUpdateParams {
   export interface APICall {
     content?: string | null;
 
-    cookies?: Record<string, string> | null;
+    cookies?: { [key: string]: string } | null;
 
     data?: unknown | null;
 
@@ -546,7 +546,7 @@ export namespace ToolUpdateParams {
 
     follow_redirects?: boolean | null;
 
-    headers?: Record<string, string> | null;
+    headers?: { [key: string]: string } | null;
 
     include_response_content?: boolean;
 
@@ -558,7 +558,7 @@ export namespace ToolUpdateParams {
 
     schema?: unknown | null;
 
-    secrets?: Record<string, APICall.Secrets> | null;
+    secrets?: { [key: string]: APICall.Secrets } | null;
 
     timeout?: number | null;
 
