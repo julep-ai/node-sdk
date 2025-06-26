@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.3.0 (2025-06-26)
+
+Full Changelog: [v2.2.0...v2.3.0](https://github.com/julep-ai/node-sdk/compare/v2.2.0...v2.3.0)
+
+### Features
+
+* **api:** api update ([8748803](https://github.com/julep-ai/node-sdk/commit/874880353068276fa80e1e47f3227ab95b1436be))
+* **api:** api update ([7147437](https://github.com/julep-ai/node-sdk/commit/71474377345a3e3138beb37756b260844896ceab))
+* **api:** api update ([086e945](https://github.com/julep-ai/node-sdk/commit/086e945aeeea21dab47dd04fe0f9090f55c5662c))
+
+
+### Refactors
+
+* **types:** replace Record with mapped types ([a663fbe](https://github.com/julep-ai/node-sdk/commit/a663fbe46dbe6da2f551d573e23a8d2e3b3c8ed6))
+
 ## 2.2.0 (2025-06-19)
 
 Full Changelog: [v2.1.0...v2.2.0](https://github.com/julep-ai/node-sdk/compare/v2.1.0...v2.2.0)
