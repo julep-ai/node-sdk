@@ -1030,6 +1030,8 @@ export interface HybridDocSearch {
 
   confidence?: number;
 
+  include_embeddings?: boolean;
+
   k_multiplier?: number;
 
   lang?: string;
@@ -1094,6 +1096,8 @@ export interface SimpleCompletionResponseFormat {
 }
 
 export interface TextOnlyDocSearch {
+  include_embeddings?: boolean;
+
   lang?: string;
 
   limit?: number;
@@ -1121,6 +1125,8 @@ export interface TokenLogProb {
 
 export interface VectorDocSearch {
   confidence?: number;
+
+  include_embeddings?: boolean;
 
   lang?: string;
 
@@ -1525,6 +1531,8 @@ export namespace SessionUpdateParams {
   export interface VectorDocSearchUpdate {
     confidence?: number;
 
+    include_embeddings?: boolean;
+
     lang?: string;
 
     limit?: number;
@@ -1541,6 +1549,8 @@ export namespace SessionUpdateParams {
   }
 
   export interface TextOnlyDocSearchUpdate {
+    include_embeddings?: boolean;
+
     lang?: string;
 
     limit?: number;
@@ -1560,6 +1570,8 @@ export namespace SessionUpdateParams {
     alpha?: number;
 
     confidence?: number;
+
+    include_embeddings?: boolean;
 
     k_multiplier?: number;
 

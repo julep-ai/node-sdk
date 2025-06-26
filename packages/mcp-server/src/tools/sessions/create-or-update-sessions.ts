@@ -104,6 +104,10 @@ export const tool: Tool = {
             type: 'number',
             title: 'Confidence',
           },
+          include_embeddings: {
+            type: 'boolean',
+            title: 'Include Embeddings',
+          },
           lang: {
             type: 'string',
             title: 'Lang',
@@ -140,6 +144,10 @@ export const tool: Tool = {
         type: 'object',
         title: 'TextOnlyDocSearch',
         properties: {
+          include_embeddings: {
+            type: 'boolean',
+            title: 'Include Embeddings',
+          },
           lang: {
             type: 'string',
             title: 'Lang',
@@ -183,6 +191,10 @@ export const tool: Tool = {
           confidence: {
             type: 'number',
             title: 'Confidence',
+          },
+          include_embeddings: {
+            type: 'boolean',
+            title: 'Include Embeddings',
           },
           k_multiplier: {
             type: 'integer',

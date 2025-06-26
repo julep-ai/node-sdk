@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
 import * as Core from '../core';
 import { OffsetPagination } from '../pagination';
 
@@ -15,8 +16,17 @@ export class Docs extends APIResource {
   /**
    * Get Doc
    */
-  get(docId: string, options?: Core.RequestOptions): Core.APIPromise<Doc> {
-    return this._client.get(`/docs/${docId}`, options);
+  get(docId: string, query?: DocGetParams, options?: Core.RequestOptions): Core.APIPromise<Doc>;
+  get(docId: string, options?: Core.RequestOptions): Core.APIPromise<Doc>;
+  get(
+    docId: string,
+    query: DocGetParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Doc> {
+    if (isRequestOptions(query)) {
+      return this.get(docId, {}, query);
+    }
+    return this._client.get(`/docs/${docId}`, { query, ...options });
   }
 }
 
@@ -74,11 +84,16 @@ export declare namespace DocEmbedParams {
   }
 }
 
+export interface DocGetParams {
+  include_embeddings?: boolean;
+}
+
 export declare namespace Docs {
   export {
     type Doc as Doc,
     type EmbedQueryResponse as EmbedQueryResponse,
     type Snippet as Snippet,
     type DocEmbedParams as DocEmbedParams,
+    type DocGetParams as DocGetParams,
   };
 }

@@ -69,10 +69,8 @@ export class Docs extends APIResource {
    * Parameters: x_developer_id (UUID): The unique identifier of the developer
    * associated with the agent. search_params (TextOnlyDocSearchRequest |
    * VectorDocSearchRequest | HybridDocSearchRequest): The parameters for the search.
-   * agent_id (UUID): The unique identifier of the agent associated with the
-   * documents.
-   *
-   * Returns: DocSearchResponse: The search results.
+   * agent_id (UUID): The umnique identifier of the agent associated with the
+   * documents. Returns: DocSearchResponse: The search results.
    */
   search(
     agentId: string,
@@ -140,6 +138,8 @@ export interface DocCreateParams {
 export interface DocListParams extends OffsetPaginationParams {
   direction?: 'asc' | 'desc';
 
+  include_embeddings?: boolean;
+
   metadata_filter?: { [key: string]: unknown };
 
   sort_by?: 'created_at' | 'updated_at';
@@ -167,6 +167,11 @@ export declare namespace DocSearchParams {
      * Query param:
      */
     connection_pool?: unknown;
+
+    /**
+     * Body param:
+     */
+    include_embeddings?: boolean;
 
     /**
      * Body param:
@@ -204,6 +209,11 @@ export declare namespace DocSearchParams {
      * Body param:
      */
     confidence?: number;
+
+    /**
+     * Body param:
+     */
+    include_embeddings?: boolean;
 
     /**
      * Body param:
@@ -246,6 +256,11 @@ export declare namespace DocSearchParams {
      * Body param:
      */
     confidence?: number;
+
+    /**
+     * Body param:
+     */
+    include_embeddings?: boolean;
 
     /**
      * Body param:
