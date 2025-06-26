@@ -232,7 +232,7 @@ Types:
 Methods:
 
 - <code title="post /embed">client.docs.<a href="./src/resources/docs.ts">embed</a>({ ...params }) -> EmbedQueryResponse</code>
-- <code title="get /docs/{doc_id}">client.docs.<a href="./src/resources/docs.ts">get</a>(docId) -> Doc</code>
+- <code title="get /docs/{doc_id}">client.docs.<a href="./src/resources/docs.ts">get</a>(docId, { ...params }) -> Doc</code>
 
 # Tasks
 

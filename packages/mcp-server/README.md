@@ -201,8 +201,7 @@ The following tools are available in this MCP server.
   Parameters:
   x_developer_id (UUID): The unique identifier of the developer associated with the agent.
   search_params (TextOnlyDocSearchRequest | VectorDocSearchRequest | HybridDocSearchRequest): The parameters for the search.
-  agent_id (UUID): The unique identifier of the agent associated with the documents.
-
+  agent_id (UUID): The umnique identifier of the agent associated with the documents.
   Returns:
   DocSearchResponse: The search results.
 
@@ -277,7 +276,6 @@ The following tools are available in this MCP server.
   x_developer_id (UUID): The unique identifier of the developer associated with the user.
   search_params (TextOnlyDocSearchRequest | VectorDocSearchRequest | HybridDocSearchRequest): The parameters for the search.
   user_id (UUID): The unique identifier of the user associated with the documents.
-
   Returns:
   DocSearchResponse: The search results.
 

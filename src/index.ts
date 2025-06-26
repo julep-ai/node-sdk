@@ -8,7 +8,7 @@ import * as Pagination from './pagination';
 import { type OffsetPaginationParams, OffsetPaginationResponse } from './pagination';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Doc, DocEmbedParams, Docs, EmbedQueryResponse, Snippet } from './resources/docs';
+import { Doc, DocEmbedParams, DocGetParams, Docs, EmbedQueryResponse, Snippet } from './resources/docs';
 import { File, FileCreateParams, FileDeleteResponse, FileListResponse, Files } from './resources/files';
 import { Healthz, HealthzCheckResponse } from './resources/healthz';
 import { JobStatus, Jobs } from './resources/jobs';
@@ -421,6 +421,7 @@ export declare namespace Julep {
     type EmbedQueryResponse as EmbedQueryResponse,
     type Snippet as Snippet,
     type DocEmbedParams as DocEmbedParams,
+    type DocGetParams as DocGetParams,
   };
 
   export {

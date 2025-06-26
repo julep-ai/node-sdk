@@ -25,13 +25,17 @@ export const tool: Tool = {
         type: 'string',
         title: 'Doc Id',
       },
+      include_embeddings: {
+        type: 'boolean',
+        title: 'Include Embeddings',
+      },
     },
   },
 };
 
 export const handler = async (client: Julep, args: Record<string, unknown> | undefined) => {
   const { doc_id, ...body } = args as any;
-  return asTextContentResult(await client.docs.get(doc_id));
+  return asTextContentResult(await client.docs.get(doc_id, body));
 };
 
 export default { metadata, tool, handler };
