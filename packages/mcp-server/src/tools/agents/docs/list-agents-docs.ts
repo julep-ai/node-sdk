@@ -30,6 +30,10 @@ export const tool: Tool = {
         title: 'Direction',
         enum: ['asc', 'desc'],
       },
+      include_embeddings: {
+        type: 'boolean',
+        title: 'Include Embeddings',
+      },
       limit: {
         type: 'integer',
         title: 'Limit',

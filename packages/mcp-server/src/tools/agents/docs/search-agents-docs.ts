@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'search_agents_docs',
   description:
-    'Searches for documents associated with a specific agent.\n\nParameters:\n    x_developer_id (UUID): The unique identifier of the developer associated with the agent.\n    search_params (TextOnlyDocSearchRequest | VectorDocSearchRequest | HybridDocSearchRequest): The parameters for the search.\n    agent_id (UUID): The unique identifier of the agent associated with the documents.\n\nReturns:\n    DocSearchResponse: The search results.',
+    'Searches for documents associated with a specific agent.\n\nParameters:\n    x_developer_id (UUID): The unique identifier of the developer associated with the agent.\n    search_params (TextOnlyDocSearchRequest | VectorDocSearchRequest | HybridDocSearchRequest): The parameters for the search.\n    agent_id (UUID): The umnique identifier of the agent associated with the documents.\nReturns:\n    DocSearchResponse: The search results.',
   inputSchema: {
     type: 'object',
     anyOf: [
@@ -36,6 +36,10 @@ export const tool: Tool = {
           connection_pool: {
             type: 'object',
             title: 'Connection Pool',
+          },
+          include_embeddings: {
+            type: 'boolean',
+            title: 'Include Embeddings',
           },
           lang: {
             type: 'string',
@@ -76,6 +80,10 @@ export const tool: Tool = {
           confidence: {
             type: 'number',
             title: 'Confidence',
+          },
+          include_embeddings: {
+            type: 'boolean',
+            title: 'Include Embeddings',
           },
           limit: {
             type: 'integer',
@@ -120,6 +128,10 @@ export const tool: Tool = {
           confidence: {
             type: 'number',
             title: 'Confidence',
+          },
+          include_embeddings: {
+            type: 'boolean',
+            title: 'Include Embeddings',
           },
           k_multiplier: {
             type: 'integer',

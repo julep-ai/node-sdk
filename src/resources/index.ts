@@ -21,6 +21,7 @@ export {
   type EmbedQueryResponse,
   type Snippet,
   type DocEmbedParams,
+  type DocGetParams,
 } from './docs';
 export {
   Files,
