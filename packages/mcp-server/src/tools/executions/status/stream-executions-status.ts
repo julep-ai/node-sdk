@@ -32,8 +32,8 @@ export const tool: Tool = {
 
 export const handler = async (client: Julep, args: Record<string, unknown> | undefined) => {
   const { execution_id, ...body } = args as any;
-  await client.executions.status.stream(execution_id);
-  return asTextContentResult('Successful tool call');
+  const response = await client.executions.status.stream(execution_id).asResponse();
+  return asTextContentResult(await response.text());
 };
 
 export default { metadata, tool, handler };
