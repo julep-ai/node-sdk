@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.4.0 (2025-06-28)
+
+Full Changelog: [v2.3.0...v2.4.0](https://github.com/julep-ai/node-sdk/compare/v2.3.0...v2.4.0)
+
+### Features
+
+* **mcp:** fallback for void-typed methods ([6e9a852](https://github.com/julep-ai/node-sdk/commit/6e9a85217456f2df62a38796afb94c461eaf552a))
+
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([3a13b87](https://github.com/julep-ai/node-sdk/commit/3a13b8704d06ca9e1b41bbc040b2f5ddc0512a69))
+
 ## 2.3.0 (2025-06-26)
 
 Full Changelog: [v2.2.0...v2.3.0](https://github.com/julep-ai/node-sdk/compare/v2.2.0...v2.3.0)
