@@ -117,7 +117,7 @@ export interface ToolCreateResponse {
   /**
    * API call definition
    */
-  api_call?: Shared.APICallDef | null;
+  api_call?: ToolCreateResponse.APICall | null;
 
   bash_20241022?: Shared.Bash20241022Def | null;
 
@@ -167,6 +167,76 @@ export interface ToolCreateResponse {
   system?: Shared.SystemDef | null;
 
   text_editor_20241022?: Shared.TextEditor20241022Def | null;
+}
+
+export namespace ToolCreateResponse {
+  /**
+   * API call definition
+   */
+  export interface APICall {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+    url: string;
+
+    content?: string | null;
+
+    cookies?: { [key: string]: string } | null;
+
+    data?: unknown | null;
+
+    files?: unknown | null;
+
+    follow_redirects?: boolean | null;
+
+    headers?: { [key: string]: string } | null;
+
+    include_response_content?: boolean;
+
+    json?: unknown | null;
+
+    params?: string | unknown | null;
+
+    /**
+     * JSON Schema for API call parameters
+     */
+    params_schema?: APICall.ParamsSchema | null;
+
+    schema?: unknown | null;
+
+    secrets?: { [key: string]: Shared.SecretRef } | null;
+
+    timeout?: number | null;
+  }
+
+  export namespace APICall {
+    /**
+     * JSON Schema for API call parameters
+     */
+    export interface ParamsSchema {
+      properties: { [key: string]: ParamsSchema.Properties };
+
+      additionalProperties?: boolean | null;
+
+      required?: Array<string>;
+
+      type?: string;
+    }
+
+    export namespace ParamsSchema {
+      /**
+       * Property definition for parameter schema
+       */
+      export interface Properties {
+        type: string;
+
+        description?: string | null;
+
+        enum?: Array<string> | null;
+
+        items?: unknown;
+      }
+    }
+  }
 }
 
 export interface ToolUpdateResponse {
@@ -190,7 +260,7 @@ export interface ToolUpdateResponse {
   /**
    * API call definition
    */
-  api_call?: Shared.APICallDef | null;
+  api_call?: ToolUpdateResponse.APICall | null;
 
   bash_20241022?: Shared.Bash20241022Def | null;
 
@@ -242,6 +312,76 @@ export interface ToolUpdateResponse {
   text_editor_20241022?: Shared.TextEditor20241022Def | null;
 }
 
+export namespace ToolUpdateResponse {
+  /**
+   * API call definition
+   */
+  export interface APICall {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+    url: string;
+
+    content?: string | null;
+
+    cookies?: { [key: string]: string } | null;
+
+    data?: unknown | null;
+
+    files?: unknown | null;
+
+    follow_redirects?: boolean | null;
+
+    headers?: { [key: string]: string } | null;
+
+    include_response_content?: boolean;
+
+    json?: unknown | null;
+
+    params?: string | unknown | null;
+
+    /**
+     * JSON Schema for API call parameters
+     */
+    params_schema?: APICall.ParamsSchema | null;
+
+    schema?: unknown | null;
+
+    secrets?: { [key: string]: Shared.SecretRef } | null;
+
+    timeout?: number | null;
+  }
+
+  export namespace APICall {
+    /**
+     * JSON Schema for API call parameters
+     */
+    export interface ParamsSchema {
+      properties: { [key: string]: ParamsSchema.Properties };
+
+      additionalProperties?: boolean | null;
+
+      required?: Array<string>;
+
+      type?: string;
+    }
+
+    export namespace ParamsSchema {
+      /**
+       * Property definition for parameter schema
+       */
+      export interface Properties {
+        type: string;
+
+        description?: string | null;
+
+        enum?: Array<string> | null;
+
+        items?: unknown;
+      }
+    }
+  }
+}
+
 export interface ToolListResponse {
   id: string;
 
@@ -263,7 +403,7 @@ export interface ToolListResponse {
   /**
    * API call definition
    */
-  api_call?: Shared.APICallDef | null;
+  api_call?: ToolListResponse.APICall | null;
 
   bash_20241022?: Shared.Bash20241022Def | null;
 
@@ -313,6 +453,76 @@ export interface ToolListResponse {
   system?: Shared.SystemDef | null;
 
   text_editor_20241022?: Shared.TextEditor20241022Def | null;
+}
+
+export namespace ToolListResponse {
+  /**
+   * API call definition
+   */
+  export interface APICall {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+    url: string;
+
+    content?: string | null;
+
+    cookies?: { [key: string]: string } | null;
+
+    data?: unknown | null;
+
+    files?: unknown | null;
+
+    follow_redirects?: boolean | null;
+
+    headers?: { [key: string]: string } | null;
+
+    include_response_content?: boolean;
+
+    json?: unknown | null;
+
+    params?: string | unknown | null;
+
+    /**
+     * JSON Schema for API call parameters
+     */
+    params_schema?: APICall.ParamsSchema | null;
+
+    schema?: unknown | null;
+
+    secrets?: { [key: string]: Shared.SecretRef } | null;
+
+    timeout?: number | null;
+  }
+
+  export namespace APICall {
+    /**
+     * JSON Schema for API call parameters
+     */
+    export interface ParamsSchema {
+      properties: { [key: string]: ParamsSchema.Properties };
+
+      additionalProperties?: boolean | null;
+
+      required?: Array<string>;
+
+      type?: string;
+    }
+
+    export namespace ParamsSchema {
+      /**
+       * Property definition for parameter schema
+       */
+      export interface Properties {
+        type: string;
+
+        description?: string | null;
+
+        enum?: Array<string> | null;
+
+        items?: unknown;
+      }
+    }
+  }
 }
 
 export interface ToolDeleteResponse {
@@ -344,7 +554,7 @@ export interface ToolResetResponse {
   /**
    * API call definition
    */
-  api_call?: Shared.APICallDef | null;
+  api_call?: ToolResetResponse.APICall | null;
 
   bash_20241022?: Shared.Bash20241022Def | null;
 
@@ -396,6 +606,76 @@ export interface ToolResetResponse {
   text_editor_20241022?: Shared.TextEditor20241022Def | null;
 }
 
+export namespace ToolResetResponse {
+  /**
+   * API call definition
+   */
+  export interface APICall {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+    url: string;
+
+    content?: string | null;
+
+    cookies?: { [key: string]: string } | null;
+
+    data?: unknown | null;
+
+    files?: unknown | null;
+
+    follow_redirects?: boolean | null;
+
+    headers?: { [key: string]: string } | null;
+
+    include_response_content?: boolean;
+
+    json?: unknown | null;
+
+    params?: string | unknown | null;
+
+    /**
+     * JSON Schema for API call parameters
+     */
+    params_schema?: APICall.ParamsSchema | null;
+
+    schema?: unknown | null;
+
+    secrets?: { [key: string]: Shared.SecretRef } | null;
+
+    timeout?: number | null;
+  }
+
+  export namespace APICall {
+    /**
+     * JSON Schema for API call parameters
+     */
+    export interface ParamsSchema {
+      properties: { [key: string]: ParamsSchema.Properties };
+
+      additionalProperties?: boolean | null;
+
+      required?: Array<string>;
+
+      type?: string;
+    }
+
+    export namespace ParamsSchema {
+      /**
+       * Property definition for parameter schema
+       */
+      export interface Properties {
+        type: string;
+
+        description?: string | null;
+
+        enum?: Array<string> | null;
+
+        items?: unknown;
+      }
+    }
+  }
+}
+
 export interface ToolCreateParams {
   name: string;
 
@@ -411,7 +691,7 @@ export interface ToolCreateParams {
   /**
    * API call definition
    */
-  api_call?: Shared.APICallDef | null;
+  api_call?: ToolCreateParams.APICall | null;
 
   bash_20241022?: Shared.Bash20241022Def | null;
 
@@ -461,6 +741,76 @@ export interface ToolCreateParams {
   system?: Shared.SystemDef | null;
 
   text_editor_20241022?: Shared.TextEditor20241022Def | null;
+}
+
+export namespace ToolCreateParams {
+  /**
+   * API call definition
+   */
+  export interface APICall {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+    url: string;
+
+    content?: string | null;
+
+    cookies?: { [key: string]: string } | null;
+
+    data?: unknown | null;
+
+    files?: unknown | null;
+
+    follow_redirects?: boolean | null;
+
+    headers?: { [key: string]: string } | null;
+
+    include_response_content?: boolean;
+
+    json?: unknown | null;
+
+    params?: string | unknown | null;
+
+    /**
+     * JSON Schema for API call parameters
+     */
+    params_schema?: APICall.ParamsSchema | null;
+
+    schema?: unknown | null;
+
+    secrets?: { [key: string]: Shared.SecretRef } | null;
+
+    timeout?: number | null;
+  }
+
+  export namespace APICall {
+    /**
+     * JSON Schema for API call parameters
+     */
+    export interface ParamsSchema {
+      properties: { [key: string]: ParamsSchema.Properties };
+
+      additionalProperties?: boolean | null;
+
+      required?: Array<string>;
+
+      type?: string;
+    }
+
+    export namespace ParamsSchema {
+      /**
+       * Property definition for parameter schema
+       */
+      export interface Properties {
+        type: string;
+
+        description?: string | null;
+
+        enum?: Array<string> | null;
+
+        items?: unknown;
+      }
+    }
+  }
 }
 
 export interface ToolUpdateParams {
@@ -556,6 +906,11 @@ export namespace ToolUpdateParams {
 
     params?: string | unknown | null;
 
+    /**
+     * JSON Schema for API call parameters
+     */
+    params_schema?: APICall.ParamsSchema | null;
+
     schema?: unknown | null;
 
     secrets?: { [key: string]: APICall.Secrets } | null;
@@ -566,6 +921,34 @@ export namespace ToolUpdateParams {
   }
 
   export namespace APICall {
+    /**
+     * JSON Schema for API call parameters
+     */
+    export interface ParamsSchema {
+      additionalProperties?: boolean | null;
+
+      properties?: { [key: string]: ParamsSchema.Properties } | null;
+
+      required?: Array<string>;
+
+      type?: string;
+    }
+
+    export namespace ParamsSchema {
+      /**
+       * Property definition for parameter schema
+       */
+      export interface Properties {
+        description?: string | null;
+
+        enum?: Array<string> | null;
+
+        items?: unknown;
+
+        type?: string | null;
+      }
+    }
+
     export interface Secrets {
       name?: string | null;
     }
@@ -1368,7 +1751,7 @@ export interface ToolResetParams {
   /**
    * API call definition
    */
-  api_call?: Shared.APICallDef | null;
+  api_call?: ToolResetParams.APICall | null;
 
   bash_20241022?: Shared.Bash20241022Def | null;
 
@@ -1418,6 +1801,76 @@ export interface ToolResetParams {
   system?: Shared.SystemDef | null;
 
   text_editor_20241022?: Shared.TextEditor20241022Def | null;
+}
+
+export namespace ToolResetParams {
+  /**
+   * API call definition
+   */
+  export interface APICall {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+    url: string;
+
+    content?: string | null;
+
+    cookies?: { [key: string]: string } | null;
+
+    data?: unknown | null;
+
+    files?: unknown | null;
+
+    follow_redirects?: boolean | null;
+
+    headers?: { [key: string]: string } | null;
+
+    include_response_content?: boolean;
+
+    json?: unknown | null;
+
+    params?: string | unknown | null;
+
+    /**
+     * JSON Schema for API call parameters
+     */
+    params_schema?: APICall.ParamsSchema | null;
+
+    schema?: unknown | null;
+
+    secrets?: { [key: string]: Shared.SecretRef } | null;
+
+    timeout?: number | null;
+  }
+
+  export namespace APICall {
+    /**
+     * JSON Schema for API call parameters
+     */
+    export interface ParamsSchema {
+      properties: { [key: string]: ParamsSchema.Properties };
+
+      additionalProperties?: boolean | null;
+
+      required?: Array<string>;
+
+      type?: string;
+    }
+
+    export namespace ParamsSchema {
+      /**
+       * Property definition for parameter schema
+       */
+      export interface Properties {
+        type: string;
+
+        description?: string | null;
+
+        enum?: Array<string> | null;
+
+        items?: unknown;
+      }
+    }
+  }
 }
 
 Tools.ToolListResponsesOffsetPagination = ToolListResponsesOffsetPagination;

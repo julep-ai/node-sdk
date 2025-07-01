@@ -47,39 +47,6 @@ export interface AlgoliaSetup {
 }
 
 /**
- * API call definition
- */
-export interface APICallDef {
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
-
-  url: string;
-
-  content?: string | null;
-
-  cookies?: { [key: string]: string } | null;
-
-  data?: unknown | null;
-
-  files?: unknown | null;
-
-  follow_redirects?: boolean | null;
-
-  headers?: { [key: string]: string } | null;
-
-  include_response_content?: boolean;
-
-  json?: unknown | null;
-
-  params?: string | unknown | null;
-
-  schema?: unknown | null;
-
-  secrets?: { [key: string]: SecretRef } | null;
-
-  timeout?: number | null;
-}
-
-/**
  * Arxiv integration definition
  */
 export interface ArxivIntegrationDef {
@@ -1114,7 +1081,7 @@ export namespace PromptStepInput {
     /**
      * API call definition
      */
-    api_call?: Shared.APICallDef | null;
+    api_call?: AgentsAPIAutogenToolsCreateToolRequestInput.APICall | null;
 
     bash_20241022?: Shared.Bash20241022Def | null;
 
@@ -1164,6 +1131,76 @@ export namespace PromptStepInput {
     system?: Shared.SystemDef | null;
 
     text_editor_20241022?: Shared.TextEditor20241022Def | null;
+  }
+
+  export namespace AgentsAPIAutogenToolsCreateToolRequestInput {
+    /**
+     * API call definition
+     */
+    export interface APICall {
+      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+      url: string;
+
+      content?: string | null;
+
+      cookies?: { [key: string]: string } | null;
+
+      data?: unknown | null;
+
+      files?: unknown | null;
+
+      follow_redirects?: boolean | null;
+
+      headers?: { [key: string]: string } | null;
+
+      include_response_content?: boolean;
+
+      json?: unknown | null;
+
+      params?: string | unknown | null;
+
+      /**
+       * JSON Schema for API call parameters
+       */
+      params_schema?: APICall.ParamsSchema | null;
+
+      schema?: unknown | null;
+
+      secrets?: { [key: string]: Shared.SecretRef } | null;
+
+      timeout?: number | null;
+    }
+
+    export namespace APICall {
+      /**
+       * JSON Schema for API call parameters
+       */
+      export interface ParamsSchema {
+        properties: { [key: string]: ParamsSchema.Properties };
+
+        additionalProperties?: boolean | null;
+
+        required?: Array<string>;
+
+        type?: string;
+      }
+
+      export namespace ParamsSchema {
+        /**
+         * Property definition for parameter schema
+         */
+        export interface Properties {
+          type: string;
+
+          description?: string | null;
+
+          enum?: Array<string> | null;
+
+          items?: unknown;
+        }
+      }
+    }
   }
 }
 

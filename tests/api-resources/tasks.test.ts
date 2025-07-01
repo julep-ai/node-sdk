@@ -48,6 +48,12 @@ describe('resource tasks', () => {
             include_response_content: true,
             json: {},
             params: 'string',
+            params_schema: {
+              properties: { foo: { type: 'type', description: 'description', enum: ['string'], items: {} } },
+              additionalProperties: true,
+              required: ['string'],
+              type: 'type',
+            },
             schema: {},
             secrets: { foo: { name: 'name' } },
             timeout: 0,
@@ -148,6 +154,14 @@ describe('resource tasks', () => {
               include_response_content: true,
               json: {},
               params: 'string',
+              params_schema: {
+                properties: {
+                  foo: { type: 'type', description: 'description', enum: ['string'], items: {} },
+                },
+                additionalProperties: true,
+                required: ['string'],
+                type: 'type',
+              },
               schema: {},
               secrets: { foo: { name: 'name' } },
               timeout: 0,

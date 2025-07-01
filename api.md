@@ -5,7 +5,6 @@ Types:
 - <code><a href="./src/resources/shared.ts">AlgoliaIntegrationDef</a></code>
 - <code><a href="./src/resources/shared.ts">AlgoliaSearchArguments</a></code>
 - <code><a href="./src/resources/shared.ts">AlgoliaSetup</a></code>
-- <code><a href="./src/resources/shared.ts">APICallDef</a></code>
 - <code><a href="./src/resources/shared.ts">ArxivIntegrationDef</a></code>
 - <code><a href="./src/resources/shared.ts">ArxivSearchArguments</a></code>
 - <code><a href="./src/resources/shared.ts">Bash20241022Def</a></code>
