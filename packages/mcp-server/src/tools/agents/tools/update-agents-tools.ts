@@ -82,6 +82,33 @@ export const tool: Tool = {
             ],
             title: 'Params',
           },
+          params_schema: {
+            type: 'object',
+            title: 'ParameterSchemaUpdate',
+            description: 'JSON Schema for API call parameters',
+            properties: {
+              additionalProperties: {
+                type: 'boolean',
+                title: 'Additionalproperties',
+              },
+              properties: {
+                type: 'object',
+                title: 'Properties',
+              },
+              required: {
+                type: 'array',
+                title: 'Required',
+                items: {
+                  type: 'string',
+                },
+              },
+              type: {
+                type: 'string',
+                title: 'Type',
+              },
+            },
+            required: [],
+          },
           schema: {
             type: 'object',
             title: 'Schema',

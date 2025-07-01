@@ -301,7 +301,7 @@ export namespace ChatInput {
     /**
      * API call definition
      */
-    api_call?: Shared.APICallDef | null;
+    api_call?: Tool.APICall | null;
 
     bash_20241022?: Shared.Bash20241022Def | null;
 
@@ -351,6 +351,76 @@ export namespace ChatInput {
     system?: Shared.SystemDef | null;
 
     text_editor_20241022?: Shared.TextEditor20241022Def | null;
+  }
+
+  export namespace Tool {
+    /**
+     * API call definition
+     */
+    export interface APICall {
+      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+      url: string;
+
+      content?: string | null;
+
+      cookies?: { [key: string]: string } | null;
+
+      data?: unknown | null;
+
+      files?: unknown | null;
+
+      follow_redirects?: boolean | null;
+
+      headers?: { [key: string]: string } | null;
+
+      include_response_content?: boolean;
+
+      json?: unknown | null;
+
+      params?: string | unknown | null;
+
+      /**
+       * JSON Schema for API call parameters
+       */
+      params_schema?: APICall.ParamsSchema | null;
+
+      schema?: unknown | null;
+
+      secrets?: { [key: string]: Shared.SecretRef } | null;
+
+      timeout?: number | null;
+    }
+
+    export namespace APICall {
+      /**
+       * JSON Schema for API call parameters
+       */
+      export interface ParamsSchema {
+        properties: { [key: string]: ParamsSchema.Properties };
+
+        additionalProperties?: boolean | null;
+
+        required?: Array<string>;
+
+        type?: string;
+      }
+
+      export namespace ParamsSchema {
+        /**
+         * Property definition for parameter schema
+         */
+        export interface Properties {
+          type: string;
+
+          description?: string | null;
+
+          enum?: Array<string> | null;
+
+          items?: unknown;
+        }
+      }
+    }
   }
 }
 
@@ -804,7 +874,7 @@ export namespace Entry {
     /**
      * API call definition
      */
-    api_call?: Shared.APICallDef | null;
+    api_call?: Tool.APICall | null;
 
     bash_20241022?: Shared.Bash20241022Def | null;
 
@@ -854,6 +924,76 @@ export namespace Entry {
     system?: Shared.SystemDef | null;
 
     text_editor_20241022?: Shared.TextEditor20241022Def | null;
+  }
+
+  export namespace Tool {
+    /**
+     * API call definition
+     */
+    export interface APICall {
+      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+      url: string;
+
+      content?: string | null;
+
+      cookies?: { [key: string]: string } | null;
+
+      data?: unknown | null;
+
+      files?: unknown | null;
+
+      follow_redirects?: boolean | null;
+
+      headers?: { [key: string]: string } | null;
+
+      include_response_content?: boolean;
+
+      json?: unknown | null;
+
+      params?: string | unknown | null;
+
+      /**
+       * JSON Schema for API call parameters
+       */
+      params_schema?: APICall.ParamsSchema | null;
+
+      schema?: unknown | null;
+
+      secrets?: { [key: string]: Shared.SecretRef } | null;
+
+      timeout?: number | null;
+    }
+
+    export namespace APICall {
+      /**
+       * JSON Schema for API call parameters
+       */
+      export interface ParamsSchema {
+        properties: { [key: string]: ParamsSchema.Properties };
+
+        additionalProperties?: boolean | null;
+
+        required?: Array<string>;
+
+        type?: string;
+      }
+
+      export namespace ParamsSchema {
+        /**
+         * Property definition for parameter schema
+         */
+        export interface Properties {
+          type: string;
+
+          description?: string | null;
+
+          enum?: Array<string> | null;
+
+          items?: unknown;
+        }
+      }
+    }
   }
 
   export interface ToolResponse {
@@ -946,7 +1086,7 @@ export namespace Entry {
     /**
      * API call definition
      */
-    api_call?: Shared.APICallDef | null;
+    api_call?: Tool.APICall | null;
 
     bash_20241022?: Shared.Bash20241022Def | null;
 
@@ -996,6 +1136,76 @@ export namespace Entry {
     system?: Shared.SystemDef | null;
 
     text_editor_20241022?: Shared.TextEditor20241022Def | null;
+  }
+
+  export namespace Tool {
+    /**
+     * API call definition
+     */
+    export interface APICall {
+      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+      url: string;
+
+      content?: string | null;
+
+      cookies?: { [key: string]: string } | null;
+
+      data?: unknown | null;
+
+      files?: unknown | null;
+
+      follow_redirects?: boolean | null;
+
+      headers?: { [key: string]: string } | null;
+
+      include_response_content?: boolean;
+
+      json?: unknown | null;
+
+      params?: string | unknown | null;
+
+      /**
+       * JSON Schema for API call parameters
+       */
+      params_schema?: APICall.ParamsSchema | null;
+
+      schema?: unknown | null;
+
+      secrets?: { [key: string]: Shared.SecretRef } | null;
+
+      timeout?: number | null;
+    }
+
+    export namespace APICall {
+      /**
+       * JSON Schema for API call parameters
+       */
+      export interface ParamsSchema {
+        properties: { [key: string]: ParamsSchema.Properties };
+
+        additionalProperties?: boolean | null;
+
+        required?: Array<string>;
+
+        type?: string;
+      }
+
+      export namespace ParamsSchema {
+        /**
+         * Property definition for parameter schema
+         */
+        export interface Properties {
+          type: string;
+
+          description?: string | null;
+
+          enum?: Array<string> | null;
+
+          items?: unknown;
+        }
+      }
+    }
   }
 
   export interface ToolResponse {
@@ -1422,7 +1632,7 @@ export namespace SessionRenderResponse {
     /**
      * API call definition
      */
-    api_call?: Shared.APICallDef | null;
+    api_call?: Tool.APICall | null;
 
     bash_20241022?: Shared.Bash20241022Def | null;
 
@@ -1472,6 +1682,76 @@ export namespace SessionRenderResponse {
     system?: Shared.SystemDef | null;
 
     text_editor_20241022?: Shared.TextEditor20241022Def | null;
+  }
+
+  export namespace Tool {
+    /**
+     * API call definition
+     */
+    export interface APICall {
+      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+      url: string;
+
+      content?: string | null;
+
+      cookies?: { [key: string]: string } | null;
+
+      data?: unknown | null;
+
+      files?: unknown | null;
+
+      follow_redirects?: boolean | null;
+
+      headers?: { [key: string]: string } | null;
+
+      include_response_content?: boolean;
+
+      json?: unknown | null;
+
+      params?: string | unknown | null;
+
+      /**
+       * JSON Schema for API call parameters
+       */
+      params_schema?: APICall.ParamsSchema | null;
+
+      schema?: unknown | null;
+
+      secrets?: { [key: string]: Shared.SecretRef } | null;
+
+      timeout?: number | null;
+    }
+
+    export namespace APICall {
+      /**
+       * JSON Schema for API call parameters
+       */
+      export interface ParamsSchema {
+        properties: { [key: string]: ParamsSchema.Properties };
+
+        additionalProperties?: boolean | null;
+
+        required?: Array<string>;
+
+        type?: string;
+      }
+
+      export namespace ParamsSchema {
+        /**
+         * Property definition for parameter schema
+         */
+        export interface Properties {
+          type: string;
+
+          description?: string | null;
+
+          enum?: Array<string> | null;
+
+          items?: unknown;
+        }
+      }
+    }
   }
 }
 
@@ -1829,7 +2109,7 @@ export namespace SessionChatParams {
     /**
      * API call definition
      */
-    api_call?: Shared.APICallDef | null;
+    api_call?: Tool.APICall | null;
 
     bash_20241022?: Shared.Bash20241022Def | null;
 
@@ -1879,6 +2159,76 @@ export namespace SessionChatParams {
     system?: Shared.SystemDef | null;
 
     text_editor_20241022?: Shared.TextEditor20241022Def | null;
+  }
+
+  export namespace Tool {
+    /**
+     * API call definition
+     */
+    export interface APICall {
+      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+      url: string;
+
+      content?: string | null;
+
+      cookies?: { [key: string]: string } | null;
+
+      data?: unknown | null;
+
+      files?: unknown | null;
+
+      follow_redirects?: boolean | null;
+
+      headers?: { [key: string]: string } | null;
+
+      include_response_content?: boolean;
+
+      json?: unknown | null;
+
+      params?: string | unknown | null;
+
+      /**
+       * JSON Schema for API call parameters
+       */
+      params_schema?: APICall.ParamsSchema | null;
+
+      schema?: unknown | null;
+
+      secrets?: { [key: string]: Shared.SecretRef } | null;
+
+      timeout?: number | null;
+    }
+
+    export namespace APICall {
+      /**
+       * JSON Schema for API call parameters
+       */
+      export interface ParamsSchema {
+        properties: { [key: string]: ParamsSchema.Properties };
+
+        additionalProperties?: boolean | null;
+
+        required?: Array<string>;
+
+        type?: string;
+      }
+
+      export namespace ParamsSchema {
+        /**
+         * Property definition for parameter schema
+         */
+        export interface Properties {
+          type: string;
+
+          description?: string | null;
+
+          enum?: Array<string> | null;
+
+          items?: unknown;
+        }
+      }
+    }
   }
 }
 
@@ -2065,7 +2415,7 @@ export namespace SessionRenderParams {
     /**
      * API call definition
      */
-    api_call?: Shared.APICallDef | null;
+    api_call?: Tool.APICall | null;
 
     bash_20241022?: Shared.Bash20241022Def | null;
 
@@ -2115,6 +2465,76 @@ export namespace SessionRenderParams {
     system?: Shared.SystemDef | null;
 
     text_editor_20241022?: Shared.TextEditor20241022Def | null;
+  }
+
+  export namespace Tool {
+    /**
+     * API call definition
+     */
+    export interface APICall {
+      method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS' | 'CONNECT' | 'TRACE';
+
+      url: string;
+
+      content?: string | null;
+
+      cookies?: { [key: string]: string } | null;
+
+      data?: unknown | null;
+
+      files?: unknown | null;
+
+      follow_redirects?: boolean | null;
+
+      headers?: { [key: string]: string } | null;
+
+      include_response_content?: boolean;
+
+      json?: unknown | null;
+
+      params?: string | unknown | null;
+
+      /**
+       * JSON Schema for API call parameters
+       */
+      params_schema?: APICall.ParamsSchema | null;
+
+      schema?: unknown | null;
+
+      secrets?: { [key: string]: Shared.SecretRef } | null;
+
+      timeout?: number | null;
+    }
+
+    export namespace APICall {
+      /**
+       * JSON Schema for API call parameters
+       */
+      export interface ParamsSchema {
+        properties: { [key: string]: ParamsSchema.Properties };
+
+        additionalProperties?: boolean | null;
+
+        required?: Array<string>;
+
+        type?: string;
+      }
+
+      export namespace ParamsSchema {
+        /**
+         * Property definition for parameter schema
+         */
+        export interface Properties {
+          type: string;
+
+          description?: string | null;
+
+          enum?: Array<string> | null;
+
+          items?: unknown;
+        }
+      }
+    }
   }
 }
 

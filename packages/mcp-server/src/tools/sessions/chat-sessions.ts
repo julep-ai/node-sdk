@@ -337,7 +337,103 @@ export const tool: Tool = {
               ],
             },
             api_call: {
-              $ref: '#/$defs/api_call_def',
+              type: 'object',
+              title: 'ApiCallDef',
+              description: 'API call definition',
+              properties: {
+                method: {
+                  type: 'string',
+                  title: 'Method',
+                  enum: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS', 'CONNECT', 'TRACE'],
+                },
+                url: {
+                  type: 'string',
+                  title: 'Url',
+                },
+                content: {
+                  type: 'string',
+                  title: 'Content',
+                },
+                cookies: {
+                  type: 'object',
+                  title: 'Cookies',
+                },
+                data: {
+                  type: 'object',
+                  title: 'Data',
+                },
+                files: {
+                  type: 'object',
+                  title: 'Files',
+                },
+                follow_redirects: {
+                  type: 'boolean',
+                  title: 'Follow Redirects',
+                },
+                headers: {
+                  type: 'object',
+                  title: 'Headers',
+                },
+                include_response_content: {
+                  type: 'boolean',
+                  title: 'Include Response Content',
+                },
+                json: {
+                  type: 'object',
+                  title: 'Json',
+                },
+                params: {
+                  anyOf: [
+                    {
+                      type: 'string',
+                    },
+                    {
+                      type: 'object',
+                    },
+                  ],
+                  title: 'Params',
+                },
+                params_schema: {
+                  type: 'object',
+                  title: 'ParameterSchema',
+                  description: 'JSON Schema for API call parameters',
+                  properties: {
+                    properties: {
+                      type: 'object',
+                      title: 'Properties',
+                    },
+                    additionalProperties: {
+                      type: 'boolean',
+                      title: 'Additionalproperties',
+                    },
+                    required: {
+                      type: 'array',
+                      title: 'Required',
+                      items: {
+                        type: 'string',
+                      },
+                    },
+                    type: {
+                      type: 'string',
+                      title: 'Type',
+                    },
+                  },
+                  required: ['properties'],
+                },
+                schema: {
+                  type: 'object',
+                  title: 'Schema',
+                },
+                secrets: {
+                  type: 'object',
+                  title: 'Secrets',
+                },
+                timeout: {
+                  type: 'integer',
+                  title: 'Timeout',
+                },
+              },
+              required: ['method', 'url'],
             },
             bash_20241022: {
               $ref: '#/$defs/bash20241022_def',
@@ -623,78 +719,6 @@ export const tool: Tool = {
           },
         },
         required: [],
-      },
-      api_call_def: {
-        type: 'object',
-        title: 'ApiCallDef',
-        description: 'API call definition',
-        properties: {
-          method: {
-            type: 'string',
-            title: 'Method',
-            enum: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS', 'CONNECT', 'TRACE'],
-          },
-          url: {
-            type: 'string',
-            title: 'Url',
-          },
-          content: {
-            type: 'string',
-            title: 'Content',
-          },
-          cookies: {
-            type: 'object',
-            title: 'Cookies',
-          },
-          data: {
-            type: 'object',
-            title: 'Data',
-          },
-          files: {
-            type: 'object',
-            title: 'Files',
-          },
-          follow_redirects: {
-            type: 'boolean',
-            title: 'Follow Redirects',
-          },
-          headers: {
-            type: 'object',
-            title: 'Headers',
-          },
-          include_response_content: {
-            type: 'boolean',
-            title: 'Include Response Content',
-          },
-          json: {
-            type: 'object',
-            title: 'Json',
-          },
-          params: {
-            anyOf: [
-              {
-                type: 'string',
-              },
-              {
-                type: 'object',
-              },
-            ],
-            title: 'Params',
-          },
-          schema: {
-            type: 'object',
-            title: 'Schema',
-          },
-          secrets: {
-            type: 'object',
-            title: 'Secrets',
-          },
-          timeout: {
-            type: 'integer',
-            title: 'Timeout',
-          },
-        },
-        required: ['method', 'url'],
       },
       bash20241022_def: {
         type: 'object',

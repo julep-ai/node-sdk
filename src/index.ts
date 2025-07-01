@@ -486,7 +486,6 @@ export declare namespace Julep {
   export type AlgoliaIntegrationDef = API.AlgoliaIntegrationDef;
   export type AlgoliaSearchArguments = API.AlgoliaSearchArguments;
   export type AlgoliaSetup = API.AlgoliaSetup;
-  export type APICallDef = API.APICallDef;
   export type ArxivIntegrationDef = API.ArxivIntegrationDef;
   export type ArxivSearchArguments = API.ArxivSearchArguments;
   export type Bash20241022Def = API.Bash20241022Def;
