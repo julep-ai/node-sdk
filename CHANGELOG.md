@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.5.1 (2025-07-03)
+
+Full Changelog: [v2.5.0...v2.5.1](https://github.com/julep-ai/node-sdk/compare/v2.5.0...v2.5.1)
+
+### Bug Fixes
+
+* **mcp:** define `.well-known/oauth-protected-resource` ([4e50010](https://github.com/julep-ai/node-sdk/commit/4e500107adb531f1b3b5f106c2e52c31afcd9cd1))
+
+
+### Chores
+
+* mention unit type in timeout docs ([ed8df2b](https://github.com/julep-ai/node-sdk/commit/ed8df2b89aad1ad07ff9e7c881517cdaea56b34c))
+
 ## 2.5.0 (2025-07-01)
 
 Full Changelog: [v2.4.0...v2.5.0](https://github.com/julep-ai/node-sdk/compare/v2.4.0...v2.5.0)
