@@ -26,7 +26,7 @@ export { endpoints } from './tools';
 export const server = new McpServer(
   {
     name: 'julep_sdk_api',
-    version: '2.5.1',
+    version: '2.5.2',
   },
   {
     capabilities: {

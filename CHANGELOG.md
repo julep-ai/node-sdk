@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.5.2 (2025-07-04)
+
+Full Changelog: [v2.5.1...v2.5.2](https://github.com/julep-ai/node-sdk/compare/v2.5.1...v2.5.2)
+
+### Bug Fixes
+
+* **build:** bump node version in CI build to 20 to be compatible with MCP package ([d13a377](https://github.com/julep-ai/node-sdk/commit/d13a377a31c485286e5be1a95cc89db5bafdb8cb))
+* **client:** don't send `Content-Type` for bodyless methods ([1ca58f5](https://github.com/julep-ai/node-sdk/commit/1ca58f5fe382c38deed4078922d1cc2b064fb728))
+
 ## 2.5.1 (2025-07-03)
 
 Full Changelog: [v2.5.0...v2.5.1](https://github.com/julep-ai/node-sdk/compare/v2.5.0...v2.5.1)
