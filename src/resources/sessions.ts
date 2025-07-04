@@ -54,11 +54,18 @@ export class Sessions extends APIResource {
   /**
    * Initiates a chat session.
    *
+   * Routes to different implementations based on feature flags:
+   *
+   * - If auto_run_tools_chat feature flag is enabled, uses the new auto-tools
+   *   implementation
+   * - Otherwise, uses the legacy implementation
+   *
    * Parameters: developer (Developer): The developer associated with the chat
    * session. session_id (UUID): The unique identifier of the chat session.
    * chat_input (ChatInput): The chat input data. background_tasks (BackgroundTasks):
    * The background tasks to run. x_custom_api_key (Optional[str]): The custom API
-   * key.
+   * key. mock_response (Optional[str]): Mock response for testing. connection_pool:
+   * Connection pool for testing purposes.
    *
    * Returns: ChatResponse or StreamingResponse: The chat response or streaming
    * response.
@@ -108,6 +115,12 @@ export class Sessions extends APIResource {
   /**
    * Renders a chat input.
    *
+   * Routes to different implementations based on feature flags:
+   *
+   * - If auto_run_tools_chat feature flag is enabled, uses the new auto-tools
+   *   implementation
+   * - Otherwise, uses the legacy implementation
+   *
    * Parameters: developer (Developer): The developer associated with the chat
    * session. session_id (UUID): The unique identifier of the chat session.
    * chat_input (ChatInput): The chat input data.
@@ -149,6 +162,8 @@ export interface ChatInput {
 
   agent?: string | null;
 
+  auto_run_tools?: boolean;
+
   frequency_penalty?: number | null;
 
   length_penalty?: number | null;
@@ -166,6 +181,8 @@ export interface ChatInput {
   presence_penalty?: number | null;
 
   recall?: boolean;
+
+  recall_tools?: boolean;
 
   remember?: boolean;
 
@@ -770,7 +787,14 @@ export interface Entry {
 
   role: 'user' | 'assistant' | 'system' | 'tool';
 
-  source: 'api_request' | 'api_response' | 'tool_response' | 'internal' | 'summarizer' | 'meta';
+  source:
+    | 'api_request'
+    | 'api_response'
+    | 'tool_request'
+    | 'tool_response'
+    | 'internal'
+    | 'summarizer'
+    | 'meta';
 
   timestamp: string;
 
@@ -1900,6 +1924,11 @@ export interface SessionChatParams {
   /**
    * Body param:
    */
+  auto_run_tools?: boolean;
+
+  /**
+   * Body param:
+   */
   frequency_penalty?: number | null;
 
   /**
@@ -1941,6 +1970,11 @@ export interface SessionChatParams {
    * Body param:
    */
   recall?: boolean;
+
+  /**
+   * Body param:
+   */
+  recall_tools?: boolean;
 
   /**
    * Body param:
@@ -2265,6 +2299,8 @@ export interface SessionRenderParams {
 
   agent?: string | null;
 
+  auto_run_tools?: boolean;
+
   frequency_penalty?: number | null;
 
   length_penalty?: number | null;
@@ -2282,6 +2318,8 @@ export interface SessionRenderParams {
   presence_penalty?: number | null;
 
   recall?: boolean;
+
+  recall_tools?: boolean;
 
   repetition_penalty?: number | null;
 
