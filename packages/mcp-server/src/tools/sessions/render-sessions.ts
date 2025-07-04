@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'render_sessions',
   description:
-    'Renders a chat input.\n\nParameters:\n    developer (Developer): The developer associated with the chat session.\n    session_id (UUID): The unique identifier of the chat session.\n    chat_input (ChatInput): The chat input data.\n\nReturns:\n    RenderResponse: The rendered chat input.',
+    'Renders a chat input.\n\nRoutes to different implementations based on feature flags:\n- If auto_run_tools_chat feature flag is enabled, uses the new auto-tools implementation\n- Otherwise, uses the legacy implementation\n\nParameters:\n    developer (Developer): The developer associated with the chat session.\n    session_id (UUID): The unique identifier of the chat session.\n    chat_input (ChatInput): The chat input data.\n\nReturns:\n    RenderResponse: The rendered chat input.',
   inputSchema: {
     type: 'object',
     properties: {
@@ -221,6 +221,10 @@ export const tool: Tool = {
         type: 'string',
         title: 'Agent',
       },
+      auto_run_tools: {
+        type: 'boolean',
+        title: 'Auto Run Tools',
+      },
       frequency_penalty: {
         type: 'number',
         title: 'Frequency Penalty',
@@ -256,6 +260,10 @@ export const tool: Tool = {
       recall: {
         type: 'boolean',
         title: 'Recall',
+      },
+      recall_tools: {
+        type: 'boolean',
+        title: 'Recall Tools',
       },
       repetition_penalty: {
         type: 'number',

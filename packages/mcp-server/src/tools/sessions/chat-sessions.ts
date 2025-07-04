@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'chat_sessions',
   description:
-    'Initiates a chat session.\n\nParameters:\n    developer (Developer): The developer associated with the chat session.\n    session_id (UUID): The unique identifier of the chat session.\n    chat_input (ChatInput): The chat input data.\n    background_tasks (BackgroundTasks): The background tasks to run.\n    x_custom_api_key (Optional[str]): The custom API key.\n\nReturns:\n    ChatResponse or StreamingResponse: The chat response or streaming response.',
+    'Initiates a chat session.\n\nRoutes to different implementations based on feature flags:\n- If auto_run_tools_chat feature flag is enabled, uses the new auto-tools implementation\n- Otherwise, uses the legacy implementation\n\nParameters:\n    developer (Developer): The developer associated with the chat session.\n    session_id (UUID): The unique identifier of the chat session.\n    chat_input (ChatInput): The chat input data.\n    background_tasks (BackgroundTasks): The background tasks to run.\n    x_custom_api_key (Optional[str]): The custom API key.\n    mock_response (Optional[str]): Mock response for testing.\n    connection_pool: Connection pool for testing purposes.\n\nReturns:\n    ChatResponse or StreamingResponse: The chat response or streaming response.',
   inputSchema: {
     type: 'object',
     properties: {
@@ -225,6 +225,10 @@ export const tool: Tool = {
         type: 'string',
         title: 'Agent',
       },
+      auto_run_tools: {
+        type: 'boolean',
+        title: 'Auto Run Tools',
+      },
       frequency_penalty: {
         type: 'number',
         title: 'Frequency Penalty',
@@ -260,6 +264,10 @@ export const tool: Tool = {
       recall: {
         type: 'boolean',
         title: 'Recall',
+      },
+      recall_tools: {
+        type: 'boolean',
+        title: 'Recall Tools',
       },
       repetition_penalty: {
         type: 'number',

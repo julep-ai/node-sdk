@@ -220,12 +220,19 @@ The following tools are available in this MCP server.
 - `delete_sessions` (`write`): Delete Session
 - `chat_sessions` (`write`): Initiates a chat session.
 
+  Routes to different implementations based on feature flags:
+
+  - If auto_run_tools_chat feature flag is enabled, uses the new auto-tools implementation
+  - Otherwise, uses the legacy implementation
+
   Parameters:
   developer (Developer): The developer associated with the chat session.
   session_id (UUID): The unique identifier of the chat session.
   chat_input (ChatInput): The chat input data.
   background_tasks (BackgroundTasks): The background tasks to run.
   x_custom_api_key (Optional[str]): The custom API key.
+  mock_response (Optional[str]): Mock response for testing.
+  connection_pool: Connection pool for testing purposes.
 
   Returns:
   ChatResponse or StreamingResponse: The chat response or streaming response.
@@ -234,6 +241,11 @@ The following tools are available in this MCP server.
 - `get_sessions` (`read`): Get Session
 - `history_sessions` (`read`): Get Session History
 - `render_sessions` (`write`): Renders a chat input.
+
+  Routes to different implementations based on feature flags:
+
+  - If auto_run_tools_chat feature flag is enabled, uses the new auto-tools implementation
+  - Otherwise, uses the legacy implementation
 
   Parameters:
   developer (Developer): The developer associated with the chat session.
