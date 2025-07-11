@@ -181,10 +181,6 @@ export const tool: Tool = {
               ],
               title: 'Content',
             },
-            continue: {
-              type: 'boolean',
-              title: 'Continue',
-            },
             name: {
               type: 'string',
               title: 'Name',

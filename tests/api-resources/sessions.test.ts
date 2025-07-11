@@ -96,7 +96,6 @@ describe('resource sessions', () => {
         {
           role: 'user',
           content: 'string',
-          continue: true,
           name: 'name',
           tool_call_id: 'tool_call_id',
           tool_calls: [
@@ -260,7 +259,6 @@ describe('resource sessions', () => {
         {
           role: 'user',
           content: 'string',
-          continue: true,
           name: 'name',
           tool_call_id: 'tool_call_id',
           tool_calls: [
