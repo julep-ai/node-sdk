@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'render_sessions',
   description:
-    'Renders a chat input.\n\nRoutes to different implementations based on feature flags:\n- If auto_run_tools_chat feature flag is enabled, uses the new auto-tools implementation\n- Otherwise, uses the legacy implementation\n\nParameters:\n    developer (Developer): The developer associated with the chat session.\n    session_id (UUID): The unique identifier of the chat session.\n    chat_input (ChatInput): The chat input data.\n\nReturns:\n    RenderResponse: The rendered chat input.',
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nRenders a chat input.\n\nRoutes to different implementations based on feature flags:\n- If auto_run_tools_chat feature flag is enabled, uses the new auto-tools implementation\n- Otherwise, uses the legacy implementation\n\nParameters:\n    developer (Developer): The developer associated with the chat session.\n    session_id (UUID): The unique identifier of the chat session.\n    chat_input (ChatInput): The chat input data.\n\nReturns:\n    RenderResponse: The rendered chat input.",
   inputSchema: {
     type: 'object',
     properties: {
