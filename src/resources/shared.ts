@@ -960,8 +960,6 @@ export namespace PromptStepInput {
 
     role: 'user' | 'assistant' | 'system' | 'tool';
 
-    continue?: boolean | null;
-
     name?: string | null;
 
     tool_call_id?: string | null;

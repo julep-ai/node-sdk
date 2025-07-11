@@ -759,10 +759,6 @@ export const tool: Tool = {
                       title: 'Role',
                       enum: ['user', 'assistant', 'system', 'tool'],
                     },
-                    continue: {
-                      type: 'boolean',
-                      title: 'Continue',
-                    },
                     name: {
                       type: 'string',
                       title: 'Name',
