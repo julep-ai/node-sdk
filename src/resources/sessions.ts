@@ -221,8 +221,6 @@ export namespace ChatInput {
         >
       | null;
 
-    continue?: boolean | null;
-
     name?: string | null;
 
     tool_call_id?: string | null;
@@ -1446,8 +1444,6 @@ export namespace SessionChatResponse {
             >
           | null;
 
-        continue?: boolean | null;
-
         name?: string | null;
 
         tool_call_id?: string | null;
@@ -1558,8 +1554,6 @@ export namespace SessionRenderResponse {
       | Array<string>
       | Array<Message.ContentOutput | Message.ContentModel7 | Message.AgentsAPIAutogenChatContentModelOutput>
       | null;
-
-    continue?: boolean | null;
 
     name?: string | null;
 
@@ -2046,8 +2040,6 @@ export namespace SessionChatParams {
         >
       | null;
 
-    continue?: boolean | null;
-
     name?: string | null;
 
     tool_call_id?: string | null;
@@ -2355,8 +2347,6 @@ export namespace SessionRenderParams {
           | Message.AgentsAPIAutogenChatContentModelInput
         >
       | null;
-
-    continue?: boolean | null;
 
     name?: string | null;
 
