@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.7.1 (2025-07-16)
+
+Full Changelog: [v2.7.0...v2.7.1](https://github.com/julep-ai/node-sdk/compare/v2.7.0...v2.7.1)
+
+### Bug Fixes
+
+* **mcp:** support jq filtering on cloudflare workers ([c64d3ec](https://github.com/julep-ai/node-sdk/commit/c64d3ec3e55e973104cfdc4d8797b05d13a58dc2))
+
+
+### Documentation
+
+* **mcp:** correct instructions for adding to claude web ([cf45fda](https://github.com/julep-ai/node-sdk/commit/cf45fdad18b5beef4038159917c91f2534156b2b))
+
 ## 2.7.0 (2025-07-11)
 
 Full Changelog: [v2.6.0...v2.7.0](https://github.com/julep-ai/node-sdk/compare/v2.6.0...v2.7.0)
