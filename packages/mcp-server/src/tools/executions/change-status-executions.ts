@@ -38,6 +38,7 @@ export const tool: Tool = {
             enum: ['running'],
           },
         },
+        required: ['execution_id'],
       },
       {
         type: 'object',
@@ -56,6 +57,7 @@ export const tool: Tool = {
             enum: ['cancelled'],
           },
         },
+        required: ['execution_id'],
       },
     ],
     properties: {

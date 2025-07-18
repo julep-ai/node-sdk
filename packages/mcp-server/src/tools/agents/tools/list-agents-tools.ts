@@ -44,6 +44,7 @@ export const tool: Tool = {
         enum: ['created_at', 'updated_at'],
       },
     },
+    required: ['agent_id'],
   },
 };
 

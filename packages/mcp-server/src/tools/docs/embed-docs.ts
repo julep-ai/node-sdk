@@ -34,6 +34,7 @@ export const tool: Tool = {
             title: 'Embed Instruction',
           },
         },
+        required: ['text'],
       },
       {
         type: 'object',
@@ -50,6 +51,7 @@ export const tool: Tool = {
             title: 'Embed Instruction',
           },
         },
+        required: ['text'],
       },
     ],
     properties: {
