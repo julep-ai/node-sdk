@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.7.2 (2025-07-18)
+
+Full Changelog: [v2.7.1...v2.7.2](https://github.com/julep-ai/node-sdk/compare/v2.7.1...v2.7.2)
+
+### Bug Fixes
+
+* **mcp:** include required section for top-level properties and support naming transformations ([e2d3215](https://github.com/julep-ai/node-sdk/commit/e2d321540c85a6deb86cc00d7a2351c4ae4deb95))
+
+
+### Chores
+
+* **mcp:** formatting ([3dbdfb0](https://github.com/julep-ai/node-sdk/commit/3dbdfb0ac5003b02177407cb47ab5a4ae6b97505))
+* **mcp:** rework imports in tools ([a7c35a4](https://github.com/julep-ai/node-sdk/commit/a7c35a4740c518ab486d85ffa1d129255b6c0659))
+
 ## 2.7.1 (2025-07-16)
 
 Full Changelog: [v2.7.0...v2.7.1](https://github.com/julep-ai/node-sdk/compare/v2.7.0...v2.7.1)
