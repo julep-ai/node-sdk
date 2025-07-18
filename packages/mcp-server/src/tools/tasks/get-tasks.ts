@@ -26,6 +26,7 @@ export const tool: Tool = {
         title: 'Task Id',
       },
     },
+    required: ['task_id'],
   },
 };
 

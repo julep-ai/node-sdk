@@ -107,7 +107,6 @@ export const tool: Tool = {
                 title: 'Type',
               },
             },
-            required: [],
           },
           schema: {
             type: 'object',
@@ -126,7 +125,6 @@ export const tool: Tool = {
             title: 'Url',
           },
         },
-        required: [],
       },
       bash_20241022: {
         type: 'object',
@@ -142,7 +140,6 @@ export const tool: Tool = {
             enum: ['bash_20241022'],
           },
         },
-        required: [],
       },
       computer_20241022: {
         type: 'object',
@@ -171,7 +168,6 @@ export const tool: Tool = {
             enum: ['computer_20241022'],
           },
         },
-        required: [],
       },
       description: {
         type: 'string',
@@ -204,7 +200,6 @@ export const tool: Tool = {
                 title: 'Setup',
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -221,7 +216,6 @@ export const tool: Tool = {
                     title: 'Query',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -242,10 +236,8 @@ export const tool: Tool = {
                     title: 'Brave Api Key',
                   },
                 },
-                required: [],
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -274,7 +266,6 @@ export const tool: Tool = {
                     title: 'To',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -307,10 +298,8 @@ export const tool: Tool = {
                     title: 'User',
                   },
                 },
-                required: [],
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -336,7 +325,6 @@ export const tool: Tool = {
                     title: 'Url',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -358,10 +346,8 @@ export const tool: Tool = {
                     title: 'Spider Api Key',
                   },
                 },
-                required: [],
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -382,7 +368,6 @@ export const tool: Tool = {
                     title: 'Query',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -398,7 +383,6 @@ export const tool: Tool = {
                 title: 'Setup',
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -415,7 +399,6 @@ export const tool: Tool = {
                     title: 'Location',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -436,10 +419,8 @@ export const tool: Tool = {
                     title: 'Openweathermap Api Key',
                   },
                 },
-                required: [],
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -476,7 +457,6 @@ export const tool: Tool = {
                     title: 'To',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -498,10 +478,8 @@ export const tool: Tool = {
                     title: 'Api Key',
                   },
                 },
-                required: [],
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -517,7 +495,6 @@ export const tool: Tool = {
                     title: 'Projectid',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -533,7 +510,6 @@ export const tool: Tool = {
                 $ref: '#/$defs/browserbase_setup_update',
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -553,7 +529,6 @@ export const tool: Tool = {
                     title: 'Repositoryname',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -569,7 +544,6 @@ export const tool: Tool = {
                 $ref: '#/$defs/browserbase_setup_update',
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -593,7 +567,6 @@ export const tool: Tool = {
                 $ref: '#/$defs/browserbase_setup_update',
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -617,7 +590,6 @@ export const tool: Tool = {
                 $ref: '#/$defs/browserbase_setup_update',
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -633,7 +605,6 @@ export const tool: Tool = {
                     title: 'Id',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -649,7 +620,6 @@ export const tool: Tool = {
                 $ref: '#/$defs/browserbase_setup_update',
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -670,7 +640,6 @@ export const tool: Tool = {
                     enum: ['REQUEST_RELEASE'],
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -686,7 +655,6 @@ export const tool: Tool = {
                 $ref: '#/$defs/browserbase_setup_update',
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -702,7 +670,6 @@ export const tool: Tool = {
                     title: 'Id',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -718,7 +685,6 @@ export const tool: Tool = {
                 $ref: '#/$defs/browserbase_setup_update',
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -764,7 +730,6 @@ export const tool: Tool = {
                     title: 'Text',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -780,7 +745,6 @@ export const tool: Tool = {
                 $ref: '#/$defs/remote_browser_setup',
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -819,7 +783,6 @@ export const tool: Tool = {
                     title: 'Params',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -844,10 +807,8 @@ export const tool: Tool = {
                     title: 'Params',
                   },
                 },
-                required: [],
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -878,7 +839,6 @@ export const tool: Tool = {
                     title: 'File',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -894,7 +854,6 @@ export const tool: Tool = {
                 title: 'Setup',
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -923,7 +882,6 @@ export const tool: Tool = {
                     title: 'Upload Params',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -957,10 +915,8 @@ export const tool: Tool = {
                     title: 'Params',
                   },
                 },
-                required: [],
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -988,7 +944,6 @@ export const tool: Tool = {
                     },
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -1022,10 +977,8 @@ export const tool: Tool = {
                     title: 'Params',
                   },
                 },
-                required: [],
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -1067,7 +1020,6 @@ export const tool: Tool = {
                     enum: ['ascending', 'descending'],
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -1083,7 +1035,6 @@ export const tool: Tool = {
                 title: 'Setup',
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -1108,7 +1059,6 @@ export const tool: Tool = {
                     title: 'Partition Params',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -1149,10 +1099,8 @@ export const tool: Tool = {
                     title: 'Url Params',
                   },
                 },
-                required: [],
               },
             },
-            required: [],
           },
           {
             type: 'object',
@@ -1184,7 +1132,6 @@ export const tool: Tool = {
                     title: 'Query',
                   },
                 },
-                required: [],
               },
               method: {
                 type: 'string',
@@ -1209,10 +1156,8 @@ export const tool: Tool = {
                     title: 'Algolia Application Id',
                   },
                 },
-                required: [],
               },
             },
-            required: [],
           },
         ],
         title: 'Integration',
@@ -1264,7 +1209,6 @@ export const tool: Tool = {
             enum: ['tool', 'doc', 'execution', 'transition'],
           },
         },
-        required: [],
       },
       text_editor_20241022: {
         type: 'object',
@@ -1280,7 +1224,6 @@ export const tool: Tool = {
             enum: ['text_editor_20241022'],
           },
         },
-        required: [],
       },
       type: {
         type: 'string',
@@ -1296,6 +1239,7 @@ export const tool: Tool = {
         ],
       },
     },
+    required: ['agent_id', 'tool_id'],
     $defs: {
       function_def: {
         type: 'object',
@@ -1315,7 +1259,6 @@ export const tool: Tool = {
             title: 'Parameters',
           },
         },
-        required: [],
       },
       browserbase_setup_update: {
         type: 'object',
@@ -1339,7 +1282,6 @@ export const tool: Tool = {
             title: 'Project Id',
           },
         },
-        required: [],
       },
       browserbase_list_sessions_arguments: {
         type: 'object',
@@ -1351,7 +1293,6 @@ export const tool: Tool = {
             enum: ['RUNNING', 'ERROR', 'TIMED_OUT', 'COMPLETED'],
           },
         },
-        required: [],
       },
       browserbase_create_session_arguments: {
         type: 'object',
@@ -1392,7 +1333,6 @@ export const tool: Tool = {
             title: 'Timeout',
           },
         },
-        required: [],
       },
       remote_browser_setup: {
         type: 'object',
@@ -1412,7 +1352,6 @@ export const tool: Tool = {
             title: 'Width',
           },
         },
-        required: [],
       },
     },
   },

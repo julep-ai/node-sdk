@@ -58,6 +58,7 @@ export const tool: Tool = {
             title: 'Trigram Similarity Threshold',
           },
         },
+        required: ['user_id', 'text'],
       },
       {
         type: 'object',
@@ -98,6 +99,7 @@ export const tool: Tool = {
             title: 'Mmr Strength',
           },
         },
+        required: ['user_id', 'vector'],
       },
       {
         type: 'object',
@@ -158,6 +160,7 @@ export const tool: Tool = {
             title: 'Trigram Similarity Threshold',
           },
         },
+        required: ['user_id', 'text', 'vector'],
       },
     ],
     properties: {

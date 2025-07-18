@@ -26,6 +26,7 @@ export const tool: Tool = {
         title: 'Session Id',
       },
     },
+    required: ['session_id'],
   },
 };
 

@@ -237,6 +237,7 @@ export const tool: Tool = {
         $ref: '#/$defs/text_editor20241022_def',
       },
     },
+    required: ['agent_id', 'tool_id', 'name', 'type'],
     $defs: {
       bash20241022_def: {
         type: 'object',
@@ -252,7 +253,6 @@ export const tool: Tool = {
             enum: ['bash_20241022'],
           },
         },
-        required: [],
       },
       computer20241022_def: {
         type: 'object',
@@ -281,7 +281,6 @@ export const tool: Tool = {
             enum: ['computer_20241022'],
           },
         },
-        required: [],
       },
       function_def: {
         type: 'object',
@@ -301,7 +300,6 @@ export const tool: Tool = {
             title: 'Parameters',
           },
         },
-        required: [],
       },
       dummy_integration_def: {
         type: 'object',
@@ -325,7 +323,6 @@ export const tool: Tool = {
             title: 'Setup',
           },
         },
-        required: [],
       },
       brave_integration_def: {
         type: 'object',
@@ -348,7 +345,6 @@ export const tool: Tool = {
             $ref: '#/$defs/brave_search_setup',
           },
         },
-        required: [],
       },
       brave_search_arguments: {
         type: 'object',
@@ -395,7 +391,6 @@ export const tool: Tool = {
             $ref: '#/$defs/email_setup',
           },
         },
-        required: [],
       },
       email_arguments: {
         type: 'object',
@@ -467,7 +462,6 @@ export const tool: Tool = {
             $ref: '#/$defs/spider_setup',
           },
         },
-        required: [],
       },
       spider_fetch_arguments: {
         type: 'object',
@@ -524,7 +518,6 @@ export const tool: Tool = {
             title: 'Setup',
           },
         },
-        required: [],
       },
       wikipedia_search_arguments: {
         type: 'object',
@@ -563,7 +556,6 @@ export const tool: Tool = {
             $ref: '#/$defs/weather_setup',
           },
         },
-        required: [],
       },
       weather_get_arguments: {
         type: 'object',
@@ -611,7 +603,6 @@ export const tool: Tool = {
             $ref: '#/$defs/mailgun_setup',
           },
         },
-        required: [],
       },
       mailgun_send_email_arguments: {
         type: 'object',
@@ -679,7 +670,6 @@ export const tool: Tool = {
             $ref: '#/$defs/browserbase_setup',
           },
         },
-        required: [],
       },
       browserbase_context_arguments: {
         type: 'object',
@@ -738,7 +728,6 @@ export const tool: Tool = {
             $ref: '#/$defs/browserbase_setup',
           },
         },
-        required: [],
       },
       browserbase_extension_arguments: {
         type: 'object',
@@ -777,7 +766,6 @@ export const tool: Tool = {
             $ref: '#/$defs/browserbase_setup',
           },
         },
-        required: [],
       },
       browserbase_list_sessions_arguments: {
         type: 'object',
@@ -789,7 +777,6 @@ export const tool: Tool = {
             enum: ['RUNNING', 'ERROR', 'TIMED_OUT', 'COMPLETED'],
           },
         },
-        required: [],
       },
       browserbase_create_session_integration_def: {
         type: 'object',
@@ -813,7 +800,6 @@ export const tool: Tool = {
             $ref: '#/$defs/browserbase_setup',
           },
         },
-        required: [],
       },
       browserbase_create_session_arguments: {
         type: 'object',
@@ -854,7 +840,6 @@ export const tool: Tool = {
             title: 'Timeout',
           },
         },
-        required: [],
       },
       browserbase_get_session_integration_def: {
         type: 'object',
@@ -878,7 +863,6 @@ export const tool: Tool = {
             $ref: '#/$defs/browserbase_setup',
           },
         },
-        required: [],
       },
       browserbase_get_session_arguments: {
         type: 'object',
@@ -913,7 +897,6 @@ export const tool: Tool = {
             $ref: '#/$defs/browserbase_setup',
           },
         },
-        required: [],
       },
       browserbase_complete_session_arguments: {
         type: 'object',
@@ -953,7 +936,6 @@ export const tool: Tool = {
             $ref: '#/$defs/browserbase_setup',
           },
         },
-        required: [],
       },
       browserbase_get_session_live_urls_arguments: {
         type: 'object',
@@ -1008,7 +990,6 @@ export const tool: Tool = {
             title: 'Width',
           },
         },
-        required: [],
       },
       remote_browser_arguments: {
         type: 'object',
@@ -1072,7 +1053,6 @@ export const tool: Tool = {
             $ref: '#/$defs/llama_parse_setup',
           },
         },
-        required: [],
       },
       llama_parse_fetch_arguments: {
         type: 'object',
@@ -1146,7 +1126,6 @@ export const tool: Tool = {
             title: 'Setup',
           },
         },
-        required: [],
       },
       ffmpeg_search_arguments: {
         type: 'object',
@@ -1196,7 +1175,6 @@ export const tool: Tool = {
             $ref: '#/$defs/cloudinary_setup',
           },
         },
-        required: [],
       },
       cloudinary_upload_arguments: {
         type: 'object',
@@ -1268,7 +1246,6 @@ export const tool: Tool = {
             $ref: '#/$defs/cloudinary_setup',
           },
         },
-        required: [],
       },
       cloudinary_edit_arguments: {
         type: 'object',
@@ -1315,7 +1292,6 @@ export const tool: Tool = {
             title: 'Setup',
           },
         },
-        required: [],
       },
       arxiv_search_arguments: {
         type: 'object',
@@ -1375,7 +1351,6 @@ export const tool: Tool = {
             $ref: '#/$defs/unstructured_setup',
           },
         },
-        required: [],
       },
       unstructured_partition_arguments: {
         type: 'object',
@@ -1450,7 +1425,6 @@ export const tool: Tool = {
             $ref: '#/$defs/algolia_setup',
           },
         },
-        required: [],
       },
       algolia_search_arguments: {
         type: 'object',
@@ -1553,7 +1527,6 @@ export const tool: Tool = {
             enum: ['text_editor_20241022'],
           },
         },
-        required: [],
       },
     },
   },
