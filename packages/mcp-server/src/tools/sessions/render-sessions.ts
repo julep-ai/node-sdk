@@ -2004,6 +2004,7 @@ export const tool: Tool = {
       },
     },
   },
+  annotations: {},
 };
 
 export const handler = async (client: Julep, args: Record<string, unknown> | undefined) => {

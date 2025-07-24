@@ -53,6 +53,9 @@ export const tool: Tool = {
     },
     required: ['task_id'],
   },
+  annotations: {
+    readOnlyHint: true,
+  },
 };
 
 export const handler = async (client: Julep, args: Record<string, unknown> | undefined) => {

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.7.3 (2025-07-24)
+
+Full Changelog: [v2.7.2...v2.7.3](https://github.com/julep-ai/node-sdk/compare/v2.7.2...v2.7.3)
+
+### Chores
+
+* **internal:** codegen related update ([e9a2c7d](https://github.com/julep-ai/node-sdk/commit/e9a2c7d874c9090bc2f6d2834d378b1cdd01cb44))
+
 ## 2.7.2 (2025-07-18)
 
 Full Changelog: [v2.7.1...v2.7.2](https://github.com/julep-ai/node-sdk/compare/v2.7.1...v2.7.2)

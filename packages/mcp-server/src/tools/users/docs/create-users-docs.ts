@@ -67,6 +67,7 @@ export const tool: Tool = {
     },
     required: ['user_id', 'content', 'title'],
   },
+  annotations: {},
 };
 
 export const handler = async (client: Julep, args: Record<string, unknown> | undefined) => {

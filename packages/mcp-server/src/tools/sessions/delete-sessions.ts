@@ -35,6 +35,9 @@ export const tool: Tool = {
     },
     required: ['session_id'],
   },
+  annotations: {
+    idempotentHint: true,
+  },
 };
 
 export const handler = async (client: Julep, args: Record<string, unknown> | undefined) => {
