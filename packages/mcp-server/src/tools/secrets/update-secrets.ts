@@ -51,6 +51,9 @@ export const tool: Tool = {
     },
     required: ['secret_id', 'name', 'value'],
   },
+  annotations: {
+    idempotentHint: true,
+  },
 };
 
 export const handler = async (client: Julep, args: Record<string, unknown> | undefined) => {
