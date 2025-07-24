@@ -81,6 +81,9 @@ export const tool: Tool = {
     },
     required: ['agent_id', 'name'],
   },
+  annotations: {
+    idempotentHint: true,
+  },
 };
 
 export const handler = async (client: Julep, args: Record<string, unknown> | undefined) => {
