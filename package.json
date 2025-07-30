@@ -60,10 +60,6 @@
     "./shims/web.js",
     "./shims/web.mjs"
   ],
-  "imports": {
-    "@julep/sdk": ".",
-    "@julep/sdk/*": "./src/*"
-  },
   "exports": {
     "./_shims/auto/*": {
       "deno": {
