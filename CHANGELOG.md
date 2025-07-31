@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.7.3 (2025-07-31)
+
+Full Changelog: [v2.7.2...v2.7.3](https://github.com/julep-ai/node-sdk/compare/v2.7.2...v2.7.3)
+
+### Bug Fixes
+
+* **mcp:** fix tool description of jq_filter ([615de9e](https://github.com/julep-ai/node-sdk/commit/615de9e72197da1e61111f0df3273706aad518fd))
+
+
+### Chores
+
+* **internal:** codegen related update ([e9a2c7d](https://github.com/julep-ai/node-sdk/commit/e9a2c7d874c9090bc2f6d2834d378b1cdd01cb44))
+* **internal:** remove redundant imports config ([08964f9](https://github.com/julep-ai/node-sdk/commit/08964f949b6bb26b6bcb864d776b29832fc0c35f))
+
 ## 2.7.2 (2025-07-18)
 
 Full Changelog: [v2.7.1...v2.7.2](https://github.com/julep-ai/node-sdk/compare/v2.7.1...v2.7.2)
