@@ -59,8 +59,8 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: Julep, args: Record<string, unknown> | undefined) => {
-  const { task_id, ...body } = args as any;
-  return asTextContentResult(await maybeFilter(args, await client.executions.create(task_id, body)));
+  const { task_id, jq_filter, ...body } = args as any;
+  return asTextContentResult(await maybeFilter(jq_filter, await client.executions.create(task_id, body)));
 };
 
 export default { metadata, tool, handler };
