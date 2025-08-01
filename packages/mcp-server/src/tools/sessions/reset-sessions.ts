@@ -227,8 +227,8 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: Julep, args: Record<string, unknown> | undefined) => {
-  const { session_id, ...body } = args as any;
-  return asTextContentResult(await maybeFilter(args, await client.sessions.reset(session_id, body)));
+  const { session_id, jq_filter, ...body } = args as any;
+  return asTextContentResult(await maybeFilter(jq_filter, await client.sessions.reset(session_id, body)));
 };
 
 export default { metadata, tool, handler };
