@@ -45,9 +45,9 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: Julep, args: Record<string, unknown> | undefined) => {
-  const { execution_id, transition_id, ...body } = args as any;
+  const { execution_id, transition_id, jq_filter, ...body } = args as any;
   return asTextContentResult(
-    await maybeFilter(args, await client.executions.transitions.retrieve(execution_id, transition_id)),
+    await maybeFilter(jq_filter, await client.executions.transitions.retrieve(execution_id, transition_id)),
   );
 };
 
