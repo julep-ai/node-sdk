@@ -1,6 +1,6 @@
 {
   "name": "@julep/sdk-mcp",
-  "version": "2.7.3",
+  "version": "2.7.4",
   "description": "The official MCP Server for the Julep API",
   "author": "Julep <developers@julep.ai>",
   "types": "dist/index.d.ts",
