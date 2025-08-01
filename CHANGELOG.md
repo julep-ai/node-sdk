@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.7.4 (2025-08-01)
+
+Full Changelog: [v2.7.3...v2.7.4](https://github.com/julep-ai/node-sdk/compare/v2.7.3...v2.7.4)
+
+### Bug Fixes
+
+* **mcp:** avoid sending `jq_filter` to base API ([04e0ce1](https://github.com/julep-ai/node-sdk/commit/04e0ce11d2542ca2c71300c16dd7c99274085e65))
+* **mcp:** reverse validJson capability option and limit scope ([fdf4ff5](https://github.com/julep-ai/node-sdk/commit/fdf4ff567495cc6f1d0c26ad9b9e671a5f26a290))
+
 ## 2.7.3 (2025-07-31)
 
 Full Changelog: [v2.7.2...v2.7.3](https://github.com/julep-ai/node-sdk/compare/v2.7.2...v2.7.3)
