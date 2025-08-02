@@ -1,6 +1,6 @@
 {
   "name": "@julep/sdk",
-  "version": "2.7.4",
+  "version": "2.8.0",
   "description": "The official TypeScript library for the Julep API",
   "author": "Julep <developers@julep.ai>",
   "types": "dist/index.d.ts",
