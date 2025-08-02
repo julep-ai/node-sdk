@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.8.0 (2025-08-02)
+
+Full Changelog: [v2.7.4...v2.8.0](https://github.com/julep-ai/node-sdk/compare/v2.7.4...v2.8.0)
+
+### Features
+
+* **mcp:** add logging when environment variable is set ([be36e15](https://github.com/julep-ai/node-sdk/commit/be36e1520c295adc4396ff8f85b46203e3a3b8f4))
+
 ## 2.7.4 (2025-08-01)
 
 Full Changelog: [v2.7.3...v2.7.4](https://github.com/julep-ai/node-sdk/compare/v2.7.3...v2.7.4)
