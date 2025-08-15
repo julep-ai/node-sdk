@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'update_agents',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nPatch Agent\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/agent',\n  $defs: {\n    agent: {\n      type: 'object',\n      title: 'Agent',\n      properties: {\n        id: {\n          type: 'string',\n          title: 'Id'\n        },\n        created_at: {\n          type: 'string',\n          title: 'Created At',\n          format: 'date-time'\n        },\n        name: {\n          type: 'string',\n          title: 'Name'\n        },\n        updated_at: {\n          type: 'string',\n          title: 'Updated At',\n          format: 'date-time'\n        },\n        about: {\n          type: 'string',\n          title: 'About'\n        },\n        canonical_name: {\n          type: 'string',\n          title: 'Canonical Name'\n        },\n        default_settings: {\n          type: 'object',\n          title: 'Default Settings'\n        },\n        default_system_template: {\n          type: 'string',\n          title: 'Default System Template'\n        },\n        instructions: {\n          anyOf: [            {\n              type: 'string'\n            },\n            {\n              type: 'array',\n              items: {\n                type: 'string'\n              }\n            }\n          ],\n          title: 'Instructions'\n        },\n        metadata: {\n          type: 'object',\n          title: 'Metadata'\n        },\n        model: {\n          type: 'string',\n          title: 'Model'\n        },\n        project: {\n          type: 'string',\n          title: 'Project'\n        }\n      },\n      required: [        'id',\n        'created_at',\n        'name',\n        'updated_at'\n      ]\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nPatch Agent\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/agent',\n  $defs: {\n    agent: {\n      type: 'object',\n      title: 'Agent',\n      properties: {\n        id: {\n          type: 'string',\n          title: 'Id'\n        },\n        created_at: {\n          type: 'string',\n          title: 'Created At',\n          format: 'date-time'\n        },\n        name: {\n          type: 'string',\n          title: 'Name'\n        },\n        updated_at: {\n          type: 'string',\n          title: 'Updated At',\n          format: 'date-time'\n        },\n        about: {\n          type: 'string',\n          title: 'About'\n        },\n        canonical_name: {\n          type: 'string',\n          title: 'Canonical Name'\n        },\n        default_settings: {\n          type: 'object',\n          title: 'Default Settings',\n          additionalProperties: true\n        },\n        default_system_template: {\n          type: 'string',\n          title: 'Default System Template'\n        },\n        instructions: {\n          anyOf: [            {\n              type: 'string'\n            },\n            {\n              type: 'array',\n              items: {\n                type: 'string'\n              }\n            }\n          ],\n          title: 'Instructions'\n        },\n        metadata: {\n          type: 'object',\n          title: 'Metadata',\n          additionalProperties: true\n        },\n        model: {\n          type: 'string',\n          title: 'Model'\n        },\n        project: {\n          type: 'string',\n          title: 'Project'\n        }\n      },\n      required: [        'id',\n        'created_at',\n        'name',\n        'updated_at'\n      ]\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -37,6 +37,7 @@ export const tool: Tool = {
       default_settings: {
         type: 'object',
         title: 'Default Settings',
+        additionalProperties: true,
       },
       default_system_template: {
         type: 'string',
@@ -59,6 +60,7 @@ export const tool: Tool = {
       metadata: {
         type: 'object',
         title: 'Metadata',
+        additionalProperties: true,
       },
       model: {
         type: 'string',
