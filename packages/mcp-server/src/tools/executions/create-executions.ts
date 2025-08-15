@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'create_executions',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCreate Task Execution\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/execution',\n  $defs: {\n    execution: {\n      type: 'object',\n      title: 'Execution',\n      properties: {\n        id: {\n          type: 'string',\n          title: 'Id'\n        },\n        created_at: {\n          type: 'string',\n          title: 'Created At',\n          format: 'date-time'\n        },\n        input: {\n          type: 'object',\n          title: 'Input'\n        },\n        status: {\n          type: 'string',\n          title: 'Status',\n          enum: [            'queued',\n            'starting',\n            'running',\n            'awaiting_input',\n            'succeeded',\n            'failed',\n            'cancelled'\n          ]\n        },\n        task_id: {\n          type: 'string',\n          title: 'Task Id'\n        },\n        updated_at: {\n          type: 'string',\n          title: 'Updated At',\n          format: 'date-time'\n        },\n        error: {\n          type: 'string',\n          title: 'Error'\n        },\n        metadata: {\n          type: 'object',\n          title: 'Metadata'\n        },\n        output: {\n          type: 'object',\n          title: 'Output'\n        },\n        transition_count: {\n          type: 'integer',\n          title: 'Transition Count'\n        }\n      },\n      required: [        'id',\n        'created_at',\n        'input',\n        'status',\n        'task_id',\n        'updated_at'\n      ]\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCreate Task Execution\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/execution',\n  $defs: {\n    execution: {\n      type: 'object',\n      title: 'Execution',\n      properties: {\n        id: {\n          type: 'string',\n          title: 'Id'\n        },\n        created_at: {\n          type: 'string',\n          title: 'Created At',\n          format: 'date-time'\n        },\n        input: {\n          type: 'object',\n          title: 'Input',\n          additionalProperties: true\n        },\n        status: {\n          type: 'string',\n          title: 'Status',\n          enum: [            'queued',\n            'starting',\n            'running',\n            'awaiting_input',\n            'succeeded',\n            'failed',\n            'cancelled'\n          ]\n        },\n        task_id: {\n          type: 'string',\n          title: 'Task Id'\n        },\n        updated_at: {\n          type: 'string',\n          title: 'Updated At',\n          format: 'date-time'\n        },\n        error: {\n          type: 'string',\n          title: 'Error'\n        },\n        metadata: {\n          type: 'object',\n          title: 'Metadata',\n          additionalProperties: true\n        },\n        output: {\n          type: 'object',\n          title: 'Output',\n          additionalProperties: true\n        },\n        transition_count: {\n          type: 'integer',\n          title: 'Transition Count'\n        }\n      },\n      required: [        'id',\n        'created_at',\n        'input',\n        'status',\n        'task_id',\n        'updated_at'\n      ]\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -29,6 +29,7 @@ export const tool: Tool = {
       input: {
         type: 'object',
         title: 'Input',
+        additionalProperties: true,
       },
       error: {
         type: 'string',
@@ -37,10 +38,12 @@ export const tool: Tool = {
       metadata: {
         type: 'object',
         title: 'Metadata',
+        additionalProperties: true,
       },
       output: {
         type: 'object',
         title: 'Output',
+        additionalProperties: true,
       },
       transition_count: {
         type: 'integer',
