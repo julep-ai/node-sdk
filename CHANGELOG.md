@@ -1,5 +1,35 @@
 # Changelog
 
+## 2.8.0 (2025-08-16)
+
+Full Changelog: [v2.7.4...v2.8.0](https://github.com/julep-ai/node-sdk/compare/v2.7.4...v2.8.0)
+
+### Features
+
+* **mcp:** add logging when environment variable is set ([be36e15](https://github.com/julep-ai/node-sdk/commit/be36e1520c295adc4396ff8f85b46203e3a3b8f4))
+* **mcp:** add unix socket option for remote MCP ([e2fdc8b](https://github.com/julep-ai/node-sdk/commit/e2fdc8be5b7f55135fe889bb68ff076ff2e83c9f))
+* **mcp:** remote server with passthru auth ([e98a089](https://github.com/julep-ai/node-sdk/commit/e98a0891b4800926d6d8ac8b796f93fd193f27ec))
+
+
+### Bug Fixes
+
+* **mcp:** fix bug in header handling ([c0d1022](https://github.com/julep-ai/node-sdk/commit/c0d102255f5453422dc5b562a0a0c0c7049e0c69))
+* **mcp:** generate additionalProperties=true for map schemas to avoid validation issues ([12bd79f](https://github.com/julep-ai/node-sdk/commit/12bd79f67acb13742b83e0bd692f58e8759cef8b))
+
+
+### Chores
+
+* **deps:** update dependency node-fetch to v2.6.13 ([c62fad2](https://github.com/julep-ai/node-sdk/commit/c62fad2a45e62eb30e842a7a0795316c43fadb6f))
+* **internal:** codegen related update ([b09d85c](https://github.com/julep-ai/node-sdk/commit/b09d85c6a6e0bc2eac482ba9cfb9b7b09ec5679d))
+* **internal:** formatting change ([12fb0e6](https://github.com/julep-ai/node-sdk/commit/12fb0e6a7dd00c23e1be0187f9980c9e3494974e))
+* **internal:** move publish config ([e9e8777](https://github.com/julep-ai/node-sdk/commit/e9e87771a244b79cf4acfb3eac691a6ece19dd45))
+* **internal:** update comment in script ([dae9b0f](https://github.com/julep-ai/node-sdk/commit/dae9b0fbfa4616d0211eaff2747723e4eca697c8))
+* **mcp:** document remote server in README.md ([0b818f2](https://github.com/julep-ai/node-sdk/commit/0b818f293d83c27fd26f625a69f3e17ead61bbea))
+* **mcp:** minor cleanup of types and package.json ([dc011fe](https://github.com/julep-ai/node-sdk/commit/dc011fea568e36e556942012656a4cfcc4ccd101))
+* **mcp:** refactor streamable http transport ([00cb972](https://github.com/julep-ai/node-sdk/commit/00cb972cf1a90c69d879c10d0417e0429f76b88d))
+* **mcp:** update README ([0d69b8d](https://github.com/julep-ai/node-sdk/commit/0d69b8d3a63228328cadcaeb97f8ec06942f691e))
+* update @stainless-api/prism-cli to v5.15.0 ([3237c3b](https://github.com/julep-ai/node-sdk/commit/3237c3b7e985e59c6459fbda21f3e79353187df1))
+
 ## 2.7.4 (2025-08-01)
 
 Full Changelog: [v2.7.3...v2.7.4](https://github.com/julep-ai/node-sdk/compare/v2.7.3...v2.7.4)
