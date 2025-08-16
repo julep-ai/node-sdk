@@ -340,6 +340,7 @@ Julep.Secrets = Secrets;
 Julep.Projects = Projects;
 Julep.ProjectListResponsesOffsetPagination = ProjectListResponsesOffsetPagination;
 Julep.Healthz = Healthz;
+
 export declare namespace Julep {
   export type RequestOptions = Core.RequestOptions;
 
