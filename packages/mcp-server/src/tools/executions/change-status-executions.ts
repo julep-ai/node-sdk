@@ -30,6 +30,7 @@ export const tool: Tool = {
           input: {
             type: 'object',
             title: 'Input',
+            additionalProperties: true,
           },
           status: {
             type: 'string',

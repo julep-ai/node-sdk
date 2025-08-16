@@ -40,6 +40,7 @@ export const tool: Tool = {
       metadata: {
         type: 'object',
         title: 'Metadata',
+        additionalProperties: true,
       },
       recall_options: {
         anyOf: [
@@ -70,6 +71,7 @@ export const tool: Tool = {
               metadata_filter: {
                 type: 'object',
                 title: 'Metadata Filter',
+                additionalProperties: true,
               },
               mmr_strength: {
                 type: 'number',
@@ -109,6 +111,7 @@ export const tool: Tool = {
               metadata_filter: {
                 type: 'object',
                 title: 'Metadata Filter',
+                additionalProperties: true,
               },
               mode: {
                 type: 'string',
@@ -160,6 +163,7 @@ export const tool: Tool = {
               metadata_filter: {
                 type: 'object',
                 title: 'Metadata Filter',
+                additionalProperties: true,
               },
               mmr_strength: {
                 type: 'number',

@@ -62,14 +62,17 @@ export const tool: Tool = {
           cookies: {
             type: 'object',
             title: 'Cookies',
+            additionalProperties: true,
           },
           data: {
             type: 'object',
             title: 'Data',
+            additionalProperties: true,
           },
           files: {
             type: 'object',
             title: 'Files',
+            additionalProperties: true,
           },
           follow_redirects: {
             type: 'boolean',
@@ -78,6 +81,7 @@ export const tool: Tool = {
           headers: {
             type: 'object',
             title: 'Headers',
+            additionalProperties: true,
           },
           include_response_content: {
             type: 'boolean',
@@ -86,6 +90,7 @@ export const tool: Tool = {
           json: {
             type: 'object',
             title: 'Json',
+            additionalProperties: true,
           },
           params: {
             anyOf: [
@@ -94,6 +99,7 @@ export const tool: Tool = {
               },
               {
                 type: 'object',
+                additionalProperties: true,
               },
             ],
             title: 'Params',
@@ -106,6 +112,7 @@ export const tool: Tool = {
               properties: {
                 type: 'object',
                 title: 'Properties',
+                additionalProperties: true,
               },
               additionalProperties: {
                 type: 'boolean',
@@ -128,10 +135,12 @@ export const tool: Tool = {
           schema: {
             type: 'object',
             title: 'Schema',
+            additionalProperties: true,
           },
           secrets: {
             type: 'object',
             title: 'Secrets',
+            additionalProperties: true,
           },
           timeout: {
             type: 'integer',
@@ -285,14 +294,17 @@ export const tool: Tool = {
           description: {
             type: 'object',
             title: 'Description',
+            additionalProperties: true,
           },
           name: {
             type: 'object',
             title: 'Name',
+            additionalProperties: true,
           },
           parameters: {
             type: 'object',
             title: 'Parameters',
+            additionalProperties: true,
           },
         },
       },
@@ -303,6 +315,7 @@ export const tool: Tool = {
           arguments: {
             type: 'object',
             title: 'Arguments',
+            additionalProperties: true,
           },
           method: {
             type: 'string',
@@ -316,6 +329,7 @@ export const tool: Tool = {
           setup: {
             type: 'object',
             title: 'Setup',
+            additionalProperties: true,
           },
         },
       },
@@ -475,6 +489,7 @@ export const tool: Tool = {
           params: {
             type: 'object',
             title: 'Params',
+            additionalProperties: true,
           },
         },
         required: ['url'],
@@ -511,6 +526,7 @@ export const tool: Tool = {
           setup: {
             type: 'object',
             title: 'Setup',
+            additionalProperties: true,
           },
         },
       },
@@ -803,6 +819,7 @@ export const tool: Tool = {
           browserSettings: {
             type: 'object',
             title: 'Browsersettings',
+            additionalProperties: true,
           },
           extensionId: {
             type: 'string',
@@ -825,6 +842,7 @@ export const tool: Tool = {
                 type: 'array',
                 items: {
                   type: 'object',
+                  additionalProperties: true,
                 },
               },
             ],
@@ -1018,6 +1036,7 @@ export const tool: Tool = {
             title: 'Coordinate',
             items: {
               type: 'object',
+              additionalProperties: true,
             },
           },
           text: {
@@ -1079,6 +1098,7 @@ export const tool: Tool = {
           params: {
             type: 'object',
             title: 'Params',
+            additionalProperties: true,
           },
         },
         required: ['file'],
@@ -1095,6 +1115,7 @@ export const tool: Tool = {
           params: {
             type: 'object',
             title: 'Params',
+            additionalProperties: true,
           },
         },
         required: ['llamaparse_api_key'],
@@ -1119,6 +1140,7 @@ export const tool: Tool = {
           setup: {
             type: 'object',
             title: 'Setup',
+            additionalProperties: true,
           },
         },
       },
@@ -1191,6 +1213,7 @@ export const tool: Tool = {
           upload_params: {
             type: 'object',
             title: 'Upload Params',
+            additionalProperties: true,
           },
         },
         required: ['file'],
@@ -1215,6 +1238,7 @@ export const tool: Tool = {
           params: {
             type: 'object',
             title: 'Params',
+            additionalProperties: true,
           },
         },
         required: ['cloudinary_api_key', 'cloudinary_api_secret', 'cloudinary_cloud_name'],
@@ -1256,6 +1280,7 @@ export const tool: Tool = {
             title: 'Transformation',
             items: {
               type: 'object',
+              additionalProperties: true,
             },
           },
           return_base64: {
@@ -1285,6 +1310,7 @@ export const tool: Tool = {
           setup: {
             type: 'object',
             title: 'Setup',
+            additionalProperties: true,
           },
         },
       },
@@ -1363,6 +1389,7 @@ export const tool: Tool = {
           partition_params: {
             type: 'object',
             title: 'Partition Params',
+            additionalProperties: true,
           },
         },
         required: ['file'],
@@ -1379,6 +1406,7 @@ export const tool: Tool = {
           retry_config: {
             type: 'object',
             title: 'Retry Config',
+            additionalProperties: true,
           },
           server: {
             type: 'string',
@@ -1395,6 +1423,7 @@ export const tool: Tool = {
           url_params: {
             type: 'object',
             title: 'Url Params',
+            additionalProperties: true,
           },
         },
         required: ['unstructured_api_key'],
@@ -1495,6 +1524,7 @@ export const tool: Tool = {
           arguments: {
             type: 'object',
             title: 'Arguments',
+            additionalProperties: true,
           },
           resource_id: {
             type: 'string',

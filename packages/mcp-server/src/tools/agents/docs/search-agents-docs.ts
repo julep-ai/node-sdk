@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'search_agents_docs',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nSearches for documents associated with a specific agent.\n\nParameters:\n    x_developer_id (UUID): The unique identifier of the developer associated with the agent.\n    search_params (TextOnlyDocSearchRequest | VectorDocSearchRequest | HybridDocSearchRequest): The parameters for the search.\n    agent_id (UUID): The umnique identifier of the agent associated with the documents.\nReturns:\n    DocSearchResponse: The search results.\n\n# Response Schema\n```json\n{\n  type: 'object',\n  title: 'DocSearchResponse',\n  properties: {\n    docs: {\n      type: 'array',\n      title: 'Docs',\n      items: {\n        $ref: '#/$defs/doc_reference'\n      }\n    },\n    time: {\n      type: 'number',\n      title: 'Time'\n    }\n  },\n  required: [    'docs',\n    'time'\n  ],\n  $defs: {\n    doc_reference: {\n      type: 'object',\n      title: 'DocReference',\n      properties: {\n        id: {\n          type: 'string',\n          title: 'Id'\n        },\n        owner: {\n          $ref: '#/$defs/doc_owner'\n        },\n        snippet: {\n          $ref: '#/$defs/snippet'\n        },\n        distance: {\n          type: 'number',\n          title: 'Distance'\n        },\n        metadata: {\n          type: 'object',\n          title: 'Metadata'\n        },\n        title: {\n          type: 'string',\n          title: 'Title'\n        }\n      },\n      required: [        'id',\n        'owner',\n        'snippet'\n      ]\n    },\n    doc_owner: {\n      type: 'object',\n      title: 'DocOwner',\n      properties: {\n        id: {\n          type: 'string',\n          title: 'Id'\n        },\n        role: {\n          type: 'string',\n          title: 'Role',\n          enum: [            'user',\n            'agent'\n          ]\n        }\n      },\n      required: [        'id',\n        'role'\n      ]\n    },\n    snippet: {\n      type: 'object',\n      title: 'Snippet',\n      properties: {\n        content: {\n          type: 'string',\n          title: 'Content'\n        },\n        index: {\n          type: 'integer',\n          title: 'Index'\n        },\n        embedding: {\n          type: 'array',\n          title: 'Embedding',\n          items: {\n            type: 'number'\n          }\n        }\n      },\n      required: [        'content',\n        'index'\n      ]\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nSearches for documents associated with a specific agent.\n\nParameters:\n    x_developer_id (UUID): The unique identifier of the developer associated with the agent.\n    search_params (TextOnlyDocSearchRequest | VectorDocSearchRequest | HybridDocSearchRequest): The parameters for the search.\n    agent_id (UUID): The umnique identifier of the agent associated with the documents.\nReturns:\n    DocSearchResponse: The search results.\n\n# Response Schema\n```json\n{\n  type: 'object',\n  title: 'DocSearchResponse',\n  properties: {\n    docs: {\n      type: 'array',\n      title: 'Docs',\n      items: {\n        $ref: '#/$defs/doc_reference'\n      }\n    },\n    time: {\n      type: 'number',\n      title: 'Time'\n    }\n  },\n  required: [    'docs',\n    'time'\n  ],\n  $defs: {\n    doc_reference: {\n      type: 'object',\n      title: 'DocReference',\n      properties: {\n        id: {\n          type: 'string',\n          title: 'Id'\n        },\n        owner: {\n          $ref: '#/$defs/doc_owner'\n        },\n        snippet: {\n          $ref: '#/$defs/snippet'\n        },\n        distance: {\n          type: 'number',\n          title: 'Distance'\n        },\n        metadata: {\n          type: 'object',\n          title: 'Metadata',\n          additionalProperties: true\n        },\n        title: {\n          type: 'string',\n          title: 'Title'\n        }\n      },\n      required: [        'id',\n        'owner',\n        'snippet'\n      ]\n    },\n    doc_owner: {\n      type: 'object',\n      title: 'DocOwner',\n      properties: {\n        id: {\n          type: 'string',\n          title: 'Id'\n        },\n        role: {\n          type: 'string',\n          title: 'Role',\n          enum: [            'user',\n            'agent'\n          ]\n        }\n      },\n      required: [        'id',\n        'role'\n      ]\n    },\n    snippet: {\n      type: 'object',\n      title: 'Snippet',\n      properties: {\n        content: {\n          type: 'string',\n          title: 'Content'\n        },\n        index: {\n          type: 'integer',\n          title: 'Index'\n        },\n        embedding: {\n          type: 'array',\n          title: 'Embedding',\n          items: {\n            type: 'number'\n          }\n        }\n      },\n      required: [        'content',\n        'index'\n      ]\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     anyOf: [
@@ -36,6 +36,7 @@ export const tool: Tool = {
           connection_pool: {
             type: 'object',
             title: 'Connection Pool',
+            additionalProperties: true,
           },
           include_embeddings: {
             type: 'boolean',
@@ -52,6 +53,7 @@ export const tool: Tool = {
           metadata_filter: {
             type: 'object',
             title: 'Metadata Filter',
+            additionalProperties: true,
           },
           trigram_similarity_threshold: {
             type: 'number',
@@ -77,6 +79,7 @@ export const tool: Tool = {
           connection_pool: {
             type: 'object',
             title: 'Connection Pool',
+            additionalProperties: true,
           },
           confidence: {
             type: 'number',
@@ -93,6 +96,7 @@ export const tool: Tool = {
           metadata_filter: {
             type: 'object',
             title: 'Metadata Filter',
+            additionalProperties: true,
           },
           mmr_strength: {
             type: 'number',
@@ -122,6 +126,7 @@ export const tool: Tool = {
           connection_pool: {
             type: 'object',
             title: 'Connection Pool',
+            additionalProperties: true,
           },
           alpha: {
             type: 'number',
@@ -150,6 +155,7 @@ export const tool: Tool = {
           metadata_filter: {
             type: 'object',
             title: 'Metadata Filter',
+            additionalProperties: true,
           },
           mmr_strength: {
             type: 'number',

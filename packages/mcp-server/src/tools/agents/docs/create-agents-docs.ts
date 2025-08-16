@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'create_agents_docs',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCreate Agent Doc\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/doc',\n  $defs: {\n    doc: {\n      type: 'object',\n      title: 'Doc',\n      properties: {\n        id: {\n          type: 'string',\n          title: 'Id'\n        },\n        content: {\n          anyOf: [            {\n              type: 'string'\n            },\n            {\n              type: 'array',\n              items: {\n                type: 'string'\n              }\n            }\n          ],\n          title: 'Content'\n        },\n        created_at: {\n          type: 'string',\n          title: 'Created At',\n          format: 'date-time'\n        },\n        title: {\n          type: 'string',\n          title: 'Title'\n        },\n        embedding_dimensions: {\n          type: 'integer',\n          title: 'Embedding Dimensions'\n        },\n        embedding_model: {\n          type: 'string',\n          title: 'Embedding Model'\n        },\n        embeddings: {\n          anyOf: [            {\n              type: 'array',\n              items: {\n                type: 'number'\n              }\n            },\n            {\n              type: 'array',\n              items: {\n                type: 'array',\n                items: {\n                  type: 'number'\n                }\n              }\n            }\n          ],\n          title: 'Embeddings'\n        },\n        language: {\n          type: 'string',\n          title: 'Language'\n        },\n        metadata: {\n          type: 'object',\n          title: 'Metadata'\n        },\n        modality: {\n          type: 'string',\n          title: 'Modality'\n        }\n      },\n      required: [        'id',\n        'content',\n        'created_at',\n        'title'\n      ]\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCreate Agent Doc\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/doc',\n  $defs: {\n    doc: {\n      type: 'object',\n      title: 'Doc',\n      properties: {\n        id: {\n          type: 'string',\n          title: 'Id'\n        },\n        content: {\n          anyOf: [            {\n              type: 'string'\n            },\n            {\n              type: 'array',\n              items: {\n                type: 'string'\n              }\n            }\n          ],\n          title: 'Content'\n        },\n        created_at: {\n          type: 'string',\n          title: 'Created At',\n          format: 'date-time'\n        },\n        title: {\n          type: 'string',\n          title: 'Title'\n        },\n        embedding_dimensions: {\n          type: 'integer',\n          title: 'Embedding Dimensions'\n        },\n        embedding_model: {\n          type: 'string',\n          title: 'Embedding Model'\n        },\n        embeddings: {\n          anyOf: [            {\n              type: 'array',\n              items: {\n                type: 'number'\n              }\n            },\n            {\n              type: 'array',\n              items: {\n                type: 'array',\n                items: {\n                  type: 'number'\n                }\n              }\n            }\n          ],\n          title: 'Embeddings'\n        },\n        language: {\n          type: 'string',\n          title: 'Language'\n        },\n        metadata: {\n          type: 'object',\n          title: 'Metadata',\n          additionalProperties: true\n        },\n        modality: {\n          type: 'string',\n          title: 'Modality'\n        }\n      },\n      required: [        'id',\n        'content',\n        'created_at',\n        'title'\n      ]\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -49,6 +49,7 @@ export const tool: Tool = {
       connection_pool: {
         type: 'object',
         title: 'Connection Pool',
+        additionalProperties: true,
       },
       embed_instruction: {
         type: 'string',
@@ -57,6 +58,7 @@ export const tool: Tool = {
       metadata: {
         type: 'object',
         title: 'Metadata',
+        additionalProperties: true,
       },
       jq_filter: {
         type: 'string',
