@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { type ClientOptions } from '@julep/sdk/index';
+import { ClientOptions } from '@julep/sdk';
 
 export type WorkerInput = {
   opts: ClientOptions;

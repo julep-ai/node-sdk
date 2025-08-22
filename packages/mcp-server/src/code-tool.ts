@@ -1,10 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { type ClientOptions } from '@julep/sdk/index';
-
 import { dirname } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import Julep from '@julep/sdk';
+import Julep, { ClientOptions } from '@julep/sdk';
 import { Endpoint, ContentBlock, Metadata } from './tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
