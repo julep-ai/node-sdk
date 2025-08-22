@@ -1,8 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { type ClientOptions } from '@julep/sdk/index';
-
 import { IncomingMessage } from 'node:http';
+import { ClientOptions } from '@julep/sdk';
 
 export const parseAuthHeaders = (req: IncomingMessage): Partial<ClientOptions> => {
   if (req.headers.authorization) {
