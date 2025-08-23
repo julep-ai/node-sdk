@@ -1,5 +1,45 @@
 # Changelog
 
+## 2.8.0 (2025-08-23)
+
+Full Changelog: [v2.7.4...v2.8.0](https://github.com/julep-ai/node-sdk/compare/v2.7.4...v2.8.0)
+
+### Features
+
+* **mcp:** add code execution tool ([1e00ca0](https://github.com/julep-ai/node-sdk/commit/1e00ca0f773fc45220972ee123ad198f06f95604))
+* **mcp:** add logging when environment variable is set ([be36e15](https://github.com/julep-ai/node-sdk/commit/be36e1520c295adc4396ff8f85b46203e3a3b8f4))
+* **mcp:** add option to infer mcp client ([2d55b8d](https://github.com/julep-ai/node-sdk/commit/2d55b8db6791b4780ab33d6bc3beb3e168f4640d))
+* **mcp:** add unix socket option for remote MCP ([e2fdc8b](https://github.com/julep-ai/node-sdk/commit/e2fdc8be5b7f55135fe889bb68ff076ff2e83c9f))
+* **mcp:** change remote server query option parsing logic ([1ce88f0](https://github.com/julep-ai/node-sdk/commit/1ce88f05b38e6e58c248f4a0891142026bcfe98a))
+* **mcp:** parse query string as mcp client options in mcp server ([ca31e54](https://github.com/julep-ai/node-sdk/commit/ca31e54b1bb7be289a73cad5ed1fd445a9b9f99c))
+* **mcp:** remote server with passthru auth ([e98a089](https://github.com/julep-ai/node-sdk/commit/e98a0891b4800926d6d8ac8b796f93fd193f27ec))
+
+
+### Bug Fixes
+
+* **mcp:** fix bug in header handling ([c0d1022](https://github.com/julep-ai/node-sdk/commit/c0d102255f5453422dc5b562a0a0c0c7049e0c69))
+* **mcp:** generate additionalProperties=true for map schemas to avoid validation issues ([12bd79f](https://github.com/julep-ai/node-sdk/commit/12bd79f67acb13742b83e0bd692f58e8759cef8b))
+
+
+### Chores
+
+* **deps:** update dependency node-fetch to v2.6.13 ([c62fad2](https://github.com/julep-ai/node-sdk/commit/c62fad2a45e62eb30e842a7a0795316c43fadb6f))
+* **internal:** codegen related update ([b09d85c](https://github.com/julep-ai/node-sdk/commit/b09d85c6a6e0bc2eac482ba9cfb9b7b09ec5679d))
+* **internal:** formatting change ([12fb0e6](https://github.com/julep-ai/node-sdk/commit/12fb0e6a7dd00c23e1be0187f9980c9e3494974e))
+* **internal:** make mcp-server publishing public by defaut ([a80dd72](https://github.com/julep-ai/node-sdk/commit/a80dd722b30a9f2448d873dd63084daa3377ebdc))
+* **internal:** move publish config ([e9e8777](https://github.com/julep-ai/node-sdk/commit/e9e87771a244b79cf4acfb3eac691a6ece19dd45))
+* **internal:** refactor array check ([fd2fa21](https://github.com/julep-ai/node-sdk/commit/fd2fa21ceeef064b14d4db7282d0927170ec6103))
+* **internal:** update comment in script ([dae9b0f](https://github.com/julep-ai/node-sdk/commit/dae9b0fbfa4616d0211eaff2747723e4eca697c8))
+* **mcp:** add cors to oauth metadata route ([cc312bc](https://github.com/julep-ai/node-sdk/commit/cc312bcae0e89e1d92eb515ec80fc761d5e91729))
+* **mcp:** document remote server in README.md ([0b818f2](https://github.com/julep-ai/node-sdk/commit/0b818f293d83c27fd26f625a69f3e17ead61bbea))
+* **mcp:** minor cleanup of types and package.json ([dc011fe](https://github.com/julep-ai/node-sdk/commit/dc011fea568e36e556942012656a4cfcc4ccd101))
+* **mcp:** refactor streamable http transport ([00cb972](https://github.com/julep-ai/node-sdk/commit/00cb972cf1a90c69d879c10d0417e0429f76b88d))
+* **mcp:** update package.json ([0d2ee4b](https://github.com/julep-ai/node-sdk/commit/0d2ee4b3982034605a315adfdc2aecc6a6fbc5bd))
+* **mcp:** update README ([0d69b8d](https://github.com/julep-ai/node-sdk/commit/0d69b8d3a63228328cadcaeb97f8ec06942f691e))
+* **mcp:** update types ([6b6f77c](https://github.com/julep-ai/node-sdk/commit/6b6f77c4742e866839b0edb290422f61c96e44c2))
+* update @stainless-api/prism-cli to v5.15.0 ([3237c3b](https://github.com/julep-ai/node-sdk/commit/3237c3b7e985e59c6459fbda21f3e79353187df1))
+* update CI script ([eb0d865](https://github.com/julep-ai/node-sdk/commit/eb0d8650804d09b5a0ffe4561250b1e82eaf979d))
+
 ## 2.7.4 (2025-08-01)
 
 Full Changelog: [v2.7.3...v2.7.4](https://github.com/julep-ai/node-sdk/compare/v2.7.3...v2.7.4)

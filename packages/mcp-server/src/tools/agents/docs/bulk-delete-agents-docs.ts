@@ -33,6 +33,7 @@ export const tool: Tool = {
       metadata_filter: {
         type: 'object',
         title: 'Metadata Filter',
+        additionalProperties: true,
       },
       jq_filter: {
         type: 'string',

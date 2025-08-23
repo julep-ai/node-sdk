@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'list_users',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nList Users\n\n# Response Schema\n```json\n{\n  type: 'object',\n  title: 'ListResponse[User]',\n  properties: {\n    items: {\n      type: 'array',\n      title: 'Items',\n      items: {\n        $ref: '#/$defs/user'\n      }\n    }\n  },\n  required: [    'items'\n  ],\n  $defs: {\n    user: {\n      type: 'object',\n      title: 'User',\n      properties: {\n        id: {\n          type: 'string',\n          title: 'Id'\n        },\n        created_at: {\n          type: 'string',\n          title: 'Created At',\n          format: 'date-time'\n        },\n        updated_at: {\n          type: 'string',\n          title: 'Updated At',\n          format: 'date-time'\n        },\n        about: {\n          type: 'string',\n          title: 'About'\n        },\n        metadata: {\n          type: 'object',\n          title: 'Metadata'\n        },\n        name: {\n          type: 'string',\n          title: 'Name'\n        },\n        project: {\n          type: 'string',\n          title: 'Project'\n        }\n      },\n      required: [        'id',\n        'created_at',\n        'updated_at'\n      ]\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nList Users\n\n# Response Schema\n```json\n{\n  type: 'object',\n  title: 'ListResponse[User]',\n  properties: {\n    items: {\n      type: 'array',\n      title: 'Items',\n      items: {\n        $ref: '#/$defs/user'\n      }\n    }\n  },\n  required: [    'items'\n  ],\n  $defs: {\n    user: {\n      type: 'object',\n      title: 'User',\n      properties: {\n        id: {\n          type: 'string',\n          title: 'Id'\n        },\n        created_at: {\n          type: 'string',\n          title: 'Created At',\n          format: 'date-time'\n        },\n        updated_at: {\n          type: 'string',\n          title: 'Updated At',\n          format: 'date-time'\n        },\n        about: {\n          type: 'string',\n          title: 'About'\n        },\n        metadata: {\n          type: 'object',\n          title: 'Metadata',\n          additionalProperties: true\n        },\n        name: {\n          type: 'string',\n          title: 'Name'\n        },\n        project: {\n          type: 'string',\n          title: 'Project'\n        }\n      },\n      required: [        'id',\n        'created_at',\n        'updated_at'\n      ]\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -34,6 +34,7 @@ export const tool: Tool = {
       metadata_filter: {
         type: 'object',
         title: 'MetadataFilter',
+        additionalProperties: true,
       },
       offset: {
         type: 'integer',
