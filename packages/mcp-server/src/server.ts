@@ -32,7 +32,7 @@ export const newMcpServer = () =>
   new McpServer(
     {
       name: 'julep_sdk_api',
-      version: '2.7.4',
+      version: '2.8.0',
     },
     { capabilities: { tools: {}, logging: {} } },
   );
