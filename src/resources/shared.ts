@@ -1121,6 +1121,7 @@ export namespace PromptStepInput {
       | Shared.ArxivIntegrationDef
       | Shared.UnstructuredIntegrationDef
       | Shared.AlgoliaIntegrationDef
+      | AgentsAPIAutogenToolsCreateToolRequestInput.GoogleSheetsIntegrationDefInput
       | null;
 
     /**
@@ -1197,6 +1198,151 @@ export namespace PromptStepInput {
 
           items?: unknown;
         }
+      }
+    }
+
+    /**
+     * Google Sheets integration definition
+     */
+    export interface GoogleSheetsIntegrationDefInput {
+      /**
+       * Arguments for reading values from a spreadsheet
+       */
+      arguments?:
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsReadArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsWriteArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsAppendArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsClearArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsBatchReadArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsBatchWriteArguments
+        | null;
+
+      method?:
+        | 'read_values'
+        | 'write_values'
+        | 'append_values'
+        | 'clear_values'
+        | 'batch_read'
+        | 'batch_write'
+        | null;
+
+      provider?: 'google_sheets';
+
+      /**
+       * Setup parameters for Google Sheets integration
+       */
+      setup?: GoogleSheetsIntegrationDefInput.Setup | null;
+    }
+
+    export namespace GoogleSheetsIntegrationDefInput {
+      /**
+       * Arguments for reading values from a spreadsheet
+       */
+      export interface GoogleSheetsReadArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        date_time_render_option?: 'SERIAL_NUMBER' | 'FORMATTED_STRING';
+
+        major_dimension?: 'ROWS' | 'COLUMNS';
+
+        value_render_option?: 'FORMATTED_VALUE' | 'UNFORMATTED_VALUE' | 'FORMULA';
+      }
+
+      /**
+       * Arguments for writing values to a spreadsheet
+       */
+      export interface GoogleSheetsWriteArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        values: Array<Array<unknown>>;
+
+        include_values_in_response?: boolean;
+
+        insert_data_option?: 'OVERWRITE' | 'INSERT_ROWS';
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      /**
+       * Arguments for appending values to a spreadsheet
+       */
+      export interface GoogleSheetsAppendArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        values: Array<Array<unknown>>;
+
+        include_values_in_response?: boolean;
+
+        insert_data_option?: 'OVERWRITE' | 'INSERT_ROWS';
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      /**
+       * Arguments for clearing values from a spreadsheet
+       */
+      export interface GoogleSheetsClearArguments {
+        range: string;
+
+        spreadsheet_id: string;
+      }
+
+      /**
+       * Arguments for batch reading values from multiple ranges
+       */
+      export interface GoogleSheetsBatchReadArguments {
+        ranges: Array<string>;
+
+        spreadsheet_id: string;
+
+        date_time_render_option?: 'SERIAL_NUMBER' | 'FORMATTED_STRING';
+
+        major_dimension?: 'ROWS' | 'COLUMNS';
+
+        value_render_option?: 'FORMATTED_VALUE' | 'UNFORMATTED_VALUE' | 'FORMULA';
+      }
+
+      /**
+       * Arguments for batch updating values in multiple ranges
+       */
+      export interface GoogleSheetsBatchWriteArguments {
+        data: Array<GoogleSheetsBatchWriteArguments.Data>;
+
+        spreadsheet_id: string;
+
+        include_values_in_response?: boolean;
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      export namespace GoogleSheetsBatchWriteArguments {
+        /**
+         * Represents a range of values to write
+         */
+        export interface Data {
+          range: string;
+
+          values: Array<Array<unknown>>;
+
+          major_dimension?: 'ROWS' | 'COLUMNS';
+        }
+      }
+
+      /**
+       * Setup parameters for Google Sheets integration
+       */
+      export interface Setup {
+        use_julep_service: boolean;
+
+        default_retry_count?: number;
+
+        service_account_json?: string | null;
       }
     }
   }

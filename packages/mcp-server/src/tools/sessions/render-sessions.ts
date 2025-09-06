@@ -526,6 +526,272 @@ export const tool: Tool = {
                 {
                   $ref: '#/$defs/algolia_integration_def',
                 },
+                {
+                  type: 'object',
+                  title: 'GoogleSheetsIntegrationDef',
+                  description: 'Google Sheets integration definition',
+                  properties: {
+                    arguments: {
+                      anyOf: [
+                        {
+                          type: 'object',
+                          title: 'GoogleSheetsReadArguments',
+                          description: 'Arguments for reading values from a spreadsheet',
+                          properties: {
+                            range: {
+                              type: 'string',
+                              title: 'Range',
+                            },
+                            spreadsheet_id: {
+                              type: 'string',
+                              title: 'Spreadsheet Id',
+                            },
+                            date_time_render_option: {
+                              type: 'string',
+                              title: 'Date Time Render Option',
+                              enum: ['SERIAL_NUMBER', 'FORMATTED_STRING'],
+                            },
+                            major_dimension: {
+                              type: 'string',
+                              title: 'Major Dimension',
+                              enum: ['ROWS', 'COLUMNS'],
+                            },
+                            value_render_option: {
+                              type: 'string',
+                              title: 'Value Render Option',
+                              enum: ['FORMATTED_VALUE', 'UNFORMATTED_VALUE', 'FORMULA'],
+                            },
+                          },
+                          required: ['range', 'spreadsheet_id'],
+                        },
+                        {
+                          type: 'object',
+                          title: 'GoogleSheetsWriteArguments',
+                          description: 'Arguments for writing values to a spreadsheet',
+                          properties: {
+                            range: {
+                              type: 'string',
+                              title: 'Range',
+                            },
+                            spreadsheet_id: {
+                              type: 'string',
+                              title: 'Spreadsheet Id',
+                            },
+                            values: {
+                              type: 'array',
+                              title: 'Values',
+                              items: {
+                                type: 'array',
+                                items: {
+                                  type: 'object',
+                                  additionalProperties: true,
+                                },
+                              },
+                            },
+                            include_values_in_response: {
+                              type: 'boolean',
+                              title: 'Include Values In Response',
+                            },
+                            insert_data_option: {
+                              type: 'string',
+                              title: 'Insert Data Option',
+                              enum: ['OVERWRITE', 'INSERT_ROWS'],
+                            },
+                            value_input_option: {
+                              type: 'string',
+                              title: 'Value Input Option',
+                              enum: ['RAW', 'USER_ENTERED'],
+                            },
+                          },
+                          required: ['range', 'spreadsheet_id', 'values'],
+                        },
+                        {
+                          type: 'object',
+                          title: 'GoogleSheetsAppendArguments',
+                          description: 'Arguments for appending values to a spreadsheet',
+                          properties: {
+                            range: {
+                              type: 'string',
+                              title: 'Range',
+                            },
+                            spreadsheet_id: {
+                              type: 'string',
+                              title: 'Spreadsheet Id',
+                            },
+                            values: {
+                              type: 'array',
+                              title: 'Values',
+                              items: {
+                                type: 'array',
+                                items: {
+                                  type: 'object',
+                                  additionalProperties: true,
+                                },
+                              },
+                            },
+                            include_values_in_response: {
+                              type: 'boolean',
+                              title: 'Include Values In Response',
+                            },
+                            insert_data_option: {
+                              type: 'string',
+                              title: 'Insert Data Option',
+                              enum: ['OVERWRITE', 'INSERT_ROWS'],
+                            },
+                            value_input_option: {
+                              type: 'string',
+                              title: 'Value Input Option',
+                              enum: ['RAW', 'USER_ENTERED'],
+                            },
+                          },
+                          required: ['range', 'spreadsheet_id', 'values'],
+                        },
+                        {
+                          type: 'object',
+                          title: 'GoogleSheetsClearArguments',
+                          description: 'Arguments for clearing values from a spreadsheet',
+                          properties: {
+                            range: {
+                              type: 'string',
+                              title: 'Range',
+                            },
+                            spreadsheet_id: {
+                              type: 'string',
+                              title: 'Spreadsheet Id',
+                            },
+                          },
+                          required: ['range', 'spreadsheet_id'],
+                        },
+                        {
+                          type: 'object',
+                          title: 'GoogleSheetsBatchReadArguments',
+                          description: 'Arguments for batch reading values from multiple ranges',
+                          properties: {
+                            ranges: {
+                              type: 'array',
+                              title: 'Ranges',
+                              items: {
+                                type: 'string',
+                              },
+                            },
+                            spreadsheet_id: {
+                              type: 'string',
+                              title: 'Spreadsheet Id',
+                            },
+                            date_time_render_option: {
+                              type: 'string',
+                              title: 'Date Time Render Option',
+                              enum: ['SERIAL_NUMBER', 'FORMATTED_STRING'],
+                            },
+                            major_dimension: {
+                              type: 'string',
+                              title: 'Major Dimension',
+                              enum: ['ROWS', 'COLUMNS'],
+                            },
+                            value_render_option: {
+                              type: 'string',
+                              title: 'Value Render Option',
+                              enum: ['FORMATTED_VALUE', 'UNFORMATTED_VALUE', 'FORMULA'],
+                            },
+                          },
+                          required: ['ranges', 'spreadsheet_id'],
+                        },
+                        {
+                          type: 'object',
+                          title: 'GoogleSheetsBatchWriteArguments',
+                          description: 'Arguments for batch updating values in multiple ranges',
+                          properties: {
+                            data: {
+                              type: 'array',
+                              title: 'Data',
+                              items: {
+                                type: 'object',
+                                title: 'GoogleSheetsValueRange',
+                                description: 'Represents a range of values to write',
+                                properties: {
+                                  range: {
+                                    type: 'string',
+                                    title: 'Range',
+                                  },
+                                  values: {
+                                    type: 'array',
+                                    title: 'Values',
+                                    items: {
+                                      type: 'array',
+                                      items: {
+                                        type: 'object',
+                                        additionalProperties: true,
+                                      },
+                                    },
+                                  },
+                                  major_dimension: {
+                                    type: 'string',
+                                    title: 'Major Dimension',
+                                    enum: ['ROWS', 'COLUMNS'],
+                                  },
+                                },
+                                required: ['range', 'values'],
+                              },
+                            },
+                            spreadsheet_id: {
+                              type: 'string',
+                              title: 'Spreadsheet Id',
+                            },
+                            include_values_in_response: {
+                              type: 'boolean',
+                              title: 'Include Values In Response',
+                            },
+                            value_input_option: {
+                              type: 'string',
+                              title: 'Value Input Option',
+                              enum: ['RAW', 'USER_ENTERED'],
+                            },
+                          },
+                          required: ['data', 'spreadsheet_id'],
+                        },
+                      ],
+                      title: 'Arguments',
+                      description: 'Arguments for reading values from a spreadsheet',
+                    },
+                    method: {
+                      type: 'string',
+                      title: 'Method',
+                      enum: [
+                        'read_values',
+                        'write_values',
+                        'append_values',
+                        'clear_values',
+                        'batch_read',
+                        'batch_write',
+                      ],
+                    },
+                    provider: {
+                      type: 'string',
+                      title: 'Provider',
+                      enum: ['google_sheets'],
+                    },
+                    setup: {
+                      type: 'object',
+                      title: 'GoogleSheetsSetup',
+                      description: 'Setup parameters for Google Sheets integration',
+                      properties: {
+                        use_julep_service: {
+                          type: 'boolean',
+                          title: 'Use Julep Service',
+                        },
+                        default_retry_count: {
+                          type: 'integer',
+                          title: 'Default Retry Count',
+                        },
+                        service_account_json: {
+                          type: 'string',
+                          title: 'Service Account Json',
+                        },
+                      },
+                      required: ['use_julep_service'],
+                    },
+                  },
+                },
               ],
               title: 'Integration',
               description: 'Brave integration definition',
