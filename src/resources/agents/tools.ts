@@ -159,6 +159,7 @@ export interface ToolCreateResponse {
     | Shared.ArxivIntegrationDef
     | Shared.UnstructuredIntegrationDef
     | Shared.AlgoliaIntegrationDef
+    | ToolCreateResponse.McpIntegrationDef
     | ToolCreateResponse.GoogleSheetsIntegrationDefOutput
     | null;
 
@@ -236,6 +237,64 @@ export namespace ToolCreateResponse {
 
         items?: unknown;
       }
+    }
+  }
+
+  /**
+   * MCP integration definition
+   */
+  export interface McpIntegrationDef {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    arguments?: McpIntegrationDef.McpCallToolArguments | McpIntegrationDef.McpListToolsArguments | null;
+
+    method?: string | null;
+
+    provider?: 'mcp';
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    setup?: McpIntegrationDef.Setup | null;
+  }
+
+  export namespace McpIntegrationDef {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    export interface McpCallToolArguments {
+      tool_name: string;
+
+      arguments?: unknown;
+
+      timeout_seconds?: number;
+    }
+
+    /**
+     * Arguments to list available tools
+     */
+    export interface McpListToolsArguments {
+      dummy?: string;
+    }
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    export interface Setup {
+      transport: 'sse' | 'http';
+
+      args?: Array<string>;
+
+      command?: string | null;
+
+      cwd?: string | null;
+
+      env?: { [key: string]: string };
+
+      http_headers?: { [key: string]: string };
+
+      http_url?: string | null;
     }
   }
 
@@ -448,6 +507,7 @@ export interface ToolUpdateResponse {
     | Shared.ArxivIntegrationDef
     | Shared.UnstructuredIntegrationDef
     | Shared.AlgoliaIntegrationDef
+    | ToolUpdateResponse.McpIntegrationDef
     | ToolUpdateResponse.GoogleSheetsIntegrationDefOutput
     | null;
 
@@ -525,6 +585,64 @@ export namespace ToolUpdateResponse {
 
         items?: unknown;
       }
+    }
+  }
+
+  /**
+   * MCP integration definition
+   */
+  export interface McpIntegrationDef {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    arguments?: McpIntegrationDef.McpCallToolArguments | McpIntegrationDef.McpListToolsArguments | null;
+
+    method?: string | null;
+
+    provider?: 'mcp';
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    setup?: McpIntegrationDef.Setup | null;
+  }
+
+  export namespace McpIntegrationDef {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    export interface McpCallToolArguments {
+      tool_name: string;
+
+      arguments?: unknown;
+
+      timeout_seconds?: number;
+    }
+
+    /**
+     * Arguments to list available tools
+     */
+    export interface McpListToolsArguments {
+      dummy?: string;
+    }
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    export interface Setup {
+      transport: 'sse' | 'http';
+
+      args?: Array<string>;
+
+      command?: string | null;
+
+      cwd?: string | null;
+
+      env?: { [key: string]: string };
+
+      http_headers?: { [key: string]: string };
+
+      http_url?: string | null;
     }
   }
 
@@ -737,6 +855,7 @@ export interface ToolListResponse {
     | Shared.ArxivIntegrationDef
     | Shared.UnstructuredIntegrationDef
     | Shared.AlgoliaIntegrationDef
+    | ToolListResponse.McpIntegrationDef
     | ToolListResponse.GoogleSheetsIntegrationDefOutput
     | null;
 
@@ -814,6 +933,64 @@ export namespace ToolListResponse {
 
         items?: unknown;
       }
+    }
+  }
+
+  /**
+   * MCP integration definition
+   */
+  export interface McpIntegrationDef {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    arguments?: McpIntegrationDef.McpCallToolArguments | McpIntegrationDef.McpListToolsArguments | null;
+
+    method?: string | null;
+
+    provider?: 'mcp';
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    setup?: McpIntegrationDef.Setup | null;
+  }
+
+  export namespace McpIntegrationDef {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    export interface McpCallToolArguments {
+      tool_name: string;
+
+      arguments?: unknown;
+
+      timeout_seconds?: number;
+    }
+
+    /**
+     * Arguments to list available tools
+     */
+    export interface McpListToolsArguments {
+      dummy?: string;
+    }
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    export interface Setup {
+      transport: 'sse' | 'http';
+
+      args?: Array<string>;
+
+      command?: string | null;
+
+      cwd?: string | null;
+
+      env?: { [key: string]: string };
+
+      http_headers?: { [key: string]: string };
+
+      http_url?: string | null;
     }
   }
 
@@ -1034,6 +1211,7 @@ export interface ToolResetResponse {
     | Shared.ArxivIntegrationDef
     | Shared.UnstructuredIntegrationDef
     | Shared.AlgoliaIntegrationDef
+    | ToolResetResponse.McpIntegrationDef
     | ToolResetResponse.GoogleSheetsIntegrationDefOutput
     | null;
 
@@ -1111,6 +1289,64 @@ export namespace ToolResetResponse {
 
         items?: unknown;
       }
+    }
+  }
+
+  /**
+   * MCP integration definition
+   */
+  export interface McpIntegrationDef {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    arguments?: McpIntegrationDef.McpCallToolArguments | McpIntegrationDef.McpListToolsArguments | null;
+
+    method?: string | null;
+
+    provider?: 'mcp';
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    setup?: McpIntegrationDef.Setup | null;
+  }
+
+  export namespace McpIntegrationDef {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    export interface McpCallToolArguments {
+      tool_name: string;
+
+      arguments?: unknown;
+
+      timeout_seconds?: number;
+    }
+
+    /**
+     * Arguments to list available tools
+     */
+    export interface McpListToolsArguments {
+      dummy?: string;
+    }
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    export interface Setup {
+      transport: 'sse' | 'http';
+
+      args?: Array<string>;
+
+      command?: string | null;
+
+      cwd?: string | null;
+
+      env?: { [key: string]: string };
+
+      http_headers?: { [key: string]: string };
+
+      http_url?: string | null;
     }
   }
 
@@ -1317,6 +1553,7 @@ export interface ToolCreateParams {
     | Shared.ArxivIntegrationDef
     | Shared.UnstructuredIntegrationDef
     | Shared.AlgoliaIntegrationDef
+    | ToolCreateParams.McpIntegrationDef
     | ToolCreateParams.GoogleSheetsIntegrationDefInput
     | null;
 
@@ -1394,6 +1631,64 @@ export namespace ToolCreateParams {
 
         items?: unknown;
       }
+    }
+  }
+
+  /**
+   * MCP integration definition
+   */
+  export interface McpIntegrationDef {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    arguments?: McpIntegrationDef.McpCallToolArguments | McpIntegrationDef.McpListToolsArguments | null;
+
+    method?: string | null;
+
+    provider?: 'mcp';
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    setup?: McpIntegrationDef.Setup | null;
+  }
+
+  export namespace McpIntegrationDef {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    export interface McpCallToolArguments {
+      tool_name: string;
+
+      arguments?: unknown;
+
+      timeout_seconds?: number;
+    }
+
+    /**
+     * Arguments to list available tools
+     */
+    export interface McpListToolsArguments {
+      dummy?: string;
+    }
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    export interface Setup {
+      transport: 'sse' | 'http';
+
+      args?: Array<string>;
+
+      command?: string | null;
+
+      cwd?: string | null;
+
+      env?: { [key: string]: string };
+
+      http_headers?: { [key: string]: string };
+
+      http_url?: string | null;
     }
   }
 
@@ -1589,6 +1884,7 @@ export interface ToolUpdateParams {
     | ToolUpdateParams.ArxivIntegrationDefUpdate
     | ToolUpdateParams.UnstructuredIntegrationDefUpdate
     | ToolUpdateParams.AlgoliaIntegrationDefUpdate
+    | ToolUpdateParams.McpIntegrationDefUpdate
     | ToolUpdateParams.GoogleSheetsIntegrationDefUpdate
     | null;
 
@@ -2427,6 +2723,67 @@ export namespace ToolUpdateParams {
   }
 
   /**
+   * MCP integration definition
+   */
+  export interface McpIntegrationDefUpdate {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    arguments?:
+      | McpIntegrationDefUpdate.McpCallToolArgumentsUpdate
+      | McpIntegrationDefUpdate.McpListToolsArgumentsUpdate
+      | null;
+
+    method?: string | null;
+
+    provider?: 'mcp';
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    setup?: McpIntegrationDefUpdate.Setup | null;
+  }
+
+  export namespace McpIntegrationDefUpdate {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    export interface McpCallToolArgumentsUpdate {
+      arguments?: unknown;
+
+      timeout_seconds?: number;
+
+      tool_name?: string | null;
+    }
+
+    /**
+     * Arguments to list available tools
+     */
+    export interface McpListToolsArgumentsUpdate {
+      dummy?: string;
+    }
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    export interface Setup {
+      args?: Array<string>;
+
+      command?: string | null;
+
+      cwd?: string | null;
+
+      env?: { [key: string]: string };
+
+      http_headers?: { [key: string]: string };
+
+      http_url?: string | null;
+
+      transport?: 'sse' | 'http' | null;
+    }
+  }
+
+  /**
    * Google Sheets integration definition
    */
   export interface GoogleSheetsIntegrationDefUpdate {
@@ -2669,6 +3026,7 @@ export interface ToolResetParams {
     | Shared.ArxivIntegrationDef
     | Shared.UnstructuredIntegrationDef
     | Shared.AlgoliaIntegrationDef
+    | ToolResetParams.McpIntegrationDef
     | ToolResetParams.GoogleSheetsIntegrationDefInput
     | null;
 
@@ -2746,6 +3104,64 @@ export namespace ToolResetParams {
 
         items?: unknown;
       }
+    }
+  }
+
+  /**
+   * MCP integration definition
+   */
+  export interface McpIntegrationDef {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    arguments?: McpIntegrationDef.McpCallToolArguments | McpIntegrationDef.McpListToolsArguments | null;
+
+    method?: string | null;
+
+    provider?: 'mcp';
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    setup?: McpIntegrationDef.Setup | null;
+  }
+
+  export namespace McpIntegrationDef {
+    /**
+     * Arguments to call a named tool on the MCP server
+     */
+    export interface McpCallToolArguments {
+      tool_name: string;
+
+      arguments?: unknown;
+
+      timeout_seconds?: number;
+    }
+
+    /**
+     * Arguments to list available tools
+     */
+    export interface McpListToolsArguments {
+      dummy?: string;
+    }
+
+    /**
+     * Setup parameters for MCP integration
+     */
+    export interface Setup {
+      transport: 'sse' | 'http';
+
+      args?: Array<string>;
+
+      command?: string | null;
+
+      cwd?: string | null;
+
+      env?: { [key: string]: string };
+
+      http_headers?: { [key: string]: string };
+
+      http_url?: string | null;
     }
   }
 

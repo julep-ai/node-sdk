@@ -547,6 +547,102 @@ export const tool: Tool = {
                 },
                 {
                   type: 'object',
+                  title: 'McpIntegrationDef',
+                  description: 'MCP integration definition',
+                  properties: {
+                    arguments: {
+                      anyOf: [
+                        {
+                          type: 'object',
+                          title: 'McpCallToolArguments',
+                          description: 'Arguments to call a named tool on the MCP server',
+                          properties: {
+                            tool_name: {
+                              type: 'string',
+                              title: 'Tool Name',
+                            },
+                            arguments: {
+                              type: 'object',
+                              title: 'Arguments',
+                              additionalProperties: true,
+                            },
+                            timeout_seconds: {
+                              type: 'integer',
+                              title: 'Timeout Seconds',
+                            },
+                          },
+                          required: ['tool_name'],
+                        },
+                        {
+                          type: 'object',
+                          title: 'McpListToolsArguments',
+                          description: 'Arguments to list available tools',
+                          properties: {
+                            dummy: {
+                              type: 'string',
+                              title: 'Dummy',
+                            },
+                          },
+                        },
+                      ],
+                      title: 'Arguments',
+                      description: 'Arguments to call a named tool on the MCP server',
+                    },
+                    method: {
+                      type: 'string',
+                      title: 'Method',
+                    },
+                    provider: {
+                      type: 'string',
+                      title: 'Provider',
+                      enum: ['mcp'],
+                    },
+                    setup: {
+                      type: 'object',
+                      title: 'McpSetup',
+                      description: 'Setup parameters for MCP integration',
+                      properties: {
+                        transport: {
+                          type: 'string',
+                          title: 'Transport',
+                          enum: ['sse', 'http'],
+                        },
+                        args: {
+                          type: 'array',
+                          title: 'Args',
+                          items: {
+                            type: 'string',
+                          },
+                        },
+                        command: {
+                          type: 'string',
+                          title: 'Command',
+                        },
+                        cwd: {
+                          type: 'string',
+                          title: 'Cwd',
+                        },
+                        env: {
+                          type: 'object',
+                          title: 'Env',
+                          additionalProperties: true,
+                        },
+                        http_headers: {
+                          type: 'object',
+                          title: 'Http Headers',
+                          additionalProperties: true,
+                        },
+                        http_url: {
+                          type: 'string',
+                          title: 'Http Url',
+                        },
+                      },
+                      required: ['transport'],
+                    },
+                  },
+                },
+                {
+                  type: 'object',
                   title: 'GoogleSheetsIntegrationDef',
                   description: 'Google Sheets integration definition',
                   properties: {
@@ -1380,6 +1476,102 @@ export const tool: Tool = {
                             },
                             {
                               $ref: '#/$defs/algolia_integration_def',
+                            },
+                            {
+                              type: 'object',
+                              title: 'McpIntegrationDef',
+                              description: 'MCP integration definition',
+                              properties: {
+                                arguments: {
+                                  anyOf: [
+                                    {
+                                      type: 'object',
+                                      title: 'McpCallToolArguments',
+                                      description: 'Arguments to call a named tool on the MCP server',
+                                      properties: {
+                                        tool_name: {
+                                          type: 'string',
+                                          title: 'Tool Name',
+                                        },
+                                        arguments: {
+                                          type: 'object',
+                                          title: 'Arguments',
+                                          additionalProperties: true,
+                                        },
+                                        timeout_seconds: {
+                                          type: 'integer',
+                                          title: 'Timeout Seconds',
+                                        },
+                                      },
+                                      required: ['tool_name'],
+                                    },
+                                    {
+                                      type: 'object',
+                                      title: 'McpListToolsArguments',
+                                      description: 'Arguments to list available tools',
+                                      properties: {
+                                        dummy: {
+                                          type: 'string',
+                                          title: 'Dummy',
+                                        },
+                                      },
+                                    },
+                                  ],
+                                  title: 'Arguments',
+                                  description: 'Arguments to call a named tool on the MCP server',
+                                },
+                                method: {
+                                  type: 'string',
+                                  title: 'Method',
+                                },
+                                provider: {
+                                  type: 'string',
+                                  title: 'Provider',
+                                  enum: ['mcp'],
+                                },
+                                setup: {
+                                  type: 'object',
+                                  title: 'McpSetup',
+                                  description: 'Setup parameters for MCP integration',
+                                  properties: {
+                                    transport: {
+                                      type: 'string',
+                                      title: 'Transport',
+                                      enum: ['sse', 'http'],
+                                    },
+                                    args: {
+                                      type: 'array',
+                                      title: 'Args',
+                                      items: {
+                                        type: 'string',
+                                      },
+                                    },
+                                    command: {
+                                      type: 'string',
+                                      title: 'Command',
+                                    },
+                                    cwd: {
+                                      type: 'string',
+                                      title: 'Cwd',
+                                    },
+                                    env: {
+                                      type: 'object',
+                                      title: 'Env',
+                                      additionalProperties: true,
+                                    },
+                                    http_headers: {
+                                      type: 'object',
+                                      title: 'Http Headers',
+                                      additionalProperties: true,
+                                    },
+                                    http_url: {
+                                      type: 'string',
+                                      title: 'Http Url',
+                                    },
+                                  },
+                                  required: ['transport'],
+                                },
+                              },
                             },
                             {
                               type: 'object',
