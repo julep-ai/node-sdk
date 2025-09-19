@@ -1185,6 +1185,100 @@ export const tool: Tool = {
           },
           {
             type: 'object',
+            title: 'McpIntegrationDefUpdate',
+            description: 'MCP integration definition',
+            properties: {
+              arguments: {
+                anyOf: [
+                  {
+                    type: 'object',
+                    title: 'McpCallToolArgumentsUpdate',
+                    description: 'Arguments to call a named tool on the MCP server',
+                    properties: {
+                      arguments: {
+                        type: 'object',
+                        title: 'Arguments',
+                        additionalProperties: true,
+                      },
+                      timeout_seconds: {
+                        type: 'integer',
+                        title: 'Timeout Seconds',
+                      },
+                      tool_name: {
+                        type: 'string',
+                        title: 'Tool Name',
+                      },
+                    },
+                  },
+                  {
+                    type: 'object',
+                    title: 'McpListToolsArgumentsUpdate',
+                    description: 'Arguments to list available tools',
+                    properties: {
+                      dummy: {
+                        type: 'string',
+                        title: 'Dummy',
+                      },
+                    },
+                  },
+                ],
+                title: 'Arguments',
+                description: 'Arguments to call a named tool on the MCP server',
+              },
+              method: {
+                type: 'string',
+                title: 'Method',
+              },
+              provider: {
+                type: 'string',
+                title: 'Provider',
+                enum: ['mcp'],
+              },
+              setup: {
+                type: 'object',
+                title: 'McpSetupUpdate',
+                description: 'Setup parameters for MCP integration',
+                properties: {
+                  args: {
+                    type: 'array',
+                    title: 'Args',
+                    items: {
+                      type: 'string',
+                    },
+                  },
+                  command: {
+                    type: 'string',
+                    title: 'Command',
+                  },
+                  cwd: {
+                    type: 'string',
+                    title: 'Cwd',
+                  },
+                  env: {
+                    type: 'object',
+                    title: 'Env',
+                    additionalProperties: true,
+                  },
+                  http_headers: {
+                    type: 'object',
+                    title: 'Http Headers',
+                    additionalProperties: true,
+                  },
+                  http_url: {
+                    type: 'string',
+                    title: 'Http Url',
+                  },
+                  transport: {
+                    type: 'string',
+                    title: 'Transport',
+                    enum: ['sse', 'http'],
+                  },
+                },
+              },
+            },
+          },
+          {
+            type: 'object',
             title: 'GoogleSheetsIntegrationDefUpdate',
             description: 'Google Sheets integration definition',
             properties: {
