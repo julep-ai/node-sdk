@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "@julep/sdk-mcp/*": ["dist/src/*"],
-      "@julep/sdk-mcp": ["dist/src/index.ts"]
+      "@julep/sdk-mcp/*": ["./dist/src/*"],
+      "@julep/sdk-mcp": ["./dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,

@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "@julep/sdk/*": ["dist/src/*"],
-      "@julep/sdk": ["dist/src/index.ts"],
+      "@julep/sdk/*": ["./dist/src/*"],
+      "@julep/sdk": ["./dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,

@@ -7,10 +7,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "@julep/sdk-mcp/*": ["src/*"],
-      "@julep/sdk-mcp": ["src/index.ts"]
+      "@julep/sdk-mcp/*": ["./src/*"],
+      "@julep/sdk-mcp": ["./src/index.ts"]
     },
     "noEmit": true,
 
