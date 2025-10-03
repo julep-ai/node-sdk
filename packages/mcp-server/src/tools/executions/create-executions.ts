@@ -31,6 +31,11 @@ export const tool: Tool = {
         title: 'Input',
         additionalProperties: true,
       },
+      connection_pool: {
+        type: 'object',
+        title: 'Connection Pool',
+        additionalProperties: true,
+      },
       error: {
         type: 'string',
         title: 'Error',
