@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'delete_users_docs',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nDelete User Doc\n\n# Response Schema\n```json\n{\n  type: 'object',\n  title: 'ResourceDeletedResponse',\n  properties: {\n    id: {\n      type: 'string',\n      title: 'Id'\n    },\n    deleted_at: {\n      type: 'string',\n      title: 'Deleted At',\n      format: 'date-time'\n    },\n    jobs: {\n      type: 'array',\n      title: 'Jobs',\n      items: {\n        type: 'string'\n      }\n    }\n  },\n  required: [    'id',\n    'deleted_at'\n  ]\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nDelete User Doc\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/doc_delete_response',\n  $defs: {\n    doc_delete_response: {\n      type: 'object',\n      title: 'ResourceDeletedResponse',\n      properties: {\n        id: {\n          type: 'string',\n          title: 'Id'\n        },\n        deleted_at: {\n          type: 'string',\n          title: 'Deleted At',\n          format: 'date-time'\n        },\n        jobs: {\n          type: 'array',\n          title: 'Jobs',\n          items: {\n            type: 'string'\n          }\n        }\n      },\n      required: [        'id',\n        'deleted_at'\n      ]\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
