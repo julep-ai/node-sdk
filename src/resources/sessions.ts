@@ -1895,7 +1895,7 @@ export interface HybridDocSearch {
 
   num_search_messages?: number;
 
-  trigram_similarity_threshold?: number;
+  trigram_similarity_threshold?: number | null;
 }
 
 export interface LogProbResponse {
@@ -1957,7 +1957,7 @@ export interface TextOnlyDocSearch {
 
   num_search_messages?: number;
 
-  trigram_similarity_threshold?: number;
+  trigram_similarity_threshold?: number | null;
 }
 
 export interface TokenLogProb {
@@ -2681,7 +2681,7 @@ export namespace SessionUpdateParams {
 
     num_search_messages?: number;
 
-    trigram_similarity_threshold?: number;
+    trigram_similarity_threshold?: number | null;
   }
 
   export interface HybridDocSearchUpdate {
@@ -2707,7 +2707,7 @@ export namespace SessionUpdateParams {
 
     num_search_messages?: number;
 
-    trigram_similarity_threshold?: number;
+    trigram_similarity_threshold?: number | null;
   }
 }
 
