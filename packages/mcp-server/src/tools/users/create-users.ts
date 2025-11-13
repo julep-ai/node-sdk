@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { maybeFilter } from '@julep/sdk-mcp/filtering';
-import { Metadata, asTextContentResult } from '@julep/sdk-mcp/tools/types';
+import { isJqError, maybeFilter } from '@julep/sdk-mcp/filtering';
+import { Metadata, asErrorResult, asTextContentResult } from '@julep/sdk-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import Julep from '@julep/sdk';
@@ -53,7 +53,14 @@ export const tool: Tool = {
 
 export const handler = async (client: Julep, args: Record<string, unknown> | undefined) => {
   const { jq_filter, ...body } = args as any;
-  return asTextContentResult(await maybeFilter(jq_filter, await client.users.create(body)));
+  try {
+    return asTextContentResult(await maybeFilter(jq_filter, await client.users.create(body)));
+  } catch (error) {
+    if (isJqError(error)) {
+      return asErrorResult(error.message);
+    }
+    throw error;
+  }
 };
 
 export default { metadata, tool, handler };
