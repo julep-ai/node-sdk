@@ -51,7 +51,7 @@ export const handler = async (client: Julep, args: Record<string, unknown> | und
       await maybeFilter(jq_filter, await client.agents.docs.delete(agent_id, doc_id)),
     );
   } catch (error) {
-    if (isJqError(error)) {
+    if (error instanceof Julep.APIError || isJqError(error)) {
       return asErrorResult(error.message);
     }
     throw error;
