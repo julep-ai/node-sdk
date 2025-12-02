@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Metadata, asTextContentResult } from '@julep/sdk-mcp/tools/types';
+import { Metadata, asErrorResult, asTextContentResult } from '@julep/sdk-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import Julep from '@julep/sdk';
@@ -1928,7 +1928,14 @@ export const tool: Tool = {
 
 export const handler = async (client: Julep, args: Record<string, unknown> | undefined) => {
   const { agent_id, tool_id, ...body } = args as any;
-  return asTextContentResult(await client.agents.tools.reset(agent_id, tool_id, body));
+  try {
+    return asTextContentResult(await client.agents.tools.reset(agent_id, tool_id, body));
+  } catch (error) {
+    if (error instanceof Julep.APIError) {
+      return asErrorResult(error.message);
+    }
+    throw error;
+  }
 };
 
 export default { metadata, tool, handler };
