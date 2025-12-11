@@ -39,6 +39,7 @@ export async function codeTool() {
       },
       body: JSON.stringify({
         project_name: 'julep',
+        client_opts: { environment: (readEnv('JULEP_ENVIRONMENT') || undefined) as any },
         code,
       }),
     });
