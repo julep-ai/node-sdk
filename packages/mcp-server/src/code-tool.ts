@@ -35,7 +35,10 @@ export async function codeTool() {
       headers: {
         ...(stainlessAPIKey && { Authorization: stainlessAPIKey }),
         'Content-Type': 'application/json',
-        client_envs: JSON.stringify({ JULEP_API_KEY: readEnv('JULEP_API_KEY') }),
+        client_envs: JSON.stringify({
+          JULEP_API_KEY: readEnv('JULEP_API_KEY'),
+          JULEP_BASE_URL: readEnv('JULEP_BASE_URL'),
+        }),
       },
       body: JSON.stringify({
         project_name: 'julep',
