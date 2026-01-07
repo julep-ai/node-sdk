@@ -40,7 +40,14 @@ describe('resource tools', () => {
         json: {},
         params: 'string',
         params_schema: {
-          properties: { foo: { type: 'type', description: 'description', enum: ['string'], items: {} } },
+          properties: {
+            foo: {
+              type: 'type',
+              description: 'description',
+              enum: ['string'],
+              items: {},
+            },
+          },
           additionalProperties: true,
           required: ['string'],
           type: 'type',
@@ -58,8 +65,17 @@ describe('resource tools', () => {
         type: 'computer_20241022',
       },
       description: 'description',
-      function: { description: {}, name: {}, parameters: {} },
-      integration: { arguments: {}, method: 'method', provider: 'dummy', setup: {} },
+      function: {
+        description: {},
+        name: {},
+        parameters: {},
+      },
+      integration: {
+        arguments: {},
+        method: 'method',
+        provider: 'dummy',
+        setup: {},
+      },
       system: {
         operation: 'create',
         resource: 'agent',
@@ -109,7 +125,12 @@ describe('resource tools', () => {
     await expect(
       client.agents.tools.list(
         '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-        { direction: 'asc', limit: 0, offset: 0, sort_by: 'created_at' },
+        {
+          direction: 'asc',
+          limit: 0,
+          offset: 0,
+          sort_by: 'created_at',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Julep.NotFoundError);
@@ -175,7 +196,14 @@ describe('resource tools', () => {
           json: {},
           params: 'string',
           params_schema: {
-            properties: { foo: { type: 'type', description: 'description', enum: ['string'], items: {} } },
+            properties: {
+              foo: {
+                type: 'type',
+                description: 'description',
+                enum: ['string'],
+                items: {},
+              },
+            },
             additionalProperties: true,
             required: ['string'],
             type: 'type',
@@ -193,8 +221,17 @@ describe('resource tools', () => {
           type: 'computer_20241022',
         },
         description: 'description',
-        function: { description: {}, name: {}, parameters: {} },
-        integration: { arguments: {}, method: 'method', provider: 'dummy', setup: {} },
+        function: {
+          description: {},
+          name: {},
+          parameters: {},
+        },
+        integration: {
+          arguments: {},
+          method: 'method',
+          provider: 'dummy',
+          setup: {},
+        },
         system: {
           operation: 'create',
           resource: 'agent',
