@@ -53,7 +53,13 @@ describe('resource sessions', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.sessions.list(
-        { direction: 'asc', limit: 0, metadata_filter: { foo: 'bar' }, offset: 0, sort_by: 'created_at' },
+        {
+          direction: 'asc',
+          limit: 0,
+          metadata_filter: { foo: 'bar' },
+          offset: 0,
+          sort_by: 'created_at',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Julep.NotFoundError);
@@ -103,7 +109,11 @@ describe('resource sessions', () => {
               function: { name: 'name', arguments: 'arguments' },
               api_call: {},
               bash_20241022: { command: 'command', restart: true },
-              computer_20241022: { action: 'key', coordinate: [0], text: 'text' },
+              computer_20241022: {
+                action: 'key',
+                coordinate: [0],
+                text: 'text',
+              },
               integration: {},
               system: {},
               text_editor_20241022: {
@@ -158,7 +168,14 @@ describe('resource sessions', () => {
             json: {},
             params: 'string',
             params_schema: {
-              properties: { foo: { type: 'type', description: 'description', enum: ['string'], items: {} } },
+              properties: {
+                foo: {
+                  type: 'type',
+                  description: 'description',
+                  enum: ['string'],
+                  items: {},
+                },
+              },
               additionalProperties: true,
               required: ['string'],
               type: 'type',
@@ -176,8 +193,17 @@ describe('resource sessions', () => {
             type: 'computer_20241022',
           },
           description: 'description',
-          function: { description: {}, name: {}, parameters: {} },
-          integration: { arguments: {}, method: 'method', provider: 'dummy', setup: {} },
+          function: {
+            description: {},
+            name: {},
+            parameters: {},
+          },
+          integration: {
+            arguments: {},
+            method: 'method',
+            provider: 'dummy',
+            setup: {},
+          },
           system: {
             operation: 'create',
             resource: 'agent',
@@ -266,7 +292,11 @@ describe('resource sessions', () => {
               function: { name: 'name', arguments: 'arguments' },
               api_call: {},
               bash_20241022: { command: 'command', restart: true },
-              computer_20241022: { action: 'key', coordinate: [0], text: 'text' },
+              computer_20241022: {
+                action: 'key',
+                coordinate: [0],
+                text: 'text',
+              },
               integration: {},
               system: {},
               text_editor_20241022: {
@@ -320,7 +350,14 @@ describe('resource sessions', () => {
             json: {},
             params: 'string',
             params_schema: {
-              properties: { foo: { type: 'type', description: 'description', enum: ['string'], items: {} } },
+              properties: {
+                foo: {
+                  type: 'type',
+                  description: 'description',
+                  enum: ['string'],
+                  items: {},
+                },
+              },
               additionalProperties: true,
               required: ['string'],
               type: 'type',
@@ -338,8 +375,17 @@ describe('resource sessions', () => {
             type: 'computer_20241022',
           },
           description: 'description',
-          function: { description: {}, name: {}, parameters: {} },
-          integration: { arguments: {}, method: 'method', provider: 'dummy', setup: {} },
+          function: {
+            description: {},
+            name: {},
+            parameters: {},
+          },
+          integration: {
+            arguments: {},
+            method: 'method',
+            provider: 'dummy',
+            setup: {},
+          },
           system: {
             operation: 'create',
             resource: 'agent',

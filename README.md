@@ -62,7 +62,10 @@ const params: Julep.AgentCreateOrUpdateParams = {
   instructions: ['Protect Leia', 'Kick butt'],
   model: 'o1-preview',
 };
-const agent: Julep.Agent = await client.agents.createOrUpdate('dad00000-0000-4000-a000-000000000000', params);
+const agent: Julep.Agent = await client.agents.createOrUpdate(
+  'dad00000-0000-4000-a000-000000000000',
+  params,
+);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -121,7 +124,11 @@ const client = new Julep({
 });
 
 // Or, configure per-request:
-await client.agents.createOrUpdate('dad00000-0000-4000-a000-000000000000', { name: 'R2D2', instructions: ['Protect Leia', 'Kick butt'], model: 'o1-preview' }, {
+await client.agents.createOrUpdate('dad00000-0000-4000-a000-000000000000', {
+  name: 'R2D2',
+  instructions: ['Protect Leia', 'Kick butt'],
+  model: 'o1-preview',
+}, {
   maxRetries: 5,
 });
 ```
@@ -138,7 +145,11 @@ const client = new Julep({
 });
 
 // Override per-request:
-await client.agents.createOrUpdate('dad00000-0000-4000-a000-000000000000', { name: 'R2D2', instructions: ['Protect Leia', 'Kick butt'], model: 'o1-preview' }, {
+await client.agents.createOrUpdate('dad00000-0000-4000-a000-000000000000', {
+  name: 'R2D2',
+  instructions: ['Protect Leia', 'Kick butt'],
+  model: 'o1-preview',
+}, {
   timeout: 5 * 1000,
 });
 ```
@@ -314,7 +325,11 @@ const client = new Julep({
 // Override per-request:
 await client.agents.createOrUpdate(
   'dad00000-0000-4000-a000-000000000000',
-  { name: 'R2D2', instructions: ['Protect Leia', 'Kick butt'], model: 'o1-preview' },
+  {
+    name: 'R2D2',
+    instructions: ['Protect Leia', 'Kick butt'],
+    model: 'o1-preview',
+  },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
