@@ -117,27 +117,27 @@ export interface DocSearchResponse {
 
 export interface DocCreateParams {
   /**
-   * Body param:
+   * Body param
    */
   content: string | Array<string>;
 
   /**
-   * Body param:
+   * Body param
    */
   title: string;
 
   /**
-   * Query param:
+   * Query param
    */
   connection_pool?: unknown;
 
   /**
-   * Body param:
+   * Body param
    */
   embed_instruction?: string | null;
 
   /**
-   * Body param:
+   * Body param
    */
   metadata?: unknown | null;
 }
@@ -166,136 +166,136 @@ export type DocSearchParams =
 export declare namespace DocSearchParams {
   export interface TextOnlyDocSearchRequest {
     /**
-     * Body param:
+     * Body param
      */
     text: string;
 
     /**
-     * Query param:
+     * Query param
      */
     connection_pool?: unknown;
 
     /**
-     * Body param:
+     * Body param
      */
     include_embeddings?: boolean;
 
     /**
-     * Body param:
+     * Body param
      */
     lang?: string;
 
     /**
-     * Body param:
+     * Body param
      */
     limit?: number;
 
     /**
-     * Body param:
+     * Body param
      */
     metadata_filter?: unknown;
 
     /**
-     * Body param:
+     * Body param
      */
     trigram_similarity_threshold?: number | null;
   }
 
   export interface VectorDocSearchRequest {
     /**
-     * Body param:
+     * Body param
      */
     vector: Array<number>;
 
     /**
-     * Query param:
+     * Query param
      */
     connection_pool?: unknown;
 
     /**
-     * Body param:
+     * Body param
      */
     confidence?: number;
 
     /**
-     * Body param:
+     * Body param
      */
     include_embeddings?: boolean;
 
     /**
-     * Body param:
+     * Body param
      */
     limit?: number;
 
     /**
-     * Body param:
+     * Body param
      */
     metadata_filter?: unknown;
 
     /**
-     * Body param:
+     * Body param
      */
     mmr_strength?: number;
   }
 
   export interface HybridDocSearchRequest {
     /**
-     * Body param:
+     * Body param
      */
     text: string;
 
     /**
-     * Body param:
+     * Body param
      */
     vector: Array<number>;
 
     /**
-     * Query param:
+     * Query param
      */
     connection_pool?: unknown;
 
     /**
-     * Body param:
+     * Body param
      */
     alpha?: number;
 
     /**
-     * Body param:
+     * Body param
      */
     confidence?: number;
 
     /**
-     * Body param:
+     * Body param
      */
     include_embeddings?: boolean;
 
     /**
-     * Body param:
+     * Body param
      */
     k_multiplier?: number;
 
     /**
-     * Body param:
+     * Body param
      */
     lang?: string;
 
     /**
-     * Body param:
+     * Body param
      */
     limit?: number;
 
     /**
-     * Body param:
+     * Body param
      */
     metadata_filter?: unknown;
 
     /**
-     * Body param:
+     * Body param
      */
     mmr_strength?: number;
 
     /**
-     * Body param:
+     * Body param
      */
     trigram_similarity_threshold?: number | null;
   }

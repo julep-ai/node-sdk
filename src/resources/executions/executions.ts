@@ -154,32 +154,32 @@ export type ExecutionChangeStatusResponse = unknown;
 
 export interface ExecutionCreateParams {
   /**
-   * Body param:
+   * Body param
    */
   input: unknown;
 
   /**
-   * Query param:
+   * Query param
    */
   connection_pool?: unknown;
 
   /**
-   * Body param:
+   * Body param
    */
   error?: string | null;
 
   /**
-   * Body param:
+   * Body param
    */
   metadata?: unknown | null;
 
   /**
-   * Body param:
+   * Body param
    */
   output?: unknown;
 
   /**
-   * Body param:
+   * Body param
    */
   transition_count?: number | null;
 }
