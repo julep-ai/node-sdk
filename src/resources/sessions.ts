@@ -2721,127 +2721,127 @@ export interface SessionListParams extends OffsetPaginationParams {
 
 export interface SessionChatParams {
   /**
-   * Body param:
+   * Body param
    */
   messages: Array<SessionChatParams.Message>;
 
   /**
-   * Query param:
+   * Query param
    */
   connection_pool?: unknown;
 
   /**
-   * Body param:
+   * Body param
    */
   agent?: string | null;
 
   /**
-   * Body param:
+   * Body param
    */
   auto_run_tools?: boolean;
 
   /**
-   * Body param:
+   * Body param
    */
   frequency_penalty?: number | null;
 
   /**
-   * Body param:
+   * Body param
    */
   length_penalty?: number | null;
 
   /**
-   * Body param:
+   * Body param
    */
   logit_bias?: { [key: string]: number } | null;
 
   /**
-   * Body param:
+   * Body param
    */
   max_tokens?: number | null;
 
   /**
-   * Body param:
+   * Body param
    */
   metadata?: unknown | null;
 
   /**
-   * Body param:
+   * Body param
    */
   min_p?: number | null;
 
   /**
-   * Body param:
+   * Body param
    */
   model?: string | null;
 
   /**
-   * Body param:
+   * Body param
    */
   presence_penalty?: number | null;
 
   /**
-   * Body param:
+   * Body param
    */
   recall?: boolean;
 
   /**
-   * Body param:
+   * Body param
    */
   recall_tools?: boolean;
 
   /**
-   * Body param:
+   * Body param
    */
   repetition_penalty?: number | null;
 
   /**
-   * Body param:
+   * Body param
    */
   response_format?: SimpleCompletionResponseFormat | SchemaCompletionResponseFormat | null;
 
   /**
-   * Body param:
+   * Body param
    */
   save?: boolean;
 
   /**
-   * Body param:
+   * Body param
    */
   seed?: number | null;
 
   /**
-   * Body param:
+   * Body param
    */
   stop?: Array<string>;
 
   /**
-   * Body param:
+   * Body param
    */
   stream?: boolean;
 
   /**
-   * Body param:
+   * Body param
    */
   temperature?: number | null;
 
   /**
-   * Body param:
+   * Body param
    */
   tool_choice?: 'auto' | 'none' | Shared.NamedToolChoice | null;
 
   /**
-   * Body param:
+   * Body param
    */
   tools?: Array<SessionChatParams.Tool> | null;
 
   /**
-   * Body param:
+   * Body param
    */
   top_p?: number | null;
 
   /**
-   * Header param:
+   * Header param
    */
   'X-Custom-Api-Key'?: string;
 }
