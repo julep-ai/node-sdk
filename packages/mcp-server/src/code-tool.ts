@@ -75,7 +75,10 @@ export function codeTool(): McpTool {
             readEnv('JULEP_API_KEY') ?? client.apiKey,
             'set JULEP_API_KEY environment variable or provide apiKey client option',
           ),
-          JULEP_BASE_URL: readEnv('JULEP_BASE_URL') ?? client.baseURL ?? undefined,
+          JULEP_BASE_URL:
+            readEnv('JULEP_BASE_URL') ?? readEnv('JULEP_ENVIRONMENT') ?
+              undefined
+            : client.baseURL ?? undefined,
         }),
       },
       body: JSON.stringify({
