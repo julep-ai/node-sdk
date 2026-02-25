@@ -114,6 +114,7 @@ export function selectTools(options?: McpOptions): McpTool[] {
   const includedTools = [
     codeTool({
       blockedMethods: blockedMethodsForCodeTool(options),
+      codeExecutionMode: options?.codeExecutionMode ?? 'stainless-sandbox',
     }),
   ];
   if (options?.includeDocsTools ?? true) {
