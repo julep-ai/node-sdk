@@ -25,7 +25,12 @@ describe('resource tasks', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.tasks.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
-      main: [{ evaluate: { foo: {} }, label: 'label' }],
+      main: [
+        {
+          evaluate: { foo: {} },
+          label: 'label',
+        },
+      ],
       name: 'x',
       canonical_name: 'canonical_name',
       description: 'description',
@@ -49,7 +54,13 @@ describe('resource tasks', () => {
             json: {},
             params: 'string',
             params_schema: {
-              properties: { foo: { type: 'type', description: 'description', enum: ['string'], items: {} } },
+              properties: {
+                foo: {
+                  type: 'type',
+                  description: 'description',
+                  enum: ['string'],
+                },
+              },
               additionalProperties: true,
               required: ['string'],
               type: 'type',
@@ -67,8 +78,17 @@ describe('resource tasks', () => {
             type: 'computer_20241022',
           },
           description: 'description',
-          function: { description: {}, name: {}, parameters: {} },
-          integration: { arguments: {}, method: 'method', provider: 'dummy', setup: {} },
+          function: {
+            description: {},
+            name: {},
+            parameters: {},
+          },
+          integration: {
+            arguments: {},
+            method: 'method',
+            provider: 'dummy',
+            setup: {},
+          },
           system: {
             operation: 'create',
             resource: 'agent',
@@ -105,7 +125,12 @@ describe('resource tasks', () => {
     await expect(
       client.tasks.list(
         '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-        { direction: 'asc', limit: 0, offset: 0, sort_by: 'created_at' },
+        {
+          direction: 'asc',
+          limit: 0,
+          offset: 0,
+          sort_by: 'created_at',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Julep.NotFoundError);
@@ -131,7 +156,12 @@ describe('resource tasks', () => {
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
       {
-        main: [{ evaluate: { foo: {} }, label: 'label' }],
+        main: [
+          {
+            evaluate: { foo: {} },
+            label: 'label',
+          },
+        ],
         name: 'x',
         canonical_name: 'canonical_name',
         description: 'description',
@@ -156,7 +186,11 @@ describe('resource tasks', () => {
               params: 'string',
               params_schema: {
                 properties: {
-                  foo: { type: 'type', description: 'description', enum: ['string'], items: {} },
+                  foo: {
+                    type: 'type',
+                    description: 'description',
+                    enum: ['string'],
+                  },
                 },
                 additionalProperties: true,
                 required: ['string'],
@@ -175,8 +209,17 @@ describe('resource tasks', () => {
               type: 'computer_20241022',
             },
             description: 'description',
-            function: { description: {}, name: {}, parameters: {} },
-            integration: { arguments: {}, method: 'method', provider: 'dummy', setup: {} },
+            function: {
+              description: {},
+              name: {},
+              parameters: {},
+            },
+            integration: {
+              arguments: {},
+              method: 'method',
+              provider: 'dummy',
+              setup: {},
+            },
             system: {
               operation: 'create',
               resource: 'agent',

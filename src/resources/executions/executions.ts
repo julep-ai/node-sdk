@@ -23,10 +23,11 @@ export class Executions extends APIResource {
    */
   create(
     taskId: string,
-    body: ExecutionCreateParams,
+    params: ExecutionCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Execution> {
-    return this._client.post(`/tasks/${taskId}/executions`, { body, ...options });
+    const { connection_pool, ...body } = params;
+    return this._client.post(`/tasks/${taskId}/executions`, { query: { connection_pool }, body, ...options });
   }
 
   /**
@@ -152,14 +153,34 @@ export namespace Transition {
 export type ExecutionChangeStatusResponse = unknown;
 
 export interface ExecutionCreateParams {
+  /**
+   * Body param
+   */
   input: unknown;
 
+  /**
+   * Query param
+   */
+  connection_pool?: unknown;
+
+  /**
+   * Body param
+   */
   error?: string | null;
 
+  /**
+   * Body param
+   */
   metadata?: unknown | null;
 
+  /**
+   * Body param
+   */
   output?: unknown;
 
+  /**
+   * Body param
+   */
   transition_count?: number | null;
 }
 

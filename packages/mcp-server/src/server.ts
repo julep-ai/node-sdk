@@ -2,145 +2,159 @@
 
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { Endpoint, endpoints, HandlerFunction, query } from './tools';
-import { CallToolRequestSchema, ListToolsRequestSchema, Tool } from '@modelcontextprotocol/sdk/types.js';
+import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { ClientOptions } from '@julep/sdk';
 import Julep from '@julep/sdk';
-import {
-  applyCompatibilityTransformations,
-  ClientCapabilities,
-  defaultClientCapabilities,
-  knownClients,
-  parseEmbeddedJSON,
-} from './compat';
-import { dynamicTools } from './dynamic-tools';
+import { codeTool } from './code-tool';
+import docsSearchTool from './docs-search-tool';
+import { setLocalSearch } from './docs-search-tool';
+import { LocalDocsSearch } from './local-docs-search';
+import { getInstructions } from './instructions';
 import { McpOptions } from './options';
+import { blockedMethodsForCodeTool } from './methods';
+import { HandlerFunction, McpRequestContext, ToolCallResult, McpTool } from './types';
+import { readEnv } from './util';
 
-export { McpOptions } from './options';
-export { ClientType } from './compat';
-export { Filter } from './tools';
-export { ClientOptions } from '@julep/sdk';
-export { endpoints } from './tools';
-
-// Create server instance
-export const server = new McpServer(
-  {
-    name: 'julep_sdk_api',
-    version: '2.7.4',
-  },
-  { capabilities: { tools: {} } },
-);
+export const newMcpServer = async ({
+  stainlessApiKey,
+  customInstructionsPath,
+}: {
+  stainlessApiKey?: string | undefined;
+  customInstructionsPath?: string | undefined;
+}) =>
+  new McpServer(
+    {
+      name: 'julep_sdk_api',
+      version: '3.0.0',
+    },
+    {
+      instructions: await getInstructions({ stainlessApiKey, customInstructionsPath }),
+      capabilities: { tools: {}, logging: {} },
+    },
+  );
 
 /**
  * Initializes the provided MCP Server with the given tools and handlers.
  * If not provided, the default client, tools and handlers will be used.
  */
-export function initMcpServer(params: {
+export async function initMcpServer(params: {
   server: Server | McpServer;
-  clientOptions: ClientOptions;
-  mcpOptions: McpOptions;
-  endpoints?: { tool: Tool; handler: HandlerFunction }[];
-}) {
-  const transformedEndpoints = selectTools(endpoints, params.mcpOptions);
-  const client = new Julep(params.clientOptions);
-  const capabilities = {
-    ...defaultClientCapabilities,
-    ...(params.mcpOptions.client ? knownClients[params.mcpOptions.client] : params.mcpOptions.capabilities),
-  };
-  init({ server: params.server, client, endpoints: transformedEndpoints, capabilities });
-}
-
-export function init(params: {
-  server: Server | McpServer;
-  client?: Julep;
-  endpoints?: { tool: Tool; handler: HandlerFunction }[];
-  capabilities?: Partial<ClientCapabilities>;
+  clientOptions?: ClientOptions;
+  mcpOptions?: McpOptions;
+  stainlessApiKey?: string | undefined;
+  upstreamClientEnvs?: Record<string, string> | undefined;
+  mcpSessionId?: string | undefined;
+  mcpClientInfo?: { name: string; version: string } | undefined;
 }) {
   const server = params.server instanceof McpServer ? params.server.server : params.server;
-  const providedEndpoints = params.endpoints || endpoints;
 
-  const endpointMap = Object.fromEntries(providedEndpoints.map((endpoint) => [endpoint.tool.name, endpoint]));
+  if (params.mcpOptions?.docsSearchMode === 'local') {
+    const docsDir = params.mcpOptions?.docsDir;
+    const localSearch = await LocalDocsSearch.create(docsDir ? { docsDir } : undefined);
+    setLocalSearch(localSearch);
+  }
 
-  const client =
-    params.client ||
-    new Julep({
-      environment: (readEnv('JULEP_ENVIRONMENT') || undefined) as any,
-      defaultHeaders: { 'X-Stainless-MCP': 'true' },
-    });
+  let _client: Julep | undefined;
+  let _clientError: Error | undefined;
+  let _logLevel: 'debug' | 'info' | 'warn' | 'error' | 'off' | undefined;
+
+  const getClient = (): Julep => {
+    if (_clientError) throw _clientError;
+    if (!_client) {
+      try {
+        _client = new Julep({
+          ...{ environment: (readEnv('JULEP_ENVIRONMENT') || undefined) as any },
+
+          ...params.clientOptions,
+          defaultHeaders: {
+            ...params.clientOptions?.defaultHeaders,
+            'X-Stainless-MCP': 'true',
+          },
+        });
+      } catch (e) {
+        _clientError = e instanceof Error ? e : new Error(String(e));
+        throw _clientError;
+      }
+    }
+    return _client;
+  };
+
+  const providedTools = selectTools(params.mcpOptions);
+  const toolMap = Object.fromEntries(providedTools.map((mcpTool) => [mcpTool.tool.name, mcpTool]));
 
   server.setRequestHandler(ListToolsRequestSchema, async () => {
     return {
-      tools: providedEndpoints.map((endpoint) => endpoint.tool),
+      tools: providedTools.map((mcpTool) => mcpTool.tool),
     };
   });
 
   server.setRequestHandler(CallToolRequestSchema, async (request) => {
     const { name, arguments: args } = request.params;
-    const endpoint = endpointMap[name];
-    if (!endpoint) {
+    const mcpTool = toolMap[name];
+    if (!mcpTool) {
       throw new Error(`Unknown tool: ${name}`);
     }
 
-    return executeHandler(endpoint.tool, endpoint.handler, client, args, params.capabilities);
+    let client: Julep;
+    try {
+      client = getClient();
+    } catch (error) {
+      return {
+        content: [
+          {
+            type: 'text' as const,
+            text: `Failed to initialize client: ${error instanceof Error ? error.message : String(error)}`,
+          },
+        ],
+        isError: true,
+      };
+    }
+
+    return executeHandler({
+      handler: mcpTool.handler,
+      reqContext: {
+        client,
+        stainlessApiKey: params.stainlessApiKey ?? params.mcpOptions?.stainlessApiKey,
+        upstreamClientEnvs: params.upstreamClientEnvs,
+        mcpSessionId: params.mcpSessionId,
+        mcpClientInfo: params.mcpClientInfo,
+      },
+      args,
+    });
   });
 }
 
 /**
  * Selects the tools to include in the MCP Server based on the provided options.
  */
-export function selectTools(endpoints: Endpoint[], options: McpOptions) {
-  const filteredEndpoints = query(options.filters, endpoints);
+export function selectTools(options?: McpOptions): McpTool[] {
+  const includedTools = [];
 
-  let includedTools = filteredEndpoints;
-
-  if (includedTools.length > 0) {
-    if (options.includeDynamicTools) {
-      includedTools = dynamicTools(includedTools);
-    }
-  } else {
-    if (options.includeAllTools) {
-      includedTools = endpoints;
-    } else if (options.includeDynamicTools) {
-      includedTools = dynamicTools(endpoints);
-    } else {
-      includedTools = endpoints;
-    }
+  if (options?.includeCodeTool ?? true) {
+    includedTools.push(
+      codeTool({
+        blockedMethods: blockedMethodsForCodeTool(options),
+        codeExecutionMode: options?.codeExecutionMode ?? 'stainless-sandbox',
+      }),
+    );
   }
-
-  const capabilities = { ...defaultClientCapabilities, ...options.capabilities };
-  return applyCompatibilityTransformations(includedTools, capabilities);
+  if (options?.includeDocsTools ?? true) {
+    includedTools.push(docsSearchTool);
+  }
+  return includedTools;
 }
 
 /**
  * Runs the provided handler with the given client and arguments.
  */
-export async function executeHandler(
-  tool: Tool,
-  handler: HandlerFunction,
-  client: Julep,
-  args: Record<string, unknown> | undefined,
-  compatibilityOptions?: Partial<ClientCapabilities>,
-) {
-  const options = { ...defaultClientCapabilities, ...compatibilityOptions };
-  if (!options.validJson && args) {
-    args = parseEmbeddedJSON(args, tool.inputSchema);
-  }
-  return await handler(client, args || {});
+export async function executeHandler({
+  handler,
+  reqContext,
+  args,
+}: {
+  handler: HandlerFunction;
+  reqContext: McpRequestContext;
+  args: Record<string, unknown> | undefined;
+}): Promise<ToolCallResult> {
+  return await handler({ reqContext, args: args || {} });
 }
-
-export const readEnv = (env: string): string | undefined => {
-  if (typeof (globalThis as any).process !== 'undefined') {
-    return (globalThis as any).process.env?.[env]?.trim();
-  } else if (typeof (globalThis as any).Deno !== 'undefined') {
-    return (globalThis as any).Deno.env?.get?.(env)?.trim();
-  }
-  return;
-};
-
-export const readEnvOrError = (env: string): string => {
-  let envValue = readEnv(env);
-  if (envValue === undefined) {
-    throw new Error(`Environment variable ${env} is not set`);
-  }
-  return envValue;
-};

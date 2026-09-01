@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { type Agent } from './_shims/index';
-import * as qs from './internal/qs';
+import { stringifyQuery } from './internal/utils/query';
 import * as Core from './core';
 import * as Errors from './error';
 import * as Pagination from './pagination';
@@ -259,6 +259,18 @@ export class Julep extends Core.APIClient {
       fetch: options.fetch,
     });
 
+    const customHeadersEnv = Core.readEnv('JULEP_CUSTOM_HEADERS');
+    if (customHeadersEnv) {
+      const parsed: Record<string, string> = {};
+      for (const line of customHeadersEnv.split('\n')) {
+        const colon = line.indexOf(':');
+        if (colon >= 0) {
+          parsed[line.substring(0, colon).trim()] = line.substring(colon + 1).trim();
+        }
+      }
+      options.defaultHeaders = { ...parsed, ...options.defaultHeaders };
+    }
+
     this._options = options;
 
     this.apiKey = apiKey;
@@ -298,8 +310,8 @@ export class Julep extends Core.APIClient {
     return { Authorization: `Bearer ${this.apiKey}` };
   }
 
-  protected override stringifyQuery(query: Record<string, unknown>): string {
-    return qs.stringify(query, { allowDots: true, arrayFormat: 'repeat' });
+  protected override stringifyQuery(query: object | Record<string, unknown>): string {
+    return stringifyQuery(query);
   }
 
   static Julep = this;
@@ -340,6 +352,7 @@ Julep.Secrets = Secrets;
 Julep.Projects = Projects;
 Julep.ProjectListResponsesOffsetPagination = ProjectListResponsesOffsetPagination;
 Julep.Healthz = Healthz;
+
 export declare namespace Julep {
   export type RequestOptions = Core.RequestOptions;
 

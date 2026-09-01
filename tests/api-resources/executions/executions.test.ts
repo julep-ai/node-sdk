@@ -23,6 +23,7 @@ describe('resource executions', () => {
   test('create: required and optional params', async () => {
     const response = await client.executions.create('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e', {
       input: {},
+      connection_pool: {},
       error: 'error',
       metadata: {},
       output: {},
@@ -53,7 +54,12 @@ describe('resource executions', () => {
     await expect(
       client.executions.list(
         '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-        { direction: 'asc', limit: 0, offset: 0, sort_by: 'created_at' },
+        {
+          direction: 'asc',
+          limit: 0,
+          offset: 0,
+          sort_by: 'created_at',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Julep.NotFoundError);

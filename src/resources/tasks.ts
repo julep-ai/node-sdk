@@ -334,6 +334,8 @@ export namespace PromptStepOutput {
       | Shared.ArxivIntegrationDef
       | Shared.UnstructuredIntegrationDef
       | Shared.AlgoliaIntegrationDef
+      | CreateToolRequestOutput.McpIntegrationDef
+      | CreateToolRequestOutput.GoogleSheetsIntegrationDefOutput
       | null;
 
     /**
@@ -410,6 +412,209 @@ export namespace PromptStepOutput {
 
           items?: unknown;
         }
+      }
+    }
+
+    /**
+     * MCP integration definition
+     */
+    export interface McpIntegrationDef {
+      /**
+       * Arguments to call a named tool on the MCP server
+       */
+      arguments?: McpIntegrationDef.McpCallToolArguments | McpIntegrationDef.McpListToolsArguments | null;
+
+      method?: string | null;
+
+      provider?: 'mcp';
+
+      /**
+       * Setup parameters for MCP integration
+       */
+      setup?: McpIntegrationDef.Setup | null;
+    }
+
+    export namespace McpIntegrationDef {
+      /**
+       * Arguments to call a named tool on the MCP server
+       */
+      export interface McpCallToolArguments {
+        tool_name: string;
+
+        arguments?: unknown;
+
+        timeout_seconds?: number;
+      }
+
+      /**
+       * Arguments to list available tools
+       */
+      export interface McpListToolsArguments {
+        dummy?: string;
+      }
+
+      /**
+       * Setup parameters for MCP integration
+       */
+      export interface Setup {
+        transport: 'sse' | 'http';
+
+        args?: Array<string>;
+
+        command?: string | null;
+
+        cwd?: string | null;
+
+        env?: { [key: string]: string };
+
+        http_headers?: { [key: string]: string };
+
+        http_url?: string | null;
+      }
+    }
+
+    /**
+     * Google Sheets integration definition
+     */
+    export interface GoogleSheetsIntegrationDefOutput {
+      /**
+       * Arguments for reading values from a spreadsheet
+       */
+      arguments?:
+        | GoogleSheetsIntegrationDefOutput.GoogleSheetsReadArguments
+        | GoogleSheetsIntegrationDefOutput.GoogleSheetsWriteArguments
+        | GoogleSheetsIntegrationDefOutput.GoogleSheetsAppendArguments
+        | GoogleSheetsIntegrationDefOutput.GoogleSheetsClearArguments
+        | GoogleSheetsIntegrationDefOutput.GoogleSheetsBatchReadArguments
+        | GoogleSheetsIntegrationDefOutput.GoogleSheetsBatchWriteArguments
+        | null;
+
+      method?:
+        | 'read_values'
+        | 'write_values'
+        | 'append_values'
+        | 'clear_values'
+        | 'batch_read'
+        | 'batch_write'
+        | null;
+
+      provider?: 'google_sheets';
+
+      /**
+       * Setup parameters for Google Sheets integration
+       */
+      setup?: GoogleSheetsIntegrationDefOutput.Setup | null;
+    }
+
+    export namespace GoogleSheetsIntegrationDefOutput {
+      /**
+       * Arguments for reading values from a spreadsheet
+       */
+      export interface GoogleSheetsReadArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        date_time_render_option?: 'SERIAL_NUMBER' | 'FORMATTED_STRING';
+
+        major_dimension?: 'ROWS' | 'COLUMNS';
+
+        value_render_option?: 'FORMATTED_VALUE' | 'UNFORMATTED_VALUE' | 'FORMULA';
+      }
+
+      /**
+       * Arguments for writing values to a spreadsheet
+       */
+      export interface GoogleSheetsWriteArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        values: Array<Array<unknown>>;
+
+        include_values_in_response?: boolean;
+
+        insert_data_option?: 'OVERWRITE' | 'INSERT_ROWS';
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      /**
+       * Arguments for appending values to a spreadsheet
+       */
+      export interface GoogleSheetsAppendArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        values: Array<Array<unknown>>;
+
+        include_values_in_response?: boolean;
+
+        insert_data_option?: 'OVERWRITE' | 'INSERT_ROWS';
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      /**
+       * Arguments for clearing values from a spreadsheet
+       */
+      export interface GoogleSheetsClearArguments {
+        range: string;
+
+        spreadsheet_id: string;
+      }
+
+      /**
+       * Arguments for batch reading values from multiple ranges
+       */
+      export interface GoogleSheetsBatchReadArguments {
+        ranges: Array<string>;
+
+        spreadsheet_id: string;
+
+        date_time_render_option?: 'SERIAL_NUMBER' | 'FORMATTED_STRING';
+
+        major_dimension?: 'ROWS' | 'COLUMNS';
+
+        value_render_option?: 'FORMATTED_VALUE' | 'UNFORMATTED_VALUE' | 'FORMULA';
+      }
+
+      /**
+       * Arguments for batch updating values in multiple ranges
+       */
+      export interface GoogleSheetsBatchWriteArguments {
+        data: Array<GoogleSheetsBatchWriteArguments.Data>;
+
+        spreadsheet_id: string;
+
+        include_values_in_response?: boolean;
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      export namespace GoogleSheetsBatchWriteArguments {
+        /**
+         * Represents a range of values to write
+         */
+        export interface Data {
+          range: string;
+
+          values: Array<Array<unknown>>;
+
+          major_dimension?: 'ROWS' | 'COLUMNS';
+        }
+      }
+
+      /**
+       * Setup parameters for Google Sheets integration
+       */
+      export interface Setup {
+        use_julep_service: boolean;
+
+        default_retry_count?: number;
+
+        service_account_json?: string | null;
       }
     }
   }
@@ -585,6 +790,8 @@ export namespace Task {
       | Shared.ArxivIntegrationDef
       | Shared.UnstructuredIntegrationDef
       | Shared.AlgoliaIntegrationDef
+      | Tool.McpIntegrationDef
+      | Tool.GoogleSheetsIntegrationDefOutput
       | null;
 
     /**
@@ -661,6 +868,209 @@ export namespace Task {
 
           items?: unknown;
         }
+      }
+    }
+
+    /**
+     * MCP integration definition
+     */
+    export interface McpIntegrationDef {
+      /**
+       * Arguments to call a named tool on the MCP server
+       */
+      arguments?: McpIntegrationDef.McpCallToolArguments | McpIntegrationDef.McpListToolsArguments | null;
+
+      method?: string | null;
+
+      provider?: 'mcp';
+
+      /**
+       * Setup parameters for MCP integration
+       */
+      setup?: McpIntegrationDef.Setup | null;
+    }
+
+    export namespace McpIntegrationDef {
+      /**
+       * Arguments to call a named tool on the MCP server
+       */
+      export interface McpCallToolArguments {
+        tool_name: string;
+
+        arguments?: unknown;
+
+        timeout_seconds?: number;
+      }
+
+      /**
+       * Arguments to list available tools
+       */
+      export interface McpListToolsArguments {
+        dummy?: string;
+      }
+
+      /**
+       * Setup parameters for MCP integration
+       */
+      export interface Setup {
+        transport: 'sse' | 'http';
+
+        args?: Array<string>;
+
+        command?: string | null;
+
+        cwd?: string | null;
+
+        env?: { [key: string]: string };
+
+        http_headers?: { [key: string]: string };
+
+        http_url?: string | null;
+      }
+    }
+
+    /**
+     * Google Sheets integration definition
+     */
+    export interface GoogleSheetsIntegrationDefOutput {
+      /**
+       * Arguments for reading values from a spreadsheet
+       */
+      arguments?:
+        | GoogleSheetsIntegrationDefOutput.GoogleSheetsReadArguments
+        | GoogleSheetsIntegrationDefOutput.GoogleSheetsWriteArguments
+        | GoogleSheetsIntegrationDefOutput.GoogleSheetsAppendArguments
+        | GoogleSheetsIntegrationDefOutput.GoogleSheetsClearArguments
+        | GoogleSheetsIntegrationDefOutput.GoogleSheetsBatchReadArguments
+        | GoogleSheetsIntegrationDefOutput.GoogleSheetsBatchWriteArguments
+        | null;
+
+      method?:
+        | 'read_values'
+        | 'write_values'
+        | 'append_values'
+        | 'clear_values'
+        | 'batch_read'
+        | 'batch_write'
+        | null;
+
+      provider?: 'google_sheets';
+
+      /**
+       * Setup parameters for Google Sheets integration
+       */
+      setup?: GoogleSheetsIntegrationDefOutput.Setup | null;
+    }
+
+    export namespace GoogleSheetsIntegrationDefOutput {
+      /**
+       * Arguments for reading values from a spreadsheet
+       */
+      export interface GoogleSheetsReadArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        date_time_render_option?: 'SERIAL_NUMBER' | 'FORMATTED_STRING';
+
+        major_dimension?: 'ROWS' | 'COLUMNS';
+
+        value_render_option?: 'FORMATTED_VALUE' | 'UNFORMATTED_VALUE' | 'FORMULA';
+      }
+
+      /**
+       * Arguments for writing values to a spreadsheet
+       */
+      export interface GoogleSheetsWriteArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        values: Array<Array<unknown>>;
+
+        include_values_in_response?: boolean;
+
+        insert_data_option?: 'OVERWRITE' | 'INSERT_ROWS';
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      /**
+       * Arguments for appending values to a spreadsheet
+       */
+      export interface GoogleSheetsAppendArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        values: Array<Array<unknown>>;
+
+        include_values_in_response?: boolean;
+
+        insert_data_option?: 'OVERWRITE' | 'INSERT_ROWS';
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      /**
+       * Arguments for clearing values from a spreadsheet
+       */
+      export interface GoogleSheetsClearArguments {
+        range: string;
+
+        spreadsheet_id: string;
+      }
+
+      /**
+       * Arguments for batch reading values from multiple ranges
+       */
+      export interface GoogleSheetsBatchReadArguments {
+        ranges: Array<string>;
+
+        spreadsheet_id: string;
+
+        date_time_render_option?: 'SERIAL_NUMBER' | 'FORMATTED_STRING';
+
+        major_dimension?: 'ROWS' | 'COLUMNS';
+
+        value_render_option?: 'FORMATTED_VALUE' | 'UNFORMATTED_VALUE' | 'FORMULA';
+      }
+
+      /**
+       * Arguments for batch updating values in multiple ranges
+       */
+      export interface GoogleSheetsBatchWriteArguments {
+        data: Array<GoogleSheetsBatchWriteArguments.Data>;
+
+        spreadsheet_id: string;
+
+        include_values_in_response?: boolean;
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      export namespace GoogleSheetsBatchWriteArguments {
+        /**
+         * Represents a range of values to write
+         */
+        export interface Data {
+          range: string;
+
+          values: Array<Array<unknown>>;
+
+          major_dimension?: 'ROWS' | 'COLUMNS';
+        }
+      }
+
+      /**
+       * Setup parameters for Google Sheets integration
+       */
+      export interface Setup {
+        use_julep_service: boolean;
+
+        default_retry_count?: number;
+
+        service_account_json?: string | null;
       }
     }
   }
@@ -879,6 +1289,8 @@ export namespace TaskCreateParams {
       | Shared.ArxivIntegrationDef
       | Shared.UnstructuredIntegrationDef
       | Shared.AlgoliaIntegrationDef
+      | Tool.McpIntegrationDef
+      | Tool.GoogleSheetsIntegrationDefInput
       | null;
 
     /**
@@ -955,6 +1367,209 @@ export namespace TaskCreateParams {
 
           items?: unknown;
         }
+      }
+    }
+
+    /**
+     * MCP integration definition
+     */
+    export interface McpIntegrationDef {
+      /**
+       * Arguments to call a named tool on the MCP server
+       */
+      arguments?: McpIntegrationDef.McpCallToolArguments | McpIntegrationDef.McpListToolsArguments | null;
+
+      method?: string | null;
+
+      provider?: 'mcp';
+
+      /**
+       * Setup parameters for MCP integration
+       */
+      setup?: McpIntegrationDef.Setup | null;
+    }
+
+    export namespace McpIntegrationDef {
+      /**
+       * Arguments to call a named tool on the MCP server
+       */
+      export interface McpCallToolArguments {
+        tool_name: string;
+
+        arguments?: unknown;
+
+        timeout_seconds?: number;
+      }
+
+      /**
+       * Arguments to list available tools
+       */
+      export interface McpListToolsArguments {
+        dummy?: string;
+      }
+
+      /**
+       * Setup parameters for MCP integration
+       */
+      export interface Setup {
+        transport: 'sse' | 'http';
+
+        args?: Array<string>;
+
+        command?: string | null;
+
+        cwd?: string | null;
+
+        env?: { [key: string]: string };
+
+        http_headers?: { [key: string]: string };
+
+        http_url?: string | null;
+      }
+    }
+
+    /**
+     * Google Sheets integration definition
+     */
+    export interface GoogleSheetsIntegrationDefInput {
+      /**
+       * Arguments for reading values from a spreadsheet
+       */
+      arguments?:
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsReadArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsWriteArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsAppendArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsClearArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsBatchReadArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsBatchWriteArguments
+        | null;
+
+      method?:
+        | 'read_values'
+        | 'write_values'
+        | 'append_values'
+        | 'clear_values'
+        | 'batch_read'
+        | 'batch_write'
+        | null;
+
+      provider?: 'google_sheets';
+
+      /**
+       * Setup parameters for Google Sheets integration
+       */
+      setup?: GoogleSheetsIntegrationDefInput.Setup | null;
+    }
+
+    export namespace GoogleSheetsIntegrationDefInput {
+      /**
+       * Arguments for reading values from a spreadsheet
+       */
+      export interface GoogleSheetsReadArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        date_time_render_option?: 'SERIAL_NUMBER' | 'FORMATTED_STRING';
+
+        major_dimension?: 'ROWS' | 'COLUMNS';
+
+        value_render_option?: 'FORMATTED_VALUE' | 'UNFORMATTED_VALUE' | 'FORMULA';
+      }
+
+      /**
+       * Arguments for writing values to a spreadsheet
+       */
+      export interface GoogleSheetsWriteArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        values: Array<Array<unknown>>;
+
+        include_values_in_response?: boolean;
+
+        insert_data_option?: 'OVERWRITE' | 'INSERT_ROWS';
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      /**
+       * Arguments for appending values to a spreadsheet
+       */
+      export interface GoogleSheetsAppendArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        values: Array<Array<unknown>>;
+
+        include_values_in_response?: boolean;
+
+        insert_data_option?: 'OVERWRITE' | 'INSERT_ROWS';
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      /**
+       * Arguments for clearing values from a spreadsheet
+       */
+      export interface GoogleSheetsClearArguments {
+        range: string;
+
+        spreadsheet_id: string;
+      }
+
+      /**
+       * Arguments for batch reading values from multiple ranges
+       */
+      export interface GoogleSheetsBatchReadArguments {
+        ranges: Array<string>;
+
+        spreadsheet_id: string;
+
+        date_time_render_option?: 'SERIAL_NUMBER' | 'FORMATTED_STRING';
+
+        major_dimension?: 'ROWS' | 'COLUMNS';
+
+        value_render_option?: 'FORMATTED_VALUE' | 'UNFORMATTED_VALUE' | 'FORMULA';
+      }
+
+      /**
+       * Arguments for batch updating values in multiple ranges
+       */
+      export interface GoogleSheetsBatchWriteArguments {
+        data: Array<GoogleSheetsBatchWriteArguments.Data>;
+
+        spreadsheet_id: string;
+
+        include_values_in_response?: boolean;
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      export namespace GoogleSheetsBatchWriteArguments {
+        /**
+         * Represents a range of values to write
+         */
+        export interface Data {
+          range: string;
+
+          values: Array<Array<unknown>>;
+
+          major_dimension?: 'ROWS' | 'COLUMNS';
+        }
+      }
+
+      /**
+       * Setup parameters for Google Sheets integration
+       */
+      export interface Setup {
+        use_julep_service: boolean;
+
+        default_retry_count?: number;
+
+        service_account_json?: string | null;
       }
     }
   }
@@ -1143,6 +1758,8 @@ export namespace TaskCreateOrUpdateParams {
       | Shared.ArxivIntegrationDef
       | Shared.UnstructuredIntegrationDef
       | Shared.AlgoliaIntegrationDef
+      | Tool.McpIntegrationDef
+      | Tool.GoogleSheetsIntegrationDefInput
       | null;
 
     /**
@@ -1219,6 +1836,209 @@ export namespace TaskCreateOrUpdateParams {
 
           items?: unknown;
         }
+      }
+    }
+
+    /**
+     * MCP integration definition
+     */
+    export interface McpIntegrationDef {
+      /**
+       * Arguments to call a named tool on the MCP server
+       */
+      arguments?: McpIntegrationDef.McpCallToolArguments | McpIntegrationDef.McpListToolsArguments | null;
+
+      method?: string | null;
+
+      provider?: 'mcp';
+
+      /**
+       * Setup parameters for MCP integration
+       */
+      setup?: McpIntegrationDef.Setup | null;
+    }
+
+    export namespace McpIntegrationDef {
+      /**
+       * Arguments to call a named tool on the MCP server
+       */
+      export interface McpCallToolArguments {
+        tool_name: string;
+
+        arguments?: unknown;
+
+        timeout_seconds?: number;
+      }
+
+      /**
+       * Arguments to list available tools
+       */
+      export interface McpListToolsArguments {
+        dummy?: string;
+      }
+
+      /**
+       * Setup parameters for MCP integration
+       */
+      export interface Setup {
+        transport: 'sse' | 'http';
+
+        args?: Array<string>;
+
+        command?: string | null;
+
+        cwd?: string | null;
+
+        env?: { [key: string]: string };
+
+        http_headers?: { [key: string]: string };
+
+        http_url?: string | null;
+      }
+    }
+
+    /**
+     * Google Sheets integration definition
+     */
+    export interface GoogleSheetsIntegrationDefInput {
+      /**
+       * Arguments for reading values from a spreadsheet
+       */
+      arguments?:
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsReadArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsWriteArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsAppendArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsClearArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsBatchReadArguments
+        | GoogleSheetsIntegrationDefInput.GoogleSheetsBatchWriteArguments
+        | null;
+
+      method?:
+        | 'read_values'
+        | 'write_values'
+        | 'append_values'
+        | 'clear_values'
+        | 'batch_read'
+        | 'batch_write'
+        | null;
+
+      provider?: 'google_sheets';
+
+      /**
+       * Setup parameters for Google Sheets integration
+       */
+      setup?: GoogleSheetsIntegrationDefInput.Setup | null;
+    }
+
+    export namespace GoogleSheetsIntegrationDefInput {
+      /**
+       * Arguments for reading values from a spreadsheet
+       */
+      export interface GoogleSheetsReadArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        date_time_render_option?: 'SERIAL_NUMBER' | 'FORMATTED_STRING';
+
+        major_dimension?: 'ROWS' | 'COLUMNS';
+
+        value_render_option?: 'FORMATTED_VALUE' | 'UNFORMATTED_VALUE' | 'FORMULA';
+      }
+
+      /**
+       * Arguments for writing values to a spreadsheet
+       */
+      export interface GoogleSheetsWriteArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        values: Array<Array<unknown>>;
+
+        include_values_in_response?: boolean;
+
+        insert_data_option?: 'OVERWRITE' | 'INSERT_ROWS';
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      /**
+       * Arguments for appending values to a spreadsheet
+       */
+      export interface GoogleSheetsAppendArguments {
+        range: string;
+
+        spreadsheet_id: string;
+
+        values: Array<Array<unknown>>;
+
+        include_values_in_response?: boolean;
+
+        insert_data_option?: 'OVERWRITE' | 'INSERT_ROWS';
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      /**
+       * Arguments for clearing values from a spreadsheet
+       */
+      export interface GoogleSheetsClearArguments {
+        range: string;
+
+        spreadsheet_id: string;
+      }
+
+      /**
+       * Arguments for batch reading values from multiple ranges
+       */
+      export interface GoogleSheetsBatchReadArguments {
+        ranges: Array<string>;
+
+        spreadsheet_id: string;
+
+        date_time_render_option?: 'SERIAL_NUMBER' | 'FORMATTED_STRING';
+
+        major_dimension?: 'ROWS' | 'COLUMNS';
+
+        value_render_option?: 'FORMATTED_VALUE' | 'UNFORMATTED_VALUE' | 'FORMULA';
+      }
+
+      /**
+       * Arguments for batch updating values in multiple ranges
+       */
+      export interface GoogleSheetsBatchWriteArguments {
+        data: Array<GoogleSheetsBatchWriteArguments.Data>;
+
+        spreadsheet_id: string;
+
+        include_values_in_response?: boolean;
+
+        value_input_option?: 'RAW' | 'USER_ENTERED';
+      }
+
+      export namespace GoogleSheetsBatchWriteArguments {
+        /**
+         * Represents a range of values to write
+         */
+        export interface Data {
+          range: string;
+
+          values: Array<Array<unknown>>;
+
+          major_dimension?: 'ROWS' | 'COLUMNS';
+        }
+      }
+
+      /**
+       * Setup parameters for Google Sheets integration
+       */
+      export interface Setup {
+        use_julep_service: boolean;
+
+        default_retry_count?: number;
+
+        service_account_json?: string | null;
       }
     }
   }

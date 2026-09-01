@@ -1,104 +1,67 @@
 #!/usr/bin/env node
 
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { init, selectTools, server } from './server';
-import { Endpoint, endpoints } from './tools';
-import { McpOptions, parseOptions } from './options';
+import { selectTools } from './server';
+import { McpOptions, parseCLIOptions } from './options';
+import { launchStdioServer } from './stdio';
+import { launchStreamableHTTPServer } from './http';
+import type { McpTool } from './types';
+import { configureLogger, getLogger } from './logger';
 
 async function main() {
   const options = parseOptionsOrError();
+  configureLogger({
+    level: options.debug ? 'debug' : 'info',
+    pretty: options.logFormat === 'pretty',
+  });
 
-  if (options.list) {
-    listAllTools();
-    return;
-  }
+  const selectedTools = await selectToolsOrError(options);
 
-  const includedTools = selectToolsOrError(endpoints, options);
-
-  console.error(
-    `MCP Server starting with ${includedTools.length} tools:`,
-    includedTools.map((e) => e.tool.name),
+  getLogger().info(
+    { tools: selectedTools.map((e) => e.tool.name) },
+    `MCP Server starting with ${selectedTools.length} tools`,
   );
 
-  init({ server, endpoints: includedTools });
-
-  const transport = new StdioServerTransport();
-  await server.connect(transport);
-  console.error('MCP Server running on stdio');
+  switch (options.transport) {
+    case 'stdio':
+      await launchStdioServer(options);
+      break;
+    case 'http':
+      await launchStreamableHTTPServer({
+        mcpOptions: options,
+        port: options.socket ?? options.port,
+      });
+      break;
+  }
 }
 
 if (require.main === module) {
   main().catch((error) => {
-    console.error('Fatal error in main():', error);
+    // Logger might not be initialized yet
+    console.error('Fatal error in main()', error);
     process.exit(1);
   });
 }
 
 function parseOptionsOrError() {
   try {
-    return parseOptions();
+    return parseCLIOptions();
   } catch (error) {
-    console.error('Error parsing options:', error);
+    // Logger is initialized after options, so use console.error here
+    console.error('Error parsing options', error);
     process.exit(1);
   }
 }
 
-function selectToolsOrError(endpoints: Endpoint[], options: McpOptions) {
+async function selectToolsOrError(options: McpOptions): Promise<McpTool[]> {
   try {
-    const includedTools = selectTools(endpoints, options);
+    const includedTools = selectTools(options);
     if (includedTools.length === 0) {
-      console.error('No tools match the provided filters.');
+      getLogger().error('No tools match the provided filters');
       process.exit(1);
     }
     return includedTools;
   } catch (error) {
-    if (error instanceof Error) {
-      console.error('Error filtering tools:', error.message);
-    } else {
-      console.error('Error filtering tools:', error);
-    }
+    getLogger().error({ error }, 'Error filtering tools');
     process.exit(1);
-  }
-}
-
-function listAllTools() {
-  if (endpoints.length === 0) {
-    console.log('No tools available.');
-    return;
-  }
-  console.log('Available tools:\n');
-
-  // Group endpoints by resource
-  const resourceGroups = new Map<string, typeof endpoints>();
-
-  for (const endpoint of endpoints) {
-    const resource = endpoint.metadata.resource;
-    if (!resourceGroups.has(resource)) {
-      resourceGroups.set(resource, []);
-    }
-    resourceGroups.get(resource)!.push(endpoint);
-  }
-
-  // Sort resources alphabetically
-  const sortedResources = Array.from(resourceGroups.keys()).sort();
-
-  // Display hierarchically by resource
-  for (const resource of sortedResources) {
-    console.log(`Resource: ${resource}`);
-
-    const resourceEndpoints = resourceGroups.get(resource)!;
-    // Sort endpoints by tool name
-    resourceEndpoints.sort((a, b) => a.tool.name.localeCompare(b.tool.name));
-
-    for (const endpoint of resourceEndpoints) {
-      const {
-        tool,
-        metadata: { operation, tags },
-      } = endpoint;
-
-      console.log(`  - ${tool.name} (${operation}) ${tags.length > 0 ? `tags: ${tags.join(', ')}` : ''}`);
-      console.log(`    Description: ${tool.description}`);
-    }
-    console.log('');
   }
 }
