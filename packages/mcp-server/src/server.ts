@@ -25,7 +25,7 @@ export const newMcpServer = async ({
   new McpServer(
     {
       name: 'julep_sdk_api',
-      version: '2.7.4',
+      version: '3.0.0',
     },
     {
       instructions: await getInstructions({ stainlessApiKey, customInstructionsPath }),
